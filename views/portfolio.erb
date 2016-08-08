@@ -1,0 +1,217 @@
+<style type="text/css">
+ .centro {
+ /* centraliza na horizontal */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;  
+}
+</style>
+<div ng-controller="imgGridCtrl">
+ <section id="portfolio" >
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2>
+               <div contenteditable="<%=@edit_flag%>"
+                 ng-model="site.pages.portfolio.label"
+                 strip-br="true"
+                 select-non-editable="true"
+                 ng-blur="saveDiv('site.pages.portfolio.label')">
+               </div>                
+              </h2>
+              <hr class="star-primary">                
+          </div>
+       </div>
+       
+       <div class="row">
+           <div class="text-center">
+             <select ng-model="catselect"
+               ng-options="cat for cat in imageCategories"
+               ng-change="valueSelected(catselect)">
+              <option value>Todos</option>
+             </select>
+           </div>
+       </div>
+       <% if @edit_flag == true %>
+         <button type="button" class="btn btn-default" ng-click="portfolio_add()">+</button>
+       <% end %>
+       <div class="clearfix"></div>
+       <br />
+       <style>
+          .crop {
+            width: 360px;
+            height: 260px;
+            overflow: hidden;
+          }
+          .resize-img {
+           max-width: 100%;
+           height: 260px;
+            overflow: hidden;
+          }
+          .resize-img2 {
+           max-width: 100%;
+           max-height: 100%;
+           overflow: hidden;
+          }
+       </style>
+       <!-- images:{{imgs}} -->
+        <div class="row"  
+            <% if @edit_flag == true %>
+             ng-sortable="barConfig"
+            <% end %>
+             >
+              <div  class="col-sm-4 portfolio-item resize-img" ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}">
+                  <a href="" class="portfolio-link" 
+                     ng-click="open(image, $index);mostra($index);">     
+                    <div class="caption">
+                      <div class="caption-content">
+                        <i class="fa fa-search-plus fa-3x"></i>
+                      </div>
+                    </div>
+                    <img id={{$index}}                         
+                      ng-src="{{image.img}}"                       
+                      class="img-responsive centered-and-cropped">
+                  </a>
+              </div>
+        </div>
+    </div>
+ </section>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-body">
+       <h2>
+         <div contenteditable="<%=@edit_flag%>"
+          ng-model="item.titulo"
+          strip-br="true"
+          select-non-editable="true"
+          ng-blur="saveDiv('item.titulo', i)"
+          >
+         </div>         
+       </h2>
+       <style>
+         .thumb {
+            width: 24px;
+            height: 24px;
+            float: none;
+            position: relative;
+            top: 7px;
+         }
+       </style>
+       <form name="myForm" ng-controller="MyFormCtrl">         
+          <hr class="star-primary" >
+            <!-- <img ng-src="{{item.img}}" class="resize-img2"> -->
+            <img  ngf-thumbnail="picFile || item.img" class="resize-img2" 
+            <% if @edit_flag == true %>
+             ng-click="up();"
+            <% end %> >
+            <input type="file" 
+                 ngf-select 
+                 ng-model="picFile"                  
+                 id="file" 
+                 name="file"    
+                 accept="image/*" ngf-max-size="2MB" 
+                 ngf-model-invalid="errorFile" 
+                 style="visibility:hidden"
+                 ><br>
+            <!-- <button type="file" ngf-select="uploadPic(picFile, i);"
+          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"
+          ng-model="picFile" 
+                 id="file" 
+                 name="file">
+      Select File</button>  -->  
+            <style>
+              #preview img{max-width: 400px; max-height: 400px;height:100px;}
+            </style>
+            <i ng-show="myForm.file.$error.maxSize">File too large 
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+          <!-- <img ngf-thumbnail="picFile" class="thumb"> -->
+            <!-- <div ng-if="picFile">                
+              <img id=preview ngf-thumbnail="picFile" class="resize-img2" ng-click="up();">
+            </div>
+            <div ng-if="!picFile">
+                 <img id=preview ngf-thumbnail="item.img" class="resize-img2" 
+                ng-click="up();" >
+            </div> -->
+            <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->    
+      <% if @edit_flag == true %>                         
+        <button type="button" class="btn btn-default" ng-click="uploadPic(picFile, i);">Enviar imagem</button>
+      <% end %>
+      <p>
+        <div contenteditable="<%=@edit_flag%>"
+          ng-model="item.txt"
+          strip-br="true"
+          select-non-editable="true"
+          ng-blur="saveDiv('item.txt', i)">
+        </div>
+      </p>
+      <ul class="list-inline item-details">           
+          <li>Cliente:
+             <strong>              
+              <div contenteditable="<%=@edit_flag%>"
+                ng-model="item.cliente"
+                strip-br="true"
+                select-non-editable="true"
+                ng-blur="saveDiv('item.cliente', i)"
+                ></div>
+             </strong>
+          </li>
+          <li>Data:
+              <strong>
+               <div contenteditable="<%=@edit_flag%>"
+                ng-model="item.data"
+                strip-br="true"
+                select-non-editable="true"
+                ng-blur="saveDiv('item.data', i)">
+               </div>
+              </strong>
+          </li>
+          <li>Serviço:
+              <strong>
+                <div contenteditable="<%=@edit_flag%>"
+                  ng-model="item.servico"
+                  strip-br="true"
+                  select-non-editable="true"
+                  ng-blur="saveDiv('item.servico', i)">                  
+                </div>
+              </strong>
+          </li>
+          <li>Site:
+              <strong>               
+                <div contenteditable="<%=@edit_flag%>"
+                  ng-model="item.site"
+                  strip-br="true"
+                  select-non-editable="true"
+                  ng-blur="saveDiv('item.site', i)">                  
+                </div>  
+              </strong>
+          </li>
+           <li>Categorias:
+              <strong>
+              <div contenteditable="<%=@edit_flag%>"
+                  ng-model="item.cat"
+                  strip-br="true"
+                  select-non-editable="true"
+                  ng-blur="saveDiv('item.cat', i)">                  
+                </div>                  
+              </strong>
+          </li>
+      </ul>
+      <br>
+      <i ng-show="myForm.file.$error.maxSize">Imagem muito pesada 
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+      <span class="progress" ng-show="picFile.progress >= 0">
+        <div style="width:{{picFile.progress}}%" 
+            ng-bind="picFile.progress + '%'"></div>
+      </span>
+      <span ng-show="picFile.result">Dados salvos com sucesso!</span>
+      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+      
+      <!-- <button type="button" class="btn btn-default" ng-click="uploadPic(picFile, i);">Salvar</button> --> 
+      <% if @edit_flag == true %>
+        <button type="button" class="btn btn-default" ng-click="excluir(i);">Excluir</button>    
+      <% end %>
+      <button type="button" class="btn btn-default" ng-click="cancel();"><i class="fa fa-times"></i> Fechar</button>
+  </div>
+  </form>
+</script>
