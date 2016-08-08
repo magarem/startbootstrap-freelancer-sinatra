@@ -449,7 +449,7 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
             url: '/'+siteNome+'/portfolio/save/'+index,
             data: {item: $scope.item, file: file},
        }).then(function (resp) {
-            console.log('---Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+            console.log('---Success ' + resp.config.data.file.name);
             $rootScope.$emit("ImgChange",file.name, index, siteNome);
         }, function (resp) {
             console.log('---Error status: ' + resp.status);
