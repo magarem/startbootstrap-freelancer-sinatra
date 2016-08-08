@@ -83,5 +83,23 @@ pages:
       data: ''
       servico: ''
       cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/site_agencia.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/13775601_10210381960684908_4377804215171468038_n.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
   contact:
     label: To aqui ;)
