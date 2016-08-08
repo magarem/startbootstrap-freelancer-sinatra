@@ -444,24 +444,20 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
     }else{
       if (file.size < 600000) {
         console.log('upload')
-
         file.upload = Upload.upload({
             url: '/'+siteNome+'/portfolio/save/'+index,
             data: {item: $scope.item, file: file},
        }).then(function (resp) {
             console.log('---Success ' + resp.config.data.file.name);
-            $rootScope.$emit("ImgChange",file.name, index, siteNome);
+            //$rootScope.$emit("ImgChange",file.name, index, siteNome);
         }, function (resp) {
             console.log('---Error status: ' + resp.status);
         }, function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('---progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-            //if (progressPercentage == '100') {$rootScope.$emit("ImgChange",file.name, index, siteNome);}
+            if (progressPercentage == '100') {$rootScope.$emit("ImgChange",file.name, index, siteNome);}
         });
         
-        
-
-
         // file.upload.then(function () {
 
         //   }, function () {

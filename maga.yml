@@ -47,36 +47,36 @@ pages:
   portfolio:
     label: Catálogo
     items:
-    - id: '5'
-      titulo: Paisagem
-      img: contas/maga/img/portfolio/a8c8dab1485c7968bb77fa351d1bdf09.jpg
-      txt: Txt novo
-      cliente: ''
-      site: fidelis.com
-      data: 10/10/12
-      servico: Programação
-      cat: fot
-    - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/13700057_10210374377855342_4741693753307694912_n.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/13718574_10210357240346915_3458193529924077363_n.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
     - id: '0'
       titulo: Novo
       img: contas/maga/img/portfolio/site_agencia.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/87755-900-1459844057-_tznk_meey0.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/13775601_10210381960684908_4377804215171468038_n.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/13700057_10210374377855342_4741693753307694912_n.jpg
       txt: ''
       cliente: ''
       site: ''
