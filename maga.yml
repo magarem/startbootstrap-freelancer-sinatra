@@ -49,16 +49,7 @@ pages:
     items:
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/site_agencia.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/87755-900-1459844057-_tznk_meey0.jpg
+      img: "/contas/maga/img/portfolio/flat_finamente_decorado_em_frente_a_praia_do_recreio_dos_bandeirantes_8680011460570738837.jpg"
       txt: ''
       cliente: ''
       site: ''
@@ -68,6 +59,15 @@ pages:
     - id: '0'
       titulo: Novo
       img: contas/maga/img/portfolio/13775601_10210381960684908_4377804215171468038_n.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/87755-900-1459844057-_tznk_meey0.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -97,6 +97,24 @@ pages:
       img: contas/maga/img/portfolio/13775601_10210381960684908_4377804215171468038_n.jpg
       txt: ''
       cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/10334380_10203139137832682_794177832675182465_n.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: 0
+      titulo: Novo
+      img: "/contas/maga/img/portfolio/krishna.jpg"
+      txt: Txt novo
+      nome: ''
       site: ''
       data: ''
       servico: ''
