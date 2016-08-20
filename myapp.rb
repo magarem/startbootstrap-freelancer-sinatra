@@ -79,22 +79,25 @@ get '/:site_nome/dataLoad' do
       # def str_change str
       #   str.to_s.gsub("\n", "<br>")
       # end 
-      # Definindo as categorias de portfolio      
-      @data = YAML.load_file(params[:site_nome]+'.yml')
-      @data.to_json
-      # pry
+      # Definindo as categorias de portfolio  
+      @path = 'public/contas/'+params[:site_nome]+'/'+params[:site_nome]+'.yml'    
+      @data = YAML.load_file(@path)
+      @data.to_json    
+      #pry
 end
 
 
 get '/:site_nome/getdata' do      
-      data = YAML.load_file(params[:site_nome]+'.yml') || {}
+      data = YAML.load_file('public/contas/'+params[:site_nome]+'/'+params[:site_nome]+'.yml') || {}
       data["pages"]["portfolio"]["items"].to_json
+      
 end
 
 
 get '/:site_nome/getImgsCategorias' do      
-      data = YAML.load_file(params[:site_nome]+'.yml') || {}
+      data = YAML.load_file('public/contas/'+params[:site_nome]+'/'+params[:site_nome]+'.yml') || {}
       data["pages"]["portfolio"]["items"].to_json
+     
 end
 
 get '/create' do
@@ -110,7 +113,8 @@ post '/:site_nome/obj_save' do
     str.to_s.gsub("<br>", "\n").gsub(/<\/?[^>]*>/, "").gsub("&nbsp;", "")
   end  
 
-  @site_nome = params[:site_nome]+".yml"
+  #@site_nome = params[:site_nome]+".yml"
+  @site_nome = 'public/contas/'+params[:site_nome]+'/'+params[:site_nome]+'.yml'
 
   @post_data = JSON.parse(request.body.read)
   
@@ -198,62 +202,64 @@ post '/:site_nome/obj_save' do
      data["moldura"]["menu"][2]["label"] = @val
   end
 
-  File.open(@site_nome, 'w') { |f| YAML.dump(data, f) }
+  f = File.open(@site_nome, 'w' )
+  YAML.dump( data, f )
+  f.close
 
 end
 
 
-post '/:site_nome/page_save' , :provides => :json do
-  if session[:logado] then
-      # I'd use a 201 as the status if actually creating something,
-      # 200 while testing.
-      # I'd send the JSON back as a confirmation too, hence the
-      # :provides => :json
-      #@data = JSON.parse params
-      site_fonte = params[:site_nome]+".yml"
-      data = YAML.load_file site_fonte
+# post '/:site_nome/page_save' , :provides => :json do
+#   if session[:logado] then
+#       # I'd use a 201 as the status if actually creating something,
+#       # 200 while testing.
+#       # I'd send the JSON back as a confirmation too, hence the
+#       # :provides => :json
+#       #@data = JSON.parse params
+#       site_fonte = params[:site_nome]+".yml"
+#       data = YAML.load_file site_fonte
       
-      data["moldura"]["logo"]["label"] = params["topo"]["value"]
-      #data["pages"]["home"]["label"] = params["element-1"]["value"]
+#       data["moldura"]["logo"]["label"] = params["topo"]["value"]
+#       #data["pages"]["home"]["label"] = params["element-1"]["value"]
 
-      #data["pages"]["home"]["label"] = params["element-0"]["value"]
-      File.open(site_fonte, 'w') { |f| YAML.dump(data, f) }
+#       #data["pages"]["home"]["label"] = params["element-0"]["value"]
+#       File.open(site_fonte, 'w') { |f| YAML.dump(data, f) }
 
-      redirect '/'+params[:site_nome]
-  end       
-end
+#       redirect '/'+params[:site_nome]
+#   end       
+# end
 
-post '/:site_nome/menu/save' do
-  if session[:logado] then
+# post '/:site_nome/menu/save' do
+#   if session[:logado] then
 
-      site_fonte = params[:site_nome]+".yml"
-      data = YAML.load_file site_fonte
+#       site_fonte = params[:site_nome]+".yml"
+#       data = YAML.load_file site_fonte
       
       
-        data["moldura"]["menu"][0]["label"] = params[:site_moldura_menu_0_label]
-        data["moldura"]["menu"][0]["link"] = params[:site_moldura_menu_0_link]
+#         data["moldura"]["menu"][0]["label"] = params[:site_moldura_menu_0_label]
+#         data["moldura"]["menu"][0]["link"] = params[:site_moldura_menu_0_link]
       
-        data["moldura"]["menu"][1]["label"] = params[:site_moldura_menu_1_label]
-        data["moldura"]["menu"][1]["link"] = params[:site_moldura_menu_1_link]
+#         data["moldura"]["menu"][1]["label"] = params[:site_moldura_menu_1_label]
+#         data["moldura"]["menu"][1]["link"] = params[:site_moldura_menu_1_link]
       
-        data["moldura"]["menu"][2]["label"] = params[:site_moldura_menu_2_label]
-        data["moldura"]["menu"][2]["link"] = params[:site_moldura_menu_2_link]
+#         data["moldura"]["menu"][2]["label"] = params[:site_moldura_menu_2_label]
+#         data["moldura"]["menu"][2]["link"] = params[:site_moldura_menu_2_link]
       
 
-      #data["pages"]["home"]["label"] = params["element-0"]["value"]
-      File.open(site_fonte, 'w') { |f| YAML.dump(data, f) }
+#       #data["pages"]["home"]["label"] = params["element-0"]["value"]
+#       File.open(site_fonte, 'w') { |f| YAML.dump(data, f) }
 
-      redirect '/'+params[:site_nome]
-  end       
-end
+#       redirect '/'+params[:site_nome]
+#   end       
+# end
 
-post '/create' do
-    @logfile = File.open("site.yml","w")
-    @logfile.truncate(@logfile.size)
-    @logfile.write(params[:file])
-    @logfile.close
-    redirect '/create'
-end
+# post '/create' do
+#     @logfile = File.open("site.yml","w")
+#     @logfile.truncate(@logfile.size)
+#     @logfile.write(params[:file])
+#     @logfile.close
+#     redirect '/create'
+# end
 
 post '/email_envia' do
 
@@ -268,20 +274,21 @@ post '/email_envia' do
             :body => message
 end
 
-post '/edit_about_save' do
-	  data = YAML.load_file "site.yml"
-    data["pages"]["about"]["body1"] = params[:about_body1]
-    data["pages"]["about"]["body2"] = params[:about_body2]
-    File.open("site.yml", 'w') { |f| YAML.dump(data, f) }
-    redirect '/'
-end
+# post '/edit_about_save' do
+# 	  data = YAML.load_file "site.yml"
+#     data["pages"]["about"]["body1"] = params[:about_body1]
+#     data["pages"]["about"]["body2"] = params[:about_body2]
+#     File.open("site.yml", 'w') { |f| YAML.dump(data, f) }
+
+#     redirect '/'
+# end
 
 get "/novo_site/:site_nome" do 
 
     site_nome = params[:site_nome]
     
     #Clona o site base
-    FileUtils.cp("site.yml",site_nome+".yml")
+    FileUtils.cp("site.yml","public/contas/#{site_nome}/#{site_nome}.yml")
     
     #Cria diretorio de imagens
     install_dir = "public/contas/#{site_nome}/img/portfolio"
@@ -290,15 +297,24 @@ get "/novo_site/:site_nome" do
     #Altera o nome do site no arquivo fonte
     data = YAML.load_file site_nome+".yml"
     data["name"] = site_nome
-    File.open(site_nome+".yml", 'w') { |f| YAML.dump(data, f) }
+    
+    #File.open(site_nome+".yml", 'w') { |f| YAML.dump(data, f) }
 
+    f = File.open(site_nome+".yml", 'w' )
+    YAML.dump( data, f )
+    f.close 
+    
     #copia imagem da capa
     FileUtils.cp("public/img/noimage.png","public/contas/#{site_nome}/img/noimage.png")
     #Altera a capa do site
     data = YAML.load_file site_nome+".yml"
     data["pages"]["home"]["img"] = "contas/#{site_nome}/img/noimage.png"
     
-    File.open(site_nome+".yml", 'w') { |f| YAML.dump(data, f) }
+    #File.open(site_nome+".yml", 'w') { |f| YAML.dump(data, f) }
+
+    f = File.open(site_nome+".yml", 'w' )
+    YAML.dump( data, f )
+    f.close  
 
     redirect "/#{site_nome}"
 end
@@ -307,6 +323,7 @@ end
 post "/:site_nome/upload" do 
 
   if session[:logado] then
+      site_nome = params[:site_nome]
       @filename = params[:file][:filename]
       file = params[:file][:tempfile]
       imagem_tipo = params[:file][:type]
@@ -321,20 +338,24 @@ post "/:site_nome/upload" do
          file.size < 300000
 
             @filename = params[:site_nome]+"."+params["file"][:filename].split(".").last.downcase
-            File.open("./public/img/#{@filename}", 'wb') do |f|
+            File.open("./public/contas/#{site_nome}/img/#{@filename}", 'wb') do |f|
               f.write(file.read)
             end
             
-            image = MiniMagick::Image.open("./public/img/#{@filename}")
+            image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
             image.resize "600x600"   
             #image.write "./public/img/#{@filename}"
-            image.write "./public/img/#{@filename}"
+            image.write "./public/contas/#{site_nome}/img/#{@filename}"
             # return "The file was successfully uploaded!"
 
 
-            data = YAML.load_file params[:site_nome]+".yml"
-            data["pages"]["home"]["img"] = "img/#{@filename}"
-            File.open(params[:site_nome]+".yml", 'w') { |f| YAML.dump(data, f) }
+            data = YAML.load_file "public/contas/#{site_nome}/#{site_nome}.yml"
+            data["pages"]["home"]["img"] = "contas/#{site_nome}/img/#{@filename}"
+            #File.open(params[:site_nome]+".yml", 'w') { |f| YAML.dump(data, f) }
+      
+            f = File.open("public/contas/#{site_nome}/#{site_nome}.yml", 'w' )
+            YAML.dump( data, f )
+            f.close  
       end          
   end
 end
@@ -347,13 +368,17 @@ post "/:site_nome/portfolio/delete/:id" do
 
   @site_nome = params[:site_nome]
   @id = params[:id]
-  @data = YAML.load_file @site_nome+".yml"
+  @data = YAML.load_file "public/contas/#{@site_nome}/#{@site_nome}.yml"
+
   @data["pages"]["portfolio"]["items"].delete_at(@id.to_i)
   @p = @data["pages"]["portfolio"]["items"]
   # .reject { |n| n 
   #   # % @id.to_i == 0  }  
   
-  File.open(@site_nome+".yml", 'w') { |f| YAML.dump(@data, f) }
+  #File.open(@site_nome+".yml", 'w') { |f| YAML.dump(@data, f) }
+  f = File.open("public/contas/#{@site_nome}/#{@site_nome}.yml", 'w' )
+  YAML.dump( data, f )
+  f.close
   "Admin Area, Access denied!"
   #pry
 end
@@ -365,14 +390,18 @@ end
 #
 post "/:site_nome/portfolio/ordena" do
 
-  @siteNome = params[:site_nome]
+  @site_nome = params[:site_nome]
   @post_data = JSON.parse(request.body.read)  
   #pry  
-  data = YAML.load_file @siteNome+".yml"
+  data = YAML.load_file "public/contas/#{@site_nome}/#{@site_nome}.yml"
   
   data["pages"]["portfolio"]["items"] = @post_data  
   
-  File.open(@siteNome+".yml", 'w') { |f| YAML.dump(data, f) }
+  #File.open(@siteNome+".yml", 'w') { |f| YAML.dump(data, f) }
+  f = File.open("public/contas/#{@site_nome}/#{@site_nome}.yml", 'w' )
+  YAML.dump( data, f )
+  f.close
+
 end
 
 
@@ -388,7 +417,7 @@ post "/:site_nome/portfolio/save/:index" do
   
 
   #if session[:logado] then
-  data = YAML.load_file params[:site_nome]+".yml"
+  data = YAML.load_file "public/contas/#{@site_nome}/#{@site_nome}.yml"
 
   unless @file == nil
     
@@ -437,8 +466,11 @@ post "/:site_nome/portfolio/save/:index" do
   # data["pages"]["portfolio"]["items"][@index] = port_novo
   data["pages"]["portfolio"]["items"][@index]["img"] = port_img
   
-  File.open(params[:site_nome]+".yml", 'w') { |f| YAML.dump(data, f) }
-                 
+  #File.open(params[:site_nome]+".yml", 'w') { |f| YAML.dump(data, f) }
+  
+  f = File.open("public/contas/#{@site_nome}/#{@site_nome}.yml", 'w' )
+  YAML.dump( data, f )
+  f.close              
   #redirect '/'+params[:site_nome]
   #end
 end
@@ -447,7 +479,7 @@ post "/portfolio/add" do
   
   @post_data = JSON.parse(request.body.read)  
   @site_nome = @post_data["siteNome"]
-  data = YAML.load_file @site_nome+".yml"
+  data = YAML.load_file "public/contas/#{@site_nome}/#{@site_nome}.yml"
   novo = { "id"      => "0",
            "titulo"  => "Novo",
            "img"     => "/img/noimage.png",
@@ -459,10 +491,8 @@ post "/portfolio/add" do
            "cat"     => ""
          }
   data["pages"]["portfolio"]["items"] << novo
-  f = File.open( @site_nome+".yml", 'w' )
+  f = File.open("public/contas/#{@site_nome}/#{@site_nome}.yml", 'w' )
   YAML.dump( data, f )
   f.close
-  
-
 end
 

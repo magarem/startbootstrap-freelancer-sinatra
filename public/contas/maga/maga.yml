@@ -34,9 +34,9 @@ moldura:
     creditos: Copyright © magaweb 2016
 pages:
   home:
-    label: Desenvolvedor2
+    label: 22Desenvolvedor22
     img: contas/maga/img/maga.jpg
-    body: Software para web
+    body: Software para web22
   about:
     label: Sobre
     body1: Toda as habilidades reunidas em um só lugar! <br>é exatamente isso!!!!
@@ -49,7 +49,7 @@ pages:
     items:
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/31581_306419832796851_449320652_n.jpg
+      img: contas/maga/img/portfolio/32288_3900404434631_713899226_n.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -58,7 +58,7 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/32288_3900404434631_713899226_n.jpg
+      img: contas/maga/img/portfolio/31581_306419832796851_449320652_n.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -76,7 +76,7 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/13700057_10210374377855342_4741693753307694912_n.jpg
+      img: contas/maga/img/portfolio/site_agencia.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -85,7 +85,7 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/site_agencia.jpg
+      img: contas/maga/img/portfolio/13700057_10210374377855342_4741693753307694912_n.jpg
       txt: ''
       cliente: ''
       site: ''

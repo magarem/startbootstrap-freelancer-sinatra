@@ -1,0 +1,189 @@
+[ 2016-08-20 02:02:35.8847 196/7f02e429a7c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-08-20 02:02:36.2566 199/7fa91f1d77c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-08-20 02:02:36.2575 199/7fa91f1d77c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-08-20 02:02:36.4413 199/7fa91f1d77c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 199
+[ 2016-08-20 02:02:36.6848 204/7f8317df77c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-08-20 02:02:36.7639 204/7f8317df77c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 204
+App 238 stderr: stdin: is not a tty
+App 238 stdout: 
+App 255 stdout: 
+App 238 stderr:         SECURITY WARNING: No secret option provided to Rack::Session::Cookie.
+App 238 stderr:         This poses a security threat. It is strongly recommended that you
+App 238 stderr:         provide a secret to prevent exploits that may be possible from crafted
+App 238 stderr:         cookies. This will not be supported in future versions of Rack, and
+App 238 stderr:         future versions will even invalidate your existing user cookies.
+App 238 stderr: 
+App 238 stderr:         Called from: /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/builder.rb:86:in `new'.
+App 238 stderr: 127.0.0.1 - - [20/Aug/2016:02:02:47 +0000] "HEAD / HTTP/1.1" 404 456 0.0053
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:02:57 +0000] "GET /maga HTTP/1.1" 200 26097 1.4966
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:02:58 +0000] "GET /medium-editor/dist/css/medium-editor.css HTTP/1.1" 404 517 0.0266
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:02:58 +0000] "GET /medium-editor/dist/css/themes/default.css HTTP/1.1" 404 523 0.0042
+App 267 stdout: 
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:02:58 +0000] "GET /css/contentedit_.css HTTP/1.1" 404 487 0.0044
+App 238 stderr:         SECURITY WARNING: No secret option provided to Rack::Session::Cookie.
+App 238 stderr:         This poses a security threat. It is strongly recommended that you
+App 238 stderr:         provide a secret to prevent exploits that may be possible from crafted
+App 238 stderr:         cookies. This will not be supported in future versions of Rack, and
+App 238 stderr:         future versions will even invalidate your existing user cookies.
+App 238 stderr: 
+App 238 stderr:         Called from: /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/builder.rb:86:in `new'.
+App 277 stdout: 
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:03 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.1152
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:03 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.3195
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:03 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0192
+App 238 stderr:         SECURITY WARNING: No secret option provided to Rack::Session::Cookie.
+App 238 stderr:         This poses a security threat. It is strongly recommended that you
+App 238 stderr:         provide a secret to prevent exploits that may be possible from crafted
+App 238 stderr:         cookies. This will not be supported in future versions of Rack, and
+App 238 stderr:         future versions will even invalidate your existing user cookies.
+App 238 stderr: 
+App 238 stderr:         Called from: /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/builder.rb:86:in `new'.
+App 284 stdout: 
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:03 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0496
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:03 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0354
+App 238 stderr:         SECURITY WARNING: No secret option provided to Rack::Session::Cookie.
+App 238 stderr:         This poses a security threat. It is strongly recommended that you
+App 238 stderr:         provide a secret to prevent exploits that may be possible from crafted
+App 238 stderr:         cookies. This will not be supported in future versions of Rack, and
+App 238 stderr:         future versions will even invalidate your existing user cookies.
+App 238 stderr: 
+App 238 stderr:         Called from: /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/builder.rb:86:in `new'.
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:04 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.1845
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:04 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.2857
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:04 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.2056
+App 292 stdout: 
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:04 +0000] "GET /maga HTTP/1.1" 200 26097 0.9790
+App 238 stderr: [ 2016-08-20 02:03:24.3028 255/0x00000000842c40(Worker 1) utils.rb:87 ]: *** Exception IOError in Rack response body object (closed stream) (process 255, thread 0x00000000842c40(Worker 1)):
+App 238 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/body_proxy.rb:31:in `each'
+App 238 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/body_proxy.rb:31:in `each'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:297:in `process_body'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:146:in `process_request'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:03:24 +0000] "POST /maga/portfolio/save/0 HTTP/1.1" 200 - 0.3002
+App 238 stderr: [ 2016-08-20 02:03:24.3038 255/0x00000000842c40(Worker 1) utils.rb:87 ]: *** Exception IOError in Rack response body object's #close method (closed stream) (process 255, thread 0x00000000842c40(Worker 1)):
+App 238 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/body_proxy.rb:16:in `close'
+App 238 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/body_proxy.rb:16:in `close'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:318:in `close_body'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:154:in `process_request'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+[ 2016-08-20 02:03:24.3045 199/7fa918a06700 Ser/Server.h:936 ]: [Client 1-8] Disconnecting client with error: error parsing app response chunked encoding: unexpected end-of-stream
+[ 2016-08-20 02:08:03.7908 199/7fa91f194700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 277, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:08:03.9104 199/7fa91f194700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 284, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:08:04.1307 199/7fa91f194700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 267, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:08:04.2192 199/7fa91f194700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 292, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:05 +0000] "GET /maga HTTP/1.1" 200 26097 0.1416
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:06 +0000] "GET /medium-editor/dist/css/medium-editor.css HTTP/1.1" 404 517 0.0249
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:06 +0000] "GET /medium-editor/dist/css/themes/default.css HTTP/1.1" 404 523 0.0191
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:06 +0000] "GET /css/contentedit_.css HTTP/1.1" 404 487 0.0052
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:07 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2580 0.0618
+App 551 stderr: stdin: is not a tty
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:07 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2580 0.0148
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:07 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2580 0.0421
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:07 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2580 0.0121
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:07 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2580 0.0106
+App 551 stdout: 
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:07 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2580 0.0434
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:07 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2580 0.0168
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:07 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2580 0.0123
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:07 +0000] "GET /maga HTTP/1.1" 200 26097 0.0993
+App 570 stdout: 
+App 238 stderr: [ 2016-08-20 02:13:27.9515 255/0x00000000842c40(Worker 1) utils.rb:87 ]: *** Exception IOError in Rack response body object (closed stream) (process 255, thread 0x00000000842c40(Worker 1)):
+App 238 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/body_proxy.rb:31:in `each'
+App 238 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/body_proxy.rb:31:in `each'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:297:in `process_body'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:146:in `process_request'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 238 stderr: 172.17.0.1 - - [20/Aug/2016:02:13:27 +0000] "POST /maga/portfolio/save/0 HTTP/1.1" 200 - 0.2676
+App 238 stderr: [ 2016-08-20 02:13:27.9524 255/0x00000000842c40(Worker 1) utils.rb:87 ]: *** Exception IOError in Rack response body object's #close method (closed stream) (process 255, thread 0x00000000842c40(Worker 1)):
+App 238 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/body_proxy.rb:16:in `close'
+App 238 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/body_proxy.rb:16:in `close'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:318:in `close_body'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:154:in `process_request'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 238 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+[ 2016-08-20 02:13:27.9529 199/7fa918a06700 Ser/Server.h:936 ]: [Client 1-15] Disconnecting client with error: error parsing app response chunked encoding: unexpected end-of-stream
+
+
+[ 2016-08-20 02:14:07.9502 199/7fa918a06700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2016-08-20 02:14:07.9507 204/7f83115eb700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2016-08-20 02:14:07.9516 204/7f8317df77c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-08-20 02:14:07.9512 199/7fa91f1d77c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-08-20 02:14:07.9536 204/7f8310dea700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2016-08-20 02:14:07.9542 204/7f8310dea700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2016-08-20 02:14:07.9545 199/7fa91f1d77c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 255, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:14:07.9551 199/7fa91f1d77c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 570, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:14:07.9563 199/7fa918a06700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2016-08-20 02:14:07.9569 199/7fa918a06700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2016-08-20 02:14:07.9563 199/7fa903fff700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2016-08-20 02:14:07.9579 199/7fa903fff700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2016-08-20 02:14:07.9570 199/7fa9037fe700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2016-08-20 02:14:07.9587 199/7fa9037fe700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2016-08-20 02:14:07.9536 204/7f83115eb700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2016-08-20 02:14:07.9595 199/7fa91f1d77c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 255, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:14:07.9605 199/7fa91f1d77c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 570, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:14:07.9607 204/7f8317df77c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2016-08-20 02:14:09.2479 199/7fa91f1d77c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2016-08-20 02:14:10.5938 624/7fa2a52367c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-08-20 02:14:10.6210 627/7f48325187c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-08-20 02:14:10.6218 627/7f48325187c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-08-20 02:14:10.6552 627/7f48325187c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 627
+[ 2016-08-20 02:14:10.6725 632/7fef6b71a7c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-08-20 02:14:10.6823 632/7fef6b71a7c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 632
+App 666 stderr: stdin: is not a tty
+App 666 stdout: 
+App 683 stdout: 
+App 666 stderr:         SECURITY WARNING: No secret option provided to Rack::Session::Cookie.
+App 666 stderr:         This poses a security threat. It is strongly recommended that you
+App 666 stderr:         provide a secret to prevent exploits that may be possible from crafted
+App 666 stderr:         cookies. This will not be supported in future versions of Rack, and
+App 666 stderr:         future versions will even invalidate your existing user cookies.
+App 666 stderr: 
+App 666 stderr:         Called from: /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/builder.rb:86:in `new'.
+App 666 stderr: 127.0.0.1 - - [20/Aug/2016:02:14:15 +0000] "HEAD / HTTP/1.1" 404 456 0.0070
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:25 +0000] "GET /maga HTTP/1.1" 200 26097 0.1330
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:26 +0000] "GET /medium-editor/dist/css/medium-editor.css HTTP/1.1" 404 517 0.0034
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:26 +0000] "GET /medium-editor/dist/css/themes/default.css HTTP/1.1" 404 523 0.0039
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:26 +0000] "GET /css/contentedit_.css HTTP/1.1" 404 487 0.0028
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:27 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0450
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:27 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0149
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:27 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0130
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:27 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0140
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:27 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0118
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:27 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0177
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:27 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0113
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:27 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2579 0.0130
+App 695 stdout: 
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:27 +0000] "GET /maga HTTP/1.1" 200 26097 0.0950
+App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:47 +0000] "POST /maga/portfolio/save/0 HTTP/1.1" 200 - 0.2987
+
+[ 2016-08-20 02:15:14.4225 627/7f48277fe700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+
+[ 2016-08-20 02:15:14.4232 627/7f48325187c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-08-20 02:15:14.4240 632/7fef64f0e700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2016-08-20 02:15:14.4245 627/7f48325187c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 683, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:15:14.4248 632/7fef6b71a7c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-08-20 02:15:14.4255 627/7f48325187c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 695, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:15:14.4263 632/7fef57fff700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2016-08-20 02:15:14.4278 627/7f4826ffd700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2016-08-20 02:15:14.4292 632/7fef57fff700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2016-08-20 02:15:14.4280 627/7f48267fc700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2016-08-20 02:15:14.4308 627/7f48267fc700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2016-08-20 02:15:14.4286 627/7f48277fe700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2016-08-20 02:15:14.4315 627/7f48277fe700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2016-08-20 02:15:14.4299 627/7f4826ffd700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2016-08-20 02:15:14.4263 632/7fef64f0e700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2016-08-20 02:15:14.4327 627/7f48325187c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 683, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:15:14.4994 627/7f48325187c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 695, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
+[ 2016-08-20 02:15:14.5003 632/7fef6b71a7c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2016-08-20 02:15:14.8306 627/7f48325187c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
