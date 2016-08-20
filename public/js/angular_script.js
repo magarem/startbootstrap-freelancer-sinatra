@@ -126,12 +126,12 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     var _saveDiv = function(obj, val, item_n){    
       console.log(obj, val, item_n);
-      return $http.post("/"+siteNome+"/obj_save", {obj: obj, val: val, item_n: item_n});
+      return $http.post("/"+siteNome+"/objSave", {obj: obj, val: val, item_n: item_n});
     }
 
     var _portAdd = function(){    
       // console.log(obj);
-      return $http.post("/portfolio/add", {siteNome: siteNome});
+      return $http.post("/"+siteNome+"/portfolio/add");
     }
 
     return {
@@ -382,29 +382,27 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
 mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope, $rootScope, Upload, $timeout, $http, SiteData) {
   
-   $scope.uploadFile = function(index){
+   // $scope.uploadFile = function(index){
 
-        console.log("???file:",file,"index:",index)
-        var url = document.URL;
-        var urlArray = url.split("/");
-        var siteNome = urlArray[urlArray.length-1];
+   //      console.log("???file:",file,"index:",index)
+   //      var url = document.URL;
+   //      var urlArray = url.split("/");
+   //      var siteNome = urlArray[urlArray.length-1];
 
-        var file = $scope.myFile;
-        console.log('file is ' );
-        console.dir(file);
-        var uploadUrl = '/'+siteNome+'/portfolio/save/'+index;
-        fileUpload.uploadFileToUrl(file, uploadUrl)
-          .then(function () {
-              console.log('success');
-          }, function () {
+   //      var file = $scope.myFile;
+   //      console.log('file is ' );
+   //      console.dir(file);
+   //      var uploadUrl = '/'+siteNome+'/portfolio/save/'+index;
+   //      fileUpload.uploadFileToUrl(file, uploadUrl)
+   //        .then(function () {
+   //            console.log('success');
+   //        }, function () {
                
-          }, function () {
-              console.log('progress');
-          });
-    }
+   //        }, function () {
+   //            console.log('progress');
+   //        });
+   //  }
     
-
-
   $scope.up = function(){
      angular.element('#file').trigger('click');
   };
@@ -445,7 +443,7 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
       if (file.size < 600000) {
         console.log('upload')
         file.upload = Upload.upload({
-            url: '/'+siteNome+'/portfolio/save/'+index,
+            url: '/'+siteNome+'/portfolio/uploadPic/'+index,
             data: {item: $scope.item, file: file},
        }).then(function (resp) {
             console.log('---Success ' + resp.config.data.file.name);

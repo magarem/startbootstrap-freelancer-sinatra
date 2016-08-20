@@ -8,17 +8,17 @@ head:
 moldura:
   label: Portfolio
   logo:
-    label: marcelo maga
+    label: marcelo maga2
     link: index.ttt
   menu:
   - label: Catálogo
     link: "#portfolio"
-  - label: Sobre
+  - label: Eu mesmo
     link: "#about"
-  - label: To aqui ;)
+  - label: Contato
     link: "#contact"
   footer:
-    endereco: Rua dos andradas, 1222
+    endereco: Rua dos andradas
     social:
     - label: facebook
       link: marcelo.a.magalhaes
@@ -30,32 +30,29 @@ moldura:
       link: mmm
     - label: dribbble
       link: ddrrible
-    about_resumo: Várias expertizes
+    about_resumo: Eu aqui né?
     creditos: Copyright © magaweb 2016
 pages:
   home:
-    label: 22Desenvolvedor22
+    label: Desenvolvedor
     img: contas/maga/img/maga.jpg
-    body: Software para web22
+    body: Software para web
   about:
-    label: Sobre
-    body1: Toda as habilidades reunidas em um só lugar! <br>é exatamente isso!!!!
-    body2: "Phasellus sit amet lorem lacinia, semper est non, accumsan lectus. In\n
-      at rutrum metus. Sed viverra massa nisi, eget pretium velit euismod ut.\n Donec
-      nec efficitur odio. Nullam rutrum ante nec viverra condimentum. \nCras in ante
-      id neque sagittis sollicitudin. Praesent vestibulum eget \nenim nec pellentesque.\n\n"
+    label: Eu mesmo
+    body1: Outro teste 22 total!!
+    body2: Segunda caixa de texto
   portfolio:
     label: Catálogo
     items:
     - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/32288_3900404434631_713899226_n.jpg
-      txt: ''
-      cliente: ''
+      titulo: Novo2
+      img: contas/maga/img/portfolio/515_10151108115083316_569672961_n.jpg
+      txt: Este é um teste
+      cliente: Cliente1
       site: ''
       data: ''
       servico: ''
-      cat: ''
+      cat: primeiro
     - id: '0'
       titulo: Novo
       img: contas/maga/img/portfolio/31581_306419832796851_449320652_n.jpg
@@ -120,4 +117,4 @@ pages:
       servico: ''
       cat: ''
   contact:
-    label: To aqui ;)
+    label: Contato

@@ -10,9 +10,9 @@ require 'fileutils'
 enable :sessions
 
 module IndiceArray
-   def self.set_site_nome site_nome
-       @site_nome = site_nome       
-   end
+  def self.set_site_nome site_nome
+    @site_nome = site_nome       
+  end
 end
 
 configure do
@@ -28,238 +28,289 @@ helpers do
   def h(text)
     Rack::Utils.escape_html(text)
   end
+
+  def str_clean str
+    str.to_s.gsub("<br>", "\n").gsub(/<\/?[^>]*>/, "").gsub("&nbsp;", "")
+  end 
+end
+
+before do
+  @data_path = "public/contas/{site_nome}/{site_nome}.yml"
 end
 
 get '/:site_nome/logout' do
+  session[:logado] = false
+  redirect '/'+params[:site_nome]
+end
 
+#
+# Verificação de login
+#
+post '/login_do' do   
+
+  # Pega os parâmetros 
+  @post = params[:post]    
+  site_nome = @post["site"]
+  @form_senha = @post["senha"]
+  @data_path.gsub! "{site_nome}", site_nome
+  @data = YAML.load_file @data_path
+  @data_senha = @data["senha"]
+  #Compara a senha digitada no formulário de login com a senha do fonte
+  if @form_senha.to_s == @data_senha.to_s then 
+    session[:logado] = true       
+    @edit_flag = "true"
+  else 
     session[:logado] = false
-
-    redirect '/'+params[:site_nome]
+    @edit_flag = "false"      
+  end
+  redirect '/'+site_nome
 end
-
-post '/login_do' do    
-   
-    @post = params[:post]    
-    @site_nome = @post["site"]
-    @form_senha = @post["senha"]
-    @data_senha = YAML.load_file(@site_nome+'.yml')["senha"]
-
-    #Compara a senha digitada no formulário de login com a senha do fonte
-    if @form_senha.to_s == @data_senha.to_s then 
-      session[:logado] = true       
-      @edit_flag = "true"
-    else 
-      session[:logado] = false
-      @edit_flag = "false"      
-    end
-
-    redirect '/'+@site_nome
-    # erb :index
-end
-
 
 get '/:site_nome' do
-
-      #testa a senha se for uma chamada de login
-      # Definindo as categorias de portfolio
-      # @data = YAML.load_file(params[:site_nome]+'.yml')
-      # Liquid::Template.register_filter(IndiceArray)
-      # @cat = IndiceArray.set_site_nome params[:site_nome]
-      # @data_portfolio_json = @data["pages"]["portfolio"]["items"]
-      @site_nome = params[:site_nome]
-      @edit_flag = session[:logado]
-      erb :index #, :locals => {:port_cats => @cat, 
-                    #             :data_portfolio_json => data_portfolio_json.to_json, 
-                    #             :data => params[:site_nome], 
-                    #             :logado => session[:logado],  
-                    #             :site => data }
+  @site_nome = params[:site_nome]
+  @edit_flag = session[:logado]
+  erb :index 
 end
 
-get '/:site_nome/dataLoad' do
-      # def str_change str
-      #   str.to_s.gsub("\n", "<br>")
-      # end 
-      # Definindo as categorias de portfolio  
-      @path = 'public/contas/'+params[:site_nome]+'/'+params[:site_nome]+'.yml'    
-      @data = YAML.load_file(@path)
-      @data.to_json    
-      #pry
+get '/:site_nome/dataLoad' do 
+  # Pega os dados do arquivo fonte
+  site_nome = params[:site_nome]   
+  @data_path.gsub! "{site_nome}", site_nome
+  @data = YAML.load_file @data_path
+  @data.to_json    
 end
 
 
 get '/:site_nome/getdata' do      
-      data = YAML.load_file('public/contas/'+params[:site_nome]+'/'+params[:site_nome]+'.yml') || {}
-      data["pages"]["portfolio"]["items"].to_json
-      
+  data = YAML.load_file(@data_path) || {}
+  data["pages"]["portfolio"]["items"].to_json
 end
 
 
-get '/:site_nome/getImgsCategorias' do      
-      data = YAML.load_file('public/contas/'+params[:site_nome]+'/'+params[:site_nome]+'.yml') || {}
-      data["pages"]["portfolio"]["items"].to_json
-     
-end
+post '/:site_nome/objSave' do
 
-get '/create' do
-    @logfile = File.open("site.yml","r")
-    @contents = @logfile.read
-    @logfile.close
-    erb :create
-end
-
-post '/:site_nome/obj_save' do
-
-  def str_clean str
-    str.to_s.gsub("<br>", "\n").gsub(/<\/?[^>]*>/, "").gsub("&nbsp;", "")
-  end  
-
-  #@site_nome = params[:site_nome]+".yml"
-  @site_nome = 'public/contas/'+params[:site_nome]+'/'+params[:site_nome]+'.yml'
-
-  @post_data = JSON.parse(request.body.read)
-  
+  site_nome = params[:site_nome] 
+  @post_data = JSON.parse(request.body.read)  
   @obj = @post_data["obj"]  
-  # @val = params[:val].gsub! "\n", "<br>"
-  @val = @post_data["val"]#.gsub! /(\n +)/, ""
+  @val = @post_data["val"]
 
-  data = YAML.load_file @site_nome
+  @data_path.gsub! "{site_nome}", site_nome
+  data = YAML.load_file @data_path
 
-  if @obj == "site.moldura.logo.label" then
-     data["moldura"]["logo"]["label"] = @val
+
+  case @obj
+
+    when "site.moldura.logo.label"
+       data["moldura"]["logo"]["label"] = @val
+
+    when "site.pages.home.label"
+       data["pages"]["home"]["label"] = @val
+
+    when "site.pages.home.body"
+       data["pages"]["home"]["body"] = @val
+
+    when "about.body1" 
+       data["pages"]["about"]["body1"] = @val
+
+    when "about.body2"
+       data["pages"]["about"]["body2"] = @val
+
+    when "site.moldura.footer.endereco"
+       data["moldura"]["footer"]["endereco"] = @val
+
+    when "site.moldura.footer.about_resumo"
+       data["moldura"]["footer"]["about_resumo"] = @val
+
+    when "site.pages.portfolio.label"
+       data["pages"]["portfolio"]["label"] = @val
+       data["moldura"]["menu"][0]["label"] = @val
+
+    when "item.titulo"
+       @item_n = @post_data["item_n"]
+       data["pages"]["portfolio"]["items"][@item_n]["titulo"] = @val
+
+    when "item.txt"
+       @item_n = @post_data["item_n"]
+       data["pages"]["portfolio"]["items"][@item_n]["txt"] = @val
+
+    when "item.cliente"
+       @item_n = @post_data["item_n"]
+       data["pages"]["portfolio"]["items"][@item_n]["cliente"] = @val
+
+    when "item.site"
+       @item_n = @post_data["item_n"]
+       data["pages"]["portfolio"]["items"][@item_n]["site"] = @val
+
+    when "item.data"
+       @item_n = @post_data["item_n"]
+       data["pages"]["portfolio"]["items"][@item_n]["data"] = @val
+
+    when "item.servico"
+       @item_n = @post_data["item_n"]
+       data["pages"]["portfolio"]["items"][@item_n]["servico"] = @val
+
+    when "item.cat"
+       @item_n = @post_data["item_n"]
+       data["pages"]["portfolio"]["items"][@item_n]["cat"] = @val
+
+    when "about.label"
+       data["pages"]["about"]["label"] = @val
+       data["moldura"]["menu"][1]["label"] = @val
+
+    when "contact.label" then
+       data["pages"]["contact"]["label"] = @val
+       data["moldura"]["menu"][2]["label"] = @val
   end
 
-  if @obj == "site.pages.home.label" then
-     data["pages"]["home"]["label"] = @val
-  end
-
-  if @obj == "site.pages.home.body" then
-     data["pages"]["home"]["body"] = @val
-  end
-
-  if @obj == "about.body1" then
-     data["pages"]["about"]["body1"] = @val
-  end
-
-  if @obj == "about.body2" then
-     data["pages"]["about"]["body2"] = @val
-  end
-
-  if @obj == "site.moldura.footer.endereco" then
-     data["moldura"]["footer"]["endereco"] = @val
-  end
-
-  if @obj == "site.moldura.footer.about_resumo" then
-     data["moldura"]["footer"]["about_resumo"] = @val
-  end
-
-  if @obj == "site.pages.portfolio.label" then
-     data["pages"]["portfolio"]["label"] = @val
-     data["moldura"]["menu"][0]["label"] = @val
-  end
-
-  if @obj == "item.titulo" then
-     @item_n = @post_data["item_n"]
-     data["pages"]["portfolio"]["items"][@item_n]["titulo"] = @val
-  end
-
-  if @obj == "item.txt" then
-     @item_n = @post_data["item_n"]
-     data["pages"]["portfolio"]["items"][@item_n]["txt"] = @val
-  end
-
-  if @obj == "item.cliente" then
-     @item_n = @post_data["item_n"]
-     data["pages"]["portfolio"]["items"][@item_n]["cliente"] = @val
-  end
-
-  if @obj == "item.site" then
-     @item_n = @post_data["item_n"]
-     data["pages"]["portfolio"]["items"][@item_n]["site"] = @val
-  end
-
-  if @obj == "item.data" then
-     @item_n = @post_data["item_n"]
-     data["pages"]["portfolio"]["items"][@item_n]["data"] = @val
-  end
-
-  if @obj == "item.servico" then
-     @item_n = @post_data["item_n"]
-     data["pages"]["portfolio"]["items"][@item_n]["servico"] = @val
-  end
-
-  if @obj == "item.cat" then
-     @item_n = @post_data["item_n"]
-     data["pages"]["portfolio"]["items"][@item_n]["cat"] = @val
-  end
-
-  if @obj == "about.label" then
-     data["pages"]["about"]["label"] = @val
-     data["moldura"]["menu"][1]["label"] = @val
-  end
-
-  if @obj == "contact.label" then
-     data["pages"]["contact"]["label"] = @val
-     data["moldura"]["menu"][2]["label"] = @val
-  end
-
-  f = File.open(@site_nome, 'w' )
+  f = File.open(@data_path, 'w' )
   YAML.dump( data, f )
   f.close
 
 end
 
+#
+# upload da imagem de capa (oval)
+#
+post "/:site_nome/upload" do 
 
-# post '/:site_nome/page_save' , :provides => :json do
-#   if session[:logado] then
-#       # I'd use a 201 as the status if actually creating something,
-#       # 200 while testing.
-#       # I'd send the JSON back as a confirmation too, hence the
-#       # :provides => :json
-#       #@data = JSON.parse params
-#       site_fonte = params[:site_nome]+".yml"
-#       data = YAML.load_file site_fonte
+  if session[:logado] then
+
+    # Pega os parametros 
+    site_nome = params[:site_nome]
+    @filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+    imagem_tipo = params[:file][:type]
+    @data_path.gsub! "{site_nome}", site_nome
+
+    # Testa para ver se é uma imagem que está sendo enviada
+    if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 300000 then
       
-#       data["moldura"]["logo"]["label"] = params["topo"]["value"]
-#       #data["pages"]["home"]["label"] = params["element-1"]["value"]
-
-#       #data["pages"]["home"]["label"] = params["element-0"]["value"]
-#       File.open(site_fonte, 'w') { |f| YAML.dump(data, f) }
-
-#       redirect '/'+params[:site_nome]
-#   end       
-# end
-
-# post '/:site_nome/menu/save' do
-#   if session[:logado] then
-
-#       site_fonte = params[:site_nome]+".yml"
-#       data = YAML.load_file site_fonte
+      # Salva imagem no disco (upload)
+      @filename = site_nome+"."+params["file"][:filename].split(".").last.downcase
+      File.open("./public/contas/#{site_nome}/img/#{@filename}", 'wb') do |f|
+        f.write(file.read)
+      end
       
-      
-#         data["moldura"]["menu"][0]["label"] = params[:site_moldura_menu_0_label]
-#         data["moldura"]["menu"][0]["link"] = params[:site_moldura_menu_0_link]
-      
-#         data["moldura"]["menu"][1]["label"] = params[:site_moldura_menu_1_label]
-#         data["moldura"]["menu"][1]["link"] = params[:site_moldura_menu_1_link]
-      
-#         data["moldura"]["menu"][2]["label"] = params[:site_moldura_menu_2_label]
-#         data["moldura"]["menu"][2]["link"] = params[:site_moldura_menu_2_link]
-      
+      # Reduz o tamanho da imagem
+      image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
+      image.resize "600x600"   
+      image.write "./public/contas/#{site_nome}/img/#{@filename}"
 
-#       #data["pages"]["home"]["label"] = params["element-0"]["value"]
-#       File.open(site_fonte, 'w') { |f| YAML.dump(data, f) }
+      # Salva o nome da imagem o arquivo fonte
+      data = YAML.load_file @data_path
+      data["pages"]["home"]["img"] = "contas/#{site_nome}/img/#{@filename}"
+      f = File.open(@data_path, 'w' )
+      YAML.dump( data, f )
+      f.close  
+    end          
+  end
+end
 
-#       redirect '/'+params[:site_nome]
-#   end       
-# end
+# 
+#  portfolio: Excluindo um item
+#
+post "/:site_nome/portfolio/delete/:id" do 
 
-# post '/create' do
-#     @logfile = File.open("site.yml","w")
-#     @logfile.truncate(@logfile.size)
-#     @logfile.write(params[:file])
-#     @logfile.close
-#     redirect '/create'
-# end
+  # Pega os parametros
+  site_nome = params[:site_nome]
+  @id = params[:id]
+  @data_path.gsub! "{site_nome}", site_nome
+
+  # Abre o arquivo fonte e exclui o item
+  data = YAML.load_file @data_path
+  data["pages"]["portfolio"]["items"].delete_at(@id.to_i)
+
+  # Salva o arquivo com a alteração (exclusão)
+  f = File.open(@data_path, 'w' )
+  YAML.dump( data, f )
+  f.close
+
+  "Delete"
+end
+
+#
+#  Portfolio: Mudança na ordenação
+#
+post "/:site_nome/portfolio/ordena" do
+
+  # Pega os parâmetros
+  site_nome = params[:site_nome]
+  @post_data = JSON.parse(request.body.read)  
+  @data_path.gsub! "{site_nome}", site_nome
+
+  # Lê o arquivo fonte
+  data = YAML.load_file @data_path
+  data["pages"]["portfolio"]["items"] = @post_data  
+  f = File.open(@data_path, 'w' )
+  YAML.dump( data, f )
+  f.close
+end
+
+#
+#  Portfolio: upload da imagem do item
+#
+post "/:site_nome/portfolio/uploadPic/:index" do 
+
+  # Pega os parâmetros
+  @site_nome = params[:site_nome]
+  @item = params[:item]
+  @index = params[:index].to_i
+  @file = params[:file]
+
+  port_img = ""
+  @data_path.gsub! "{site_nome}", @site_nome
+
+  # Carrega os dados do arquivo fonte
+  data = YAML.load_file @data_path
+
+  unless @file == nil
+    @filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+    imagem_tipo = params[:file][:type]
+    # Testa para ver se é uma imagem que está sendo enviada
+    if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 600000 then
+      img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@filename}"
+      File.open(img_path, 'wb') do |f|
+        f.write(file.read)
+      end
+      #reduz a imagem
+      image = MiniMagick::Image.open(img_path)
+      image.resize "600x600"   
+      image.write img_path
+      port_img = "contas/#{@site_nome}/img/portfolio/#{@filename}"
+    end
+  end
+  if (port_img == "" || port_img == "undefined" || port_img == nil) then port_img = @item["img"] end
+  data["pages"]["portfolio"]["items"][@index]["img"] = port_img
+  
+  # Salva os dados alterados
+  f = File.open(@data_path, 'w' )
+  YAML.dump( data, f )
+  f.close              
+end
+
+#
+#  Portfolio: adicionando um novo item
+#
+post "/:site_nome/portfolio/add" do 
+  @site_nome = params[:site_nome]
+  @data_path.gsub! "{site_nome}", @site_nome
+  data = YAML.load_file @data_path
+  novo = { "id"      => "0",
+           "titulo"  => "Novo",
+           "img"     => "/img/noimage.png",
+           "txt"     => "",
+           "cliente" => "",
+           "site"    => "",
+           "data"    => "",
+           "servico" => "",
+           "cat"     => ""
+         }
+  data["pages"]["portfolio"]["items"] << novo
+  f = File.open(@data_path, 'w' )
+  YAML.dump( data, f )
+  f.close
+end
 
 post '/email_envia' do
 
@@ -274,225 +325,32 @@ post '/email_envia' do
             :body => message
 end
 
-# post '/edit_about_save' do
-# 	  data = YAML.load_file "site.yml"
-#     data["pages"]["about"]["body1"] = params[:about_body1]
-#     data["pages"]["about"]["body2"] = params[:about_body2]
-#     File.open("site.yml", 'w') { |f| YAML.dump(data, f) }
-
-#     redirect '/'
-# end
-
 get "/novo_site/:site_nome" do 
 
-    site_nome = params[:site_nome]
-    
-    #Clona o site base
-    FileUtils.cp("site.yml","public/contas/#{site_nome}/#{site_nome}.yml")
-    
-    #Cria diretorio de imagens
-    install_dir = "public/contas/#{site_nome}/img/portfolio"
-    FileUtils::mkdir_p install_dir
-
-    #Altera o nome do site no arquivo fonte
-    data = YAML.load_file site_nome+".yml"
-    data["name"] = site_nome
-    
-    #File.open(site_nome+".yml", 'w') { |f| YAML.dump(data, f) }
-
-    f = File.open(site_nome+".yml", 'w' )
-    YAML.dump( data, f )
-    f.close 
-    
-    #copia imagem da capa
-    FileUtils.cp("public/img/noimage.png","public/contas/#{site_nome}/img/noimage.png")
-    #Altera a capa do site
-    data = YAML.load_file site_nome+".yml"
-    data["pages"]["home"]["img"] = "contas/#{site_nome}/img/noimage.png"
-    
-    #File.open(site_nome+".yml", 'w') { |f| YAML.dump(data, f) }
-
-    f = File.open(site_nome+".yml", 'w' )
-    YAML.dump( data, f )
-    f.close  
-
-    redirect "/#{site_nome}"
-end
-
-# Handle POST-request (Receive and save the uploaded file)
-post "/:site_nome/upload" do 
-
-  if session[:logado] then
-      site_nome = params[:site_nome]
-      @filename = params[:file][:filename]
-      file = params[:file][:tempfile]
-      imagem_tipo = params[:file][:type]
-      
-      #pry
-      #@filename = Time.now.to_i.to_s+"."+params["file"][:filename].split(".").last
-      
-      # Testa para ver se é uma imagem que está sendo enviada
-      if (imagem_tipo == 'image/png'  || 
-          imagem_tipo == 'image/jpeg' || 
-          imagem_tipo == 'image/gif') && 
-         file.size < 300000
-
-            @filename = params[:site_nome]+"."+params["file"][:filename].split(".").last.downcase
-            File.open("./public/contas/#{site_nome}/img/#{@filename}", 'wb') do |f|
-              f.write(file.read)
-            end
-            
-            image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
-            image.resize "600x600"   
-            #image.write "./public/img/#{@filename}"
-            image.write "./public/contas/#{site_nome}/img/#{@filename}"
-            # return "The file was successfully uploaded!"
-
-
-            data = YAML.load_file "public/contas/#{site_nome}/#{site_nome}.yml"
-            data["pages"]["home"]["img"] = "contas/#{site_nome}/img/#{@filename}"
-            #File.open(params[:site_nome]+".yml", 'w') { |f| YAML.dump(data, f) }
-      
-            f = File.open("public/contas/#{site_nome}/#{site_nome}.yml", 'w' )
-            YAML.dump( data, f )
-            f.close  
-      end          
-  end
-end
-# 
-# 
-#     Excluindo um item do portfolio     
-#
-# 
-post "/:site_nome/portfolio/delete/:id" do 
-
-  @site_nome = params[:site_nome]
-  @id = params[:id]
-  @data = YAML.load_file "public/contas/#{@site_nome}/#{@site_nome}.yml"
-
-  @data["pages"]["portfolio"]["items"].delete_at(@id.to_i)
-  @p = @data["pages"]["portfolio"]["items"]
-  # .reject { |n| n 
-  #   # % @id.to_i == 0  }  
+  site_nome = params[:site_nome]
   
-  #File.open(@site_nome+".yml", 'w') { |f| YAML.dump(@data, f) }
-  f = File.open("public/contas/#{@site_nome}/#{@site_nome}.yml", 'w' )
+  @data_path.gsub! "{site_nome}", site_nome
+  #Clona o site base
+  FileUtils.cp("site.yml", @data_path)
+  
+  #Cria diretorio de imagens
+  install_dir = "public/contas/#{site_nome}/img/portfolio"
+  FileUtils::mkdir_p install_dir
+
+  #Altera o nome do site no arquivo fonte
+  data = YAML.load_file @data_path
+  data["name"] = site_nome    
+  
+  #copia imagem da capa
+  FileUtils.cp("public/img/noimage.png","public/contas/#{site_nome}/img/noimage.png")
+  #Altera a capa do site
+  data["pages"]["home"]["img"] = "contas/#{site_nome}/img/noimage.png"
+  
+  #Salva o arquivo fonte
+  f = File.open(@data_path, 'w' )
   YAML.dump( data, f )
-  f.close
-  "Admin Area, Access denied!"
-  #pry
+  f.close  
+
+  # Abre o site recem criado no modo de edição
+  redirect "/#{site_nome}"
 end
-
-#
-#
-#  Mudança na ordenação
-#
-#
-post "/:site_nome/portfolio/ordena" do
-
-  @site_nome = params[:site_nome]
-  @post_data = JSON.parse(request.body.read)  
-  #pry  
-  data = YAML.load_file "public/contas/#{@site_nome}/#{@site_nome}.yml"
-  
-  data["pages"]["portfolio"]["items"] = @post_data  
-  
-  #File.open(@siteNome+".yml", 'w') { |f| YAML.dump(data, f) }
-  f = File.open("public/contas/#{@site_nome}/#{@site_nome}.yml", 'w' )
-  YAML.dump( data, f )
-  f.close
-
-end
-
-
-post "/:site_nome/portfolio/save/:index" do 
-
-  @site_nome = params[:site_nome]
-  @item = params[:item]
-  @index = params[:index].to_i
-
-  @file = params[:file]
-
-  port_img = ""
-  
-
-  #if session[:logado] then
-  data = YAML.load_file "public/contas/#{@site_nome}/#{@site_nome}.yml"
-
-  unless @file == nil
-    
-    @filename = params[:file][:filename]
-    # pry
-    file = params[:file][:tempfile]
-    imagem_tipo = params[:file][:type]
-    #@filename = Time.now.to_i.to_s+"."+params["file"][:filename].split(".").last
-    # Testa para ver se é uma imagem que está sendo enviada
-    if (imagem_tipo == 'image/png'  || 
-        imagem_tipo == 'image/jpeg' || 
-        imagem_tipo == 'image/gif') && 
-        file.size < 600000
-          img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@filename}"
-          File.open(img_path, 'wb') do |f|
-            f.write(file.read)
-          end
-          
-          image = MiniMagick::Image.open(img_path)
-          image.resize "600x600"   
-          #image.write "./public/img/#{@filename}"
-          image.write img_path
-          #Salva os dados do painel do portfolio
-          
-          port_img = "contas/#{@site_nome}/img/portfolio/#{@filename}"
-          # port_img = @filename
-    end
-  end
-  
-  # def string_limpa str
-  #   str.to_s.gsub(/<\/?[^>]*>/, "").gsub("&nbsp;", "")
-  # end
-  if (port_img == "" || port_img == "undefined" || port_img == nil) then port_img = @item["img"] end
-  # port_novo = {
-  #   # "id"      => @item["id"],
-  #   # "titulo"  => string_limpa(@item["titulo"]),
-  #   # "img"     => port_img
-  #   # "txt"     => string_limpa(@item["txt"]),
-  #   # "cliente" => string_limpa(@item["cliente"]),
-  #   # "site"    => string_limpa(@item["site"]),
-  #   # "data"    => string_limpa(@item["data"]),
-  #   # "servico" => string_limpa(@item["servico"]),
-  #   # "cat"     => string_limpa(@item["cat"])
-  # } 
-
-  # data["pages"]["portfolio"]["items"][@index] = port_novo
-  data["pages"]["portfolio"]["items"][@index]["img"] = port_img
-  
-  #File.open(params[:site_nome]+".yml", 'w') { |f| YAML.dump(data, f) }
-  
-  f = File.open("public/contas/#{@site_nome}/#{@site_nome}.yml", 'w' )
-  YAML.dump( data, f )
-  f.close              
-  #redirect '/'+params[:site_nome]
-  #end
-end
-
-post "/portfolio/add" do 
-  
-  @post_data = JSON.parse(request.body.read)  
-  @site_nome = @post_data["siteNome"]
-  data = YAML.load_file "public/contas/#{@site_nome}/#{@site_nome}.yml"
-  novo = { "id"      => "0",
-           "titulo"  => "Novo",
-           "img"     => "/img/noimage.png",
-           "txt"     => "",
-           "cliente" => "",
-           "site"    => "",
-           "data"    => "",
-           "servico" => "",
-           "cat"     => ""
-         }
-  data["pages"]["portfolio"]["items"] << novo
-  f = File.open("public/contas/#{@site_nome}/#{@site_nome}.yml", 'w' )
-  YAML.dump( data, f )
-  f.close
-end
-
