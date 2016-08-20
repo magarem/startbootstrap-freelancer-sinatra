@@ -113,11 +113,18 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     var url = document.URL;
     var urlArray = url.split("/");
     var siteNome = urlArray[urlArray.length-1];
+    var siteData = {}
 
     console.log("url:", siteNome);
+
+    var _loadSiteData = function(){
+      console.log("!!")
+      siteData = $http.get('/'+siteNome+'/dataLoad');
+      return siteData;
+    }
     
     var _getSiteData = function(){
-      return $http.get('/'+siteNome+'/dataLoad');
+      return siteData;
     }
 
     var _savePortfolioOrder = function(data){
@@ -135,6 +142,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     }
 
     return {
+      loadSiteData: _loadSiteData,
       getSiteData: _getSiteData,
       savePortfolioOrder: _savePortfolioOrder,
       saveDiv: _saveDiv,
@@ -154,7 +162,8 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 mod.controller('topCtrl', function ($scope, $http, SiteData) {
   
   $scope.site = {}; 
-   SiteData.getSiteData().then(function(response) {
+
+   SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
     console.log("SiteData[top]:", response.data);
   })
@@ -566,7 +575,7 @@ mod.controller('loginCtrl', function ($scope, $http, SiteData) {
   $scope.site = {}; 
    SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
-    console.log("SiteData[top]:", response.data);
+    console.log("SiteData[login]:", response.data);
   })
 
   $scope.saveDiv = function(obj){   

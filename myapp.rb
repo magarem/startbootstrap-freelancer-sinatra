@@ -19,9 +19,7 @@ configure do
   # App Paths
   set :root, File.dirname(__FILE__)
   set :views, File.dirname(__FILE__) + '/views'
-  #set :controlers, File.dirname(__FILE__) + '/controlers'
   set :public_folder, Proc.new { File.join(root, "public") }
-  #Liquid::Template.file_system = Liquid::LocalFileSystem.new(File.join(File.dirname(__FILE__),'views'))
 end
 
 helpers do
@@ -55,6 +53,7 @@ post '/login_do' do
   @data_path.gsub! "{site_nome}", site_nome
   @data = YAML.load_file @data_path
   @data_senha = @data["senha"]
+  
   #Compara a senha digitada no formulário de login com a senha do fonte
   if @form_senha.to_s == @data_senha.to_s then 
     session[:logado] = true       

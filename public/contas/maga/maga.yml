@@ -45,6 +45,15 @@ pages:
     label: Catálogo
     items:
     - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/7845_456762141081980_419920785_n.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
       titulo: Novo2
       img: contas/maga/img/portfolio/515_10151108115083316_569672961_n.jpg
       txt: Este é um teste
@@ -61,16 +70,7 @@ pages:
       site: ''
       data: ''
       servico: ''
-      cat: ''
-    - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/45499_559573317407206_1279879827_n.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
+      cat: primeiro
     - id: '0'
       titulo: Novo
       img: contas/maga/img/portfolio/site_agencia.jpg
@@ -112,6 +112,15 @@ pages:
       img: "/contas/maga/img/portfolio/krishna.jpg"
       txt: Txt novo
       nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/14491_1406299262918859_1699222815_n.jpg
+      txt: ''
+      cliente: ''
       site: ''
       data: ''
       servico: ''
