@@ -324,12 +324,20 @@ post '/email_envia' do
             :body => message
 end
 
+#
+#  Criar novo site 
+#
 get "/novo_site/:site_nome" do 
 
+  #Pega os parâmetros
   site_nome = params[:site_nome]
-  
   @data_path.gsub! "{site_nome}", site_nome
-  #Clona o site base
+
+  #Cria diretorio principal
+  install_dir = "public/contas/#{site_nome}"
+  FileUtils::mkdir_p install_dir
+  
+  #Clona o arquivo base
   FileUtils.cp("site.yml", @data_path)
   
   #Cria diretorio de imagens
@@ -340,9 +348,10 @@ get "/novo_site/:site_nome" do
   data = YAML.load_file @data_path
   data["name"] = site_nome    
   
-  #copia imagem da capa
+  #Copia imagem da capa
   FileUtils.cp("public/img/noimage.png","public/contas/#{site_nome}/img/noimage.png")
-  #Altera a capa do site
+  
+  #Define a capa do site
   data["pages"]["home"]["img"] = "contas/#{site_nome}/img/noimage.png"
   
   #Salva o arquivo fonte

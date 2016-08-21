@@ -8,14 +8,14 @@ head:
 moldura:
   label: Portfolio
   logo:
-    label: marcelo maga2
+    label: marcelo maga ninja
     link: index.ttt
   menu:
   - label: Catálogo
     link: "#portfolio"
   - label: Eu mesmo
     link: "#about"
-  - label: Contato
+  - label: "!Contato!"
     link: "#contact"
   footer:
     endereco: Rua dos andradas
@@ -45,17 +45,8 @@ pages:
     label: Catálogo
     items:
     - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/7845_456762141081980_419920785_n.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: '0'
-      titulo: Novo2
-      img: contas/maga/img/portfolio/515_10151108115083316_569672961_n.jpg
+      titulo: praia
+      img: contas/maga/img/portfolio/holiday4.jpg
       txt: Este é um teste
       cliente: Cliente1
       site: ''
@@ -73,7 +64,16 @@ pages:
       cat: primeiro
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/site_agencia.jpg
+      img: contas/maga/img/portfolio/7845_456762141081980_419920785_n.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/psychobox.png
       txt: ''
       cliente: ''
       site: ''
@@ -126,4 +126,4 @@ pages:
       servico: ''
       cat: ''
   contact:
-    label: Contato
+    label: "!Contato!"

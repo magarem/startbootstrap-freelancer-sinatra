@@ -1,137 +1,107 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myapp">
 <head ng-controller="topCtrl">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ site.head.description }}">
-    <meta name="author" content="{{ site.head.author }}">
-    <title>{{ site.logo.label }}</title>
-    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/freelancer.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.head.description }}">
+  <meta name="author" content="{{ site.head.author }}">
+  <title>{{ site.logo.label }}</title>
+  <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/freelancer.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <!-- Medium Editor -->
-    <link rel="stylesheet" href="medium-editor/dist/css/medium-editor.css">
-    <link rel="stylesheet" href="medium-editor/dist/css/themes/default.css" id="medium-editor-theme">
-
-    <link rel="stylesheet" href="css/contentedit_.css" id="medium-editor-theme">
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-   
-  
-    <script src="js/jquery.js"></script>
-    <!-- AngularJs -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
-
-      <!-- Sortable.js -->
-    <script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
-
-      <!-- ng-sortable.js -->
-    <script src="http://rubaxa.github.io/Sortable/ng-sortable.js"></script>
-
-    <!-- Upload -->
-    <script src="js/ng-file-upload-shim.min.js"></script>
-    <script src="js/ng-file-upload.min.js"></script>
-
-    <!-- Medium editor -->
-    <script src="js/angular-medium-editor.min.js"></script>
+  <!-- Custom Fonts -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="js/jquery.js"></script>
+  <!-- AngularJs -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+  <!-- Sortable.js -->
+  <script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
+  <!-- ng-sortable.js -->
+  <script src="http://rubaxa.github.io/Sortable/ng-sortable.js"></script>
+  <!-- Upload -->
+  <script src="js/ng-file-upload-shim.min.js"></script>
+  <script src="js/ng-file-upload.min.js"></script>
 </head>
 
 <body id="page-top" class="index">
   <%= yield %>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-        <a class="btn btn-primary" href="#page-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
-    </div>
-  <!-- Footer -->
-    
-    <footer class="text-center" ng-controller="footerCtrl">
-        <div class="footer-above">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h3>Endereço</h3>
-                        <div contenteditable="<%=@edit_flag%>"
-                          ng-model="site.moldura.footer.endereco"
-                          strip-br="true"
-                          select-non-editable="true"
-                          ng-blur="saveDiv('site.moldura.footer.endereco')">
-                        </div>                          
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Links</h3>
-                         <ul class="list-inline">
-		                       <li ng-repeat="item in site.moldura.footer.social"  >
-                                <a href="{{item.link}}" class="btn-social btn-outline"><i class="fa fa-fw fa-{{item.label}}"></i></a>
-                               </li>
-                        </ul>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Sobre</h3>
-                        <div contenteditable="<%=@edit_flag%>"
-                          ng-model="site.moldura.footer.about_resumo"
-                          strip-br="true"
-                          select-non-editable="true"
-                          ng-blur="saveDiv('site.moldura.footer.about_resumo')">
-                        </div>                                           
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-below ">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                {{site.moldura.footer.creditos}}&nbsp; 
-                <% if @edit_flag == false %>
-                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalLogin">Admin</button>
-                <% else %>
-                  <button type="button" 
-                    class="btn btn-primary btn-sm" 
-                    data-toggle="modal" 
-                    onclick="location.href='/<%=@site_nome%>/logout'">Logout
-                  </button>
-                <% end %> 
-              </div>
-            </div>
+  <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+    <a class="btn btn-primary" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+    </a> 
+  </div>
+  <!-- Footer -->    
+  <footer class="text-center" ng-controller="footerCtrl">
+    <div class="footer-above">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col col-md-4">
+            <h3>Endereço</h3>
+            <div contenteditable="<%=@edit_flag%>"
+              ng-model="site.moldura.footer.endereco"
+              strip-br="true"
+              select-non-editable="true"
+              ng-blur="saveDiv('site.moldura.footer.endereco')">
+            </div>                          
+          </div>
+          <div class="footer-col col-md-4">
+            <h3>Links</h3>
+             <ul class="list-inline">
+               <li ng-repeat="item in site.moldura.footer.social"  >
+                  <a href="{{item.link}}" class="btn-social btn-outline"><i class="fa fa-fw fa-{{item.label}}"></i></a>
+               </li>
+            </ul>
+          </div>
+          <div class="footer-col col-md-4">
+            <h3>Sobre</h3>
+            <div contenteditable="<%=@edit_flag%>"
+              ng-model="site.moldura.footer.about_resumo"
+              strip-br="true"
+              select-non-editable="true"
+              ng-blur="saveDiv('site.moldura.footer.about_resumo')">
+            </div>                                           
           </div>
         </div>
-    </footer>
-     <!-- jQuery -->
-
-
-  
-    
- <!-- 
-    <script src="medium-editor/dist/js/medium-editor.js"></script>
-        <script>
-            var editor = new MediumEditor('.editable', {
-                
-                toolbar: false
-            })
-         
-        </script>  -->
-
-    
-
-      <!-- Bootstrap Core JavaScript -->
+      </div>
+    </div>
+    <div class="footer-below ">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            {{site.moldura.footer.creditos}}&nbsp; 
+            <% if @edit_flag == false %>
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalLogin">Admin</button>
+            <% else %>
+              <button type="button" 
+                class="btn btn-primary btn-sm" 
+                data-toggle="modal" 
+                onclick="location.href='/<%=@site_nome%>/logout'">Logout
+              </button>
+            <% end %> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+   
     <script src="js/bootstrap.min.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/cbpAnimatedHeader.js"></script>
 
-  <!-- Plugin JavaScript -->
+    <!-- Plugin JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+   
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
@@ -139,12 +109,9 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
     <!-- Trigger the modal with a button -->
-    <!-- <script src="js/img_upload_ajax.js"></script> -->
     <script src="js/ui-bootstrap-0.14.3.min.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/angular_script.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-sanitize.js"></script>
-    <!-- <script src="js/ng-content-editable.min.js"></script> -->
-</body>
-
+  </body>
 </html>

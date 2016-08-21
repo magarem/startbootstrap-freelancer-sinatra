@@ -1,0 +1,57 @@
+---
+name: fidelis
+senha: 12345
+head:
+  title: Portfolio
+  description: Site
+  author: Marcelo Magalhães
+moldura:
+  label: Portfolio
+  logo:
+    label: Portfólio
+    link: index.ttt
+  menu:
+  - label: Portfolio
+    link: "#portfolio"
+  - label: Sobre
+    link: "#about"
+  - label: Contato
+    link: "#contact"
+  footer:
+    endereco: Endereço
+    social:
+    - label: facebook
+      link: facebook
+    - label: google-plus
+      link: google-plus
+    - label: twitter
+      link: twitter
+    - label: linkedin
+      link: linkedin
+    - label: dribbble
+      link: ddrrible
+    about_resumo: texto
+    creditos: Copyright © Magaweb 2016
+pages:
+  home:
+    label: Flor de lotus
+    img: contas/fidelis/img/fidelis.jpg
+    body: Meditations
+  about:
+    label: Sobre
+    body1: Passatempos de Krisna
+    body2: Vem com tudo ;)
+  portfolio:
+    label: Portfolio
+    items:
+    - id: '0'
+      titulo: Mãe Ayshoda
+      img: contas/fidelis/img/portfolio/10441014_4694932227324_6700500761529772666_n.jpg
+      txt: ''
+      cliente: Krisna
+      site: teste.com
+      data: 10/01/2016
+      servico: site
+      cat: nova
+  contact:
+    label: Contato
