@@ -1,5 +1,5 @@
 ---
-name: fidelis
+name: gg
 senha: 12345
 head:
   title: Portfolio
@@ -8,7 +8,7 @@ head:
 moldura:
   label: Portfolio
   logo:
-    label: 22Portfólio22
+    label: Portfólio
     link: index.ttt
   menu:
   - label: Portfolio
@@ -34,24 +34,24 @@ moldura:
     creditos: Copyright © Magaweb 2016
 pages:
   home:
-    label: Flormmk
-    img: contas/fidelis/img/fidelis.jpg
-    body: Meditations
+    label: texto 1
+    img: contas/gg/img/noimage.png
+    body: texto 2
   about:
     label: Sobre
-    body1: Passatempos de Krisna
-    body2: Vem com tudo ;)
+    body1: Texto 1
+    body2: texto 2
   portfolio:
     label: Portfolio
     items:
     - id: '0'
-      titulo: Mãe Ayshoda
-      img: contas/fidelis/img/portfolio/10441014_4694932227324_6700500761529772666_n.jpg
+      titulo: Novo
+      img: "/img/noimage.png"
       txt: ''
-      cliente: Krisna
-      site: teste.com
-      data: 10/01/2016
-      servico: site
-      cat: nova
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
   contact:
     label: Contato

@@ -33,9 +33,13 @@ helpers do
 end
 
 before do
+  @logado = session[:logado]
   @data_path = "public/contas/{site_nome}/{site_nome}.yml"
 end
 
+#
+# Encerra a seção de edição
+#
 get '/:site_nome/logout' do
   session[:logado] = false
   redirect '/'+params[:site_nome]
@@ -65,12 +69,18 @@ post '/login_do' do
   redirect '/'+site_nome
 end
 
+#
+# Inicia o aplicativo
+#
 get '/:site_nome' do
   @site_nome = params[:site_nome]
   @edit_flag = session[:logado]
   erb :index 
 end
 
+#
+# Lê os dados do arquivo fonte
+#
 get '/:site_nome/dataLoad' do 
   # Pega os dados do arquivo fonte
   site_nome = params[:site_nome]   
@@ -79,24 +89,33 @@ get '/:site_nome/dataLoad' do
   @data.to_json    
 end
 
-
+#
+# Pega os itens do portfólio
+#
 get '/:site_nome/getdata' do      
   data = YAML.load_file(@data_path) || {}
   data["pages"]["portfolio"]["items"].to_json
 end
 
-
-post '/:site_nome/objSave' do
-
+#
+# Salva os dados do modo de edição
+#
+post '/:site_nome/objSave' do  
+  
+  # Pega os parâmetros
   site_nome = params[:site_nome] 
   @post_data = JSON.parse(request.body.read)  
   @obj = @post_data["obj"]  
   @val = @post_data["val"]
-
   @data_path.gsub! "{site_nome}", site_nome
+
+  # Autenticação
+  if !@logado then redirect "/#{site_nome}" end
+
+  # Lê o arquivo fonte
   data = YAML.load_file @data_path
 
-
+  # Confere qual foi a ordem passada
   case @obj
 
     when "site.moldura.logo.label"
@@ -161,6 +180,7 @@ post '/:site_nome/objSave' do
        data["moldura"]["menu"][2]["label"] = @val
   end
 
+  # Salva o arquivo base
   f = File.open(@data_path, 'w' )
   YAML.dump( data, f )
   f.close
@@ -172,37 +192,37 @@ end
 #
 post "/:site_nome/upload" do 
 
-  if session[:logado] then
+  # Autenticação
+  if !@logado then redirect "/#{site_nome}" end
 
-    # Pega os parametros 
-    site_nome = params[:site_nome]
-    @filename = params[:file][:filename]
-    file = params[:file][:tempfile]
-    imagem_tipo = params[:file][:type]
-    @data_path.gsub! "{site_nome}", site_nome
+  # Pega os parametros 
+  site_nome = params[:site_nome]
+  @filename = params[:file][:filename]
+  file = params[:file][:tempfile]
+  imagem_tipo = params[:file][:type]
+  @data_path.gsub! "{site_nome}", site_nome
 
-    # Testa para ver se é uma imagem que está sendo enviada
-    if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 300000 then
-      
-      # Salva imagem no disco (upload)
-      @filename = site_nome+"."+params["file"][:filename].split(".").last.downcase
-      File.open("./public/contas/#{site_nome}/img/#{@filename}", 'wb') do |f|
-        f.write(file.read)
-      end
-      
-      # Reduz o tamanho da imagem
-      image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
-      image.resize "600x600"   
-      image.write "./public/contas/#{site_nome}/img/#{@filename}"
+  # Testa para ver se é uma imagem que está sendo enviada
+  if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 300000 then
+    
+    # Salva imagem no disco (upload)
+    @filename = site_nome+"."+params["file"][:filename].split(".").last.downcase
+    File.open("./public/contas/#{site_nome}/img/#{@filename}", 'wb') do |f|
+      f.write(file.read)
+    end
+    
+    # Reduz o tamanho da imagem
+    image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
+    image.resize "600x600"   
+    image.write "./public/contas/#{site_nome}/img/#{@filename}"
 
-      # Salva o nome da imagem o arquivo fonte
-      data = YAML.load_file @data_path
-      data["pages"]["home"]["img"] = "contas/#{site_nome}/img/#{@filename}"
-      f = File.open(@data_path, 'w' )
-      YAML.dump( data, f )
-      f.close  
-    end          
-  end
+    # Salva o nome da imagem o arquivo fonte
+    data = YAML.load_file @data_path
+    data["pages"]["home"]["img"] = "contas/#{site_nome}/img/#{@filename}"
+    f = File.open(@data_path, 'w' )
+    YAML.dump( data, f )
+    f.close  
+  end          
 end
 
 # 
@@ -214,6 +234,9 @@ post "/:site_nome/portfolio/delete/:id" do
   site_nome = params[:site_nome]
   @id = params[:id]
   @data_path.gsub! "{site_nome}", site_nome
+
+  # Autenticação
+  if !@logado then redirect "/#{site_nome}" end
 
   # Abre o arquivo fonte e exclui o item
   data = YAML.load_file @data_path
@@ -237,6 +260,9 @@ post "/:site_nome/portfolio/ordena" do
   @post_data = JSON.parse(request.body.read)  
   @data_path.gsub! "{site_nome}", site_nome
 
+  # Autenticação
+  if !@logado then redirect "/#{site_nome}" end
+
   # Lê o arquivo fonte
   data = YAML.load_file @data_path
   data["pages"]["portfolio"]["items"] = @post_data  
@@ -259,6 +285,9 @@ post "/:site_nome/portfolio/uploadPic/:index" do
   port_img = ""
   @data_path.gsub! "{site_nome}", @site_nome
 
+  # Autenticação
+  if !@logado then redirect "/#{@site_nome}" end
+
   # Carrega os dados do arquivo fonte
   data = YAML.load_file @data_path
 
@@ -266,12 +295,14 @@ post "/:site_nome/portfolio/uploadPic/:index" do
     @filename = params[:file][:filename]
     file = params[:file][:tempfile]
     imagem_tipo = params[:file][:type]
+
     # Testa para ver se é uma imagem que está sendo enviada
     if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 600000 then
       img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@filename}"
       File.open(img_path, 'wb') do |f|
         f.write(file.read)
       end
+
       #reduz a imagem
       image = MiniMagick::Image.open(img_path)
       image.resize "600x600"   
@@ -292,32 +323,51 @@ end
 #  Portfolio: adicionando um novo item
 #
 post "/:site_nome/portfolio/add" do 
+
+  # Pega os parâmetros
   @site_nome = params[:site_nome]
   @data_path.gsub! "{site_nome}", @site_nome
+
+  # Autenticação
+  if !@logado then redirect "/#{@site_nome}" end
+
+  # Lê o arquivo base
   data = YAML.load_file @data_path
-  novo = { "id"      => "0",
-           "titulo"  => "Novo",
-           "img"     => "/img/noimage.png",
-           "txt"     => "",
-           "cliente" => "",
-           "site"    => "",
-           "data"    => "",
-           "servico" => "",
-           "cat"     => ""
-         }
+
+  # Prapara o novo item para inserção
+  novo = { 
+    "id"      => "0",
+    "titulo"  => "Novo",
+    "img"     => "/img/noimage.png",
+    "txt"     => "",
+    "cliente" => "",
+    "site"    => "",
+    "data"    => "",
+    "servico" => "",
+    "cat"     => ""
+  }
+
+  # Insere o novo item na array do arquivo fonte
   data["pages"]["portfolio"]["items"] << novo
+
+  # Salva o arquivo modificado
   f = File.open(@data_path, 'w' )
   YAML.dump( data, f )
   f.close
 end
 
+#
+# Envia um email para o administrados com os dados digitados no formulário de contato
+#
 post '/email_envia' do
 
+  # Pega os dados do formulário
   name = params[:name]
   email = params[:email]
   phone = params[:phone]
   message = params[:message]
   
+  # Envia o email
   Pony.mail :to => "contato@magaweb.com.br",
             :from => email,
             :subject => "Contato",
@@ -325,14 +375,12 @@ post '/email_envia' do
 end
 
 #
-#  Criar novo site 
+# Criar novo site
 #
-get "/novo_site/:site_nome" do 
-
+get "/novo_site_do/:site_nome" do
   #Pega os parâmetros
   site_nome = params[:site_nome]
   @data_path.gsub! "{site_nome}", site_nome
-
   #Cria diretorio principal
   install_dir = "public/contas/#{site_nome}"
   FileUtils::mkdir_p install_dir
@@ -358,7 +406,56 @@ get "/novo_site/:site_nome" do
   f = File.open(@data_path, 'w' )
   YAML.dump( data, f )
   f.close  
-
+  
   # Abre o site recem criado no modo de edição
   redirect "/#{site_nome}"
+end
+
+
+#
+#  Pedir novo site 
+#
+get "/novo_site/:userEmail/:site_nome" do 
+
+  #Pega os parâmetros
+  site_nome = params[:site_nome]
+  userEmail = params[:userEmail]
+  @data_path.gsub! "{site_nome}", site_nome
+
+  #Envia email de confirmação da abertura da nova conta
+  mailMassege = 
+    "Este é um email de confirmação da abertura de sua nova conta.
+
+     Dados de acesso:
+     URL: magaweb.com.br/#{site_nome}
+     Senha: 12345
+
+     Clique no link de confirmação abaixo ou cole o endereço no seu browser:
+     http://localhost:3000/novo_site_do/#{site_nome}
+
+     Qualquer dúvida entre em contato conosco.
+     
+     Um abraço,
+     Equipe Magaweb
+     magaweb.com.br"
+  
+  Pony.mail({
+    :to => userEmail,
+    :via => :smtp,
+    :from => "contato@magaweb.com.br",
+    :subject => "Bem vindo!",
+    :body => mailMassege,
+    :via_options => {
+      :address              => 'smtp.gmail.com',
+      :port                 => '587',
+      :enable_starttls_auto => true,
+      :user_name            => 'contato@magaweb.com.br',
+      :password             => 'maria108',
+      :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+      :domain               => "localhost.magaweb.com.br" # the HELO domain provided by the client to the server
+    }
+  })
+
+  # Abre o site recem criado no modo de edição
+  "Um email de confirmação foi enviado para #{userEmail}"
 end

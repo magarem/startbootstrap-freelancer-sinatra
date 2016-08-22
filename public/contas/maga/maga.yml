@@ -8,7 +8,7 @@ head:
 moldura:
   label: Portfolio
   logo:
-    label: marcelo maga ninja
+    label: marcelo maga
     link: index.ttt
   menu:
   - label: Catálogo
@@ -18,7 +18,7 @@ moldura:
   - label: "!Contato!"
     link: "#contact"
   footer:
-    endereco: Rua dos andradas
+    endereco: Rua dos andradas j kj hk
     social:
     - label: facebook
       link: marcelo.a.magalhaes
@@ -39,14 +39,14 @@ pages:
     body: Software para web
   about:
     label: Eu mesmo
-    body1: Outro teste 22 total!!
+    body1: Outro teste 22 total!! hg jhgjhgj g
     body2: Segunda caixa de texto
   portfolio:
     label: Catálogo
     items:
     - id: '0'
       titulo: praia
-      img: contas/maga/img/portfolio/holiday4.jpg
+      img: contas/maga/img/portfolio/People.jpg
       txt: Este é um teste
       cliente: Cliente1
       site: ''
