@@ -111,7 +111,7 @@
                  accept="image/*" ngf-max-size="2MB" 
                  ngf-model-invalid="errorFile" 
                  style="visibility:hidden"
-                 ><br>
+                 >
             <!-- <button type="file" ngf-select="uploadPic(picFile, i);"
           accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"
           ng-model="picFile" 
@@ -121,8 +121,11 @@
             <style>
               #preview img{max-width: 400px; max-height: 400px;height:100px;}
             </style>
-            <i ng-show="myForm.file.$error.maxSize">File too large 
+            <i ng-show="myForm.file.$error.maxSize">Imagem muito pesada 
           {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+          <div ng-show="picFile.result" class="alert">
+            <strong>Imagem enviada com sucesso<br></strong> 
+          </div>
           <!-- <img ngf-thumbnail="picFile" class="thumb"> -->
             <!-- <div ng-if="picFile">                
               <img id=preview ngf-thumbnail="picFile" class="resize-img2" ng-click="up();">
@@ -132,8 +135,8 @@
                 ng-click="up();" >
             </div> -->
             <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->    
-      <% if @edit_flag == true %>                         
-        <button type="button" class="btn btn-default" ng-click="uploadPic(picFile, i);">Enviar imagem</button>
+      <% if @edit_flag == true %>  
+        <button ng-show="picFile" type="button" class="btn btn-primary" ng-click="uploadPic(picFile, i);">Confirmar imagem</button>
       <% end %>
       <p>
         <div contenteditable="<%=@edit_flag%>"
@@ -202,7 +205,7 @@
         <div style="width:{{picFile.progress}}%" 
             ng-bind="picFile.progress + '%'"></div>
       </span>
-      <span ng-show="picFile.result">Dados salvos com sucesso!</span>
+      
       <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
       
       <!-- <button type="button" class="btn btn-default" ng-click="uploadPic(picFile, i);">Salvar</button> --> 

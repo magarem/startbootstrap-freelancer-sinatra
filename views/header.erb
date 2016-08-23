@@ -25,7 +25,8 @@
                 onclick="$('#file').click();" 
              <% end %> >
         </div>
-
+        <!-- Indicates a successful or positive action -->
+        <button id=header_img_confirm type="button" class="btn btn-primary" style="display: none" onclick="$('#uploadimage').submit();$('#header_img_confirm').hide();">Confirmar imagem</button>
         <form id=uploadimage action="" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="site" value="{{site.name}}">
           <input type="hidden" id="flag_form_0" value="">
@@ -39,7 +40,6 @@
 
         <div class="intro-text">
           <span class="name">
-           <!--  <div class=edit contentedit contenteditable="true" ng-bind="site.pages.home.label" id=txt1>{{ site.pages.home.label }}</div> -->          
             <div contenteditable="<%=@edit_flag%>"
                 ng-model="site.pages.home.label"
                 strip-br="true"
@@ -86,9 +86,11 @@ $(document).ready(function (e) {
             processData:false,              // To send DOMDocument or non processed data file it is set to false (i.e. data should not be in the form of string)
             success: function(data)         // A function to be called if request succeeds
             {
-                alert("Item salvo com sucesso!");
-            //$('#loading').hide();
-            //$("#message").html(data);         
+
+              // $('#header_img_confirm').hide();
+              //alert("Item salvo com sucesso!");
+              //$('#loading').hide();
+              //$("#message").html(data);         
             }           
        });
     }));
@@ -112,12 +114,13 @@ $(document).ready(function (e) {
                 var reader = new FileReader();  
                 reader.onload = imageIsLoaded;
                 reader.readAsDataURL(this.files[0]);
-                $('#uploadimage').submit();
+                // $('#uploadimage').submit();
             }       
         });
     });
     function imageIsLoaded(e) { 
         $('#image1').css('background-image',"url("+e.target.result+")");
+        $('#header_img_confirm').show();
     };
  });
 </script>

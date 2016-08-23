@@ -15,7 +15,7 @@ moldura:
     link: "#portfolio"
   - label: Eu mesmo
     link: "#about"
-  - label: "!Contato!"
+  - label: Contato
     link: "#contact"
   footer:
     endereco: Rua dos andradas j kj hk
@@ -46,7 +46,7 @@ pages:
     items:
     - id: '0'
       titulo: praia
-      img: contas/maga/img/portfolio/People.jpg
+      img: contas/maga/img/portfolio/230605_10150180665658208_1683567_n.jpg
       txt: Este é um teste
       cliente: Cliente1
       site: ''
@@ -55,7 +55,7 @@ pages:
       cat: primeiro
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/31581_306419832796851_449320652_n.jpg
+      img: contas/maga/img/portfolio/krishna-PZ17_l.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -63,9 +63,9 @@ pages:
       servico: ''
       cat: primeiro
     - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/7845_456762141081980_419920785_n.jpg
-      txt: ''
+      titulo: amigos
+      img: contas/maga/img/portfolio/1382801_10151732881834022_1176302788_n.jpg
+      txt: j jh jh kj hkj hk
       cliente: ''
       site: ''
       data: ''
@@ -82,16 +82,16 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/13700057_10210374377855342_4741693753307694912_n.jpg
+      img: contas/maga/img/portfolio/10441014_4694932227324_6700500761529772666_n.jpg
       txt: ''
-      cliente: ''
+      cliente: ggg
       site: ''
       data: ''
       servico: ''
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/13775601_10210381960684908_4377804215171468038_n.jpg
+      img: contas/maga/img/portfolio/13154_10152498366666864_4716982069481280827_n.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -125,5 +125,32 @@ pages:
       data: ''
       servico: ''
       cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/13154_10152498366666864_4716982069481280827_n.jpg
+      txt: Descrição
+      cliente: Cliente
+      site: Site
+      data: 0/0/0
+      servico: Serviço
+      cat: Categorias
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/10342911_644434762344880_1879031220598696839_n.jpg
+      txt: Descrição
+      cliente: Cliente
+      site: Site
+      data: 0/0/0
+      servico: Serviço
+      cat: Categorias
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/230605_10150180665658208_1683567_n.jpg
+      txt: kh kjh kjh kjh jkh&nbsp;<div>j jk hkj hjkh kjkj hkj</div>
+      cliente: kk
+      site: jh
+      data: '99'
+      servico: nmmnnm
+      cat: mmm
   contact:
-    label: "!Contato!"
+    label: Contato

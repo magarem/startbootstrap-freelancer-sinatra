@@ -456,6 +456,7 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
             data: {item: $scope.item, file: file},
        }).then(function (resp) {
             console.log('---Success ' + resp.config.data.file.name);
+            file.result = true;
             $rootScope.$emit("ImgChange",file.name, index, siteNome);
         }, function (resp) {
             console.log('---Error status: ' + resp.status);

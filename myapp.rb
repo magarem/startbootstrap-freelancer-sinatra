@@ -339,12 +339,12 @@ post "/:site_nome/portfolio/add" do
     "id"      => "0",
     "titulo"  => "Novo",
     "img"     => "/img/noimage.png",
-    "txt"     => "",
-    "cliente" => "",
-    "site"    => "",
-    "data"    => "",
-    "servico" => "",
-    "cat"     => ""
+    "txt"     => "Descrição",
+    "cliente" => "Cliente",
+    "site"    => "Site",
+    "data"    => "0/0/0",
+    "servico" => "Serviço",
+    "cat"     => "Categorias"
   }
 
   # Insere o novo item na array do arquivo fonte
