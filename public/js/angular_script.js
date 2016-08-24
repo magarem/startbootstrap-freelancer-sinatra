@@ -280,7 +280,20 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
           b.push(v)
         }
     })
+
+    //Altera a primeira letra para caixa alta
+    for( i = 0 ; i < b.length ; i++){
+        b[i] = b[i].charAt(0).toUpperCase() + b[i].substr(1);
+    }
+
+    console.log(b)
+
     $scope.imageCategories = b.filter( onlyUnique )
+    $scope.imageCategories = $scope.imageCategories.filter(function(ele){
+        return ele !== '';
+    });
+
+
     console.log("$scope.imgs:",$scope.imgs)          
   }
     
@@ -308,7 +321,13 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
     if (value === null) {
         $scope.catselect = undefined;
     }
+  };
+
+  $scope.filtraZero = function () {  
+        $scope.catselect = undefined;
   }; 
+
+  
 
   // $scope.$on('valuesUpdated', function() {
   //    $scope.images = Service.images;

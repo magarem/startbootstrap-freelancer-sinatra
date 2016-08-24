@@ -4,8 +4,8 @@ email: contato@magaweb.com.br
 senha: 1
 head:
   title: Portfolio geral
-  description: Site pra garela
-  author: Maguete
+  description: Site portfolio
+  author: marcelo magalhaes
 moldura:
   label: Portfolio
   logo:
@@ -13,11 +13,8 @@ moldura:
     link: index.ttt
   menu:
   - label: Catálogo
-    link: "#portfolio"
   - label: Sobre
-    link: "#about"
   - label: Contato
-    link: "#contact"
   footer:
     endereco: Rua dos andradas j kj hksdsd222
     social:
@@ -26,7 +23,6 @@ moldura:
       twitter: '333'
       linkedin: '444'
     about_resumo: Eu aqui né?
-    creditos: Copyright © magaweb 2016
 pages:
   home:
     label: ''
@@ -56,7 +52,7 @@ pages:
       site: ''
       data: ''
       servico: ''
-      cat: primeiro
+      cat: vixi,segunda
     - id: '0'
       titulo: amigos
       img: contas/maga/img/portfolio/1382801_10151732881834022_1176302788_n.jpg
@@ -155,7 +151,7 @@ pages:
       site: 
       data: 10/02/2016
       servico: Pintura
-      cat: todas,segunda
+      cat: segunda
     - id: ''
       titulo: novo
       img: ''

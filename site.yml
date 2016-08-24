@@ -5,19 +5,16 @@ email:
 head:
   title: Portfolio
   description: Site
-  author: Marcelo Magalhães
+  author:
 moldura:
   label: Portfolio
   logo:
     label: Portfólio
     link: index.ttt
   menu:
-  - label: Portfolio
-    link: "#portfolio"
+  - label: Portfolio  
   - label: Sobre
-    link: "#about"
   - label: Contato
-    link: "#contact"
   footer:
     endereco: Endereço
     social:
@@ -25,8 +22,7 @@ moldura:
       googleplus: 
       twitter: 
       linkedin: 
-    about_resumo: texto
-    creditos: Copyright © Magaweb 2016
+    about_resumo: texto    
 pages:
   home:
     label:
