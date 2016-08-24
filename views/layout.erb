@@ -31,6 +31,12 @@
   <!-- Upload -->
   <script src="js/ng-file-upload-shim.min.js"></script>
   <script src="js/ng-file-upload.min.js"></script>
+  <style>
+   [contenteditable=true]:empty:before{
+     content: attr(placeholder);
+     display: block; /* For Firefox */
+   }
+  </style> 
 </head>
 
 <body id="page-top" class="index">
@@ -41,7 +47,7 @@
         <i class="fa fa-chevron-up"></i>
     </a> 
   </div>
-  <!-- Footer -->    
+  <!-- Footer -->   
   <footer class="text-center" ng-controller="footerCtrl">
     <div class="footer-above">
       <div class="container">
@@ -52,16 +58,63 @@
               ng-model="site.moldura.footer.endereco"
               strip-br="true"
               select-non-editable="true"
-              ng-blur="saveDiv('site.moldura.footer.endereco')">
+              ng-blur="saveDiv('site.moldura.footer.endereco')"
+              placeholder="Entre com o endereço...">
             </div>                          
           </div>
           <div class="footer-col col-md-4">
             <h3>Links</h3>
-             <ul class="list-inline">
-               <li ng-repeat="item in site.moldura.footer.social"  >
-                  <a href="{{item.link}}" class="btn-social btn-outline"><i class="fa fa-fw fa-{{item.label}}"></i></a>
-               </li>
-            </ul>
+             <% if @edit_flag  %>
+               <form>
+                 <div contenteditable="<%=@edit_flag%>"
+                   ng-model="site.moldura.footer.social.facebook"
+                   strip-br="true"
+                   select-non-editable="true"
+                   ng-blur="saveDiv('site.moldura.footer.social.facebook')"
+                   placeholder="Link Facebook...">
+                 </div>                    
+                 <br>
+                 <div contenteditable="<%=@edit_flag%>"
+                    ng-model="site.moldura.footer.social.googleplus"
+                    strip-br="true"
+                    select-non-editable="true"
+                    ng-blur="saveDiv('site.moldura.footer.social.googleplus')"
+                    placeholder="Link Google Plus...">
+                 </div> 
+                 <br>
+                 <div contenteditable="<%=@edit_flag%>"
+                    ng-model="site.moldura.footer.social.twitter"
+                    strip-br="true"
+                    select-non-editable="true"
+                    ng-blur="saveDiv('site.moldura.footer.social.twitter')"
+                    placeholder="Link Twitter...">
+                 </div> 
+                 <br>
+                 <div contenteditable="<%=@edit_flag%>"
+                    ng-model="site.moldura.footer.social.linkedin"
+                    strip-br="true"
+                    select-non-editable="true"
+                    ng-blur="saveDiv('site.moldura.footer.social.linkedin')"
+                    placeholder="Link Linkedin...">
+                 </div>
+                 <br>
+              </form>
+             <% else %>
+               <ul class="list-inline">
+                 <li>
+                    <a href="https://facebook.com/{{site.moldura.footer.social.facebook}}" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                 </li>
+                 <li>
+                    <a href="https://plus.google.com//{{site.moldura.footer.social.googleplus}}" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                 </li>
+                 <li>
+                    <a href="https://twitter.com/{{site.moldura.footer.social.twitter}}" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                 </li>
+                 <li>
+                    <a href="https://www.linkedin.com/{{site.moldura.footer.social.linkedin}}" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                 </li>
+              </ul>
+            <% end %>
           </div>
           <div class="footer-col col-md-4">
             <h3>Sobre</h3>
@@ -69,7 +122,8 @@
               ng-model="site.moldura.footer.about_resumo"
               strip-br="true"
               select-non-editable="true"
-              ng-blur="saveDiv('site.moldura.footer.about_resumo')">
+              ng-blur="saveDiv('site.moldura.footer.about_resumo')"
+              placeholder="Entre com texto...">
             </div>                                           
           </div>
         </div>

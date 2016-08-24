@@ -178,6 +178,20 @@ post '/:site_nome/objSave' do
     when "contact.label" then
        data["pages"]["contact"]["label"] = @val
        data["moldura"]["menu"][2]["label"] = @val
+    
+    # Footer / Social links
+    when "site.moldura.footer.social.facebook" then
+       data["moldura"]["footer"]["social"]["facebook"] = @val
+
+    when "site.moldura.footer.social.googleplus" then
+       puts "googleplus"
+       data["moldura"]["footer"]["social"]["googleplus"] = @val
+
+    when "site.moldura.footer.social.twitter" then
+       data["moldura"]["footer"]["social"]["twitter"] = @val
+
+    when "site.moldura.footer.social.linkedin" then
+       data["moldura"]["footer"]["social"]["linkedin"] = @val
   end
 
   # Salva o arquivo base
@@ -336,15 +350,15 @@ post "/:site_nome/portfolio/add" do
 
   # Prapara o novo item para inserção
   novo = { 
-    "id"      => "0",
-    "titulo"  => "Novo",
-    "img"     => "/img/noimage.png",
-    "txt"     => "Descrição",
-    "cliente" => "Cliente",
-    "site"    => "Site",
-    "data"    => "0/0/0",
-    "servico" => "Serviço",
-    "cat"     => "Categorias"
+    "id"      => "",
+    "titulo"  => "",
+    "img"     => "",
+    "txt"     => "",
+    "cliente" => "",
+    "site"    => "",
+    "data"    => "",
+    "servico" => "",
+    "cat"     => ""
   }
 
   # Insere o novo item na array do arquivo fonte
@@ -362,24 +376,61 @@ end
 post '/email_envia' do
 
   # Pega os dados do formulário
+  @site_nome = params[:site_nome]
   name = params[:name]
   email = params[:email]
   phone = params[:phone]
   message = params[:message]
+  @data_path.gsub! "{site_nome}", @site_nome
   
-  # Envia o email
-  Pony.mail :to => "contato@magaweb.com.br",
-            :from => email,
-            :subject => "Contato",
-            :body => message
+  # Lê o arquivo base
+  data = YAML.load_file @data_path
+
+  @email_fonte = data["email"]
+  
+
+  # Debug
+  # puts "site_nome:"+@site_nome
+  # puts "Email:"+@email_fonte
+  
+  # # Envia o email
+  # Pony.mail :to => data["email"],
+  #           :from => email,
+  #           :subject => "Contato",
+  #           :body => message
+
+
+  mailMassege = "Você recebeu um email de: #{name} / #{email} / #{phone}
+                 #{message}"
+
+
+  Pony.mail({
+    :to => @email_fonte,
+    :via => :smtp,
+    :from => email,
+    :subject => "Contato",
+    :body => mailMassege,
+    :via_options => {
+      :address              => 'smtp.gmail.com',
+      :port                 => '587',
+      :enable_starttls_auto => true,
+      :user_name            => 'contato@magaweb.com.br',
+      :password             => 'maria108',
+      :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+      :domain               => "localhost.magaweb.com.br" # the HELO domain provided by the client to the server
+    }
+  })
 end
 
 #
 # Criar novo site
 #
-get "/novo_site_do/:site_nome" do
+get "/novo_site_do/:email/:site_nome" do
+  
   #Pega os parâmetros
   site_nome = params[:site_nome]
+  email = params[:email]
+
   @data_path.gsub! "{site_nome}", site_nome
   #Cria diretorio principal
   install_dir = "public/contas/#{site_nome}"
@@ -392,9 +443,10 @@ get "/novo_site_do/:site_nome" do
   install_dir = "public/contas/#{site_nome}/img/portfolio"
   FileUtils::mkdir_p install_dir
 
-  #Altera o nome do site no arquivo fonte
+  #Define o nome/email no arquivo fonte
   data = YAML.load_file @data_path
-  data["name"] = site_nome    
+  data["name"] = site_nome 
+  data["name"] = email 
   
   #Copia imagem da capa
   FileUtils.cp("public/img/noimage.png","public/contas/#{site_nome}/img/noimage.png")
@@ -410,7 +462,6 @@ get "/novo_site_do/:site_nome" do
   # Abre o site recem criado no modo de edição
   redirect "/#{site_nome}"
 end
-
 
 #
 #  Pedir novo site 
@@ -431,7 +482,7 @@ get "/novo_site/:userEmail/:site_nome" do
      Senha: 12345
 
      Clique no link de confirmação abaixo ou cole o endereço no seu browser:
-     http://localhost:3000/novo_site_do/#{site_nome}
+     http://localhost:3000/novo_site_do/#{userEmail}/#{site_nome}
 
      Qualquer dúvida entre em contato conosco.
      

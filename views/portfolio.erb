@@ -84,6 +84,7 @@
           strip-br="true"
           select-non-editable="true"
           ng-blur="saveDiv('item.titulo', i)"
+          placeholder="Titulo"
           >
          </div>         
        </h2>
@@ -143,7 +144,9 @@
           ng-model="item.txt"
           strip-br="true"
           select-non-editable="true"
-          ng-blur="saveDiv('item.txt', i)">
+          ng-blur="saveDiv('item.txt', i)"
+          placeholder="Descrição"
+          >
         </div>
       </p>
       <ul class="list-inline item-details">           
@@ -154,6 +157,7 @@
                 strip-br="true"
                 select-non-editable="true"
                 ng-blur="saveDiv('item.cliente', i)"
+                placeholder="?"
                 ></div>
              </strong>
           </li>
@@ -163,7 +167,8 @@
                 ng-model="item.data"
                 strip-br="true"
                 select-non-editable="true"
-                ng-blur="saveDiv('item.data', i)">
+                ng-blur="saveDiv('item.data', i)"
+                placeholder="?">
                </div>
               </strong>
           </li>
@@ -173,7 +178,8 @@
                   ng-model="item.servico"
                   strip-br="true"
                   select-non-editable="true"
-                  ng-blur="saveDiv('item.servico', i)">                  
+                  ng-blur="saveDiv('item.servico', i)"
+                  placeholder="?">                  
                 </div>
               </strong>
           </li>
@@ -183,7 +189,8 @@
                   ng-model="item.site"
                   strip-br="true"
                   select-non-editable="true"
-                  ng-blur="saveDiv('item.site', i)">                  
+                  ng-blur="saveDiv('item.site', i)"
+                  placeholder="?">                  
                 </div>  
               </strong>
           </li>
@@ -193,7 +200,9 @@
                   ng-model="item.cat"
                   strip-br="true"
                   select-non-editable="true"
-                  ng-blur="saveDiv('item.cat', i)">                  
+                  ng-blur="saveDiv('item.cat', i)"
+                  placeholder="?"
+                  >                  
                 </div>                  
               </strong>
           </li>

@@ -317,9 +317,9 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
   $scope.portfolio_add = function () {
     console.log("+")
     img_new =  {  "id"     : 0,
-                  "titulo" : "Novo",
+                  "titulo" : "",
                   "img"    : "/img/noimage.png",
-                  "txt"    : "Txt novo",
+                  "txt"    : "",
                   "nome"   : "",
                   "site"   : "",
                   "data"   : "",
@@ -543,9 +543,9 @@ mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
 })
 
 mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
-  $scope.contact = {}; 
+  $scope.site = {}; 
   SiteData.getSiteData().then(function(response) {    
-    $scope.contact = response.data.pages.contact
+    $scope.site = response.data
   })
   $scope.saveDiv = function(obj){    
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {

@@ -1,5 +1,6 @@
 ---
 name: maga
+email: contato@magaweb.com.br
 senha: 1
 head:
   title: Portfolio geral
@@ -8,39 +9,33 @@ head:
 moldura:
   label: Portfolio
   logo:
-    label: marcelo maga
+    label: Fidelis
     link: index.ttt
   menu:
   - label: Catálogo
     link: "#portfolio"
-  - label: Eu mesmo
+  - label: Sobre
     link: "#about"
   - label: Contato
     link: "#contact"
   footer:
-    endereco: Rua dos andradas j kj hk
+    endereco: Rua dos andradas j kj hksdsd222
     social:
-    - label: facebook
-      link: marcelo.a.magalhaes
-    - label: google-plus
-      link: Maguete
-    - label: twitter
-      link: magalhaes
-    - label: linkedin
-      link: mmm
-    - label: dribbble
-      link: ddrrible
+      facebook: '111'
+      googleplus: '222'
+      twitter: '333'
+      linkedin: '444'
     about_resumo: Eu aqui né?
     creditos: Copyright © magaweb 2016
 pages:
   home:
-    label: Desenvolvedor
+    label: ''
     img: contas/maga/img/maga.jpg
-    body: Software para web
+    body: ''
   about:
-    label: Eu mesmo
-    body1: Outro teste 22 total!! hg jhgjhgj g
-    body2: Segunda caixa de texto
+    label: Sobre
+    body1: ''
+    body2: ''
   portfolio:
     label: Catálogo
     items:
@@ -144,13 +139,31 @@ pages:
       servico: Serviço
       cat: Categorias
     - id: '0'
-      titulo: Novo
+      titulo: "?"
       img: contas/maga/img/portfolio/230605_10150180665658208_1683567_n.jpg
       txt: kh kjh kjh kjh jkh&nbsp;<div>j jk hkj hjkh kjkj hkj</div>
-      cliente: kk
+      cliente: ''
       site: jh
       data: '99'
       servico: nmmnnm
       cat: mmm
+    - id: '0'
+      titulo: Novo item
+      img: contas/maga/img/portfolio/10441014_4694932227324_6700500761529772666_n.jpg
+      txt: Este é um teste
+      cliente: sdsd
+      site: 
+      data: 10/02/2016
+      servico: Pintura
+      cat: todas,segunda
+    - id: ''
+      titulo: novo
+      img: ''
+      txt: ''
+      cliente: primreiro
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
   contact:
     label: Contato
