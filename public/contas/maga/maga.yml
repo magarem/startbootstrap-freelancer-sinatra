@@ -118,7 +118,7 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/13154_10152498366666864_4716982069481280827_n.jpg
+      img: contas/maga/img/portfolio/balao.jpg
       txt: Descrição
       cliente: Cliente
       site: Site
@@ -153,13 +153,67 @@ pages:
       servico: Pintura
       cat: segunda
     - id: ''
-      titulo: novo
+      titulo: ''
       img: ''
       txt: ''
-      cliente: primreiro
+      cliente: ''
       site: ''
       data: ''
       servico: ''
       cat: ''
+    - id: ''
+      titulo: ''
+      img: "/img/balao.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: ''
+      img: "/img/balao.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: ''
+      img: "/img/balao.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: ''
+      img: "/img/balao.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: ttt2
+      img: "/img/balao.jpg"
+      txt: asdasd
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: Novo item
+      img: "/img/balao.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: '22'
+      cat: '22'
   contact:
     label: Contato

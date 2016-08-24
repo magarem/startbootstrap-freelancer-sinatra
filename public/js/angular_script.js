@@ -337,7 +337,7 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
     console.log("+")
     img_new =  {  "id"     : 0,
                   "titulo" : "",
-                  "img"    : "/img/noimage.png",
+                  "img"    : "/img/balao.jpg",
                   "txt"    : "",
                   "nome"   : "",
                   "site"   : "",
@@ -351,7 +351,8 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
     })    
     $scope.imgs.push(img_new)
     //Service.images.push(img_new)
-    //$scope.open(img_new, id_last)
+    console.log($scope.imgs.length)
+    $scope.open(img_new, $scope.imgs.length-1)
     // console.log(img_new)
   }; 
         

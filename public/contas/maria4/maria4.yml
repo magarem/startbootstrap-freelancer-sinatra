@@ -1,0 +1,57 @@
+---
+name: contato@magaweb.com.br
+senha: 12345
+email: 
+head:
+  title: Portfolio
+  description: Site
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: Portfólio
+    link: index.ttt
+  menu:
+  - label: Portfolio
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: Endereço
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: texto
+pages:
+  home:
+    label: 
+    img: contas/maria4/img/balao.jpg
+    body: 
+  about:
+    label: Sobre
+    body1: 
+    body2: 
+  portfolio:
+    label: Portfolio
+    items:
+    - id: ''
+      titulo: ''
+      img: "/img/balao.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: ''
+      img: "/img/balao.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: zz
+  contact:
+    label: Contato

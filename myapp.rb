@@ -352,7 +352,7 @@ post "/:site_nome/portfolio/add" do
   novo = { 
     "id"      => "",
     "titulo"  => "",
-    "img"     => "",
+    "img"     => "/img/balao.jpg",
     "txt"     => "",
     "cliente" => "",
     "site"    => "",
@@ -449,10 +449,10 @@ get "/novo_site_do/:email/:site_nome" do
   data["name"] = email 
   
   #Copia imagem da capa
-  FileUtils.cp("public/img/noimage.png","public/contas/#{site_nome}/img/noimage.png")
+  FileUtils.cp("public/img/balao.jpg","public/contas/#{site_nome}/img/balao.jpg")
   
   #Define a capa do site
-  data["pages"]["home"]["img"] = "contas/#{site_nome}/img/noimage.png"
+  data["pages"]["home"]["img"] = "contas/#{site_nome}/img/balao.jpg"
   
   #Salva o arquivo fonte
   f = File.open(@data_path, 'w' )
