@@ -65,10 +65,10 @@
            >
             <div  class="col-sm-4 portfolio-item resize-img" ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}">
               <a href="" class="portfolio-link" 
-                 ng-click="open(image, $index);mostra($index);">     
+                 ng-click="open(image, $index); mostra($index);">     
                 <div class="caption">
                   <div class="caption-content">
-                    <i class="fa fa-search-plus fa-3x"></i>
+                    <!-- <i class="fa fa-search-plus fa-3x"></i> -->
                   </div>
                 </div>
                 <img id="{{$index}}" ng-src="{{image.img}}" class="img-responsive centered-and-cropped">
@@ -136,7 +136,7 @@
         <button ng-show="picFile && imgUploadBtn" type="button" class="btn btn-primary" ng-click="imgUploadBtn = false; uploadPic(picFile, i);">Confirmar imagem</button>
       <% end %>
       <p>
-        <div contenteditable="<%=@edit_flag%>"
+        <div contenteditable="{{isLogged}}"
           style = "font-size: 20px;"
           ng-model="item.txt"
           strip-br="true"
@@ -149,7 +149,7 @@
       <ul class="list-inline item-details">         
           <li ng-show="item.cliente || isLogged">Cliente:
              <strong>              
-              <div contenteditable="<%=@edit_flag%>"
+              <div contenteditable="{{isLogged}}"
                 ng-model="item.cliente"
                 strip-br="true"
                 select-non-editable="true"
@@ -160,7 +160,7 @@
           </li>
           <li ng-show="item.data || isLogged">Data:
               <strong>
-               <div contenteditable="<%=@edit_flag%>"
+               <div contenteditable="{{isLogged}}"
                 ng-model="item.data"
                 strip-br="true"
                 select-non-editable="true"
@@ -171,7 +171,7 @@
           </li>
           <li ng-show="item.servico || isLogged">Serviço:
               <strong>
-                <div contenteditable="<%=@edit_flag%>"
+                <div contenteditable="{{isLogged}}"
                   ng-model="item.servico"
                   strip-br="true"
                   select-non-editable="true"
@@ -182,7 +182,7 @@
           </li>
           <li ng-show="item.site || isLogged">Site:
               <strong>               
-                <div contenteditable="<%=@edit_flag%>"
+                <div contenteditable="{{isLogged}}"
                   ng-model="item.site"
                   strip-br="true"
                   select-non-editable="true"
@@ -193,7 +193,7 @@
           </li>
            <li ng-show="item.cat || isLogged">Categorias:
               <strong>
-              <div contenteditable="<%=@edit_flag%>"
+              <div contenteditable="{{isLogged}}"
                   ng-model="item.cat"
                   strip-br="true"
                   select-non-editable="true"
