@@ -1,0 +1,47 @@
+---
+name: ana
+senha: 12345
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: Portfólio da ana
+  menu:
+  - label: Portfólio
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: 
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: 
+pages:
+  home:
+    label: Confira aqui
+    img: contas/ana/img/ana.jpg
+    body: Meus trabalhos
+  about:
+    label: Sobre
+    body1: 
+    body2: 
+  portfolio:
+    label: Portfólio
+    items:
+    - id: '0'
+      titulo: lindo sol
+      img: contas/ana/img/portfolio/10255114_1410734605872000_5936977941782542320_n.jpg
+      txt: Lá vem o lindo sol!
+      cliente: 
+      site: 
+      data: 10/02/2016
+      servico: 
+      cat: paisagem
+  contact:
+    label: Contato

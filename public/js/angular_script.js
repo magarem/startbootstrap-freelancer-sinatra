@@ -117,6 +117,13 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     console.log("url:", siteNome);
 
+    var _logged = function(){
+      
+      logged = $http.get('/'+siteNome+'/logged');
+      console.log("logged",logged)
+      return logged;
+    }
+
     var _loadSiteData = function(){
       console.log("!!")
       siteData = $http.get('/'+siteNome+'/dataLoad');
@@ -142,6 +149,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     }
 
     return {
+      logged: _logged,
       loadSiteData: _loadSiteData,
       getSiteData: _getSiteData,
       savePortfolioOrder: _savePortfolioOrder,
@@ -271,6 +279,7 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
     b = []
     // $scope.imageCategories = $scope.imgs.map(function(val){return val.cat.replace(regex, "").split(",")})[0]
     $scope.imgs.forEach(function(x){
+      if (x.cat != null){
         v = x.cat.replace(regex, "").trim()              
         if (v.split(",").length > 1){
             v.split(",").forEach(function(t){
@@ -279,6 +288,7 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
         }else{
           b.push(v)
         }
+      }
     })
 
     //Altera a primeira letra para caixa alta
@@ -411,6 +421,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
 mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope, $rootScope, Upload, $timeout, $http, SiteData) {
   
+   $scope.imgUploadBtn = true;
    // $scope.uploadFile = function(index){
 
    //      console.log("???file:",file,"index:",index)
@@ -431,7 +442,14 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
    //            console.log('progress');
    //        });
    //  }
-    
+
+          
+    SiteData.logged().then(function(response) { 
+        $scope.isLogged = response.data;
+        console.log(">>[$scope.isLogged]>>",response.data);
+    }) 
+  
+  
   $scope.up = function(){
      angular.element('#file').trigger('click');
   };
@@ -452,6 +470,7 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
     SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) { 
 
     })   
+
     $rootScope.$emit("categoriasUpdate"); 
   } 
   
@@ -462,6 +481,7 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
     var url = document.URL;
     var urlArray = url.split("/");
     var siteNome = urlArray[urlArray.length-1];
+    
     if (file == undefined) {
       // Upload.upload({
       //   url: '/maga/portfolio/save/'+index,
@@ -477,14 +497,13 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
        }).then(function (resp) {
             console.log('---Success ' + resp.config.data.file.name);
             file.result = true;
+
             $rootScope.$emit("ImgChange",file.name, index, siteNome);
         }, function (resp) {
             console.log('---Error status: ' + resp.status);
-            //$rootScope.$emit("ImgChange",file.name, index, siteNome);
         }, function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('---progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-            //if (progressPercentage == '100') {$rootScope.$emit("ImgChange",file.name, index, siteNome);}
         });
         
         // file.upload.then(function () {
@@ -589,6 +608,11 @@ mod.controller('footerCtrl', function ($scope, $http, SiteData) {
        // console.log(response.data);
     })    
   }
+
+  SiteData.logged().then(function(response) { 
+        $scope.isLogged = response.data;
+        console.log(">>[$scope.isLogged]>>",response.data);
+  }) 
 })
 
 mod.controller('loginCtrl', function ($scope, $http, SiteData) {

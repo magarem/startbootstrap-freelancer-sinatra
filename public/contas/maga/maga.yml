@@ -9,7 +9,7 @@ head:
 moldura:
   label: Portfolio
   logo:
-    label: Fidelis
+    label: fidelito
     link: index.ttt
   menu:
   - label: Catálogo
@@ -25,7 +25,7 @@ moldura:
     about_resumo: Eu aqui né?
 pages:
   home:
-    label: ''
+    label: testettt
     img: contas/maga/img/maga.jpg
     body: ''
   about:
@@ -36,15 +36,6 @@ pages:
     label: Catálogo
     items:
     - id: '0'
-      titulo: praia
-      img: contas/maga/img/portfolio/230605_10150180665658208_1683567_n.jpg
-      txt: Este é um teste
-      cliente: Cliente1
-      site: ''
-      data: ''
-      servico: ''
-      cat: primeiro
-    - id: '0'
       titulo: Novo
       img: contas/maga/img/portfolio/krishna-PZ17_l.jpg
       txt: ''
@@ -53,6 +44,15 @@ pages:
       data: ''
       servico: ''
       cat: vixi,segunda
+    - id: '0'
+      titulo: praia
+      img: contas/maga/img/portfolio/230605_10150180665658208_1683567_n.jpg
+      txt: Este é um teste
+      cliente: Cliente1
+      site: ''
+      data: ''
+      servico: ''
+      cat: primeiro
     - id: '0'
       titulo: amigos
       img: contas/maga/img/portfolio/1382801_10151732881834022_1176302788_n.jpg
@@ -209,11 +209,11 @@ pages:
     - id: ''
       titulo: Novo item
       img: "/img/balao.jpg"
-      txt: ''
-      cliente: ''
+      txt: asdsd sd asd asd asd asd asda sd sada d&nbsp;
+      cliente: sss
       site: ''
-      data: ''
-      servico: '22'
+      data: 10/10/10
+      servico: ''
       cat: '22'
   contact:
     label: Contato

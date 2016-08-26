@@ -43,15 +43,24 @@ pages:
       site: ''
       data: ''
       servico: ''
-      cat: ''
+      cat: zz,tt,yy
     - id: ''
       titulo: ''
-      img: "/img/balao.jpg"
+      img: contas/maria4/img/portfolio/230605_10150180665658208_1683567_n.jpg
       txt: ''
       cliente: ''
       site: ''
       data: ''
       servico: ''
-      cat: zz
+      cat: ''
+    - id: ''
+      titulo: ''
+      img: contas/maria4/img/portfolio/globe-582060_1280.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: yy
   contact:
     label: Contato

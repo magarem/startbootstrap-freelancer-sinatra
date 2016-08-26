@@ -34,6 +34,7 @@ end
 
 before do
   @logado = session[:logado]
+  puts ">[@logado]>>#{@logado}"
   @data_path = "public/contas/{site_nome}/{site_nome}.yml"
 end
 
@@ -41,7 +42,7 @@ end
 # Encerra a seção de edição
 #
 get '/:site_nome/logout' do
-  session[:logado] = false
+  session.clear
   redirect '/'+params[:site_nome]
 end
 
@@ -60,10 +61,12 @@ post '/login_do' do
   
   #Compara a senha digitada no formulário de login com a senha do fonte
   if @form_senha.to_s == @data_senha.to_s then 
-    session[:logado] = true       
+    session[:logado] = true
+    session[:site_nome] = site_nome       
     @edit_flag = "true"
   else 
     session[:logado] = false
+    session[:site_nome] = ""
     @edit_flag = "false"      
   end
   redirect '/'+site_nome
@@ -74,8 +77,20 @@ end
 #
 get '/:site_nome' do
   @site_nome = params[:site_nome]
-  @edit_flag = session[:logado]
-  erb :index 
+  if @site_nome != "favicon.ico" then
+    puts "[@site_nome]>#{@site_nome}"
+    @edit_flag = session[:logado]
+    if @edit_flag then
+       if @site_nome == session[:site_nome] then    
+          erb :index 
+       else
+         session.clear
+         "<h1>Erro de autenticação (#{@edit_flag} - [#{@site_nome}] - [#{session[:site_nome]}])</h1>"
+       end
+    else
+      erb :index 
+    end       
+  end
 end
 
 #
@@ -87,6 +102,11 @@ get '/:site_nome/dataLoad' do
   @data_path.gsub! "{site_nome}", site_nome
   @data = YAML.load_file @data_path
   @data.to_json    
+end
+
+get '/:site_nome/logged' do 
+  @edit_flag = session[:logado] 
+  "#{@edit_flag}"
 end
 
 #
@@ -446,7 +466,7 @@ get "/novo_site_do/:email/:site_nome" do
   #Define o nome/email no arquivo fonte
   data = YAML.load_file @data_path
   data["name"] = site_nome 
-  data["name"] = email 
+  data["email"] = email 
   
   #Copia imagem da capa
   FileUtils.cp("public/img/balao.jpg","public/contas/#{site_nome}/img/balao.jpg")
@@ -459,6 +479,9 @@ get "/novo_site_do/:email/:site_nome" do
   YAML.dump( data, f )
   f.close  
   
+  session[:site_nome] = site_nome
+  session[:login] = true
+
   # Abre o site recem criado no modo de edição
   redirect "/#{site_nome}"
 end
