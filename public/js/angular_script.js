@@ -1,7 +1,5 @@
 var mod = angular.module("myapp", ['ngSanitize', 'ng-sortable','ngAnimate', 'ui.bootstrap', 'ngFileUpload']);
 
-
-
 mod.directive('onErrorSrc', function() {
   return {
     link: function(scope, element, attrs) {
@@ -13,8 +11,6 @@ mod.directive('onErrorSrc', function() {
     }
   }
 });
-
-
 
 mod.directive('contenteditable', ['$timeout', function($timeout) { return {
     restrict: 'A',
@@ -156,15 +152,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
       saveDiv: _saveDiv,
       portAdd: _portAdd
     }
-    // return{
-    //   name: 'Site Service',
-    //   get: function(callback){
-    //     $http.get('/maga/dataLoad').then(function(response) {
-    //       callback(response.data);             
-    //       //console.log("dataLoad - response.data:",response.data)              
-    //     });
-    //   }
-    // };
+    
   }]);
 
 mod.controller('topCtrl', function ($scope, $http, SiteData) {
@@ -214,11 +202,6 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
   $scope.imgs = [];
   $scope.imageCategories = [];
 
-  // SiteData.getSiteData().then(function(response) {
-  //   $scope.site = response.data;
-  //   console.log("SiteData[imgGridCtrl]:", response.data);
-  // })
-
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.imgs = response.data.pages.portfolio.items;
@@ -228,27 +211,13 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
   
   $scope.saveDiv = function(obj){    
       SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
-         
       })    
   }
 
   $scope.barConfig = {
     onSort: function (evt){
       console.log("barconfig [evt]:",evt.models)
-      // $http.post('/{{data}}/portfolio/ordena/'+evt.models); 
       SiteData.savePortfolioOrder(evt.models).success(function () {})
-
-      // $http({
-      //   headers : {
-      //     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8;"
-      //   },
-      //   method: 'POST',
-      //   url: "/maga/portfolio/ordena",                  
-      //   data: evt.models
-      // }).success(function () {})
-      //   $http.post('/{{data}}/portfolio/ordena', $httpParamSerializer(evt)).
-      // success(function(data){/* response status 200-299 */}).
-      // error(function(data){/* response status 400-999 */});
     }
   };
 
@@ -323,10 +292,7 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
     // }
     // $scope.imgs = $scope.imgs.filter(t);          
   };
-    
-  // $scope.currentImage = $scope.images[0];
-  // $scope.imageCategories = [{{port_cats}}];
-    
+     
   $scope.valueSelected = function (value) {
     if (value === null) {
         $scope.catselect = undefined;
@@ -336,12 +302,6 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
   $scope.filtraZero = function () {  
         $scope.catselect = undefined;
   }; 
-
-  
-
-  // $scope.$on('valuesUpdated', function() {
-  //    $scope.images = Service.images;
-  // });
 
   $scope.portfolio_add = function () {
     console.log("+")
@@ -421,34 +381,12 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
 mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope, $rootScope, Upload, $timeout, $http, SiteData) {
   
-   $scope.imgUploadBtn = true;
-   // $scope.uploadFile = function(index){
-
-   //      console.log("???file:",file,"index:",index)
-   //      var url = document.URL;
-   //      var urlArray = url.split("/");
-   //      var siteNome = urlArray[urlArray.length-1];
-
-   //      var file = $scope.myFile;
-   //      console.log('file is ' );
-   //      console.dir(file);
-   //      var uploadUrl = '/'+siteNome+'/portfolio/save/'+index;
-   //      fileUpload.uploadFileToUrl(file, uploadUrl)
-   //        .then(function () {
-   //            console.log('success');
-   //        }, function () {
-               
-   //        }, function () {
-   //            console.log('progress');
-   //        });
-   //  }
-
+  $scope.imgUploadBtn = true;   
           
-    SiteData.logged().then(function(response) { 
-        $scope.isLogged = response.data;
-        console.log(">>[$scope.isLogged]>>",response.data);
-    }) 
-  
+  SiteData.logged().then(function(response) { 
+    $scope.isLogged = response.data;
+    console.log(">>[$scope.isLogged]>>",response.data);
+  }) 
   
   $scope.up = function(){
      angular.element('#file').trigger('click');
@@ -460,7 +398,6 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
     var siteNome = urlArray[urlArray.length-1];
     
     console.log("Excluir:",item_index);      
-    //Service.ex(item); 
     $http.post('/'+siteNome+'/portfolio/delete/'+item_index); 
     $rootScope.$emit("CallDelImg", item_index);             
     $rootScope.$emit("ModalClose", item_index);
@@ -468,99 +405,44 @@ mod.controller('MyFormCtrl', ['$scope', '$rootScope', 'Upload', '$timeout', '$ht
 
   $scope.saveDiv = function(obj, i){        
     SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) { 
-
-    })   
-
-    $rootScope.$emit("categoriasUpdate"); 
+       $rootScope.$emit("categoriasUpdate");
+    })
   } 
   
   $scope.uploadPic = function(file, index) {
+    
     a = 0
-    console.log("--file:",file,"index:",index)
+    console.log(">>File: ", file, "index:", index)
 
     var url = document.URL;
     var urlArray = url.split("/");
     var siteNome = urlArray[urlArray.length-1];
-    
-    if (file == undefined) {
-      // Upload.upload({
-      //   url: '/maga/portfolio/save/'+index,
-      //   data: {item: $scope.item},      
-      // }); 
-      ok = true       
-    }else{
-      if (file.size < 600000) {
-        console.log('upload')
-        file.upload = Upload.upload({
-            url: '/'+siteNome+'/portfolio/uploadPic/'+index,
-            data: {item: $scope.item, file: file},
-       }).then(function (resp) {
-            console.log('---Success ' + resp.config.data.file.name);
-            file.result = true;
-
-            $rootScope.$emit("ImgChange",file.name, index, siteNome);
-        }, function (resp) {
-            console.log('---Error status: ' + resp.status);
-        }, function (evt) {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('---progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-        });
-        
-        // file.upload.then(function () {
-
-        //   }, function () {
-        //       console.log('error');
-        //   }, function () {
-        //       console.log('progress');
-        //       console.log('success');    
-        //       // $rootScope.$emit("ImgChange",file.name, index, siteNome); 
-
-        //   }
-        // );
-        // $timeout(callAtTimeout, 5000);
-        // function callAtTimeout() {
-        //       $rootScope.$emit("ImgChange",file.name, index, siteNome); 
-        // }
-        
-        // Upload.upload({
-        //   url: '/'+siteNome+'/portfolio/save/'+index,
-        //   data: {item: $scope.item, file: file},      
-        // }).then(function (resp) {
-        //   $scope.item.img = "img/portfolio/"+file.name;
-        //   console.log('$scope.item.img:',$scope.item.img)
-        //   console.log('resp:', resp)
-        // })       
-        //Service.images[$scope.item.id].img = "img/portfolio/"+file.name;    
-        // console.log("response.data:", a)
-        // if (a) {
-        //   alert();
-        //   $rootScope.$emit("ImgChange",file.name, index, siteNome); 
-        // }
-        // ok = true
-      }else{
-        alert("Imagem muito grande.");
-        ok = 0
-      }
+  
+    if (file.size < 6000000) {
       
-    }  
-    $rootScope.$emit("categoriasUpdate");
-    // if (ok) {
+      console.log('Enviando imagem...')
       
-    //   $rootScope.$emit("categoriasUpdate"); 
-    //   alert("Documento salvo com sucesso!");
-    // }
-    // if (!file == undefined) {
-    //     file.upload.then(function (response) {
-    //       $timeout(function () {file.result = response.data; });
-    //     }, function (response) {
-    //       if (response.status > 0)
-    //         $scope.errorMsg = response.status + ': ' + response.data;
-    //     }, function (evt) {
-    //       // Math.min is to fix IE which reports 200% sometimes
-    //       file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-    //     });
-    // }
-  }
+      file.upload = Upload.upload({
+          url: '/'+siteNome+'/portfolio/uploadPic/'+index,
+          data: {item: $scope.item, file: file},
+      
+      }).then(function (resp) {
+          console.log('Success ' + resp.config.data.file.name);
+          file.result = true;
+          $rootScope.$emit("ImgChange",file.name, index, siteNome);
+     
+      }, function (resp) {
+          console.log('Error status: ' + resp.status);
+      
+      }, function (evt) {
+          var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+          console.log('Progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+          $scope.progressVisible = true;
+          $scope.imgUploadAndamento = progressPercentage;
+      });
+    }
+  }  
+  //$rootScope.$emit("categoriasUpdate");
 }]);
 
 

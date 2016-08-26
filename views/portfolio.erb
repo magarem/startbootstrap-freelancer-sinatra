@@ -25,20 +25,13 @@
        
        <div class="row">
          <div class="text-center">
-          <ul>
-           <!--  <li ng-repeat="cat in imageCategories">
-              <a href ng-click="catselect.cat = cat">{{cat}}//</a></li> -->
-          </ul>
+         <!--  <ul>
+            <li ng-repeat="cat in imageCategories">
+              <a href ng-click="catselect.cat = cat">{{cat}}//</a></li>
+          </ul> -->
 
           <button ng-show="imageCategories.length > 0" class="btn btn-primary" ng-click="filtraZero()">Todas</button>
           <button ng-show="imageCategories.length > 0" class="btn btn-primary" style="margin: 5px;" ng-repeat="cat in imageCategories" ng-click="$parent.catselect = cat"> {{cat}} </button>
-
-          
-           <!-- <select ng-model="catselect"
-             ng-options="cat for cat in imageCategories"
-             ng-change="valueSelected(catselect)">
-            <option value>Todos</option>
-           </select> -->
         
          </div>
        </div>
@@ -119,36 +112,27 @@
                  ng-model="picFile"                  
                  id="file" 
                  name="file"    
-                 accept="image/*" ngf-max-size="2MB" 
+                 accept="image/*" ngf-max-size="6MB" 
                  ngf-model-invalid="errorFile" 
                  style="visibility:hidden"
                  >
-            <!-- <button type="file" ngf-select="uploadPic(picFile, i);"
-          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"
-          ng-model="picFile" 
-                 id="file" 
-                 name="file">
-      Select File</button>  -->  
             <style>
               #preview img{max-width: 400px; max-height: 400px;height:100px;}
             </style>
             <i ng-show="myForm.file.$error.maxSize">Imagem muito pesada 
-          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+          {{errorFile.size / 6000000|number:1}}MB: max 6M</i>
           <div ng-show="picFile.result" class="alert alert-success">
             <strong>Imagem enviada com sucesso<br></strong> 
           </div>
-          <!-- <img ngf-thumbnail="picFile" class="thumb"> -->
-            <!-- <div ng-if="picFile">                
-              <img id=preview ngf-thumbnail="picFile" class="resize-img2" ng-click="up();">
-            </div>
-            <div ng-if="!picFile">
-                 <img id=preview ngf-thumbnail="item.img" class="resize-img2" 
-                ng-click="up();" >
-            </div> -->
-            <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->    
-      <% if @edit_flag == true %>
-       
-        <i ng-show="!imgUploadBtn && !picFile.result">Enviando imagem...</i>
+                       
+      <% if @edit_flag == true %>        
+        <style>
+        .progress {
+            height: 2em !important;
+        }
+        </style>
+        <uib-progressbar ng-show="!imgUploadBtn && !picFile.result && imgUploadAndamento > 0" value="imgUploadAndamento" type="success"></uib-progressbar>
+
         <button ng-show="picFile && imgUploadBtn" type="button" class="btn btn-primary" ng-click="imgUploadBtn = false; uploadPic(picFile, i);">Confirmar imagem</button>
       <% end %>
       <p>
@@ -221,8 +205,6 @@
           </li>
       </ul>
       <br>
-      <i ng-show="myForm.file.$error.maxSize">Imagem muito pesada 
-          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
       <span class="progress" ng-show="picFile.progress >= 0">
         <div style="width:{{picFile.progress}}%" 
             ng-bind="picFile.progress + '%'"></div>

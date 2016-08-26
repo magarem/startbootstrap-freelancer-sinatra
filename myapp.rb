@@ -237,8 +237,8 @@ post "/:site_nome/upload" do
   @data_path.gsub! "{site_nome}", site_nome
 
   # Testa para ver se é uma imagem que está sendo enviada
-  if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 300000 then
-    
+  if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 5000000 then
+    puts "file.size> #{file.size}"
     # Salva imagem no disco (upload)
     @filename = site_nome+"."+params["file"][:filename].split(".").last.downcase
     File.open("./public/contas/#{site_nome}/img/#{@filename}", 'wb') do |f|
@@ -327,11 +327,12 @@ post "/:site_nome/portfolio/uploadPic/:index" do
 
   unless @file == nil
     @filename = params[:file][:filename]
+    puts "@filename> #{@filename}"
     file = params[:file][:tempfile]
     imagem_tipo = params[:file][:type]
 
     # Testa para ver se é uma imagem que está sendo enviada
-    if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 600000 then
+    if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 6000000 then
       img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@filename}"
       File.open(img_path, 'wb') do |f|
         f.write(file.read)
@@ -466,7 +467,8 @@ get "/novo_site_do/:email/:site_nome" do
   #Define o nome/email no arquivo fonte
   data = YAML.load_file @data_path
   data["name"] = site_nome 
-  data["email"] = email 
+  data["email"] = email
+  data["moldura"]["logo"]["label"] = site_nome 
   
   #Copia imagem da capa
   FileUtils.cp("public/img/balao.jpg","public/contas/#{site_nome}/img/balao.jpg")
