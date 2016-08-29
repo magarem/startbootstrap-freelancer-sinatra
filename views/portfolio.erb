@@ -1,10 +1,17 @@
 <style type="text/css">
- .centro {
- /* centraliza na horizontal */
-  -ms-justify-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;  
-}
+  .centro {
+   /* centraliza na horizontal */
+    -ms-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;  
+  }
+ .free-wall {
+        margin: 15px;
+      }
+      .brick img {
+        margin: 0;
+        display: block;
+      }
 </style>
 <div ng-controller="imgGridCtrl">
  <section id="portfolio" >
@@ -56,27 +63,62 @@
            max-height: 100%;
            overflow: hidden;
           }
+          img.resize{
+            width:220px; /* you can use % */
+            height: auto;
+          }
        </style>
-       <!-- images:{{imgs}} -->
-        <div class="row"  
-          <% if @edit_flag == true %>
-           ng-sortable="barConfig"
-          <% end %>
-           >
-            <div  class="col-sm-4 portfolio-item resize-img" ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}">
-              <a href="" class="portfolio-link" 
-                 ng-click="open(image, $index); mostra($index);">     
-                <div class="caption">
-                  <div class="caption-content">
-                    <!-- <i class="fa fa-search-plus fa-3x"></i> -->
-                  </div>
-                </div>
-                <img id="{{$index}}" ng-src="{{image.img}}" class="img-responsive centered-and-cropped">
-              </a>
-            </div>
-        </div>
+       <style type="text/css">
+* { box-sizing: border-box; }
+
+/* force scrollbar */
+html { overflow-y: scroll; }
+
+body { font-family: sans-serif; }
+
+/* ---- grid ---- */
+
+.grid {
+  background: #DDD;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+}
+
+ </style>
+
+  <div  class="row"  >
+    <div class="grid" masonry="true" ng-sortable="barConfig">
+      <div class="grid-item"  ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}" >
+         <img ng-src="{{image.img}}" imageonload ng-click="open(image, $index); mostra($index);">
+      </div>
     </div>
+  </div>
+
+
+   
  </section>
+
 </div>
 
 <script type="text/ng-template" id="myModalContent.html">

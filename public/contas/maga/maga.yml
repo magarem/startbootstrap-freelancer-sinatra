@@ -37,16 +37,16 @@ pages:
     items:
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/krishna-PZ17_l.jpg
+      img: contas/maga/img/portfolio/4.jpg
       txt: ''
       cliente: ''
       site: ''
       data: ''
       servico: ''
-      cat: vixi,segunda
+      cat: mmm
     - id: '0'
       titulo: praia
-      img: contas/maga/img/portfolio/230605_10150180665658208_1683567_n.jpg
+      img: contas/maga/img/portfolio/2.jpg
       txt: Este é um teste
       cliente: Cliente1
       site: ''
@@ -54,45 +54,45 @@ pages:
       servico: ''
       cat: primeiro
     - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/7.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/10.jpg
+      txt: Descrição
+      cliente: Cliente
+      site: Site
+      data: 0/0/0
+      servico: Serviço
+      cat: Categorias
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/1.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: vixi,segunda
+    - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/6.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
       titulo: amigos
-      img: contas/maga/img/portfolio/1382801_10151732881834022_1176302788_n.jpg
+      img: contas/maga/img/portfolio/3.jpg
       txt: j jh jh kj hkj hk
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/psychobox.png
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/10441014_4694932227324_6700500761529772666_n.jpg
-      txt: ''
-      cliente: ggg
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/13154_10152498366666864_4716982069481280827_n.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/10334380_10203139137832682_794177832675182465_n.jpg
-      txt: ''
       cliente: ''
       site: ''
       data: ''
@@ -100,7 +100,7 @@ pages:
       cat: ''
     - id: 0
       titulo: Novo
-      img: "/contas/maga/img/portfolio/krishna.jpg"
+      img: "/contas/maga/img/portfolio/8.jpg"
       txt: Txt novo
       nome: ''
       site: ''
@@ -109,7 +109,7 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/14491_1406299262918859_1699222815_n.jpg
+      img: contas/maga/img/portfolio/9.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -118,16 +118,16 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/balao.jpg
-      txt: Descrição
-      cliente: Cliente
-      site: Site
-      data: 0/0/0
-      servico: Serviço
-      cat: Categorias
+      img: contas/maga/img/portfolio/5.jpg
+      txt: ''
+      cliente: ggg
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/10342911_644434762344880_1879031220598696839_n.jpg
+      img: contas/maga/img/portfolio/11.jpg
       txt: Descrição
       cliente: Cliente
       site: Site
@@ -136,7 +136,7 @@ pages:
       cat: Categorias
     - id: '0'
       titulo: "?"
-      img: contas/maga/img/portfolio/230605_10150180665658208_1683567_n.jpg
+      img: contas/maga/img/portfolio/12.jpg
       txt: kh kjh kjh kjh jkh&nbsp;<div>j jk hkj hjkh kjkj hkj</div>
       cliente: ''
       site: jh
@@ -145,75 +145,30 @@ pages:
       cat: mmm
     - id: '0'
       titulo: Novo item
-      img: contas/maga/img/portfolio/10441014_4694932227324_6700500761529772666_n.jpg
+      img: contas/maga/img/portfolio/13.jpg
       txt: Este é um teste
       cliente: sdsd
       site: 
       data: 10/02/2016
       servico: Pintura
       cat: segunda
-    - id: ''
-      titulo: ''
-      img: ''
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
+    - id: 0
       titulo: ''
       img: "/img/balao.jpg"
       txt: ''
-      cliente: ''
+      nome: ''
       site: ''
       data: ''
       servico: ''
       cat: ''
-    - id: ''
+    - id: 0
       titulo: ''
-      img: "/img/balao.jpg"
+      img: "/contas/maga/img/portfolio/IMG_1662.jpg"
       txt: ''
-      cliente: ''
+      nome: ''
       site: ''
       data: ''
       servico: ''
       cat: ''
-    - id: ''
-      titulo: ''
-      img: "/img/balao.jpg"
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
-      titulo: ''
-      img: "/img/balao.jpg"
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
-      titulo: ttt2
-      img: "/img/balao.jpg"
-      txt: asdasd
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
-      titulo: Novo item
-      img: "/img/balao.jpg"
-      txt: asdsd sd asd asd asd asd asda sd sada d&nbsp;
-      cliente: sss
-      site: ''
-      data: 10/10/10
-      servico: ''
-      cat: '22'
   contact:
     label: Contato
