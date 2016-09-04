@@ -103,7 +103,32 @@ body { font-family: sans-serif; }
 .grid-item img {
   display: block;
   max-width: 100%;
+  width: 100%;
 }
+
+
+.cropArea {
+            background: #E4E4E4;
+            overflow: hidden;
+            width: 400px;
+            height: 400px;
+        }
+
+        img-crop {
+            display: block;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        img-crop canvas {
+            display: block;
+            left: 50%;
+            outline: 0 none;
+            position: absolute;
+            top: 50%;
+        }
 
  </style>
 
@@ -142,30 +167,71 @@ body { font-family: sans-serif; }
             top: 7px;
          }
        </style>
-       <form name="myForm" ng-controller="MyFormCtrl">         
+
+
+       <form name="myForm" ng-controller="MyFormCtrl" ng-init="theImage1 = item.img" >         
           <hr class="star-primary" >
-            <!-- <img ng-src="{{item.img}}" class="resize-img2"> -->
-            <img  ngf-thumbnail="picFile || item.img" class="resize-img2" 
-            <% if @edit_flag == true %>
-             ng-click="up();"
-            <% end %> >
-            <input type="file" 
-                 ngf-select 
-                 ng-model="picFile"                  
-                 id="file" 
-                 name="file"    
-                 accept="image/*" ngf-max-size="6MB" 
-                 ngf-model-invalid="errorFile" 
-                 style="visibility:hidden"
-                 >
-            <style>
-              #preview img{max-width: 400px; max-height: 400px;height:100px;}
-            </style>
-            <i ng-show="myForm.file.$error.maxSize">Imagem muito pesada 
-          {{errorFile.size / 6000000|number:1}}MB: max 6M</i>
-          <div ng-show="picFile.result" class="alert alert-success">
-            <strong>Imagem enviada com sucesso<br></strong> 
-          </div>
+           
+
+ <div class="row" nv-file-drop="" uploader="uploader">
+<!-- WITH OPTIONS -->
+<table class="table">
+                        <thead>
+                        <tr>
+                            <th width="50%">Name</th>
+                            <th ng-show="uploader.isHTML5">Size</th>
+                            <th ng-show="uploader.isHTML5">Progress</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in uploader.queue">
+                            <td>
+                              <strong>{{ item.file.name }}</strong>
+                                <div class="cropArea_">
+                                  <ng-croppie   
+                                    src="item.image"
+                                    ng-model='item.croppedImage'
+                                    update='onUpdate'
+                                    boundry="{w: 400, h: 400}"
+                                    viewport="{w: 360, h:260}"
+                                    mousezoom="true" 
+                                    zoom="true" 
+                                    type="square">
+                                  </ng-croppie>
+                                </div>
+                        
+                            </td>
+                            <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                            <td ng-show="uploader.isHTML5">
+                                <div class="progress" style="margin-bottom: 0;">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                            </td>
+                            <td nowrap>
+                                <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                </button>
+                                <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                </button>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+</div>
+           
+            <input type="file" nv-file-select="" uploader="uploader" multiple />
+           
                        
       <% if @edit_flag == true %>        
         <style>
@@ -173,9 +239,7 @@ body { font-family: sans-serif; }
             height: 2em !important;
         }
         </style>
-        <uib-progressbar ng-show="!imgUploadBtn && !picFile.result && imgUploadAndamento > 0" value="imgUploadAndamento" type="success"></uib-progressbar>
-
-        <button ng-show="picFile && imgUploadBtn" type="button" class="btn btn-primary" ng-click="imgUploadBtn = false; uploadPic(picFile, i);">Confirmar imagem</button>
+        
       <% end %>
       <p>
         <div contenteditable="{{isLogged}}"

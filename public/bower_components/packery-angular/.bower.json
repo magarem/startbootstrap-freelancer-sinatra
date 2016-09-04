@@ -1,0 +1,44 @@
+{
+  "name": "packery-angular",
+  "description": "AngularJS module for Packery",
+  "main": "dist/packery-angular.js",
+  "version": "1.0.0",
+  "authors": [
+    "Dilatorily"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".*",
+    "src",
+    "test",
+    "bower.json",
+    "CONTRIBUTING.md",
+    "gulpfile.js",
+    "karma.conf.js",
+    "package.json"
+  ],
+  "keywords": [
+    "AngularJS",
+    "Packery",
+    "Draggabilly"
+  ],
+  "homepage": "https://github.com/Dilatorily/packery-angular",
+  "moduleType": [
+    "globals"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "draggabilly": "^2.1.0",
+    "packery": "^2.0.0"
+  },
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "0887057756f604bccba96e1b4d05974ba5231549"
+  },
+  "_source": "https://github.com/Dilatorily/packery-angular.git",
+  "_target": "^1.0.0",
+  "_originalSource": "packery-angular",
+  "_direct": true
+}

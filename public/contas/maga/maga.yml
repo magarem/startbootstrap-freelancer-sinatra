@@ -37,7 +37,7 @@ pages:
     items:
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/4.jpg
+      img: contas/maga/img/portfolio/14054_571654219513099_1365755632_n.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -45,17 +45,8 @@ pages:
       servico: ''
       cat: mmm
     - id: '0'
-      titulo: praia
-      img: contas/maga/img/portfolio/2.jpg
-      txt: Este é um teste
-      cliente: Cliente1
-      site: ''
-      data: ''
-      servico: ''
-      cat: primeiro
-    - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/7.jpg
+      img: contas/maga/img/portfolio/250542_584839064884259_898296907_n.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -64,7 +55,7 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/10.jpg
+      img: contas/maga/img/portfolio/14115066_1256744017677374_4561442762528667633_o.jpg
       txt: Descrição
       cliente: Cliente
       site: Site
@@ -73,16 +64,7 @@ pages:
       cat: Categorias
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/1.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: vixi,segunda
-    - id: '0'
-      titulo: Novo
-      img: contas/maga/img/portfolio/6.jpg
+      img: contas/maga/img/portfolio/21006_428903953867799_309468443_n.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -90,8 +72,26 @@ pages:
       servico: ''
       cat: ''
     - id: '0'
+      titulo: Novo
+      img: contas/maga/img/portfolio/10543_588542077857854_1714100993_n.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: vixi,segunda
+    - id: '0'
+      titulo: praia
+      img: contas/maga/img/portfolio/64001G-stylish-wooden-garden-gazebo.jpg
+      txt: Este é um teste
+      cliente: Cliente1
+      site: ''
+      data: ''
+      servico: ''
+      cat: primeiro
+    - id: '0'
       titulo: amigos
-      img: contas/maga/img/portfolio/3.jpg
+      img: contas/maga/img/portfolio/67001_1419514494930669_1122270169_n.jpg
       txt: j jh jh kj hkj hk
       cliente: ''
       site: ''
@@ -100,7 +100,7 @@ pages:
       cat: ''
     - id: 0
       titulo: Novo
-      img: "/contas/maga/img/portfolio/8.jpg"
+      img: contas/maga/img/portfolio/8476_256355961172649_1362895802_n.jpg
       txt: Txt novo
       nome: ''
       site: ''
@@ -109,7 +109,7 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/9.jpg
+      img: contas/maga/img/portfolio/24314_540979582589264_645456642_n.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -127,7 +127,7 @@ pages:
       cat: ''
     - id: '0'
       titulo: Novo
-      img: contas/maga/img/portfolio/11.jpg
+      img: contas/maga/img/portfolio/11292_511123812259857_1138933390_n.jpg
       txt: Descrição
       cliente: Cliente
       site: Site
@@ -136,7 +136,7 @@ pages:
       cat: Categorias
     - id: '0'
       titulo: "?"
-      img: contas/maga/img/portfolio/12.jpg
+      img: contas/maga/img/portfolio/14183753_1215538481814507_5368342405212823610_n.jpg
       txt: kh kjh kjh kjh jkh&nbsp;<div>j jk hkj hjkh kjkj hkj</div>
       cliente: ''
       site: jh
