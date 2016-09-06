@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['ngSanitize', 'angularFileUpload', 'ngCroppie', 'ng-sortable','ngAnimate', 'ui.bootstrap', 'ngFileUpload']);
+var mod = angular.module("myapp", ['ngSanitize',  'ngFileUpload', 'ngCroppie', 'ng-sortable', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload']);
 
 mod.directive('onErrorSrc', function() {
   return {
@@ -358,7 +358,7 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
   }
     
   var ImgChange = function (src, index, conta){
-    console.log("ImgChange - src:",src,", index:",index)
+    //console.log("ImgChange - src:",src,", index:",index)
     // $scope.imgs[index].img = src
     console.log("$scope.imgs[index].img:", $scope.imgs[index].img)
     //src = "/contas/"+conta+"/img/portfolio/"+src
@@ -460,112 +460,45 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   }    
 });
 
+//
+//
+//    MyFormCtrl
+//
+//
+//
 
-mod.controller('MyFormCtrl', ['$scope', 'FileUploader', '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope, FileUploader, $rootScope, Upload, $timeout, $http, SiteData) {
+mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
   
- $scope.imgUploadBtn = true;
+  $scope.imgUploadBtn = true;
 
-    var url = document.URL;
-    var urlArray = url.split("/");
-    var siteNome = urlArray[urlArray.length-1];
-  
-  
-    
+  var url = document.URL;
+  var urlArray = url.split("/");
+  var siteNome = urlArray[urlArray.length-1]
 
+  var updestino = '/'+siteNome+'/portfolio/uploadPic/'+$scope.i
 
-  var uploader = $scope.uploader = new FileUploader({
-                    url: '/'+siteNome+'/portfolio/uploadPic/'+$scope.i
-                });
+  //$scope.picFile = $scope.item.img
 
-                // FILTERS
-
-                uploader.filters.push({
-                    name: 'imageFilter',
-                    fn: function(item /*{File|FileLikeObject}*/ , options) {
-                        var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-                        return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-                    }
-                });
-
-                // CALLBACKS
-
-                /**
-                 * Show preview with cropping
-                 */
-                uploader.onAfterAddingFile = function(item) {
-                    // $scope.croppedImage = '';
-                    item.croppedImage = '';
-                    var reader = new FileReader();
-                    reader.onload = function(event) {
-                        $scope.$apply(function() {
-                            item.image = event.target.result;
-                        });
-                    };
-                    reader.readAsDataURL(item._file);
-                };
-
-                /**
-                 * Upload Blob (cropped image) instead of file.
-                 * @see
-                 *   https://developer.mozilla.org/en-US/docs/Web/API/FormData
-                 *   https://github.com/nervgh/angular-file-upload/issues/208
-                 */
-                uploader.onBeforeUploadItem = function(item) {
-                    var blob = dataURItoBlob(item.croppedImage);
-                    item._file = blob;
-                };
-
-                /**
-                 * Converts data uri to Blob. Necessary for uploading.
-                 * @see
-                 *   http://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
-                 * @param  {String} dataURI
-                 * @return {Blob}
-                 */
-                var dataURItoBlob = function(dataURI) {
-                    var binary = atob(dataURI.split(',')[1]);
-                    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-                    var array = [];
-                    for (var i = 0; i < binary.length; i++) {
-                        array.push(binary.charCodeAt(i));
-                    }
-                    return new Blob([new Uint8Array(array)], {
-                        type: mimeString
-                    });
-                };
-
-                uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/ , filter, options) {
-                    console.info('onWhenAddingFileFailed', item, filter, options);
-                };
-                uploader.onAfterAddingAll = function(addedFileItems) {
-                    console.info('onAfterAddingAll', addedFileItems);
-                };
-                uploader.onProgressItem = function(fileItem, progress) {
-                    console.info('onProgressItem', fileItem, progress);
-                };
-                uploader.onProgressAll = function(progress) {
-                    console.info('onProgressAll', progress);
-                };
-                uploader.onSuccessItem = function(fileItem, response, status, headers) {
-                    console.info('onSuccessItem', fileItem, response, status, headers);
-                    $rootScope.$emit("ImgChange",fileItem.croppedImage, $scope.i, siteNome);
-                    console.info("i>",$scope.i)
-                };
-                uploader.onErrorItem = function(fileItem, response, status, headers) {
-                    console.info('onErrorItem', fileItem, response, status, headers);
-                };
-                uploader.onCancelItem = function(fileItem, response, status, headers) {
-                    console.info('onCancelItem', fileItem, response, status, headers);
-                };
-                uploader.onCompleteItem = function(fileItem, response, status, headers) {
-                    console.info('onCompleteItem', fileItem, response, status, headers);
-                };
-                uploader.onCompleteAll = function() {
-                    console.info('onCompleteAll');
-                };
-
-                console.info('uploader', uploader);
-
+  $scope.upload = function (dataUrl, name) {
+    console.log("name>", Upload.dataUrltoBlob(dataUrl, name))
+        Upload.upload({
+            url: updestino,
+            data: {
+                file: Upload.dataUrltoBlob(dataUrl, name)
+            },
+        }).then(function (response) {
+            $timeout(function () {
+                $scope.result = response.data;
+                //console.log("Sucesso!>", dataUrl)
+                $rootScope.$emit("ImgChange", dataUrl, $scope.i, siteNome);
+            });
+        }, function (response) {
+            if (response.status > 0) $scope.errorMsg = response.status 
+                + ': ' + response.data;
+        }, function (evt) {
+            $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+        });
+    }
 
 
  $scope.doubleWrap = "{{outputImage}}"
