@@ -90,7 +90,7 @@ mod.directive('imageonload', function() {
     };
 });
 
-mod.directive('contenteditable', ['$timeout', function($timeout) { return {
+mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) { return {
     restrict: 'A',
     require: '?ngModel',
     link: function(scope, element, attrs, ngModel) {
@@ -142,6 +142,7 @@ mod.directive('contenteditable', ['$timeout', function($timeout) { return {
         })
       })
 
+
       // model -> view
       var oldRender = ngModel.$render
       ngModel.$render = function() {
@@ -149,7 +150,7 @@ mod.directive('contenteditable', ['$timeout', function($timeout) { return {
         if (!!oldRender) {
           oldRender()
         }
-        element.html(ngModel.$viewValue || '')
+        element.html($sce.getTrustedHtml(ngModel.$viewValue || ''))
         if (opts.moveCaretToEndOnChange) {
           el = element[0]
           range = document.createRange()

@@ -1,18 +1,3 @@
-<style type="text/css">
-  .centro {
-   /* centraliza na horizontal */
-    -ms-justify-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;  
-  }
- .free-wall {
-        margin: 15px;
-      }
-      .brick img {
-        margin: 0;
-        display: block;
-      }
-</style>
 <div ng-controller="imgGridCtrl">
  <section id="portfolio" >
     <div class="container">
@@ -73,8 +58,8 @@
 
 /* force scrollbar */
 html { overflow-y: scroll; }
-
-body { font-family: sans-serif; }
+/*
+body { font-family: sans-serif; }*/
 
 /* ---- grid ---- */
 
@@ -91,7 +76,7 @@ body { font-family: sans-serif; }
 
 /* ---- .grid-item ---- */
 
-.grid-sizer,
+/*.grid-sizer,
 .grid-item {
   width: 33.333%;
 }
@@ -105,7 +90,13 @@ body { font-family: sans-serif; }
   max-width: 100%;
   width: 100%;
 }
+*/
 
+.grid-item img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
 
 .cropArea {
             background: #E4E4E4;
@@ -132,13 +123,35 @@ body { font-family: sans-serif; }
 
  </style>
 
-  <div  class="row"  >
+  <!-- <div  class="row"  >
     <div class="grid" masonry="true" ng-sortable="barConfig">
       <div class="grid-item"  ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}" >
          <img ng-src="{{image.img}}" imageonload ng-click="open(image, $index); mostra($index);">
       </div>
     </div>
-  </div>
+  </div> -->
+
+
+<div  class="row"  ng-sortable="barConfig">
+
+  <div class="col-sm-4 portfolio-item " ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}" >
+                    <a href="#" 
+                       class="portfolio-link" 
+                       
+                       ng-click="open(image, $index); mostra($index);">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img ng-src="{{image.img}}" style="width:360px; height:260px;"
+                             class="img-responsive" 
+                             alt=""
+                             >
+                    </a>
+                </div>
+</div>
+
 
 
    
@@ -210,15 +223,16 @@ form .progress {
         <button ngf-select ng-model="picFile" accept="image/*">
             Select Picture</button>
 
-              <ng-croppie   src="(picFile | ngfDataUrl) || item.img"
-                ng-model='croppedDataUrl'
-                update='onUpdate'
-                boundry="{w: 500, h: 500}"
-                viewport="{w: 300, h:300}"
-                mousezoom="true"
-                zoom="true"
-                type="square">
-  </ng-croppie>
+        <ng-croppie   
+          src="(picFile | ngfDataUrl) || item.img"
+          ng-model='croppedDataUrl'
+          update='onUpdate'
+          boundry="{w: 360, h:260}"
+          viewport="{w: 360, h:260}"
+          mousezoom="true"
+          zoom="true"
+          type="square">
+        </ng-croppie>
         
 
 
