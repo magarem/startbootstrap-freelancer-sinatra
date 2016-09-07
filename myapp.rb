@@ -327,7 +327,8 @@ post "/:site_nome/portfolio/uploadPic/:index" do
 
   unless @file == nil
     @filename = params[:file][:filename]
-    
+    #@filename = Time.now.to_f.to_s+"."+params["file"][:filename].split(".").last.downcase
+
     puts "@filename> #{@filename}"
     file = params[:file][:tempfile]
     imagem_tipo = params[:file][:type]

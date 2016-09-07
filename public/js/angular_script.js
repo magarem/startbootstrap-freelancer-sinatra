@@ -362,7 +362,7 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
     //console.log("ImgChange - src:",src,", index:",index)
     // $scope.imgs[index].img = src
     console.log("$scope.imgs[index].img:", $scope.imgs[index].img)
-    //src = "/contas/"+conta+"/img/portfolio/"+src
+    src = "/contas/"+conta+"/img/portfolio/"+src
     
     $scope.imgs[index].img = src
   }
@@ -482,16 +482,23 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
   $scope.upload = function (dataUrl, name) {
     console.log("name>", Upload.dataUrltoBlob(dataUrl, name))
+
+    //Pegando a extenção do arquivo
+    
+    var dotIndex = name.lastIndexOf('.');
+    var ext = name.substring(dotIndex);
+    var new_name = Date.now().toString()+ext;
+
         Upload.upload({
             url: updestino,
             data: {
-                file: Upload.dataUrltoBlob(dataUrl, name)
+                file: Upload.dataUrltoBlob(dataUrl, new_name)
             },
         }).then(function (response) {
             $timeout(function () {
                 $scope.result = response.data;
                 //console.log("Sucesso!>", dataUrl)
-                $rootScope.$emit("ImgChange", dataUrl, $scope.i, siteNome);
+                $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
             });
         }, function (response) {
             if (response.status > 0) $scope.errorMsg = response.status 

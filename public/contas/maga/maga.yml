@@ -30,7 +30,7 @@ pages:
     body: teste2
   about:
     label: Sobre
-    body1: "<p>Agroecologia é uma disciplina científica que usa a teoria ecológica
+    body1: "<p>22 Agroecologia é uma disciplina científica que usa a teoria ecológica
       para avaliar e gerir os sistemas agrícolas para que eles sejam produtivos, sustentáveis
       e que otimizem o uso dos recursos locais, cultivando a fertilidade do solo de
       maneira biológica e a regulação natural de pragas, através da promoção da biodiversidade,
@@ -47,25 +47,16 @@ pages:
     items:
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/515_10151108115083316_569672961_n.jpg
+      img: contas/maga/img/portfolio/1473277507136.jpg
       txt: ''
       cliente: ''
       site: ''
       data: ''
       servico: ''
-      cat: t2,t3
-    - id: ''
-      titulo: ''
-      img: contas/maga/img/portfolio/11292_511123812259857_1138933390_n.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: t6
+      cat: t4,78,baga
     - id: ''
       titulo: foto1
-      img: contas/maga/img/portfolio/11-Cópia84.jpg
+      img: "/contas/maga/img/portfolio/1473277343205.jpg"
       txt: ''
       cliente: ''
       site: ''
@@ -74,16 +65,16 @@ pages:
       cat: tt,t2
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/14054_571654219513099_1365755632_n.jpg
+      img: "/contas/maga/img/portfolio/1473277285250.jpg"
       txt: ''
       cliente: ''
       site: ''
       data: ''
       servico: ''
-      cat: t4,78,zuretinha
+      cat: t5,zuretinha
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/8476_256355961172649_1362895802_n.jpg
+      img: contas/maga/img/portfolio/1473277447068.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -92,12 +83,12 @@ pages:
       cat: ''
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/7845_456762141081980_419920785_n.jpg
+      img: contas/maga/img/portfolio/1473277215695.jpg
       txt: ''
       cliente: ''
       site: ''
       data: ''
       servico: ''
-      cat: t5,zuretinha
+      cat: t6,baga
   contact:
     label: Contato
