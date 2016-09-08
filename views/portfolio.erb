@@ -134,14 +134,14 @@ body { font-family: sans-serif; }*/
 
     <div  class="row"  ng-sortable="barConfig">
       <div class="col-sm-4 portfolio-item " ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}" >
-        <a href class="portfolio-link" ng-click="open(image, $index); mostra($index);">
+        <a href class="portfolio-link " ng-click="open(image, $index); mostra($index);">
           <div class="caption">
             <div class="caption-content">
                 <i class="fa fa-search-plus fa-3x"></i>
             </div>
           </div>
           <img ng-src="{{image.img}}" style="width:360px; height:260px;"
-               class="img-responsive" alt="">
+               class="img-responsive img-thumbnail" alt="">
         </a>
       </div>
     </div>

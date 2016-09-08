@@ -129,6 +129,12 @@ post '/:site_nome/objSave' do
   @val = @post_data["val"]
   @data_path.gsub! "{site_nome}", site_nome
 
+  #Debug
+  puts "@obj => #{@obj}"
+  puts "@val => |#{@val}|"
+
+  if @val == "" then @val = nil end
+
   # Autenticação
   if !@logado then redirect "/#{site_nome}" end
 
@@ -190,6 +196,7 @@ post '/:site_nome/objSave' do
     when "item.cat"
        @item_n = @post_data["item_n"]
        data["pages"]["portfolio"]["items"][@item_n]["cat"] = @val
+       puts ">>item.cat<<"
 
     when "about.label"
        data["pages"]["about"]["label"] = @val

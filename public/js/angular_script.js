@@ -12,6 +12,13 @@ mod.directive('onErrorSrc', function() {
   }
 });
 
+mod.filter('htmlToPlaintext', function() {
+    return function(text) {
+      return angular.element(text).text();
+    }
+  }
+);
+
 mod.directive("masonry", function () {
    var NGREPEAT_SOURCE_RE = '<!-- ngRepeat: ((.*) in ((.*?)( track by (.*))?)) -->';
     return {
@@ -216,7 +223,13 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
       return $http.post('/'+siteNome+'/portfolio/ordena', data);
     }
 
-    var _saveDiv = function(obj, val, item_n){    
+    var _saveDiv = function(obj, val, item_n){   
+      val = val.trim();
+      console.log(obj, val, item_n);
+      // val = val.replace(/&nbsp;/g, "");
+      // val = val.replace(/, /g, ",");
+      // val = val.replace(/ ,/g, ",");
+      // val = val.replace(/'/g, "");
       console.log(obj, val, item_n);
       return $http.post("/"+siteNome+"/objSave", {obj: obj, val: val, item_n: item_n});
     }
@@ -284,6 +297,9 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
   $scope.imgs = [];
   $scope.imageCategories = [];
 
+
+
+
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.imgs = response.data.pages.portfolio.items;
@@ -326,14 +342,25 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
   }
    
   var categoriasUpdate = function (){
+
+    
+
     regex = /(<([^>]+)>)/ig
     b = []
     // $scope.imageCategories = $scope.imgs.map(function(val){return val.cat.replace(regex, "").split(",")})[0]
     $scope.imgs.forEach(function(x){
       if (x.cat != null){
-        v = x.cat.replace(regex, "").trim()              
+        v = x.cat.replace(regex, "") 
+
         if (v.split(",").length > 1){
             v.split(",").forEach(function(t){
+              
+              console.log("t (origin) >>", "["+t+"]")
+              t = t.replace(/&nbsp;/g, "");
+              t = t.replace(/'/g, ""); 
+              t = t.replace(/^\s+|\s+$/gm,''); // trim left and right  
+              console.log("t (limpo) >>", "["+t+"]") 
+
               b.push(t)  
             })                  
         }else{
@@ -348,6 +375,11 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
     }
 
     console.log(b)
+
+    //limpa html das categorias
+    
+    
+    
 
     $scope.imageCategories = b.filter( onlyUnique )
     $scope.imageCategories = $scope.imageCategories.filter(function(ele){
@@ -528,10 +560,6 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
         //console.log(data)
  }
 
-
-
-     
-          
   SiteData.logged().then(function(response) { 
     $scope.isLogged = response.data;
     console.log(">>[$scope.isLogged]>>",response.data);
@@ -552,7 +580,8 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     $rootScope.$emit("ModalClose", item_index);
   };   
 
-  $scope.saveDiv = function(obj, i){        
+  $scope.saveDiv = function(obj, i){ 
+
     SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) { 
        $rootScope.$emit("categoriasUpdate");
     })

@@ -16,26 +16,29 @@ moldura:
   - label: Sobre
   - label: Contato
   footer:
-    endereco: agro
+    endereco: Framework de front-end elegante, intuitivo para um desenvolvimento web
+      mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
+      web mais rápido e fácil
     social:
       facebook: '111'
       googleplus: '222'
       twitter: '333'
       linkedin: '444'
-    about_resumo: sss
+    about_resumo: Framework de front-end elegante, intuitivo para um desenvolvimento
+      web mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
+      web mais rápido e fácil
 pages:
   home:
-    label: teste
+    label: sss
     img: contas/maga/img/maga.jpg
-    body: teste2
+    body: Framework de front-end elegante, intuitivo para um desenvolvimento web mais
+      rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
+      web mais rápido e fácil
   about:
     label: Sobre
-    body1: "<p>22 Agroecologia é uma disciplina científica que usa a teoria ecológica
-      para avaliar e gerir os sistemas agrícolas para que eles sejam produtivos, sustentáveis
-      e que otimizem o uso dos recursos locais, cultivando a fertilidade do solo de
-      maneira biológica e a regulação natural de pragas, através da promoção da biodiversidade,
-      enquanto minimizam os impactos ambientais e socioeconômicos negativos das tecnologias
-      modernas. &nbsp;<br></p>"
+    body1: "<p>Framework de front-end elegante, intuitivo para um desenvolvimento
+      web mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
+      web mais rápido e fácil<br></p>"
     body2: "<p>Agroecologia é uma disciplina científica que usa a teoria ecológica
       para avaliar e gerir os sistemas agrícolas para que eles sejam produtivos, sustentáveis
       e que otimizem o uso dos recursos locais, cultivando a fertilidade do solo de
@@ -47,35 +50,22 @@ pages:
     items:
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/1473277507136.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: t4,78,baga
-    - id: ''
-      titulo: foto1
       img: "/contas/maga/img/portfolio/1473277343205.jpg"
-      txt: ''
+      txt: '<span style="color: rgb(255,255,255); font-family: &quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;
+        font-size: 40px; line-height: 50px;">Framework de front-end elegante,intuitivo
+        para um desenvolvimento web mais rápido e fácil</span>'
       cliente: ''
       site: ''
       data: ''
       servico: ''
-      cat: tt,t2
+      cat: 
     - id: ''
       titulo: ''
-      img: "/contas/maga/img/portfolio/1473277285250.jpg"
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: t5,zuretinha
-    - id: ''
-      titulo: ''
-      img: contas/maga/img/portfolio/1473277447068.jpg
-      txt: ''
+      img: contas/maga/img/portfolio/1473278623955.jpg
+      txt: '<span style="color: rgb(255, 255, 255); font-family: &quot;Helvetica Neue&quot;,
+        Helvetica, Arial, sans-serif; font-size: 40px; line-height: 50px;">Framework
+        de front-end elegante, intuitivo para um desenvolvimento web mais rápido e
+        fácil</span>'
       cliente: ''
       site: ''
       data: ''
@@ -83,12 +73,26 @@ pages:
       cat: ''
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/1473277215695.jpg
-      txt: ''
+      img: contas/maga/img/portfolio/1473277447068.jpg
+      txt: '<span style="color: rgb(255, 255, 255); font-family: &quot;Helvetica Neue&quot;,
+        Helvetica, Arial, sans-serif; font-size: 40px; line-height: 50px;">Framework
+        de front-end elegante, intuitivo para um desenvolvimento web mais rápido e
+        fácil</span>'
       cliente: ''
       site: ''
       data: ''
       servico: ''
-      cat: t6,baga
+      cat: 
+    - id: ''
+      titulo: ''
+      img: contas/maga/img/portfolio/1473277215695.jpg
+      txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
+        mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
+        web mais rápido e fácil
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: 
   contact:
     label: Contato
