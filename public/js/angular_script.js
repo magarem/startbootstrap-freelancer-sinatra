@@ -1,5 +1,21 @@
 var mod = angular.module("myapp", ['ngSanitize',  'ngFileUpload', 'ngCroppie', 'ng-sortable', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload']);
 
+
+mod.factory('NameService', function($http, $q) {
+
+    //    Create a class that represents our name service.
+    function NameService() {
+              
+        //    getName returns a promise which when fulfilled returns the name.
+        self.getName = function() {
+            //    Use jsfiddles 'echo' to simulate an ajax request that 
+            //    returns 'dave'. This is '/api/my/name' in the example code.
+            return $http.post('/echo/json/', fiddleResponse, fiddleHeaders);
+        };
+    }
+    
+    return new NameService();
+});
 mod.directive('onErrorSrc', function() {
   return {
     link: function(scope, element, attrs) {
@@ -191,9 +207,22 @@ mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) {
   }}])
 
 
+mod.service('SiteDataL', function($q){
+    
+    var deferred = $q.defer();
 
+    this.getIsLogged = function() {
+            $http.get('/'+siteNome+'/logged').then(function(response) {
+            deferred.resolve(response.data);
+            });
+    };
 
-mod.factory('SiteData', ['$http', '$location', function($http, $location){
+    return deferred.promise;
+});
+
+mod.factory('SiteData', ['$http', '$q', '$location', function($http, $q, $location){
+
+    var deferred = $q.defer();
 
     var url = document.URL;
     var urlArray = url.split("/");
@@ -201,6 +230,15 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     var siteData = {}
 
     console.log("url:", siteNome);
+
+
+
+    var _logged2 = function(){      
+       $http.get('/'+siteNome+'/logged').then(function(response) {
+          console.log(">>>>",response.data)
+         return response.data;
+        });
+    }
 
     var _logged = function(){
       
@@ -240,6 +278,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     }
 
     return {
+      logged2: _logged2,
       logged: _logged,
       loadSiteData: _loadSiteData,
       getSiteData: _getSiteData,
@@ -253,6 +292,12 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 mod.controller('topCtrl', function ($scope, $http, SiteData) {
   
   $scope.site = {}; 
+  $scope.isLogged = 0;
+
+  SiteData.logged().then(function(response) { 
+    $scope.isLogged = parseInt(response.data);
+    console.log(">>[$scope.isLogged]>>",response.data);
+  }) 
 
    SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
@@ -267,8 +312,17 @@ mod.controller('topCtrl', function ($scope, $http, SiteData) {
   }
 })
 
-mod.controller('navCtrl',['$scope', 'SiteData', function ($scope, SiteData) {
-  $scope.site = {};   
+mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, $rootScope, SiteData) {
+  $scope.site = {}; 
+
+  $scope.isLogged = 0;
+
+  SiteData.logged().then(function(response) { 
+    $scope.isLogged = (response.data === 'true');
+    $rootScope.isLogged = $scope.isLogged
+    console.log(">>[$scope.isLogged]>>",response.data);
+  }) 
+
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
     console.log("SiteData[1]:", response.data);
@@ -281,7 +335,16 @@ mod.controller('navCtrl',['$scope', 'SiteData', function ($scope, SiteData) {
 }])
 
 mod.controller('headerCtrl',['$scope', 'SiteData', function ($scope, SiteData) {
+  
   $scope.site = {}; 
+  
+  $scope.isLogged = 0;
+
+  SiteData.logged().then(function(response) { 
+    $scope.isLogged = (response.data === 'true');
+    console.log(">>[$scope.isLogged]>>",response.data);
+  })
+
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
   })
@@ -293,13 +356,27 @@ mod.controller('headerCtrl',['$scope', 'SiteData', function ($scope, SiteData) {
   }
 }])
 
-mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'SiteData', function ($scope, $rootScope, $uibModal, $log, SiteData) {
-  $scope.imgs = [];
-  $scope.imageCategories = [];
+mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', 'SiteData', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, SiteData) {
 
-
-
-
+  //$scope.isLogged = false;
+  
+    SiteData.logged().then(function(response) { 
+      console.log("SiteData[imgGridCtrl]:", response.data === 'true');
+      
+      $scope.isLogged = (response.data === 'true');
+    
+      $scope.barConfig = {
+        disabled: !($scope.isLogged),
+        onSort: function (evt){
+          console.log("$scope.isLogged:",$scope.isLogged)
+          if ($scope.isLogged) {
+            SiteData.savePortfolioOrder(evt.models).success(function () {})
+          }
+        }
+      };
+    })
+ 
+  
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.imgs = response.data.pages.portfolio.items;
@@ -307,17 +384,24 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
     categoriasUpdate();
   })
   
+
   $scope.saveDiv = function(obj){    
       SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
       })    
   }
 
-  $scope.barConfig = {
-    onSort: function (evt){
-      console.log("barconfig [evt]:",evt.models)
-      SiteData.savePortfolioOrder(evt.models).success(function () {})
-    }
-  };
+ $scope.alt_aa = function(obj){    
+      $scope.aa = false
+  }
+
+  $scope.get = function(){    
+      return $scope.aa 
+  }
+  console.log("33333$scope.isLogged:",$scope.isLogged)
+
+  //if ($scope.isLogged) {console.log("ttttrue")} else {console.log("fffalse")}
+ 
+  
 
   $rootScope.$on("CallDelImg", function(event, item_index){
     delImg(item_index);
@@ -342,8 +426,6 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
   }
    
   var categoriasUpdate = function (){
-
-    
 
     regex = /(<([^>]+)>)/ig
     b = []
@@ -378,14 +460,11 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
 
     //limpa html das categorias
     
-    
-    
 
     $scope.imageCategories = b.filter( onlyUnique )
     $scope.imageCategories = $scope.imageCategories.filter(function(ele){
         return ele !== '';
     });
-
 
     console.log("$scope.imgs:",$scope.imgs)          
   }
@@ -469,14 +548,29 @@ mod.controller('imgGridCtrl',['$scope', '$rootScope', '$uibModal', '$log', 'Site
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
+
+
+  
+
 }]);
 
 
+
+
 mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInstance, $timeout, SiteData, item, i) {
+  
   $scope.item = item;
   $scope.a = 10;
   $scope.i = i;
+  
   console.log("item.titulo>", item)
+
+  $scope.isLogged = false;
+
+  SiteData.logged().then(function(response) { 
+    $scope.isLogged = (response.data === 'true');
+    console.log(">>[$scope.isLogged]>>",response.data);
+  })
 
   $rootScope.$on("ModalClose", function(){  
       $scope.cancel();
@@ -560,8 +654,10 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
         //console.log(data)
  }
 
+  $scope.isLogged = false;
+
   SiteData.logged().then(function(response) { 
-    $scope.isLogged = response.data;
+    $scope.isLogged = (response.data === 'true');
     console.log(">>[$scope.isLogged]>>",response.data);
   }) 
   
@@ -626,6 +722,13 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
 mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
   
+  $scope.isLogged = false;
+
+  SiteData.logged().then(function(response) { 
+    $scope.isLogged = (response.data === 'true');
+    console.log(">>[$scope.isLogged]>>",response.data);
+  }) 
+
   $scope.about = {}; 
   SiteData.getSiteData().then(function(response) {
     str = response.data.pages.about    
@@ -642,7 +745,16 @@ mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
 })
 
 mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
+  
   $scope.site = {}; 
+  
+  $scope.isLogged = false;
+
+  SiteData.logged().then(function(response) { 
+    $scope.isLogged = (response.data === 'true');
+    console.log(">>[$scope.isLogged]>>",response.data);
+  }) 
+
   SiteData.getSiteData().then(function(response) {    
     $scope.site = response.data
   })
@@ -669,10 +781,12 @@ mod.controller('footerCtrl', function ($scope, $http, SiteData) {
     })    
   }
 
+ $scope.isLogged = false;
+
   SiteData.logged().then(function(response) { 
-        $scope.isLogged = response.data;
-        console.log(">>[$scope.isLogged]>>",response.data);
-  }) 
+    $scope.isLogged = (response.data === 'true');
+    console.log(">>[$scope.isLogged]>>",response.data);
+  })   
 })
 
 mod.controller('loginCtrl', function ($scope, $http, SiteData) {

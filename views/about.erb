@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>
-                  <div contenteditable="<%=@edit_flag%>"
+                  <div contenteditable="{{isLogged}}"
                     ng-model="about.label"
                     strip-br="true"
                     select-non-editable="true"
@@ -17,7 +17,7 @@
         </div>
         <div class="row">
             <div class="col-lg-4 col-lg-offset-2"><p> 
-              <p contenteditable="<%=@edit_flag%>"
+              <p contenteditable="{{isLogged}}"
                 ng-model="about.body1"
                 strip-br="true"
                 select-non-editable="true"
@@ -27,7 +27,7 @@
               </p>  
             </div>
             <div class="col-lg-4"><p>
-             <p contenteditable="<%=@edit_flag%>"
+             <p contenteditable="{{isLogged}}"
                 ng-model="about.body2"
                 strip-br="true"
                 select-non-editable="true"

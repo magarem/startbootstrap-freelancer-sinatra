@@ -1,7 +1,7 @@
 <script type="text/ng-template" id="myModalContent.html">
     <div class="modal-body">
        <h2>
-         <div contenteditable="<%=@edit_flag%>"
+         <div contenteditable="{{isLogged}}"
           ng-model="item.titulo"
           strip-br="true"
           select-non-editable="true"
@@ -57,9 +57,10 @@
       
         
         <br>
-        <!--img ng-show="!picFile && item.img" ng-src="{{item.img}}" /-->
+        <img ng-show="!isLogged" ng-src="{{item.img}}" />
 
-        <ng-croppie   
+        <ng-croppie  
+          ng-show="isLogged" 
           src="(picFile | ngfDataUrl) || item.img"
           ng-model='croppedDataUrl'
           update='onUpdate'
@@ -75,13 +76,13 @@
         <!--div>
             <img ng-src="{{croppedDataUrl}}" />
         </div-->
-        <button  ngf-select ng-model="picFile" accept="image/*">
+        <button ng-show="isLogged"   ngf-select ng-model="picFile" accept="image/*">
             Selecionar imagem</button>
-        <button ng-show="picFile" ng-click="upload(croppedDataUrl, picFile.name)">Enviar</button> <br>   
+        <button ng-show="isLogged && picFile" ng-click="upload(croppedDataUrl, picFile.name)" >Enviar</button> <br>   
         <span class="progress" ng-show="progress >= 0">
           <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
         </span>
-        <span ng-show="result">Upload Successful</span>
+        <span ng-show="result">Imagem Enviada com sucesso!</span>
         <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
       <p>
         <div contenteditable="{{isLogged}}"

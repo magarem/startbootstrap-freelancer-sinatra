@@ -22,8 +22,8 @@
               [contenteditable="true"]:hover { outline: 2px dashed #0090D2; }
             </style>
             <a class="navbar-brand"
-               href="#page-top">         
-              <div contenteditable="<%=@edit_flag%>"
+               href="#page-top">  
+              <div contenteditable="{{isLogged}}"
                 ng-model="site.moldura.logo.label"
                 strip-br="true"
                 select-non-editable="true"

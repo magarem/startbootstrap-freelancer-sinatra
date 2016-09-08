@@ -105,7 +105,7 @@ get '/:site_nome/dataLoad' do
 end
 
 get '/:site_nome/logged' do 
-  @edit_flag = session[:logado] 
+  @edit_flag = session[:logado] || false
   "#{@edit_flag}"
 end
 

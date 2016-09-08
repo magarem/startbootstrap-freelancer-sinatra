@@ -1,10 +1,10 @@
-<div ng-controller="imgGridCtrl">
+<div ng-controller="imgGridCtrl" >
  <section id="portfolio" >
     <div class="container">
        <div class="row">
           <div class="col-lg-12 text-center">
             <h2>
-             <div contenteditable="<%=@edit_flag%>"
+             <div contenteditable="{{isLogged}}"
                ng-model="site.pages.portfolio.label"
                strip-br="true"
                select-non-editable="true"
@@ -16,7 +16,7 @@
        </div>
        
        <div class="row">
-         <div class="text-center">
+         <div class="text-center" ng-init="puxa()">
          <!--  <ul>
             <li ng-repeat="cat in imageCategories">
               <a href ng-click="catselect.cat = cat">{{cat}}//</a></li>
@@ -27,9 +27,9 @@
         
          </div>
        </div>
-       <% if @edit_flag == true %>
-         <button type="button" class="btn btn-default" ng-click="portfolio_add()">+</button>
-       <% end %>
+         
+       <button ng-show="isLogged" type="button" class="btn btn-default" ng-click="portfolio_add()">+</button>
+        
        <div class="clearfix"></div>
        <br />
        <style>

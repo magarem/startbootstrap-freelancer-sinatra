@@ -64,7 +64,7 @@
         <div class="row">
           <div class="footer-col col-md-4">
             <h3>Endereço</h3>
-            <div contenteditable="<%=@edit_flag%>"
+            <div contenteditable="{{isLogged}}"
               ng-model="site.moldura.footer.endereco"
               strip-br="true"
               select-non-editable="true"
@@ -74,9 +74,9 @@
           </div>
           <div class="footer-col col-md-4">
             <h3>Links</h3>
-             <% if @edit_flag  %>
-               <form>
-                 <div contenteditable="<%=@edit_flag%>"
+             
+               <form  ng-show="isLogged">
+                 <div contenteditable="{{isLogged}}"
                    ng-model="site.moldura.footer.social.facebook"
                    strip-br="true"
                    select-non-editable="true"
@@ -84,7 +84,7 @@
                    placeholder="Link Facebook...">
                  </div>                    
                  <br>
-                 <div contenteditable="<%=@edit_flag%>"
+                 <div contenteditable="{{isLogged}}"
                     ng-model="site.moldura.footer.social.googleplus"
                     strip-br="true"
                     select-non-editable="true"
@@ -92,7 +92,7 @@
                     placeholder="Link Google Plus...">
                  </div> 
                  <br>
-                 <div contenteditable="<%=@edit_flag%>"
+                 <div contenteditable="{{isLogged}}"
                     ng-model="site.moldura.footer.social.twitter"
                     strip-br="true"
                     select-non-editable="true"
@@ -100,7 +100,7 @@
                     placeholder="Link Twitter...">
                  </div> 
                  <br>
-                 <div contenteditable="<%=@edit_flag%>"
+                 <div contenteditable="{{isLogged}}"
                     ng-model="site.moldura.footer.social.linkedin"
                     strip-br="true"
                     select-non-editable="true"
@@ -109,8 +109,8 @@
                  </div>
                  <br>
               </form>
-             <% else %>              
-               <ul class="list-inline">
+                         
+               <ul class="list-inline" ng-show="!isLogged">
                  <li ng-hide="site.moldura.footer.social.facebook || site.moldura.footer.social.googleplus || site.moldura.footer.social.twitter || site.moldura.footer.social.linkedin">
                   {{site.email}}
                  </li>
@@ -127,12 +127,11 @@
                     <a href="https://www.linkedin.com/{{site.moldura.footer.social.linkedin}}" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
                  </li>
               </ul>
-            
-            <% end %>
+           
           </div>
           <div class="footer-col col-md-4">
             <h3>Sobre</h3>
-            <div contenteditable="<%=@edit_flag%>"
+            <div contenteditable="{{isLogged}}"
               ng-model="site.moldura.footer.about_resumo"
               strip-br="true"
               select-non-editable="true"
@@ -206,7 +205,7 @@
     // se cola algum texto vindo de algum site
     //
 
-    
+
     
     [].forEach.call(document.querySelectorAll('div[contenteditable="true"]'), function (el) {
 

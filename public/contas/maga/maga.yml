@@ -50,6 +50,29 @@ pages:
     items:
     - id: ''
       titulo: ''
+      img: "/contas/maga/img/portfolio/1473377171367.jpg"
+      txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
+        mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
+        web mais rápido e fácil
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: 
+    - id: ''
+      titulo: ''
+      img: "/contas/maga/img/portfolio/1473377137244.jpg"
+      txt: '<span style="color: rgb(255, 255, 255); font-family: &quot;Helvetica Neue&quot;,
+        Helvetica, Arial, sans-serif; font-size: 40px; line-height: 50px;">Framework
+        de front-end elegante, intuitivo para um desenvolvimento web mais rápido e
+        fácil</span>'
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: tt
+    - id: ''
+      titulo: fonte
       img: "/contas/maga/img/portfolio/1473277343205.jpg"
       txt: '<span style="color: rgb(255,255,255); font-family: &quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;
         font-size: 40px; line-height: 50px;">Framework de front-end elegante,intuitivo
@@ -58,37 +81,14 @@ pages:
       site: ''
       data: ''
       servico: ''
-      cat: 
+      cat: '1'
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/1473278623955.jpg
+      img: "/contas/maga/img/portfolio/1473377103821.jpg"
       txt: '<span style="color: rgb(255, 255, 255); font-family: &quot;Helvetica Neue&quot;,
         Helvetica, Arial, sans-serif; font-size: 40px; line-height: 50px;">Framework
         de front-end elegante, intuitivo para um desenvolvimento web mais rápido e
         fácil</span>'
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
-      titulo: ''
-      img: contas/maga/img/portfolio/1473277447068.jpg
-      txt: '<span style="color: rgb(255, 255, 255); font-family: &quot;Helvetica Neue&quot;,
-        Helvetica, Arial, sans-serif; font-size: 40px; line-height: 50px;">Framework
-        de front-end elegante, intuitivo para um desenvolvimento web mais rápido e
-        fácil</span>'
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: 
-    - id: ''
-      titulo: ''
-      img: contas/maga/img/portfolio/1473277215695.jpg
-      txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
-        mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
-        web mais rápido e fácil
       cliente: ''
       site: ''
       data: ''

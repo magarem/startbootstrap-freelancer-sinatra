@@ -40,7 +40,7 @@
 
         <div class="intro-text">
           <span class="name">
-            <div contenteditable="<%=@edit_flag%>"
+            <div contenteditable="{{isLogged}}"
                 ng-model="site.pages.home.label"
                 strip-br="true"
                 select-non-editable="true"
@@ -51,7 +51,7 @@
           </span>
           <hr class="star-light">
           <span class="skills">          
-            <div contenteditable="<%=@edit_flag%>"
+            <div contenteditable="{{isLogged}}"
                 ng-model="site.pages.home.body"
                 strip-br="true"
                 select-non-editable="true"
