@@ -13,7 +13,10 @@ moldura:
     link: index.ttt
   menu:
   - label: Catálogo
-  - label: Sobre
+  - label: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
+      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+      no mapa.
   - label: Contato
   footer:
     endereco: Framework de front-end elegante, intuitivo para um desenvolvimento web
@@ -29,22 +32,29 @@ moldura:
       web mais rápido e fácil
 pages:
   home:
-    label: sss
+    label: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
+      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+      no mapa.
     img: contas/maga/img/maga.jpg
-    body: Framework de front-end elegante, intuitivo para um desenvolvimento web mais
-      rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
-      web mais rápido e fácil
+    body: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
+      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+      no mapa.
   about:
-    label: Sobre
-    body1: "<p>Framework de front-end elegante, intuitivo para um desenvolvimento
-      web mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
-      web mais rápido e fácil<br></p>"
-    body2: "<p>Agroecologia é uma disciplina científica que usa a teoria ecológica
-      para avaliar e gerir os sistemas agrícolas para que eles sejam produtivos, sustentáveis
-      e que otimizem o uso dos recursos locais, cultivando a fertilidade do solo de
-      maneira biológica e a regulação natural de pragas, através da promoção da biodiversidade,
-      enquanto minimizam os impactos ambientais e socioeconômicos negativos das tecnologias
-      modernas. &nbsp;<br></p>"
+    label: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
+      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+      no mapa.
+    body1: "<p>Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
+      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+      no mapa.</p>"
+    body2: '<p><span style="color: rgb(152, 152, 152); font-family: Lato, sans-serif;
+      font-size: 17px; line-height: 24.2857px; background-color: rgb(255, 255, 255);">Um
+      vale cercado por montes suaves, no encontro de três rios, era dispu- tado palmo
+      a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa foi a primeira
+      vez que a região, hoje conhecida como São Lourenço, despontou no mapa.</span><br></p>'
   portfolio:
     label: Catálogo
     items:
@@ -60,12 +70,15 @@ pages:
       servico: ''
       cat: 
     - id: ''
-      titulo: ''
+      titulo: 
       img: "/contas/maga/img/portfolio/1473377137244.jpg"
-      txt: '<span style="color: rgb(255, 255, 255); font-family: &quot;Helvetica Neue&quot;,
-        Helvetica, Arial, sans-serif; font-size: 40px; line-height: 50px;">Framework
-        de front-end elegante, intuitivo para um desenvolvimento web mais rápido e
-        fácil</span>'
+      txt: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+        tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.
+        Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+        no mapa.Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+        tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.
+        Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+        no mapa.
       cliente: ''
       site: ''
       data: ''

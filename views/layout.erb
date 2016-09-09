@@ -207,23 +207,11 @@
 
 
     
-    [].forEach.call(document.querySelectorAll('div[contenteditable="true"]'), function (el) {
-
-    el.addEventListener('paste', function(e) {
-        e.preventDefault();
-        var text = e.clipboardData.getData("text/plain");
-        document.execCommand("insertHTML", false, text);
-    }, false);
-});
-
-    [].forEach.call(document.querySelectorAll('p[contenteditable="true"]'), function (el) {
-      
-    el.addEventListener('paste', function(e) {
-        e.preventDefault();
-        var text = e.clipboardData.getData("text/plain");
-        document.execCommand("insertHTML", false, text);
-    }, false);
-});
+     $(document).on('paste','[contenteditable]',function(e) {
+      e.preventDefault();
+      var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+      window.document.execCommand('insertText', false, text);
+  });
 
 // // external js: masonry.pkgd.js, imagesloaded.pkgd.js
 
