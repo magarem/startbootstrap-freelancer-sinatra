@@ -7,7 +7,10 @@ require 'mini_magick'
 require 'fileutils'
 
 
-enable :sessions
+#enable :sessions
+use Rack::Session::Cookie, :key => 'rack.session',
+                           :path => '/',
+                           :secret => 'maguetaototalraion'
 
 module IndiceArray
   def self.set_site_nome site_nome
