@@ -29,7 +29,7 @@ moldura:
       web mais rápido e fácil
 pages:
   home:
-    label: PArque das águas
+    label: PArque das águas!
     img: contas/maga/img/avatar.jpg
     body: São lourenço - MG - Brasil
   about:
@@ -46,21 +46,6 @@ pages:
   portfolio:
     label: Catálogo
     items:
-    - id: ''
-      titulo: Fidelito doido
-      img: "/contas/maga/img/portfolio/1473377137244.jpg"
-      txt: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
-        tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.
-        Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
-        no mapa.Um vale cercado por montes suaves, no encontro de três rios, era dispu-
-        tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.
-        Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
-        no mapa.
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: tt
     - id: ''
       titulo: ''
       img: "/contas/maga/img/portfolio/1473377171367.jpg"
@@ -83,6 +68,21 @@ pages:
       data: ''
       servico: ''
       cat: '1'
+    - id: ''
+      titulo: Fidelito doido
+      img: "/contas/maga/img/portfolio/1473377137244.jpg"
+      txt: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+        tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.
+        Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+        no mapa.Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+        tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.
+        Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+        no mapa.
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: tt
     - id: ''
       titulo: ''
       img: "/contas/maga/img/portfolio/1473377103821.jpg"

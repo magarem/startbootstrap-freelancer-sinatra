@@ -79,19 +79,22 @@ end
 get '/:site_nome' do
 
   @site_nome = params[:site_nome]
-  if @site_nome != "favicon.ico" then
-    puts "[@site_nome]>#{@site_nome}"
-    @edit_flag = session[:logado]
-    if @edit_flag then
-       if @site_nome == session[:site_nome] then    
-          erb :index 
-       else
-         session.clear
-         "<h1>Erro de autenticação (#{@edit_flag} - [#{@site_nome}] - [#{session[:site_nome]}])</h1>"
-       end
-    else
-      erb :index 
-    end       
+
+  if @site_nome != "undefined" then 
+    if @site_nome != "favicon.ico" then
+      puts "[@site_nome]>#{@site_nome}"
+      @edit_flag = session[:logado]
+      if @edit_flag then
+         if @site_nome == session[:site_nome] then    
+            erb :index 
+         else
+           session.clear
+           "<h1>Erro de autenticação (#{@edit_flag} - [#{@site_nome}] - [#{session[:site_nome]}])</h1>"
+         end
+      else
+        erb :index 
+      end       
+    end
   end
 end
 

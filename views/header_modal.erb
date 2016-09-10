@@ -1,0 +1,44 @@
+<script type="text/ng-template" id="headerModal.html">
+    <div class="modal-body">
+       <h2>
+         Imagem principal
+       </h2><br>
+       <img class="c"  ng-show="!picFile" ng-src="{{ site.pages.home.img }}"/>
+   
+   <div class='row' ng-if='picFile != undefined'>
+       <ng-croppie  
+          
+          src="(picFile | ngfDataUrl)"
+          ng-model='croppedDataUrl'
+          update='onUpdate'
+          boundry="{w: 400, h:400}"
+          viewport="{w: 250, h:250}"
+          mousezoom="true"
+          zoom="true"
+          type="circle">
+        </ng-croppie>
+<br>
+        
+
+        <button class="btn btn-primary" ng-show="isLogged && picFile" ng-click="upload(croppedDataUrl, picFile.name)" >Enviar</button>  
+
+       
+
+        <span class="progress" ng-show="progress >= 0">
+          <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+        </span>
+        <span ng-show="result">Imagem Enviada com sucesso!</span>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+  </div><br>
+  
+  <button class="btn btn-primary"  ng-show="isLogged" ngf-select ng-model="picFile" accept="image/*">Selecionar imagem</button>
+  
+  <button class="btn btn-primary"  ng-click="cancel()" >Fechar</button>  
+       
+        <script type="text/javascript">
+          $(document).on('paste','[contenteditable]',function(e) {
+      	    e.preventDefault();
+      	    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+      	    window.document.execCommand('insertText', false, text);
+      	});
+</script>

@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['ngSanitize',  'ngFileUpload', 'ngCroppie', 'ng-sortable', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload']);
+var mod = angular.module("myapp", ['ngSanitize',  'ngFileUpload', 'ngCroppie', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
 
 mod.directive('customOnChange', function() {
   return {
@@ -200,9 +200,7 @@ mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) {
     }
   }}])
 
-mod.factory('SiteData', ['$http', '$q', '$location', function($http, $q, $location){
-
-    var deferred = $q.defer();
+mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     var url = document.URL;
     var urlArray = url.split("/");
@@ -211,13 +209,8 @@ mod.factory('SiteData', ['$http', '$q', '$location', function($http, $q, $locati
 
     console.log("url:", siteNome);
 
-
-
     var _logged2 = function(){      
-       $http.get('/'+siteNome+'/logged').then(function(response) {
-          console.log(">>>>",response.data)
-         return response.data;
-        });
+      return logged;
     }
 
     var _logged = function(){
@@ -293,72 +286,118 @@ mod.controller('topCtrl', function ($scope, $http, SiteData) {
 })
 
 mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, $rootScope, SiteData) {
+  
   $scope.site = {}; 
-
   $scope.isLogged = 0;
 
-  SiteData.logged().then(function(response) { 
+  SiteData.logged2().then(function(response) { 
     $scope.isLogged = (response.data === 'true');
     $rootScope.isLogged = $scope.isLogged
-    console.log(">>[$scope.isLogged]>>",response.data);
+    console.log(">>[ttt]>>",response.data);
   }) 
 
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
     console.log("SiteData[1]:", response.data);
   })
+  
   $scope.saveDiv = function(obj){    
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
-       // console.log(response.data);
-    })    
+  })    
   }
 }])
 
-mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope, Upload, $timeout, $http, SiteData) {
+//
+//
+// headerCtrl
+//
+
+mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, Upload, $timeout, $http, SiteData, $uibModal) {
   
   $scope.site = {}; 
-  
   $scope.isLogged = 0;
-
   $scope.crop_box = false
 
-  SiteData.logged().then(function(response) { 
+  SiteData.logged2().then(function(response) { 
     $scope.isLogged = (response.data === 'true');
     console.log(">>[$scope.isLogged]>>",response.data);
   })
 
-  
-  
+  SiteData.getSiteData().then(function(response) {
+    $scope.site = response.data;
+    $scope.picFile = $scope.site.pages.home.img;
+  })
+
   $scope.saveDiv = function(obj){    
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
        // console.log(response.data);
     })    
   }
 
+  //
+  //
+  // Modal
+  //
+  //
+  $scope.animationsEnabled = true;
+  $scope.openHeaderModal = function () {
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      windowTopClass: "portfolio-modal modal",
+      templateUrl: 'headerModal.html',
+      controller: 'headerModalInstanceCtrl',
+      size: 'lg',
+      resolve: {
+        item: function () {
+          return 0;
+        }
+      }
+    });
+  };
 
+}])
+
+//
+//
+// headerModalInstanceCtrl
+//
+//
+mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
+
+  // $scope.item = item;
   
+  $scope.isLogged = false;
+
+  SiteData.logged2().then(function(response) { 
+    $scope.isLogged = (response.data === 'true');
+    console.log(">>[$scope.isLogged]>>",response.data);
+  })
+
+   SiteData.getSiteData().then(function(response) {
+    $scope.site = response.data;
+    $scope.picFile = null;
+    $scope.croppedDataUrl = null;
+  })
+
+  $rootScope.$on("ModalClose", function(){  
+      $scope.cancel();
+  });
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };   
+
+  $scope.saveDiv = function(obj, i){    
+    SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) {
+       // console.log(response.data);
+    })    
+  } 
+
   //
   // >> Envio da imagem
   // 
-  SiteData.getSiteData().then(function(response) {
+ 
     
-    $scope.site = response.data;
-  })
-    
-
-    var handleFileSelect=function(evt) {
-      var file=evt.currentTarget.files[0];
-      var reader = new FileReader();
-      reader.onload = function (evt) {
-        $scope.$apply(function($scope){
-          $scope.theImage1 = evt.target.result;
-        });
-      };
-      reader.readAsDataURL(file);
-    };
-    angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
-
-
     //Prepara o URL de destino do upload
     var url = document.URL;
     var urlArray = url.split("/");
@@ -370,49 +409,46 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
       console.log("name>", Upload.dataUrltoBlob(dataUrl, name))
       //name = "avatar"
       Upload.upload({
-          url: updestino,
-          data: {
-              file: Upload.dataUrltoBlob(dataUrl, name)
-          },
+        url: updestino,
+        data: {
+            file: Upload.dataUrltoBlob(dataUrl, name)
+        },
       }).then(function (response) {
-          $timeout(function () {
-              $scope.result = response.data;
-              $scope.crop_box = false
-              $scope.site.pages.home.img = dataUrl
-              $scope.flgUploadOk = true;
-              console.log("Sucesso!>", dataUrl)
-              //$rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
-          });
+        $timeout(function () {
+          $scope.result = response.data;
+          $scope.crop_box = false
+          $scope.site.pages.home.img = dataUrl
+          $scope.flgUploadOk = true;
+          console.log("Sucesso!>", dataUrl)
+          //$rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
+        });
       }, function (response) {
-          if (response.status > 0) $scope.errorMsg = response.status 
+        if (response.status > 0) $scope.errorMsg = response.status 
               + ': ' + response.data;
       }, function (evt) {
-          $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+        $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
       });
     }
      
      $scope.CropBoxOpen = function(){
-         $scope.flgUploadOk = false;
-         $scope.res = $scope.site.pages.home.img
-         $scope.site.pages.home.img = ""  
-         $scope.crop_box = true
-      
+       $scope.flgUploadOk = false;
+       $scope.res = $scope.site.pages.home.img
+       $scope.site.pages.home.img = ""  
+       $scope.crop_box = true
      }
 
       $scope.uploadCancel = function(){
          $scope.site.pages.home.img = $scope.res  
          $scope.crop_box = false
-      
      }
 
-     
+}]);
 
-}])
 
 mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', 'SiteData', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, SiteData) {
 
   
-  SiteData.logged().then(function(response) { 
+  SiteData.logged2().then(function(response) { 
     console.log("SiteData[imgGridCtrl]:", response.data === 'true');
     
     $scope.isLogged = (response.data === 'true');
@@ -619,7 +655,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) { 
+  SiteData.logged2().then(function(response) { 
     $scope.isLogged = (response.data === 'true');
     console.log(">>[$scope.isLogged]>>",response.data);
   })
@@ -708,7 +744,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) { 
+  SiteData.logged2().then(function(response) { 
     $scope.isLogged = (response.data === 'true');
     console.log(">>[$scope.isLogged]>>",response.data);
   }) 
@@ -776,7 +812,7 @@ mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
   
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) { 
+  SiteData.logged2().then(function(response) { 
     $scope.isLogged = (response.data === 'true');
     console.log(">>[$scope.isLogged]>>",response.data);
   }) 
@@ -802,7 +838,7 @@ mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
   
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) { 
+  SiteData.logged2().then(function(response) { 
     $scope.isLogged = (response.data === 'true');
     console.log(">>[$scope.isLogged]>>",response.data);
   }) 
@@ -835,7 +871,7 @@ mod.controller('footerCtrl', function ($scope, $http, SiteData) {
 
  $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) { 
+  SiteData.logged2().then(function(response) { 
     $scope.isLogged = (response.data === 'true');
     console.log(">>[$scope.isLogged]>>",response.data);
   })   
