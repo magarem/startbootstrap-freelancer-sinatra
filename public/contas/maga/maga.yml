@@ -13,10 +13,7 @@ moldura:
     link: index.ttt
   menu:
   - label: Catálogo
-  - label: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
-      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
-      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
-      no mapa.
+  - label: Sobre
   - label: Contato
   footer:
     endereco: Framework de front-end elegante, intuitivo para um desenvolvimento web
@@ -32,20 +29,11 @@ moldura:
       web mais rápido e fácil
 pages:
   home:
-    label: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
-      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
-      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
-      no mapa.
-    img: contas/maga/img/maga.jpg
-    body: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
-      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
-      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
-      no mapa.
+    label: PArque das águas
+    img: contas/maga/img/avatar.jpg
+    body: São lourenço - MG - Brasil
   about:
-    label: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
-      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
-      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
-      no mapa.
+    label: Sobre
     body1: "<p>Um vale cercado por montes suaves, no encontro de três rios, era dispu-
       tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
       foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
@@ -59,18 +47,7 @@ pages:
     label: Catálogo
     items:
     - id: ''
-      titulo: ''
-      img: "/contas/maga/img/portfolio/1473377171367.jpg"
-      txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
-        mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
-        web mais rápido e fácil
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: 
-    - id: ''
-      titulo: 
+      titulo: Fidelito doido
       img: "/contas/maga/img/portfolio/1473377137244.jpg"
       txt: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
         tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.
@@ -84,6 +61,17 @@ pages:
       data: ''
       servico: ''
       cat: tt
+    - id: ''
+      titulo: ''
+      img: "/contas/maga/img/portfolio/1473377171367.jpg"
+      txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
+        mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
+        web mais rápido e fácil
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: 
     - id: ''
       titulo: fonte
       img: "/contas/maga/img/portfolio/1473277343205.jpg"

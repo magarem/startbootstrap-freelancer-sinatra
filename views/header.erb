@@ -1,8 +1,8 @@
-<header ng-controller="headerCtrl">
+<header ng-controller="headerCtrl" >
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <style>
+        <!--style>
           .cropcircle{
             width: 250px;
             height: 250px;
@@ -17,26 +17,53 @@
           #image1{
             background-image: url({{ site.pages.home.img }});
           }
-        </style>
-         
-        <div id="image1" 
+        </style-->
+         <style>
+           .c{
+            border-radius: 100%;
+              box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+              -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+              -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+            }
+         </style>
+        <!--div id="image1" 
              class="cropcircle img-responsive" 
              <% if @edit_flag == true %>
                 onclick="$('#file').click();" 
              <% end %> >
-        </div>
+        </div-->
+
+        <img class="c" ng-show="!crop_box" ng-src="{{ site.pages.home.img }}" />
+
+        <ng-croppie  
+          ng-show="isLogged && picFile && crop_box" 
+          src="(picFile | ngfDataUrl) || site.pages.home.img"
+          ng-model='croppedDataUrl'
+          update='onUpdate'
+          boundry="{w: 400, h:400}"
+          viewport="{w: 250, h:250}"
+          mousezoom="true"
+          zoom="true"
+          type="circle">
+        </ng-croppie>
+
+         <button class="btn btn-primary"  ng-show="isLogged" ng-click="CropBoxOpen()" custom-on-change="openBoxOpen()"  ngf-select ng-model="picFile" accept="image/*">Selecionar imagem</button>
+
+        
+
+        <button class="btn btn-primary" ng-show="isLogged && picFile" ng-click="upload(croppedDataUrl, picFile.name)" >Enviar</button> <br> 
+
+        <button class="btn btn-primary" ng-show="(isLogged && picFile) && !flgUploadOk" ng-click="uploadCancel()" >Cancelar</button> <br> 
+
+        <span class="progress" ng-show="progress >= 0">
+          <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+        </span>
+        <span ng-show="result">Imagem Enviada com sucesso!</span>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
         <!-- Indicates a successful or positive action -->
-        <button id=header_img_confirm type="button" class="btn btn-primary" style="display: none" onclick="$('#uploadimage').submit();$('#header_img_confirm').hide();">Confirmar imagem</button>
-        <form id=uploadimage action="" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="site" value="{{site.name}}">
-          <input type="hidden" id="flag_form_0" value="">
-          <input 
-             class="btn btn-info" 
-             type="file" 
-             name="file" 
-             id="file" required 
-             style="visibility:hidden">
-        </form>
+       
+        <!--button id=header_img_confirm type="button" class="btn btn-primary" style="display: none" onclick="$('#uploadimage').submit();$('#header_img_confirm').hide();">Confirmar imagem</button-->
+         
 
         <div class="intro-text">
           <span class="name">
@@ -68,63 +95,3 @@
    </div>
   </div> 
 </header>
-
-<script>
-$(document).ready(function (e) {
-    $("#uploadimage").on('submit',(function(e) {
-        console.log(this.id);
-        e.preventDefault();
-        //$("#message").empty(); 
-        //$('#loading').show();
-        //data =  new FormData(this);
-        //alert(JSON.stringify((new FormData(this))));
-        var url = document.URL;
-        var urlArray = url.split("/");
-        var siteNome = urlArray[urlArray.length-1];
-        $.ajax({
-            url: "/"+siteNome+"/upload",            // Url to which the request is send
-            type: "POST",                   // Type of request to be send, called as method
-            data:  new FormData(this),      // Data sent to server, a set of key/value pairs representing form fields and values 
-            contentType: false,             // The content type used when sending data to the server. Default is: "application/x-www-form-urlencoded"
-            cache: false,                   // To unable request pages to be cached
-            processData:false,              // To send DOMDocument or non processed data file it is set to false (i.e. data should not be in the form of string)
-            success: function(data)         // A function to be called if request succeeds
-            {
-
-              // $('#header_img_confirm').hide();
-              //alert("Item salvo com sucesso!");
-              //$('#loading').hide();
-              //$("#message").html(data);         
-            }           
-       });
-    }));
- });   
-
-
-$(document).ready(function (e) {
-// Function to preview image
-    $(function() {
-        $("#file").change(function() {
-            console.log("upload")
-            var file = this.files[0];
-            var imagefile = file.type;
-            var match= ["image/jpeg","image/png","image/jpg"];  
-            if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
-            {
-            return false;
-            }
-            else
-            {
-                var reader = new FileReader();  
-                reader.onload = imageIsLoaded;
-                reader.readAsDataURL(this.files[0]);
-                // $('#uploadimage').submit();
-            }       
-        });
-    });
-    function imageIsLoaded(e) { 
-        $('#image1').css('background-image',"url("+e.target.result+")");
-        $('#header_img_confirm').show();
-    };
- });
-</script>

@@ -1,21 +1,15 @@
 var mod = angular.module("myapp", ['ngSanitize',  'ngFileUpload', 'ngCroppie', 'ng-sortable', 'ngAnimate', 'ui.bootstrap', 'ngFileUpload']);
 
-
-mod.factory('NameService', function($http, $q) {
-
-    //    Create a class that represents our name service.
-    function NameService() {
-              
-        //    getName returns a promise which when fulfilled returns the name.
-        self.getName = function() {
-            //    Use jsfiddles 'echo' to simulate an ajax request that 
-            //    returns 'dave'. This is '/api/my/name' in the example code.
-            return $http.post('/echo/json/', fiddleResponse, fiddleHeaders);
-        };
+mod.directive('customOnChange', function() {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      var onChangeHandler = scope.$eval(attrs.customOnChange);
+      element.bind('change', onChangeHandler);
     }
-    
-    return new NameService();
+  };
 });
+
 mod.directive('onErrorSrc', function() {
   return {
     link: function(scope, element, attrs) {
@@ -206,20 +200,6 @@ mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) {
     }
   }}])
 
-
-mod.service('SiteDataL', function($q){
-    
-    var deferred = $q.defer();
-
-    this.getIsLogged = function() {
-            $http.get('/'+siteNome+'/logged').then(function(response) {
-            deferred.resolve(response.data);
-            });
-    };
-
-    return deferred.promise;
-});
-
 mod.factory('SiteData', ['$http', '$q', '$location', function($http, $q, $location){
 
     var deferred = $q.defer();
@@ -334,47 +314,119 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
   }
 }])
 
-mod.controller('headerCtrl',['$scope', 'SiteData', function ($scope, SiteData) {
+mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope, Upload, $timeout, $http, SiteData) {
   
   $scope.site = {}; 
   
   $scope.isLogged = 0;
+
+  $scope.crop_box = false
 
   SiteData.logged().then(function(response) { 
     $scope.isLogged = (response.data === 'true');
     console.log(">>[$scope.isLogged]>>",response.data);
   })
 
-  SiteData.getSiteData().then(function(response) {
-    $scope.site = response.data;
-  })
+  
   
   $scope.saveDiv = function(obj){    
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
        // console.log(response.data);
     })    
   }
+
+
+  
+  //
+  // >> Envio da imagem
+  // 
+  SiteData.getSiteData().then(function(response) {
+    
+    $scope.site = response.data;
+  })
+    
+
+    var handleFileSelect=function(evt) {
+      var file=evt.currentTarget.files[0];
+      var reader = new FileReader();
+      reader.onload = function (evt) {
+        $scope.$apply(function($scope){
+          $scope.theImage1 = evt.target.result;
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+    angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+
+
+    //Prepara o URL de destino do upload
+    var url = document.URL;
+    var urlArray = url.split("/");
+    var siteNome = urlArray[urlArray.length-1]
+    var updestino = '/'+siteNome+'/avatar/upload'
+    
+    $scope.upload = function (dataUrl, name) {
+      
+      console.log("name>", Upload.dataUrltoBlob(dataUrl, name))
+      //name = "avatar"
+      Upload.upload({
+          url: updestino,
+          data: {
+              file: Upload.dataUrltoBlob(dataUrl, name)
+          },
+      }).then(function (response) {
+          $timeout(function () {
+              $scope.result = response.data;
+              $scope.crop_box = false
+              $scope.site.pages.home.img = dataUrl
+              $scope.flgUploadOk = true;
+              console.log("Sucesso!>", dataUrl)
+              //$rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
+          });
+      }, function (response) {
+          if (response.status > 0) $scope.errorMsg = response.status 
+              + ': ' + response.data;
+      }, function (evt) {
+          $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+      });
+    }
+     
+     $scope.CropBoxOpen = function(){
+         $scope.flgUploadOk = false;
+         $scope.res = $scope.site.pages.home.img
+         $scope.site.pages.home.img = ""  
+         $scope.crop_box = true
+      
+     }
+
+      $scope.uploadCancel = function(){
+         $scope.site.pages.home.img = $scope.res  
+         $scope.crop_box = false
+      
+     }
+
+     
+
 }])
 
 mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', 'SiteData', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, SiteData) {
 
-  //$scope.isLogged = false;
   
-    SiteData.logged().then(function(response) { 
-      console.log("SiteData[imgGridCtrl]:", response.data === 'true');
-      
-      $scope.isLogged = (response.data === 'true');
+  SiteData.logged().then(function(response) { 
+    console.log("SiteData[imgGridCtrl]:", response.data === 'true');
     
-      $scope.barConfig = {
-        disabled: !($scope.isLogged),
-        onSort: function (evt){
-          console.log("$scope.isLogged:",$scope.isLogged)
-          if ($scope.isLogged) {
-            SiteData.savePortfolioOrder(evt.models).success(function () {})
-          }
+    $scope.isLogged = (response.data === 'true');
+  
+    $scope.barConfig = {
+      disabled: !($scope.isLogged),
+      onSort: function (evt){
+        console.log("$scope.isLogged:",$scope.isLogged)
+        if ($scope.isLogged) {
+          SiteData.savePortfolioOrder(evt.models).success(function () {})
         }
-      };
-    })
+      }
+    };
+  })
  
   
   SiteData.getSiteData().then(function(response) {

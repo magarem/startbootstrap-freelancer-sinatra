@@ -76,6 +76,7 @@ end
 # Inicia o aplicativo
 #
 get '/:site_nome' do
+
   @site_nome = params[:site_nome]
   if @site_nome != "favicon.ico" then
     puts "[@site_nome]>#{@site_nome}"
@@ -231,10 +232,7 @@ end
 #
 # upload da imagem de capa (oval)
 #
-post "/:site_nome/upload" do 
-
-  # Autenticação
-  if !@logado then redirect "/#{site_nome}" end
+post "/:site_nome/avatar/upload" do 
 
   # Pega os parametros 
   site_nome = params[:site_nome]
@@ -243,19 +241,24 @@ post "/:site_nome/upload" do
   imagem_tipo = params[:file][:type]
   @data_path.gsub! "{site_nome}", site_nome
 
+   # Autenticação
+  if !@logado then redirect "/#{site_nome}" end
+
   # Testa para ver se é uma imagem que está sendo enviada
   if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 5000000 then
     puts "file.size> #{file.size}"
     # Salva imagem no disco (upload)
-    @filename = site_nome+"."+params["file"][:filename].split(".").last.downcase
+    @filename = "avatar."+params["file"][:filename].split(".").last.downcase
+    # @filename_after = "avatar.png"
     File.open("./public/contas/#{site_nome}/img/#{@filename}", 'wb') do |f|
       f.write(file.read)
     end
     
-    # Reduz o tamanho da imagem
-    image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
-    image.resize "600x600"   
-    image.write "./public/contas/#{site_nome}/img/#{@filename}"
+    # # Reduz o tamanho da imagem
+    # image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
+    # image.resize "600x600"
+    # image.format "png"   
+    # image.write "./public/contas/#{site_nome}/img/#{@filename_after}"
 
     # Salva o nome da imagem o arquivo fonte
     data = YAML.load_file @data_path
