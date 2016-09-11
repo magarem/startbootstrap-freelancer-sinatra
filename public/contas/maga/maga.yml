@@ -85,7 +85,7 @@ pages:
       cat: tt
     - id: ''
       titulo: ''
-      img: "/contas/maga/img/portfolio/1473377103821.jpg"
+      img: contas/maga/img/portfolio/1473554160009.jpg
       txt: '<span style="color: rgb(255, 255, 255); font-family: &quot;Helvetica Neue&quot;,
         Helvetica, Arial, sans-serif; font-size: 40px; line-height: 50px;">Framework
         de front-end elegante, intuitivo para um desenvolvimento web mais rápido e

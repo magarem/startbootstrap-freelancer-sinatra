@@ -78,7 +78,7 @@
         </div-->
         <button ng-show="isLogged"  ngf-select ng-model="picFile" accept="image/*">
             Selecionar imagem</button>
-        <button ng-show="isLogged && picFile" ng-click="upload1(croppedDataUrl, picFile.name)" >Enviar</button> <br>   
+        <button ng-show="isLogged && picFile" ng-click="upload(croppedDataUrl, picFile.name)" >Enviar</button> <br>   
         <span class="progress" ng-show="progress >= 0">
           <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
         </span>
