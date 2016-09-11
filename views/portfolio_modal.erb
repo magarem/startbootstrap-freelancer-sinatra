@@ -25,13 +25,14 @@
 		//     width:500px;
 		//     height:350px;
 		// }
-		form .progress {
-		    line-height: 15px;
-		}
+		// form .progress {
+		    
+		// }
 		.progress {
 		    display: inline-block;
 		    width: 100px;
 		    border: 3px groove #CCC;
+        line-height: 15px;
 		}
 		.progress div {
 		    font-size: smaller;
@@ -47,43 +48,50 @@
        </style>
 
 
-       <form name="myForm" ng-controller="MyFormCtrl" ng-init="picFile" >         
+       <div name="myForm" ng-controller="MyFormCtrl" ng-init="picFile"  >
+        <br>
+        <img ng-show="!isLogged || !picFile || flgImg" 
+             style="width:100%; max-width:500px;"
+             ng-src="{{item.img}}"   
+             ng-click="openImgSelect()"/><Br>
        
-
-             <!--img  ngf-thumbnail="picFile || item.img" class="resize-img2" 
-            <% if @edit_flag == true %>
-             ng-click="up();"
-            <% end %> -->
-      
-        
-        <br>
-        <img ng-show="!isLogged" ng-src="{{item.img}}" />
-
-        <ng-croppie  
-          ng-show="isLogged" 
-          src="(picFile | ngfDataUrl) || item.img"
-          ng-model='croppedDataUrl'
-          update='onUpdate'
-          boundry="{w: 500, h:400}"
-          viewport="{w: 360, h:260}"
-          mousezoom="true"
-          zoom="true"
-          type="square">
-        </ng-croppie>
-        <br>
-
-
-        <!--div>
-            <img ng-src="{{croppedDataUrl}}" />
-        </div-->
-        <button ng-show="isLogged"  ngf-select ng-model="picFile" accept="image/*">
-            Selecionar imagem</button>
-        <button ng-show="isLogged && picFile" ng-click="upload(croppedDataUrl, picFile.name)" >Enviar</button> <br>   
-        <span class="progress" ng-show="progress >= 0">
+        <div ng-if='flgCropBox && (picFile != undefined)'>
+          <ng-croppie  
+            ng-show="isLogged" 
+            src="(picFile | ngfDataUrl) || item.img"
+            ng-model='croppedDataUrl'
+            update='onUpdate'
+            boundry="{w: 500, h:400}"
+            viewport="{w: 360, h:260}"
+            mousezoom="true"
+            zoom="true"
+            type="square">
+          </ng-croppie>
+          
+          <span class="progress" ng-show="progress >= 0">
           <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-        </span>
+          </span>
+         
+         <div ng-show="isLogged && picFile"> 
+          <br>
+          <button 
+            class="btn btn-primary"
+            ng-click="upload(croppedDataUrl, picFile.name);" >Enviar</button>
+         </div>    
+        </div> 
+        <button 
+          style = "visibility: hidden; height:0px;"
+          id="imgSelect"
+          ng-show="isLogged"  
+          ngf-select 
+          ng-model="picFile" 
+          accept="image/*" 
+          ng-click="flgCropBox=true; flgImg=false">
+            Selecionar imagem
+        </button>
         <span ng-show="result">Imagem Enviada com sucesso!</span>
         <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+      
       <p>
         <div contenteditable="{{isLogged}}"
           style = "font-size: 20px;"
@@ -92,7 +100,6 @@
           select-non-editable="true"
           ng-blur="saveDiv('item.txt', i)"
           placeholder="Descrição"
-
           >
         </div>
       </p>
@@ -155,20 +162,18 @@
           </li>
       </ul>
       <br>
-      <span class="progress" ng-show="picFile.progress >= 0">
+      <!--span class="progress" ng-show="picFile.progress >= 0">
         <div style="width:{{picFile.progress}}%" 
             ng-bind="picFile.progress + '%'"></div>
-      </span>
+      </span-->
       
       <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
       
-      <!-- <button type="button" class="btn btn-default" ng-click="uploadPic(picFile, i);">Salvar</button> --> 
-      <% if @edit_flag == true %>
-        <button type="button" class="btn btn-default" ng-click="excluir(i);">Excluir</button>    
-      <% end %>
-      <button type="button" class="btn btn-default" ng-click="cancel();"><i class="fa fa-times"></i> Fechar</button>
+      <button type="button" ng-show="isLogged" class="btn btn-default" ng-click="excluir(i);">Excluir</button>    
+     
+      <button type="button"  class="btn btn-default" ng-click="cancel();"><i class="fa fa-times"></i> Fechar</button>
   </div>
-  </form>
+ 
   <script type="text/javascript">
     $(document).on('paste','[contenteditable]',function(e) {
 	    e.preventDefault();

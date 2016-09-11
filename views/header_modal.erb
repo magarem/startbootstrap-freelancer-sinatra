@@ -1,4 +1,4 @@
-<script type="text/ng-template" id="headerModal.html">
+<script type="text/ng-template" id="headerModal.html" >
     <div class="modal-body">
        <h2>
          Imagem principal
@@ -20,7 +20,7 @@
 <br>
         
 
-        <button class="btn btn-primary" ng-show="isLogged && picFile" ng-click="upload(croppedDataUrl, picFile.name)" >Enviar</button>  
+        <button  class="btn btn-primary" ng-show="isLogged && picFile" ng-click="upload(croppedDataUrl, picFile.name)" >Enviar</button>  
 
        
 
@@ -31,7 +31,7 @@
         <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
   </div><br>
   
-  <button class="btn btn-primary"  ng-show="isLogged" ngf-select ng-model="picFile" accept="image/*">Selecionar imagem</button>
+  <button id=imgSelect ng-init="imgSelectTriger()" class="btn btn-primary"  ng-show="isLogged" ngf-select ng-model="picFile" accept="image/*">Selecionar imagem</button>
   
   <button class="btn btn-primary"  ng-click="cancel()" >Fechar</button>  
        

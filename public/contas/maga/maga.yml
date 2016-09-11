@@ -47,19 +47,8 @@ pages:
     label: Catálogo
     items:
     - id: ''
-      titulo: ''
-      img: "/contas/maga/img/portfolio/1473377171367.jpg"
-      txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
-        mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
-        web mais rápido e fácil
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: 
-    - id: ''
       titulo: fonte
-      img: "/contas/maga/img/portfolio/1473277343205.jpg"
+      img: "/contas/maga/img/portfolio/1473622728200.jpg"
       txt: '<span style="color: rgb(255,255,255); font-family: &quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;
         font-size: 40px; line-height: 50px;">Framework de front-end elegante,intuitivo
         para um desenvolvimento web mais rápido e fácil</span>'
@@ -69,8 +58,19 @@ pages:
       servico: ''
       cat: '1'
     - id: ''
+      titulo: ''
+      img: contas/maga/img/portfolio/1473626728986.jpg
+      txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
+        mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
+        web mais rápido e fácil
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: 
+    - id: ''
       titulo: Fidelito doido
-      img: "/contas/maga/img/portfolio/1473377137244.jpg"
+      img: contas/maga/img/portfolio/1473620452070.jpg
       txt: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
         tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.
         Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
@@ -85,7 +85,7 @@ pages:
       cat: tt
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/1473554160009.jpg
+      img: contas/maga/img/portfolio/1473619222839.jpg
       txt: '<span style="color: rgb(255, 255, 255); font-family: &quot;Helvetica Neue&quot;,
         Helvetica, Arial, sans-serif; font-size: 40px; line-height: 50px;">Framework
         de front-end elegante, intuitivo para um desenvolvimento web mais rápido e

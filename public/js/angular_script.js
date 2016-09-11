@@ -334,6 +334,14 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
     })    
   }
 
+  $scope.imgSelectTriger = function() {
+
+    $timeout(function() {
+        var el = document.getElementById('imgSelect');
+        angular.element(el).triggerHandler('click');
+    }, 0);
+  };
+
   //
   //
   // Modal
@@ -341,6 +349,9 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   //
   $scope.animationsEnabled = true;
   $scope.openHeaderModal = function () {
+    
+    $scope.imgSelectTriger();
+
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       windowTopClass: "portfolio-modal modal",
@@ -636,13 +647,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
-
-
-  
-
 }]);
-
-
 
 
 mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInstance, $timeout, SiteData, item, i) {
@@ -684,63 +689,42 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
 mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
   
+  $scope.flgImg=true; 
+  $scope.flgCropBox=false
   $scope.imgUploadBtn = true;
 
   var url = document.URL;
   var urlArray = url.split("/");
   var siteNome = urlArray[urlArray.length-1]
-
   var updestino = '/'+siteNome+'/portfolio/uploadPic/'+$scope.i
 
-  //$scope.picFile = $scope.item.img
-
   $scope.upload = function (dataUrl, name) {
-    console.log("name>", Upload.dataUrltoBlob(dataUrl, name))
-
+   
     //Pegando a extenção do arquivo
-    
     var dotIndex = name.lastIndexOf('.');
     var ext = name.substring(dotIndex);
     var new_name = Date.now().toString()+ext;
 
-        Upload.upload({
-            url: updestino,
-            data: {
-                file: Upload.dataUrltoBlob(dataUrl, new_name)
-            },
-        }).then(function (response) {
-            $timeout(function () {
-                $scope.result = response.data;
-                //console.log("Sucesso!>", dataUrl)
-                $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
-            });
-        }, function (response) {
-            if (response.status > 0) $scope.errorMsg = response.status 
-                + ': ' + response.data;
-        }, function (evt) {
-            $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-        });
-    }
+    Upload.upload({
+      url: updestino,
+      data: {
+        file: Upload.dataUrltoBlob(dataUrl, new_name)
+      },
+    }).then(function (response) {
+      $timeout(function () {
+        $scope.result = response.data;
+        //console.log("Sucesso!>", dataUrl)
+        $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
 
-
- $scope.doubleWrap = "{{outputImage}}"
-
-    var handleFileSelect=function(evt) {
-      var file=evt.currentTarget.files[0];
-      var reader = new FileReader();
-      reader.onload = function (evt) {
-        $scope.$apply(function($scope){
-          $scope.theImage1 = evt.target.result;
-        });
-      };
-      reader.readAsDataURL(file);
-    };
-    angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
-
-
-    $scope.onUpdate = function(data){
-        //console.log(data)
- }
+        $scope.flgImg=true;
+        $scope.flgCropBox=false
+      });
+    }, function (response) {
+      if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+    }, function (evt) {
+      $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+    });
+  }
 
   $scope.isLogged = false;
 
@@ -750,7 +734,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   }) 
   
   $scope.up = function(){
-     angular.element('#file').trigger('click');
+    angular.element('#file').trigger('click');
   };
 
   $scope.excluir = function(item_index){
@@ -770,41 +754,16 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
        $rootScope.$emit("categoriasUpdate");
     })
   } 
-  
-  $scope.uploadPic = function(file, index) {
-    
-    a = 0
-    console.log(">>File: ", file, "index:", index)
 
-    var url = document.URL;
-    var urlArray = url.split("/");
-    var siteNome = urlArray[urlArray.length-1];
+  $scope.openImgSelect = function() {
+    console.log("openImgSelect")
+    $timeout(function() {
+        var el = document.getElementById('imgSelect');
+        angular.element(el).triggerHandler('click');
+    }, 0);
+  };
   
-    if (file.size < 6000000) {
-      
-      console.log('Enviando imagem...')
-      
-      file.upload = Upload.upload({
-          url: '/'+siteNome+'/portfolio/uploadPic/'+index,
-          data: {item: $scope.item, file: file},
-      
-      }).then(function (resp) {
-          console.log('Success ' + resp.config.data.file.name);
-          file.result = true;
-          $rootScope.$emit("ImgChange",file.name, index, siteNome);
-     
-      }, function (resp) {
-          console.log('Error status: ' + resp.status);
-      
-      }, function (evt) {
-          var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-          console.log('Progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-          $scope.progressVisible = true;
-          $scope.imgUploadAndamento = progressPercentage;
-      });
-    }
-  }  
-  //$rootScope.$emit("categoriasUpdate");
+  
 }]);
 
 
