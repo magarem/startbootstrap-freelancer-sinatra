@@ -27,7 +27,7 @@
   <link href="https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.css" rel="stylesheet" type="text/css">
 
  
-  
+   <link href="css/bootstrap-switch.min.css" rel="stylesheet">
 
   <style>
    [contenteditable=true]:empty:before{
@@ -153,6 +153,7 @@
 
  <script src="js/jquery.js"></script>
   <!-- AngularJs -->
+
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
   <!-- Sortable.js -->
@@ -178,7 +179,10 @@
     <!-- Trigger the modal with a button -->
     <script src="js/ui-bootstrap-0.14.3.min.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
-    
+    <script>
+      angular.module('frapontillo.bootstrap-switch', []);
+    </script>
+    <script src="js/bsSwitch.js"></script>
     <script src="js/angular_script.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-sanitize.js"></script>
 
@@ -191,35 +195,23 @@
 
     <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
 
+    <script src="js/bootstrap-switch.min.js"></script>
+
+    
+    <script type="text/javascript" src="js/ng-device-detector.js"></script>
+    <script type="text/javascript" src="js/re-tree.js"></script>
+
+
     <script>
-    
-    //
-    // Hack para limpar o código html quando 
-    // se cola algum texto vindo de algum site
-    //
-
-    
-     $(document).on('paste','[contenteditable]',function(e) {
-      e.preventDefault();
-      var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
-      window.document.execCommand('insertText', false, text);
-  });
-
-// // external js: masonry.pkgd.js, imagesloaded.pkgd.js
-
-// // init Masonry
-// var $grid = $('.grid').masonry({
-//   itemSelector: '.grid-item',
-//   percentPosition: true,
-//   columnWidth: '.grid-sizer'
-// });
-// // layout Isotope after each image loads
-// $grid.imagesLoaded().progress( function() {
-//   $grid.masonry();
-// });  
- 
-
-
-</script>
+      //
+      // Hack para limpar o código html quando 
+      // se cola algum texto vindo de algum site
+      //
+      $(document).on('paste','[contenteditable]',function(e) {
+        e.preventDefault();
+        var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+        window.document.execCommand('insertText', false, text);
+      });
+    </script>
   </body>
 </html>

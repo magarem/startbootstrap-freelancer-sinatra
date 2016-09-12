@@ -10,47 +10,10 @@
           >
          </div>         
        </h2>
-       <style>
-         // .thumb {
-         //    width: 24px;
-         //    height: 24px;
-         //    float: none;
-         //    position: relative;
-         //    top: 7px;
-         // }
-
-  //        .cropArea {
-		//     background: #E4E4E4;
-		//     overflow: hidden;
-		//     width:500px;
-		//     height:350px;
-		// }
-		// form .progress {
-		    
-		// }
-		.progress {
-		    display: inline-block;
-		    width: 100px;
-		    border: 3px groove #CCC;
-        line-height: 15px;
-		}
-		.progress div {
-		    font-size: smaller;
-		    background: orange;
-		    width: 0;
-		}
-
-		#outer {
-		  width: 100%;
-		  text-align: center;
-		}
-
-       </style>
-
-
        <div name="myForm" ng-controller="MyFormCtrl" ng-init="picFile"  >
         <br>
-        <img ng-show="!isLogged || !picFile || flgImg" 
+        <img class="img-thumbnail"
+             ng-show="!isLogged || !picFile || flgImg" 
              style="width:100%; max-width:500px;"
              ng-src="{{item.img}}"   
              ng-click="openImgSelect()"/><Br>
@@ -68,15 +31,18 @@
             type="square">
           </ng-croppie>
           
-          <span class="progress" ng-show="progress >= 0">
-          <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-          </span>
+       
+
+          <div class="progress" ng-show="progress >= 0" style="margin:0 auto; width:400px;">>
+            <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%; ">              
+            </div>
+          </div>
          
          <div ng-show="isLogged && picFile"> 
           <br>
           <button 
             class="btn btn-primary"
-            ng-click="upload(croppedDataUrl, picFile.name);" >Enviar</button>
+            ng-click="upload(croppedDataUrl, picFile.name);" ><span class="glyphicon glyphicon-upload " style="font-size:30px;" aria-hidden="true"></span></button>
          </div>    
         </div> 
         <button 

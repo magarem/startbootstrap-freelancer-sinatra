@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['ngSanitize',  'ngFileUpload', 'ngCroppie', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
+var mod = angular.module("myapp", ['ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize',  'ngFileUpload', 'ngCroppie', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
 
 mod.directive('customOnChange', function() {
   return {
@@ -456,32 +456,33 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
 }]);
 
 
-mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', 'SiteData', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, SiteData) {
+mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, SiteData, deviceDetector) {
+
+  //Busca informações do device que está utilizando o site
+  var vm = this;
+  vm.data = deviceDetector;
+  vm.allData = JSON.stringify(vm.data, null, 2);
 
   
-  SiteData.logged2().then(function(response) { 
-    console.log("SiteData[imgGridCtrl]:", response.data === 'true');
-    
-    $scope.isLogged = (response.data === 'true');
-  
-    $scope.barConfig = {
-      disabled: !($scope.isLogged),
-      onSort: function (evt){
-        console.log("$scope.isLogged:",$scope.isLogged)
-        if ($scope.isLogged) {
-          SiteData.savePortfolioOrder(evt.models).success(function () {})
-        }
-      }
-    };
-  })
- 
-  
+
+
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.imgs = response.data.pages.portfolio.items;
     console.log("SiteData[imgGridCtrl]:", $scope.imgs);
     categoriasUpdate();
   })
+
+  SiteData.logged2().then(function(response) { 
+    console.log("SiteData[imgGridCtrl]:", response.data === 'true');
+    
+    $scope.isLogged = (response.data === 'true');
+  
+    
+  })
+ 
+  
+  
   
 
   $scope.saveDiv = function(obj){    
@@ -647,6 +648,65 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   $scope.toggleAnimation = function () {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
+
+
+    // switch button
+    $scope.isSelected = true;
+    $scope.onText = 'Sim';
+    $scope.offText = 'Não';
+    $scope.isActive = true;
+    $scope.size = 'normal';
+    $scope.animate = true;
+    $scope.radioOff = true;
+    $scope.handleWidth = "auto";
+    $scope.labelWidth = "auto";
+    $scope.inverse = true;
+
+    $scope.$watch('isSelected', function() {
+      $log.info('Selection changed.');
+      
+
+       if (vm.data.device == "iphone") {
+          $scope.barConfig = {
+            disabled: !($scope.isSelected),
+            handle: ".tile",
+            onSort: function (evt){
+              console.log("$scope.isLogged:",$scope.isLogged)
+              if ($scope.isLogged) {
+                SiteData.savePortfolioOrder(evt.models).success(function () {})
+              }
+            }
+          };
+       }else{
+          $scope.barConfig = {
+            disabled: !($scope.isSelected),            
+            onSort: function (evt){
+              console.log("$scope.isLogged:",$scope.isLogged)
+              if ($scope.isLogged) {
+                SiteData.savePortfolioOrder(evt.models).success(function () {})
+              }
+            }
+          };
+       }
+    });
+
+    $scope.toggle = function() {
+      $scope.isSelected = $scope.isSelected === true ? false : true;
+      //if ($scope.isSelected=="yep") $log.info($scope.isSelected)
+    };
+
+    $scope.setUndefined = function() {
+      $scope.isSelected = undefined;
+    };
+
+    $scope.toggleActivation = function() {
+      $scope.isActive = !$scope.isActive;
+      
+    }
+
+
+
+
 }]);
 
 
