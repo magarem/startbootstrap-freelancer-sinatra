@@ -39,22 +39,12 @@
           </div>
          
          <div ng-show="isLogged && picFile"> 
-          <br>
           <button 
             class="btn btn-primary"
             ng-click="upload(croppedDataUrl, picFile.name);" ><span class="glyphicon glyphicon-upload " style="font-size:30px;" aria-hidden="true"></span></button>
          </div>    
         </div> 
-        <button 
-          style = "visibility: hidden; height:0px;"
-          id="imgSelect"
-          ng-show="isLogged"  
-          ngf-select 
-          ng-model="picFile" 
-          accept="image/*" 
-          ng-click="flgCropBox=true; flgImg=false">
-            Selecionar imagem
-        </button>
+        
         <span ng-show="result">Imagem Enviada com sucesso!</span>
         <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
       
@@ -127,7 +117,14 @@
               </strong>
           </li>
       </ul>
-      <br>
+      <button 
+          style = "visibility: hidden; height:0px;"
+          id="imgSelect"
+          ng-show="isLogged"  
+          ngf-select 
+          ng-model="picFile" 
+          accept="image/*" 
+          ng-click="flgCropBox=true; flgImg=false"></button>
       <!--span class="progress" ng-show="picFile.progress >= 0">
         <div style="width:{{picFile.progress}}%" 
             ng-bind="picFile.progress + '%'"></div>
