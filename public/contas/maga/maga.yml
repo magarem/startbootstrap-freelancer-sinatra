@@ -47,17 +47,6 @@ pages:
     label: Catálogo
     items:
     - id: ''
-      titulo: fonte
-      img: contas/maga/img/portfolio/1473639502462.jpg
-      txt: '<span style="color: rgb(255,255,255); font-family: &quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;
-        font-size: 40px; line-height: 50px;">Framework de front-end elegante,intuitivo
-        para um desenvolvimento web mais rápido e fácil</span>'
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: '1'
-    - id: ''
       titulo: ''
       img: contas/maga/img/portfolio/1473722838572.JPG
       txt: '<span style="color: rgb(255, 255, 255); font-family: &quot;Helvetica Neue&quot;,
@@ -69,6 +58,17 @@ pages:
       data: ''
       servico: ''
       cat: 
+    - id: ''
+      titulo: fonte
+      img: contas/maga/img/portfolio/1473639502462.jpg
+      txt: '<span style="color: rgb(255,255,255); font-family: &quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;
+        font-size: 40px; line-height: 50px;">Framework de front-end elegante,intuitivo
+        para um desenvolvimento web mais rápido e fácil</span>'
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: '1'
     - id: ''
       titulo: ''
       img: "/contas/maga/img/portfolio/1473698522099.jpg"
