@@ -33,7 +33,7 @@
              <% end %> >
         </div-->
 
-        <img class="c"  ng-src="{{ site.pages.home.img }}" ng-click="openHeaderModal()"/>
+        <img class="c"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
 
         
         <!-- Indicates a successful or positive action -->
