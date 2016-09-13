@@ -464,6 +464,19 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   vm.allData = JSON.stringify(vm.data, null, 2);
 
   
+    // switch button
+    $scope.isSelected = true;
+    $scope.onText = 'Sim';
+    $scope.offText = 'Não';
+    $scope.isActive = true;
+    $scope.size = 'normal';
+    $scope.animate = true;
+    $scope.radioOff = true;
+    $scope.handleWidth = "auto";
+    $scope.labelWidth = "auto";
+    $scope.inverse = true;
+
+
 
 
   SiteData.getSiteData().then(function(response) {
@@ -477,7 +490,9 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     console.log("SiteData[imgGridCtrl]:", response.data === 'true');
     
     $scope.isLogged = (response.data === 'true');
-  
+   
+    //confere se está logado para bloquear o img drag
+    $scope.isSelected = $scope.isLogged
     
   })
  
@@ -650,17 +665,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   };
 
 
-    // switch button
-    $scope.isSelected = true;
-    $scope.onText = 'Sim';
-    $scope.offText = 'Não';
-    $scope.isActive = true;
-    $scope.size = 'normal';
-    $scope.animate = true;
-    $scope.radioOff = true;
-    $scope.handleWidth = "auto";
-    $scope.labelWidth = "auto";
-    $scope.inverse = true;
+  
 
     $scope.$watch('isSelected', function() {
       $log.info('Selection changed.');
@@ -668,7 +673,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
        if (vm.data.device == "iphone") {
           $scope.barConfig = {
-            disabled: !($scope.isSelected),
+            disabled: !$scope.isSelected,
             handle: ".tile",
             onSort: function (evt){
               console.log("$scope.isLogged:",$scope.isLogged)
@@ -679,7 +684,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
           };
        }else{
           $scope.barConfig = {
-            disabled: !($scope.isSelected),            
+            disabled: !$scope.isSelected,            
             onSort: function (evt){
               console.log("$scope.isLogged:",$scope.isLogged)
               if ($scope.isLogged) {
