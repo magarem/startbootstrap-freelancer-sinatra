@@ -10,6 +10,17 @@ mod.directive('customOnChange', function() {
   };
 });
 
+mod.directive('backImg', function(){
+    return function(scope, element, attrs){
+        attrs.$observe('backImg', function(value) {
+            element.css({
+                'background-image': 'url(' + value +')',
+                'background-size' : 'cover'
+            });
+        });
+    };
+});
+
 mod.directive('onErrorSrc', function() {
   return {
     link: function(scope, element, attrs) {
@@ -462,22 +473,18 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   var vm = this;
   vm.data = deviceDetector;
   vm.allData = JSON.stringify(vm.data, null, 2);
-
   
-    // switch button
-    $scope.isSelected = true;
-    $scope.onText = 'Sim';
-    $scope.offText = 'Não';
-    $scope.isActive = true;
-    $scope.size = 'normal';
-    $scope.animate = true;
-    $scope.radioOff = true;
-    $scope.handleWidth = "auto";
-    $scope.labelWidth = "auto";
-    $scope.inverse = true;
-
-
-
+  // switch button
+  $scope.isSelected = true;
+  $scope.onText = 'Sim';
+  $scope.offText = 'Não';
+  $scope.isActive = true;
+  $scope.size = 'normal';
+  $scope.animate = true;
+  $scope.radioOff = true;
+  $scope.handleWidth = "auto";
+  $scope.labelWidth = "auto";
+  $scope.inverse = true;
 
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
@@ -488,7 +495,6 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   SiteData.logged2().then(function(response) { 
     console.log("SiteData[imgGridCtrl]:", response.data === 'true');
-    
     $scope.isLogged = (response.data === 'true');
    
     //confere se está logado para bloquear o img drag
@@ -496,42 +502,19 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     
   })
  
-  
-  
-  
-
   $scope.saveDiv = function(obj){    
-      SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
-      })    
+    SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {})    
   }
-
- $scope.alt_aa = function(obj){    
-      $scope.aa = false
-  }
-
-  $scope.get = function(){    
-      return $scope.aa 
-  }
-  console.log("33333$scope.isLogged:",$scope.isLogged)
-
-  //if ($scope.isLogged) {console.log("ttttrue")} else {console.log("fffalse")}
- 
-  
 
   $rootScope.$on("CallDelImg", function(event, item_index){
     delImg(item_index);
   });
 
   $rootScope.$on("ImgChange", function(event, src, index, siteNome){  
-    // console.log("ImgChange - src:",src,", index:",index)
-    // $scope.imgs[index].img = src
-    // console.log("$scope.imgs[index].img:", $scope.imgs[index].img)
     ImgChange(src, index, siteNome)
   });
 
   $rootScope.$on("categoriasUpdate", function(event){  
-    // console.log("ImgChange - src:",src,", index:",index)
-    // $scope.imgs[index].img = src
     console.log("categoriasUpdate:", event)
     categoriasUpdate()
   });
@@ -571,11 +554,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
         b[i] = b[i].charAt(0).toUpperCase() + b[i].substr(1);
     }
 
-    console.log(b)
-
     //limpa html das categorias
-    
-
     $scope.imageCategories = b.filter( onlyUnique )
     $scope.imageCategories = $scope.imageCategories.filter(function(ele){
         return ele !== '';
@@ -585,8 +564,6 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   }
     
   var ImgChange = function (src, index, conta){
-    //console.log("ImgChange - src:",src,", index:",index)
-    // $scope.imgs[index].img = src
     console.log("$scope.imgs[index].img:", $scope.imgs[index].img)
     src = "/contas/"+conta+"/img/portfolio/"+src
     
@@ -596,16 +573,10 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   var delImg = function(item_index){         
     console.log("item_index:",item_index)
     $scope.imgs.splice(item_index, 1)
-    // function t(obj) {
-    //     return obj.id != item_index;
-    // }
-    // $scope.imgs = $scope.imgs.filter(t);          
   };
      
   $scope.valueSelected = function (value) {
-    if (value === null) {
-        $scope.catselect = undefined;
-    }
+    if (value === null) $scope.catselect = undefined;
   };
 
   $scope.filtraZero = function () {  
@@ -614,25 +585,22 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   $scope.portfolio_add = function () {
     console.log("+")
-    img_new =  {  "id"     : 0,
-                  "titulo" : "",
-                  "img"    : "/img/balao.jpg",
-                  "txt"    : "",
-                  "nome"   : "",
-                  "site"   : "",
-                  "data"   : "",
-                  "servico": "",
-                  "cat"    : ""
-                }
+    img_new =  {  
+      "id"     : 0,
+      "titulo" : "",
+      "img"    : "/img/balao.jpg",
+      "txt"    : "",
+      "nome"   : "",
+      "site"   : "",
+      "data"   : "",
+      "servico": "",
+      "cat"    : ""
+    }
     //Salva no disco o novo registro
-    SiteData.portAdd().then(function(response) {
-       
-    })    
+    SiteData.portAdd().then(function(response) {})    
     $scope.imgs.push(img_new)
-    //Service.images.push(img_new)
     console.log($scope.imgs.length)
     $scope.open(img_new, $scope.imgs.length-1)
-    // console.log(img_new)
   }; 
         
   //
@@ -664,53 +632,46 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 
+  $scope.$watch('isSelected', function() {
+    $log.info('Selection changed.');
 
-  
-
-    $scope.$watch('isSelected', function() {
-      $log.info('Selection changed.');
-      
-
-       if (vm.data.device == "iphone") {
-          $scope.barConfig = {
-            disabled: !$scope.isSelected,
-            handle: ".tile",
-            onSort: function (evt){
-              console.log("$scope.isLogged:",$scope.isLogged)
-              if ($scope.isLogged) {
-                SiteData.savePortfolioOrder(evt.models).success(function () {})
-              }
+     if (vm.data.device == "iphone") {
+        $scope.barConfig = {
+          disabled: !$scope.isSelected,
+          handle: ".tile",
+          onSort: function (evt){
+            console.log("$scope.isLogged:",$scope.isLogged)
+            if ($scope.isLogged) {
+              SiteData.savePortfolioOrder(evt.models).success(function () {})
             }
-          };
-       }else{
-          $scope.barConfig = {
-            disabled: !$scope.isSelected,            
-            onSort: function (evt){
-              console.log("$scope.isLogged:",$scope.isLogged)
-              if ($scope.isLogged) {
-                SiteData.savePortfolioOrder(evt.models).success(function () {})
-              }
+          }
+        };
+     }else{
+        $scope.barConfig = {
+          disabled: !$scope.isSelected,            
+          onSort: function (evt){
+            console.log("$scope.isLogged:",$scope.isLogged)
+            if ($scope.isLogged) {
+              SiteData.savePortfolioOrder(evt.models).success(function () {})
             }
-          };
-       }
-    });
+          }
+        };
+     }
+  });
 
-    $scope.toggle = function() {
-      $scope.isSelected = $scope.isSelected === true ? false : true;
-      //if ($scope.isSelected=="yep") $log.info($scope.isSelected)
-    };
+  $scope.toggle = function() {
+    $scope.isSelected = $scope.isSelected === true ? false : true;
+    //if ($scope.isSelected=="yep") $log.info($scope.isSelected)
+  };
 
-    $scope.setUndefined = function() {
-      $scope.isSelected = undefined;
-    };
+  $scope.setUndefined = function() {
+    $scope.isSelected = undefined;
+  };
 
-    $scope.toggleActivation = function() {
-      $scope.isActive = !$scope.isActive;
-      
-    }
-
-
-
+  $scope.toggleActivation = function() {
+    $scope.isActive = !$scope.isActive;
+    
+  }
 
 }]);
 
@@ -741,6 +702,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   $scope.saveDiv = function(obj, i){    
     SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) {
        // console.log(response.data);
+       $rootScope.$emit("categoriasUpdate");
     })    
   }    
 });
@@ -763,12 +725,14 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   var siteNome = urlArray[urlArray.length-1]
   var updestino = '/'+siteNome+'/portfolio/uploadPic/'+$scope.i
 
-  $scope.upload = function (dataUrl, name) {
+  $scope.upload = function (dataUrl, name, picFile) {
    
+    console.log(picFile)
     //Pegando a extenção do arquivo
     var dotIndex = name.lastIndexOf('.');
     var ext = name.substring(dotIndex);
     var new_name = Date.now().toString()+ext;
+    var new_name2 = Date.now().toString()+"_2"+ext;
 
     Upload.upload({
       url: updestino,
@@ -789,7 +753,37 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     }, function (evt) {
       $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
     });
-  }
+}
+
+
+$scope.uploadPic = function(file) {
+
+
+    //Pegando a extenção do arquivo
+    var dotIndex = name.lastIndexOf('.');
+    var ext = name.substring(dotIndex);
+    var new_name = Date.now().toString()+ext;
+    var new_name2 = Date.now().toString()+"_2"+ext;
+
+    file.upload = Upload.upload({
+      url: updestino,
+      data: {new_name: new_name, file: file},
+    });
+
+    file.upload.then(function (response) {
+      $timeout(function () {
+        file.result = response.data;
+        $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
+      });
+    }, function (response) {
+      if (response.status > 0)
+        $scope.errorMsg = response.status + ': ' + response.data;
+    }, function (evt) {
+      // Math.min is to fix IE which reports 200% sometimes
+      file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+    });
+}
+
 
   $scope.isLogged = false;
 
@@ -816,6 +810,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   $scope.saveDiv = function(obj, i){ 
 
     SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) { 
+       
        $rootScope.$emit("categoriasUpdate");
     })
   } 

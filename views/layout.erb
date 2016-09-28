@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myapp">
-<head ng-controller="topCtrl">
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +37,7 @@
   </style> 
 </head>
 
-<body id="page-top" class="index">
+<body id="page-top" class="index" ng-controller="topCtrl">
   <%= yield %>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
   <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">

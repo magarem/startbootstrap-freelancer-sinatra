@@ -150,23 +150,40 @@ body { font-family: sans-serif; }*/
           margin: auto;
         }
 
+        .imgBox {
+          width: 360px;
+          height: 260px;
+          background-size: cover;
+          background-position: center  center;
+          background-repeat: no-repeat;
+          margin-bottom: 20px;
+        }
+
  </style>
 
     <div  class="row"  ng-sortable="barConfig">
       <div class="col-sm-4 portfolio-item " ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}" >
-        <span ng-if="isLogged && vm.data.device == 'iphone' && isSelected " class="drag-handle tile center" >&#9776;&#9776;</span>
+        <span ng-if="isLogged && (vm.data.device == 'iphone' || vm.data.device == 'android') && isSelected " class="drag-handle tile center" >&#9776;&#9776;</span>
         <a href class="portfolio-link " ng-click="open(image, $index); mostra($index);">
           <div class="caption">
             <div class="caption-content">
                 <i class="fa fa-search-plus fa-3x"></i>
             </div>
           </div>
-          <img ng-src="{{image.img}}" style="width:360px; height:260px;"
-               class="img-responsive img-thumbnail" alt="">
+          <!--  <img ng-src="{{image.img}}" style="width:360px; height:260px;"
+               class="img-responsive img-thumbnail" alt=""> -->
+
+          <div class="imgBox" back-img="{{image.img}}"></div>
         </a>
       </div>
     </div>
   </section>
 </div>
+
+
+
+
+
+
 
 

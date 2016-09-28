@@ -329,7 +329,9 @@ post "/:site_nome/portfolio/uploadPic/:index" do
   @item = params[:item]
   @index = params[:index].to_i
   @file = params[:file]
+  @new_name = params[:new_name]
 
+  puts "@new_name> #{@new_name}"
   port_img = ""
   @data_path.gsub! "{site_nome}", @site_nome
 
@@ -349,7 +351,7 @@ post "/:site_nome/portfolio/uploadPic/:index" do
 
     # Testa para ver se é uma imagem que está sendo enviada
     if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 6000000 then
-      img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@filename}"
+      img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@new_name}"
       File.open(img_path, 'wb') do |f|
         f.write(file.read)
       end
@@ -358,7 +360,8 @@ post "/:site_nome/portfolio/uploadPic/:index" do
       image = MiniMagick::Image.open(img_path)
       image.resize "600x600"   
       image.write img_path
-      port_img = "contas/#{@site_nome}/img/portfolio/#{@filename}"
+      #port_img = "contas/#{@site_nome}/img/portfolio/#{@filename}"
+      port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
     end
   end
   if (port_img == "" || port_img == "undefined" || port_img == nil) then port_img = @item["img"] end

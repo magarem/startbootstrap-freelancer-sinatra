@@ -1,4 +1,32 @@
 <script type="text/ng-template" id="myModalContent.html">
+    <style>
+        .thumb {
+            width: 100px;
+            height: auto;
+            float: none;
+            position: relative;
+            top: 7px;
+        }
+
+        form .progress {
+            line-height: 15px;
+        }
+        }
+
+        .progress {
+            padding-top: 20px;
+            display: inline-block;
+            width: 100px;
+            border: 3px groove #CCC;
+        }
+
+        .progress div {
+
+            font-size: smaller;
+            background: orange;
+            width: 0;
+        }
+    </style>
     <div class="modal-body">
        <h2>
          <div contenteditable="{{isLogged}}"
@@ -10,43 +38,50 @@
           >
          </div>         
        </h2>
-       <div name="myForm" ng-controller="MyFormCtrl" ng-init="picFile"  >
-        <br>
-        <img class="img-thumbnail"
-             ng-show="!isLogged || !picFile || flgImg" 
+
+       <form name="myForm" ng-controller="MyFormCtrl">
+         <br>
+         <img class="img-thumbnail"          
              style="width:100%; max-width:500px;"
              ng-src="{{item.img}}"   
              ng-click="openImgSelect()"/><Br>
-       
-        <div ng-if='flgCropBox && (picFile != undefined)'>
-          <ng-croppie  
-            ng-show="isLogged" 
-            src="(picFile | ngfDataUrl) || item.img"
-            ng-model='croppedDataUrl'
-            update='onUpdate'
-            boundry="{w: 500, h:400}"
-            viewport="{w: 360, h:260}"
-            mousezoom="true"
-            zoom="true"
-            type="square">
-          </ng-croppie>
           
-       
 
-          <div class="progress" ng-show="progress >= 0" style="margin:0 auto; width:400px;">>
-            <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%; ">              
+         <fieldset>
+                       
+            
+            <label class="btn btn-default btn-file">
+              Selecionar imagem <input type="file"  style="display: none;" ngf-select ng-model="picFile" name="file"    
+                   accept="image/*" ngf-max-size="2MB" required
+                   ngf-model-invalid="errorFile">
+            </label>
+
+            <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado 
+                {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+            <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" > 
+           <div ng-show="picFile">
+              <br> 
             </div>
-          </div>
-         
-         <div ng-show="isLogged && picFile"> 
-          <button 
-            class="btn btn-primary"
-            ng-click="upload(croppedDataUrl, picFile.name);" ><span class="glyphicon glyphicon-upload " style="font-size:30px;" aria-hidden="true"></span></button>
-         </div>    
-        </div> 
-        
-        <span ng-show="result">Imagem Enviada com sucesso!</span>
-        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            
+            <input type="submit" ng-show="picFile" 
+                    ng-click="uploadPic(picFile)"
+                    class="btn btn-green" value="Enviar">
+            <div ng-show="picFile.progress >= 0">
+              <br> 
+            </div>
+            <span class="progress" ng-show="picFile.progress >= 0">
+      <div style="width:{{picFile.progress}}%; background-color: #2980b9; color: #FFF; padding: 1em .5em;font-weight: 500;" ng-bind="picFile.progress + '%'"></div>
+    </span>
+
+            <span ng-show="picFile.result">Upload Successful</span>
+            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+          </fieldset>
+          <br>
+        </form>
+
+
+
+       
       
       <p>
         <div contenteditable="{{isLogged}}"
@@ -117,20 +152,9 @@
               </strong>
           </li>
       </ul>
-      <button 
-          style = "visibility: hidden; height:0px;"
-          id="imgSelect"
-          ng-show="isLogged"  
-          ngf-select 
-          ng-model="picFile" 
-          accept="image/*" 
-          ng-click="flgCropBox=true; flgImg=false"></button>
-      <!--span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%" 
-            ng-bind="picFile.progress + '%'"></div>
-      </span-->
+
+
       
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
       
       <button type="button" ng-show="isLogged" class="btn btn-default" ng-click="excluir(i);">Excluir</button>    
      
@@ -140,7 +164,7 @@
   <script type="text/javascript">
     $(document).on('paste','[contenteditable]',function(e) {
 	    e.preventDefault();
-	    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+	    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Cole...');
 	    window.document.execCommand('insertText', false, text);
 	});
 </script>
