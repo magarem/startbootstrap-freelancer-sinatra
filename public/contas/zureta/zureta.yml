@@ -1,0 +1,56 @@
+---
+name: zureta
+senha: 94c8
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: zureta22
+  menu:
+  - label: Portfólio
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: 
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: 
+pages:
+  home:
+    label: zuretinha mesmo
+    img: contas/zureta/img/avatar.jpg
+    body: vai vendo ;)
+  about:
+    label: Sobre
+    body1: asd asd asd asd
+    body2: "&nbsp;asd asdasd s"
+  portfolio:
+    label: Portfólio
+    items:
+    - id: 0
+      titulo: ''
+      img: "/contas/zureta/img/portfolio/1475538310228"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: 
+      img: "/img/balao.jpg"
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: cat1
+  contact:
+    label: Contato

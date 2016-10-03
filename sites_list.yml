@@ -40,3 +40,7 @@ sites:
   email: contato@magaweb.com.br
   senha: 573b
   token: 573bcc135a3f57141bbcfdec59fc7d35
+- nome: zureta
+  email: contato@magaweb.com.br
+  senha: 94c8
+  token: 94c8572cafdd26d3c1d2231c0963451d
