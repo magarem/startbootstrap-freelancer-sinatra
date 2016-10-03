@@ -5,6 +5,7 @@ require 'pony'
 require 'json'
 require 'mini_magick'
 require 'fileutils'
+require 'securerandom'
 
 
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
@@ -37,6 +38,168 @@ before do
   @logado = session[:logado]
   puts ">[@logado]>>#{@logado}"
   @data_path = "public/contas/{site_nome}/{site_nome}.yml"
+end
+
+
+
+#
+#  Pedir novo site 
+#
+get "/site_new" do 
+
+  #Pega os parâmetros
+  site_nome = params["site_nome"]
+  userEmail = params["email"]
+
+  #Define flag de verificação de já existência de nome de site pretendido
+  flg_nome_ja_existe = false
+
+  # @data_path.gsub! "{site_nome}", site_nome
+
+  random_string = SecureRandom.hex
+  senha = random_string[0, 4]
+  
+  # Lê o arquivo base
+  data = YAML.load_file "sites_list.yml"
+
+  # Verifica se o nome pretendido já existe
+  data["sites"].each do |key|
+    yml_nome  = key['nome']
+    if site_nome == yml_nome
+      flg_nome_ja_existe = true     
+    end
+  end
+
+  # Prapara o novo item para inserção
+  novo = { 
+    "nome"   => site_nome,
+    "email"  => userEmail,
+    "senha"  => senha,
+    "token"  => random_string
+  }
+
+  if flg_nome_ja_existe == false
+    #Grava em sites_lista.yml o nome do site com seu token
+    # Insere o novo item na array do arquivo fonte
+    data["sites"] << novo
+
+    # # Salva o arquivo modificado
+    f = File.open("sites_list.yml", 'w' )
+    YAML.dump( data, f )
+    f.close
+
+    #Envia email de confirmação da abertura da nova conta
+    mailMassege = "
+  Este é um email de confirmação da abertura de sua nova conta.
+
+  Clique no link de confirmação abaixo ou cole o endereço no seu browser:
+  http://localhost:3000/site_new_do?email=#{userEmail}&site_nome=#{site_nome}&token=#{random_string}
+
+  Depois de confirmada a sua conta seu site já estará no ar com os dados de acesso:
+  URL: magaweb.com.br/#{site_nome}
+  Senha: #{senha}
+
+  Qualquer dúvida entre em contato conosco.
+   
+  Um abraço,
+  Equipe Radiando
+  radiando.net"
+    
+    Pony.mail({
+      :to => userEmail,
+      :via => :smtp,
+      :from => "contato@magaweb.com.br",
+      :subject => "Bem vindo!",
+      :body => mailMassege,
+      :via_options => {
+        :address              => 'smtp.gmail.com',
+        :port                 => '587',
+        :enable_starttls_auto => true,
+        :user_name            => 'contato@magaweb.com.br',
+        :password             => 'maria108',
+        :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+        :domain               => "localhost.magaweb.com.br" # the HELO domain provided by the client to the server
+      }
+    })
+
+    # Abre o site recem criado no modo de edição
+    "Um email de confirmação foi enviado para #{userEmail}"
+  else
+    "Esse nome de site já foi escolhido, favor definir outro."
+  end
+end
+
+#
+# Criar novo site
+#
+get "/site_new_do" do
+  
+  #Pega os parâmetros
+  email = params["email"]
+  site_nome = params["site_nome"]
+  token = params["token"]
+
+  # Define a flag de busca
+  flg_achou = false
+
+  @sites_list_path = "./sites_list.yml"
+  
+  # Confere se o token informado pelo link do email está correto
+  @y = YAML.load_file @sites_list_path
+  
+  @y["sites"].each do |key|
+    
+    yml_nome = key['nome']
+    yml_email = key['email']
+    yml_senha = key['senha']
+    yml_token = key['token']
+
+    if email == yml_email && site_nome == yml_nome && token == yml_token
+      flg_achou = true     
+    end
+
+  end
+
+   # puts "yml_email: #{yml_email} / yml_token: #{yml_token}"
+  if flg_achou
+      @data_path.gsub! "{site_nome}", site_nome
+      #Cria diretório principal
+      install_dir = "public/contas/#{site_nome}"
+      FileUtils::mkdir_p install_dir
+      
+      #Clona o arquivo base
+      FileUtils.cp("site.yml", @data_path)
+      
+      #Cria diretorio de imagens
+      install_dir = "public/contas/#{site_nome}/img/portfolio"
+      FileUtils::mkdir_p install_dir
+
+      #Define o nome/email no arquivo fonte
+      data = YAML.load_file @data_path
+      data["name"] = site_nome 
+      data["senha"] = token[0, 4]
+      data["email"] = email
+      data["moldura"]["logo"]["label"] = site_nome 
+      
+      #Copia imagem da capa
+      FileUtils.cp("public/img/balao.jpg","public/contas/#{site_nome}/img/balao.jpg")
+      
+      #Define a capa do site
+      data["pages"]["home"]["img"] = "contas/#{site_nome}/img/balao.jpg"
+      
+      #Salva o arquivo fonte
+      f = File.open(@data_path, 'w' )
+      YAML.dump( data, f )
+      f.close  
+      
+      session[:site_nome] = site_nome
+      session[:login] = true
+
+      # Abre o site recem criado no modo de edição
+      redirect "/#{site_nome}"
+  else
+    "Erro de token"
+  end
 end
 
 #
@@ -462,95 +625,3 @@ post '/email_envia' do
   })
 end
 
-#
-# Criar novo site
-#
-get "/novo_site_do/:email/:site_nome" do
-  
-  #Pega os parâmetros
-  site_nome = params[:site_nome]
-  email = params[:email]
-
-  @data_path.gsub! "{site_nome}", site_nome
-  #Cria diretorio principal
-  install_dir = "public/contas/#{site_nome}"
-  FileUtils::mkdir_p install_dir
-  
-  #Clona o arquivo base
-  FileUtils.cp("site.yml", @data_path)
-  
-  #Cria diretorio de imagens
-  install_dir = "public/contas/#{site_nome}/img/portfolio"
-  FileUtils::mkdir_p install_dir
-
-  #Define o nome/email no arquivo fonte
-  data = YAML.load_file @data_path
-  data["name"] = site_nome 
-  data["email"] = email
-  data["moldura"]["logo"]["label"] = site_nome 
-  
-  #Copia imagem da capa
-  FileUtils.cp("public/img/balao.jpg","public/contas/#{site_nome}/img/balao.jpg")
-  
-  #Define a capa do site
-  data["pages"]["home"]["img"] = "contas/#{site_nome}/img/balao.jpg"
-  
-  #Salva o arquivo fonte
-  f = File.open(@data_path, 'w' )
-  YAML.dump( data, f )
-  f.close  
-  
-  session[:site_nome] = site_nome
-  session[:login] = true
-
-  # Abre o site recem criado no modo de edição
-  redirect "/#{site_nome}"
-end
-
-#
-#  Pedir novo site 
-#
-get "/novo_site/:userEmail/:site_nome" do 
-
-  #Pega os parâmetros
-  site_nome = params[:site_nome]
-  userEmail = params[:userEmail]
-  @data_path.gsub! "{site_nome}", site_nome
-
-  #Envia email de confirmação da abertura da nova conta
-  mailMassege = 
-    "Este é um email de confirmação da abertura de sua nova conta.
-
-     Dados de acesso:
-     URL: magaweb.com.br/#{site_nome}
-     Senha: 12345
-
-     Clique no link de confirmação abaixo ou cole o endereço no seu browser:
-     http://localhost:3000/novo_site_do/#{userEmail}/#{site_nome}
-
-     Qualquer dúvida entre em contato conosco.
-     
-     Um abraço,
-     Equipe Magaweb
-     magaweb.com.br"
-  
-  Pony.mail({
-    :to => userEmail,
-    :via => :smtp,
-    :from => "contato@magaweb.com.br",
-    :subject => "Bem vindo!",
-    :body => mailMassege,
-    :via_options => {
-      :address              => 'smtp.gmail.com',
-      :port                 => '587',
-      :enable_starttls_auto => true,
-      :user_name            => 'contato@magaweb.com.br',
-      :password             => 'maria108',
-      :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
-      :domain               => "localhost.magaweb.com.br" # the HELO domain provided by the client to the server
-    }
-  })
-
-  # Abre o site recem criado no modo de edição
-  "Um email de confirmação foi enviado para #{userEmail}"
-end

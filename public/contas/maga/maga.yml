@@ -40,6 +40,15 @@ pages:
     label: Catálogo
     items:
     - id: ''
+      titulo: ''
+      img: "/contas/maga/img/portfolio/1475024924155"
+      txt: sdfsdf
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: 
+    - id: ''
       titulo: fonte
       img: contas/maga/img/portfolio/1475025923407
       txt: fsdfd
@@ -63,15 +72,6 @@ pages:
       txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
         mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
         web mais rápido e fácil
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: 
-    - id: ''
-      titulo: ''
-      img: "/contas/maga/img/portfolio/1475024924155"
-      txt: sdfsdf
       cliente: ''
       site: ''
       data: ''
