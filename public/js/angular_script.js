@@ -819,7 +819,7 @@ $scope.uploadPic = function(file) {
     console.log("openImgSelect")
     $timeout(function() {
         var el = document.getElementById('imgSelect');
-        angular.element(el).triggerHandler('click');
+        el.click();
     }, 0);
   };
   

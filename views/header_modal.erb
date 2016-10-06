@@ -1,8 +1,8 @@
 <script type="text/ng-template" id="headerModal.html" >
     <div class="modal-body">
-       <h2>
+       <h3>
          Imagem principal
-       </h2><br>
+       </h3><br>
        <img class="c"  ng-show="!picFile" ng-src="{{ site.pages.home.img }}"/>
    
    <div class='row' ng-if='picFile != undefined'>
@@ -38,7 +38,7 @@
         <script type="text/javascript">
           $(document).on('paste','[contenteditable]',function(e) {
       	    e.preventDefault();
-      	    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+      	    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Cole aqui');
       	    window.document.execCommand('insertText', false, text);
       	});
 </script>

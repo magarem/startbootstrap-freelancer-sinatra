@@ -57,7 +57,7 @@ get "/site_new" do
   # @data_path.gsub! "{site_nome}", site_nome
 
   random_string = SecureRandom.hex
-  senha = random_string[0, 4]
+  senha = random_string[0, 4].downcase
   
   # Lê o arquivo base
   data = YAML.load_file "sites_list.yml"
@@ -90,25 +90,28 @@ get "/site_new" do
 
     #Envia email de confirmação da abertura da nova conta
     mailMassege = "
-  Este é um email de confirmação da abertura de sua nova conta.
+Olá,
 
-  Clique no link de confirmação abaixo ou cole o endereço no seu browser:
-  http://localhost:3000/site_new_do?email=#{userEmail}&site_nome=#{site_nome}&token=#{random_string}
+Você recentemente abriu uma conta no site Radiando e este 
+é um email de confirmação da sua nova conta.
 
-  Depois de confirmada a sua conta seu site já estará no ar com os dados de acesso:
-  URL: magaweb.com.br/#{site_nome}
-  Senha: #{senha}
+Clique no link de confirmação abaixo ou cole na barra de endereço do seu browser:
+http://localhost:3000/site_new_do?email=#{userEmail}&site_nome=#{site_nome}&token=#{random_string}
 
-  Qualquer dúvida entre em contato conosco.
-   
-  Um abraço,
-  Equipe Radiando
-  radiando.net"
+Depois de confirmada a sua conta seu site já estará no ar com os dados de acesso:
+URL: radiando.net/#{site_nome}
+Senha: #{senha}
+
+Qualquer dúvida entre em contato conosco.
+ 
+Um abraço,
+Equipe Radiando
+radiando.net"
     
     Pony.mail({
       :to => userEmail,
       :via => :smtp,
-      :from => "contato@magaweb.com.br",
+      :from => "Radiando",
       :subject => "Bem vindo!",
       :body => mailMassege,
       :via_options => {
