@@ -52,3 +52,23 @@ sites:
   email: contato@magaweb.com.br
   senha: 2e18
   token: 2e186011e304f5a42a3928625d97d083
+- nome: jj
+  email: contato@magaweb.com.br
+  senha: aadb
+  token: aadb1bf92b28582b4c2b5be2804f0d4d
+- nome: q1
+  email: contato@magaweb.com.br
+  senha: 069b
+  token: 069b6330aee7f333860ed0adfa8b4fe4
+- nome: q2
+  email: contato@magaweb.com.br
+  senha: b944
+  token: b9443bc2ffd7d5b1a9de6312025cef7a
+- nome: q3
+  email: contato@magaweb.com.br
+  senha: 7fc1
+  token: 7fc1f1a032d4adbd52def4baf790dab6
+- nome: q4
+  email: contato@magaweb.com.br
+  senha: 7fbd
+  token: 7fbda58afc09ddd7c71e0a52a6fcf0a6

@@ -194,10 +194,10 @@ get "/site_new_do" do
       data["moldura"]["logo"]["label"] = site_nome 
       
       #Copia imagem da capa
-      FileUtils.cp("public/img/balao.jpg","public/contas/#{site_nome}/img/balao.jpg")
+      FileUtils.cp("public/img/profile.png","public/contas/#{site_nome}/img/profile.png")
       
       #Define a capa do site
-      data["pages"]["home"]["img"] = "contas/#{site_nome}/img/balao.jpg"
+      data["pages"]["home"]["img"] = "contas/#{site_nome}/img/profile.png"
       
       #Salva o arquivo fonte
       f = File.open(@data_path, 'w' )

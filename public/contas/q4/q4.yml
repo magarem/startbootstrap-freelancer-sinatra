@@ -1,0 +1,47 @@
+---
+name: q4
+senha: 7fbd
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: q4
+  menu:
+  - label: Portfólio
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: 
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: 
+pages:
+  home:
+    label: 
+    img: contas/q4/img/avatar.jpg
+    body: 
+  about:
+    label: Sobre
+    body1: 
+    body2: 
+  portfolio:
+    label: Portfólio
+    items:
+    - id: '0'
+      titulo: foto1
+      img: contas/q4/img/portfolio/1475878499987
+      txt: teste 22 total
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+  contact:
+    label: Contato

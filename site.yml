@@ -36,7 +36,7 @@ pages:
     items:  
       - id: '0'
         titulo:
-        img: "/img/balao.jpg"
+        img: "/img/cabin.png"
         txt: 
         cliente:
         site:
