@@ -40,6 +40,15 @@ before do
   @data_path = "public/contas/{site_nome}/{site_nome}.yml"
 end
 
+#
+#  Pedir novo site 
+#
+
+set :public_folder, 'public'
+get "/" do
+  redirect 'site/index.html' 
+end
+
 
 
 #

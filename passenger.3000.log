@@ -187,3 +187,69 @@ App 666 stderr: 172.17.0.1 - - [20/Aug/2016:02:14:47 +0000] "POST /maga/portfoli
 [ 2016-08-20 02:15:14.4994 627/7f48325187c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 695, application /home/app/webapp/startbootstrap-freelancer-sinatra/public (development)
 [ 2016-08-20 02:15:14.5003 632/7fef6b71a7c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
 [ 2016-08-20 02:15:14.8306 627/7f48325187c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2016-10-06 23:49:25.2716 65/7f2ab2ad17c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-10-06 23:49:25.3619 68/7f3ae1ce97c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-10-06 23:49:25.3625 68/7f3ae1ce97c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-10-06 23:49:25.4392 68/7f3ae1ce97c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 68
+[ 2016-10-06 23:49:25.4658 77/7fc8118b77c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-10-06 23:49:25.4802 77/7fc8118b77c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 77
+App 107 stderr: stdin: is not a tty
+App 107 stdout: 
+App 124 stdout: 
+App 131 stdout: 
+App 124 stdout: >[@logado]>>
+App 107 stderr: 127.0.0.1 - - [06/Oct/2016:23:49:34 +0000] "HEAD / HTTP/1.1" 404 456 0.0157
+App 131 stdout: >[@logado]>>true
+App 131 stdout: [@site_nome]>maga
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:49:34 +0000] "GET /maga HTTP/1.1" 200 32045 0.3328
+App 124 stdout: >[@logado]>>true
+App 124 stdout: 
+App 131 stdout: >[@logado]>>true
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:49:39 +0000] "GET /maga/logged HTTP/1.1" 200 4 0.0050
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:49:39 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2824 0.0661
+App 124 stdout: >[@logado]>>true
+App 124 stdout: 
+App 124 stdout: [@site_nome]>maga
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:02 +0000] "GET /maga HTTP/1.1" 200 32065 0.2952
+App 131 stdout: >[@logado]>>true
+App 124 stdout: >[@logado]>>true
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:03 +0000] "GET /maga/logged HTTP/1.1" 200 4 0.0196
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:03 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2824 0.0999
+App 124 stdout: >[@logado]>>true
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:12 +0000] "GET /maga/logout HTTP/1.1" 302 - 0.0082
+App 124 stdout: >[@logado]>>
+App 124 stdout: [@site_nome]>maga
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:12 +0000] "GET /maga HTTP/1.1" 200 32004 0.0705
+App 124 stdout: >[@logado]>>
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:13 +0000] "GET /maga/logged HTTP/1.1" 200 5 0.0133
+App 131 stdout: >[@logado]>>
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:13 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2824 0.0281
+App 124 stdout: >[@logado]>>
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:31 +0000] "POST /login_do HTTP/1.1" 303 - 0.0149
+App 124 stdout: >[@logado]>>true
+App 124 stdout: [@site_nome]>maga
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:31 +0000] "GET /maga HTTP/1.1" 200 32065 0.0751
+App 124 stdout: >[@logado]>>true
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:32 +0000] "GET /maga/logged HTTP/1.1" 200 4 0.0046
+App 124 stdout: >[@logado]>>true
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:32 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2824 0.0139
+App 124 stdout: >[@logado]>>true
+App 124 stdout: @obj => item.txt
+App 124 stdout: @val => |Um vale cercado por montes suaves, no encontro de três rios, era disputado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou no mapa.Um vale cercado por montes suaves, no encontro de três rios, era dispu- tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou no mapa.|
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:51:55 +0000] "POST /maga/objSave HTTP/1.1" 200 - 0.0573
+App 124 stdout: >[@logado]>>true
+App 124 stdout: @new_name> 1475797950747
+App 124 stdout: @filename> IMG_0024.JPG
+App 107 stderr: 172.17.0.1 - - [06/Oct/2016:23:52:36 +0000] "POST /maga/portfolio/uploadPic/1 HTTP/1.1" 200 - 5.6432
+[ 2016-10-06 23:56:13.3692 68/7f3ae1ca6700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 131, application /home/app/webapp/public (development)
+App 124 stdout: >[@logado]>>true
+App 124 stdout: [@site_nome]>maga
+App 107 stderr: 172.17.0.1 - - [07/Oct/2016:01:45:25 +0000] "GET /maga HTTP/1.1" 200 32065 0.9984
+App 124 stdout: >[@logado]>>true
+App 107 stderr: 172.17.0.1 - - [07/Oct/2016:01:45:32 +0000] "GET /maga/dataLoad HTTP/1.1" 200 2821 0.1026
+App 2946 stderr: stdin: is not a tty
+App 124 stdout: >[@logado]>>true
+App 124 stdout: 
+App 107 stderr: 172.17.0.1 - - [07/Oct/2016:01:45:32 +0000] "GET /maga/logged HTTP/1.1" 200 4 0.2362
+App 2946 stdout: 
+App 2963 stdout: 

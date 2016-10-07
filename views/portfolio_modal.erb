@@ -42,7 +42,7 @@
 
      <br>
      <img class="img-thumbnail"          
-         style="width:100%; max-width:500px; margin-bottom: 13  px;"
+         style="width:100%; max-width:500px; margin-bottom: 13px;"
          ng-src="{{item.img}}" />
 
      <p style="margin: 0px 200px 0px 200px">
@@ -140,7 +140,7 @@
       <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
     </div>
 
-    <label class="btn btn-default btn-file">
+    <label  ng-show="isLogged" class="btn btn-default btn-file">
         Alterar imagem 
         <input type="file" 
                  id="imgSelect" 

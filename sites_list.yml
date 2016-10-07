@@ -44,3 +44,11 @@ sites:
   email: contato@magaweb.com.br
   senha: 94c8
   token: 94c8572cafdd26d3c1d2231c0963451d
+- nome: dede
+  email: contato@magaweb.com.br
+  senha: d55b
+  token: d55bbee495b79a0c9cc05412787add8f
+- nome: rrr
+  email: contato@magaweb.com.br
+  senha: 2e18
+  token: 2e186011e304f5a42a3928625d97d083
