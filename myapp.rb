@@ -101,14 +101,15 @@ get "/site_new" do
     mailMassege = "
 Olá,
 
-Você recentemente abriu uma conta no site Radiando e este 
-é um email de confirmação da sua nova conta.
+Você abriu uma conta no site Radiando e este é um email de confirmação da sua nova conta.
 
-Clique no link de confirmação abaixo ou cole na barra de endereço do seu browser:
-http://localhost:3000/site_new_do?email=#{userEmail}&site_nome=#{site_nome}&token=#{random_string}
+Clique no link de confirmação abaixo ou cole no seu navegador:
+http://radiando.net/site_new_do?email=#{userEmail}&site_nome=#{site_nome}&token=#{random_string}
 
-Depois de confirmada a sua conta seu site já estará no ar com os dados de acesso:
-URL: radiando.net/#{site_nome}
+Depois de confirmada a sua conta seu site já estará no ar no endereço:
+http://radiando.net/#{site_nome}
+
+Para editar o conteúdo do seu site clique no botão 'login' no rodapé da página e digite sua senha:
 Senha: #{senha}
 
 Qualquer dúvida entre em contato conosco.

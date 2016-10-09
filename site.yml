@@ -15,22 +15,22 @@ moldura:
   - label: Sobre
   - label: Contato
   footer:
-    endereco:
+    endereco: Minha rua
     social:
       facebook: 
       googleplus: 
       twitter: 
       linkedin: 
-    about_resumo:    
+    about_resumo: Me acompanhe aqui no meu site  
 pages:
   home:
-    label:
+    label: Meu novo site
     img:
-    body:
+    body: Bem vindo
   about:
     label: Sobre
-    body1:
-    body2:
+    body1: Esse é meu novo site criado na plataforma Radiando.net. Aqui vou colocar um texto explicando um pouco sobre meu site.
+    body2: A idéia é que esse meu novo site possua uma galeria aonde vou expor minhas idéias.
   portfolio:
     label: Portfólio
     items:  

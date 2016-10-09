@@ -1,0 +1,49 @@
+---
+name: ninja
+senha: 1e1a
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: ninja22 total
+  menu:
+  - label: Portfóliosdfsf
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: Minha rua
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: Me acompanhe aqui no meu site
+pages:
+  home:
+    label: Meu novo site
+    img: contas/ninja/img/profile.png
+    body: super teste
+  about:
+    label: Sobre
+    body1: Esse é meu novo site criado na plataforma Radiando.net. Aqui vou colocar
+      um texto explicando um pouco sobre meu site.
+    body2: A idéia é que esse meu novo site possua uma galeria aonde vou expor minhas
+      idéias.
+  portfolio:
+    label: Portfóliosdfsf
+    items:
+    - id: '0'
+      titulo: 
+      img: "/img/cabin.png"
+      txt: sdffdsfsdf<br>sdfsffsfsfsffsfsf
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+  contact:
+    label: Contato
