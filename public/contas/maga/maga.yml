@@ -12,9 +12,9 @@ moldura:
     label: fidelito#
     link: index.ttt
   menu:
-  - label: "!Catálogo!"
-  - label: Sobre
-  - label: Contato
+  - label: Catálogo2
+  - label: Quem sou eu
+  - label: teste22
   footer:
     endereco: Framework de front-end elegante, intuitivo para um desenvolvimento web
       mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
@@ -33,11 +33,11 @@ pages:
     img: contas/maga/img/avatar.jpg
     body: São lourenço - MG - Brasil
   about:
-    label: Sobre
-    body1: sfsdffsf
+    label: Quem sou eu
+    body1: sfsdffsfsdfsdfsd ds sd sd fs<div>sdfsdfsdfd<br>sdfsdfdsfdsfsdfdssdf</div>
     body2: fsdfsd
   portfolio:
-    label: "!Catálogo!"
+    label: Catálogo2
     items:
     - id: ''
       titulo: Fidelito doido
@@ -120,4 +120,4 @@ pages:
       servico: ''
       cat: ''
   contact:
-    label: Contato
+    label: teste22

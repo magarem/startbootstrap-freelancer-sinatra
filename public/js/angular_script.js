@@ -246,7 +246,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     }
 
     var _saveDiv = function(obj, val, item_n){   
-      val = val.trim();
+      if (val != undefined) {val = val.trim();}
       console.log(obj, val, item_n);
       // val = val.replace(/&nbsp;/g, "");
       // val = val.replace(/, /g, ",");
@@ -853,7 +853,7 @@ mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
 
 mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
   
-  $scope.site = {}; 
+  // $scope.site = {}; 
   
   $scope.isLogged = false;
 
@@ -862,12 +862,16 @@ mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
     console.log(">>[$scope.isLogged]>>",response.data);
   }) 
 
-  SiteData.getSiteData().then(function(response) {    
+  SiteData.getSiteData().then(function(response) {  
+    str = response.data.pages.contact    
+    $scope.contact = str
+    console.log("SiteData[aboutCtrl]:", str);  
     $scope.site = response.data
   })
+  
   $scope.saveDiv = function(obj){    
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
-       // console.log(response.data);
+       console.log("contact>>>", response.data);
     })    
   }
 
