@@ -136,9 +136,9 @@ radiando.net"
     })
 
     # Abre o site recem criado no modo de edição
-    "Um email de confirmação foi enviado para #{userEmail}"
+    redirect "site/index.html?msg=Um email de confirmação foi enviado para #{userEmail}"
   else
-    "Esse nome de site já foi escolhido, favor definir outro."
+    redirect "site/index.html?msg=Esse nome de site já foi escolhido, favor definir outro."
   end
 end
 
@@ -425,7 +425,7 @@ post "/:site_nome/avatar/upload" do
   if !@logado then redirect "/#{site_nome}" end
 
   # Testa para ver se é uma imagem que está sendo enviada
-  if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 5000000 then
+  if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
     puts "file.size> #{file.size}"
     # Salva imagem no disco (upload)
     @filename = "avatar."+params["file"][:filename].split(".").last.downcase
@@ -434,11 +434,11 @@ post "/:site_nome/avatar/upload" do
       f.write(file.read)
     end
     
-    # # Reduz o tamanho da imagem
-    # image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
-    # image.resize "600x600"
-    # image.format "png"   
-    # image.write "./public/contas/#{site_nome}/img/#{@filename_after}"
+    # Reduz o tamanho da imagem
+    image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
+    image.resize "600x600"
+    #image.format "png"   
+    image.write "./public/contas/#{site_nome}/img/#{@filename}"
 
     # Salva o nome da imagem o arquivo fonte
     data = YAML.load_file @data_path
@@ -526,7 +526,7 @@ post "/:site_nome/portfolio/uploadPic/:index" do
     imagem_tipo = params[:file][:type]
 
     # Testa para ver se é uma imagem que está sendo enviada
-    if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 6000000 then
+    if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
       img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@new_name}"
       File.open(img_path, 'wb') do |f|
         f.write(file.read)

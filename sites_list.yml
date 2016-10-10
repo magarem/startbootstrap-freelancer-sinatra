@@ -76,3 +76,7 @@ sites:
   email: contato@magaweb.com.br
   senha: 1e1a
   token: 1e1aa53cace3b6d4176e7168f9f5a9df
+- nome: ddd
+  email: contato@magaweb.com.br
+  senha: f75b
+  token: f75b9818cba20dfbd8213d4998c099b5

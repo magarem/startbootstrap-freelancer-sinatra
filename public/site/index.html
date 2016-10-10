@@ -137,7 +137,7 @@
             <div class="col-md-6">
               <div class="icon"><i class="pe-7s-diamond"></i></div>
               <h2>Catálogo</h2>
-              <p>Se você tem algum produto, ou serviço ou tem fotos de trabalhos que quer organizar em um portfólio e quer que as pessos vejam e ao mesmo tempo não tem tempo nem dinheiro pra ficar contratando webdesigns, programadores, registrando domínios contratando e configurando servidores, então é disso que você precisas.  </p>
+              <p>Se você tem algum produto, serviço ou tem fotos de trabalhos que quer organizar em um portfólio e quer que as pessos vejam e também não tem tempo nem dinheiro pra ficar contratando webdesigns, programadores, registrando domínios, contratando e configurando servidores, então Radiando é o que você precisa.</p>
             </div>
             <div class="col-md-6">
               <p><img alt="" src="img/portfolio_preview.png" class="img-responsive"></p>
@@ -153,8 +153,8 @@
             </div>
             <div class="col-md-6">
               <div class="icon brand-terciary"><i class="pe-7s-rocket"></i></div>
-              <h2>Informações sobre você ou seu negócio</h2>
-              <p>Seja você uma pessoa física ou jurídica, as informações mais importantes para seu público podem ser editadas de forma direta em um gerenciador de conteúdo 100% integrado aonde não é necessário nenhum grande esforço. Tudo acontece de forma muito intuitiva. </p>
+              <h2>Informações sobre você e seu negócio</h2>
+              <p>Seja você uma pessoa física ou jurídica, as informações mais importantes para seu público podem ser editadas de forma direta em um gerenciador de conteúdo 100% integrado aonde não é necessário nenhum grande esforço. Tudo acontece de forma simples e intuitiva.</p>
             </div>
           </div>
         </div>
@@ -165,7 +165,7 @@
             <div class="col-md-12 col-lg-8 col-lg-offset-2 text-center">
               <div class="icon brand-secondary"><i class="pe-7s-graph1"></i></div>
               <h2>Formulário de contato simples</h2>
-              <p>Seja como for ou o que for, uma vez na web você vai precisar de uma forma simples e direta para as pessoas que estão vendo seu site entrarem em contato com você. Então pronto! Um formulário de contato que envia a mensagem direto para seu email. </p>
+              <p>Seja como for ou o que for, uma vez na web você vai precisar de uma forma simples e direta para as pessoas que estão vendo seu site poderem entrar em contato com você. Então pronto! Seu novo site já vem com um formulário de contato integrado que envia a mensage digitada direto para seu email.</p>
               <p class="margin-bottom--zero"><img alt="" src="img/contact_preview.png" class="img-responsive"></p>
             </div>
           </div>
@@ -403,6 +403,8 @@
     <!-- Javascript files-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"> </script>
+    <script src="js/bootbox.min.js"> </script>
+
     <script src="js/jquery.cookie.js"> </script>
     <script src="js/ekko-lightbox.js"></script>
     <script src="js/jquery.simple-text-rotator.min.js"></script>
@@ -411,13 +413,19 @@
     <script src="js/front.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
     <!---->
+
     <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
+      function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+      var msg = getParameterByName('msg');
+      bootbox.alert(msg)
     </script>
   </body>
 </html>
