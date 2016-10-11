@@ -51,6 +51,7 @@
                 <li><a href="#testimonials" class="scroll-to">Testimonials</a></li>
                 <li><a href="#contact" class="scroll-to">Contact</a></li> -->
               </ul><a href="#" data-toggle="modal" data-target="#get-started" class="btn navbar-btn btn-ghost">Comece agora</a>
+              <a href="#" data-toggle="modal" data-target="#login" class="btn navbar-btn btn-ghost">Log in</a>
             </div>
           </div>
         </div>
@@ -80,21 +81,51 @@
         </div>
       </div>
       <!-- *** SIGNUP MODAL END ***-->
+
+      <!-- *** SIGNUP MODAL ***_________________________________________________________
+      -->
+      <div id="login" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+              <h4 class="modal-title text-center">Log in</h4>
+            </div>
+            <div class="modal-body">
+              <form action=/login_do method="POST">
+                <div class="form-group">
+                 
+                    <input type="text" name="post[site]" placeholder="Site"  class="form-control">
+
+                    <input type="password" name="post[senha]" value="" class="form-control"  placeholder="Entre com a senha" style="margin-top:10px;">
+
+                </div>
+                <p class="text-center">
+                  <button class="btn btn-primary"><i class="pe-7s-magic-wand"></i> Login</button>
+                </p>
+              </form>
+              <p class="text-center text-muted"><a href="">Esqueci a senha, me envie por email</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+            <!-- *** SIGNUP MODAL END ***-->
+
       <section id="intro" class="text-intro no-padding-bottom">
         <div class="container">
           <div class="row">
             <div class="col-md-12">
               <h1>Crie seu portfólio on-line</h1>
               <!-- <span class="rotate">portfólio, catálogo</span> -->
-              <h3 class="weight-300">Em 5 minutos no ar</h3>
+              <h3 class="weight-300">Publique seu site em 5 minutos!</h3>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
               <p>Editor 100% integrado</p>
               <form method=get action="/site_new" class="form-inline margin-top sign-up-form">
-                <input id="email_intro" type="email" placeholder="Qual seu email?" class="form-control" name=email>
-                <input  type="text" placeholder="Qual o nome do seu futuro site?" class="form-control" name=site_nome>
+                <input id="email_intro" type="email" placeholder="E-email" class="form-control" name=email>
+                <input  type="text" placeholder="Nome do site" class="form-control" name=site_nome>
                 <input id="submit_intro" type="submit" value="Criar site" class="btn btn-primary">
               </form>
             </div>
@@ -137,7 +168,7 @@
             <div class="col-md-6">
               <div class="icon"><i class="pe-7s-diamond"></i></div>
               <h2>Catálogo</h2>
-              <p>Se você tem algum produto, serviço ou tem fotos de trabalhos que quer organizar em um portfólio e quer que as pessos vejam e também não tem tempo nem dinheiro pra ficar contratando webdesigns, programadores, registrando domínios, contratando e configurando servidores, então Radiando é o que você precisa.</p>
+              <p>Seus trabalhos organizados e disponíveis na web</p>
             </div>
             <div class="col-md-6">
               <p><img alt="" src="img/portfolio_preview.png" class="img-responsive"></p>
@@ -154,7 +185,7 @@
             <div class="col-md-6">
               <div class="icon brand-terciary"><i class="pe-7s-rocket"></i></div>
               <h2>Informações sobre você e seu negócio</h2>
-              <p>Seja você uma pessoa física ou jurídica, as informações mais importantes para seu público podem ser editadas de forma direta em um gerenciador de conteúdo 100% integrado aonde não é necessário nenhum grande esforço. Tudo acontece de forma simples e intuitiva.</p>
+              <p>Tudo o que seus futuros clientes precisam saber sobre você.</p>
             </div>
           </div>
         </div>

@@ -1,5 +1,9 @@
 ---
 sites:
+- nome: maga
+  email: contato@magaweb.com.br
+  senha: '8654'
+  token: 18654f26f16c4968288e559464b71b39a
 - nome: teste1
   email: contato@magaweb.com.br
   senha: '8654'
@@ -80,3 +84,7 @@ sites:
   email: contato@magaweb.com.br
   senha: f75b
   token: f75b9818cba20dfbd8213d4998c099b5
+- nome: marcelo
+  email: contato@magaweb.com.br
+  senha: f67b
+  token: f67b362a09aa334eb45b9cfb9e21df09

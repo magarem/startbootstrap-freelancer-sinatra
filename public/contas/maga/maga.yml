@@ -9,7 +9,7 @@ head:
 moldura:
   label: Portfolio
   logo:
-    label: fidelito#
+    label: fidelito22
     link: index.ttt
   menu:
   - label: Catálogo2
@@ -41,7 +41,7 @@ pages:
     items:
     - id: ''
       titulo: Fidelito doido
-      img: "/contas/maga/img/portfolio/1475778900027"
+      img: contas/maga/img/portfolio/1476208373933.jpg
       txt: Um vale cercado por montes suaves, no encontro de três rios, era disputado
         palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
         foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
@@ -82,6 +82,15 @@ pages:
       servico: ''
       cat: hhh
     - id: ''
+      titulo: novo item
+      img: "/contas/maga/img/portfolio/1476207596171"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
       titulo: 
       img: "/contas/maga/img/portfolio/1475025019248"
       txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
@@ -94,7 +103,7 @@ pages:
       cat: 
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/1475777945273
+      img: contas/maga/img/portfolio/1476208265007.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -106,15 +115,6 @@ pages:
       img: contas/maga/img/portfolio/1476058160582
       txt: 
       nome: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
-      titulo: novo item
-      img: "/img/balao.jpg"
-      txt: ''
-      cliente: ''
       site: ''
       data: ''
       servico: ''

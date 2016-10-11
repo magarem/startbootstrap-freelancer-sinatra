@@ -725,45 +725,44 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   var siteNome = urlArray[urlArray.length-1]
   var updestino = '/'+siteNome+'/portfolio/uploadPic/'+$scope.i
 
-  $scope.upload = function (dataUrl, name, picFile) {
+//   $scope.upload = function (dataUrl, name, picFile) {
    
-    console.log(picFile)
-    //Pegando a extenção do arquivo
-    var dotIndex = name.lastIndexOf('.');
-    var ext = name.substring(dotIndex);
-    var new_name = Date.now().toString()+ext;
-    var new_name2 = Date.now().toString()+"_2"+ext;
+//     console.log(picFile)
+//     //Pegando a extenção do arquivo
+//     var dotIndex = name.lastIndexOf('.');
+//     var ext = name.substring(dotIndex);
+//     var new_name = Date.now().toString()+ext;
+//     var new_name2 = Date.now().toString()+"_2"+ext;
 
-    Upload.upload({
-      url: updestino,
-      data: {
-        file: Upload.dataUrltoBlob(dataUrl, new_name)
-      },
-    }).then(function (response) {
-      $timeout(function () {
-        $scope.result = response.data;
-        //console.log("Sucesso!>", dataUrl)
-        $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
+//     Upload.upload({
+//       url: updestino,
+//       data: {
+//         file: Upload.dataUrltoBlob(dataUrl, new_name)
+//       },
+//     }).then(function (response) {
+//       $timeout(function () {
+//         $scope.result = response.data;
+//         //console.log("Sucesso!>", dataUrl)
+//         $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
 
-        $scope.flgImg=true;
-        $scope.flgCropBox=false
-      });
-    }, function (response) {
-      if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
-    }, function (evt) {
-      $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-    });
-}
+//         $scope.flgImg=true;
+//         $scope.flgCropBox=false
+//       });
+//     }, function (response) {
+//       if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+//     }, function (evt) {
+//       $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+//     });
+// }
 
 
 $scope.uploadPic = function(file) {
 
 
     //Pegando a extenção do arquivo
-    var dotIndex = name.lastIndexOf('.');
-    var ext = name.substring(dotIndex);
+    var dotIndex = file.name.lastIndexOf('.');
+    var ext = file.name.substring(dotIndex);
     var new_name = Date.now().toString()+ext;
-    var new_name2 = Date.now().toString()+"_2"+ext;
 
     file.upload = Upload.upload({
       url: updestino,
@@ -868,7 +867,7 @@ mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
     console.log("SiteData[aboutCtrl]:", str);  
     $scope.site = response.data
   })
-  
+
   $scope.saveDiv = function(obj){    
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
        console.log("contact>>>", response.data);

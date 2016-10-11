@@ -259,16 +259,22 @@ get '/:site_nome' do
   if @site_nome != "undefined" then 
     if @site_nome != "favicon.ico" then
       puts "[@site_nome]>#{@site_nome}"
+
+      #Testa se existe o site
+      if !File.exist? File.expand_path "./public/contas/"+@site_nome then 
+          redirect 'site/index.html?msg=Site não encontrado'
+      end
+
       @edit_flag = session[:logado]
       if @edit_flag then
          if @site_nome == session[:site_nome] then    
             erb :index 
          else
            session.clear
-           "<h1>Erro de autenticação (#{@edit_flag} - [#{@site_nome}] - [#{session[:site_nome]}])</h1>"
+           redirect "/{@site_nome}"
          end
       else
-        erb :index 
+          erb :index 
       end       
     end
   end
@@ -436,7 +442,7 @@ post "/:site_nome/avatar/upload" do
     
     # Reduz o tamanho da imagem
     image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
-    image.resize "600x600"
+    image.resize "256x256"
     #image.format "png"   
     image.write "./public/contas/#{site_nome}/img/#{@filename}"
 
