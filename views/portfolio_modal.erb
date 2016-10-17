@@ -151,7 +151,9 @@
                  accept="image/*" 
                  ngf-max-size="10MB" 
                  required
-                 ngf-model-invalid="errorFile">
+                 ngf-model-invalid="errorFile"
+                 ngf-fix-orientation="true" 
+                 >
     </label>
     
     <button type="button" ng-show="isLogged" class="btn btn-default" ng-click="excluir(i);">Excluir</button>    
