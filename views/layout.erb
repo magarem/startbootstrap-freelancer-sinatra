@@ -141,8 +141,8 @@
                 data-toggle="modal" 
                 onclick="location.href='/<%=@site_nome%>/logout'">Logout
               </button>
-           <!-- 
-              <button  ng-show="!isLogged" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalLogin">Admin</button> -->
+           
+              <button  ng-show="!isLogged" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalLogin">Admin</button>
            
           </div>
         </div>
@@ -151,8 +151,9 @@
   </footer>
     
 
- <script src="js/jquery.js"></script>
+  <script src="js/jquery.js"></script>
   <!-- AngularJs -->
+  <script src="js/exif.js"></script>
 
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
@@ -202,6 +203,8 @@
     <script type="text/javascript" src="js/re-tree.js"></script>
 
 
+    <script src="js/angular-fix-image-orientation.js"></script>
+
     <script>
       //
       // Hack para limpar o código html quando 
@@ -229,7 +232,7 @@
           // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
           //document.execCommand('insertHTML', false, '<br><br>');
           // prevent the default behaviour of return key pressed
-          $("p[contentEditable]").blur()
+          $("div[contentEditable]").blur()
           return false;
         }
       })

@@ -161,14 +161,14 @@
   </form>
   <script type="text/javascript">
       //
-      // Hack para limpar o código html quando 
-      // se cola algum texto vindo de algum site
-      //
-      $(document).on('paste','[contenteditable]',function(e) {
-        e.preventDefault();
-        var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
-        window.document.execCommand('insertText', false, text);
-      });
+      // // Hack para limpar o código html quando 
+      // // se cola algum texto vindo de algum site
+      // //
+      // $(document).on('paste','[contenteditable]',function(e) {
+      //   e.preventDefault();
+      //   var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+      //   window.document.execCommand('insertText', false, text);
+      // });
 
       $('div[contenteditable]').keydown(function(e) {
         //trap the return key being pressed

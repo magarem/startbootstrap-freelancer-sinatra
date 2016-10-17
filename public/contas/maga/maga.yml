@@ -12,7 +12,7 @@ moldura:
     label: fidelito22
     link: index.ttt
   menu:
-  - label: Catálogo2
+  - label: plaintext-only
   - label: Quem sou eu
   - label: teste22
   footer:
@@ -29,51 +29,45 @@ moldura:
       web mais rápido e fácil
 pages:
   home:
-    label: Harekrisna
+    label: ALL-IN-ONE PLATFORM
     img: contas/maga/img/avatar.jpg
-    body: São lourenço - MG - Brasil
+    body: ALL-IN-ONE PLATFORM
   about:
     label: Quem sou eu
     body1: sfsdffsfsdfsdfsd ds sd sd fs<div>sdfsdfsdfd<br>sdfsdfdsfdsfsdfdssdf</div>
     body2: fsdfsd
   portfolio:
-    label: Catálogo2
+    label: plaintext-only
     items:
     - id: ''
-      titulo: Fidelito doido
+      titulo: ALL-IN-ONE PLATFORM
+      img: contas/maga/img/portfolio/1475025923407
+      txt: ALL-IN-ONE PLATFORM<div><br></div>
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: '6767'
+    - id: ''
+      titulo: ALL-IN-ONE PLATFORM
+      img: contas/maga/img/portfolio/1475797950747
+      txt: ALL-IN-ONE PLATFORM
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: teste1
+    - id: ''
+      titulo: plaintext-only
       img: contas/maga/img/portfolio/1476208373933.jpg
-      txt: Um vale cercado por montes suaves, no encontro de três rios, era disputado
-        palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
-        foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
-        no mapa.Um vale cercado por montes suaves, no encontro de três rios, era dispu-
-        tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.
-        Essa foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
-        no mapa.
+      txt: plaintext-only<br>
       cliente: ''
       site: ''
       data: ''
       servico: ''
       cat: tt,kk
-    - id: ''
-      titulo: Maguete
-      img: contas/maga/img/portfolio/1475797950747
-      txt: sdfsdf
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: 
-    - id: ''
-      titulo: fonte
-      img: contas/maga/img/portfolio/1475025923407
-      txt: fsdfd
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: '6767'
     - id: 0
-      titulo: FideliS
+      titulo: As plantasAs plantasAs plantasAs plantasAs plantas
       img: contas/maga/img/portfolio/1475027925073
       txt: Grande teste total!!
       nome: ''
@@ -84,7 +78,7 @@ pages:
     - id: ''
       titulo: novo item
       img: "/contas/maga/img/portfolio/1476207596171"
-      txt: ''
+      txt: additionaladditionaladditionaladditional
       cliente: ''
       site: ''
       data: ''
