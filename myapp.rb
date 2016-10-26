@@ -13,7 +13,7 @@ enable :sessions
 
 module IndiceArray
   def self.set_site_nome site_nome
-    @site_nome = site_nome       
+    @site_nome = site_nome
   end
 end
 
@@ -31,7 +31,7 @@ helpers do
 
   def str_clean str
     str.to_s.gsub("<br>", "\n").gsub(/<\/?[^>]*>/, "").gsub("&nbsp;", "")
-  end 
+  end
 end
 
 before do
@@ -41,20 +41,45 @@ before do
 end
 
 #
-#  Pedir novo site 
+#  Pedir novo site
 #
+Mail.defaults do
+  delivery_method :sendmail
+end
 
 set :public_folder, 'public'
 get "/" do
-  redirect 'site/index.html' 
+  redirect 'site/index.html'
 end
 
 
+get "/email" do
+  #Envia email de confirmação da abertura da nova conta
+  mailMassege = "Olá, Eu aqui sou o Fidelis tá? ;)"
+Pony.mail(:to => 'contato@magaweb.com.br', :from => 'me@example.com', :subject => 'hi', :body => 'Hello there.')
+  # Pony.mail({
+  #   :to => "contato@magaweb.com.br",
+  #   :via => :smtp,
+  #   :from => "Radiando",
+  #   :subject => "Bem vindo!",
+  #   :body => mailMassege,
+  #   :via_options => {
+  #     :address              => 'smtp.gmail.com',
+  #     :port                 => '587',
+  #     :enable_starttls_auto => true,
+  #     :user_name            => 'contato@magaweb.com.br',
+  #     :password             => 'maria108',
+  #     :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+  #     :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
+  #   }
+  # })
+
+end
 
 #
-#  Pedir novo site 
+#  Pedir novo site
 #
-get "/site_new" do 
+get "/site_new" do
 
   #Pega os parâmetros
   site_nome = params["site_nome"]
@@ -67,7 +92,7 @@ get "/site_new" do
 
   random_string = SecureRandom.hex
   senha = random_string[0, 4].downcase
-  
+
   # Lê o arquivo base
   data = YAML.load_file "sites_list.yml"
 
@@ -75,12 +100,12 @@ get "/site_new" do
   data["sites"].each do |key|
     yml_nome  = key['nome']
     if site_nome == yml_nome
-      flg_nome_ja_existe = true     
+      flg_nome_ja_existe = true
     end
   end
 
   # Prapara o novo item para inserção
-  novo = { 
+  novo = {
     "nome"   => site_nome,
     "email"  => userEmail,
     "senha"  => senha,
@@ -113,11 +138,11 @@ Para editar o conteúdo do seu site clique no botão 'login' no rodapé da pági
 Senha: #{senha}
 
 Qualquer dúvida entre em contato conosco.
- 
+
 Um abraço,
 Equipe Radiando
 radiando.net"
-    
+
     Pony.mail({
       :to => userEmail,
       :via => :smtp,
@@ -146,7 +171,7 @@ end
 # Criar novo site
 #
 get "/site_new_do" do
-  
+
   #Pega os parâmetros
   email = params["email"]
   site_nome = params["site_nome"]
@@ -156,19 +181,19 @@ get "/site_new_do" do
   flg_achou = false
 
   @sites_list_path = "./sites_list.yml"
-  
+
   # Confere se o token informado pelo link do email está correto
   @y = YAML.load_file @sites_list_path
-  
+
   @y["sites"].each do |key|
-    
+
     yml_nome = key['nome']
     yml_email = key['email']
     yml_senha = key['senha']
     yml_token = key['token']
 
     if email == yml_email && site_nome == yml_nome && token == yml_token
-      flg_achou = true     
+      flg_achou = true
     end
 
   end
@@ -179,32 +204,32 @@ get "/site_new_do" do
       #Cria diretório principal
       install_dir = "public/contas/#{site_nome}"
       FileUtils::mkdir_p install_dir
-      
+
       #Clona o arquivo base
       FileUtils.cp("site.yml", @data_path)
-      
+
       #Cria diretorio de imagens
       install_dir = "public/contas/#{site_nome}/img/portfolio"
       FileUtils::mkdir_p install_dir
 
       #Define o nome/email no arquivo fonte
       data = YAML.load_file @data_path
-      data["name"] = site_nome 
+      data["name"] = site_nome
       data["senha"] = token[0, 4]
       data["email"] = email
-      data["moldura"]["logo"]["label"] = site_nome 
-      
+      data["moldura"]["logo"]["label"] = site_nome
+
       #Copia imagem da capa
       FileUtils.cp("public/img/profile.png","public/contas/#{site_nome}/img/profile.png")
-      
+
       #Define a capa do site
       data["pages"]["home"]["img"] = "contas/#{site_nome}/img/profile.png"
-      
+
       #Salva o arquivo fonte
       f = File.open(@data_path, 'w' )
       YAML.dump( data, f )
-      f.close  
-      
+      f.close
+
       session[:site_nome] = site_nome
       session[:login] = true
 
@@ -226,25 +251,25 @@ end
 #
 # Verificação de login
 #
-post '/login_do' do   
+post '/login_do' do
 
-  # Pega os parâmetros 
-  @post = params[:post]    
+  # Pega os parâmetros
+  @post = params[:post]
   site_nome = @post["site"]
   @form_senha = @post["senha"]
   @data_path.gsub! "{site_nome}", site_nome
   @data = YAML.load_file @data_path
   @data_senha = @data["senha"]
-  
+
   #Compara a senha digitada no formulário de login com a senha do fonte
-  if @form_senha.to_s == @data_senha.to_s then 
+  if @form_senha.to_s == @data_senha.to_s then
     session[:logado] = true
-    session[:site_nome] = site_nome       
+    session[:site_nome] = site_nome
     @edit_flag = "true"
-  else 
+  else
     session[:logado] = false
     session[:site_nome] = ""
-    @edit_flag = "false"      
+    @edit_flag = "false"
   end
   redirect '/'+site_nome
 end
@@ -256,26 +281,26 @@ get '/:site_nome' do
 
   @site_nome = params[:site_nome]
 
-  if @site_nome != "undefined" then 
+  if @site_nome != "undefined" then
     if @site_nome != "favicon.ico" then
       puts "[@site_nome]>#{@site_nome}"
 
       #Testa se existe o site
-      if !File.exist? File.expand_path "./public/contas/"+@site_nome then 
+      if !File.exist? File.expand_path "./public/contas/"+@site_nome then
           redirect 'site/index.html?msg=Site não encontrado'
       end
 
       @edit_flag = session[:logado]
       if @edit_flag then
-         if @site_nome == session[:site_nome] then    
-            erb :index 
+         if @site_nome == session[:site_nome] then
+            erb :index
          else
            session.clear
            redirect "/{@site_nome}"
          end
       else
-          erb :index 
-      end       
+          erb :index
+      end
     end
   end
 end
@@ -283,15 +308,15 @@ end
 #
 # Lê os dados do arquivo fonte
 #
-get '/:site_nome/dataLoad' do 
+get '/:site_nome/dataLoad' do
   # Pega os dados do arquivo fonte
-  site_nome = params[:site_nome]   
+  site_nome = params[:site_nome]
   @data_path.gsub! "{site_nome}", site_nome
   @data = YAML.load_file @data_path
-  @data.to_json    
+  @data.to_json
 end
 
-get '/:site_nome/logged' do 
+get '/:site_nome/logged' do
   @edit_flag = session[:logado] || false
   "#{@edit_flag}"
 end
@@ -299,7 +324,7 @@ end
 #
 # Pega os itens do portfólio
 #
-get '/:site_nome/getdata' do      
+get '/:site_nome/getdata' do
   data = YAML.load_file(@data_path) || {}
   data["pages"]["portfolio"]["items"].to_json
 end
@@ -307,12 +332,12 @@ end
 #
 # Salva os dados do modo de edição
 #
-post '/:site_nome/objSave' do  
-  
+post '/:site_nome/objSave' do
+
   # Pega os parâmetros
-  site_nome = params[:site_nome] 
-  @post_data = JSON.parse(request.body.read)  
-  @obj = @post_data["obj"]  
+  site_nome = params[:site_nome]
+  @post_data = JSON.parse(request.body.read)
+  @obj = @post_data["obj"]
   @val = @post_data["val"]
   @data_path.gsub! "{site_nome}", site_nome
 
@@ -340,7 +365,7 @@ post '/:site_nome/objSave' do
     when "site.pages.home.body"
        data["pages"]["home"]["body"] = @val
 
-    when "about.body1" 
+    when "about.body1"
        data["pages"]["about"]["body1"] = @val
 
     when "about.body2"
@@ -392,7 +417,7 @@ post '/:site_nome/objSave' do
     when "contact.label" then
        data["pages"]["contact"]["label"] = @val
        data["moldura"]["menu"][2]["label"] = @val
-    
+
     # Footer / Social links
     when "site.moldura.footer.social.facebook" then
        data["moldura"]["footer"]["social"]["facebook"] = @val
@@ -418,9 +443,9 @@ end
 #
 # upload da imagem de capa (oval)
 #
-post "/:site_nome/avatar/upload" do 
+post "/:site_nome/avatar/upload" do
 
-  # Pega os parametros 
+  # Pega os parametros
   site_nome = params[:site_nome]
   @filename = params[:file][:filename]
   file = params[:file][:tempfile]
@@ -439,11 +464,11 @@ post "/:site_nome/avatar/upload" do
     File.open("./public/contas/#{site_nome}/img/#{@filename}", 'wb') do |f|
       f.write(file.read)
     end
-    
+
     # Reduz o tamanho da imagem
     image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
     image.resize "256x256"
-    #image.format "png"   
+    #image.format "png"
     image.write "./public/contas/#{site_nome}/img/#{@filename}"
 
     # Salva o nome da imagem o arquivo fonte
@@ -451,14 +476,14 @@ post "/:site_nome/avatar/upload" do
     data["pages"]["home"]["img"] = "contas/#{site_nome}/img/#{@filename}"
     f = File.open(@data_path, 'w' )
     YAML.dump( data, f )
-    f.close  
-  end          
+    f.close
+  end
 end
 
-# 
+#
 #  portfolio: Excluindo um item
 #
-post "/:site_nome/portfolio/delete/:id" do 
+post "/:site_nome/portfolio/delete/:id" do
 
   # Pega os parametros
   site_nome = params[:site_nome]
@@ -487,7 +512,7 @@ post "/:site_nome/portfolio/ordena" do
 
   # Pega os parâmetros
   site_nome = params[:site_nome]
-  @post_data = JSON.parse(request.body.read)  
+  @post_data = JSON.parse(request.body.read)
   @data_path.gsub! "{site_nome}", site_nome
 
   # Autenticação
@@ -495,7 +520,7 @@ post "/:site_nome/portfolio/ordena" do
 
   # Lê o arquivo fonte
   data = YAML.load_file @data_path
-  data["pages"]["portfolio"]["items"] = @post_data  
+  data["pages"]["portfolio"]["items"] = @post_data
   f = File.open(@data_path, 'w' )
   YAML.dump( data, f )
   f.close
@@ -504,7 +529,7 @@ end
 #
 #  Portfolio: upload da imagem do item
 #
-post "/:site_nome/portfolio/uploadPic/:index" do 
+post "/:site_nome/portfolio/uploadPic/:index" do
 
   # Pega os parâmetros
   @site_nome = params[:site_nome]
@@ -540,7 +565,7 @@ post "/:site_nome/portfolio/uploadPic/:index" do
 
       #reduz a imagem
       image = MiniMagick::Image.open(img_path)
-      image.resize "600x600"   
+      image.resize "600x600"
       image.write img_path
       #port_img = "contas/#{@site_nome}/img/portfolio/#{@filename}"
       port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
@@ -548,17 +573,17 @@ post "/:site_nome/portfolio/uploadPic/:index" do
   end
   if (port_img == "" || port_img == "undefined" || port_img == nil) then port_img = @item["img"] end
   data["pages"]["portfolio"]["items"][@index]["img"] = port_img
-  
+
   # Salva os dados alterados
   f = File.open(@data_path, 'w' )
   YAML.dump( data, f )
-  f.close              
+  f.close
 end
 
 #
 #  Portfolio: adicionando um novo item
 #
-post "/:site_nome/portfolio/add" do 
+post "/:site_nome/portfolio/add" do
 
   # Pega os parâmetros
   @site_nome = params[:site_nome]
@@ -571,7 +596,7 @@ post "/:site_nome/portfolio/add" do
   data = YAML.load_file @data_path
 
   # Prapara o novo item para inserção
-  novo = { 
+  novo = {
     "id"      => "",
     "titulo"  => "",
     "img"     => "/img/balao.jpg",
@@ -604,17 +629,17 @@ post '/email_envia' do
   phone = params[:phone]
   message = params[:message]
   @data_path.gsub! "{site_nome}", @site_nome
-  
+
   # Lê o arquivo base
   data = YAML.load_file @data_path
 
   @email_fonte = data["email"]
-  
+
 
   # Debug
   # puts "site_nome:"+@site_nome
   # puts "Email:"+@email_fonte
-  
+
   # # Envia o email
   # Pony.mail :to => data["email"],
   #           :from => email,
@@ -643,4 +668,3 @@ post '/email_envia' do
     }
   })
 end
-
