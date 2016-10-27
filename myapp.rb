@@ -6,6 +6,7 @@ require 'json'
 require 'mini_magick'
 require 'fileutils'
 require 'securerandom'
+require 'mail'
 
 
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
@@ -54,9 +55,21 @@ end
 
 
 get "/email" do
-  #Envia email de confirmação da abertura da nova conta
-  mailMassege = "Olá, Eu aqui sou o Fidelis tá? ;)"
-Pony.mail(:to => 'contato@magaweb.com.br', :from => 'me@example.com', :subject => 'hi', :body => 'Hello there.')
+
+
+  mail = Mail.new do
+    from     'contato@radiando.net'
+    to       'contato@magaweb.com.br'
+    subject  'Here is the image you wanted22'
+    body     'sdsdsd ds ds s s'
+  end
+
+  mail.delivery_method :sendmail
+
+  mail.deliver
+  # #Envia email de confirmação da abertura da nova conta
+  # mailMassege = "Olá, Eu aqui sou o Fidelis tá? ;)"
+  # #Pony.mail(:to => 'contato@magaweb.com.br', :from => 'me@example.com', :subject => 'hi', :body => 'Hello there.')
   # Pony.mail({
   #   :to => "contato@magaweb.com.br",
   #   :via => :smtp,
