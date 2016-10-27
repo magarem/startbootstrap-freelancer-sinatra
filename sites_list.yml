@@ -88,3 +88,7 @@ sites:
   email: contato@magaweb.com.br
   senha: f67b
   token: f67b362a09aa334eb45b9cfb9e21df09
+- nome: ''
+  email: ''
+  senha: 05a2
+  token: 05a2ba1f4e4f20f5dd1809c33aacc18e

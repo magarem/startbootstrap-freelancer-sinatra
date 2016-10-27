@@ -69,7 +69,7 @@
               <form method=get action="/site_new">
                 <div class="form-group">
                     <input id="email_modal" type="text" placeholder="Email" class="form-control" name=email>
-                    <input id="email_modal" type="text" name=site_nome placeholder="Nome do site" style="margin-top:10px;" class="form-control">
+                    <input id="site_nome_modal" type="text" name=site_nome placeholder="Nome do site" style="margin-top:10px;" class="form-control" onblur="this.value=makeslug(this.value)">
                 </div>
                 <p class="text-center">
                   <button class="btn btn-primary"><i class="pe-7s-magic-wand"></i> Criar</button>
@@ -94,7 +94,7 @@
             <div class="modal-body">
               <form action=/login_do method="POST">
                 <div class="form-group">
-                 
+
                     <input type="text" name="post[site]" placeholder="Site"  class="form-control">
 
                     <input type="password" name="post[senha]" value="" class="form-control"  placeholder="Entre com a senha" style="margin-top:10px;">
@@ -123,10 +123,13 @@
           <div class="row">
             <div class="col-md-12">
               <p>Editor 100% integrado</p>
-              <form method=get action="/site_new" class="form-inline margin-top sign-up-form">
-                <input id="email_intro" type="email" placeholder="E-email" class="form-control" name=email>
-                <input  type="text" placeholder="Nome do site" class="form-control" name=site_nome>
-                <input id="submit_intro" type="submit" value="Criar site" class="btn btn-primary">
+              <form id=register1 method=get action="/site_new" class="form-inline margin-top sign-up-form">
+                <input id="email_intro" style="width:250px;"
+                       type="email" placeholder="E-email"
+                       class="form-control" name=email>
+
+                <input  type="text" style="width:250px;" onblur="this.value=makeslug(this.value)" placeholder="Nome do site pretendido" class="form-control" name=site_nome>
+                <input id="register" type="submit" value="Criar site" class="btn btn-primary" >
               </form>
             </div>
             <div class="col-md-12 col-lg-8 col-lg-offset-2">
@@ -164,7 +167,7 @@
       <!--   *** FEATURES ***-->
       <section id="features" class="section">
         <div class="container">
-          <div class="row text-center-mobile"> 
+          <div class="row text-center-mobile">
             <div class="col-md-6">
               <div class="icon"><i class="pe-7s-diamond"></i></div>
               <h2>Catálogo</h2>
@@ -178,7 +181,7 @@
       </section>
       <section class="section background-gray-lightest">
         <div class="container">
-          <div class="row text-center-mobile"> 
+          <div class="row text-center-mobile">
             <div class="col-md-6">
               <p><img alt="" src="img/about_preview.png" class="img-responsive"></p>
             </div>
@@ -286,11 +289,11 @@
       <!-- <section id="testimonials" class="section testimonails background-gray-lightest">
         <div class="container">
           <h2 class="text-center">
-             
+
             What our customers say
           </h2>
           <p class="lead text-center">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.  </p>
-          <div class="row"> 
+          <div class="row">
             <div class="col-md-12">
               <ul class="owl-carousel testimonials same-height-row">
                 <li class="item">
@@ -386,7 +389,7 @@
           </div>
         </div>
       </section> -->
-     <!--  <section id="contact" class="section background-gray-lightest"> 
+     <!--  <section id="contact" class="section background-gray-lightest">
         <div class="container">
           <div class="row">
             <div class="col-md-4">
@@ -444,6 +447,7 @@
     <script src="js/front.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
     <!---->
+    <script src="js/makeslug.js"></script>
 
     <script>
       function getParameterByName(name, url) {
@@ -457,6 +461,9 @@
       }
       var msg = getParameterByName('msg');
       bootbox.alert(msg)
+
+
+    
     </script>
   </body>
 </html>
