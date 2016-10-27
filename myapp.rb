@@ -56,7 +56,6 @@ end
 
 get "/email" do
 
-
   mail = Mail.new do
     from     'contato@radiando.net'
     to       'contato@magaweb.com.br'
@@ -65,27 +64,7 @@ get "/email" do
   end
 
   mail.delivery_method :sendmail
-
   mail.deliver
-  # #Envia email de confirmação da abertura da nova conta
-  # mailMassege = "Olá, Eu aqui sou o Fidelis tá? ;)"
-  # #Pony.mail(:to => 'contato@magaweb.com.br', :from => 'me@example.com', :subject => 'hi', :body => 'Hello there.')
-  # Pony.mail({
-  #   :to => "contato@magaweb.com.br",
-  #   :via => :smtp,
-  #   :from => "Radiando",
-  #   :subject => "Bem vindo!",
-  #   :body => mailMassege,
-  #   :via_options => {
-  #     :address              => 'smtp.gmail.com',
-  #     :port                 => '587',
-  #     :enable_starttls_auto => true,
-  #     :user_name            => 'contato@magaweb.com.br',
-  #     :password             => 'maria108',
-  #     :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
-  #     :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
-  #   }
-  # })
 
 end
 
@@ -156,22 +135,32 @@ Um abraço,
 Equipe Radiando
 radiando.net"
 
-    Pony.mail({
-      :to => userEmail,
-      :via => :smtp,
-      :from => "Radiando",
-      :subject => "Bem vindo!",
-      :body => mailMassege,
-      :via_options => {
-        :address              => 'smtp.gmail.com',
-        :port                 => '587',
-        :enable_starttls_auto => true,
-        :user_name            => 'contato@magaweb.com.br',
-        :password             => 'maria108',
-        :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
-        :domain               => "localhost.magaweb.com.br" # the HELO domain provided by the client to the server
-      }
-    })
+    # Pony.mail({
+    #   :to => userEmail,
+    #   :via => :smtp,
+    #   :from => "Radiando",
+    #   :subject => "Bem vindo!",
+    #   :body => mailMassege,
+    #   :via_options => {
+    #     :address              => 'smtp.gmail.com',
+    #     :port                 => '587',
+    #     :enable_starttls_auto => true,
+    #     :user_name            => 'contato@magaweb.com.br',
+    #     :password             => 'maria108',
+    #     :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+    #     :domain               => "localhost.magaweb.com.br" # the HELO domain provided by the client to the server
+    #   }
+    # })
+
+    mail = Mail.new do
+      from     'contato@radiando.net'
+      to       userEmail
+      subject  'Bem vindo!'
+      body     mailMassege
+    end
+
+    mail.delivery_method :sendmail
+    mail.deliver
 
     # Abre o site recem criado no modo de edição
     redirect "site/index.html?msg=Um email de confirmação foi enviado para #{userEmail}"
@@ -663,21 +652,33 @@ post '/email_envia' do
   mailMassege = "Você recebeu um email de: #{name} / #{email} / #{phone}
                  #{message}"
 
+  #
+  # Pony.mail({
+  #   :to => @email_fonte,
+  #   :via => :smtp,
+  #   :from => email,
+  #   :subject => "Contato",
+  #   :body => mailMassege,
+  #   :via_options => {
+  #     :address              => 'smtp.gmail.com',
+  #     :port                 => '587',
+  #     :enable_starttls_auto => true,
+  #     :user_name            => 'contato@magaweb.com.br',
+  #     :password             => 'maria108',
+  #     :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+  #     :domain               => "localhost.magaweb.com.br" # the HELO domain provided by the client to the server
+  #   }
+  # })
 
-  Pony.mail({
-    :to => @email_fonte,
-    :via => :smtp,
-    :from => email,
-    :subject => "Contato",
-    :body => mailMassege,
-    :via_options => {
-      :address              => 'smtp.gmail.com',
-      :port                 => '587',
-      :enable_starttls_auto => true,
-      :user_name            => 'contato@magaweb.com.br',
-      :password             => 'maria108',
-      :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
-      :domain               => "localhost.magaweb.com.br" # the HELO domain provided by the client to the server
-    }
-  })
+  mail = Mail.new do
+    from     'contato@radiando.net'
+    to       @email_fonte
+    subject  'Formulário de contato'
+    body     mailMassege
+  end
+
+  mail.delivery_method :sendmail
+  mail.deliver
+
+
 end
