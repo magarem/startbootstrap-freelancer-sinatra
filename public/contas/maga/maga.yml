@@ -40,8 +40,17 @@ pages:
     label: plaintext-only
     items:
     - id: ''
+      titulo: novo item
+      img: "/contas/maga/img/portfolio/1477873164328.jpg"
+      txt: additionaladditionaladditionaladditional
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: 6767,fruta
+    - id: ''
       titulo: ALL-IN-ONE PLATFORM
-      img: contas/maga/img/portfolio/1476731846923.JPG
+      img: contas/maga/img/portfolio/1477871457118.jpg
       txt: ALL-IN-ONE PLATFORM<div><br></div>
       cliente: 
       site: 
@@ -50,7 +59,7 @@ pages:
       cat: '6767'
     - id: ''
       titulo: ALL-IN-ONE PLATFORM
-      img: contas/maga/img/portfolio/1475797950747
+      img: contas/maga/img/portfolio/1477871555950.jpg
       txt: ALL-IN-ONE PLATFORM
       cliente: ''
       site: ''
@@ -59,7 +68,7 @@ pages:
       cat: teste1
     - id: ''
       titulo: plaintext-only
-      img: contas/maga/img/portfolio/1476666652486.JPG
+      img: contas/maga/img/portfolio/1477871629242.jpg
       txt: plaintext-only<br>
       cliente: ''
       site: ''
@@ -68,28 +77,19 @@ pages:
       cat: tt,kk
     - id: 0
       titulo: As plantasAs plantasAs plantasAs plantasAs plantas
-      img: contas/maga/img/portfolio/1475027925073
+      img: contas/maga/img/portfolio/1477872782376.jpg
       txt: Grande teste total!!
       nome: ''
       site: ''
       data: ''
       servico: ''
-      cat: hhh
-    - id: ''
-      titulo: novo item
-      img: "/contas/maga/img/portfolio/1476207596171"
-      txt: additionaladditionaladditionaladditional
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
+      cat: fruta
     - id: ''
       titulo: 
-      img: "/contas/maga/img/portfolio/1475025019248"
-      txt: Framework de front-end elegante, intuitivo para um desenvolvimento web
-        mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
-        web mais rápido e fácil
+      img: contas/maga/img/portfolio/1477872964084.jpg
+      txt: sendmail - Send mail from Docker container with host's Postfix - Server
+        ...<div>serverfault.com/.../send-mail-from-docker-container-with-hosts-p...</div><div>Traduzir
+        esta página</div><div>29 de set de 2014 - Send&nbsp;</div>
       cliente: ''
       site: ''
       data: ''
@@ -97,7 +97,7 @@ pages:
       cat: 
     - id: ''
       titulo: ''
-      img: contas/maga/img/portfolio/1476208265007.jpg
+      img: contas/maga/img/portfolio/1477872607411.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -106,7 +106,7 @@ pages:
       cat: ''
     - id: 0
       titulo: ''
-      img: contas/maga/img/portfolio/1476058160582
+      img: contas/maga/img/portfolio/1477872869712.jpg
       txt: 
       nome: ''
       site: ''

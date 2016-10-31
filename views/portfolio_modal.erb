@@ -1,7 +1,7 @@
 <script type="text/ng-template" id="myModalContent.html">
   <style>
       .thumb {
-          width: 100px;
+          width: 200px;
           height: auto;
           float: none;
           position: relative;
@@ -37,14 +37,37 @@
         ng-blur="saveDiv('item.titulo', i)"
         placeholder="Titulo"
         >
-       </div>         
+       </div>
      </h2>
 
      <br>
-     <img class="img-thumbnail"          
+     <img class="img-thumbnail"
          style="width:100%; max-width:500px; margin-bottom: 13px;"
-         ng-src="{{item.img}}" />
+         ng-src="{{item.img}}"
+         onclick="$('#imgSelect').trigger('click');"
+         ng-show="!picFile || imgJaSubiu"
+         />
 
+         <div ng-show="isLogged && !imgJaSubiu" >
+           <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado
+               {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
+
+           <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp;
+
+           <input type="submit" ng-show="picFile"
+                   ng-click="uploadPic(picFile)"
+                   class="btn btn-green" value="Enviar">
+
+           <div ng-show="picFile.progress >= 0">
+             <br>
+           </div>
+
+           <span class="progress" ng-show="picFile.progress >= 0">
+             <div style="width:{{picFile.progress}}%; background-color: #2980b9; color: #FFF; padding: 1em .5em;font-weight: 300; margin-bottom: 10px;" ng-bind="picFile.progress + '%'"></div>
+           </span>
+
+           <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+         </div>
      <p style="margin: 0px 200px 0px 200px">
         <div contenteditable="{{isLogged}}"
           style = "font-size: 20px;"
@@ -56,16 +79,16 @@
           >
         </div>
      </p>
-     
-    <ul class="list-inline item-details">         
+
+    <ul class="list-inline item-details">
         <li ng-show="item.cliente || isLogged">Cliente:
-           <strong>              
+           <strong>
             <div contenteditable="{{isLogged}}"
               ng-model="item.cliente"
               strip-br="true"
               select-non-editable="true"
               ng-blur="saveDiv('item.cliente', i)"
-              placeholder="?"
+              placeholder="_"
               ></div>
            </strong>
         </li>
@@ -76,7 +99,7 @@
               strip-br="true"
               select-non-editable="true"
               ng-blur="saveDiv('item.data', i)"
-              placeholder="?">
+              placeholder="_">
              </div>
             </strong>
         </li>
@@ -87,19 +110,19 @@
                 strip-br="true"
                 select-non-editable="true"
                 ng-blur="saveDiv('item.servico', i)"
-                placeholder="?">                  
+                placeholder="_">
               </div>
             </strong>
         </li>
         <li ng-show="item.site || isLogged">Site:
-            <strong>               
+            <strong>
               <div contenteditable="{{isLogged}}"
                 ng-model="item.site"
                 strip-br="true"
                 select-non-editable="true"
                 ng-blur="saveDiv('item.site', i)"
-                placeholder="?">                  
-              </div>  
+                placeholder="_">
+              </div>
             </strong>
         </li>
          <li ng-show="item.cat || isLogged">Categorias:
@@ -109,61 +132,42 @@
                 strip-br="true"
                 select-non-editable="true"
                 ng-blur="saveDiv('item.cat', i)"
-                placeholder="?"
-                >                  
-              </div>                  
+                placeholder="_"
+                >
+              </div>
             </strong>
         </li>
     </ul>
 
-    
 
-    <div ng-show="isLogged" >
-      <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado 
-          {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
-      
-      <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp;
-      
-      <input type="submit" ng-show="picFile" 
-              ng-click="uploadPic(picFile)"
-              class="btn btn-green" value="Enviar">
-      
-      <div ng-show="picFile.progress >= 0">
-        <br> 
-      </div>
 
-      <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%; background-color: #2980b9; color: #FFF; padding: 1em .5em;font-weight: 300; margin-bottom: 10px;" ng-bind="picFile.progress + '%'"></div>
-      </span>
 
-      <span ng-show="picFile.result">Upload Successful</span>
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-    </div>
 
     <label  ng-show="isLogged" class="btn btn-default btn-file">
-        Alterar imagem 
-        <input type="file" 
-                 id="imgSelect" 
-                 style="display: none;" 
-                 ngf-select 
-                 ng-model="picFile" 
-                 name="file"    
-                 accept="image/*" 
-                 ngf-max-size="10MB" 
+        Alterar imagem
+        <input type="file"
+                 id="imgSelect"
+                 style="display: none;"
+                 ngf-select
+                 ng-model="picFile"
+                 name="file"
+                 accept="image/*"
+                 ngf-max-size="10MB"
                  required
                  ngf-model-invalid="errorFile"
-                 ngf-fix-orientation="true" 
+                 ngf-fix-orientation="true"
+
                  >
     </label>
-    
-    <button type="button" ng-show="isLogged" class="btn btn-default" ng-click="excluir(i);">Excluir</button>    
-   
+
+    <button type="button" ng-show="isLogged" class="btn btn-default" ng-click="excluir(i);">Excluir</button>
+
     <button type="button"  class="btn btn-default" ng-click="cancel();"><i class="fa fa-times"></i> Fechar</button>
    </div>
   </form>
   <script type="text/javascript">
       //
-      // // Hack para limpar o código html quando 
+      // // Hack para limpar o código html quando
       // // se cola algum texto vindo de algum site
       // //
       // $(document).on('paste','[contenteditable]',function(e) {

@@ -637,7 +637,7 @@ post '/email_envia' do
 
   @email_fonte = data["email"]
 
-
+ puts @email_fonte
   # Debug
   # puts "site_nome:"+@site_nome
   # puts "Email:"+@email_fonte
