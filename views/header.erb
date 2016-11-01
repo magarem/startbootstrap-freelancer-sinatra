@@ -21,30 +21,32 @@
          <style>
            .c{
             border-radius: 100%;
-            /*box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+            box-shadow: 0 0 8px rgba(0, 0, 0, .8);
             -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-            -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);*/
+            -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
             padding: 2px;
-            border: 2px dashed #ffffff;
-            }
 
-            .c:hover {
-            border: 2px dashed #0090D2;}
+            <% if @isLogged then%>
+              border: 2px dashed #ffffff;
+              }
+              .c:hover {
+              border: 2px dashed #0090D2;}
+           <% end %>
+
          </style>
-        <!--div id="image1" 
-             class="cropcircle img-responsive" 
+        <!--div id="image1"
+             class="cropcircle img-responsive"
              <% if @edit_flag == true %>
-                onclick="$('#file').click();" 
+                onclick="$('#file').click();"
              <% end %> >
         </div-->
-
         <img class="c"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
 
-        
+
         <!-- Indicates a successful or positive action -->
-       
+
         <!--button id=header_img_confirm type="button" class="btn btn-primary" style="display: none" onclick="$('#uploadimage').submit();$('#header_img_confirm').hide();">Confirmar imagem</button-->
-         
+
 
         <div class="intro-text">
           <span class="name">
@@ -58,7 +60,7 @@
             </div>
           </span>
           <hr class="star-light">
-          <span class="skills">          
+          <span class="skills">
             <div contenteditable="{{isLogged}}"
                 ng-model="site.pages.home.body"
                 strip-br="true"
@@ -66,13 +68,13 @@
                 ng-blur="saveDiv('site.pages.home.body')"
                 placeholder="Sub-texto de apresentação..."
                 >
-            </div>          
+            </div>
           </span>
-        </div>           
+        </div>
       </div>
     </div>
     <div>
     <br>
    </div>
-  </div> 
+  </div>
 </header>

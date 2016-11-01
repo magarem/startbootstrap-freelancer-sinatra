@@ -36,7 +36,8 @@ helpers do
 end
 
 before do
-  @logado = session[:logado]
+  #@logado = session[:logado]
+  @isLogged = @logado
   puts ">[@logado]>>#{@logado}"
   @data_path = "public/contas/{site_nome}/{site_nome}.yml"
 end
@@ -635,9 +636,11 @@ post '/email_envia' do
   # Lê o arquivo base
   data = YAML.load_file @data_path
 
-  @email_fonte = data["email"]
+  email_fonte = data["email"]
 
- puts @email_fonte
+
+
+ puts "email_fonte> #{email_fonte}"
   # Debug
   # puts "site_nome:"+@site_nome
   # puts "Email:"+@email_fonte
@@ -672,7 +675,7 @@ post '/email_envia' do
 
   mail = Mail.new do
     from     'contato@radiando.net'
-    to       @email_fonte
+    to       email_fonte
     subject  'Formulário de contato'
     body     mailMassege
   end
