@@ -25,12 +25,14 @@
             -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
             -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
             padding: 2px;
+            }
 
             <% if @isLogged then%>
-              border: 2px dashed #ffffff;
+              .isLogged{
+                border: 2px dashed #ffffff;
               }
-              .c:hover {
-              border: 2px dashed #0090D2;}
+              .isLogged:hover {
+                border: 2px dashed #0090D2;}
            <% end %>
 
          </style>
@@ -40,7 +42,7 @@
                 onclick="$('#file').click();"
              <% end %> >
         </div-->
-        <img class="c"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
+        <img class="c isLogged"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
 
 
         <!-- Indicates a successful or positive action -->

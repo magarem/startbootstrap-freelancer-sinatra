@@ -36,7 +36,7 @@ helpers do
 end
 
 before do
-  #@logado = session[:logado]
+  @logado = session[:logado]
   @isLogged = @logado
   puts ">[@logado]>>#{@logado}"
   @data_path = "public/contas/{site_nome}/{site_nome}.yml"
@@ -638,18 +638,17 @@ post '/email_envia' do
 
   email_fonte = data["email"]
 
+  puts "email_fonte> #{email_fonte}"
 
+    # Debug
+    # puts "site_nome:"+@site_nome
+    # puts "Email:"+@email_fonte
 
- puts "email_fonte> #{email_fonte}"
-  # Debug
-  # puts "site_nome:"+@site_nome
-  # puts "Email:"+@email_fonte
-
-  # # Envia o email
-  # Pony.mail :to => data["email"],
-  #           :from => email,
-  #           :subject => "Contato",
-  #           :body => message
+    # # Envia o email
+    # Pony.mail :to => data["email"],
+    #           :from => email,
+    #           :subject => "Contato",
+    #           :body => message
 
 
   mailMassege = "Você recebeu um email de: #{name} / #{email} / #{phone}

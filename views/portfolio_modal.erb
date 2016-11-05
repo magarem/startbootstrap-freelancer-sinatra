@@ -44,7 +44,9 @@
      <img class="img-thumbnail"
          style="width:100%; max-width:500px; margin-bottom: 13px;"
          ng-src="{{item.img}}"
-         onclick="$('#imgSelect').trigger('click');"
+         <% if @isLogged then%>
+           onclick="$('#imgSelect').trigger('click');"
+         <% end %>
          ng-show="!picFile || imgJaSubiu"
          />
 
@@ -125,7 +127,7 @@
               </div>
             </strong>
         </li>
-         <li ng-show="item.cat || isLogged">Categorias:
+         <li ng-show="item.cat || isLogged">Marcadores:
             <strong>
             <div contenteditable="{{isLogged}}"
                 ng-model="item.cat"
