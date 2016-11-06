@@ -164,9 +164,9 @@ radiando.net"
     mail.deliver
 
     # Abre o site recem criado no modo de edição
-    redirect "site/index.html?msg=Um email de confirmação foi enviado para #{userEmail}"
+    redirect "site/index.html?msg=Enviamos um email de confirmação para #{userEmail}"
   else
-    redirect "site/index.html?msg=Esse nome de site já foi escolhido, favor definir outro."
+    redirect "site/index.html?msg=Esse nome de portfólio já foi escolhido, favor definir outro."
   end
 end
 
@@ -239,7 +239,8 @@ get "/site_new_do" do
       # Abre o site recem criado no modo de edição
       redirect "/#{site_nome}"
   else
-    "Erro de token"
+    # Mostra mensagem de erro de token
+    redirect "site/index.html?msg=Erro de token"
   end
 end
 
@@ -293,6 +294,11 @@ get '/:site_nome' do
           redirect 'site/index.html?msg=Site não encontrado'
       end
 
+      #Carrega o titulo do site para o header
+      @data_path.gsub! "{site_nome}", @site_nome
+      @data = YAML.load_file @data_path
+      puts @data
+
       @edit_flag = session[:logado]
       if @edit_flag then
          if @site_nome == session[:site_nome] then
@@ -302,7 +308,7 @@ get '/:site_nome' do
            redirect "/{@site_nome}"
          end
       else
-          erb :index
+        erb :index
       end
     end
   end
@@ -317,6 +323,7 @@ get '/:site_nome/dataLoad' do
   @data_path.gsub! "{site_nome}", site_nome
   @data = YAML.load_file @data_path
   @data.to_json
+
 end
 
 get '/:site_nome/logged' do
