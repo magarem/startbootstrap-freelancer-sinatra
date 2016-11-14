@@ -9,12 +9,12 @@
                strip-br="true"
                select-non-editable="true"
                ng-blur="saveDiv('site.pages.portfolio.label')">
-             </div>                
+             </div>
             </h2>
-            <hr class="star-primary">                
+            <hr class="star-primary">
           </div>
        </div>
-       
+
        <div class="row">
          <div class="text-center" ng-init="puxa()">
          <!--  <ul>
@@ -24,10 +24,10 @@
 
           <button ng-show="imageCategories.length > 0" class="btn btn-primary" ng-click="filtraZero()">Todas</button>
           <button ng-show="imageCategories.length > 0" class="btn btn-primary" style="margin: 5px;" ng-repeat="cat in imageCategories" ng-click="$parent.catselect = cat"> {{cat}} </button>
-        
+
          </div>
        </div>
-         
+
        <div ng-show="isLogged">
          <button ng-show="isLogged" type="button" class="btn btn-default" ng-click="portfolio_add()">+</button>
          <div style="float: right">
@@ -153,6 +153,7 @@ body { font-family: sans-serif; }*/
         .imgBox {
           width: 360px;
           height: 260px;
+          max-width: 100%;
           background-size: cover;
           background-position: center  center;
           background-repeat: no-repeat;
@@ -179,11 +180,3 @@ body { font-family: sans-serif; }*/
     </div>
   </section>
 </div>
-
-
-
-
-
-
-
-

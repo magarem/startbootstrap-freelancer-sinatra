@@ -8,3 +8,11 @@ sites:
   email: contato@magaweb.com.br
   senha: '1757'
   token: 1757dc5b5d8b3f884bebb9d981061338
+- nome: maga2
+  email: contato@magaweb.com.br
+  senha: 1cb6
+  token: 1cb6c0f8d6a26643578d4ca046cf405e
+- nome: maga2
+  email: contato@magaweb.com.br
+  senha: 19a7
+  token: 19a7dd805a9772d1969a7c29be6cebe9

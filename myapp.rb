@@ -86,16 +86,19 @@ get "/site_new" do
   random_string = SecureRandom.hex
   senha = random_string[0, 4].downcase
 
-  # Lê o arquivo base
+  # Carrega o arquivo base
   data = YAML.load_file "sites_list.yml"
 
   # Verifica se o nome pretendido já existe
-  data["sites"].each do |key|
-    yml_nome  = key['nome']
-    if site_nome == yml_nome
-      flg_nome_ja_existe = true
-    end
-  end
+  # data["sites"].each do |key|
+  #   yml_nome  = key['nome']
+  #   if site_nome == yml_nome
+  #     flg_nome_ja_existe = true
+  #   end
+  # end
+
+  # Verifica se o nome pretendido já existe
+  flg_nome_ja_existe = File.directory?("public/contas/#{site_nome}")
 
   # Prapara o novo item para inserção
   novo = {
@@ -270,12 +273,13 @@ post '/login_do' do
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
+    redirect '/'+site_nome
   else
     session[:logado] = false
     session[:site_nome] = ""
     @edit_flag = "false"
+    redirect 'site/index.html?msg=Erro de autenticação'
   end
-  redirect '/'+site_nome
 end
 
 #
