@@ -58,14 +58,16 @@ end
 get "/email" do
 
   mail = Mail.new do
-    from     'contato@radiando.net'
-    to       'contato@magaweb.com.br'
-    subject  'Here is the image you wanted22'
-    body     'sdsdsd ds ds s s'
+    body "Super teste"
   end
 
-  mail.delivery_method :sendmail
-  mail.deliver
+  mail['from'] = 'mikel@test.lindsaar.net'
+  mail[:to]    = 'contato@magaweb.com.br'
+  mail.subject = 'This is a test email'
+
+  #mail.header['X-Custom-Header'] = 'custom value'
+
+  mail.to_s #=> "From: mikel@test.lindsaar.net\r\nTo: you@...
 
 end
 
