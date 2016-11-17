@@ -615,7 +615,7 @@ post "/:site_nome/portfolio/add" do
   novo = {
     "id"      => "",
     "titulo"  => "",
-    "img"     => "/img/balao.jpg",
+    "img"     => "http://placehold.it/360x260/e67e22/fff",
     "txt"     => "",
     "cliente" => "",
     "site"    => "",

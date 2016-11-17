@@ -588,7 +588,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     img_new =  {
       "id"     : 0,
       "titulo" : "",
-      "img"    : "/img/balao.jpg",
+      "img"    : "http://placehold.it/360x260/e67e22/fff/imagem",
       "txt"    : "",
       "nome"   : "",
       "site"   : "",
