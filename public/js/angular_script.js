@@ -788,6 +788,9 @@ $scope.uploadPic = function(file) {
         $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
         $scope.imgJaSubiu = true;
         $scope.imgNewSelected = false;
+        $scope.picFile = false;
+        aa = false
+        console.log("aa, $scope.picFile>>",aa,$scope.picFile);
       });
     }, function (response) {
       if (response.status > 0)
