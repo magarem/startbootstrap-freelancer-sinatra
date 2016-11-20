@@ -28,7 +28,7 @@ moldura:
 pages:
   home:
     label: Levando a saúde da floresta até você.
-    img: contas/maga/img/avatar.png
+    img: contas/maga/img/avatar.jpg
     body: 
   about:
     label: quem somos
@@ -38,13 +38,22 @@ pages:
     label: produtos
     items:
     - id: ''
-      titulo: stackoverflow.com/questions/.../angularjs-add-style-to-option
-      img: "/contas/maga/img/portfolio/1477873164328.jpg"
-      txt: additionaladditionaladditionaladditional
+      titulo: ''
+      img: contas/maga/img/portfolio/1477872607411.jpg
+      txt: ''
       cliente: ''
       site: ''
       data: ''
       servico: ''
+      cat: ''
+    - id: ''
+      titulo: sereia
+      img: contas/maga/img/portfolio/1479600174661.jpg
+      txt: additionaladdition<div>aladditionaladditional</div>
+      cliente: 
+      site: 
+      data: 
+      servico: 
       cat: 6767,fruta
     - id: ''
       titulo: angularjs - How to use ng-class in select with ng-options&nbsp;
@@ -57,7 +66,7 @@ pages:
       cat: '6767'
     - id: ''
       titulo: ALL-IN-ONE PLATFORM
-      img: contas/maga/img/portfolio/1477871555950.jpg
+      img: contas/maga/img/portfolio/1479659280704.jpg
       txt: ALL-IN-ONE PLATFORM
       cliente: ''
       site: ''
@@ -75,7 +84,7 @@ pages:
       cat: tt,kk
     - id: 0
       titulo: As plantasAs plantasAs plantasAs plantasAs plantas
-      img: contas/maga/img/portfolio/1477872782376.jpg
+      img: "/contas/maga/img/portfolio/1479662636505.jpg"
       txt: Grande teste total!!
       nome: ''
       site: ''
@@ -84,27 +93,17 @@ pages:
       cat: fruta
     - id: ''
       titulo: 
-      img: contas/maga/img/portfolio/1477872964084.jpg
-      txt: sendmail - Send mail from Docker container with host's Postfix - Server
-        ...<div>serverfault.com/.../send-mail-from-docker-container-with-hosts-p...</div><div>Traduzir
-        esta página</div><div>29 de set de 2014 - Send&nbsp;</div>
+      img: contas/maga/img/portfolio/1479662354223.jpg
+      txt: Very nice couple, great apartament (big and very confortable) in a nice
+        spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela
       cliente: ''
       site: ''
       data: ''
       servico: ''
       cat: 
-    - id: ''
-      titulo: ''
-      img: contas/maga/img/portfolio/1477872607411.jpg
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
     - id: 0
       titulo: ''
-      img: contas/maga/img/portfolio/1477872869712.jpg
+      img: contas/maga/img/portfolio/1479662468407.jpg
       txt: 
       nome: ''
       site: ''
@@ -122,7 +121,7 @@ pages:
       cat: ''
     - id: ''
       titulo: ''
-      img: http://placehold.it/360x260/e67e22/fff
+      img: contas/maga/img/portfolio/1479660740369.jpg
       txt: ''
       cliente: ''
       site: ''
@@ -131,7 +130,7 @@ pages:
       cat: ''
     - id: ''
       titulo: ''
-      img: http://placehold.it/360x260/e67e22/fff
+      img: "/contas/maga/img/portfolio/1479662559272.jpg"
       txt: ''
       cliente: ''
       site: ''

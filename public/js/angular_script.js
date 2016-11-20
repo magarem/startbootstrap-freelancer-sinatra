@@ -368,6 +368,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
       windowTopClass: "portfolio-modal modal",
       templateUrl: 'headerModal.html',
       controller: 'headerModalInstanceCtrl',
+      windowClass: 'app-modal-window',
       size: 'lg',
       resolve: {
         item: function () {
@@ -695,8 +696,16 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
       $scope.cancel();
   });
 
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
+  $scope.cancel = function (status) {
+    if (status){
+      deleteUser = confirm('Tem certeza que quer cancelar o envio da imagem?');
+      if(deleteUser){
+       //Your action will goes here
+       $uibModalInstance.dismiss('cancel');
+      }
+    }else{
+      $uibModalInstance.dismiss('cancel');
+    }
   };
 
   $scope.saveDiv = function(obj, i){
@@ -761,6 +770,8 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 $scope.uploadPic = function(file) {
 
 
+
+
     //Pegando a extenção do arquivo
     var dotIndex = file.name.lastIndexOf('.');
     var ext = file.name.substring(dotIndex);
@@ -776,6 +787,7 @@ $scope.uploadPic = function(file) {
         file.result = response.data;
         $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
         $scope.imgJaSubiu = true;
+        $scope.imgNewSelected = false;
       });
     }, function (response) {
       if (response.status > 0)
@@ -824,6 +836,7 @@ $scope.uploadPic = function(file) {
         el.click();
     }, 0);
   };
+
 
 
 }]);

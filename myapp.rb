@@ -581,9 +581,8 @@ post "/:site_nome/portfolio/uploadPic/:index" do
 
       #reduz a imagem
       image = MiniMagick::Image.open(img_path)
-      image.resize "600x600"
+      image.resize "1100x1100" if image.width >= 1100
       image.write img_path
-      #port_img = "contas/#{@site_nome}/img/portfolio/#{@filename}"
       port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
     end
   end

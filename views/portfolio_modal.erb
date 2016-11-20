@@ -26,166 +26,195 @@
           background: orange;
           width: 0;
       }
+      .modal-body {
+        position: relative;
+        padding: 0px;
+        margin: 0px;
+      }
+
+
   </style>
-  <div class="modal-body"  ng-controller="MyFormCtrl">
-   <form>
-     <h2>
-       <div contenteditable="{{isLogged}}"
-        ng-model="item.titulo"
-        strip-br="true"
-        select-non-editable="true"
-        ng-blur="saveDiv('item.titulo', i)"
-        placeholder="Titulo"
-        >
-       </div>
-     </h2>
+   <div class="modal-body"  ng-controller="MyFormCtrl">
+       <div class="modal-content">
+           <!-- <div class="close-modal" data-dismiss="modal">
+               <div class="lr">
+                   <div class="rl">
+                   </div>
+               </div>
+           </div> -->
+           <div class="container-fluid">
+               <div class="row">
+                   <div class="col-lg-12  col-xs-12">
+                       <div class="modal-body">
+                       <h2>
+                         <div contenteditable="{{isLogged}}"
+                          ng-model="item.titulo"
+                          strip-br="true"
+                          select-non-editable="true"
+                          ng-blur="saveDiv('item.titulo', i)"
+                          placeholder="Titulo"
+                          >
+                         </div>
+                       </h2>
+                           <hr class="star-primary">
+                           <style>
+                           .imgBox {
+                             width: 360px;
+                             height: 260px;
+                             max-width: 100%;
+                             background-size: cover;
+                             background-position: center  center;
+                             background-repeat: no-repeat;
+                             margin-bottom: 20px;
+                           }
+                           </style>
+                           <img class="img-responsive img-centered"
+                               style="max-width:100%; margin-bottom: 13px;"
+                               ng-src="{{item.img}}"
+                               <% if @isLogged then%>
+                                 onclick="$('#imgSelect').trigger('click');"
+                               <% end %>
+                               ng-show="!picFile || imgJaSubiu"
+                               />
+                               <div ng-show="isLogged && !imgJaSubiu" >
+                                 <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado
+                                     {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
 
-     <br>
-     <img class="img-thumbnail"
-         style="width:100%; max-width:500px; margin-bottom: 13px;"
-         ng-src="{{item.img}}"
-         <% if @isLogged then%>
-           onclick="$('#imgSelect').trigger('click');"
-         <% end %>
-         ng-show="!picFile || imgJaSubiu"
-         />
+                                 <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp;
 
-         <div ng-show="isLogged && !imgJaSubiu" >
-           <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado
-               {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
+                                 <input type="submit" ng-show="picFile"
+                                         ng-click="uploadPic(picFile)"
+                                         class="btn btn-green" value="Enviar">
 
-           <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp;
+                                 <div ng-show="picFile.progress >= 0">
+                                   <br>
+                                 </div>
 
-           <input type="submit" ng-show="picFile"
-                   ng-click="uploadPic(picFile)"
-                   class="btn btn-green" value="Enviar">
+                                 <span class="progress" ng-show="picFile.progress >= 0">
+                                   <div style="width:{{picFile.progress}}%; background-color: #2980b9; color: #FFF; padding: 1em .5em;font-weight: 300; margin-bottom: 10px;" ng-bind="picFile.progress + '%'"></div>
+                                 </span>
 
-           <div ng-show="picFile.progress >= 0">
-             <br>
+                                 <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                               </div>
+                           <p style="margin: 0px 200px 0px 200px">
+                              <div contenteditable="{{isLogged}}"
+                                style = "font-size: 20px;"
+                                ng-model="item.txt"
+                                strip-br="true"
+                                select-non-editable="true"
+                                ng-blur="saveDiv('item.txt', i)"
+                                placeholder="Descrição"
+                                >
+                              </div>
+                           </p>
+                           <ul class="list-inline item-details">
+                               <li ng-show="item.cliente || isLogged">Cliente:
+                                  <strong>
+                                   <div contenteditable="{{isLogged}}"
+                                     ng-model="item.cliente"
+                                     strip-br="true"
+                                     select-non-editable="true"
+                                     ng-blur="saveDiv('item.cliente', i)"
+                                     placeholder="_"
+                                     ></div>
+                                  </strong>
+                               </li>
+                               <li ng-show="item.data || isLogged">Data:
+                                   <strong>
+                                    <div contenteditable="{{isLogged}}"
+                                     ng-model="item.data"
+                                     strip-br="true"
+                                     select-non-editable="true"
+                                     ng-blur="saveDiv('item.data', i)"
+                                     placeholder="_">
+                                    </div>
+                                   </strong>
+                               </li>
+                               <li ng-show="item.servico || isLogged">Serviço:
+                                   <strong>
+                                     <div contenteditable="{{isLogged}}"
+                                       ng-model="item.servico"
+                                       strip-br="true"
+                                       select-non-editable="true"
+                                       ng-blur="saveDiv('item.servico', i)"
+                                       placeholder="_">
+                                     </div>
+                                   </strong>
+                               </li>
+                               <li ng-show="item.site || isLogged">Site:
+                                   <strong>
+                                     <div contenteditable="{{isLogged}}"
+                                       ng-model="item.site"
+                                       strip-br="true"
+                                       select-non-editable="true"
+                                       ng-blur="saveDiv('item.site', i)"
+                                       placeholder="_">
+                                     </div>
+                                   </strong>
+                               </li>
+                                <li ng-show="item.cat || isLogged">Marcadores:
+                                   <strong>
+                                   <div contenteditable="{{isLogged}}"
+                                       ng-model="item.cat"
+                                       strip-br="true"
+                                       select-non-editable="true"
+                                       ng-blur="saveDiv('item.cat', i)"
+                                       placeholder="_"
+                                       >
+                                     </div>
+                                   </strong>
+                               </li>
+                           </ul>
+
+
+
+
+
+                           <label  ng-show="isLogged" class="btn btn-default btn-file">
+                               Alterar imagem
+                               <input type="file"
+                                        id="imgSelect"
+                                        style="display: none;"
+                                        ngf-select
+                                        ng-model="picFile"
+                                        name="file"
+                                        accept="image/*"
+                                        ngf-max-size="10MB"
+                                        required
+                                        ngf-model-invalid="errorFile"
+                                        ngf-fix-orientation="true"
+                                        ng-click="imgJaSubiu=false;"
+                                        >
+                           </label>
+
+                           <button type="button" ng-show="isLogged" class="btn btn-default" ng-click="excluir(i);">Excluir</button>
+
+                           <button type="button"  class="btn btn-default" ng-click="cancel(picFile && !imgJaSubiu);"><i class="fa fa-times"></i> Fechar</button>
+                       </div>
+                   </div>
+               </div>
            </div>
-
-           <span class="progress" ng-show="picFile.progress >= 0">
-             <div style="width:{{picFile.progress}}%; background-color: #2980b9; color: #FFF; padding: 1em .5em;font-weight: 300; margin-bottom: 10px;" ng-bind="picFile.progress + '%'"></div>
-           </span>
-
-           <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-         </div>
-     <p style="margin: 0px 200px 0px 200px">
-        <div contenteditable="{{isLogged}}"
-          style = "font-size: 20px;"
-          ng-model="item.txt"
-          strip-br="true"
-          select-non-editable="true"
-          ng-blur="saveDiv('item.txt', i)"
-          placeholder="Descrição"
-          >
-        </div>
-     </p>
-
-    <ul class="list-inline item-details">
-        <li ng-show="item.cliente || isLogged">Cliente:
-           <strong>
-            <div contenteditable="{{isLogged}}"
-              ng-model="item.cliente"
-              strip-br="true"
-              select-non-editable="true"
-              ng-blur="saveDiv('item.cliente', i)"
-              placeholder="_"
-              ></div>
-           </strong>
-        </li>
-        <li ng-show="item.data || isLogged">Data:
-            <strong>
-             <div contenteditable="{{isLogged}}"
-              ng-model="item.data"
-              strip-br="true"
-              select-non-editable="true"
-              ng-blur="saveDiv('item.data', i)"
-              placeholder="_">
-             </div>
-            </strong>
-        </li>
-        <li ng-show="item.servico || isLogged">Serviço:
-            <strong>
-              <div contenteditable="{{isLogged}}"
-                ng-model="item.servico"
-                strip-br="true"
-                select-non-editable="true"
-                ng-blur="saveDiv('item.servico', i)"
-                placeholder="_">
-              </div>
-            </strong>
-        </li>
-        <li ng-show="item.site || isLogged">Site:
-            <strong>
-              <div contenteditable="{{isLogged}}"
-                ng-model="item.site"
-                strip-br="true"
-                select-non-editable="true"
-                ng-blur="saveDiv('item.site', i)"
-                placeholder="_">
-              </div>
-            </strong>
-        </li>
-         <li ng-show="item.cat || isLogged">Marcadores:
-            <strong>
-            <div contenteditable="{{isLogged}}"
-                ng-model="item.cat"
-                strip-br="true"
-                select-non-editable="true"
-                ng-blur="saveDiv('item.cat', i)"
-                placeholder="_"
-                >
-              </div>
-            </strong>
-        </li>
-    </ul>
-
-
-
-
-
-    <label  ng-show="isLogged" class="btn btn-default btn-file">
-        Alterar imagem
-        <input type="file"
-                 id="imgSelect"
-                 style="display: none;"
-                 ngf-select
-                 ng-model="picFile"
-                 name="file"
-                 accept="image/*"
-                 ngf-max-size="10MB"
-                 required
-                 ngf-model-invalid="errorFile"
-                 ngf-fix-orientation="true"
-
-                 >
-    </label>
-
-    <button type="button" ng-show="isLogged" class="btn btn-default" ng-click="excluir(i);">Excluir</button>
-
-    <button type="button"  class="btn btn-default" ng-click="cancel();"><i class="fa fa-times"></i> Fechar</button>
+       </div>
    </div>
-  </form>
-  <script type="text/javascript">
-      //
-      // // Hack para limpar o código html quando
-      // // se cola algum texto vindo de algum site
-      // //
-      // $(document).on('paste','[contenteditable]',function(e) {
-      //   e.preventDefault();
-      //   var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
-      //   window.document.execCommand('insertText', false, text);
-      // });
+   <script type="text/javascript">
+       //
+       // // Hack para limpar o código html quando
+       // // se cola algum texto vindo de algum site
+       // //
+       // $(document).on('paste','[contenteditable]',function(e) {
+       //   e.preventDefault();
+       //   var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+       //   window.document.execCommand('insertText', false, text);
+       // });
 
-      $('div[contenteditable]').keydown(function(e) {
-        //trap the return key being pressed
-        if (e.keyCode === 13  && !e.shiftKey) {
-          // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-          //document.execCommand('insertHTML', false, '<br><br>');
-          // prevent the default behaviour of return key pressed
-          $("div[contentEditable]").blur()
-          return false;
-        }
-      })
-</script>
+       $('div[contenteditable]').keydown(function(e) {
+         //trap the return key being pressed
+         if (e.keyCode === 13  && !e.shiftKey) {
+           // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+           //document.execCommand('insertHTML', false, '<br><br>');
+           // prevent the default behaviour of return key pressed
+           $("div[contentEditable]").blur()
+           return false;
+         }
+       })
+ </script>
