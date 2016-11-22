@@ -38,16 +38,6 @@ pages:
     label: produtos
     items:
     - id: ''
-      titulo: 
-      img: contas/maga/img/portfolio/1479768479836.jpg
-      txt: Very nice couple, great apartament (big and very confortable) in a nice
-        spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: linda
-    - id: ''
       titulo: angularjs - How to use ng-class in select with ng-options&nbsp;
       img: contas/maga/img/portfolio/1477871457118.jpg
       txt: ALL-IN-ONE PLATFORM<div><br></div>
@@ -56,6 +46,16 @@ pages:
       data: 
       servico: 
       cat: tt,kk,testexcg
+    - id: ''
+      titulo: top
+      img: contas/maga/img/portfolio/1479768479836.jpg
+      txt: Very nice couple, great apartament (big and very confortable) in a nice
+        spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: linda
     - id: ''
       titulo: panfleto
       img: contas/maga/img/portfolio/1478020703446.png
