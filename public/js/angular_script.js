@@ -476,9 +476,9 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   vm.allData = JSON.stringify(vm.data, null, 2);
 
   // switch button
-  $scope.isSelected = true;
-  $scope.onText = 'Sim';
-  $scope.offText = 'Não';
+  $scope.isSelected = 'nope';
+  $scope.onText = 'Arrastar';
+  $scope.offText = 'Fixo';
   $scope.isActive = true;
   $scope.size = 'normal';
   $scope.animate = true;
@@ -819,9 +819,12 @@ $scope.uploadPic = function(file) {
     var siteNome = urlArray[urlArray.length-1];
 
     console.log("Excluir:",item_index);
-    $http.post('/'+siteNome+'/portfolio/delete/'+item_index);
-    $rootScope.$emit("CallDelImg", item_index);
-    $rootScope.$emit("ModalClose", item_index);
+
+    if(confirm('Confirma exclusão?')){
+     $http.post('/'+siteNome+'/portfolio/delete/'+item_index);
+     $rootScope.$emit("CallDelImg", item_index);
+     $rootScope.$emit("ModalClose", item_index);
+    }
   };
 
   $scope.saveDiv = function(obj, i){

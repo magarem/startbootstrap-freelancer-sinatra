@@ -21,21 +21,28 @@
             <li ng-repeat="cat in imageCategories">
               <a href ng-click="catselect.cat = cat">{{cat}}//</a></li>
           </ul> -->
+          <span ng-if="isLogged && (vm.data.device != 'iphone' && vm.data.device != 'android')" class="center" >
+            <button ng-show="imageCategories.length > 0" class="btn btn-primary" ng-click="filtraZero()">Todas</button>
+            <button ng-show="imageCategories.length > 0" class="btn btn-primary" style="margin: 5px;" ng-repeat="cat in imageCategories" ng-click="$parent.catselect = cat"> {{cat}} </button>
+          </span>
 
-          <button ng-show="imageCategories.length > 0" class="btn btn-primary" ng-click="filtraZero()">Todas</button>
-          <button ng-show="imageCategories.length > 0" class="btn btn-primary" style="margin: 5px;" ng-repeat="cat in imageCategories" ng-click="$parent.catselect = cat"> {{cat}} </button>
+          <span ng-if="isLogged && (vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
+            <select class="form-control" ng-options="cat for cat in imageCategories" ng-model="$parent.catselect">
+              <option value="">Todos</option>
+            </select><br>
+          </span>
 
-         </div>
-       </div>
+        </div>
+      </div>
 
        <div ng-show="isLogged">
-         <button ng-show="isLogged" type="button" class="btn btn-default" ng-click="portfolio_add()">+</button>
+         <button ng-show="isLogged" type="button" class="btn btn-second" ng-click="portfolio_add()"><i class="glyphicon glyphicon-plus"></i> Novo</button>
          <div style="float: right">
-          Arrastar quadro: &nbsp;&nbsp;
          <input
             bs-switch
             ng-model="isSelected"
             type="checkbox"
+            
             switch-active="{{ isActive }}"
             switch-on-text="{{ onText }}"
             switch-off-text="{{ offText }}"
@@ -160,7 +167,7 @@ body { font-family: sans-serif; }*/
           margin-bottom: 20px;
         }
 
-      
+
 
        .modal-dialog {
          width: 100%;
@@ -178,7 +185,7 @@ body { font-family: sans-serif; }*/
 
     <div  class="row"  ng-sortable="barConfig">
       <div class="col-sm-4 portfolio-item " ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}" >
-        <span ng-if="isLogged && (vm.data.device == 'iphone' || vm.data.device == 'android') && isSelected " class="drag-handle tile center" >&#9776;&#9776;</span>
+        <span ng-if="isLogged && (vm.data.device == 'iphone' || vm.data.device == 'android') && isSelected " class="drag-handle tile center" ><i class="glyphicon glyphicon-move"></i></span>
         <a href class="portfolio-link " ng-click="open(image, $index); mostra($index);">
           <div class="caption">
             <div class="caption-content">

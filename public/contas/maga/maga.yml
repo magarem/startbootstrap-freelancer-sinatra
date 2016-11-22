@@ -38,23 +38,15 @@ pages:
     label: produtos
     items:
     - id: ''
-      titulo: ''
-      img: contas/maga/img/portfolio/1477872607411.jpg
-      txt: ''
+      titulo: 
+      img: contas/maga/img/portfolio/1479768479836.jpg
+      txt: Very nice couple, great apartament (big and very confortable) in a nice
+        spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela
       cliente: ''
       site: ''
       data: ''
       servico: ''
-      cat: ''
-    - id: ''
-      titulo: sereia
-      img: contas/maga/img/portfolio/1479665456102.jpg
-      txt: additionaladdition<div>aladditionaladditional</div>
-      cliente: 
-      site: 
-      data: 
-      servico: 
-      cat: 6767,fruta
+      cat: linda
     - id: ''
       titulo: angularjs - How to use ng-class in select with ng-options&nbsp;
       img: contas/maga/img/portfolio/1477871457118.jpg
@@ -63,16 +55,7 @@ pages:
       site: 
       data: 
       servico: 
-      cat: '6767'
-    - id: ''
-      titulo: ALL-IN-ONE PLATFORM
-      img: contas/maga/img/portfolio/1479659280704.jpg
-      txt: ALL-IN-ONE PLATFORM
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: teste1
+      cat: tt,kk,testexcg
     - id: ''
       titulo: panfleto
       img: contas/maga/img/portfolio/1478020703446.png
@@ -81,35 +64,7 @@ pages:
       site: ''
       data: ''
       servico: ''
-      cat: tt,kk
-    - id: 0
-      titulo: As plantasAs plantasAs plantasAs plantasAs plantas
-      img: contas/maga/img/portfolio/1479666127941.jpg
-      txt: Grande teste total!!
-      nome: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: fruta
-    - id: ''
-      titulo: 
-      img: contas/maga/img/portfolio/1479662354223.jpg
-      txt: Very nice couple, great apartament (big and very confortable) in a nice
-        spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: 
-    - id: 0
-      titulo: ''
-      img: contas/maga/img/portfolio/1479662468407.jpg
-      txt: 
-      nome: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
+      cat: tt,kk,testexcgxcgxcgxgxcgxc
     - id: ''
       titulo: ''
       img: "/contas/maga/img/portfolio/1479341337420.jpg"
@@ -155,14 +110,14 @@ pages:
       data: ''
       servico: ''
       cat: ''
-    - id: 0
-      titulo: ''
-      img: http://placehold.it/360x260/e67e22/fff/imagem
-      txt: ''
-      nome: ''
+    - id: ''
+      titulo: FidElitO
+      img: contas/maga/img/portfolio/1479772360102.jpg
+      txt: Tirando a medida
+      cliente: ''
       site: ''
       data: ''
       servico: ''
-      cat: ''
+      cat: Teste
   contact:
     label: contato

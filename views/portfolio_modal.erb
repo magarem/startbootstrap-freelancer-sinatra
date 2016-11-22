@@ -166,12 +166,8 @@
                                </li>
                            </ul>
 
-
-
-
-
-                           <label  ng-show="isLogged" class="btn btn-default btn-file">
-                               Alterar imagem
+                           <!-- <button  ng-show="isLogged" class="btn btn-secondary btn-file"> -->
+                                 <!-- <i class="glyphicon glyphicon-picture" aria-hidden="true"></i> Imagem -->
                                <input type="file"
                                         id="imgSelect"
                                         style="display: none;"
@@ -184,12 +180,11 @@
                                         ngf-model-invalid="errorFile"
                                         ngf-fix-orientation="true"
                                         ng-click="imgJaSubiu=false;"
+                                        style="display:none"
                                         >
-                           </label>
-
-                           <button type="button" ng-show="isLogged" class="btn btn-default" ng-click="excluir(i);">Excluir</button>
-
-                           <button type="button"  class="btn btn-default" ng-click="cancel(picFile);"><i class="fa fa-times"></i> Fechar</button>
+                           <!-- </button> -->
+                           <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir(i);"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
+                           <button type="button"  class="btn btn-secondary" ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove"></i> Fechar</button>
                        </div>
                    </div>
                </div>
