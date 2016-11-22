@@ -26,7 +26,7 @@
             <button ng-show="imageCategories.length > 0" class="btn btn-primary" style="margin: 5px;" ng-repeat="cat in imageCategories" ng-click="$parent.catselect = cat"> {{cat}} </button>
           </span>
 
-          <span ng-if="isLogged && (vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
+          <span ng-if="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
             <select class="form-control" ng-options="cat for cat in imageCategories" ng-model="$parent.catselect">
               <option value="">Todos</option>
             </select><br>
@@ -42,7 +42,7 @@
             bs-switch
             ng-model="isSelected"
             type="checkbox"
-            
+
             switch-active="{{ isActive }}"
             switch-on-text="{{ onText }}"
             switch-off-text="{{ offText }}"
