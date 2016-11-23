@@ -41,7 +41,6 @@ PLATFORMS
 DEPENDENCIES
   fileutils
   json
-  mail
   mini_magick
   pony
   pry

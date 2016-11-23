@@ -21,12 +21,22 @@
             <li ng-repeat="cat in imageCategories">
               <a href ng-click="catselect.cat = cat">{{cat}}//</a></li>
           </ul> -->
-          <span ng-if="(vm.data.device != 'iphone' && vm.data.device != 'android')" class="center" >
+
+          <div ng-switch on="video">
+    <div ng-switch-when="video.large">
+        <!-- code to render a large video block-->
+    </div>
+    <div ng-switch-default>
+        <!-- code to render the regular video block -->
+    </div>
+</div>
+
+          <span ng-show="(vm.data.device != 'iphone' && vm.data.device != 'android')" class="center" >
             <button ng-show="imageCategories.length > 0" class="btn btn-primary" ng-click="filtraZero()">Todas</button>
             <button ng-show="imageCategories.length > 0" class="btn btn-primary" style="margin: 5px;" ng-repeat="cat in imageCategories" ng-click="$parent.catselect = cat"> {{cat}} </button>
           </span>
 
-          <span ng-if="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
+          <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
             <select class="form-control" ng-options="cat for cat in imageCategories" ng-model="$parent.catselect">
               <option value="">Todos</option>
             </select><br>
