@@ -39,6 +39,7 @@ before do
   @logado = session[:logado]
   @isLogged = @logado
   puts ">[@logado]>>#{@logado}"
+  # puts ">request.subdomain.split(".").first >>" + request.host.split(".").first
   @data_path = "public/contas/{site_nome}/{site_nome}.yml"
 end
 
@@ -50,8 +51,45 @@ Mail.defaults do
 end
 
 set :public_folder, 'public'
+
 get "/" do
-  redirect 'site/index.html'
+
+    # @site_nome = params[:site_nome]
+    if request.host.include? "." then
+      @site_nome = request.host.split(".").first
+    else
+      redirect 'site/index.html'
+    end
+
+    if @site_nome == "radiando" then redirect 'site/index.html' end
+
+    if @site_nome != "undefined" then
+      if @site_nome != "favicon.ico" then
+        puts "[@site_nome]>#{@site_nome}"
+
+        #Testa se existe o site
+        if !File.exist? File.expand_path "./public/contas/"+@site_nome then
+            redirect 'site/index.html?msg=Site não encontrado'
+        end
+
+        #Carrega o titulo do site para o header
+        @data_path.gsub! "{site_nome}", @site_nome
+        @data = YAML.load_file @data_path
+        puts @data
+
+        @edit_flag = session[:logado]
+        if @edit_flag then
+           if @site_nome == session[:site_nome] then
+              erb :index
+           else
+             session.clear
+             redirect "/{@site_nome}"
+           end
+        else
+          erb :index
+        end
+      end
+    end
 end
 
 
@@ -283,6 +321,8 @@ post '/login_do' do
     redirect 'site/index.html?msg=Erro de autenticação'
   end
 end
+
+
 
 #
 # Inicia o aplicativo
@@ -686,7 +726,7 @@ post '/email_envia' do
 
   mail = Mail.new do
     from     'contato@radiando.net'
-    to       email_fonte
+    # to       email_fonte
     subject  'Formulário de contato'
     body     mailMassege
   end
