@@ -218,7 +218,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     // var siteNome = urlArray[urlArray.length-1];
     // var siteData = {}
 
-    var url = document.URL;
+    var url = document.host;
     var urlArray = url.split(".");
     var siteNome = urlArray[0];
     var siteData = {}
@@ -427,10 +427,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
 
 
     //Prepara o URL de destino do upload
-    var url = document.URL;
-    var urlArray = url.split(".");
-    var siteNome = urlArray[0]
-    var updestino = '/'+siteNome+'/avatar/upload'
+    split
 
     $scope.upload = function (dataUrl, name) {
 
@@ -736,7 +733,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
   $scope.imgJaSubiu = false;
 
-  var url = document.URL;
+  var url = document.host;
   var urlArray = url.split(".");
   var siteNome = urlArray[0]
   var updestino = '/'+siteNome+'/portfolio/uploadPic/'+$scope.i
@@ -819,7 +816,7 @@ $scope.uploadPic = function(file) {
   };
 
   $scope.excluir = function(item_index){
-    var url = document.URL;
+    var url = document.host;
     var urlArray = url.split(".");
     var siteNome = urlArray[0];
 
