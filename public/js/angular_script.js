@@ -218,7 +218,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     // var siteNome = urlArray[urlArray.length-1];
     // var siteData = {}
 
-    var url = document.host;
+    var url = document.domain;
     var urlArray = url.split(".");
     var siteNome = urlArray[0];
     var siteData = {}
@@ -733,7 +733,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
   $scope.imgJaSubiu = false;
 
-  var url = document.host;
+  var url = document.domain;
   var urlArray = url.split(".");
   var siteNome = urlArray[0]
   var updestino = '/'+siteNome+'/portfolio/uploadPic/'+$scope.i
@@ -816,7 +816,7 @@ $scope.uploadPic = function(file) {
   };
 
   $scope.excluir = function(item_index){
-    var url = document.host;
+    var url = document.domain;
     var urlArray = url.split(".");
     var siteNome = urlArray[0];
 
