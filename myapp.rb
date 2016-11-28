@@ -168,7 +168,7 @@ Clique no link de confirmação abaixo ou cole no seu navegador:
 http://radiando.net/site_new_do?email=#{userEmail}&site_nome=#{site_nome}&token=#{random_string}
 
 Depois de confirmada a sua conta seu site já estará no ar no endereço:
-http://radiando.net/#{site_nome}
+http://#{site_nome}.radiando.net
 
 Para editar o conteúdo do seu site clique no botão 'login' no rodapé da página e digite sua senha:
 Senha: #{senha}
@@ -207,9 +207,9 @@ radiando.net"
     mail.deliver
 
     # Abre o site recem criado no modo de edição
-    redirect "site/index.html?msg=Enviamos um email de confirmação para #{userEmail}"
+    redirect "site/index.html?msg=Foi enviado um email de confirmação para #{userEmail}"
   else
-    redirect "site/index.html?msg=Esse nome de portfólio já foi escolhido, favor definir outro."
+    redirect "site/index.html?msg=Esse nome de portfólio já foi escolhido, favor definir outro"
   end
 end
 
@@ -313,7 +313,7 @@ post '/login_do' do
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
-    redirect '/'+site_nome
+    redirect "http://#{site_nome}.radiando.net"
   else
     session[:logado] = false
     session[:site_nome] = ""
@@ -337,7 +337,7 @@ get '/:site_nome' do
 
       #Testa se existe o site
       if !File.exist? File.expand_path "./public/contas/"+@site_nome then
-          redirect 'site/index.html?msg=Site não encontrado'
+          redirect 'site/index.html?msg=Essa página não foi encontrada em nossos servidores'
       end
 
       #Carrega o titulo do site para o header

@@ -427,7 +427,6 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
 
 
     //Prepara o URL de destino do upload
-    split
 
     $scope.upload = function (dataUrl, name) {
 
