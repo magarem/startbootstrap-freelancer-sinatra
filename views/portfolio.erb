@@ -174,7 +174,7 @@ body { font-family: sans-serif; }*/
           background-size: cover;
           background-position: center  center;
           background-repeat: no-repeat;
-          margin-bottom: 20px;
+          margin-bottom: 10px;
         }
 
 
@@ -201,20 +201,18 @@ div#img:hover {
     opacity: 0.9;
     filter: alpha(opacity=90); /* For IE8 and earlier */
 }
+
 </style>
         <div id="mycarousel">
           <a href class="portfolio-link " ng-click="open(image, $index); mostra($index);">
-            <div class="_carousel-inner">
-                <div class="item active">
-                <div id=img class="imgBox" back-img="{{image.img}}" ></div>
-                <div class="" style="padding-left:5px;">
-                <h4>{{image.titulo}}</h4>
-                <!-- <p ng-bind-html="image.txt | limitTo:30"></h4> -->
+                <div id=img class="imgBox" back-img="{{image.img}}" >  </div>
+                  <div class="" style="padding-left:3px; ">
+                    <h5 style="color: #003366; ">{{image.cat | limitTo:100}}</h5>
+                    <h4>{{image.titulo | limitTo:30}}</h4>
+                    <!-- <p ng-bind-html="image.txt | limitTo:30"></h4> -->
+                  </div>
                 </div>
-                </div>
-
                 <!-- <p>{{image.txt}}</p> -->
-            </div>
           </a>
         </div>
 
