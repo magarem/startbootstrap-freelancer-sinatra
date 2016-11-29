@@ -38,9 +38,9 @@ pages:
     label: produtos
     items:
     - id: ''
-      titulo: angularjs - How to use ng-class in select with ng-options&nbsp;
+      titulo: angularjs
       img: contas/maga/img/portfolio/1477871457118.jpg
-      txt: ALL-IN-ONE PLATFORM<div><br></div>
+      txt: ALL-IN-ONE PLATFORM
       cliente: 
       site: 
       data: 
@@ -66,44 +66,27 @@ pages:
       servico: ''
       cat: tt,kk,testexcgxcgxcgxgxcgxc
     - id: ''
-      titulo: ''
+      titulo: amazon
       img: "/contas/maga/img/portfolio/1479341337420.jpg"
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
     - id: ''
-      titulo: ''
+      titulo: flores
       img: contas/maga/img/portfolio/1479660740369.jpg
-      txt: ''
+      txt: Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta
+        lectus vitae, ultricies congue gravida diam non fringilla.
       cliente: ''
       site: ''
       data: ''
       servico: ''
       cat: ''
     - id: ''
-      titulo: ''
+      titulo: pat
       img: "/contas/maga/img/portfolio/1479662559272.jpg"
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
-      titulo: ''
-      img: http://placehold.it/360x260/e67e22/fff
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
-      titulo: ''
-      img: http://placehold.it/360x260/e67e22/fff
       txt: ''
       cliente: ''
       site: ''
