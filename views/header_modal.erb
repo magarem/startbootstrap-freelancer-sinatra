@@ -3,7 +3,7 @@
     <h3>Imagem principal</h3><br>
     <img class="c"  ng-show="!picFile" ng-src="{{ site.pages.home.img }}"/>
     <div class='row' ng-if='picFile != undefined'>
-      <ng-croppie  
+      <ng-croppie
           src="(picFile | ngfDataUrl)"
           ng-model='croppedDataUrl'
           update='onUpdate'
@@ -21,11 +21,11 @@
         <span ng-show="result">Imagem Enviada com sucesso!</span>
         <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
   </div><br>
-  
+
   <button id=imgSelect ngf-fix-orientation="true" ng-init="imgSelectTriger()" class="btn btn-primary"  ng-show="isLogged" ngf-select ng-model="picFile" accept="image/*">Selecionar imagem</button>
-  
-  <button class="btn btn-primary"  ng-click="cancel()" >Fechar</button>  
-       
+
+  <button class="btn btn-primary"  ng-click="cancel()" >Fechar</button>
+
   <script type="text/javascript">
     $(document).on('paste','[contenteditable]',function(e) {
 	    e.preventDefault();

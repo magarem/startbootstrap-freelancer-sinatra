@@ -425,13 +425,18 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   // >> Envio da imagem
   //
 
-
+  //Prepara o URL de destino do upload
+  var url = document.domain;
+  var urlArray = url.split(".");
+  var siteNome = urlArray[0]
+  var updestino = '/'+siteNome+'/avatar/upload'
     //Prepara o URL de destino do upload
 
     $scope.upload = function (dataUrl, name) {
 
-      console.log("name>", Upload.dataUrltoBlob(dataUrl, name))
+      console.log("!!name>", Upload.dataUrltoBlob(dataUrl, name))
       //name = "avatar"
+
       Upload.upload({
         url: updestino,
         data: {
