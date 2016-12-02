@@ -313,7 +313,7 @@ post '/login_do' do
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
-    redirect "http://#{site_nome}.localhost:3000"
+    redirect "http://#{site_nome}.radiando.net"
   else
     session[:logado] = false
     session[:site_nome] = ""
