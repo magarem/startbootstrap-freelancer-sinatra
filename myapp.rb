@@ -280,7 +280,7 @@ get "/site_new_do" do
       session[:login] = true
 
       # Abre o site recem criado no modo de edição
-      redirect "/#{site_nome}"
+      redirect "#{site_nome}.radiando.net"
   else
     # Mostra mensagem de erro de token
     redirect "site/index.html?msg=Erro de token"
@@ -313,7 +313,7 @@ post '/login_do' do
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
-    redirect "http://#{site_nome}.radiando.net"
+    redirect "http://#{site_nome}.localhost:3000"
   else
     session[:logado] = false
     session[:site_nome] = ""
@@ -497,7 +497,7 @@ post '/:site_nome/objSave' do
 end
 
 #
-# upload da imagem de capa (oval)
+# upload da imagem de capa (circulo)
 #
 post "/:site_nome/avatar/upload" do
 

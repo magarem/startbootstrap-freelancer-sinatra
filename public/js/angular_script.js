@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize',  'ngFileUpload', 'ngCroppie', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
+var mod = angular.module("myapp", ['ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize',  'ngFileUpload', 'ngCroppie', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
 
 mod.directive('customOnChange', function() {
   return {
