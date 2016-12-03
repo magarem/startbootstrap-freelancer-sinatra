@@ -22,6 +22,8 @@
           width: 0;
       }
 
+      
+
     </style>
     <h3>Imagem principal</h3><br>
     <img class="c"  ng-show="!picFile" ng-src="{{ site.pages.home.img }}"/>
@@ -52,14 +54,17 @@
       </ng-croppie>
        -->
       <br>
-      <button  class="btn btn-primary" ng-show="isLogged && picFile" ng-click="upload(croppedDataUrl, picFile.name)" >Enviar</button>
+      <!-- <button  class="btn btn-primary" ng-show="isLogged && picFile" ng-click="upload(croppedDataUrl, picFile.name)" >Enviar</button> -->
+      <button ng-disabled="isDisabled" ng-show="isLogged && picFile" class="btn btn-primary" ng-click="search(); upload(croppedDataUrl, picFile.name)">
+        <span ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+        {{ searchButtonText }}
+      </button>
 
 
-
-   <span class="progress" ng-show="progress >= 0">
-     <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-   </span>
-   <span ng-show="result">Upload Successful</span>
+   <!-- <span class="progress" ng-show="progress >= 0"> -->
+     <!-- <div style="width:{{progress}}%" ng-bind="progress + '%'"></div> -->
+   <!-- </span> -->
+   <span ng-show="result">Enviado com sucesso</span>
    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
   </div><br>
 
@@ -67,10 +72,5 @@
 
   <button class="btn btn-primary"  ng-click="cancel()" >Fechar</button>
 
-  <script type="text/javascript">
-    $(document).on('paste','[contenteditable]',function(e) {
-	    e.preventDefault();
-	    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Cole aqui');
-	    window.document.execCommand('insertText', false, text);
-	});
+
 </script>

@@ -9,11 +9,11 @@
   <title><%=@data["head"]["title"]%> - radiando.net</title>
   <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/freelancer.css" rel="stylesheet">
 
   <link rel='stylesheet' type="text/css" href="css/ng-croppie.min.css"></link>
+
   <!-- Custom Fonts -->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -35,6 +35,38 @@
    [contenteditable=true]:empty:before{
      content: attr(placeholder);
      display: block; /* For Firefox */
+   }
+
+   .field {
+       margin-bottom: 1em;
+   }
+   .click-to-edit {
+       display: inline-block;
+   }
+   /*input {
+       display: initial !important;
+       width: auto !important;
+       margin: 0 5px 0 0 !important;
+   }*/
+   .glyphicon.spinning {
+       animation: spin 1s infinite linear;
+       -webkit-animation: spin2 1s infinite linear;
+   }
+   @keyframes spin {
+       from {
+           transform: scale(1) rotate(0deg);
+       }
+       to {
+           transform: scale(1) rotate(360deg);
+       }
+   }
+   @-webkit-keyframes spin2 {
+       from {
+           -webkit-transform: rotate(0deg);
+       }
+       to {
+           -webkit-transform: rotate(360deg);
+       }
    }
   </style>
 </head>

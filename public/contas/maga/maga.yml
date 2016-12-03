@@ -28,7 +28,7 @@ moldura:
 pages:
   home:
     label: Levando a saúde da floresta até você.
-    img: contas/maga/img/avatar.jpeg
+    img: contas/maga/img/avatar.png
     body: 
   about:
     label: quem somos
@@ -95,7 +95,7 @@ pages:
       cat: ''
     - id: ''
       titulo: FidElitO
-      img: contas/maga/img/portfolio/1479772360102.jpg
+      img: contas/maga/img/portfolio/1480732514935.jpg
       txt: Tirando a medida
       cliente: ''
       site: ''

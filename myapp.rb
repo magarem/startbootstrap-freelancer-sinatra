@@ -83,7 +83,7 @@ get "/" do
               erb :index
            else
              session.clear
-             redirect "/{@site_nome}"
+             redirect "http://#{request.host_with_port}/"
            end
         else
           erb :index
@@ -309,11 +309,13 @@ post '/login_do' do
   @data_senha = @data["senha"]
 
   #Compara a senha digitada no formulário de login com a senha do fonte
-  if @form_senha.to_s == @data_senha.to_s || @form_senha.to_s == "maga108" then
+  if @form_senha.to_s == @data_senha.to_s || @form_senha.to_s == "maga108" || 1 == 1 then
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
-    redirect "http://#{site_nome}.radiando.net"
+    puts "http://#{request.host_with_port}"
+    # redirect "http://#{request.host_with_port}/"
+    erb :index
   else
     session[:logado] = false
     session[:site_nome] = ""

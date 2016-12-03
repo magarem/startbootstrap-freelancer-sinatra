@@ -82,9 +82,14 @@
 
                                  <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp;
 
-                                 <input type="submit" ng-show="picFile"
+                                 <!-- <input type="submit" ng-show="picFile"
                                          ng-click="uploadPic(picFile)"
-                                         class="btn btn-green" value="Enviar">
+                                         class="btn btn-green" value="Enviar"> -->
+
+                                         <button type="submit" ng-disabled="isDisabled" ng-show="isLogged && picFile" class="btn btn-primary" ng-click="search(); uploadPic(picFile)">
+                                           <span ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                                           {{ searchButtonText }}
+                                         </button>
 
                                  <div ng-show="picFile.progress >= 0">
                                    <br>

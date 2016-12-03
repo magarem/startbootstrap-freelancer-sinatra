@@ -403,3 +403,16 @@ App 102 stderr: 172.17.0.1 - - [22/Nov/2016:23:16:18 +0000] "GET /maga/dataLoad 
 [ 2016-11-22 23:16:33.4987 66/7f6cdba1f7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 129, application /home/public (development)
 [ 2016-11-22 23:16:33.4993 66/7f6cdba1f7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 411, application /home/public (development)
 [ 2016-11-22 23:16:33.9236 66/7f6cdba1f7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2016-12-03 02:47:15.0845 379/7f0a849b77c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-12-03 02:47:15.1733 382/7f9b84ec97c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-12-03 02:47:15.1741 382/7f9b84ec97c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-12-03 02:47:15.2862 382/7f9b84ec97c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 382
+[ 2016-12-03 02:47:15.3190 387/7fc7fd51e7c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-12-03 02:47:15.3311 387/7fc7fd51e7c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 387
+App 421 stderr: stdin: is not a tty
+App 421 stdout: 
+App 438 stdout: 
+App 438 stdout: >[@logado]>>
+App 438 stdout: 
+App 438 stdout: [@site_nome]>0
+App 421 stderr: 127.0.0.1 - - [03/Dec/2016:02:47:27 +0000] "HEAD / HTTP/1.1" 303 - 0.0694

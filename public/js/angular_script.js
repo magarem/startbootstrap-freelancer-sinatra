@@ -334,6 +334,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   $scope.isLogged = 0;
   $scope.crop_box = false
 
+
   SiteData.logged2().then(function(response) {
     $scope.isLogged = (response.data === 'true');
     console.log(">>[$scope.isLogged]>>",response.data);
@@ -394,6 +395,23 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
 
   // $scope.item = item;
 
+  $scope.searchButtonText = "Enviar";
+  $scope.test = "false";
+  $scope.isDisabled = false;
+
+    $scope.search = function () {
+        $scope.isDisabled = true;
+        $scope.test = "true";
+        $scope.searchButtonText = "Enviando";
+        // Do your searching here
+        // $scope.upload($scope.croppedDataUrl, $scope.picFile.name)
+
+        // $timeout(function(){
+        //     $scope.searchButtonText = "Enviar";
+        // }, 20000);
+    }
+
+
   $scope.isLogged = false;
 
   SiteData.logged2().then(function(response) {
@@ -449,6 +467,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
           $scope.site.pages.home.img = dataUrl
           $scope.flgUploadOk = true;
           console.log("Sucesso!>", dataUrl)
+          $scope.cancel()
           //$rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
         });
       }, function (response) {
@@ -742,35 +761,22 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   var siteNome = urlArray[0]
   var updestino = '/'+siteNome+'/portfolio/uploadPic/'+$scope.i
 
-//   $scope.upload = function (dataUrl, name, picFile) {
+  $scope.searchButtonText = "Enviar";
+  $scope.test = "false";
+  $scope.isDisabled = false;
 
-//     console.log(picFile)
-//     //Pegando a extenção do arquivo
-//     var dotIndex = name.lastIndexOf('.');
-//     var ext = name.substring(dotIndex);
-//     var new_name = Date.now().toString()+ext;
-//     var new_name2 = Date.now().toString()+"_2"+ext;
+  $scope.search = function () {
+      $scope.isDisabled = true;
+      $scope.test = "true";
+      $scope.searchButtonText = "Enviando";
+      // Do your searching here
+      // $scope.upload($scope.croppedDataUrl, $scope.picFile.name)
 
-//     Upload.upload({
-//       url: updestino,
-//       data: {
-//         file: Upload.dataUrltoBlob(dataUrl, new_name)
-//       },
-//     }).then(function (response) {
-//       $timeout(function () {
-//         $scope.result = response.data;
-//         //console.log("Sucesso!>", dataUrl)
-//         $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
-
-//         $scope.flgImg=true;
-//         $scope.flgCropBox=false
-//       });
-//     }, function (response) {
-//       if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
-//     }, function (evt) {
-//       $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-//     });
-// }
+      //  $timeout(function(){
+      //      $scope.searchButtonText = "Enviar";
+      //      $scope.isDisabled = false;
+      //  }, 20000);
+  }
 
 
 $scope.uploadPic = function(file) {
@@ -797,6 +803,8 @@ $scope.uploadPic = function(file) {
         $scope.picFile = false;
         aa = false
         console.log("aa, $scope.picFile>>",aa,$scope.picFile);
+        $scope.searchButtonText = "Enviar";
+        $scope.isDisabled = false;
       });
     }, function (response) {
       if (response.status > 0)
