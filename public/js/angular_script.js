@@ -1,5 +1,19 @@
 var mod = angular.module("myapp", ['ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize',  'ngFileUpload', 'ngCroppie', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
+mod.directive( 'goClick', function ( $location ) {
+  return function ( scope, element, attrs ) {
+    var path;
 
+    attrs.$observe( 'goClick', function (val) {
+      path = val;
+    });
+
+    element.bind( 'click', function () {
+      scope.$apply( function () {
+        $location.path( path );
+      });
+    });
+  };
+});
 mod.directive('customOnChange', function() {
   return {
     restrict: 'A',

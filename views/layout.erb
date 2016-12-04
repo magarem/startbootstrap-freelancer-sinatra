@@ -12,7 +12,6 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/freelancer.css" rel="stylesheet">
 
-  <link rel='stylesheet' type="text/css" href="css/ng-croppie.min.css"></link>
 
   <!-- Custom Fonts -->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -24,7 +23,6 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <link href="https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.css" rel="stylesheet" type="text/css">
 
    <link href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" rel="stylesheet">
 
@@ -169,13 +167,9 @@
         <div class="row">
           <div class="col-lg-12">
 
-              <button ng-show="isLogged" type="button"
-                class="btn btn-primary btn-sm"
-                data-toggle="modal"
-                onclick="location.href='/<%=@site_nome%>/logout'">Logout
-              </button>
 
-              <button  ng-show="!isLogged" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalLogin">Admin</button>
+              <a ng-show="isLogged" href=/logout>Logout</a>
+              <a  ng-show="!isLogged" data-toggle="modal" data-target="#modalLogin">Admin</a>
 &nbsp;
               Copyright © magaweb 2016
 

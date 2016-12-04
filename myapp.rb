@@ -291,9 +291,9 @@ end
 #
 # Encerra a seção de edição
 #
-get '/:site_nome/logout' do
+get '/logout' do
   session.clear
-  redirect '/'+params[:site_nome]
+  redirect "http://#{request.host_with_port}"
 end
 
 #
