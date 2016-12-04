@@ -22,14 +22,15 @@
           width: 0;
       }
 
-      
+
 
     </style>
-    <h3>Imagem principal</h3><br>
-    <img class="c"  ng-show="!picFile" ng-src="{{ site.pages.home.img }}"/>
-
-
-
+    <h3>Imagem de capa</h3><br>
+    <img class="c"  ng-show="!picFile" ng-src="{{ site.pages.home.img }}"
+    <% if @isLogged then%>
+      onclick="$('#avatarImgSelect').trigger('click');"
+    <% end %>
+    />
     <div class='row' ng-if='picFile != undefined' class="content">
 
       <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
@@ -66,11 +67,11 @@
    <!-- </span> -->
    <span ng-show="result">Enviado com sucesso</span>
    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-  </div><br>
+ </div><br>
+  <button class="btn btn-primary"  ng-click="cancel()" >Cancelar</button>
+  <button id=avatarImgSelect style="display:none" ngf-fix-orientation="true" ng-init="imgSelectTriger()" class="btn btn-primary"  ng-show="isLogged" ngf-select ng-model="picFile" accept="image/*">Selecionar imagem</button>
 
-  <button id=imgSelect ngf-fix-orientation="true" ng-init="imgSelectTriger()" class="btn btn-primary"  ng-show="isLogged" ngf-select ng-model="picFile" accept="image/*">Selecionar imagem</button>
 
-  <button class="btn btn-primary"  ng-click="cancel()" >Fechar</button>
 
 
 </script>

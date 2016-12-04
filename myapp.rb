@@ -314,9 +314,9 @@ post '/login_do' do
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
-    puts "http://#{request.host_with_port}"
-    # redirect "http://#{request.host_with_port}/"
-    erb :index
+    # puts "http://#{request.host_with_port}"
+    redirect "http://#{request.host_with_port}/"
+    # erb :index
   else
     session[:logado] = false
     session[:site_nome] = ""

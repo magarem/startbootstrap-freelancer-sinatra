@@ -1,5 +1,5 @@
 ---
-name: maga
+name: 192
 email: contato@magaweb.com.br
 senha: 1
 head:
@@ -27,7 +27,7 @@ moldura:
       web mais rápido e fácil
 pages:
   home:
-    label: Levando a saúde da floresta até você.
+    label: Levando a saúde da floresta até você
     img: contas/192/img/avatar.jpg
     body: 
   about:
@@ -57,7 +57,7 @@ pages:
       servico: ''
       cat: linda
     - id: ''
-      titulo: panfleto
+      titulo: teste
       img: contas/maga/img/portfolio/1478020703446.png
       txt: plaintext-only<br>
       cliente: ''
