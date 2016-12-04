@@ -220,8 +220,8 @@ get "/site_new_do" do
 
   #Pega os parâmetros
   email = params["email"]
-  site_nome = params["site_nome"]
-  token = params["token"]
+  email_site_nome = params["site_nome"]
+  email_token = params["token"]
 
   # Define a flag de busca
   flg_achou = false
@@ -238,7 +238,7 @@ get "/site_new_do" do
     yml_senha = key['senha']
     yml_token = key['token']
 
-    if email == yml_email && site_nome == yml_nome && token == yml_token
+    if email == yml_email && email_site_nome == yml_nome && email_token == yml_token
       flg_achou = true
     end
 
@@ -246,41 +246,42 @@ get "/site_new_do" do
 
    # puts "yml_email: #{yml_email} / yml_token: #{yml_token}"
   if flg_achou
-      @data_path.gsub! "{site_nome}", site_nome
+      @data_path.gsub! "{site_nome}", email_site_nome
       #Cria diretório principal
-      install_dir = "public/contas/#{site_nome}"
+      install_dir = "public/contas/#{email_site_nome}"
       FileUtils::mkdir_p install_dir
 
       #Clona o arquivo base
       FileUtils.cp("site.yml", @data_path)
 
       #Cria diretorio de imagens
-      install_dir = "public/contas/#{site_nome}/img/portfolio"
+      install_dir = "public/contas/#{email_site_nome}/img/portfolio"
       FileUtils::mkdir_p install_dir
 
       #Define o nome/email no arquivo fonte
       data = YAML.load_file @data_path
-      data["name"] = site_nome
-      data["senha"] = token[0, 4]
+      data["name"] = email_site_nome
+      data["senha"] = email_token[0, 4]
       data["email"] = email
-      data["moldura"]["logo"]["label"] = site_nome
+      data["moldura"]["logo"]["label"] = email_site_nome
 
       #Copia imagem da capa
-      FileUtils.cp("public/img/profile.png","public/contas/#{site_nome}/img/profile.png")
+      FileUtils.cp("public/img/profile.png","public/contas/#{email_site_nome}/img/profile.png")
 
       #Define a capa do site
-      data["pages"]["home"]["img"] = "contas/#{site_nome}/img/profile.png"
+      data["pages"]["home"]["img"] = "contas/#{email_site_nome}/img/profile.png"
 
       #Salva o arquivo fonte
       f = File.open(@data_path, 'w' )
       YAML.dump( data, f )
       f.close
 
-      session[:site_nome] = site_nome
+      session[:site_nome] = email_site_nome
       session[:login] = true
 
       # Abre o site recem criado no modo de edição
-      redirect "#{site_nome}.radiando.net"
+      #redirect "#{email_site_nome}.radiando.net"
+      redirect "http://#{email_site_nome}.#{request.host_with_port}"
   else
     # Mostra mensagem de erro de token
     redirect "site/index.html?msg=Erro de token"
@@ -309,7 +310,7 @@ post '/login_do' do
   @data_senha = @data["senha"]
 
   #Compara a senha digitada no formulário de login com a senha do fonte
-  if @form_senha.to_s == @data_senha.to_s || @form_senha.to_s == "maga108" || 1 == 1 then
+  if @form_senha.to_s == @data_senha.to_s || @form_senha.to_s == "maga108" then
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
@@ -329,38 +330,38 @@ end
 #
 # Inicia o aplicativo
 #
-get '/:site_nome' do
-
-  @site_nome = params[:site_nome]
-
-  if @site_nome != "undefined" then
-    if @site_nome != "favicon.ico" then
-      puts "[@site_nome]>#{@site_nome}"
-
-      #Testa se existe o site
-      if !File.exist? File.expand_path "./public/contas/"+@site_nome then
-          redirect 'site/index.html?msg=Essa página não foi encontrada em nossos servidores'
-      end
-
-      #Carrega o titulo do site para o header
-      @data_path.gsub! "{site_nome}", @site_nome
-      @data = YAML.load_file @data_path
-      puts @data
-
-      @edit_flag = session[:logado]
-      if @edit_flag then
-         if @site_nome == session[:site_nome] then
-            erb :index
-         else
-           session.clear
-           redirect "/{@site_nome}"
-         end
-      else
-        erb :index
-      end
-    end
-  end
-end
+# get '/:site_nome' do
+#
+#   @site_nome = params[:site_nome]
+#
+#   if @site_nome != "undefined" then
+#     if @site_nome != "favicon.ico" then
+#       puts "[@site_nome]>#{@site_nome}"
+#
+#       #Testa se existe o site
+#       if !File.exist? File.expand_path "./public/contas/"+@site_nome then
+#           redirect 'site/index.html?msg=Essa página não foi encontrada em nossos servidores'
+#       end
+#
+#       #Carrega o titulo do site para o header
+#       @data_path.gsub! "{site_nome}", @site_nome
+#       @data = YAML.load_file @data_path
+#       puts @data
+#
+#       @edit_flag = session[:logado]
+#       if @edit_flag then
+#          if @site_nome == session[:site_nome] then
+#             erb :index
+#          else
+#            session.clear
+#            redirect "/{@site_nome}"
+#          end
+#       else
+#         erb :index
+#       end
+#     end
+#   end
+# end
 
 #
 # Lê os dados do arquivo fonte
