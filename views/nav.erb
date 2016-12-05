@@ -10,42 +10,42 @@
                 <span class="icon-bar"></span>
             </button>
             <style>
-              .edit { 
-                margin-bottom: 1px; 
+              .edit {
+                margin-bottom: 1px;
                 white-space: pre-line;
               }
-              .edit0 { 
-                margin-bottom: 1px; 
+              .edit0 {
+                margin-bottom: 1px;
                 white-space: normal;
               }
               [contenteditable="true"] { padding: 1px; outline: 2px dashed #CCC; }
               [contenteditable="true"]:hover { outline: 2px dashed #0090D2; }
             </style>
             <a class="navbar-brand"
-               href="#page-top">  
+               href="#page-top">
               <div contenteditable="{{isLogged}}"
                 ng-model="site.moldura.logo.label"
                 strip-br="true"
                 select-non-editable="true"
                 ng-blur="saveDiv('site.moldura.logo.label')"
                 placeholder="Entre com o titulo...">
-              </div>  
-            </a>              
-        </div>       
+              </div>
+            </a>
+        </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">         
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden">
                     <a href="#page-top"></a>
-                </li> 
-                <li class="page-scroll"><a 
+                </li>
+                <li class="page-scroll"><a
                     href="#portfolio">{{site.moldura.menu[0].label}}</a></li>
-                <li class="page-scroll"><a 
+                <li class="page-scroll"><a
                     href="#about">{{site.moldura.menu[1].label}}</a></li>
-                <li class="page-scroll"><a 
+                <li class="page-scroll"><a
                     href="#contact">{{site.moldura.menu[2].label}}</a></li>
                 <!-- <li class="page-scroll" ng-repeat="item in site.moldura.menu">
-                    <a 
+                    <a
                     href="{{item.link}}"
                     >{{item.label}}</a>
                 </li> -->

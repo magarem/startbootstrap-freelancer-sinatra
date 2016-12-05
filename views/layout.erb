@@ -66,7 +66,7 @@
            -webkit-transform: rotate(360deg);
        }
    }
-  </style>
+ </style>
 </head>
 
 <body id="page-top" class="index" ng-controller="topCtrl">
@@ -262,6 +262,15 @@
           return false;
         }
       })
+
+      //hack para navbar na frente da caixa de texto quando se está editando um texto em mobile device
+      if ('ontouchstart' in window) {
+          $(document).on('focus', 'textarea,input,select,[contenteditable]', function() {
+              $('.navbar.navbar-fixed-top').css('position', 'absolute');
+          }).on('blur', 'textarea,input,select,[contenteditable]', function() {
+              $('.navbar.navbar-fixed-top').css('position', '');
+          });
+      }
 
     </script>
   </body>

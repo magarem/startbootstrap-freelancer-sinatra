@@ -41,6 +41,12 @@ before do
   puts ">[@logado]>>#{@logado}"
   # puts ">request.subdomain.split(".").first >>" + request.host.split(".").first
   @data_path = "public/contas/{site_nome}/{site_nome}.yml"
+
+  # Pega o nome do site
+  if request.host.include? "." then
+    @site_nome = request.host.split(".").first
+  end
+
 end
 
 #
@@ -109,6 +115,51 @@ get "/email" do
 
 end
 
+get "/lembrarSenha" do
+  puts "119 > @site_nome: #{@site_nome}"
+
+  #Carrega o titulo do site para o header
+  @data_path.gsub! "{site_nome}", @site_nome
+
+  #Carrega os dados do site
+  @data = YAML.load_file @data_path
+
+  senha = @data['senha']
+  email = @data['email']
+
+  puts "130 > senha: #{senha}"
+  puts "131 > email: #{email}"
+
+
+  #Envia email de confirmação da abertura da nova conta
+  mailMassege = "
+Olá #{@site_nome},
+
+Esse é um email enviado pelo Radiando.net para lembra sua senha administrativa, conforme solicitado.
+
+Sua senha é: #{senha}
+
+Qualquer dúvida entre em contato conosco.
+
+Um abraço,
+Equipe Radiando
+radiando.net"
+
+  puts mailMassege
+
+  mail = Mail.new do
+    from     'contato@radiando.net'
+    to       email
+    subject  'Lembrete de senha'
+    body     mailMassege
+  end
+
+  mail.delivery_method :sendmail
+  mail.deliver
+
+  redirect "site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
+
+end
 #
 #  Pedir novo site
 #
@@ -160,11 +211,10 @@ get "/site_new" do
 
     #Envia email de confirmação da abertura da nova conta
     mailMassege = "
-Olá,
+Bem-vindo ao Radiando.net!
 
-Você abriu uma conta no site Radiando e este é um email de confirmação da sua nova conta.
+Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
 
-Clique no link de confirmação abaixo ou cole no seu navegador:
 http://radiando.net/site_new_do?email=#{userEmail}&site_nome=#{site_nome}&token=#{random_string}
 
 Depois de confirmada a sua conta seu site já estará no ar no endereço:
