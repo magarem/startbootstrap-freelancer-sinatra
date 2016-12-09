@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/owl.theme.css">
     <!-- plugins-->
-    <link rel="stylesheet" href="css/simpletextrotator">
+    <!-- <link rel="stylesheet" href="css/simpletextrotator"> -->
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
@@ -66,15 +66,16 @@
               <h4 class="modal-title text-center">Comece agora</h4>
             </div>
             <div class="modal-body">
-              <form method=get action="/site_new">
+              <form name=form1 method=get action="/site_new" onSubmit="return validar(form1);">
                 <div class="form-group">
-                    <input id="email_modal" type="text" placeholder="E-mail" class="form-control" name=email>
-                    <input id="site_nome_modal" type="text" name=site_nome placeholder="Nome do portfólio" style="margin-top:10px;" class="form-control" onblur="this.value=makeslug(this.value)">
+                    <input id="email_modal" type="email" placeholder="E-mail"  class="form-control" name=email required>
+                    <input id="site_nome_modal" type="text" name=site_nome placeholder="Nome do portfólio" style="margin-top:10px;" class="form-control" onblur="this.value=makeslug(this.value, '.')" required>
                 </div>
+
                 <p class="text-center">
                   <button class="btn btn-primary"><i class="pe-7s-magic-wand"></i> Criar</button>
                 </p>
-              </form>
+</form>
               <p class="text-center text-muted">Receba por e-mail todas as instruções de como ativar sua nova conta</p>
             </div>
           </div>
@@ -92,19 +93,33 @@
               <h4 class="modal-title text-center">Log in</h4>
             </div>
             <div class="modal-body">
-              <form action=/login_do method="POST">
+              <form name=formLogin onSubmit="return validarLogin(formLogin)" action=/login_do method="POST">
                 <div class="form-group">
 
-                    <input type="text" name="post[site]" placeholder="Nome do portfólio"  class="form-control">
+                    <input type="text" name="site" placeholder="Nome do portfólio"  class="form-control" required>
 
-                    <input type="password" name="post[senha]" value="" class="form-control"  placeholder="Entre com a senha" style="margin-top:10px;">
+                    <input type="password" name="senha" value="" class="form-control"  placeholder="Entre com a senha" style="margin-top:10px;" required>
 
                 </div>
                 <p class="text-center">
-                  <button class="btn btn-primary"><i class="pe-7s-magic-wand"></i> Login</button>
+                  <button class="btn btn-primary" type="submit" onclick="actionChange()"><i class="pe-7s-magic-wand"></i> Login</button>
                 </p>
               </form>
-              <p class="text-center text-muted"><a href="">Esqueci a senha</a></p>
+              <p class="text-center text-muted">
+                  <a href="javascript:void(0)" onClick="lembrarSenha()">Esqueci a senha</a>
+              </p>
+               <script>
+               function actionChange(){
+                 formLogin.action = 'http://'+formLogin.site.value+'.'+location.host+'/login_do'
+               }
+               function lembrarSenha(){
+                 if (formLogin.site.value.length > 0) {
+                    location.href = 'http://'+formLogin.site.value+'.'+location.host+'/lembrarSenha'
+                 }else{
+                    alert("Defina o nome do portfolio")
+                 }
+               }
+               </script>
             </div>
           </div>
         </div>
@@ -115,7 +130,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12">
-              <h1>Crie agora mesmo<br>seu portfólio de trabalhos,<br>produtos e serviços on-line</h1>
+              <h1>Crie agora mesmo<br>seu site portfólio de trabalhos,<br>produtos e serviços on-line</h1>
               <!-- <span class="rotate">portfólio, catálogo</span> -->
               <!-- <h3 class="weight-300">Publique seu site em 5 minutos!</h3> -->
             </div>
@@ -123,12 +138,12 @@
           <div class="row">
             <div class="col-md-12">
               <!-- <p>Editor 100% integrado</p> -->
-              <form id=register1 method=get action="/site_new" class="form-inline margin-top sign-up-form">
+              <form name=form2 method=get onsubmit="return validar(form2);" action="/site_new" class="form-inline margin-top sign-up-form">
                 <input id="email_intro" style=""
                        type="email" placeholder="E-mail"
-                       class="form-control input-lg" name=email>
+                       class="form-control input-lg" name=email required>
 
-                <input  type="text" style="" onblur="this.value=makeslug(this.value, '.')" placeholder="Nome do portfólio" class="form-control input-lg" name=site_nome>
+                <input  type="text" style="" onblur="this.value=makeslug(this.value, '.')" placeholder="Nome do portfólio" class="form-control input-lg" name=site_nome required>
                 <input id="register" type="submit" value="Criar portfólio" class="btn btn-primary" >
               </form>
             </div>
@@ -138,30 +153,7 @@
           </div>
         </div>
       </section>
-      <!--   *** CUSTOMERS ***-->
-      <!-- <section id="customers" class="section background-gray-lightest padding--small">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4 col-md-2 col-xs-6">
-              <div class="customer"><img src="img/customers/kofola.png" title="Kofola" data-placement="bottom" data-toggle="tooltip" alt="" class="img-responsive"></div>
-            </div>
-            <div class="col-sm-4 col-md-2 col-xs-6">
-              <div class="customer"><img src="img/customers/evian.png" title="Evian" data-placement="bottom" data-toggle="tooltip" alt="" class="img-responsive"></div>
-            </div>
-            <div class="col-sm-4 col-md-2 col-xs-6">
-              <div class="customer"><img src="img/customers/cslink.png" title="CS Link" data-placement="bottom" data-toggle="tooltip" alt="" class="img-responsive"></div>
-            </div>
-            <div class="col-sm-4 col-md-2 col-xs-6">
-              <div class="customer"><img src="img/customers/botas66.png" title="Botas 66 Concept store" data-placement="bottom" data-toggle="tooltip" alt="" class="img-responsive"></div>
-            </div>
-            <div class="col-sm-4 col-md-2 col-xs-6">
-              <div class="customer"><img src="img/customers/mdfc.png" title="MediaFabríca" data-placement="bottom" data-toggle="tooltip" alt="" class="img-responsive"></div>
-            </div>
-            <div class="col-sm-4 col-md-2 col-xs-6">
-              <div class="customer"><img src="img/customers/vanek.png" title="VANĚK Strojírenská výroba" data-placement="bottom" data-toggle="tooltip" alt="" class="img-responsive"></div>
-            </div>
-          </div>
-        </div>
+      </div>
       </section> -->
       <!--   *** CUSTOMERS END ***-->
       <!--   *** FEATURES ***-->
@@ -205,219 +197,6 @@
           </div>
         </div>
       </section>
-      <!--   *** FEATURES END ***  -->
-      <!--   *** TEXT ***-->
-      <!-- <section id="text" class="text-page section-inverse background-secondary">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h2 class="text-center">Text page</h2>
-              <p class="lead text-center">Age lived smile six defer bed their few. Had admitting concluded too behaviour him she.</p>
-              <div class="row">
-                <div class="col-sm-6">
-                  <p>Able an hope of body. Any nay shyness article matters own removal nothing his forming. Gay own additions education satisfied the perpetual. If he cause manor happy. Without farther she exposed saw man led. Along on happy could cease green oh. </p>
-                  <p>Betrayed cheerful declared end and. Questions we additions is extremely incommode. Next half add call them eat face. Age lived smile six defer bed their few. Had admitting concluded too behaviour him she. Of death to or to being other. </p>
-                </div>
-                <div class="col-sm-6">
-                  <p>Effects present letters inquiry no an removed or friends. Desire behind latter me though in. Supposing shameless am he engrossed up additions. My possible peculiar together to. Desire so better am cannot he up before points. Remember mistaken opinions it pleasure of debating. Court front maids forty if aware their at. Chicken use are pressed removed. </p>
-                  <p>Saw yet kindness too replying whatever marianne. Old sentiments resolution admiration unaffected its mrs literature. Behaviour new set existence dashwoods. It satisfied to mr commanded consisted disposing engrossed. Tall snug do of till on easy. Form not calm new fail. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <!--   *** TEXT END ***-->
-      <!--   *** INTEGRATIONS ***-->
-      <!-- <section id="integrations" class="section-gray">
-        <div class="container clearfix">
-          <div class="row services">
-            <div class="col-md-12">
-              <h4 class="services-heading">Integrations</h4>
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="box box-services">
-                    <div class="icon"><i class="pe-7s-alarm"></i></div>
-                    <h4 class="heading">Webdesign</h4>
-                    <p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them.</p>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="box box-services">
-                    <div class="icon"><i class="pe-7s-cloud"></i></div>
-                    <h4 class="heading">Print</h4>
-                    <p>Advantage old had otherwise sincerity dependent additions. It in adapted natural.</p>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="box box-services">
-                    <div class="icon"><i class="pe-7s-coffee"></i></div>
-                    <h4 class="heading">SEO and SEM</h4>
-                    <p>Am terminated it excellence invitation projection as. She graceful shy. </p>
-                  </div>
-                </div>
-              </div>
-              <h4 class="services-heading">TOOLS</h4>
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="box box-services">
-                    <div class="icon"><i class="pe-7s-monitor"></i></div>
-                    <h4 class="heading">Consulting</h4>
-                    <p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them.</p>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="box box-services">
-                    <div class="icon"><i class="pe-7s-signal"></i></div>
-                    <h4 class="heading">Email Marketing</h4>
-                    <p>Advantage old had otherwise sincerity dependent additions. It in adapted natural.</p>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="box box-services">
-                    <div class="icon"><i class="pe-7s-id"></i></div>
-                    <h4 class="heading">UX &amp; UI</h4>
-                    <p>Am terminated it excellence invitation projection as. She graceful shy. </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <!--   *** INTEGRATIONS END ***-->
-      <!-- <section id="testimonials" class="section testimonails background-gray-lightest">
-        <div class="container">
-          <h2 class="text-center">
-
-            What our customers say
-          </h2>
-          <p class="lead text-center">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.  </p>
-          <div class="row">
-            <div class="col-md-12">
-              <ul class="owl-carousel testimonials same-height-row">
-                <li class="item">
-                  <div class="testimonial same-height-always">
-                    <div class="text">
-                      <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.</p>
-                    </div>
-                    <div class="bottom">
-                      <div class="testimonial-icon"> <i class="pe-7s-comment"></i></div>
-                      <div class="name-picture"><img alt="" src="img/person-1.jpg">
-                        <h5>John McIntyre</h5>
-                        <p>CEO, TransTech</p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="testimonial same-height-always">
-                    <div class="text">
-                      <p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream.</p>
-                    </div>
-                    <div class="bottom">
-                      <div class="testimonial-icon"> <i class="pe-7s-comment"></i></div>
-                      <div class="name-picture"><img alt="" src="img/person-2.jpg">
-                        <h5>John McIntyre</h5>
-                        <p>CEO, TransTech</p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="testimonial same-height-always">
-                    <div class="text">
-                      <p>His room, a proper human room although a little too small, lay peacefully between its four familiar walls.</p>
-                      <p>A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
-                    </div>
-                    <div class="bottom">
-                      <div class="testimonial-icon"> <i class="pe-7s-comment"></i></div>
-                      <div class="name-picture"><img alt="" src="img/person-3.png">
-                        <h5>John McIntyre</h5>
-                        <p>CEO, TransTech</p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="testimonial same-height-always">
-                    <div class="text">
-                      <p>It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.</p>
-                    </div>
-                    <div class="bottom">
-                      <div class="testimonial-icon"> <i class="pe-7s-comment"></i></div>
-                      <div class="name-picture"><img alt="" src="img/person-4.jpg">
-                        <h5>John McIntyre</h5>
-                        <p>CEO, TransTech</p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="testimonial same-height-always">
-                    <div class="text">
-                      <p>It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.</p>
-                    </div>
-                    <div class="bottom">
-                      <div class="testimonial-icon"> <i class="pe-7s-comment"></i></div>
-                      <div class="name-picture"><img alt="" src="img/person-4.jpg">
-                        <h5>John McIntyre</h5>
-                        <p>CEO, TransTech</p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <!-- <section class="signup-section text-center no-padding-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h3>Join for free today</h3>
-              <p class="lead text-gray-light">Age lived smile six defer bed their few. Had admitting concluded too behaviour him she.</p>
-              <form class="form-inline margin-bottom--big sign-up-form">
-                <input id="email" type="email" placeholder="name@company.com" class="form-control">
-                <input id="submit" type="submit" value="Get started for FREE" class="btn btn-primary">
-              </form>
-            </div>
-            <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-              <p class="margin-bottom--zero"><img alt="" src="img/signup.png" class="img-responsive"></p>
-            </div>
-          </div>
-        </div>
-      </section> -->
-     <!--  <section id="contact" class="section background-gray-lightest">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="box-simple">
-                <div class="icon"><i class="pe-7s-map-2"></i></div>
-                <h3>Address</h3>
-                <p>13/25 New Avenue<br>New Heaven, 45Y 73J<br>England, <strong>Great Britain</strong></p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="box-simple">
-                <div class="icon"><i class="pe-7s-phone"></i></div>
-                <h3>Call center</h3>
-                <p class="text-muted">This number is toll free if calling from Great Britain otherwise we advise you to use the electronic form of communication.</p>
-                <p><strong>+33 555 444 333</strong></p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="box-simple">
-                <div class="icon"><i class="pe-7s-mail-open-file"></i></div>
-                <h3>Electronic support</h3>
-                <p class="text-muted">Please feel free to write an email to us or to use our electronic ticketing system.</p>
-                <p><strong><a href="mailto:">info@bootstrap.com</a></strong></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
       <footer class="footer">
         <div class="footer__copyright">
           <div class="container">
@@ -469,6 +248,23 @@
           }).on('blur', 'textarea,input,select,[contenteditable]', function() {
               $('.navbar.navbar-fixed-top').css('position', '');
           });
+      }
+
+      //Form validation
+      function validar(formName){
+        ok = true;
+        if (formName.email.value.length < 1) ok = false;
+        if (formName.site_nome.value.length < 1) ok  = false;
+        if (!ok) alert("Erro no preenchimento do formulário, favor revisar");
+        return ok
+      }
+
+      function validarLogin(formName){
+        ok = true;
+        if (formName.site.value.length < 1) ok = false;
+        if (formName.senha.value.length < 1) ok  = false;
+        if (!ok) alert("Erro no preenchimento do formulário, favor revisar");
+        return ok
       }
 
     </script>

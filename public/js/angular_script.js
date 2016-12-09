@@ -245,7 +245,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     var _logged = function(){
 
-      logged = $http.get('/'+siteNome+'/logged');
+      logged = $http.get('/logged');
       console.log("logged",logged)
       return logged;
     }

@@ -9,7 +9,7 @@ head:
 moldura:
   label: Portfolio
   logo:
-    label: Amazônia nativa
+    label: tttt
     link: index.ttt
   menu:
   - label: produtos
@@ -27,9 +27,9 @@ moldura:
       web mais rápido e fácil
 pages:
   home:
-    label: Levando a saúde da floresta até você.
+    label: Levando a saúde da floresta até você ;)
     img: contas/maga/img/avatar.png
-    body: 
+    body: teste
   about:
     label: quem somos
     body1: sfsdffsfsdfsdfsd ds sd sd fs<div>sdfsdfsdfd<br>sdfsdfdsfdsfsdfdssdf</div>

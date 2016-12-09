@@ -116,6 +116,15 @@ get "/email" do
 end
 
 get "/lembrarSenha" do
+
+  #Confere se foi passado algum nome de site
+
+  #Testa se existe o site
+  if !File.exist? File.expand_path "./public/contas/"+@site_nome then
+      tt = request.host_with_port.split(".")[-1]
+      redirect "http://#{tt}/site/index.html?msg=Site não encontrado"
+  end
+
   puts "119 > @site_nome: #{@site_nome}"
 
   #Carrega o titulo do site para o header
@@ -157,7 +166,9 @@ radiando.net"
   mail.delivery_method :sendmail
   mail.deliver
 
-  redirect "site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
+  # redirect "site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
+  domain = request.host_with_port.split(".")[-1]
+  redirect "http://#{domain}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
 
 end
 #
@@ -166,7 +177,7 @@ end
 get "/site_new" do
 
   #Pega os parâmetros
-  site_nome = params["site_nome"]
+  site_nome = params["site_nome"].downcase
   userEmail = params["email"]
 
   #Define flag de verificação de já existência de nome de site pretendido
@@ -177,14 +188,12 @@ get "/site_new" do
   random_string = SecureRandom.hex
   senha = random_string[0, 4].downcase
 
-  # Carrega o arquivo base
+  # Carrega o arquivo baseredirect "http://#{email_site_nome}.#{request.host_with_port}"
   data = YAML.load_file "sites_list.yml"
 
   # Verifica se o nome pretendido já existe
   # data["sites"].each do |key|
-  #   yml_nome  = key['nome']
-  #   if site_nome == yml_nome
-  #     flg_nome_ja_existe = true
+  #   yml_nome  = key['nome']redirect "http://#{email_site_nome}.#{request.host_with_port}"
   #   end
   # end
 
@@ -350,11 +359,16 @@ end
 # Verificação de login
 #
 post '/login_do' do
-
   # Pega os parâmetros
-  @post = params[:post]
-  site_nome = @post["site"]
-  @form_senha = @post["senha"]
+  site_nome = params[:site]
+  @form_senha = params[:senha]
+
+  #Testa se existe o site
+  if !File.exist? File.expand_path "./public/contas/"+site_nome then
+      domain = request.host_with_port.split(".")[-1]
+      redirect "http://#{domain}/site/index.html?msg=Site não encontrado"
+  end
+
   @data_path.gsub! "{site_nome}", site_nome
   @data = YAML.load_file @data_path
   @data_senha = @data["senha"]
@@ -365,13 +379,16 @@ post '/login_do' do
     session[:site_nome] = site_nome
     @edit_flag = "true"
     # puts "http://#{request.host_with_port}"
-    redirect "http://#{request.host_with_port}/"
+    redirect "/"
     # erb :index
   else
     session[:logado] = false
     session[:site_nome] = ""
     @edit_flag = "false"
-    redirect 'site/index.html?msg=Erro de autenticação'
+    # redirect 'site/index.html?msg=Erro de autenticação'
+    domain = request.host_with_port.split(".")[-1]
+    redirect "http://#{domain}/site/index.html?msg=Erro de autenticação"
+
   end
 end
 
@@ -425,7 +442,7 @@ get '/:site_nome/dataLoad' do
 
 end
 
-get '/:site_nome/logged' do
+get '/logged' do
   @edit_flag = session[:logado] || false
   "#{@edit_flag}"
 end
