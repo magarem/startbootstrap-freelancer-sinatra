@@ -4,7 +4,7 @@ email: contato@magaweb.com.br
 senha: 1
 style:
   headerStyle: image-layout
-  avatarStyle: 'true'
+  avatarStyle: 'false'
 head:
   title: Portfolio geral
   description: Site portfolio

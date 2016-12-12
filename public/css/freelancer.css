@@ -54,7 +54,7 @@ hr.star-light {
   border-color: white;
 }
 hr.star-light:after {
-  background-color: #18bc9c;
+  /*background-color: #18bc9c;*/
   color: white;
 }
 hr.star-primary {
@@ -66,6 +66,9 @@ hr.star-primary:after {
 }
 .img-centered {
   margin: 0 auto;
+}
+a, header {
+    color: #fff;
 }
 header {
   text-align: center;
