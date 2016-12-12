@@ -297,6 +297,8 @@ mod.controller('topCtrl', function ($scope, $http, SiteData) {
   $scope.site = {};
   $scope.isLogged = 0;
 
+
+
   SiteData.logged().then(function(response) {
     $scope.isLogged = parseInt(response.data);
     console.log(">>[$scope.isLogged]>>",response.data);
@@ -337,17 +339,18 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
   }
 }])
 
+
+
+
 //
 //
 // headerCtrl
 //
-
 mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, Upload, $timeout, $http, SiteData, $uibModal) {
 
   $scope.site = {};
   $scope.isLogged = 0;
   $scope.crop_box = false
-
 
   SiteData.logged2().then(function(response) {
     $scope.isLogged = (response.data === 'true');

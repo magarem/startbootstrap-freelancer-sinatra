@@ -1,4 +1,155 @@
-<header ng-controller="headerCtrl" >
+<!-- settings box -->
+
+<style>
+/*==========================================
+    settings box
+==========================================*/
+
+input[type="checkbox"],
+input[type="radio"] {
+  position: absolute;
+  visibility: hidden;
+}
+
+.settings-box-element {
+  z-index: 10;
+}
+
+.buttons-wrapper {
+  position: fixed;
+  top: 130px;
+  right: -200px;
+  width: 200px;
+  height: 240px;
+  background: #fff;
+}
+
+.settings-btn + label {
+  position: fixed;
+  top: 130px;
+  right: 0;
+  display: block;
+  width: 35px;
+  color: #e83737;
+  text-align: center;
+  background: #fff;
+  cursor: pointer;
+}
+
+.settings-btn:checked + label {
+  right: 200px;
+}
+
+.settings-btn:checked ~ .buttons-wrapper {
+  right: 0;
+}
+
+.layout-buttons {
+  display: block;
+  width: 150px;
+  padding: 10px 0;
+  text-align: center;
+  border: 2px solid black;
+  box-sizing: border-box;
+  font-size: 0.875em;
+  cursor: pointer;
+}
+
+.settings-btn:checked ~ .layout-buttons {
+  right: 30px;
+}
+
+input[type="radio"]:checked + label {
+  background: #e83737;
+  color: #fff;
+  border-color: #e83737;
+}
+
+.light-layout + label {
+  position: fixed;
+  top: 140px;
+  right: -150px;
+}
+
+.dark-layout + label {
+  position: fixed;
+  top: 185px;
+  right: -150px;
+}
+
+.image-layout + label {
+  position: fixed;
+  top: 230px;
+  right: -150px;
+}
+
+.pattern-layout + label {
+  position: fixed;
+  top: 275px;
+  right: -150px;
+}
+
+.hide-show-content + label {
+  position: fixed;
+  top: 320px;
+  right: -150px;
+}
+
+.dark-layout:checked ~ .main-wrapper {
+  background: #494949;
+}
+
+.light-layout:checked ~ .main-wrapper {
+
+   background: #18bc9c;
+}
+
+
+.image-layout:checked ~ .main-wrapper {
+  background: url(http://bestinspired.com/wp-content/uploads/2015/03/4-Nature-Wallpapers-2014-1.jpg) no-repeat center 0 fixed;
+  /*-- change the image from here --*/
+}
+
+.pattern-layout:checked ~ .main-wrapper {
+  background: url(http://i.imgur.com/uKfMXs7.png) repeat;
+  /*-- change the pattern from here --*/
+}
+
+.hide-show-content:checked ~ .main-wrapper .avatarImg {
+  display: none;
+}
+</style>
+  <!-- the gear icon that opens the box when you click on it -->
+
+  <% if @isLogged then%>
+    <input id="settings-btn" type="checkbox" class="settings-btn">
+    <label for="settings-btn" class="settings-box-element"><i class="fa fa-2x fa-gear"></i></label>
+    <!-- the white box that contains the buttons -->
+    <div class="buttons-wrapper settings-box-element"></div>
+  <% end %>
+
+
+  <!-- background styles -->
+
+  <!-- light background (#eaeaea) -->
+  <input id="light-layout" class="light-layout" type="radio" name="layout"  onclick=headerStyleSet(this.id)>
+  <label for="light-layout" class="layout-buttons settings-box-element" >Claro</label>
+  <!-- dark background (#494949) -->
+  <input id="dark-layout" class="dark-layout" type="radio" name="layout" onclick=headerStyleSet(this.id)>
+  <label for="dark-layout" class="layout-buttons settings-box-element">Escuro</label>
+  <!-- image background (you can use any image of your choice) -->
+  <input id="image-layout" class="image-layout" type="radio" name="layout" onclick=headerStyleSet(this.id)>
+  <label for="image-layout" class="layout-buttons settings-box-element">Imagem</label>
+  <!-- pattern background (you can use any pattern of your choice) -->
+  <input id="pattern-layout" class="pattern-layout" type="radio" name="layout" onclick=headerStyleSet(this.id)>
+  <label for="pattern-layout" class="layout-buttons settings-box-element">Pattern</label>
+<!-- // background styles -->
+
+<!-- hide/show content -->
+
+<input id="hide-show-content" class="hide-show-content" type="checkbox" onclick=avatarStyleSet()>
+<label for="hide-show-content" class="layout-buttons settings-box-element">Avatar</label>
+<header ng-controller="headerCtrl" class="main-wrapper">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -42,9 +193,9 @@
                 onclick="$('#file').click();"
              <% end %> >
         </div-->
-        <img class="c isLogged"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
+        <img class="c isLogged avatarImg"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
 
-
+<div id=div1></div>
         <!-- Indicates a successful or positive action -->
 
         <!--button id=header_img_confirm type="button" class="btn btn-primary" style="display: none" onclick="$('#uploadimage').submit();$('#header_img_confirm').hide();">Confirmar imagem</button-->

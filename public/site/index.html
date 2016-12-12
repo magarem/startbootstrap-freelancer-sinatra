@@ -154,7 +154,7 @@
         </div>
       </section>
       </div>
-      </section> -->
+      </section> 
       <!--   *** CUSTOMERS END ***-->
       <!--   *** FEATURES ***-->
       <section id="features" class="section">
@@ -224,8 +224,6 @@
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
-    <!---->
     <script src="js/makeslug.js"></script>
 
     <script>
@@ -240,15 +238,6 @@
       }
       var msg = getParameterByName('msg');
       bootbox.alert(msg)
-
-      //hack para navbar na frente da caixa de texto quando se está editando um texto em mobile device
-      if ('ontouchstart' in window) {
-          $(document).on('focus', 'textarea,input,select,[contenteditable]', function() {
-              $('.navbar.navbar-fixed-top').css('position', 'absolute');
-          }).on('blur', 'textarea,input,select,[contenteditable]', function() {
-              $('.navbar.navbar-fixed-top').css('position', '');
-          });
-      }
 
       //Form validation
       function validar(formName){
@@ -266,7 +255,16 @@
         if (!ok) alert("Erro no preenchimento do formulário, favor revisar");
         return ok
       }
-
-    </script>
+   </script>
+   <script>
+   //hack para navbar na frente da caixa de texto quando se está editando um texto em mobile device
+   if ('ontouchstart' in window) {
+       $(document).on('focus', 'textarea,input,select,[contenteditable]', function() {
+           $('.navbar.navbar-fixed-top').css('position', 'absolute');
+       }).on('blur', 'textarea,input,select,[contenteditable]', function() {
+           $('.navbar.navbar-fixed-top').css('position', '');
+       });
+   }
+   </script>
   </body>
 </html>

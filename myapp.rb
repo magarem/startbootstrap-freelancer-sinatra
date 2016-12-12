@@ -806,3 +806,92 @@ post '/email_envia' do
 
 
 end
+
+#
+#
+#         headerStyleGet
+#
+#
+post '/avatarStyleSet' do
+
+  # Autenticação
+  # if !@logado then redirect "http://#{request.host_with_port}" end
+
+  avatarStyle = params[:avatarStyle]
+  @data_path.gsub! "{site_nome}", @site_nome
+
+  # Carrega os dados do arquivo fonte
+  data = YAML.load_file @data_path
+
+  #Altera o campo correspondente
+  data["style"]["avatarStyle"] = avatarStyle
+
+  # Salva o arquivo base
+  f = File.open(@data_path, 'w' )
+  YAML.dump( data, f )
+  f.close
+
+end
+
+#
+#
+#         headerStyleGet
+#
+#
+post '/headerStyleSet' do
+
+  # Autenticação
+  # if !@logado then redirect "http://#{request.host_with_port}" end
+
+  headerStyle = params[:headerStyle]
+  avatarStyle = params[:avatarStyle]
+  @data_path.gsub! "{site_nome}", @site_nome
+
+  # Carrega os dados do arquivo fonte
+  data = YAML.load_file @data_path
+  puts headerStyle
+
+  #Altera o campo correspondente
+  data["style"]["headerStyle"] = headerStyle
+  data["style"]["avatarStyle"] = avatarStyle
+
+  # Salva o arquivo base
+  f = File.open(@data_path, 'w' )
+  YAML.dump( data, f )
+  f.close
+
+end
+
+
+#
+#
+#         headerStyleGet
+#
+#
+get '/headerStyleGet' do
+  # Autenticação
+  # if !@logado then redirect "http://#{request.host_with_port}" end
+
+  @data_path.gsub! "{site_nome}", @site_nome
+
+  # Carrega os dados do arquivo fonte
+  data = YAML.load_file @data_path
+  puts data["style"]["headerStyle"]
+  data["style"]["headerStyle"]
+end
+#
+#
+#         avatarStyleGet
+#
+#
+get '/avatarStyleGet' do
+  # Autenticação
+  # if !@logado then redirect "http://#{request.host_with_port}" end
+
+  @data_path.gsub! "{site_nome}", @site_nome
+
+  # Carrega os dados do arquivo fonte
+  data = YAML.load_file @data_path
+  puts data["style"]["avatarStyle"]
+  data["style"]["avatarStyle"]
+end

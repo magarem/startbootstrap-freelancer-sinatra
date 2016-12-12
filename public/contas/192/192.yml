@@ -2,6 +2,9 @@
 name: 192
 email: contato@magaweb.com.br
 senha: 1
+style:
+  headerStyle: image-layout
+  avatarStyle: 'true'
 head:
   title: Portfolio geral
   description: Site portfolio
