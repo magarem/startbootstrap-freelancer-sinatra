@@ -1,10 +1,8 @@
 <!-- settings box -->
-
 <style>
 /*==========================================
     settings box
 ==========================================*/
-
 input[type="checkbox"],
 input[type="radio"] {
   position: absolute;
@@ -185,15 +183,10 @@ input[type="radio"]:checked + label {
            <% end %>
 
          </style>
-        <!--div id="image1"
-             class="cropcircle img-responsive"
-             <% if @edit_flag == true %>
-                onclick="$('#file').click();"
-             <% end %> >
-        </div-->
+
         <img class="c isLogged avatarImg"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
 
-<div id=div1></div>
+        <div id=div1></div>
         <!-- Indicates a successful or positive action -->
 
         <!--button id=header_img_confirm type="button" class="btn btn-primary" style="display: none" onclick="$('#uploadimage').submit();$('#header_img_confirm').hide();">Confirmar imagem</button-->

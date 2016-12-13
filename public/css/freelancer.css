@@ -68,11 +68,13 @@ hr.star-primary:after {
   margin: 0 auto;
 }
 a, header {
-    color: #fff;
+    /*color: #fff;*/
 }
+
 header {
   text-align: center;
   background: #18bc9c;
+  color: #fff;
 }
 header .container {
   padding-top: 100px;
@@ -215,7 +217,7 @@ section.success a.active {
 }
 @media (min-width: 767px) {
   #portfolio .portfolio-item {
-    margin: 0 0 30px;
+    margin: 0 0 0px;
   }
 }
 .btn-outline {

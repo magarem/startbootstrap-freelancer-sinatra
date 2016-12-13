@@ -2,6 +2,9 @@
 name: site
 senha: 12345
 email:
+style:
+  headerStyle: light-layout
+  avatarStyle: 'false'
 head:
   title: Portfólio
   description:
