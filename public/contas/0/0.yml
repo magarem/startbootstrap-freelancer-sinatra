@@ -1,0 +1,109 @@
+---
+name: 0
+email: contato@magaweb.com.br
+senha: 1
+style:
+  headerStyle: image-layout
+  avatarStyle: 'false'
+head:
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+moldura:
+  label: Portfolio
+  logo:
+    label: Amazônia nativa
+    link: index.ttt
+  menu:
+  - label: prggfgg
+  - label: quem somos
+  - label: contato
+  footer:
+    endereco: Boca do Acre - Amazônia&nbsp;
+    social:
+      facebook: '111'
+      googleplus: '222'
+      twitter: '333'
+      linkedin: '444'
+    about_resumo: Framework de front-end elegante, intuitivo para um desenvolvimento
+      web mais rápido e fácilFramework de front-end elegante, intuitivo para um desenvolvimento
+      web mais rápido e fácil
+pages:
+  home:
+    label: Levando a saúde da floresta
+    img: contas/192/img/avatar.jpg
+    body:
+  about:
+    label: quem somos
+    body1: Gatas lindas
+    body2: fsdfsdvvvv ffg ccgvggg ggg ffgg
+  portfolio:
+    label: prggfgg
+    items:
+    - id: ''
+      titulo: angularjs sdf sdf dsfsd sdf sdf sL
+      img: contas/maga/img/portfolio/1477871457118.jpg
+      txt: ALL-GgghM
+      cliente:
+      site:
+      data:
+      servico:
+      cat: tt,kk,testexcg
+    - id: ''
+      titulo: top
+      img: contas/maga/img/portfolio/1479768479836.jpg
+      txt: Very nice couple, great apartament (big and very confortable) in a nice
+        spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: linda
+    - id: ''
+      titulo: teste
+      img: contas/maga/img/portfolio/1478020703446.png
+      txt: plaintext-only<br>
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: tt,kk,testexcgxcgxcgxgxcgxc
+    - id: ''
+      titulo: amazon
+      img: contas/maga/img/portfolio/1479341337420.jpg
+      txt:
+      cliente:
+      site:
+      data:
+      servico:
+      cat:
+    - id: ''
+      titulo: flores
+      img: contas/maga/img/portfolio/1479660740369.jpg
+      txt: Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta
+        lectus vitae, ultricies congue gravida diam non fringilla.
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: pat
+      img: contas/maga/img/portfolio/1479662559272.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: FidElitO
+      img: contas/maga/img/portfolio/1479772360102.jpg
+      txt: Tirando a medida
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Teste
+  contact:
+    label: contato

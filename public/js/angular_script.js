@@ -1,4 +1,11 @@
 var mod = angular.module("myapp", ['ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize',  'ngFileUpload', 'ngCroppie', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
+// mod.config(function($routeProvider) {
+//     $routeProvider
+//     .when("/img/:param1", {
+//         templateUrl : "partials/portfolio_modal_pagina",
+//     });
+// });
+
 mod.directive( 'goClick', function ( $location ) {
   return function ( scope, element, attrs ) {
     var path;
@@ -294,10 +301,9 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
 mod.controller('topCtrl', function ($scope, $http, SiteData) {
 
+
   $scope.site = {};
   $scope.isLogged = 0;
-
-
 
   SiteData.logged().then(function(response) {
     $scope.isLogged = parseInt(response.data);
@@ -315,6 +321,20 @@ mod.controller('topCtrl', function ($scope, $http, SiteData) {
        // console.log(response.data);
     })
   }
+
+  $scope.gotoAnchor = function(x) {
+      var newHash = 'anchor' + x;
+      if ($location.hash() !== newHash) {
+        // set the $location.hash to `newHash` and
+        // $anchorScroll will automatically scroll to it
+        $location.hash('anchor' + x);
+      } else {
+        // call $anchorScroll() explicitly,
+        // since $location.hash hasn't changed
+        $anchorScroll();
+      }
+    };
+
 })
 
 mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, $rootScope, SiteData) {
@@ -338,9 +358,6 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
   })
   }
 }])
-
-
-
 
 //
 //
@@ -510,7 +527,9 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
 }]);
 
 
-mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, SiteData, deviceDetector) {
+mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', '$location', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, $location, SiteData, deviceDetector) {
+
+
 
   //Busca informações do device que está utilizando o site
   var vm = this;
@@ -528,6 +547,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   $scope.handleWidth = "auto";
   $scope.labelWidth = "auto";
   $scope.inverse = true;
+
+
 
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
@@ -652,8 +673,15 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   //
   //
   $scope.animationsEnabled = true;
+
+  $scope.open2 = function (item, i){
+    //$location.path("/img/"+ i);
+    //  = "/teste?"+i
+    window.location.href = "cardPanel?"+i
+  }
+
   $scope.open = function (item, i) {
-    console.log("i:",i)
+    console.log("ii:",i)
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       windowTopClass: "portfolio-modal modal",
@@ -717,7 +745,23 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   }
 
 }]);
-
+// mod.controller('MyFormCtrl2',['$anchorScroll', '$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', '$location', 'SiteData', 'deviceDetector', function ($anchorScroll, $scope, $http, $timeout, $rootScope, $uibModal, $log, $location, SiteData, deviceDetector) {
+//   var url = document.URL;
+//   var urlArray = url.split("?");
+//   var id = Number(urlArray[1])
+//   //var id = $routeParams.param1;
+//   console.log(id)
+//
+//   $scope.isLogged = true;
+//
+//   SiteData.getSiteData().then(function(response) {
+//     $scope.item = response.data.pages.portfolio.items[id];
+//     // console.log("SiteData[novo]:", str);
+//   })
+//
+//
+//
+// }]);
 
 mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInstance, $timeout, SiteData, item, i) {
 
@@ -725,7 +769,69 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   $scope.a = 10;
   $scope.i = i;
 
+  //caso de edição via telefone:
+  //Pega o valor do id do item via querystring
+  var url = document.URL;
+  var urlArray = url.split("?");
+  var id = Number(urlArray[1])
+  if (id>0) {
+    SiteData.getSiteData().then(function(response) {
+      $scope.item = response.data.pages.portfolio.items[id];
+      // console.log("SiteData[novo]:", str);
+    })
+  }
+
+
   console.log("item.titulo>", item)
+
+  $scope.isLogged = false;
+
+  SiteData.logged2().then(function(response) {
+    $scope.isLogged = (response.data === 'true');
+    console.log(">>[$scope.isLogged]>>",response.data);
+  })
+
+  $rootScope.$on("ModalClose", function(){
+      $scope.cancel();
+  });
+
+  $scope.cancel = function (status) {
+    if (status){
+      deleteUser = confirm('Tem certeza que quer cancelar o envio da imagem?');
+      if(deleteUser){
+       //Your action will goes here
+       $uibModalInstance.dismiss('cancel');
+      }
+    }else{
+       $uibModalInstance.dismiss('cancel');
+    }
+  };
+
+  $scope.saveDiv = function(obj, i){
+    SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) {
+       // console.log(response.data);
+       $rootScope.$emit("categoriasUpdate");
+    })
+  }
+});
+
+
+mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, SiteData) {
+
+  //caso de edição via telefone:
+  //Pega o valor do id do item via querystring
+  var url = document.URL;
+  var urlArray = url.split("?");
+  var id = Number(urlArray[1])
+  if (id=>0) {
+    SiteData.getSiteData().then(function(response) {
+      $scope.item = response.data.pages.portfolio.items[id];
+      $scope.i = id;
+      // console.log("SiteData[novo]:", str);
+    })
+  }
+
+  console.log("item.titulo>", $scope.item)
 
   $scope.isLogged = false;
 
@@ -767,8 +873,6 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
 mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
 
-  $scope.flgImg=true;
-  $scope.flgCropBox=false
   $scope.imgUploadBtn = true;
 
   $scope.imgJaSubiu = false;
@@ -797,9 +901,6 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
 
 $scope.uploadPic = function(file) {
-
-
-
 
     //Pegando a extenção do arquivo
     var dotIndex = file.name.lastIndexOf('.');
@@ -874,10 +975,7 @@ $scope.uploadPic = function(file) {
     }, 0);
   };
 
-
-
 }]);
-
 
 mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
 

@@ -58,6 +58,18 @@ end
 
 set :public_folder, 'public'
 
+get '/partials/:name' do
+  erb params[:name].to_sym, layout: false
+end
+
+get "/cardPanel" do
+  puts params["id"]
+  #Carrega o titulo do site para o header
+  @data_path.gsub! "{site_nome}", @site_nome
+  @data = YAML.load_file @data_path
+  erb :portfolio_modal_pagina
+end
+
 get "/" do
 
     # @site_nome = params[:site_nome]
@@ -96,23 +108,6 @@ get "/" do
         end
       end
     end
-end
-
-
-get "/email" do
-
-  mail = Mail.new do
-    body "Super teste"
-  end
-
-  mail['from'] = 'mikel@test.lindsaar.net'
-  mail[:to]    = 'contato@magaweb.com.br'
-  mail.subject = 'This is a test email'
-
-  #mail.header['X-Custom-Header'] = 'custom value'
-
-  mail.to_s #=> "From: mikel@test.lindsaar.net\r\nTo: you@...
-
 end
 
 get "/lembrarSenha" do

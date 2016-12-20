@@ -32,7 +32,7 @@ pages:
   home:
     label: Levando a saúde da floresta
     img: contas/192/img/avatar.jpg
-    body: 
+    body:
   about:
     label: quem somos
     body1: Gatas lindas
@@ -44,10 +44,10 @@ pages:
       titulo: angularjs sdf sdf dsfsd sdf sdf sL
       img: contas/maga/img/portfolio/1477871457118.jpg
       txt: ALL-GgghM
-      cliente: 
-      site: 
-      data: 
-      servico: 
+      cliente:
+      site:
+      data:
+      servico:
       cat: tt,kk,testexcg
     - id: ''
       titulo: top
@@ -70,13 +70,13 @@ pages:
       cat: tt,kk,testexcgxcgxcgxgxcgxc
     - id: ''
       titulo: amazon
-      img: "/contas/maga/img/portfolio/1479341337420.jpg"
-      txt: 
-      cliente: 
-      site: 
-      data: 
-      servico: 
-      cat: 
+      img: contas/maga/img/portfolio/1479341337420.jpg
+      txt:
+      cliente:
+      site:
+      data:
+      servico:
+      cat:
     - id: ''
       titulo: flores
       img: contas/maga/img/portfolio/1479660740369.jpg
@@ -89,7 +89,7 @@ pages:
       cat: ''
     - id: ''
       titulo: pat
-      img: "/contas/maga/img/portfolio/1479662559272.jpg"
+      img: contas/maga/img/portfolio/1479662559272.jpg
       txt: ''
       cliente: ''
       site: ''

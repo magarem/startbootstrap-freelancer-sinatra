@@ -1,0 +1,173 @@
+<style>
+  .thumb {
+      width: 200px;
+      height: auto;
+      float: none;
+      position: relative;
+      top: 7px;
+  }
+  form .progress {
+      line-height: 15px;
+  }
+  .progress {
+      padding-top: 20px;
+      display: inline-block;
+      width: 100px;
+      border: 3px groove #CCC;
+  }
+  .progress div {
+      font-size: smaller;
+      background: orange;
+      width: 0;
+  }
+  .progressBar{
+    background-color: #2980b9;
+    color: #FFF;
+    padding: 1em .5em;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+  .modal-body {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+  }
+</style>
+<div ng-controller="ModalInstanceCtrl2">
+  <div class="modal-body" ng-controller="MyFormCtrl">
+    <div class="modal-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12  col-xs-12">
+            <div class="modal-body">
+              <h2>
+                <div contenteditable="{{isLogged}}" ng-model="item.titulo"
+                  strip-br="true" select-non-editable="true"
+                  ng-blur="saveDiv('item.titulo', i)" placeholder="Titulo">
+                </div>
+              </h2>
+              <hr class="star-primary">
+                <img
+                  class="img-responsive img-centered"
+                  style="max-width:100%; margin-bottom: 13px;"
+                  ng-src="/{{item.img}}"
+                  ng-show="!picFile || imgJaSubiu"
+                  <% if @isLogged then%>
+                    onclick="$('#imgSelect').trigger('click');"
+                  <% end %>
+                />
+                <div ng-show="isLogged && !imgJaSubiu" >
+                  <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado
+                       {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
+                  <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp;
+                  <button type="submit" ng-disabled="isDisabled"
+                    ng-show="isLogged && picFile" class="btn btn-primary"
+                    ng-click="search(); uploadPic(picFile)">
+                    <span ng-show="searchButtonText == 'Enviando'">
+                      <i class="glyphicon glyphicon-refresh spinning"></i>
+                    </span>
+                     {{ searchButtonText }}
+                  </button>
+                  <div ng-show="picFile.progress >= 0"><br></div>
+                   <span class="progress" ng-show="picFile.progress >= 0">
+                     <div class="progressBar" style="width:{{picFile.progress}}%;" ng-bind="picFile.progress + '%'"></div>
+                   </span>
+                   <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                 </div>
+                <p style="margin: 0px 200px 0px 200px">
+                  <div contenteditable="{{isLogged}}"
+                    style = "font-size: 20px;"
+                    ng-model="item.txt"
+                    strip-br="true"
+                    select-non-editable="true"
+                    ng-blur="saveDiv('item.txt', i)"
+                    placeholder="Descrição"
+                    >
+                  </div>
+                </p>
+                <ul class="list-inline item-details">
+                  <li ng-show="item.cliente || isLogged">Cliente:
+                    <strong>
+                      <div contenteditable="{{isLogged}}"
+                        ng-model="item.cliente"
+                        strip-br="true"
+                        select-non-editable="true"
+                        ng-blur="saveDiv('item.cliente', i)"
+                        placeholder="_"></div>
+                    </strong>
+                  </li>
+                  <li ng-show="item.data || isLogged">Data:
+                    <strong>
+                      <div contenteditable="{{isLogged}}"
+                       ng-model="item.data"
+                       strip-br="true"
+                       select-non-editable="true"
+                       ng-blur="saveDiv('item.data', i)"
+                       placeholder="_">
+                      </div>
+                    </strong>
+                  </li>
+                  <li ng-show="item.servico || isLogged">Serviço:
+                    <strong>
+                       <div contenteditable="{{isLogged}}"
+                         ng-model="item.servico"
+                         strip-br="true"
+                         select-non-editable="true"
+                         ng-blur="saveDiv('item.servico', i)"
+                         placeholder="_">
+                       </div>
+                   </strong>
+                 </li>
+                 <li ng-show="item.site || isLogged">Site:
+                   <strong>
+                     <div contenteditable="{{isLogged}}"
+                       ng-model="item.site"
+                       strip-br="true"
+                       select-non-editable="true"
+                       ng-blur="saveDiv('item.site', i)"
+                       placeholder="_">
+                     </div>
+                   </strong>
+                 </li>
+                 <li ng-show="item.cat || isLogged">Marcadores:
+                   <strong>
+                   <div contenteditable="{{isLogged}}"
+                       ng-model="item.cat"
+                       strip-br="true"
+                       select-non-editable="true"
+                       ng-blur="saveDiv('item.cat', i)"
+                       placeholder="_"
+                       >
+                     </div>
+                   </strong>
+                </li>
+              </ul>
+              <input id="imgSelect" type="file"
+                style="display: none;" ngf-select
+                ng-model="picFile" name="file"
+                accept="image/*" ngf-max-size="10MB"
+                required ngf-model-invalid="errorFile"
+                ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
+                style="display:none">
+              <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir(i);"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
+              <button type="button"  class="btn btn-secondary" ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove"></i> Fechar</button>
+              <button type="button"  class="btn btn-secondary" onclick="location.href='/##_botton';"><i class="glyphicon glyphicon-remove"></i> Fechar2</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('div[contenteditable]').keydown(function(e) {
+    //trap the return key being pressed
+    if (e.keyCode === 13  && !e.shiftKey) {
+      // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+      //document.execCommand('insertHTML', false, '<br><br>');
+      // prevent the default behaviour of return key pressed
+      $("div[contentEditable]").blur()
+      return false;
+    }
+  })
+</script>
