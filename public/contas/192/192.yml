@@ -32,7 +32,7 @@ pages:
   home:
     label: Levando a saúde da floresta
     img: contas/192/img/avatar.jpg
-    body:
+    body: 
   about:
     label: quem somos
     body1: Gatas lindas
@@ -40,15 +40,6 @@ pages:
   portfolio:
     label: prggfgg
     items:
-    - id: ''
-      titulo: angularjs sdf sdf dsfsd sdf sdf sL
-      img: contas/maga/img/portfolio/1477871457118.jpg
-      txt: ALL-GgghM
-      cliente:
-      site:
-      data:
-      servico:
-      cat: tt,kk,testexcg
     - id: ''
       titulo: top
       img: contas/maga/img/portfolio/1479768479836.jpg
@@ -60,6 +51,15 @@ pages:
       servico: ''
       cat: linda
     - id: ''
+      titulo: Maguete
+      img: contas/192/img/portfolio/1482345509548.JPG
+      txt: Super t até 12
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: tt,kk,testexcg
+    - id: ''
       titulo: teste
       img: contas/maga/img/portfolio/1478020703446.png
       txt: plaintext-only<br>
@@ -69,17 +69,8 @@ pages:
       servico: ''
       cat: tt,kk,testexcgxcgxcgxgxcgxc
     - id: ''
-      titulo: amazon
-      img: contas/maga/img/portfolio/1479341337420.jpg
-      txt:
-      cliente:
-      site:
-      data:
-      servico:
-      cat:
-    - id: ''
       titulo: flores
-      img: contas/maga/img/portfolio/1479660740369.jpg
+      img: contas/192/img/portfolio/1482347084168.JPG
       txt: Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta
         lectus vitae, ultricies congue gravida diam non fringilla.
       cliente: ''
@@ -88,8 +79,17 @@ pages:
       servico: ''
       cat: ''
     - id: ''
+      titulo: amazon
+      img: contas/192/img/portfolio/1482346565510.jpg
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+    - id: ''
       titulo: pat
-      img: contas/maga/img/portfolio/1479662559272.jpg
+      img: contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273
       txt: ''
       cliente: ''
       site: ''
@@ -98,7 +98,7 @@ pages:
       cat: ''
     - id: ''
       titulo: FidElitO
-      img: contas/maga/img/portfolio/1479772360102.jpg
+      img: contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634
       txt: Tirando a medida
       cliente: ''
       site: ''
@@ -107,3 +107,4 @@ pages:
       cat: Teste
   contact:
     label: contato
+label: contato

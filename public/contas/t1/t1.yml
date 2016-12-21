@@ -25,7 +25,7 @@ moldura:
 pages:
   home:
     label: Meu novo site
-    img: contas/t1/img/profile.png
+    img: contas/t1/img/avatar.jpg
     body: Bem vindo
   about:
     label: Sobre

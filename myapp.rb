@@ -37,7 +37,14 @@ end
 
 before do
   @logado = session[:logado]
+
   @isLogged = @logado
+
+  #Hack para teste
+  session[:logado] = true
+  session[:site_nome] = "192"
+  @edit_flag = "true"
+
   puts ">[@logado]>>#{@logado}"
   # puts ">request.subdomain.split(".").first >>" + request.host.split(".").first
   @data_path = "public/contas/{site_nome}/{site_nome}.yml"
@@ -428,13 +435,11 @@ end
 #
 # Lê os dados do arquivo fonte
 #
-get '/:site_nome/dataLoad' do
+get '/dataLoad' do
   # Pega os dados do arquivo fonte
-  site_nome = params[:site_nome]
-  @data_path.gsub! "{site_nome}", site_nome
+  @data_path.gsub! "{site_nome}", @site_nome
   @data = YAML.load_file @data_path
   @data.to_json
-
 end
 
 get '/logged' do
@@ -453,18 +458,12 @@ end
 #
 # Salva os dados do modo de edição
 #
-post '/:site_nome/objSave' do
-
+post '/objSave' do
   # Pega os parâmetros
-  site_nome = params[:site_nome]
   @post_data = JSON.parse(request.body.read)
   @obj = @post_data["obj"]
   @val = @post_data["val"]
-  @data_path.gsub! "{site_nome}", site_nome
-
-  #Debug
-  puts "@obj => #{@obj}"
-  puts "@val => |#{@val}|"
+  @data_path.gsub! "{site_nome}", @site_nome
 
   if @val == "" then @val = nil end
 
@@ -476,7 +475,6 @@ post '/:site_nome/objSave' do
 
   # Confere qual foi a ordem passada
   case @obj
-
     when "site.moldura.logo.label"
        data["moldura"]["logo"]["label"] = @val
 
@@ -564,14 +562,13 @@ end
 #
 # upload da imagem de capa (circulo)
 #
-post "/:site_nome/avatar/upload" do
+post "/avatar/upload" do
 
   # Pega os parametros
-  site_nome = params[:site_nome]
   @filename = params[:file][:filename]
   file = params[:file][:tempfile]
   imagem_tipo = params[:file][:type]
-  @data_path.gsub! "{site_nome}", site_nome
+  @data_path.gsub! "{site_nome}", @site_nome
 
    # Autenticação
   if !@logado then redirect "/#{site_nome}" end
@@ -589,7 +586,6 @@ post "/:site_nome/avatar/upload" do
     # Reduz o tamanho da imagem
     image = MiniMagick::Image.open("./public/contas/#{site_nome}/img/#{@filename}")
     image.resize "256x256"
-    #image.format "png"
     image.write "./public/contas/#{site_nome}/img/#{@filename}"
 
     # Salva o nome da imagem o arquivo fonte
@@ -604,15 +600,14 @@ end
 #
 #  portfolio: Excluindo um item
 #
-post "/:site_nome/portfolio/delete/:id" do
+post "/portfolio/delete/:id" do
 
   # Pega os parametros
-  site_nome = params[:site_nome]
   @id = params[:id]
-  @data_path.gsub! "{site_nome}", site_nome
+  @data_path.gsub! "{site_nome}", @site_nome
 
   # Autenticação
-  if !@logado then redirect "/#{site_nome}" end
+  if !@logado then redirect "/#{@site_nome}" end
 
   # Abre o arquivo fonte e exclui o item
   data = YAML.load_file @data_path
@@ -629,15 +624,13 @@ end
 #
 #  Portfolio: Mudança na ordenação
 #
-post "/:site_nome/portfolio/ordena" do
+post "/portfolio/ordena" do
 
-  # Pega os parâmetros
-  site_nome = params[:site_nome]
   @post_data = JSON.parse(request.body.read)
-  @data_path.gsub! "{site_nome}", site_nome
+  @data_path.gsub! "{site_nome}", @site_nome
 
   # Autenticação
-  if !@logado then redirect "/#{site_nome}" end
+  if !@logado then redirect "/#{@site_nome}" end
 
   # Lê o arquivo fonte
   data = YAML.load_file @data_path
@@ -650,10 +643,9 @@ end
 #
 #  Portfolio: upload da imagem do item
 #
-post "/:site_nome/portfolio/uploadPic/:index" do
+post "/portfolio/uploadPic/:index" do
 
   # Pega os parâmetros
-  @site_nome = params[:site_nome]
   @item = params[:item]
   @index = params[:index].to_i
   @file = params[:file]
@@ -703,10 +695,9 @@ end
 #
 #  Portfolio: adicionando um novo item
 #
-post "/:site_nome/portfolio/add" do
+post "/portfolio/add" do
 
   # Pega os parâmetros
-  @site_nome = params[:site_nome]
   @data_path.gsub! "{site_nome}", @site_nome
 
   # Autenticação
@@ -743,7 +734,6 @@ end
 post '/email_envia' do
 
   # Pega os dados do formulário
-  @site_nome = params[:site_nome]
   name = params[:name]
   email = params[:email]
   phone = params[:phone]

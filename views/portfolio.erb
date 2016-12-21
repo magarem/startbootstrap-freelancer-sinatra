@@ -25,7 +25,6 @@
     border-radius: 0;
   }
 </style>
-
 <div ng-controller="imgGridCtrl as vm" >
   <section id="portfolio" >
     <div class="container">
@@ -83,14 +82,13 @@
     </div>
     <div class="clearfix"></div>
       <br />
-
       <div class="row"  ng-sortable="barConfig">
          <div id="anchor{{$index}}" class="col-sm-4 portfolio-item " ng-repeat="image in imgs  | filter:(!!catselect || undefined) && {cat: catselect}" >
            <span ng-if="isLogged && (vm.data.device == 'iphone' || vm.data.device == 'android') && isSelected " class="drag-handle tile center" >
              <i class="glyphicon glyphicon-move"></i>
            </span>
            <div class="thumbnail">
-             <a href=javascript:void(0); class="portfolio-link" style="text-align: center;" ng-click="open(image, $index); mostra($index);">
+             <a href=javascript:void(0); class="portfolio-link" style="text-align: center;" ng-click="preOpen(image, $index); mostra($index);">
                <div class="imgBox" back-img="{{image.img}}"></div>
                <p><strong>{{image.titulo | limitTo:30}}</strong></p>
              </a>
