@@ -49,7 +49,7 @@ pages:
       site: ''
       data: ''
       servico: ''
-      cat: linda
+      cat: linda,demias,teste22
     - id: ''
       titulo: Maguete
       img: contas/192/img/portfolio/1482345509548.JPG
@@ -58,7 +58,7 @@ pages:
       site: 
       data: 
       servico: 
-      cat: tt,kk,testexcg
+      cat: Teste22,Demias
     - id: ''
       titulo: teste
       img: contas/maga/img/portfolio/1478020703446.png

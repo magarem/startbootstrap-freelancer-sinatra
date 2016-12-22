@@ -132,7 +132,7 @@
                    </strong>
                  </li>
                  <li ng-show="item.cat || isLogged">Marcadores:
-                   <strong>
+                   <!-- <strong>
                    <div contenteditable="{{isLogged}}"
                        ng-model="item.cat"
                        strip-br="true"
@@ -141,7 +141,9 @@
                        placeholder="_"
                        >
                      </div>
-                   </strong>
+                   </strong> -->
+                   <tags-input class="bootstrap" ng-model="tags"></tags-input>
+
                 </li>
               </ul>
               <input id="imgSelect" type="file"

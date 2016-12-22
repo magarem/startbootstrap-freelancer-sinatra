@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
+var mod = angular.module("myapp", ['ngTagsInput', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
 
 mod.directive('customOnChange', function() {
   return {
@@ -83,7 +83,7 @@ mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) {
             html = html.replace(/<br>$/, '')
           }
           if (opts.noLineBreaks) {
-            html2 = html.replace(/<div>/g, '').replace(/<br>/g, '').replace(/<\/div>/g, '')
+            html2 = html.replace(/<div>/g, '').replace(/<br>/g, '').reevalplace(/<\/div>/g, '')
             if (html2 !== html) {
               rerender = true
               html = html2
@@ -132,8 +132,6 @@ mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) {
           target = e.toElement
           if (target !== this && angular.element(target).attr('contenteditable') === 'false') {
             range = document.createRange()
-            sel = window.getSelection()
-            range.setStartBefore(target)
             range.setEndAfter(target)
             sel.removeAllRanges()
             sel.addRange(range)
@@ -168,9 +166,9 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     }
 
     var _saveDiv = function(obj, val, item_n){
-      if (val != undefined) {val = val.trim();}
-      return $http.post("/objSave", {obj: obj, val: val, item_n: item_n});
-    }
+     if (val != undefined) {val = val.trim();}
+     return $http.post("/objSave", {obj: obj, val: val, item_n: item_n});
+   }
 
     var _portAdd = function(){
       return $http.post("/portfolio/add");
@@ -594,11 +592,64 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   $scope.item = item;
   $scope.a = 10;
   $scope.i = i;
-
+  $scope.tags = []
+  function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
+  }
   SiteData.getSiteData().then(function(response) {
     $scope.item = response.data.pages.portfolio.items[i];
-  })
+    $scope.items = response.data.pages.portfolio.items;
 
+
+    var categoriasUpdate = function (){
+
+      regex = /(<([^>]+)>)/ig
+      b = []
+      // $scope.imageCategories = $scope.imgs.map(function(val){return val.cat.replace(regex, "").split(",")})[0]
+      $scope.items.forEach(function(x){
+        if (x.cat != null){
+          v = x.cat.replace(regex, "")
+          if (v.split(",").length > 1){
+              v.split(",").forEach(function(t){
+                t = t.replace(/&nbsp;/g, "");
+                t = t.replace(/'/g, "");
+                t = t.replace(/^\s+|\s+$/gm,''); // trim left and right
+                b.push(t)
+              })
+          }else{
+            b.push(v)
+          }
+        }
+      })
+
+      //Altera a primeira letra para caixa alta
+      for( i = 0 ; i < b.length ; i++){
+          b[i] = b[i].charAt(0).toUpperCase() + b[i].substr(1);
+      }
+
+      //limpa html das categorias
+      $scope.imageCategories = b.filter( onlyUnique )
+      $scope.imageCategories = $scope.imageCategories.filter(function(ele){
+          return ele !== '';
+      });
+    }
+
+    categoriasUpdate()
+
+$scope.ii = 11;
+      console.log("$scope.item.cat",$scope.item.cat)
+
+      catArray = $scope.item.cat.split(",")
+      for (y=0; y<catArray.length; y++){
+        newObj = catArray[y]
+
+        $scope.tags.push(newObj);
+      }
+console.log($scope.tags)
+  })
+  $scope.loadTags = function(query) {
+      return $scope.imageCategories;
+    };
   $scope.isLogged = false;
 
   SiteData.logged2().then(function(response) {
@@ -626,6 +677,17 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
        $rootScope.$emit("categoriasUpdate");
     })
   }
+
+  attr = []
+  $scope.saveTags = function(tags, i){
+    for(var index in tags) {
+       attr[index] = tags[index].text;
+    }
+    console.log("attr>", attr.join())
+    $scope.item.cat = attr.join()
+    $scope.saveDiv("item.cat", i)
+  }
+
 });
 
 
@@ -640,6 +702,15 @@ mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, Sit
     SiteData.getSiteData().then(function(response) {
       $scope.item = response.data.pages.portfolio.items[id];
       $scope.i = id;
+
+      for (t=0; t<$scope.item.length; t++){
+        catArray = $scope.item[t].cat.split(",")
+        for (y=0; y<catArray.length; y++){
+          newObj = catArray[y]
+          $scope.tags[t].push(newObj);
+        }
+      }
+
     })
   }
 

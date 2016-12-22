@@ -529,6 +529,11 @@ post '/objSave' do
        data["pages"]["portfolio"]["items"][@item_n]["cat"] = @val
        puts ">>item.cat<<"
 
+    when "tags"
+       @item_n = @post_data["item_n"]
+       data["pages"]["portfolio"]["items"][@item_n]["cat"] = @val
+       puts ">>item.cat<<"
+
     when "about.label"
        data["pages"]["about"]["label"] = @val
        data["moldura"]["menu"][1]["label"] = @val

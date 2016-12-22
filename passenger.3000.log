@@ -5955,3 +5955,589 @@ App 30583 stdout: >[@logado]>>true
 App 30583 stdout: 
 App 30566 stderr: 192.168.0.6 - - [21/Dec/2016:19:05:35 +0000] "POST /portfolio/ordena HTTP/1.1" 200 - 0.0140
 [ 2016-12-21 19:09:54.8152 28267/7f61277ca700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 3827, application /home/app/webapp/public (development)
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:24:30 +0000] "GET / HTTP/1.1" 200 40084 0.0615
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:24:30 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0013
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:24:30 +0000] "GET /logged HTTP/1.1" 200 4 0.0011
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:24:30 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0026
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:24:31 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0048
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: false
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:24:31 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0044
+App 4608 stderr: stdin: is not a tty
+App 4608 stdout: 
+App 4625 stdout: 
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:26:16 +0000] "GET / HTTP/1.1" 200 40084 0.0568
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:26:16 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0015
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:26:16 +0000] "GET /logged HTTP/1.1" 200 4 0.0009
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:26:16 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0039
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:26:17 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0033
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: false
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:26:17 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0035
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:05 +0000] "GET / HTTP/1.1" 200 40093 0.0461
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:05 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0014
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:06 +0000] "GET /logged HTTP/1.1" 200 4 0.0009
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:06 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0044
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:06 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0048
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: 
+App 4625 stdout: false
+App 4625 stdout: 
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:06 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0236
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:19 +0000] "GET / HTTP/1.1" 200 40084 0.0448
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:19 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0021
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:20 +0000] "GET /logged HTTP/1.1" 200 4 0.0010
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:20 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0043
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:20 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0034
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: false
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:27:20 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0037
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:31:49 +0000] "GET / HTTP/1.1" 200 40080 0.0444
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:31:49 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0012
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:31:49 +0000] "GET /logged HTTP/1.1" 200 4 0.0010
+App 4625 stdout: >[@logado]>>true
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:31:49 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0028
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: 
+App 30583 stdout: image-layout
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:31:49 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0046
+App 4625 stdout: false
+App 4625 stdout: 
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:31:49 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0040
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:33:08 +0000] "GET / HTTP/1.1" 200 40080 0.0436
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:33:09 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0016
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:33:09 +0000] "GET /logged HTTP/1.1" 200 4 0.0008
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:33:09 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0036
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:33:09 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0039
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:33:09 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0035
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: false
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:34:46 +0000] "GET / HTTP/1.1" 200 40120 0.0511
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:34:46 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0020
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:34:46 +0000] "GET /logged HTTP/1.1" 200 4 0.0010
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:34:46 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0039
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: false
+App 4625 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:34:46 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0046
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:34:46 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0038
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:35:26 +0000] "GET / HTTP/1.1" 200 40120 0.0520
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:35:26 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0026
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:35:27 +0000] "GET /logged HTTP/1.1" 200 4 0.0008
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:35:27 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0040
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:35:27 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0033
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: false
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:35:27 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0023
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:15 +0000] "GET / HTTP/1.1" 200 40107 0.0455
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:15 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0015
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:16 +0000] "GET /logged HTTP/1.1" 200 4 0.0008
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:16 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0039
+App 4625 stdout: >[@logado]>>true
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:16 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0039
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: false
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:16 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0037
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:57 +0000] "GET / HTTP/1.1" 200 40073 0.0498
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:57 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0011
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:58 +0000] "GET /logged HTTP/1.1" 200 4 0.0015
+App 4625 stdout: >[@logado]>>true
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:58 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0038
+App 30583 stdout: >[@logado]>>true
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: 
+App 30583 stdout: image-layout
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:58 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0035
+App 4625 stdout: false
+App 4625 stdout: 
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:37:58 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0055
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:38:51 +0000] "GET / HTTP/1.1" 200 40063 0.0385
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:38:51 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0021
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:38:52 +0000] "GET /logged HTTP/1.1" 200 4 0.0012
+App 4625 stdout: >[@logado]>>true
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:38:52 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0027
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:38:52 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0034
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: false
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:38:52 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0040
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:39:31 +0000] "GET / HTTP/1.1" 200 40052 0.0407
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:39:31 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0026
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:39:31 +0000] "GET /logged HTTP/1.1" 200 4 0.0010
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:39:31 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0037
+App 30583 stdout: >[@logado]>>true
+App 4625 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 4625 stdout: false
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:39:31 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0039
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:39:31 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0028
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:17 +0000] "GET / HTTP/1.1" 200 40064 0.0375
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:17 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0014
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:17 +0000] "GET /logged HTTP/1.1" 200 4 0.0012
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:17 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0056
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:17 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0038
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30583 stdout: false
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:17 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0044
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:40 +0000] "GET / HTTP/1.1" 200 40068 0.0466
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:40 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0021
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:40 +0000] "GET /logged HTTP/1.1" 200 4 0.0010
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:40 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0038
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 4625 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:40 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0035
+App 4625 stdout: false
+App 4625 stdout: 
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:40:40 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0035
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:06 +0000] "GET / HTTP/1.1" 200 40068 0.0455
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:06 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0011
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:06 +0000] "GET /logged HTTP/1.1" 200 4 0.0008
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:06 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0037
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:06 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0040
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: false
+App 4625 stdout: 
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:06 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0050
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:58 +0000] "GET / HTTP/1.1" 200 40078 0.0512
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:58 +0000] "GET /css/ng-tags-input.bootstrap.css.map HTTP/1.1" 404 506 0.0021
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:59 +0000] "GET /logged HTTP/1.1" 200 4 0.0008
+App 4625 stdout: >[@logado]>>true
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:59 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0025
+App 30583 stdout: >[@logado]>>true
+App 4625 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:59 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0030
+App 4625 stdout: false
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:41:59 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0036
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:14 +0000] "GET / HTTP/1.1" 200 40072 0.0461
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:14 +0000] "GET /css/ng-tags-input.min.css HTTP/1.1" 404 496 0.0017
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:14 +0000] "GET /logged HTTP/1.1" 200 4 0.0019
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:14 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0055
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:14 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0023
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: false
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:14 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0036
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:39 +0000] "GET / HTTP/1.1" 200 40068 0.0459
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:39 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0016
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:40 +0000] "GET /logged HTTP/1.1" 200 4 0.0010
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:40 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0037
+App 30583 stdout: >[@logado]>>true
+App 4625 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:40 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0042
+App 4625 stdout: false
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:42:40 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0039
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:43:09 +0000] "GET / HTTP/1.1" 200 40075 0.0412
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:43:09 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0014
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:43:10 +0000] "GET /logged HTTP/1.1" 200 4 0.0009
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:43:10 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0048
+App 30583 stdout: >[@logado]>>true
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: false
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:43:10 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0043
+App 30583 stdout: image-layout
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:43:10 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0081
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: [@site_nome]>192
+App 30583 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:46:59 +0000] "GET / HTTP/1.1" 200 41159 0.0424
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:46:59 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0016
+App 30583 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:46:59 +0000] "GET /logged HTTP/1.1" 200 4 0.0008
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: 
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:46:59 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0029
+App 30583 stdout: >[@logado]>>true
+App 30583 stdout: image-layout
+App 30583 stdout: 
+App 4625 stdout: >[@logado]>>true
+App 30566 stderr: 172.17.0.1 - - [21/Dec/2016:19:46:59 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0033
+App 4625 stdout: false
+App 4608 stderr: 172.17.0.1 - - [21/Dec/2016:19:46:59 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0025
+[ 2016-12-21 19:51:59.8969 28267/7f61277ca700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 30583, application /home/app/webapp/public (development)
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: [@site_nome]>192
+App 4625 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 4608 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:45 +0000] "GET / HTTP/1.1" 200 41159 0.0521
+App 4625 stdout: >[@logado]>>true
+App 4608 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:51 +0000] "GET /logged HTTP/1.1" 200 4 0.0020
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: 
+App 4608 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:51 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0130
+App 6623 stderr: stdin: is not a tty
+App 6623 stdout: 
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: image-layout
+App 4608 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:51 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0024
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: false
+App 4608 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:51 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0021
+App 6640 stdout: 
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: 
+App 4608 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:56 +0000] "GET /cardPanel?0 HTTP/1.1" 200 15779 0.0253
+App 4625 stdout: >[@logado]>>true
+App 4608 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:57 +0000] "GET /logged HTTP/1.1" 200 4 0.0021
+App 6640 stdout: >[@logado]>>true
+App 6623 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:57 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0240
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: image-layout
+App 4608 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:57 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0049
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: false
+App 4608 stderr: 192.168.0.6 - - [21/Dec/2016:20:46:58 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0052
+[ 2016-12-21 20:51:57.8332 28267/7f61277ca700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 6640, application /home/app/webapp/public (development)
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: [@site_nome]>192
+App 4625 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 4608 stderr: 172.17.0.1 - - [22/Dec/2016:01:33:16 +0000] "GET / HTTP/1.1" 200 41159 5.9613
+App 4625 stdout: >[@logado]>>true
+App 4608 stderr: 172.17.0.1 - - [22/Dec/2016:01:33:18 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.1364
+App 4625 stdout: >[@logado]>>true
+App 4608 stderr: 172.17.0.1 - - [22/Dec/2016:01:33:20 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.3293
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: 
+App 4608 stderr: 172.17.0.1 - - [22/Dec/2016:01:33:20 +0000] "GET /logged HTTP/1.1" 200 4 0.0015
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: false
+App 4625 stdout: 
+App 4608 stderr: 172.17.0.1 - - [22/Dec/2016:01:33:20 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0491
+App 4625 stdout: >[@logado]>>true
+App 4625 stdout: 
+App 4625 stdout: image-layout
+App 4608 stderr: 172.17.0.1 - - [22/Dec/2016:01:33:20 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.1057
+App 13590 stderr: stdin: is not a tty
+App 13590 stdout: 
+App 13611 stdout: 
+[ 2016-12-22 01:38:20.5282 28267/7f61277ca700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 4625, application /home/app/webapp/public (development)
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: [@site_nome]>192
+App 13611 stdout: 
+App 13611 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:07 +0000] "GET / HTTP/1.1" 200 41162 0.0561
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:07 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0017
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:08 +0000] "GET /logged HTTP/1.1" 200 4 0.0016
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:08 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0028
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: 
+App 13611 stdout: image-layout
+App 13611 stdout: 
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:08 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0044
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: false
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:08 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0041
+App 14077 stderr: stdin: is not a tty
+App 14077 stdout: 
+App 14094 stdout: 
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: 
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:17 +0000] "GET /cardPanel?4 HTTP/1.1" 200 15779 0.0183
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:18 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0010
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: [@site_nome]>192
+App 13611 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:36 +0000] "GET / HTTP/1.1" 200 41162 0.0501
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:36 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0012
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:36 +0000] "GET /logged HTTP/1.1" 200 4 0.0008
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:36 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0023
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:36 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0031
+App 13611 stdout: image-layout
+App 14094 stdout: >[@logado]>>true
+App 14094 stdout: false
+App 14077 stderr: 172.17.0.1 - - [22/Dec/2016:01:52:36 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0174
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: [@site_nome]>192
+App 13611 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:53:49 +0000] "GET / HTTP/1.1" 200 41173 0.0436
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: 
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:53:50 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0019
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:53:50 +0000] "GET /logged HTTP/1.1" 200 4 0.0010
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:53:50 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0034
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: 
+App 13611 stdout: image-layout
+App 13611 stdout: 
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:53:50 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0045
+App 14094 stdout: >[@logado]>>true
+App 14094 stdout: false
+App 14094 stdout: 
+App 14077 stderr: 172.17.0.1 - - [22/Dec/2016:01:53:50 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0042
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: [@site_nome]>192
+App 13611 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:31 +0000] "GET / HTTP/1.1" 200 41173 0.0468
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:32 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0018
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:32 +0000] "GET /logged HTTP/1.1" 200 4 0.0011
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:32 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0041
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: 
+App 14094 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:32 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0052
+App 14094 stdout: false
+App 13611 stdout: image-layout
+App 14077 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:32 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0044
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:39 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0022
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: [@site_nome]>192
+App 13611 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:43 +0000] "GET / HTTP/1.1" 200 41173 0.0467
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:43 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0018
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:44 +0000] "GET /logged HTTP/1.1" 200 4 0.0013
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:44 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0032
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: 
+App 14094 stdout: >[@logado]>>true
+App 13611 stdout: image-layout
+App 13611 stdout: 
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:44 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0045
+App 14094 stdout: false
+App 14077 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:44 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0037
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: [@site_nome]>192
+App 13611 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:45 +0000] "GET / HTTP/1.1" 200 41173 0.0379
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: 
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:45 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0025
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:45 +0000] "GET /logged HTTP/1.1" 200 4 0.0009
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: 
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:45 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0034
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: image-layout
+App 13611 stdout: 
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:45 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0042
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: 
+App 13611 stdout: false
+App 13611 stdout: 
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:45 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0047
+App 13611 stdout: >[@logado]>>true
+App 13611 stdout: [@site_nome]>192
+App 13611 stdout: 
+App 13611 stdout: {"name"=>192, "email"=>"contato@magaweb.com.br", "senha"=>1, "style"=>{"headerStyle"=>"image-layout", "avatarStyle"=>"false"}, "head"=>{"title"=>"Portfolio geral", "description"=>"Site portfolio", "author"=>"marcelo magalhaes"}, "moldura"=>{"label"=>"Portfolio", "logo"=>{"label"=>"Amaz\u00F4nia nativa", "link"=>"index.ttt"}, "menu"=>[{"label"=>"prggfgg"}, {"label"=>"quem somos"}, {"label"=>"contato"}], "footer"=>{"endereco"=>"Boca do Acre - Amaz\u00F4nia&nbsp;", "social"=>{"facebook"=>"111", "googleplus"=>"222", "twitter"=>"333", "linkedin"=>"444"}, "about_resumo"=>"Framework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cilFramework de front-end elegante, intuitivo para um desenvolvimento web mais r\u00E1pido e f\u00E1cil"}}, "pages"=>{"home"=>{"label"=>"Levando a sa\u00FAde da floresta", "img"=>"contas/192/img/avatar.jpg", "body"=>nil}, "about"=>{"label"=>"quem somos", "body1"=>"Gatas lindas", "body2"=>"fsdfsdvvvv ffg ccgvggg ggg ffgg"}, "portfolio"=>{"label"=>"prggfgg", "items"=>[{"id"=>"", "titulo"=>"top", "img"=>"contas/maga/img/portfolio/1479768479836.jpg", "txt"=>"Very nice couple, great apartament (big and very confortable) in a nice spot of Rio Branco... I'd certainly come back! Tks Pedro e Angela", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"linda"}, {"id"=>"", "titulo"=>"Maguete", "img"=>"contas/192/img/portfolio/1482345509548.JPG", "txt"=>"Super t at\u00E9 12", "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>"tt,kk,testexcg"}, {"id"=>"", "titulo"=>"teste", "img"=>"contas/maga/img/portfolio/1478020703446.png", "txt"=>"plaintext-only<br>", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"tt,kk,testexcgxcgxcgxgxcgxc"}, {"id"=>"", "titulo"=>"flores", "img"=>"contas/192/img/portfolio/1482347084168.JPG", "txt"=>"Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"amazon", "img"=>"contas/192/img/portfolio/1482346565510.jpg", "txt"=>nil, "cliente"=>nil, "site"=>nil, "data"=>nil, "servico"=>nil, "cat"=>nil}, {"id"=>"", "titulo"=>"pat", "img"=>"contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273", "txt"=>"", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>""}, {"id"=>"", "titulo"=>"FidElitO", "img"=>"contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634", "txt"=>"Tirando a medida", "cliente"=>"", "site"=>"", "data"=>"", "servico"=>"", "cat"=>"Teste"}]}, "contact"=>{"label"=>"contato"}}, "label"=>"contato"}
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:47 +0000] "GET / HTTP/1.1" 200 41173 0.0517
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:47 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0014
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:48 +0000] "GET /logged HTTP/1.1" 200 4 0.0010
+App 13611 stdout: >[@logado]>>true
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:48 +0000] "GET /dataLoad HTTP/1.1" 200 2442 0.0040
+App 13611 stdout: >[@logado]>>true
+App 14094 stdout: >[@logado]>>true
+App 13611 stdout: image-layout
+App 13590 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:48 +0000] "GET /headerStyleGet HTTP/1.1" 200 12 0.0040
+App 14094 stdout: false
+App 14077 stderr: 172.17.0.1 - - [22/Dec/2016:01:54:48 +0000] "GET /avatarStyleGet HTTP/1.1" 200 5 0.0038

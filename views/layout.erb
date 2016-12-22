@@ -22,7 +22,7 @@
   <![endif]-->
   <link href="/bower_components/ng-img-crop/compile/minified/ng-img-crop.css" rel="stylesheet">
   <link href="/css/bootstrap-switch.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="/css/ng-tags-input.css">
   <style>
    [contenteditable=true]:empty:before{
      content: attr(placeholder);
@@ -60,6 +60,58 @@
            -webkit-transform: rotate(360deg);
        }
    }
+
+   .bootstrap .tags {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.bootstrap .tags.focused {
+  border-color: #66afe9;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102,175,233,0.6);
+}
+
+.bootstrap .tags .tag-item {
+  background: #428bca;
+  border: 1px solid #357ebd;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.bootstrap .tags .tag-item.selected {
+  background: #d9534f;
+  border: 1px solid #d43f3a;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.bootstrap .tags .tag-item button {
+  background: transparent;
+  color: #000;
+  opacity: .4;
+}
+
+.bootstrap .autocomplete {
+  border-radius: 4px;
+}
+
+.bootstrap .autocomplete .suggestion-item.selected {
+  color: #262626;
+  background-color: #e9e9e9;
+}
+
+.bootstrap .autocomplete .suggestion-item em {
+  font-weight: normal;
+  background-color: #ffff00;
+}
+
+.bootstrap .autocomplete .suggestion-item.selected em {
+  color: #262626;
+  background-color: #ffff00;
+}
  </style>
   <script src="/js/jquery.js"></script>
 </head>
@@ -112,6 +164,7 @@
   <script type="text/javascript" src="/js/ng-device-detector.js"></script>
   <script type="text/javascript" src="/js/re-tree.js"></script>
   <script type="text/javascript" src="/bower_components/ng-img-crop/compile/unminified/ng-img-crop.js"></script>
+  <script type="text/javascript" src="/js/ng-tags-input.js"></script>
   <script>
       //
       // Hack para limpar o código html quando
