@@ -144,9 +144,12 @@
                        >
                      </div>
                    </strong> -->
-                   <tags-input class="bootstrap" ng-model="tags" >
+                   <!-- <tags-input class="bootstrap" ng-model="tags" >
                       <auto-complete source="loadTags($query)"></auto-complete>
-                   </tags-input>
+                   </tags-input> -->
+
+                   <js-tag js-tag-mode="typeahead" js-tag-options="jsTagOptions"></js-tag>
+
                  </li>
               </ul>
               <input id="imgSelect" type="file"
@@ -158,8 +161,7 @@
                 style="display:none">
               <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir(i);"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
               <button type="button"  class="btn btn-secondary" ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove"></i> Fechar</button>
-              <button type="button"  class="btn btn-secondary" ng-click="saveTags(tags, 1)"><i class="glyphicon glyphicon-remove"></i>Salvar</button>
-              <button type="button"  class="btn btn-secondary" ng-click="loadTags()"><i class="glyphicon glyphicon-remove"></i>Salvar</button>
+              <button type="button"  class="btn btn-secondary" ng-click="saveTags(tags, i)"><i class="glyphicon glyphicon-save"></i> Salvar</button>
 
             </div>
           </div>

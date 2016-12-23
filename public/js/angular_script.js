@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['ngTagsInput', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
+var mod = angular.module("myapp", ['siyfion.sfTypeahead', 'jsTag', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
 
 mod.directive('customOnChange', function() {
   return {
@@ -511,8 +511,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   $scope.preOpen = function (item, i){
      if ($scope.isLogged && (vm.data.device == "iphone" || vm.data.device == "android")) {
-        $scope.openDeviceOnEditModeStyle(item, i)
-        //$scope.openBaseStyle(item, i)
+        //$scope.openDeviceOnEditModeStyle(item, i)
+        $scope.openBaseStyle(item, i)
      }
      else{
         $scope.openBaseStyle(item, i)
@@ -587,12 +587,13 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
 }]);
 
-mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInstance, $timeout, SiteData, item, i) {
+mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInstance, $timeout, SiteData, item, i, JSTagsCollection) {
 
   $scope.item = item;
   $scope.a = 10;
   $scope.i = i;
   $scope.tags = []
+
   function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
   }
@@ -636,8 +637,6 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
     categoriasUpdate()
 
-$scope.ii = 11;
-      console.log("$scope.item.cat",$scope.item.cat)
 
       catArray = $scope.item.cat.split(",")
       for (y=0; y<catArray.length; y++){
@@ -645,11 +644,47 @@ $scope.ii = 11;
 
         $scope.tags.push(newObj);
       }
-console.log($scope.tags)
+
+     console.log($scope.tags)
+
+      // Build JSTagsCollection
+      $scope.tags = new JSTagsCollection($scope.tags);
+
+      // Export jsTags options, inlcuding our own tags object
+      $scope.jsTagOptions = {
+        'tags': $scope.tags
+      };
+
+      // **** Typeahead code **** //
+
+      // Build suggestions array
+      var suggestions = $scope.imageCategories
+      suggestions = suggestions.map(function(item) { return { "suggestion": item } });
+
+      // Instantiate the bloodhound suggestion engine
+      var suggestions = new Bloodhound({
+        datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.suggestion); },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: suggestions
+      });
+
+      // Initialize the bloodhound suggestion engine
+      suggestions.initialize();
+
+      // Single dataset example
+      $scope.exampleData = {
+        displayKey: 'suggestion',
+        source: suggestions.ttAdapter()
+      };
+
+      // Typeahead options object
+      $scope.exampleOptions = {
+        hint: false,
+        highlight: true
+      };
   })
-  $scope.loadTags = function(query) {
-      return $scope.imageCategories;
-    };
+
+
   $scope.isLogged = false;
 
   SiteData.logged2().then(function(response) {
@@ -680,10 +715,11 @@ console.log($scope.tags)
 
   attr = []
   $scope.saveTags = function(tags, i){
-    for(var index in tags) {
-       attr[index] = tags[index].text;
+    console.log(tags)
+    for(var index in tags.tags) {
+       attr[index] = tags.tags[index].value
     }
-    console.log("attr>", attr.join())
+    console.log("attr>", attr.join(),i)
     $scope.item.cat = attr.join()
     $scope.saveDiv("item.cat", i)
   }
@@ -691,38 +727,110 @@ console.log($scope.tags)
 });
 
 
-mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, SiteData) {
+mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, SiteData, JSTagsCollection) {
 
   //caso de edição via telefone:
   //Pega o valor do id do item via querystring
   var url = document.URL;
   var urlArray = url.split("?");
   var id = Number(urlArray[1])
-  if (id=>0) {
-    SiteData.getSiteData().then(function(response) {
-      $scope.item = response.data.pages.portfolio.items[id];
-      $scope.i = id;
 
-      for (t=0; t<$scope.item.length; t++){
-        catArray = $scope.item[t].cat.split(",")
-        for (y=0; y<catArray.length; y++){
-          newObj = catArray[y]
-          $scope.tags[t].push(newObj);
+  function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
+  }
+
+  SiteData.getSiteData().then(function(response) {
+    $scope.item = response.data.pages.portfolio.items[id];
+    $scope.items = response.data.pages.portfolio.items;
+    $scope.i = id;
+
+    var categoriasUpdate = function (){
+
+      regex = /(<([^>]+)>)/ig
+      b = []
+      // $scope.imageCategories = $scope.imgs.map(function(val){return val.cat.replace(regex, "").split(",")})[0]
+      $scope.items.forEach(function(x){
+        if (x.cat != null){
+          v = x.cat.replace(regex, "")
+          if (v.split(",").length > 1){
+              v.split(",").forEach(function(t){
+                t = t.replace(/&nbsp;/g, "");
+                t = t.replace(/'/g, "");
+                t = t.replace(/^\s+|\s+$/gm,''); // trim left and right
+                b.push(t)
+              })
+          }else{
+            b.push(v)
+          }
         }
+      })
+
+      //Altera a primeira letra para caixa alta
+      for( i = 0 ; i < b.length ; i++){
+          b[i] = b[i].charAt(0).toUpperCase() + b[i].substr(1);
       }
 
-    })
-  }
+      //limpa html das categorias
+      $scope.imageCategories = b.filter( onlyUnique )
+      $scope.imageCategories = $scope.imageCategories.filter(function(ele){
+          return ele !== '';
+      });
+    }
+
+    categoriasUpdate()
+
+
+      catArray = $scope.item.cat.split(",")
+      for (y=0; y<catArray.length; y++){
+        newObj = catArray[y]
+
+        $scope.tags.push(newObj);
+      }
+
+     console.log($scope.tags)
+
+      // Build JSTagsCollection
+      $scope.tags = new JSTagsCollection($scope.tags);
+
+      // Export jsTags options, inlcuding our own tags object
+      $scope.jsTagOptions = {
+        'tags': $scope.tags
+      };
+
+      // **** Typeahead code **** //
+
+      // Build suggestions array
+      var suggestions = $scope.imageCategories
+      suggestions = suggestions.map(function(item) { return { "suggestion": item } });
+
+      // Instantiate the bloodhound suggestion engine
+      var suggestions = new Bloodhound({
+        datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.suggestion); },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: suggestions
+      });
+
+      // Initialize the bloodhound suggestion engine
+      suggestions.initialize();
+
+      // Single dataset example
+      $scope.exampleData = {
+        displayKey: 'suggestion',
+        source: suggestions.ttAdapter()
+      };
+
+      // Typeahead options object
+      $scope.exampleOptions = {
+        hint: false,
+        highlight: true
+      };
+  })
 
   $scope.isLogged = false;
 
   SiteData.logged2().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
-
-  $rootScope.$on("ModalClose", function(){
-      $scope.cancel();
-  });
 
   $scope.cancel = function (status) {
     if (status){
@@ -739,6 +847,17 @@ mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, Sit
     SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) {
        $rootScope.$emit("categoriasUpdate");
     })
+  }
+
+  attr = []
+  $scope.saveTags = function(tags, i){
+    console.log(tags)
+    for(var index in tags.tags) {
+       attr[index] = tags.tags[index].value
+    }
+    console.log("attr>", attr.join(),i)
+    $scope.item.cat = attr.join()
+    $scope.saveDiv("item.cat", i)
   }
 });
 

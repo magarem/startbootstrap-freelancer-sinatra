@@ -142,7 +142,7 @@
                        >
                      </div>
                    </strong> -->
-                   <tags-input class="bootstrap" ng-model="tags"></tags-input>
+                   <js-tag js-tag-mode="typeahead" js-tag-options="jsTagOptions"></js-tag>
 
                 </li>
               </ul>
@@ -155,6 +155,8 @@
                 style="display:none">
               <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir(i);"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
               <button type="button"  class="btn btn-secondary" ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove"></i> Fechar</button>
+              <button type="button"  class="btn btn-secondary" ng-click="saveTags(tags, i)"><i class="glyphicon glyphicon-save"></i> Salvar</button>
+
               <br><br>
             </div>
           </div>
