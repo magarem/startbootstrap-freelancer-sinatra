@@ -501,8 +501,15 @@ post '/objSave' do
        data["moldura"]["menu"][0]["label"] = @val
 
     when "item.titulo"
-       @item_n = @post_data["item_n"]
-       data["pages"]["portfolio"]["items"][@item_n]["titulo"] = @val
+       @portfolioItemId = @post_data["id"]
+       data["pages"]["portfolio"]["items"].each do |key|
+         yml_id = key['id']
+         puts yml_id
+         if @portfolioItemId == yml_id then
+           flg_achou = true
+         end
+       end
+
 
     when "item.txt"
        @item_n = @post_data["item_n"]
@@ -700,7 +707,7 @@ end
 #
 #  Portfolio: adicionando um novo item
 #
-post "/portfolio/add" do
+post "/portfolio/add/:id" do
 
   # Pega os parâmetros
   @data_path.gsub! "{site_nome}", @site_nome
@@ -713,7 +720,7 @@ post "/portfolio/add" do
 
   # Prapara o novo item para inserção
   novo = {
-    "id"      => "",
+    "id"      => params[:id],
     "titulo"  => "",
     "img"     => "http://placehold.it/360x260/e67e22/fff",
     "txt"     => "",

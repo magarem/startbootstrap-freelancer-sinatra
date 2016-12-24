@@ -170,8 +170,8 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
      return $http.post("/objSave", {obj: obj, val: val, item_n: item_n});
    }
 
-    var _portAdd = function(){
-      return $http.post("/portfolio/add");
+    var _portAdd = function(id){
+      return $http.post("/portfolio/add/"+id);
     }
 
     return {
@@ -402,6 +402,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   SiteData.getSiteData().then(function(response) {
     $scope.site = response.data;
+    $scope.portfolioItems = response.data.pages.portfolio.items;
     $scope.imgs = response.data.pages.portfolio.items;
     categoriasUpdate();
   })
@@ -438,7 +439,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     regex = /(<([^>]+)>)/ig
     b = []
     // $scope.imageCategories = $scope.imgs.map(function(val){return val.cat.replace(regex, "").split(",")})[0]
-    $scope.imgs.forEach(function(x){
+    $scope.portfolioItems.forEach(function(x){
       if (x.cat != null){
         v = x.cat.replace(regex, "")
         if (v.split(",").length > 1){
@@ -484,8 +485,9 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   };
 
   $scope.portfolio_add = function () {
+    var newId = $scope.site.name+"-"+Date.now().toString();
     img_new =  {
-      "id"     : 0,
+      "id"     : newId,
       "titulo" : "",
       "img"    : "http://placehold.it/360x260/e67e22/fff/imagem",
       "txt"    : "",
@@ -496,9 +498,9 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
       "cat"    : ""
     }
     //Salva no disco o novo registro
-    SiteData.portAdd().then(function(response) {})
+    SiteData.portAdd(newId).then(function(response) {})
     $scope.imgs.push(img_new)
-    $scope.open(img_new, $scope.imgs.length-1)
+    $scope.preOpen(img_new, $scope.imgs.length-1)
   };
 
   //
@@ -509,13 +511,13 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   $scope.animationsEnabled = true;
 
-  $scope.preOpen = function (item, i){
+  $scope.preOpen = function (portfolioItem){
      if ($scope.isLogged && (vm.data.device == "iphone" || vm.data.device == "android")) {
         //$scope.openDeviceOnEditModeStyle(item, i)
-        $scope.openBaseStyle(item, i)
+        $scope.openBaseStyle(portfolioItem)
      }
      else{
-        $scope.openBaseStyle(item, i)
+        $scope.openBaseStyle(portfolioItem)
         //$scope.openDeviceOnEditModeStyle(item, i)
      }
   }
@@ -524,7 +526,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     window.location.href = "cardPanel?"+i
   }
 
-  $scope.openBaseStyle = function (item, i) {
+  $scope.openBaseStyle = function (portfolioItem) {
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       windowTopClass: "portfolio-modal modal",
@@ -532,12 +534,13 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
       controller: 'ModalInstanceCtrl',
       size: 'lg',
       resolve: {
-        item: function () {
-          return item;
-        },
-        i: function () {
-          return i;
+        portfolioItem: function () {
+          return portfolioItem;
         }
+        // ,
+        // i: function () {
+        //   return i;
+        // }
       }
     });
   };
@@ -937,15 +940,15 @@ $scope.uploadPic = function(file) {
     angular.element('#file').trigger('click');
   };
 
-  $scope.excluir = function(item_index){
+  $scope.excluir = function(item_id){
     var url = document.domain;
     var urlArray = url.split(".");
     var siteNome = urlArray[0];
 
     if(confirm('Confirma exclusão?')){
-     $http.post('/portfolio/delete/'+item_index);
-     $rootScope.$emit("CallDelImg", item_index);
-     $rootScope.$emit("ModalClose", item_index);
+     $http.post('/portfolio/delete/'+item_id);
+     $rootScope.$emit("CallDelImg", item_id);
+     $rootScope.$emit("ModalClose", item_id);
     }
   };
 

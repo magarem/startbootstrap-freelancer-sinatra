@@ -47,7 +47,7 @@
               <h2>
                 <div contenteditable="{{isLogged}}" ng-model="item.titulo"
                   strip-br="true" select-non-editable="true"
-                  ng-blur="saveDiv('item.titulo', i)" placeholder="Titulo">
+                  ng-blur="saveDiv('item.titulo', item.id)" placeholder="Titulo">
                 </div>
               </h2>
               <hr class="star-primary">
@@ -159,7 +159,7 @@
                 required ngf-model-invalid="errorFile"
                 ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
                 style="display:none">
-              <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir(i);"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
+              <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir(item.cat);"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
               <button type="button"  class="btn btn-secondary" ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove"></i> Fechar</button>
               <button type="button"  class="btn btn-secondary" ng-click="saveTags(tags, i)"><i class="glyphicon glyphicon-save"></i> Salvar</button>
 
