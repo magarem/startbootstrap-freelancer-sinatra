@@ -47,7 +47,7 @@
               <h2>
                 <div contenteditable="{{isLogged}}" ng-model="item.titulo"
                   strip-br="true" select-non-editable="true"
-                  ng-blur="saveDiv('item.titulo', item.id)" placeholder="Titulo">
+                  ng-blur="saveDiv('item.titulo')" placeholder="Titulo">
                 </div>
               </h2>
               <hr class="star-primary">
@@ -84,7 +84,7 @@
                     ng-model="item.txt"
                     strip-br="true"
                     select-non-editable="true"
-                    ng-blur="saveDiv('item.txt', i)"
+                    ng-blur="saveDiv('item.txt')"
                     placeholder="Descrição"
                     >
                   </div>
@@ -96,7 +96,7 @@
                         ng-model="item.cliente"
                         strip-br="true"
                         select-non-editable="true"
-                        ng-blur="saveDiv('item.cliente', i)"
+                        ng-blur="saveDiv('item.cliente')"
                         placeholder="_"></div>
                     </strong>
                   </li>
@@ -106,7 +106,7 @@
                        ng-model="item.data"
                        strip-br="true"
                        select-non-editable="true"
-                       ng-blur="saveDiv('item.data', i)"
+                       ng-blur="saveDiv('item.data')"
                        placeholder="_">
                       </div>
                     </strong>
@@ -117,7 +117,7 @@
                          ng-model="item.servico"
                          strip-br="true"
                          select-non-editable="true"
-                         ng-blur="saveDiv('item.servico', i)"
+                         ng-blur="saveDiv('item.servico')"
                          placeholder="_">
                        </div>
                    </strong>
@@ -128,28 +128,13 @@
                        ng-model="item.site"
                        strip-br="true"
                        select-non-editable="true"
-                       ng-blur="saveDiv('item.site', i)"
+                       ng-blur="saveDiv('item.site')"
                        placeholder="_">
                      </div>
                    </strong>
                  </li>
                  <li ng-show="item.cat || isLogged">Marcadores:
-                   <!-- <strong>
-                   <div contenteditable="{{isLogged}}"
-                       ng-model="item.cat"
-                       strip-br="true"
-                       select-non-editable="true"
-                       ng-blur="saveDiv('item.cat', i)"
-                       placeholder="_"
-                       >
-                     </div>
-                   </strong> -->
-                   <!-- <tags-input class="bootstrap" ng-model="tags" >
-                      <auto-complete source="loadTags($query)"></auto-complete>
-                   </tags-input> -->
-
                    <js-tag js-tag-mode="typeahead" js-tag-options="jsTagOptions"></js-tag>
-
                  </li>
               </ul>
               <input id="imgSelect" type="file"
@@ -159,9 +144,9 @@
                 required ngf-model-invalid="errorFile"
                 ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
                 style="display:none">
-              <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir(item.cat);"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
+              <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir();"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
               <button type="button"  class="btn btn-secondary" ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove"></i> Fechar</button>
-              <button type="button"  class="btn btn-secondary" ng-click="saveTags(tags, i)"><i class="glyphicon glyphicon-save"></i> Salvar</button>
+              <button type="button"  class="btn btn-secondary" ng-click="saveTags(tags)"><i class="glyphicon glyphicon-save"></i> Salvar</button>
 
             </div>
           </div>
