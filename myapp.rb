@@ -518,9 +518,9 @@ post "/portfolio/delete/:postPortfolioItemId" do
 
   # Abre o arquivo fonte e exclui o item
   portfolioItems = @data["pages"]["portfolio"]["items"]
-  portfolioItem = items.find {|x| x['id'] == @postPortfolioItemId }
-  @data["pages"]["portfolio"]["items"].delete_at(portfolioItem)
-
+  portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
+  @data["pages"]["portfolio"]["items"].delete(portfolioItem)
+  puts (portfolioItem)
 
   # Salva o arquivo com a alteração (exclusão)
   f = File.open @data_path, 'w'

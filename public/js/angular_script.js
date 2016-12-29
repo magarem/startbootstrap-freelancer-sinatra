@@ -225,10 +225,6 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
   }
 }])
 
-//
-//
-// headerCtrl
-//
 mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, Upload, $timeout, $http, SiteData, $uibModal) {
 
   $scope.site = {};
@@ -283,11 +279,6 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
 
 }])
 
-//
-//
-// headerModalInstanceCtrl
-//
-//
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
 
   $scope.searchButtonText = "Enviar";
@@ -373,8 +364,12 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
 
 }]);
 
-
 mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', '$location', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, $location, SiteData, deviceDetector) {
+
+  //Pega o nome do site
+  var url = document.domain;
+  var urlArray = url.split(".");
+  var siteNome = urlArray[0];
 
   //Busca informações do device que está utilizando o site
   var vm = this;
@@ -394,15 +389,12 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   $scope.inverse = true;
 
   SiteData.getSiteData().then(function(response) {
-    $scope.site = response.data;
     $scope.portfolioItems = response.data.pages.portfolio.items;
-    //$scope.imgs = response.data.pages.portfolio.items;
     categoriasUpdate();
   })
 
   SiteData.logged2().then(function(response) {
     $scope.isLogged = (response.data === 'true');
-
     //confere se está logado para bloquear o img drag
     $scope.isSelected = $scope.isLogged
   })
@@ -411,12 +403,12 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {})
   }
 
-  $rootScope.$on("CallDelImg", function(event, item_index){
-    delImg(item_index);
+  $rootScope.$on("CallDelImg", function(event, id){
+    delImg(id);
   });
 
-  $rootScope.$on("ImgChange", function(event, src, index, siteNome){
-    ImgChange(src, index, siteNome)
+  $rootScope.$on("ImgChange", function(event, src, id, siteNome){
+    ImgChange(src, id, siteNome)
   });
 
   $rootScope.$on("categoriasUpdate", function(event){
@@ -470,10 +462,10 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   }
 
   var delImg = function(id){
-    item_index = $scope.portfolioItems.filter(function(v) {
-      return v.id === id; // Filter out the appropriate one
+    itemRemoved = $scope.portfolioItems.filter(function(v) {
+      return v.id !== id; // Filter out the appropriate one
     })
-    $scope.portfolioItems.splice(item_index, 1)
+    $scope.portfolioItems = itemRemoved
   };
 
   $scope.valueSelected = function (value) {
@@ -485,8 +477,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   };
 
   $scope.portfolio_add = function () {
-    var newId = $scope.site.name+"-"+Date.now().toString();
-    img_new =  {
+    var newId = siteNome+"-"+Date.now().toString();
+    itemNew =  {
       "id"     : newId,
       "titulo" : "",
       "img"    : "http://placehold.it/360x260/e67e22/fff/imagem",
@@ -499,8 +491,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     }
     //Salva no disco o novo registro
     SiteData.portAdd(newId).then(function(response) {})
-    $scope.portfolioItems.push(img_new)
-    $scope.preOpen(img_new, $scope.portfolioItems.length-1)
+    $scope.portfolioItems.push(itemNew)
+    $scope.preOpen(itemNew, $scope.portfolioItems.length-1)
   };
 
   //
@@ -725,7 +717,6 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
 });
 
-
 mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, SiteData, JSTagsCollection) {
 
   //caso de edição via telefone:
@@ -860,13 +851,6 @@ mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, Sit
   }
 });
 
-//
-//
-//    MyFormCtrl
-//
-//
-//
-
 mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
 
   //Pega o nome do site
@@ -877,7 +861,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   $scope.imgUploadBtn = true;
   $scope.imgJaSubiu = false;
 
-  var updestino = '/portfolio/uploadPic/'+$scope.item.id
+  var upDestino = '/portfolio/uploadPic/'+$scope.item.id
   console.log($scope.item.id)
 
   $scope.searchButtonText = "Enviar";
@@ -885,51 +869,54 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   $scope.isDisabled = false;
 
   $scope.search = function () {
-      $scope.isDisabled = true;
-      $scope.test = "true";
-      $scope.searchButtonText = "Enviando";
+    $scope.isDisabled = true;
+    $scope.test = "true";
+    $scope.searchButtonText = "Enviando";
   }
 
-
-$scope.uploadPic = function(file) {
-
+  $scope.uploadPic = function(file) {
     //Pegando a extenção do arquivo
     var dotIndex = file.name.lastIndexOf('.');
     var ext = file.name.substring(dotIndex);
-    var new_name = Date.now().toString()+ext;
+    //var new_name = Date.now().toString()+ext;
+    var new_name = $scope.item.id+ext;
 
     file.upload = Upload.upload({
-      url: updestino,
+      url: upDestino,
       data: {new_name: new_name, file: file},
     });
 
-    file.upload.then(function (response) {
-      $timeout(function () {
-        file.result = response.data;
-        $rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
-        src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
-        $scope.item.img = src
-        $scope.imgJaSubiu = true;
-        $scope.imgNewSelected = false;
-        $scope.picFile = false;
-        aa = false
-        $scope.searchButtonText = "Enviar";
-        $scope.isDisabled = false;
-      });
-    }, function (response) {
-      if (response.status > 0)
-        $scope.errorMsg = response.status + ': ' + response.data;
-    }, function (evt) {
-      // Math.min is to fix IE which reports 200% sometimes
-      file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-    });
-}
+    file.upload.then(
+      function (response) {
+        $timeout(
+          function () {
+          file.result = response.data;
+          $rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
+          src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
+          $scope.item.img = src
+          $scope.imgJaSubiu = true;
+          $scope.imgNewSelected = false;
+          $scope.picFile = false;
+          aa = false
+          $scope.searchButtonText = "Enviar";
+          $scope.isDisabled = false;
+         }
+       );
+      },
+      function (response) {
+        if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+      },
+      function (evt) {
+          // Math.min is to fix IE which reports 200% sometimes
+          file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+      }
+    );
+  }
 
   $scope.isLogged = false;
 
   SiteData.logged2().then(function(response) {
     $scope.isLogged = (response.data === 'true');
-    console.log(">>[$scope.isLogged]>>",response.data);
   })
 
   $scope.up = function(){
@@ -938,11 +925,6 @@ $scope.uploadPic = function(file) {
 
   $scope.excluir = function(){
     item_id = $scope.item.id
-
-    var url = document.domain;
-    var urlArray = url.split(".");
-    var siteNome = urlArray[0];
-
     if(confirm('Confirma exclusão?')){
      $http.post('/portfolio/delete/'+item_id);
      $rootScope.$emit("CallDelImg", item_id);
@@ -997,7 +979,7 @@ mod.controller('MyFormCtrl2', ['$scope',  '$rootScope', 'Upload', '$timeout', '$
   }
 
 
-$scope.uploadPic = function(file) {
+  $scope.uploadPic = function(file) {
 
     //Pegando a extenção do arquivo
     var dotIndex = file.name.lastIndexOf('.');
@@ -1029,7 +1011,7 @@ $scope.uploadPic = function(file) {
       // Math.min is to fix IE which reports 200% sometimes
       file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
     });
-}
+  }
 
   $scope.isLogged = false;
 

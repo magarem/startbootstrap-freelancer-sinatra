@@ -40,15 +40,6 @@ pages:
   portfolio:
     label: prggfgg
     items:
-    - id: 192-455
-      titulo: "!qqisso!"
-      img: contas/maga/img/portfolio/1479768479836.jpg
-      txt: 
-      cliente: 
-      site: 
-      data: 
-      servico: 
-      cat: linda,demias,teste22,,,Jjj
     - id: 192-456
       titulo: Maguete ninja
       img: contas/192/img/portfolio/1482345509548.JPG
@@ -57,26 +48,7 @@ pages:
       site: 
       data: 
       servico: 
-      cat: linda,demias,teste22,,,Felinto,bbb
-    - id: 192-457
-      titulo: teste
-      img: contas/maga/img/portfolio/1478020703446.png
-      txt: plaintext-only<br>
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: tt,kk,testexcgxcgxcgxgxcgxc
-    - id: 192-458
-      titulo: flores
-      img: contas/192/img/portfolio/1482347084168.JPG
-      txt: Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta
-        lectus vitae, ultricies congue gravida diam non fringilla.
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
+      cat: ",demias,teste22,,,Felinto,bbb"
     - id: 192-459
       titulo: amazon
       img: contas/192/img/portfolio/1482346565510.jpg
@@ -86,32 +58,5 @@ pages:
       data: 
       servico: 
       cat: 
-    - id: 192-460
-      titulo: pat
-      img: contas/192/img/portfolio/1482346681048.png?decache=0.8228623104680273
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: 192-461
-      titulo: FidElitO
-      img: contas/192/img/portfolio/1482346694007.JPG?decache=0.09123753057562634
-      txt: Tirando a medida
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: Teste
-    - id: 192-1482890913231
-      titulo: anjinha
-      img: contas/192/img/portfolio/1482891697279.jpg
-      txt: sdsdsd
-      cliente: maga
-      site: maguete.net
-      data: 01/01
-      servico: todos
-      cat: ",lindinha,ninja2"
   contact:
     label: contato
