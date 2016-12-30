@@ -419,6 +419,16 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
       return self.indexOf(value) === index;
   }
 
+  function cleanArray(actual) {
+    var newArray = new Array();
+    for (var i = 0; i < actual.length; i++) {
+      if (actual[i]) {
+        newArray.push(actual[i]);
+      }
+    }
+    return newArray;
+  }
+
   var categoriasUpdate = function (){
 
     regex = /(<([^>]+)>)/ig
@@ -437,6 +447,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
         }else{
           b.push(v)
         }
+        b = cleanArray(b)
       }
     })
 
@@ -594,7 +605,15 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
   }
-
+  function cleanArray(actual) {
+    var newArray = new Array();
+    for (var i = 0; i < actual.length; i++) {
+      if (actual[i]) {
+        newArray.push(actual[i]);
+      }
+    }
+    return newArray;
+  }
   SiteData.getSiteData().then(function(response) {
     $scope.items = response.data.pages.portfolio.items;
     // $scope.item = $scope.items[i];
@@ -614,6 +633,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
           }else{
             b.push(v)
           }
+          b = cleanArray(b)
         }
       })
 
@@ -631,12 +651,17 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
     categoriasUpdate()
 
-    catArray = $scope.item.cat.split(",")
-    for (y=0; y<catArray.length; y++){
-      newObj = catArray[y]
-      $scope.tags.push(newObj);
-    }
 
+    if ($scope.item.cat != null){
+      catArray = $scope.item.cat.split(",")
+      console.log("catArray", catArray)
+      catArray = cleanArray(catArray)
+      console.log("clean catArray", catArray)
+      for (y=0; y<catArray.length; y++){
+        newObj = catArray[y]
+        $scope.tags.push(newObj);
+      }
+    }
     console.log($scope.tags)
 
     // Build JSTagsCollection
@@ -929,6 +954,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
      $http.post('/portfolio/delete/'+item_id);
      $rootScope.$emit("CallDelImg", item_id);
      $rootScope.$emit("ModalClose", item_id);
+     $rootScope.$emit("categoriasUpdate");
     }
   };
 

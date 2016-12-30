@@ -48,15 +48,6 @@ pages:
       site: 
       data: 
       servico: 
-      cat: ",demias,teste22,,,Felinto,bbb"
-    - id: 192-459
-      titulo: amazon
-      img: contas/192/img/portfolio/1482346565510.jpg
-      txt: 
-      cliente: 
-      site: 
-      data: 
-      servico: 
-      cat: 
+      cat: ",teste22,teste1"
   contact:
     label: contato
