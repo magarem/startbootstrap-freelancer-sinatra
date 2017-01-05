@@ -143,22 +143,24 @@ mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) {
 
 mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
-    var _logged2 = function(){
-      return logged;
-    }
+    var logged = $http.get('/logged');
+    var siteData = $http.get('/dataLoad');
+
+    //Prepara o URL de destino do upload
+    var url = document.domain;
+    var urlArray = url.split(".");
+    var siteNome = urlArray[0]
 
     var _logged = function(){
-      logged = $http.get('/logged');
       return logged;
     }
 
     var _loadSiteData = function(){
-      siteData = $http.get('/dataLoad');
       return siteData;
     }
 
-    var _getSiteData = function(){
-      return siteData;
+    var _getSiteNome = function(){
+      return siteNome;
     }
 
     var _savePortfolioOrder = function(data){
@@ -175,10 +177,9 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     }
 
     return {
-      logged2: _logged2,
       logged: _logged,
       loadSiteData: _loadSiteData,
-      getSiteData: _getSiteData,
+      getSiteNome: _getSiteNome,
       savePortfolioOrder: _savePortfolioOrder,
       saveDiv: _saveDiv,
       portAdd: _portAdd
@@ -210,12 +211,12 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
   $scope.site = {};
   $scope.isLogged = 0;
 
-  SiteData.logged2().then(function(response) {
+  SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
-    $rootScope.isLogged = $scope.isLogged
+    // $rootScope.isLogged = $scope.isLogged
   })
 
-  SiteData.getSiteData().then(function(response) {
+  SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
   })
 
@@ -231,11 +232,10 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   $scope.isLogged = 0;
   $scope.crop_box = false
 
-  SiteData.logged2().then(function(response) {
+  SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
-
-  SiteData.getSiteData().then(function(response) {
+  SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.picFile = $scope.site.pages.home.img;
   })
@@ -253,9 +253,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   };
 
   //
-  //
-  // Modal
-  //
+  //  window Modal
   //
   $scope.animationsEnabled = true;
   $scope.openHeaderModal = function () {
@@ -281,23 +279,22 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
 
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
 
+  $scope.isLogged = false;
   $scope.searchButtonText = "Enviar";
   $scope.test = "false";
   $scope.isDisabled = false;
 
   $scope.search = function () {
-      $scope.isDisabled = true;
-      $scope.test = "true";
-      $scope.searchButtonText = "Enviando";
+    $scope.isDisabled = true;
+    $scope.test = "true";
+    $scope.searchButtonText = "Enviando";
   }
 
-  $scope.isLogged = false;
-
-  SiteData.logged2().then(function(response) {
+  SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
 
-   SiteData.getSiteData().then(function(response) {
+   SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.picFile = null;
     $scope.croppedDataUrl = null;
@@ -324,6 +321,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   var url = document.domain;
   var urlArray = url.split(".");
   var siteNome = urlArray[0]
+
   var uploadURL = '/avatarUpload'
 
   //Prepara o URL de destino do upload
@@ -389,7 +387,19 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   $scope.inverse = true;
 
   SiteData.getSiteData().then(function(response) {
+
     $scope.portfolioItems = response.data.pages.portfolio.items;
+
+    for (t=0; t<$scope.portfolioItems.length; t++){
+       item = $scope.portfolioItems[t];
+       item.cat.forEach(function(t){
+         portFolioCats[t] = push(t)
+       })
+    }
+
+
+    $scope.portfolioItemCatArray = $scope.item.cat.split(",")
+
     categoriasUpdate();
   })
 
@@ -438,12 +448,12 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
       if (x.cat != null){
         v = x.cat.replace(regex, "")
         if (v.split(",").length > 1){
-            v.split(",").forEach(function(t){
-              t = t.replace(/&nbsp;/g, "");
-              t = t.replace(/'/g, "");
-              t = t.replace(/^\s+|\s+$/gm,''); // trim left and right
-              b.push(t)
-            })
+          v.split(",").forEach(function(t){
+            t = t.replace(/&nbsp;/g, "");
+            t = t.replace(/'/g, "");
+            t = t.replace(/^\s+|\s+$/gm,''); // trim left and right
+            b.push(t)
+          })
         }else{
           b.push(v)
         }
@@ -465,8 +475,6 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   var ImgChange = function (src, id, conta){
     src = "/contas/"+conta+"/img/portfolio/"+src+"?decache=" + Math.random();
-    // $scope.imgs[index].img = src
-    // $scope.portfolioItems[index].img = src
     $scope.portfolioItems.filter(function(v) {
       return v.id === id; // Filter out the appropriate one
     }).img = src; // Get result and access the foo property
@@ -654,6 +662,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
     if ($scope.item.cat != null){
       catArray = $scope.item.cat.split(",")
+      // catArray = catArray.map(function (val) { return "("+val+")"; });
       console.log("catArray", catArray)
       catArray = cleanArray(catArray)
       console.log("clean catArray", catArray)
