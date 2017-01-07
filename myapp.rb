@@ -432,9 +432,9 @@ post '/objSave' do
     when "item.servico"
        portfolioItem["servico"] = @val
 
-    when "item.cat"
-       portfolioItem["cat"] = @val
-       puts ">>item.cat<<"
+    when "item.tags"
+       portfolioItem["tags"] = @val
+       puts ">>item.tags<<"
 
     when "tags"
        portfolioItem["cat"] = @val

@@ -39,6 +39,11 @@ pages:
     body2: fsdfsdvvvv ffg ccgvggg ggg ffgg
   portfolio:
     label: prggfgg
+    itemsTags:
+      - teste22
+      - teste1
+      - ninja
+      - ninja2
     items:
     - id: 192-456
       titulo: Maguete ninja
@@ -62,7 +67,6 @@ pages:
       servico:
       tags:
         - poderosa
-        - ninja
-        - Ninja2
+        - ninja2
   contact:
     label: contato

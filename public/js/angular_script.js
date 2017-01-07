@@ -1,5 +1,22 @@
 var mod = angular.module("myapp", ['siyfion.sfTypeahead', 'jsTag', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
 
+mod.filter('filterByTags', function () {
+  return function (items, tags) {
+    console.log(tags)
+    tags = [tags,".."]
+    var filtered = [];
+    (items || []).forEach(function (item) {
+      var matches = tags.some(function (tag) {
+        return (item.tags.indexOf(tag) > -1);
+      });
+      if (matches) {
+        filtered.push(item);
+      }
+    });
+    return filtered;
+  };
+});
+
 mod.directive('customOnChange', function() {
   return {
     restrict: 'A',
@@ -190,10 +207,10 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 mod.controller('topCtrl', function ($scope, $http, SiteData) {
 
   $scope.site = {};
-  $scope.isLogged = 0;
+  $scope.isLogged = false;
 
   SiteData.logged().then(function(response) {
-    $scope.isLogged = parseInt(response.data);
+    $scope.isLogged = (response.data === 'true');
   })
 
   SiteData.loadSiteData().then(function(response) {
@@ -209,11 +226,10 @@ mod.controller('topCtrl', function ($scope, $http, SiteData) {
 mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, $rootScope, SiteData) {
 
   $scope.site = {};
-  $scope.isLogged = 0;
+  $scope.isLogged = false;
 
   SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
-    // $rootScope.isLogged = $scope.isLogged
   })
 
   SiteData.loadSiteData().then(function(response) {
@@ -229,7 +245,7 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
 mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, Upload, $timeout, $http, SiteData, $uibModal) {
 
   $scope.site = {};
-  $scope.isLogged = 0;
+  $scope.isLogged = false;
   $scope.crop_box = false
 
   SiteData.logged().then(function(response) {
@@ -247,14 +263,12 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
 
   $scope.imgSelectTriger = function() {
     $timeout(function() {
-        var el = document.getElementById('imgSelect');
-        angular.element(el).triggerHandler('click');
+      var el = document.getElementById('imgSelect');
+      angular.element(el).triggerHandler('click');
     }, 0);
   };
 
-  //
-  //  window Modal
-  //
+  //  avatar img window Modal
   $scope.animationsEnabled = true;
   $scope.openHeaderModal = function () {
 
@@ -298,6 +312,8 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.site = response.data;
     $scope.picFile = null;
     $scope.croppedDataUrl = null;
+    var siteNome = $scope.site.name
+
   })
 
   $rootScope.$on("ModalClose", function(){
@@ -313,20 +329,9 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     })
   }
 
-  //
-  //  Image upload
-  //
-
-  //Prepara o URL de destino do upload
-  var url = document.domain;
-  var urlArray = url.split(".");
-  var siteNome = urlArray[0]
-
-  var uploadURL = '/avatarUpload'
-
-  //Prepara o URL de destino do upload
+  // Image upload
   $scope.upload = function (dataUrl, name) {
-
+    var uploadURL = '/avatarUpload'
     Upload.upload({
       url: uploadURL,
       data: {
@@ -347,27 +352,19 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
       $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
     });
   }
-
-   $scope.CropBoxOpen = function(){
-     $scope.flgUploadOk = false;
-     $scope.res = $scope.site.pages.home.img
-     $scope.site.pages.home.img = ""
-     $scope.crop_box = true
-   }
-
-    $scope.uploadCancel = function(){
-       $scope.site.pages.home.img = $scope.res
-       $scope.crop_box = false
-   }
-
+  $scope.CropBoxOpen = function(){
+    $scope.flgUploadOk = false;
+    $scope.res = $scope.site.pages.home.img
+    $scope.site.pages.home.img = ""
+    $scope.crop_box = true
+  }
+  $scope.uploadCancel = function(){
+    $scope.site.pages.home.img = $scope.res
+    $scope.crop_box = false
+  }
 }]);
 
 mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', '$location', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, $location, SiteData, deviceDetector) {
-
-  //Pega o nome do site
-  var url = document.domain;
-  var urlArray = url.split(".");
-  var siteNome = urlArray[0];
 
   //Busca informações do device que está utilizando o site
   var vm = this;
@@ -386,24 +383,16 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   $scope.labelWidth = "auto";
   $scope.inverse = true;
 
-  SiteData.getSiteData().then(function(response) {
-
+  SiteData.loadSiteData().then(function(response) {
+    var siteNome = response.data.name
+    console.log("siteNome:", siteNome);
+    $scope.portfolio = response.data.pages.portfolio;
     $scope.portfolioItems = response.data.pages.portfolio.items;
-
-    for (t=0; t<$scope.portfolioItems.length; t++){
-       item = $scope.portfolioItems[t];
-       item.cat.forEach(function(t){
-         portFolioCats[t] = push(t)
-       })
-    }
-
-
-    $scope.portfolioItemCatArray = $scope.item.cat.split(",")
-
-    categoriasUpdate();
+    $scope.portfolioItemsTags = response.data.pages.portfolio.itemsTags;
+    portfolioItemsTags_update();
   })
 
-  SiteData.logged2().then(function(response) {
+  SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
     //confere se está logado para bloquear o img drag
     $scope.isSelected = $scope.isLogged
@@ -421,8 +410,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     ImgChange(src, id, siteNome)
   });
 
-  $rootScope.$on("categoriasUpdate", function(event){
-    categoriasUpdate()
+  $rootScope.$on("portfolioItemsTags_update", function(event){
+    portfolioItemsTags_update()
   });
 
   function onlyUnique(value, index, self) {
@@ -439,65 +428,52 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     return newArray;
   }
 
-  var categoriasUpdate = function (){
-
-    regex = /(<([^>]+)>)/ig
-    b = []
-    // $scope.imageCategories = $scope.imgs.map(function(val){return val.cat.replace(regex, "").split(",")})[0]
-    $scope.portfolioItems.forEach(function(x){
-      if (x.cat != null){
-        v = x.cat.replace(regex, "")
-        if (v.split(",").length > 1){
-          v.split(",").forEach(function(t){
-            t = t.replace(/&nbsp;/g, "");
-            t = t.replace(/'/g, "");
-            t = t.replace(/^\s+|\s+$/gm,''); // trim left and right
-            b.push(t)
-          })
-        }else{
-          b.push(v)
-        }
-        b = cleanArray(b)
+  // Atualizar as lista de tags no campo itemTags
+  var portfolioItemsTags_update = function (){
+    HTMLsanitizeRegex = /(<([^>]+)>)/ig
+    $scope.portfolio.itemsTags = []
+    $scope.portfolio.items.forEach(function(item){
+      if (item.tags.length > 0){
+        item.tags.forEach(function(tag){
+          tag = tag.replace(HTMLsanitizeRegex, "")
+          tag = tag.replace(/&nbsp;/g, "");
+          tag = tag.replace(/'/g, "");
+          tag = tag.replace(/^\s+|\s+$/gm,''); // trim left and right
+          tag = tag.charAt(0).toUpperCase() + tag.substr(1);
+          $scope.portfolio.itemsTags.push(tag)
+        })
+        $scope.portfolio.itemsTags = cleanArray($scope.portfolio.itemsTags)
+        $scope.portfolio.itemsTags = $scope.portfolio.itemsTags.filter(onlyUnique)
       }
     })
-
-    //Altera a primeira letra para caixa alta
-    for (i = 0 ; i < b.length ; i++){
-        b[i] = b[i].charAt(0).toUpperCase() + b[i].substr(1);
-    }
-
-    //limpa html das categorias
-    $scope.imageCategories = b.filter( onlyUnique )
-    $scope.imageCategories = $scope.imageCategories.filter(function(ele){
-        return ele !== '';
-    });
   }
 
   var ImgChange = function (src, id, conta){
     src = "/contas/"+conta+"/img/portfolio/"+src+"?decache=" + Math.random();
-    $scope.portfolioItems.filter(function(v) {
+    //Seleciona o item pelo ID
+    $scope.portfolio.items.filter(function(v) {
       return v.id === id; // Filter out the appropriate one
     }).img = src; // Get result and access the foo property
   }
 
   var delImg = function(id){
-    itemRemoved = $scope.portfolioItems.filter(function(v) {
+    itemRemoved = $scope.portfolio.items.filter(function(v) {
       return v.id !== id; // Filter out the appropriate one
     })
-    $scope.portfolioItems = itemRemoved
+    $scope.portfolio.items = itemRemoved
   };
 
   $scope.valueSelected = function (value) {
-    if (value === null) $scope.catselect = undefined;
+    if (value === null) $scope.tagSelect = undefined;
   };
 
   $scope.filtraZero = function () {
-        $scope.catselect = undefined;
+        $scope.tagSelect = undefined;
   };
 
   $scope.portfolio_add = function () {
     var newId = siteNome+"-"+Date.now().toString();
-    itemNew =  {
+    itemNew = {
       "id"     : newId,
       "titulo" : "",
       "img"    : "http://placehold.it/360x260/e67e22/fff/imagem",
@@ -510,28 +486,22 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     }
     //Salva no disco o novo registro
     SiteData.portAdd(newId).then(function(response) {})
-    $scope.portfolioItems.push(itemNew)
-    $scope.preOpen(itemNew, $scope.portfolioItems.length-1)
+    $scope.portfolio.items.push(itemNew)
+    $scope.preOpen(itemNew, $scope.portfolio.items.length-1)
   };
-
   //
+  //  Modal
   //
-  // Modal
-  //
-  //
-
   $scope.animationsEnabled = true;
-
   $scope.preOpen = function (portfolioItem){
-
-     if ($scope.isLogged && (vm.data.device == "iphone" || vm.data.device == "android")) {
-        //$scope.openDeviceOnEditModeStyle(item, i)
-        $scope.openBaseStyle(portfolioItem)
-     }
-     else{
-        $scope.openBaseStyle(portfolioItem)
-        //$scope.openDeviceOnEditModeStyle(item, i)
-     }
+    if ($scope.isLogged && (vm.data.device == "iphone" || vm.data.device == "android")) {
+      //$scope.openDeviceOnEditModeStyle(item, i)
+      $scope.openBaseStyle(portfolioItem)
+    }
+    else{
+      $scope.openBaseStyle(portfolioItem)
+      //$scope.openDeviceOnEditModeStyle(item, i)
+    }
   }
 
   $scope.openDeviceOnEditModeStyle = function (item, i){
@@ -539,7 +509,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   }
 
   $scope.openBaseStyle = function (portfolioItem) {
-
+    siteNome = SiteData.getSiteNome()
+    console.log("+siteNome>>", siteNome);
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       windowTopClass: "portfolio-modal modal",
@@ -547,13 +518,12 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
       controller: 'ModalInstanceCtrl',
       size: 'lg',
       resolve: {
+        siteNome: function () {
+          return siteNome;
+        },
         item: function () {
           return portfolioItem;
         }
-        // ,
-        // i: function () {
-        //   return i;
-        // }
       }
     });
   };
@@ -603,12 +573,10 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
 }]);
 
-mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInstance, $timeout, SiteData, item, JSTagsCollection) {
+mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInstance, $timeout, SiteData, siteNome, item, JSTagsCollection) {
 
   $scope.item = item;
-  $scope.a = 10;
-  // $scope.i = i;
-  $scope.tags = []
+  $scope.tags = item.tags
 
   function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
@@ -622,69 +590,18 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     }
     return newArray;
   }
-  SiteData.getSiteData().then(function(response) {
-    $scope.items = response.data.pages.portfolio.items;
-    // $scope.item = $scope.items[i];
-    var categoriasUpdate = function (){
-      regex = /(<([^>]+)>)/ig
-      b = []
-      $scope.items.forEach(function(x){
-        if (x.cat != null){
-          v = x.cat.replace(regex, "")
-          if (v.split(",").length > 1){
-            v.split(",").forEach(function(t){
-              t = t.replace(/&nbsp;/g, "");
-              t = t.replace(/'/g, "");
-              t = t.replace(/^\s+|\s+$/gm,''); // trim left and right
-              b.push(t)
-            })
-          }else{
-            b.push(v)
-          }
-          b = cleanArray(b)
-        }
-      })
-
-      //Altera a primeira letra para caixa alta
-      for (i = 0; i < b.length; i++){
-          b[i] = b[i].charAt(0).toUpperCase() + b[i].substr(1);
-      }
-
-      //limpa html das categorias
-      $scope.imageCategories = b.filter( onlyUnique )
-      $scope.imageCategories = $scope.imageCategories.filter(function(ele){
-          return ele !== '';
-      });
-    }
-
-    categoriasUpdate()
-
-
-    if ($scope.item.cat != null){
-      catArray = $scope.item.cat.split(",")
-      // catArray = catArray.map(function (val) { return "("+val+")"; });
-      console.log("catArray", catArray)
-      catArray = cleanArray(catArray)
-      console.log("clean catArray", catArray)
-      for (y=0; y<catArray.length; y++){
-        newObj = catArray[y]
-        $scope.tags.push(newObj);
-      }
-    }
+  SiteData.loadSiteData().then(function(response) {
+    $scope.portfolio = response.data.pages.portfolio;
     console.log($scope.tags)
-
     // Build JSTagsCollection
     $scope.tags = new JSTagsCollection($scope.tags);
-
     // Export jsTags options, inlcuding our own tags object
     $scope.jsTagOptions = {
       'tags': $scope.tags
     };
-
     // **** Typeahead code **** //
-
     // Build suggestions array
-    var suggestions = $scope.imageCategories
+    var suggestions = $scope.portfolio.itemsTags
     suggestions = suggestions.map(function(item) { return { "suggestion": item } });
 
     // Instantiate the bloodhound suggestion engine
@@ -712,7 +629,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
   $scope.isLogged = false;
 
-  SiteData.logged2().then(function(response) {
+  SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
 
@@ -734,21 +651,19 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   $scope.saveDiv = function(obj){
     id = $scope.item.id
     SiteData.saveDiv(obj, $scope.$eval(obj), id).then(function(response) {
-       $rootScope.$emit("categoriasUpdate");
+       $rootScope.$emit("portfolioItemsTags_update");
     })
   }
 
-  attr = []
   $scope.saveTags = function(tags){
-    id = $scope.item.id
+    $scope.item.tags = []
+    var id = $scope.item.id
     for(var index in tags.tags) {
-       attr[index] = tags.tags[index].value
+       $scope.item.tags[index] = tags.tags[index].value
     }
-    console.log("attr>", attr.join(),id)
-    $scope.item.cat = attr.join()
-    $scope.saveDiv("item.cat")
+    console.log("item.tags>", item.tags,id)
+    $scope.saveDiv("item.tags")
   }
-
 });
 
 mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, SiteData, JSTagsCollection) {
@@ -887,11 +802,6 @@ mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, Sit
 
 mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
 
-  //Pega o nome do site
-  var url = document.domain;
-  var urlArray = url.split(".");
-  var siteNome = urlArray[0];
-
   $scope.imgUploadBtn = true;
   $scope.imgJaSubiu = false;
 
@@ -924,16 +834,17 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
       function (response) {
         $timeout(
           function () {
-          file.result = response.data;
-          $rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
-          src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
-          $scope.item.img = src
-          $scope.imgJaSubiu = true;
-          $scope.imgNewSelected = false;
-          $scope.picFile = false;
-          aa = false
-          $scope.searchButtonText = "Enviar";
-          $scope.isDisabled = false;
+            $scope.portfolio
+            file.result = response.data;
+            $rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
+            src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
+            $scope.item.img = src
+            $scope.imgJaSubiu = true;
+            $scope.imgNewSelected = false;
+            $scope.picFile = false;
+            aa = false
+            $scope.searchButtonText = "Enviar";
+            $scope.isDisabled = false;
          }
        );
       },
@@ -949,7 +860,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
   $scope.isLogged = false;
 
-  SiteData.logged2().then(function(response) {
+  SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
 
@@ -963,14 +874,14 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
      $http.post('/portfolio/delete/'+item_id);
      $rootScope.$emit("CallDelImg", item_id);
      $rootScope.$emit("ModalClose", item_id);
-     $rootScope.$emit("categoriasUpdate");
+     $rootScope.$emit("portfolioItemsTags_update");
     }
   };
 
   $scope.saveDiv = function(obj){
     id = $scope.item.id
     SiteData.saveDiv(obj, $scope.$eval(obj), id).then(function(response) {
-       $rootScope.$emit("categoriasUpdate");
+       $rootScope.$emit("portfolioItemsTags_update");
     })
   }
 
@@ -1089,15 +1000,13 @@ mod.controller('MyFormCtrl2', ['$scope',  '$rootScope', 'Upload', '$timeout', '$
 mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
 
   $scope.isLogged = false;
-  SiteData.logged2().then(function(response) {
+  SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
 
   $scope.about = {};
-  SiteData.getSiteData().then(function(response) {
-    str = response.data.pages.about
-    $scope.about = str
-    $scope.about_body1 = str.body1
+  SiteData.loadSiteData().then(function(response) {
+    $scope.about = response.data.pages.about
   })
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
@@ -1109,14 +1018,13 @@ mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
 
   $scope.isLogged = false;
 
-  SiteData.logged2().then(function(response) {
+  SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
 
-  SiteData.getSiteData().then(function(response) {
-    str = response.data.pages.contact
-    $scope.contact = str
+  SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data
+    $scope.contact = response.data.pages.contact
   })
 
   $scope.saveDiv = function(obj){
@@ -1128,7 +1036,9 @@ mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
 mod.controller('footerCtrl', function ($scope, $http, SiteData) {
 
   $scope.site = {};
-  SiteData.getSiteData().then(function(response) {
+  $scope.isLogged = false;
+
+  SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
   })
 
@@ -1137,9 +1047,7 @@ mod.controller('footerCtrl', function ($scope, $http, SiteData) {
     })
   }
 
-  $scope.isLogged = false;
-
-  SiteData.logged2().then(function(response) {
+  SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
 })
@@ -1147,7 +1055,8 @@ mod.controller('footerCtrl', function ($scope, $http, SiteData) {
 mod.controller('loginCtrl', function ($scope, $http, SiteData) {
 
   $scope.site = {};
-  SiteData.getSiteData().then(function(response) {
+
+  SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
   })
 

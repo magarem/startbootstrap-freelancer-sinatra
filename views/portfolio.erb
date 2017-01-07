@@ -51,14 +51,13 @@
                <!-- code to render the regular video block -->
              </div>
           </div>
-
           <span ng-show="(vm.data.device != 'iphone' && vm.data.device != 'android')" class="center" >
-            <button ng-show="imageCategories.length > 0" class="btn btn-primary" ng-click="filtraZero()">Todas</button>
-            <button ng-show="imageCategories.length > 0" class="btn btn-primary" style="margin: 5px;" ng-repeat="cat in imageCategories" ng-click="$parent.catselect = cat"> {{cat}} </button>
+            <button ng-show="portfolioItemsTags.length > 0" class="btn btn-primary" ng-click="filtraZero()">Todas</button>
+            <button ng-show="portfolioItemsTags.length > 0" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolioItemsTags" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
           </span>
 
-          <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android') && imageCategories > 0" class="center" >
-            <select class="form-control" ng-options="cat for cat in imageCategories" ng-model="$parent.catselect">
+          <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android') && portfolioItemsTags > 0" class="center" >
+            <select class="form-control" ng-options="tag for tag in portfolioItemsTags" ng-model="$parent.tagSelect">
               <option value="">Todos</option>
             </select><br>
           </span>
@@ -83,7 +82,8 @@
     <div class="clearfix"></div>
       <br />
       <div class="row"  ng-sortable="barConfig">
-         <div id="anchor{{$index}}" class="col-sm-4 portfolio-item " ng-repeat="item in portfolioItems | filter:(!!catselect || undefined) && {cat: catselect }" >
+        tagSelect:{{tagSelect}}
+         <div id="anchor{{$index}}" class="col-sm-4 portfolio-item " ng-repeat="item in portfolioItems | filterByTags:tagSelect" >
            <span ng-if="isLogged && (vm.data.device == 'iphone' || vm.data.device == 'android') && isSelected " class="drag-handle tile center" >
              <i class="glyphicon glyphicon-move"></i>
            </span>
