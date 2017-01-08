@@ -1,14 +1,19 @@
 var mod = angular.module("myapp", ['siyfion.sfTypeahead', 'jsTag', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
 
 mod.filter('filterByTags', function () {
-  return function (items, tags) {
-    console.log(tags)
-    tags = [tags,".."]
+  return function (items, tag) {
+    console.log("tag:", tag)
     var filtered = [];
     (items || []).forEach(function (item) {
-      var matches = tags.some(function (tag) {
-        return (item.tags.indexOf(tag) > -1);
-      });
+      // Para o caso de ser uma array de tags de filtro
+      // var matches = tags.some(function (tag) {
+      //   return (item.tags.indexOf(tag) > -1);
+      // });
+      if (tag === undefined){
+        matches = true
+      }else{
+        matches = (item.tags.indexOf(tag.toLowerCase()) > -1);
+      }
       if (matches) {
         filtered.push(item);
       }
@@ -185,7 +190,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     }
 
     var _saveDiv = function(obj, val, item_n){
-      if (val != undefined) {val = val.trim();}
+      // if (val != undefined) {val = val.trim();}
       return $http.post("/objSave", {obj: obj, val: val, item_n: item_n});
    }
 
@@ -435,11 +440,13 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     $scope.portfolio.items.forEach(function(item){
       if (item.tags.length > 0){
         item.tags.forEach(function(tag){
-          tag = tag.replace(HTMLsanitizeRegex, "")
-          tag = tag.replace(/&nbsp;/g, "");
-          tag = tag.replace(/'/g, "");
-          tag = tag.replace(/^\s+|\s+$/gm,''); // trim left and right
-          tag = tag.charAt(0).toUpperCase() + tag.substr(1);
+          if (tag != null){
+            tag = tag.replace(HTMLsanitizeRegex, "")
+            tag = tag.replace(/&nbsp;/g, "");
+            tag = tag.replace(/'/g, "");
+            tag = tag.replace(/^\s+|\s+$/gm,''); // trim left and right
+            tag = tag.charAt(0).toUpperCase() + tag.substr(1);
+          }
           $scope.portfolio.itemsTags.push(tag)
         })
         $scope.portfolio.itemsTags = cleanArray($scope.portfolio.itemsTags)
@@ -601,6 +608,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     };
     // **** Typeahead code **** //
     // Build suggestions array
+    $scope.portfolio.itemsTags = $scope.portfolio.itemsTags.map(function(x){ return x.toLowerCase() })
     var suggestions = $scope.portfolio.itemsTags
     suggestions = suggestions.map(function(item) { return { "suggestion": item } });
 

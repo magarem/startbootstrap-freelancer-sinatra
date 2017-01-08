@@ -32,7 +32,7 @@ pages:
   home:
     label: Levando a saúde da floresta
     img: contas/192/img/avatar.jpg
-    body:
+    body: 
   about:
     label: quem somos
     body1: Gatas lindas
@@ -40,33 +40,37 @@ pages:
   portfolio:
     label: prggfgg
     itemsTags:
-      - teste22
-      - teste1
-      - ninja
-      - ninja2
+    - teste22
+    - teste1
+    - ninja
+    - ninja2
     items:
-    - id: 192-456
-      titulo: Maguete ninja
-      img: contas/192/img/portfolio/1482345509548.JPG
-      txt: Super t até 12
-      cliente: ddd
-      site:
-      data:
-      servico:
-      tags:
-        - teste22
-        - teste1
-        - ninja
     - id: 192-1483115954127
       titulo: guerreira
       img: contas/192/img/portfolio/192-1483115954127.jpg
-      txt:
-      cliente:
-      site:
-      data:
-      servico:
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
       tags:
-        - poderosa
-        - ninja2
+      - poderosa
+      - fidelito
+      - alfacinho
+      - oi
+    - id: 192-456
+      titulo: Maguete ninja2
+      img: contas/192/img/portfolio/1482345509548.JPG
+      txt: Super t até 12
+      cliente: fff
+      site: 
+      data: 
+      servico: 
+      tags:
+      - teste1
+      - ninja
+      - alfacinho
+      - 
+      - oi
   contact:
     label: contato
