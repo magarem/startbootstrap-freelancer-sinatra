@@ -12,7 +12,9 @@ mod.filter('filterByTags', function () {
       if (tag === undefined){
         matches = true
       }else{
-        matches = (item.tags.indexOf(tag.toLowerCase()) > -1);
+        //Cria cópia em caracteres minusculos para comparação
+        // tags_toLowerCase = item.tags.map(function(str){return (str || "").toLowerCase()})
+        matches = (item.tags.indexOf(tag) > -1);
       }
       if (matches) {
         filtered.push(item);
@@ -394,7 +396,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     $scope.portfolio = response.data.pages.portfolio;
     $scope.portfolioItems = response.data.pages.portfolio.items;
     $scope.portfolioItemsTags = response.data.pages.portfolio.itemsTags;
-    portfolioItemsTags_update();
+    // portfolioItemsTags_update();
   })
 
   SiteData.logged().then(function(response) {
@@ -438,21 +440,23 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     HTMLsanitizeRegex = /(<([^>]+)>)/ig
     $scope.portfolio.itemsTags = []
     $scope.portfolio.items.forEach(function(item){
-      if (item.tags.length > 0){
+      if (item.tags){
         item.tags.forEach(function(tag){
-          if (tag != null){
+          if (tag){
+            console.log(">>>>tag:", tag)
             tag = tag.replace(HTMLsanitizeRegex, "")
             tag = tag.replace(/&nbsp;/g, "");
             tag = tag.replace(/'/g, "");
             tag = tag.replace(/^\s+|\s+$/gm,''); // trim left and right
-            tag = tag.charAt(0).toUpperCase() + tag.substr(1);
+            // tag = tag.charAt(0).toUpperCase() + tag.substr(1);
+            $scope.portfolio.itemsTags.push(tag)
           }
-          $scope.portfolio.itemsTags.push(tag)
         })
         $scope.portfolio.itemsTags = cleanArray($scope.portfolio.itemsTags)
         $scope.portfolio.itemsTags = $scope.portfolio.itemsTags.filter(onlyUnique)
       }
     })
+    $scope.saveDiv("portfolio.itemsTags")
   }
 
   var ImgChange = function (src, id, conta){
@@ -479,6 +483,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   };
 
   $scope.portfolio_add = function () {
+    var siteNome = SiteData.getSiteNome()
     var newId = siteNome+"-"+Date.now().toString();
     itemNew = {
       "id"     : newId,
@@ -608,8 +613,9 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     };
     // **** Typeahead code **** //
     // Build suggestions array
-    $scope.portfolio.itemsTags = $scope.portfolio.itemsTags.map(function(x){ return x.toLowerCase() })
-    var suggestions = $scope.portfolio.itemsTags
+    // $scope.portfolio.itemsTags = $scope.portfolio.itemsTags.map(function(x){ return x.toLowerCase() })
+
+    var suggestions = $scope.portfolio.itemsTags || []
     suggestions = suggestions.map(function(item) { return { "suggestion": item } });
 
     // Instantiate the bloodhound suggestion engine
@@ -667,10 +673,11 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     $scope.item.tags = []
     var id = $scope.item.id
     for(var index in tags.tags) {
-       $scope.item.tags[index] = tags.tags[index].value
+        $scope.item.tags[index] = tags.tags[index].value
     }
     console.log("item.tags>", item.tags,id)
     $scope.saveDiv("item.tags")
+    $rootScope.$emit("portfolioItemsTags_update");
   }
 });
 

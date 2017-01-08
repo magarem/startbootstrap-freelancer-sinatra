@@ -52,8 +52,8 @@
              </div>
           </div>
           <span ng-show="(vm.data.device != 'iphone' && vm.data.device != 'android')" class="center" >
-            <button ng-show="portfolioItemsTags.length > 0" class="btn btn-primary" ng-click="filtraZero()">Todas</button>
-            <button ng-show="portfolioItemsTags.length > 0" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolio.itemsTags" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
+            <button ng-show="portfolio.itemsTags" class="btn btn-primary" ng-click="filtraZero()">todas</button>
+            <button ng-show="portfolio.itemsTags" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolio.itemsTags track by $index" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
           </span>
 
           <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >

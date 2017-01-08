@@ -382,7 +382,7 @@ post '/objSave' do
   if !@logado then redirect "/" end
 
   #Verifica se é um campo do portfolio que vai ser salvo
-  if @postPortfolioItemId.length > 0
+  if @postPortfolioItemId
     portfolioItems = @data["pages"]["portfolio"]["items"]
     portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
   end
@@ -432,9 +432,14 @@ post '/objSave' do
     when "item.servico"
        portfolioItem["servico"] = @val
 
+    when "portfolio.itemsTags"
+        @data["pages"]["portfolio"]["itemsTags"] = @val
+        puts ">>portfolio.itemsTags<<"
+
     when "item.tags"
        portfolioItem["tags"] = @val
        puts ">>item.tags<<"
+
 
     when "tags"
        portfolioItem["cat"] = @val
