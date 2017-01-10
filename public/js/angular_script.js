@@ -278,9 +278,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   //  avatar img window Modal
   $scope.animationsEnabled = true;
   $scope.openHeaderModal = function () {
-
     $scope.imgSelectTriger();
-
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       windowTopClass: "portfolio-modal modal",
@@ -315,12 +313,11 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.isLogged = (response.data === 'true');
   })
 
-   SiteData.loadSiteData().then(function(response) {
+  SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.picFile = null;
     $scope.croppedDataUrl = null;
     var siteNome = $scope.site.name
-
   })
 
   $rootScope.$on("ModalClose", function(){
@@ -356,7 +353,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
       if (response.status > 0) $scope.errorMsg = response.status
             + ': ' + response.data;
     }, function (evt) {
-      $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+      $scope.progress = parseInt(100.0 * evt.loaded / evt.total);Modal
     });
   }
   $scope.CropBoxOpen = function(){
@@ -528,6 +525,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
       windowTopClass: "portfolio-modal modal",
       templateUrl: 'myModalContent.html',
       controller: 'ModalInstanceCtrl',
+      backdrop: 'static',
       size: 'lg',
       resolve: {
         siteNome: function () {
@@ -681,140 +679,6 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   }
 });
 
-mod.controller('ModalInstanceCtrl2', function ($scope, $rootScope, $timeout, SiteData, JSTagsCollection) {
-
-  //caso de edição via telefone:
-  //Pega o valor do id do item via querystring
-  var url = document.URL;
-  var urlArray = url.split("?");
-  var id = Number(urlArray[1])
-
-  function onlyUnique(value, index, self) {
-      return self.indexOf(value) === index;
-  }
-
-  SiteData.getSiteData().then(function(response) {
-    $scope.item = response.data.pages.portfolio.items[id];
-    $scope.items = response.data.pages.portfolio.items;
-    $scope.i = id;
-
-    var categoriasUpdate = function (){
-
-      regex = /(<([^>]+)>)/ig
-      b = []
-      // $scope.imageCategories = $scope.imgs.map(function(val){return val.cat.replace(regex, "").split(",")})[0]
-      $scope.items.forEach(function(x){
-        if (x.cat != null){
-          v = x.cat.replace(regex, "")
-          if (v.split(",").length > 1){
-              v.split(",").forEach(function(t){
-                t = t.replace(/&nbsp;/g, "");
-                t = t.replace(/'/g, "");
-                t = t.replace(/^\s+|\s+$/gm,''); // trim left and right
-                b.push(t)
-              })
-          }else{
-            b.push(v)
-          }
-        }
-      })
-
-      //Altera a primeira letra para caixa alta
-      for( i = 0 ; i < b.length ; i++){
-          b[i] = b[i].charAt(0).toUpperCase() + b[i].substr(1);
-      }
-
-      //limpa html das categorias
-      $scope.imageCategories = b.filter( onlyUnique )
-      $scope.imageCategories = $scope.imageCategories.filter(function(ele){
-          return ele !== '';
-      });
-    }
-
-    categoriasUpdate()
-
-
-      catArray = $scope.item.cat.split(",")
-      for (y=0; y<catArray.length; y++){
-        newObj = catArray[y]
-
-        $scope.tags.push(newObj);
-      }
-
-     console.log($scope.tags)
-
-      // Build JSTagsCollection
-      $scope.tags = new JSTagsCollection($scope.tags);
-
-      // Export jsTags options, inlcuding our own tags object
-      $scope.jsTagOptions = {
-        'tags': $scope.tags
-      };
-
-      // **** Typeahead code **** //
-
-      // Build suggestions array
-      var suggestions = $scope.imageCategories
-      suggestions = suggestions.map(function(item) { return { "suggestion": item } });
-
-      // Instantiate the bloodhound suggestion engine
-      var suggestions = new Bloodhound({
-        datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.suggestion); },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: suggestions
-      });
-
-      // Initialize the bloodhound suggestion engine
-      suggestions.initialize();
-
-      // Single dataset example
-      $scope.exampleData = {
-        displayKey: 'suggestion',
-        source: suggestions.ttAdapter()
-      };
-
-      // Typeahead options object
-      $scope.exampleOptions = {
-        hint: false,
-        highlight: true
-      };
-  })
-
-  $scope.isLogged = false;
-
-  SiteData.logged2().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
-
-  $scope.cancel = function (status) {
-    if (status){
-      deleteUser = confirm('Tem certeza que quer cancelar o envio da imagem?');
-      if(deleteUser){
-       location.href='/#/_botton';
-      }
-    }else{
-      location.href='/#/_botton';
-    }
-  };
-
-  $scope.saveDiv = function(obj, i){
-    SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) {
-       $rootScope.$emit("categoriasUpdate");
-    })
-  }
-
-  attr = []
-  $scope.saveTags = function(tags, i){
-    console.log(tags)
-    for(var index in tags.tags) {
-       attr[index] = tags.tags[index].value
-    }
-    console.log("attr>", attr.join(),i)
-    $scope.item.cat = attr.join()
-    $scope.saveDiv("item.cat", i)
-  }
-});
-
 mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
 
   $scope.imgUploadBtn = true;
@@ -897,109 +761,6 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     id = $scope.item.id
     SiteData.saveDiv(obj, $scope.$eval(obj), id).then(function(response) {
        $rootScope.$emit("portfolioItemsTags_update");
-    })
-  }
-
-  $scope.openImgSelect = function() {
-    $timeout(function() {
-        var el = document.getElementById('imgSelect');
-        el.click();
-    }, 0);
-  };
-
-}]);
-
-mod.controller('MyFormCtrl2', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
-
-  //Pega o nome do site
-  var url = document.domain;
-  var urlArray = url.split(".");
-  var siteNome = urlArray[0];
-
-  //Pega o id da cartão
-  var url = document.URL;
-  if (url.indexOf("?")){
-    var urlArray = url.split("?");
-    $scope.i = Number(urlArray[1])
-  }
-
-  $scope.imgUploadBtn = true;
-  $scope.imgJaSubiu = false;
-
-  var updestino = '/portfolio/uploadPic/'+$scope.i
-  console.log($scope.i)
-
-  $scope.searchButtonText = "Enviar";
-  $scope.test = "false";
-  $scope.isDisabled = false;
-
-  $scope.search = function () {
-      $scope.isDisabled = true;
-      $scope.test = "true";
-      $scope.searchButtonText = "Enviando";
-  }
-
-
-  $scope.uploadPic = function(file) {
-
-    //Pegando a extenção do arquivo
-    var dotIndex = file.name.lastIndexOf('.');
-    var ext = file.name.substring(dotIndex);
-    var new_name = Date.now().toString()+ext;
-
-    file.upload = Upload.upload({
-      url: updestino,
-      data: {new_name: new_name, file: file},
-    });
-
-    file.upload.then(function (response) {
-      $timeout(function () {
-        file.result = response.data;
-        $rootScope.$emit("ImgChange", new_name, $scope.i, siteNome);
-        src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
-        $scope.item.img = src
-        $scope.imgJaSubiu = true;
-        $scope.imgNewSelected = false;
-        $scope.picFile = false;
-        aa = false
-        $scope.searchButtonText = "Enviar";
-        $scope.isDisabled = false;
-      });
-    }, function (response) {
-      if (response.status > 0)
-        $scope.errorMsg = response.status + ': ' + response.data;
-    }, function (evt) {
-      // Math.min is to fix IE which reports 200% sometimes
-      file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-    });
-  }
-
-  $scope.isLogged = false;
-
-  SiteData.logged2().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-    console.log(">>[$scope.isLogged]>>",response.data);
-  })
-
-  $scope.up = function(){
-    angular.element('#file').trigger('click');
-  };
-
-  $scope.excluir = function(item_index){
-    var url = document.domain;
-    var urlArray = url.split(".");
-    var siteNome = urlArray[0];
-
-    if(confirm('Confirma exclusão?')){
-     $http.post('/portfolio/delete/'+item_index);
-     $rootScope.$emit("CallDelImg", item_index);
-     $rootScope.$emit("ModalClose", item_index);
-    }
-  };
-
-  $scope.saveDiv = function(obj, i){
-    SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) {
-       $rootScope.$emit("categoriasUpdate");
     })
   }
 

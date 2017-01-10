@@ -15,7 +15,7 @@ moldura:
     label: Amazônia nativa
     link: index.ttt
   menu:
-  - label: prggfgg2
+  - label: Fotos
   - label: quem somos
   - label: contato
   footer:
@@ -31,25 +31,36 @@ moldura:
 pages:
   home:
     label: Levando a saúde da floresta
-    img: contas/192/img/avatar.jpg
+    img: contas/192/img/avatar.jpg?1483983270
     body: 
   about:
     label: quem somos
     body1: Gatas lindas
     body2: fsdfsdvvvv ffg ccgvggg ggg ffgg
   portfolio:
-    label: prggfgg2
+    label: Fotos
     itemsTags:
-    - teste1
-    - artesanato
-    - loba
-    - '22'
-    - '11'
-    - '2211'
+    - colheita
+    - in natura
+    - Tesre
+    - Oo
+    - na tigela
     items:
+    - id: 192-1483115954127
+      titulo: no pé
+      img: contas/192/img/portfolio/192-1483115954127.jpg?decache=0.698290433489662
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      tags:
+      - 
+      - 
+      - colheita
     - id: 192-1483898003899
-      titulo: novo
-      img: contas/192/img/portfolio/192-1483898003899.jpg
+      titulo: nos cestos
+      img: contas/192/img/portfolio/192-1483898003899.jpg?decache=0.9492609702977868
       txt: aviãosinho
       nome: ''
       site: ''
@@ -57,10 +68,39 @@ pages:
       servico: ''
       cat: ''
       tags:
-      - teste1
+      - 
+      - colheita
+    - id: 192-1483983088597
+      titulo: a caminho
+      img: contas/192/img/portfolio/192-1483983088597.jpg?decache=0.9348386853923367
+      txt: Ggggg
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+      tags:
+      - colheita
+      - in natura
+      - Tesre
+      - '666'
+      cliente: Trt
+    - id: 192-1483977341960
+      titulo: açai2
+      img: contas/192/img/portfolio/192-1483977341960.jpg?decache=0.25454610040371484
+      txt: Fggg
+      nome: ''
+      site: 
+      data: 
+      servico: 
+      cat: ''
+      tags:
+      - in natura
+      - Oo
+      cliente: 
     - id: 192-1483898166846
-      titulo: '22266'
-      img: contas/192/img/portfolio/192-1483898166846.png?decache=0.08387341676319937
+      titulo: na Tijela
+      img: contas/192/img/portfolio/192-1483898166846.jpg?decache=0.4983468929524648
       txt: ''
       nome: ''
       site: ''
@@ -68,30 +108,22 @@ pages:
       servico: ''
       cat: ''
       tags:
-      - artesanato
-    - id: 192-1483115954127
-      titulo: guerreira
-      img: contas/192/img/portfolio/192-1483115954127.jpg
-      txt: 
-      cliente: 
-      site: 
-      data: 
-      servico: 
-      tags:
-      - loba
-      - '22'
+      - 
+      - na tigela
     - id: 192-456
-      titulo: Maguete ninja2
-      img: contas/192/img/portfolio/1482345509548.JPG
+      titulo: Bem acompanhado
+      img: contas/192/img/portfolio/192-456.jpg?decache=0.1961780816568468
       txt: Super t até 12
       cliente: fff
       site: 
       data: 
       servico: 
       tags:
-      - '22'
-      - '11'
-      - loba
-      - '2211'
+      - 
+      - 
+      - 
+      - 
+      - na tigela
+      - ffff
   contact:
     label: contato

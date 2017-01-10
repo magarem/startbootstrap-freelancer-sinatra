@@ -503,7 +503,7 @@ post "/avatarUpload" do
     image.write "./public/contas/#{@site_nome}/img/#{@filename}"
 
     # Salva o nome da imagem o arquivo fonte
-    @data["pages"]["home"]["img"] = "contas/#{@site_nome}/img/#{@filename}"
+    @data["pages"]["home"]["img"] = "contas/#{@site_nome}/img/#{@filename}?#{Time.now.to_i}"
     f = File.open @data_path, 'w'
     YAML.dump @data, f
     f.close
