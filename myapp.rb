@@ -434,11 +434,11 @@ post '/objSave' do
 
     when "portfolio.itemsTags"
         @data["pages"]["portfolio"]["itemsTags"] = @val
-        puts ">>portfolio.itemsTags<<"
+        puts ">>portfolio.itemsTags<< #{@val}"
 
     when "item.tags"
-       portfolioItem["tags"] = @val
-       puts ">>item.tags<<"
+       portfolioItem["tags"] = @val.compact
+       puts ">>item.tags<< #{@val.compact}"
 
 
     when "tags"

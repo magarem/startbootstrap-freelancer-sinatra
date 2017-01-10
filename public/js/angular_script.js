@@ -353,7 +353,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
       if (response.status > 0) $scope.errorMsg = response.status
             + ': ' + response.data;
     }, function (evt) {
-      $scope.progress = parseInt(100.0 * evt.loaded / evt.total);Modal
+      $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
     });
   }
   $scope.CropBoxOpen = function(){
@@ -673,6 +673,9 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     for(var index in tags.tags) {
         $scope.item.tags[index] = tags.tags[index].value
     }
+    //Limpa itens nulos ou vazios
+    item.tags = item.tags.filter(function(n){ return n != undefined });
+
     console.log("item.tags>", item.tags,id)
     $scope.saveDiv("item.tags")
     $rootScope.$emit("portfolioItemsTags_update");
