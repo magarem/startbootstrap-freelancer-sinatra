@@ -89,17 +89,8 @@ end
 #
 #  Carregamento do site
 #
-get "/dir" do
-  str1 = ""
-  a = Dir.entries("./public/fundos")
-  a.each do |nome|
-    if nome != "." && nome != ".." then
-      str1 << "<button img=/fundos/#{nome} class='styleswitch'>
-         <img src=/fundos/#{nome}  style='width: 30px; height: 20px;'>
-      </button>\n"
-    end
-  end
-  str1
+get "/styleBackgrounds" do
+  Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
 end
 get "/" do
   if !request.host.include? "." || @site_nome == "teste" then redirect 'teste/index.html' end
@@ -110,15 +101,15 @@ get "/" do
       redirect 'site/index.html?msg=Site não encontrado'
   end
 
-  @str1 = ""
-  a = Dir.entries("./public/fundos").sort
-  a.each do |nome|
-    if nome != "." && nome != ".." then
-      @str1 << "<button img=/fundos/#{nome} class=''>
-         <img src=/fundos/#{nome}  style='width: 30px; height: 20px;'>
-      </button>\n"
-    end
-  end
+  # @str1 = ""
+  # a = Dir.entries("./public/fundos").sort
+  # a.each do |nome|
+  #   if nome != "." && nome != ".." then
+  #     @str1 << "<button img=/fundos/#{nome} class=''>
+  #        <img src=/fundos/#{nome}  style='width: 30px; height: 20px;'>
+  #     </button>\n"
+  #   end
+  # end
 
   @edit_flag = session[:logado]
   if @edit_flag
@@ -500,6 +491,45 @@ post '/objSave' do
   f.close
 
 end
+
+#
+# upload da imagem de capa (circulo)
+#
+post "/backGroundImgUpload" do
+
+  # Pega os parametros
+  @filename = params[:file][:filename]
+  file = params[:file][:tempfile]
+  imagem_tipo = params[:file][:type]
+
+   # Autenticação
+  if !@logado then redirect "/" end
+
+  # Testa para ver se é uma imagem que está sendo enviada
+  if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
+    puts "file.size> #{file.size}"
+    # Salva imagem no disco (upload)
+    @filename = "backGround."+params["file"][:filename].split(".").last.downcase
+    # @filename_after = "avatar.png"
+
+    # Salva o arquivo enviado no servidor
+    File.open("./public/contas/#{@site_nome}/img/backGround/#{@filename}", 'wb') do |f|
+      f.write(file.read)
+    end
+
+    # # Reduz o tamanho da imagem
+    # image = MiniMagick::Image.open("./public/contas/#{@site_nome}/img/#{@filename}")
+    # image.resize "256x256"
+    # image.write "./public/contas/#{@site_nome}/img/#{@filename}"
+
+    # Salva o nome da imagem o arquivo fonte
+    @data["head"]["backGroundImg"] = "contas/#{@site_nome}/img/backGround/#{@filename}?#{Time.now.to_i}"
+    f = File.open @data_path, 'w'
+    YAML.dump @data, f
+    f.close
+  end
+end
+
 
 #
 # upload da imagem de capa (circulo)

@@ -1,86 +1,118 @@
+<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + backgroundUrl + ')'}">
+  <!-- Start Switcher -->
+  <div class="demo_changer" >
+    <div class="demo-icon">
+      <i class="fa fa-cog fa-spin fa-2x"></i>
+    </div><!-- end opener icon -->
+    <div class="form_holder">
+      <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="predefined_styles">
+                <style>
+                div .backImg{
+                    width: 80px;
+                    height: 50px;
+                    color: #fff;
+                    margin-bottom: 10px;
+                }
+                .btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
 
-<!-- Start Switcher -->
-<div class="demo_changer">
-  <div class="demo-icon">
-    <i class="fa fa-cog fa-spin fa-2x"></i>
-  </div><!-- end opener icon -->
-  <div class="form_holder">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <div class="predefined_styles">
-                  <h4>Patterns</h4>
-              <!-- MODULE #2 -->
-                  <div class="PatternChanger">
-                  <a href="/dmss/switcher/images/patterns/bg_01.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_01.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_02.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_02.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_03.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_03.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_04.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_04.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_05.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_05.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_06.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_06.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_07.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_07.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_08.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_08.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_09.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_09.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_10.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_10.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_11.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_11.jpg" alt=""></a>
-                  <a href="/dmss/switcher/images/patterns/bg_12.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_12.jpg" alt=""></a>
-                  </div>
-              <!-- END MODULE #2 -->
-                  <hr>
-                  <h4>Color Skins (with .css file)</h4>
-              <!-- MODULE #3 -->
-                <div id=fundos style="overflow-y: auto; height: 100px;">
-                  <%=@str1%>
+#upload-btn {
+display:none;
+}
+                </style>
+
+                <!-- END MODULE #2 -->
+                    <h4>Imagem de fundo</h4>
+                <!-- MODULE #3 -->
+                <div id=fundos  style="overflow-y: auto; width: 100px; height: 100px; margin-left: 35px;" >
+                    <div class=backImg ng-repeat="item in backGroundItems" back-img="/styleBackgrounds/{{item}}" ng-click="backgroundUrl_set('/styleBackgrounds/'+item)"></div>
                 </div>
-              <!-- END MODULE #3 -->
-              </div><!-- end predefined_styles -->
-        </div><!-- end col -->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <div class="predefined_styles">
-          <h4>Background Picker</h4>
-          <!-- MODULE #5 -->
-          <div class="demoPanel">
-            <input class="form-control" id="cp1"/>
-            <div id="tests" class="demo-links">
-            </div>
-          </div>
-          <!-- END MODULE #5 -->
-          <hr>
-          <h4>Body Font Color Picker</h4>
-          <!-- MODULE #6 -->
-          <div class="demoPanel">
-            <input class="form-control" id="cp2"/>
-            <div id="tests" class="demo-links">
-            </div>
-          </div>
-          <!-- END MODULE #6 -->
+                <!-- END MODULE #3 --><br>
+                <form name="myForm">
+      <fieldset>
+        <label class="btn btn-default btn-file">
+          Selecioar<input id=file-input type="file" ngf-select ng-model="picFile" name="file"
+               accept="image/*" ngf-max-size="2MB" required
+               ngf-model-invalid="errorFile" hidden>
+       </label>
+        <i ng-show="myForm.file.$error.required">*required</i><br>
+        <i ng-show="myForm.file.$error.maxSize">File too large
+            {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+        <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
+        <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
 
-          </div><!-- end predefined_styles -->
-        </div><!-- end col -->
-      </div><!-- end row -->
-  </div><!-- end form_holder -->
-</div><!-- end demo_changer -->
-<!-- End Switcher -->
-<header ng-controller="headerCtrl" class="main-wrapper">
+        <button id=upload-btn class="btn btn-primary" ng-disabled="!myForm.$valid"
+                ng-click="uploadPic(picFile)">Enviar</button>
+        <span class="progress" ng-show="picFile.progress >= 0">
+          <div style="width:{{picFile.progress}}%"
+              ng-bind="picFile.progress + '%'"></div>
+        </span>
+        <span ng-show="picFile.result">Upload Successful</span>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+      </fieldset>
+      <br>
+    </form>
+    <script>
+    $('#file-input').on('change', function(evt) {
+        var file = evt.target.files[0];
+        if (file){
+            $('#upload-btn').show();
+        } else {
+            $('#upload-btn').hide();
+        }
+    });
+    </script>
+                </div><!-- end predefined_styles -->
+          </div><!-- end col -->
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="predefined_styles">
+            <h4>Cor de fundo</h4>
+            <!-- MODULE #5 -->
+            <div class="demoPanel">
+              <input class="form-control" id="cp1"/>
+              <div id="tests" class="demo-links">
+              </div>
+            </div>
+            <!-- END MODULE #5 -->
+            <hr>
+            <h4>Cor da fonte</h4>
+            <!-- MODULE #6 -->
+            <div class="demoPanel">
+              <input class="form-control" id="cp2"/>
+              <div id="tests" class="demo-links">
+              </div>
+            </div>
+            <!-- END MODULE #6 -->
+
+            </div><!-- end predefined_styles -->
+          </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end form_holder -->
+  </div><!-- end demo_changer -->
+  <!-- End Switcher -->
   <div class="container">
     <div class="row">
   <!-- <input type="text" ng-model="selected"> -->
       <div class="col-lg-12">
-        <!--style>
-          .cropcircle{
-            width: 250px;
-            height: 250px;
-            border-radius: 100%;
-            background: #eee no-repeat center;
-            background-size: cover;
-            box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-            -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-            -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-            margin: 0 auto;
-          }
-          #image1{
-            background-image: url({{ site.pages.home.img }});
-          }
-        </style-->
          <style>
            .c{
             border-radius: 100%;

@@ -115,7 +115,8 @@
 
 		$('#fundos button').click(function(){
 		  // do my image switching logic here.
-			var img = $(this).attr('img');
+			alert()
+			var img = jQuery(this).children("img").attr('ng-src');
 			$('header').css("background-image", "url("+img+")");
 		});
 	});

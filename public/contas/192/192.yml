@@ -6,6 +6,7 @@ style:
   headerStyle: light-layout
   avatarStyle: 'true'
 head:
+  backGroundImg: contas/192/img/backGround/backGround.jpg?1485375066
   title: Portfolio geral
   description: Site portfolio
   author: marcelo magalhaes
@@ -15,7 +16,7 @@ moldura:
     label: Amazônia nativa
     link: index.ttt
   menu:
-  - label: ".sortFotos"
+  - label: Fotos
   - label: quem somos
   - label: contato
   footer:
@@ -30,7 +31,7 @@ moldura:
       web mais rápido e fácil
 pages:
   home:
-    label: Levando a saúde da florenavbar-fixed-tops
+    label: Levando a saúde
     img: contas/192/img/avatar.jpg?1484075661
     body: styleswitch
   about:
@@ -38,7 +39,7 @@ pages:
     body1: Gatas lindas
     body2: fsdfsdvvvv ffg ccgvggg ggg ffgg
   portfolio:
-    label: ".sortFotos"
+    label: Fotos
     itemsTags:
     - colheita
     - in natura

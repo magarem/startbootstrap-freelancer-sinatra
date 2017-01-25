@@ -4,18 +4,15 @@
 	border:1px solid #dedede;
 	padding:40px;
 }
-.demo_changer{ 
-    z-index: 900; 
+.demo_changer{
+    z-index: 900;
     position: fixed;
     left: -401px;
-    top: 80px; 
+    top: 120px;
 	font-family: 'PT Sans',sans-serif;
     font-weight: 400 !important;
 }
-.purchase {
-	text-decoration:underline;
-	color:#4BACC6
-}
+
 .demoPanel {
 	position:relative;
 }
@@ -139,7 +136,7 @@ a.evo-hist{margin-left:6px}
 	color:#fff;
 	font-size:21px;
 }
-.demo_changer .btn{ 
+.demo_changer .btn{
 	margin-top:10px;
 }
 .demo_changer .demo-icon{
@@ -169,7 +166,7 @@ a.evo-hist{margin-left:6px}
 	background: -o-linear-gradient(top,  #ffffff 0%,#eaeaea 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top,  #ffffff 0%,#eaeaea 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #ffffff 0%,#eaeaea 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-8 */	
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-8 */
     float: right;
 	padding:20px;
     width: 400px;
@@ -208,11 +205,11 @@ a.evo-hist{margin-left:6px}
 .predefined_styles{
     padding:0 5px;
 }
-@media only screen and (max-width: 768px) {
+/*@media only screen and (max-width: 768px) {
 .demo_changer{
     display: none;
+}*/
 }
-} 
 .demo_changer .btn {
 	width:165px !important;
 }

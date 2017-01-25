@@ -169,6 +169,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     var logged = $http.get('/logged');
     var siteData = $http.get('/dataLoad');
+    var styleBackgrounds = $http.get('/styleBackgrounds');
 
     //Prepara o URL de destino do upload
     var url = document.domain;
@@ -181,6 +182,10 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     var _loadSiteData = function(){
       return siteData;
+    }
+
+    var _loadStyleBackgrounds = function(){
+      return styleBackgrounds;
     }
 
     var _getSiteNome = function(){
@@ -206,7 +211,8 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
       getSiteNome: _getSiteNome,
       savePortfolioOrder: _savePortfolioOrder,
       saveDiv: _saveDiv,
-      portAdd: _portAdd
+      portAdd: _portAdd,
+      loadStyleBackgrounds: _loadStyleBackgrounds
     }
 
   }]);
@@ -228,6 +234,22 @@ mod.controller('topCtrl', function ($scope, $http, SiteData) {
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }
+})
+
+mod.controller('styleSelectCtrl', function ($scope, $http, SiteData) {
+
+  $scope.items = [];
+  $scope.isLogged = false;
+
+  SiteData.logged().then(function(response) {
+    $scope.isLogged = (response.data === 'true');
+  })
+
+  SiteData.loadStyleBackgrounds().then(function(response) {
+    $scope.items = response.data;
+  })
+
+
 })
 
 mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, $rootScope, SiteData) {
@@ -255,37 +277,46 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   $scope.isLogged = false;
   $scope.crop_box = false
 
+  $scope.backGroundItems = [];
+
+  SiteData.loadStyleBackgrounds().then(function(response) {
+    $scope.backGroundItems = response.data;
+  })
+
   $scope.customOptions = {
-        size: 30,
-        roundCorners: true
-      };
+    size: 30,
+    roundCorners: true
+  };
 
-      $scope.optionsRandom = {
-        randomColors: 10
-      };
+  $scope.optionsRandom = {
+    randomColors: 10
+  };
 
-      $scope.optionsGradient = {
-        start: '#BA693E',
-        count: 10,
-        step: 1
-      };
+  $scope.optionsGradient = {
+    start: '#BA693E',
+    count: 10,
+    step: 1
+  };
 
-      $scope.optionsVertical = {
-        horizontal: false,
-        total: 5
-      };
+  $scope.optionsVertical = {
+    horizontal: false,
+    total: 5
+  };
 
-      $scope.optionsColumn = {
-        size: 30,
-        columns: 10,
-        roundCorners: true,
-        total: 52
-      };
+  $scope.optionsColumn = {
+    size: 30,
+    columns: 10,
+    roundCorners: true,
+    total: 52
+  };
 
-
+  $scope.backgroundUrl_set = function(imgUrl){
+    $scope.backgroundUrl=imgUrl
+  }
   SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
+
   SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.picFile = $scope.site.pages.home.img;
@@ -322,6 +353,31 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
     });
   };
 
+  $scope.uploadPic = function(file) {
+     file.upload = Upload.upload({
+       url: '/backGroundImgUpload',
+       data: {file: file},
+     });
+
+     file.upload.then(function (response) {
+       $timeout(function () {
+         file.result = response.data;
+         console.log("file.result:", file);
+         var siteNome = SiteData.getSiteNome();
+         //Pegando a extenção do arquivo
+         var dotIndex = file.name.lastIndexOf('.');
+         var fileExt = file.name.substring(dotIndex);
+         $scope.backgroundUrl_set("/contas/"+siteNome+"/img/backGround/backGround"+fileExt+"?decache=" + Math.random())
+
+       });
+     }, function (response) {
+       if (response.status > 0)
+         $scope.errorMsg = response.status + ': ' + response.data;
+     }, function (evt) {
+       // Math.min is to fix IE which reports 200% sometimes
+       file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+     });
+     }
 }])
 
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
