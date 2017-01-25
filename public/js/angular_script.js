@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['siyfion.sfTypeahead', 'jsTag', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
+var mod = angular.module("myapp", ['ngjsColorPicker', 'siyfion.sfTypeahead', 'jsTag', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
 
 mod.filter('filterByTags', function () {
   return function (items, tag) {
@@ -254,6 +254,34 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   $scope.site = {};
   $scope.isLogged = false;
   $scope.crop_box = false
+
+  $scope.customOptions = {
+        size: 30,
+        roundCorners: true
+      };
+
+      $scope.optionsRandom = {
+        randomColors: 10
+      };
+
+      $scope.optionsGradient = {
+        start: '#BA693E',
+        count: 10,
+        step: 1
+      };
+
+      $scope.optionsVertical = {
+        horizontal: false,
+        total: 5
+      };
+
+      $scope.optionsColumn = {
+        size: 30,
+        columns: 10,
+        roundCorners: true,
+        total: 52
+      };
+
 
   SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');

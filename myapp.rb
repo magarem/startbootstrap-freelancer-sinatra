@@ -54,11 +54,15 @@ before do
   end
   puts "[@site_nome]>#{@site_nome}"
 
-  #Carrega os dados do site
-  @data_path = "public/contas/{site_nome}/{site_nome}.yml"
-  @data_path.gsub! "{site_nome}", @site_nome
-  @data = YAML.load_file @data_path
-  puts @data
+  #Testa se existe o site
+  if File.exist? File.expand_path "./public/contas/"+@site_nome then
+    #Carrega os dados do site
+    @data_path = "public/contas/{site_nome}/{site_nome}.yml"
+    @data_path.gsub! "{site_nome}", @site_nome
+    @data = YAML.load_file @data_path
+    puts @data
+  end
+
 
 end
 
@@ -85,12 +89,35 @@ end
 #
 #  Carregamento do site
 #
+get "/dir" do
+  str1 = ""
+  a = Dir.entries("./public/fundos")
+  a.each do |nome|
+    if nome != "." && nome != ".." then
+      str1 << "<button img=/fundos/#{nome} class='styleswitch'>
+         <img src=/fundos/#{nome}  style='width: 30px; height: 20px;'>
+      </button>\n"
+    end
+  end
+  str1
+end
 get "/" do
+  if !request.host.include? "." || @site_nome == "teste" then redirect 'teste/index.html' end
   if !request.host.include? "." || @site_nome == "radiando" then redirect 'site/index.html' end
 
   #Testa se existe o site
   if !File.exist? File.expand_path "./public/contas/"+@site_nome then
       redirect 'site/index.html?msg=Site não encontrado'
+  end
+
+  @str1 = ""
+  a = Dir.entries("./public/fundos").sort
+  a.each do |nome|
+    if nome != "." && nome != ".." then
+      @str1 << "<button img=/fundos/#{nome} class=''>
+         <img src=/fundos/#{nome}  style='width: 30px; height: 20px;'>
+      </button>\n"
+    end
   end
 
   @edit_flag = session[:logado]

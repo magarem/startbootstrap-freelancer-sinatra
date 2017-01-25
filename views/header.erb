@@ -1,153 +1,69 @@
-<!-- settings box -->
-<style>
-/*==========================================
-    settings box
-==========================================*/
-input[type="checkbox"],
-input[type="radio"] {
-  position: absolute;
-  visibility: hidden;
-}
 
-.settings-box-element {
-  z-index: 10;
-}
+<!-- Start Switcher -->
+<div class="demo_changer">
+  <div class="demo-icon">
+    <i class="fa fa-cog fa-spin fa-2x"></i>
+  </div><!-- end opener icon -->
+  <div class="form_holder">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="predefined_styles">
+                  <h4>Patterns</h4>
+              <!-- MODULE #2 -->
+                  <div class="PatternChanger">
+                  <a href="/dmss/switcher/images/patterns/bg_01.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_01.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_02.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_02.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_03.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_03.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_04.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_04.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_05.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_05.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_06.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_06.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_07.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_07.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_08.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_08.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_09.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_09.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_10.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_10.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_11.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_11.jpg" alt=""></a>
+                  <a href="/dmss/switcher/images/patterns/bg_12.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_12.jpg" alt=""></a>
+                  </div>
+              <!-- END MODULE #2 -->
+                  <hr>
+                  <h4>Color Skins (with .css file)</h4>
+              <!-- MODULE #3 -->
+                <div id=fundos style="overflow-y: auto; height: 100px;">
+                  <%=@str1%>
+                </div>
+              <!-- END MODULE #3 -->
+              </div><!-- end predefined_styles -->
+        </div><!-- end col -->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="predefined_styles">
+          <h4>Background Picker</h4>
+          <!-- MODULE #5 -->
+          <div class="demoPanel">
+            <input class="form-control" id="cp1"/>
+            <div id="tests" class="demo-links">
+            </div>
+          </div>
+          <!-- END MODULE #5 -->
+          <hr>
+          <h4>Body Font Color Picker</h4>
+          <!-- MODULE #6 -->
+          <div class="demoPanel">
+            <input class="form-control" id="cp2"/>
+            <div id="tests" class="demo-links">
+            </div>
+          </div>
+          <!-- END MODULE #6 -->
 
-.buttons-wrapper {
-  position: fixed;
-  top: 130px;
-  right: -200px;
-  width: 200px;
-  height: 240px;
-  background: #fff;
-}
-
-.settings-btn + label {
-  position: fixed;
-  top: 130px;
-  right: 0;
-  display: block;
-  width: 35px;
-  /*color: #e83737;*/
-  text-align: center;
-  background: #fff;
-  cursor: pointer;
-}
-
-.settings-btn:checked + label {
-  right: 200px;
-}
-
-.settings-btn:checked ~ .buttons-wrapper {
-  right: 0;
-}
-
-.layout-buttons {
-  display: block;
-  width: 150px;
-  padding: 10px 0;
-  text-align: center;
-  border: 2px solid black;
-  box-sizing: border-box;
-  font-size: 0.875em;
-  cursor: pointer;
-}
-
-.settings-btn:checked ~ .layout-buttons {
-  right: 30px;
-}
-
-input[type="radio"]:checked + label {
-  background: #e83737;
-  /*color: #fff;*/
-  border-color: #e83737;
-}
-
-.light-layout + label {
-  position: fixed;
-  top: 140px;
-  right: -150px;
-}
-
-.dark-layout + label {
-  position: fixed;
-  top: 185px;
-  right: -150px;
-}
-
-.image-layout + label {
-  position: fixed;
-  top: 230px;
-  right: -150px;
-}
-
-.pattern-layout + label {
-  position: fixed;
-  top: 275px;
-  right: -150px;
-}
-
-.hide-show-content + label {
-  position: fixed;
-  top: 320px;
-  right: -150px;
-}
-
-.dark-layout:checked ~ .main-wrapper {
-  background: #494949;
-}
-
-.light-layout:checked ~ .main-wrapper {
-   background: #18bc9c;
-}
-
-.image-layout:checked ~ .main-wrapper {
-  background: url(http://bestinspired.com/wp-content/uploads/2015/03/4-Nature-Wallpapers-2014-1.jpg) no-repeat center 0 fixed;
-  /*-- change the image from here --*/
-}
-
-.pattern-layout:checked ~ .main-wrapper {
-  background: url(http://i.imgur.com/uKfMXs7.png) repeat;
-  /*-- change the pattern from here --*/
-}
-
-.hide-show-content:checked ~ .main-wrapper .avatarImg {
-  display: none;
-}
-</style>
-  <!-- the gear icon that opens the box when you click on it -->
-
-  <% if @isLogged then%>
-    <input id="settings-btn" type="checkbox" class="settings-btn">
-    <label for="settings-btn" class="settings-box-element"><i class="fa fa-2x fa-gear"></i></label>
-    <!-- the white box that contains the buttons -->
-    <div class="buttons-wrapper settings-box-element"></div>
-  <% end %>
-
-
-  <!-- background styles -->
-
-  <!-- light background (#eaeaea) -->
-  <input id="light-layout" class="light-layout" type="radio" name="layout"  onclick=headerStyleSet(this.id)>
-  <label for="light-layout" class="layout-buttons settings-box-element" >Claro</label>
-  <!-- dark background (#494949) -->
-  <input id="dark-layout" class="dark-layout" type="radio" name="layout" onclick=headerStyleSet(this.id)>
-  <label for="dark-layout" class="layout-buttons settings-box-element">Escuro</label>
-  <!-- image background (you can use any image of your choice) -->
-  <input id="image-layout" class="image-layout" type="radio" name="layout" onclick=headerStyleSet(this.id)>
-  <label for="image-layout" class="layout-buttons settings-box-element">Imagem</label>
-  <!-- pattern background (you can use any pattern of your choice) -->
-  <input id="pattern-layout" class="pattern-layout" type="radio" name="layout" onclick=headerStyleSet(this.id)>
-  <label for="pattern-layout" class="layout-buttons settings-box-element">Pattern</label>
-<!-- // background styles -->
-
-<!-- hide/show content -->
-
-<input id="hide-show-content" class="hide-show-content" type="checkbox" onclick=avatarStyleSet()>
-<label for="hide-show-content" class="layout-buttons settings-box-element">Avatar</label>
+          </div><!-- end predefined_styles -->
+        </div><!-- end col -->
+      </div><!-- end row -->
+  </div><!-- end form_holder -->
+</div><!-- end demo_changer -->
+<!-- End Switcher -->
 <header ng-controller="headerCtrl" class="main-wrapper">
   <div class="container">
     <div class="row">
+  <!-- <input type="text" ng-model="selected"> -->
       <div class="col-lg-12">
         <!--style>
           .cropcircle{
@@ -186,6 +102,7 @@ input[type="radio"]:checked + label {
 
         <img class="c isLogged avatarImg"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
 
+
         <div id=div1></div>
         <!-- Indicates a successful or positive action -->
 
@@ -217,8 +134,5 @@ input[type="radio"]:checked + label {
         </div>
       </div>
     </div>
-    <div>
-    <br>
-   </div>
   </div>
 </header>

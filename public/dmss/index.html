@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DMSS - Designing Media Style Switcher</title>
+
+    <!-- Bootstrap Styles -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css" media="screen">
+
+	<!-- Switcher Only -->
+        <link rel="stylesheet" id="switcher-css" type="text/css" href="/dmss/switcher/css/switcher.css" media="all" />
+    <!-- END Switcher Styles -->
+
+	<!-- Demo Examples (For Module #3) -->
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/pink.css" title="pink" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/purple.css" title="purple" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/blue.css" title="blue" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/green.css" title="green" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/red.css" title="red" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/yellow.css" title="yellow" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/orange.css" title="orange" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/grey.css" title="grey" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/dark.css" title="dark" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="/dmss/switcher/css/light.css" title="light" media="all" />
+	<!-- END Demo Examples -->
+
+</head>
+<body id="switcher-body">
+
+    <!-- Start Switcher -->
+		<div class="demo_changer">
+			<div class="demo-icon">
+            	<i class="fa fa-cog fa-spin fa-2x"></i>
+            </div><!-- end opener icon -->
+            <div class="form_holder">
+            	<div class="row">
+                	<h4 class="text-center">
+                        DMSS - STYLE SWITCHER
+                    </h4>
+                    <p class="text-center">
+                    	Choose a color via color picker or click the predefined styles below.
+                    </p>
+                	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                		<div class="predefined_styles">
+							<h4>Light Dark (with .css file)</h4>
+                    		<!-- MODULE #1 -->
+							<a href="" rel="light" class="styleswitch"><img class="img-thumbnail" src="/dmss/switcher/images/icons/light.png" alt=""></a>
+							<a href="" rel="dark" class="styleswitch"><img class="img-thumbnail" src="/dmss/switcher/images/icons/dark.png" alt=""></a>
+							<!-- END MODULE #1 -->
+                            <hr>
+                            <h4>Patterns</h4>
+                    		<!-- MODULE #2 -->
+                            <div class="PatternChanger">
+                            <a href="/dmss/switcher/images/patterns/bg_01.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_01.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_02.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_02.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_03.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_03.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_04.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_04.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_05.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_05.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_06.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_06.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_07.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_07.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_08.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_08.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_09.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_09.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_10.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_10.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_11.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_11.jpg" alt=""></a>
+                            <a href="/dmss/switcher/images/patterns/bg_12.jpg" class="bg_t"><img src="/dmss/switcher/images/patterns/bg_12.jpg" alt=""></a>
+                            </div>
+                    		<!-- END MODULE #2 -->
+                            <hr>
+                            <h4>Color Skins (with .css file)</h4>
+                    		<!-- MODULE #3 -->
+                            <a href="" rel="pink" class="styleswitch"><img src="/dmss/switcher/images/icons/pink.png" alt=""></a>
+                            <a href="" rel="purple" class="styleswitch"><img src="/dmss/switcher/images/icons/purple.png" alt=""></a>
+                            <a href="" rel="blue" class="styleswitch"><img src="/dmss/switcher/images/icons/blue.png" alt=""></a>
+                            <a href="" rel="green" class="styleswitch"><img src="/dmss/switcher/images/icons/green.png" alt=""></a>
+                            <a href="" rel="red" class="styleswitch"><img src="/dmss/switcher/images/icons/red.png" alt=""></a>
+                            <a href="" rel="yellow" class="styleswitch"><img src="/dmss/switcher/images/icons/yellow.png" alt=""></a>
+                            <a href="" rel="orange" class="styleswitch"><img src="/dmss/switcher/images/icons/orange.png" alt=""></a>
+                            <a href="" rel="grey" class="styleswitch"><img src="/dmss/switcher/images/icons/grey.png" alt=""></a>
+                    		<!-- END MODULE #3 -->
+                        </div><!-- end predefined_styles -->
+                	</div><!-- end col -->
+                	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                		<div class="predefined_styles">
+							<h4>Select a Layout</h4>
+                    		<!-- MODULE #4 -->
+                                <form>
+                                    <select id="headers" class="show-menu-arrow selectpicker"  onChange="document.location = this.value" value="GO">
+                                        <option value="">Change Header</option>
+                                        <option value="#">Style 1</option>
+                                        <option value="#">Style 2</option>
+                                        <option value="#">Style 3</option>
+                                    </select>
+                                    <select id="footers" class="show-menu-arrow selectpicker"  onChange="document.location = this.value" value="GO">
+                                        <option value="">Change Footer</option>
+                                        <option value="#">Style 1</option>
+                                        <option value="#">Style 2</option>
+                                        <option value="#">Style 3</option>
+                                    </select>
+                                    <select id="layouts" class="show-menu-arrow selectpicker"  onChange="document.location = this.value" value="GO">
+                                        <option value="">Select Layout</option>
+                                        <option value="#">Fullwidth Layout</option>
+                                        <option value="#">Boxed Layout</option>
+                                    </select>
+                                </form>
+							<!-- END MODULE #4 -->
+                            <hr>
+                            <h4>Background Picker</h4>
+                    		<!-- MODULE #5 -->
+							<div class="demoPanel">
+                                <input class="form-control" id="cp1"/>
+                                <div id="tests" class="demo-links">
+                                </div>
+                            </div>
+                    		<!-- END MODULE #5 -->
+                            <hr>
+                            <h4>Body Font Color Picker</h4>
+                    		<!-- MODULE #6 -->
+							<div class="demoPanel">
+                                <input class="form-control" id="cp2"/>
+                                <div id="tests" class="demo-links">
+                                </div>
+                            </div>
+                    		<!-- END MODULE #6 -->
+                        </div><!-- end predefined_styles -->
+                	</div><!-- end col -->
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p class="text-center">This tools is just for demo site. <a class="purchase" href="http://codecanyon.net/user/designingmedia/portfolio" title="" target="_blank">Purchase now</a></p>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end form_holder -->
+        </div><!-- end demo_changer -->
+    <!-- End Switcher -->
+
+
+    <!-- DO NOT ADD -->
+    <div class="container">
+
+                <article class="general-wrapper">
+                    <div class="post-desc">
+
+						<div class="title">
+                        	<h3>Drop Caps</h3>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="drop-caps">Fusce lacllentesque eget tempor tellus ellentesque pelleinia tempor malesuada. Pellentesque pellentesque eget tempor tellus ellentesque pellentesque eget tempor tellus.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="drop-caps full">Fusce lacllentesque eget tempor tellus ellentesque pelleinia tempor malesuada. Pellentesque pellentesque eget tempor tellus ellentesque pellentesque eget tempor tellus.</p>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <hr>
+
+						<div class="title">
+                        	<h3>Blockquote</h3>
+                        </div>
+
+						<blockquote>
+							Mauris aliquet ultricies ante, non faucibus ante gravida sed. Sed ultrices pellentesque purus, vulputate volutpat ipsum hendrerit sed neque sed sapien rutrum laoreet justo ultrices. In pellentesque lorem condimentum dui morbi pulvinar dui non quam pretium ut lacinia tortor.
+							<small>Someone famous <cite title="Source Title">Source Title</cite></small>
+						</blockquote>
+
+                        <div class="clearfix"></div>
+
+                        <hr>
+
+						<div class="title">
+                        	<h3>List Elements</h3>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>Example of Ordered List</h4>
+                                <ol>
+                                  <li>Item 1</li>
+                                  <li>Item 2</li>
+                                  <li>Item 3</li>
+                                  <li>Item 4</li>
+                                </ol>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <h4>Example of UnOrdered List</h4>
+                                <ul>
+                                  <li>Item 1</li>
+                                  <li>Item 2</li>
+                                  <li>Item 3</li>
+                                  <li>Item 4</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>Example of Unstyled List</h4>
+                                <ul class="list-unstyled">
+                                  <li>Item 1</li>
+                                  <li>Item 2</li>
+                                  <li>Item 3</li>
+                                  <li>Item 4</li>
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <h4>Example of Inline List</h4>
+                                <ul class="list-inline">
+                                  <li>Item 1</li>
+                                  <li>Item 2</li>
+                                  <li>Item 3</li>
+                                  <li>Item 4</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <hr>
+
+						<div class="title">
+                        	<h3>Heading Elements</h3>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-sm-6">
+                            <h1>I'm Heading1 h1</h1>
+                            <h2>I'm Heading2 h2</h2>
+                            <h3>I'm Heading3 h3</h3>
+                            <h4>I'm Heading4 h4</h4>
+                            <h5>I'm Heading5 h5</h5>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <h1><a href="#">I'm Heading1 h1</a></h1>
+                            <h2><a href="#">I'm Heading2 h2</a></h2>
+                            <h3><a href="#">I'm Heading3 h3</a></h3>
+                            <h4><a href="#">I'm Heading4 h4</a></h4>
+                            <h5><a href="#">I'm Heading5 h5</a></h5>
+                        </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1>I'm Heading1 h1. <small>I'm secondary Heading1 h1</small></h1>
+                                <h2>I'm Heading2 h2. <small>I'm secondary Heading2 h2</small></h2>
+                                <h3>I'm Heading3 h3. <small>I'm secondary Heading3 h3</small></h3>
+                                <h4>I'm Heading4 h4. <small>I'm secondary Heading4 h4</small></h4>
+                                <h5>I'm Heading5 h5. <small>I'm secondary Heading5 h5</small></h5>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <hr>
+
+                    </div>
+                </article><!-- end author-wrapper -->
+
+    </div><!-- end container -->
+
+    <!-- Standard jQuery -->
+	<script src="js/jquery.js"></script>
+    <!-- UI jQuery (For Module #5 and #6) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js" type="text/javascript"></script>
+    <!-- Bootstrap jQuery -->
+	<script src="js/bootstrap.js"></script>
+    <!-- Bootstrap Select Tool (For Module #4) -->
+	<script src="/dmss/switcher/js/bootstrap-select.js"></script>
+    <!-- Evol Color Picker jQuery (For Module #5 and #6) -->
+	<script src="/dmss/switcher/js/evol.colorpicker.min.js" type="text/javascript"></script>
+    <!-- All Scripts & Plugins -->
+	<script src="/dmss/switcher/js/dmss.js"></script>
+
+</body>
+</html>

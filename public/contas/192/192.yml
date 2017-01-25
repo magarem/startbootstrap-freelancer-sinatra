@@ -3,8 +3,8 @@ name: 192
 email: contato@magaweb.com.br
 senha: 1
 style:
-  headerStyle: image-layout
-  avatarStyle: 'false'
+  headerStyle: light-layout
+  avatarStyle: 'true'
 head:
   title: Portfolio geral
   description: Site portfolio
@@ -15,7 +15,7 @@ moldura:
     label: Amazônia nativa
     link: index.ttt
   menu:
-  - label: Fotos
+  - label: ".sortFotos"
   - label: quem somos
   - label: contato
   footer:
@@ -30,24 +30,19 @@ moldura:
       web mais rápido e fácil
 pages:
   home:
-    label: Levando a saúde da floresta
+    label: Levando a saúde da florenavbar-fixed-tops
     img: contas/192/img/avatar.jpg?1484075661
-    body: 
+    body: styleswitch
   about:
     label: quem somos
     body1: Gatas lindas
     body2: fsdfsdvvvv ffg ccgvggg ggg ffgg
   portfolio:
-    label: Fotos
+    label: ".sortFotos"
     itemsTags:
     - colheita
-    - caxo
     - in natura
-    - Tesre
-    - '666'
-    - Oo
     - na tigela
-    - ffff
     items:
     - id: 192-1483115954127
       titulo: no pé
@@ -59,7 +54,6 @@ pages:
       servico: 
       tags:
       - colheita
-      - caxo
     - id: 192-1483898003899
       titulo: nos cestos
       img: contas/192/img/portfolio/192-1483898003899.jpg?decache=0.9492609702977868
@@ -83,8 +77,6 @@ pages:
       tags:
       - colheita
       - in natura
-      - Tesre
-      - '666'
       cliente: Trt
     - id: 192-1483977341960
       titulo: açai2
@@ -97,7 +89,6 @@ pages:
       cat: ''
       tags:
       - in natura
-      - Oo
       cliente: 
     - id: 192-1483898166846
       titulo: na Tijela
@@ -120,6 +111,5 @@ pages:
       servico: 
       tags:
       - na tigela
-      - ffff
   contact:
     label: contato
