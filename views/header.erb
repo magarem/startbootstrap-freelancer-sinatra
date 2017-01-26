@@ -38,6 +38,14 @@
 #upload-btn {
 display:none;
 }
+
+.thumb {
+    width: 200px;
+    height: auto;
+    float: none;
+    position: relative;
+    top: 7px;
+}
                 </style>
 
                 <!-- END MODULE #2 -->
@@ -46,28 +54,32 @@ display:none;
                 <div id=fundos  style="overflow-y: auto; width: 100px; height: 100px; margin-left: 35px;" >
                     <div class=backImg ng-repeat="item in backGroundItems" back-img="/styleBackgrounds/{{item}}" ng-click="backgroundUrl_set('/styleBackgrounds/'+item)"></div>
                 </div>
-                <!-- END MODULE #3 --><br>
+                <!-- END MODULE #3 --><br><hr>
+                <h4>Enviar imagem</h4>
                 <form name="myForm">
       <fieldset>
         <label class="btn btn-default btn-file">
-          Selecioar<input id=file-input type="file" ngf-select ng-model="picFile" name="file"
+          <span class="glyphicon glyphicon-picture"></span><input id=file-input type="file" ngf-select ng-model="picFile2" name="file"
                accept="image/*" ngf-max-size="2MB" required
                ngf-model-invalid="errorFile" hidden>
        </label>
+        <div  style="margin-left:57px;">
+        <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile2" class="thumb">
+        <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
+      </div>
+<br>
+        <button id=upload-btn class="btn btn-info btn" ng-disabled="!myForm.$valid"
+                ng-click="uploadPic(picFile2)"><span class="glyphicon glyphicon-upload"></span> Enviar</button>
+        <br>
+        <span class="progress" ng-show="picFile2.progress >= 0">
+          <div style="width:{{picFile2.progress}}%"
+              ng-bind="picFile2.progress + '%'"></div>
+        </span>
+        <span ng-show="picFile2.result">Upload Successful</span>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
         <i ng-show="myForm.file.$error.required">*required</i><br>
         <i ng-show="myForm.file.$error.maxSize">File too large
             {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-        <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
-        <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
-
-        <button id=upload-btn class="btn btn-primary" ng-disabled="!myForm.$valid"
-                ng-click="uploadPic(picFile)">Enviar</button>
-        <span class="progress" ng-show="picFile.progress >= 0">
-          <div style="width:{{picFile.progress}}%"
-              ng-bind="picFile.progress + '%'"></div>
-        </span>
-        <span ng-show="picFile.result">Upload Successful</span>
-        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
       </fieldset>
       <br>
     </form>

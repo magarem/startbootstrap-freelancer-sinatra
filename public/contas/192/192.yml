@@ -6,7 +6,7 @@ style:
   headerStyle: light-layout
   avatarStyle: 'true'
 head:
-  backGroundImg: contas/192/img/backGround/backGround.jpg?1485375066
+  backGroundImg: contas/192/img/backGround/backGround.jpg?1485392161
   title: Portfolio geral
   description: Site portfolio
   author: marcelo magalhaes
@@ -32,7 +32,7 @@ moldura:
 pages:
   home:
     label: Levando a saúde
-    img: contas/192/img/avatar.jpg?1484075661
+    img: contas/192/img/avatar.jpg?1485390796
     body: styleswitch
   about:
     label: quem somos
