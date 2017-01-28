@@ -6,10 +6,13 @@ style:
   headerStyle: light-layout
   avatarStyle: 'true'
 head:
-  backGroundImg: contas/192/img/backGround/backGround.jpg?1485392161
+  backgroundColor: hsl(266, 19%, 64%)
+  backgroundUrl: "/styleBackgrounds/blue_gradient-wallpaper-1440x900.jpg"
+  fontColor: hsl(0, 0%, 89%)
   title: Portfolio geral
   description: Site portfolio
   author: marcelo magalhaes
+  backGroundImg: contas/192/img/backGround/backGround.jpg?1485566754
 moldura:
   label: Portfolio
   logo:

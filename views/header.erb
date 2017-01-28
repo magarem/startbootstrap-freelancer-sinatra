@@ -1,4 +1,4 @@
-<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + backgroundUrl + ')'}">
+<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + site.head.backgroundUrl + ')', 'background-color': site.head.backgroundColor, 'color': site.head.fontColor }">
   <!-- Start Switcher -->
   <div class="demo_changer" >
     <div class="demo-icon">
@@ -9,114 +9,80 @@
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="predefined_styles">
                 <style>
-                div .backImg{
+                  div .backImg{
                     width: 80px;
                     height: 50px;
                     color: #fff;
                     margin-bottom: 10px;
-                }
-                .btn-file {
-    position: relative;
-    overflow: hidden;
-}
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
+                  }
+                  .btn-file {
+                    position: relative;
+                    overflow: hidden;
+                  }
+                  .btn-file input[type=file] {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    min-width: 100%;
+                    min-height: 100%;
+                    font-size: 100px;
+                    text-align: right;
+                    filter: alpha(opacity=0);
+                    opacity: 0;
+                    outline: none;
+                    background: white;
+                    cursor: inherit;
+                    display: block;
+                  }
 
-#upload-btn {
-display:none;
-}
-
-.thumb {
-    width: 200px;
-    height: auto;
-    float: none;
-    position: relative;
-    top: 7px;
-}
+                  .thumb {
+                    width: 200px;
+                    height: auto;
+                    float: none;
+                    position: relative;
+                    top: 7px;
+                  }
                 </style>
-
+<color-picker ng-model="site.head.backgroundColor" event-api="eventApi" ></color-picker>
+<color-picker ng-model="site.head.fontColor"  event-api="eventApi2"></color-picker>
                 <!-- END MODULE #2 -->
-                    <h4>Imagem de fundo</h4>
+                    <!-- <h4>Imagem de fundo</h4> -->
                 <!-- MODULE #3 -->
                 <div id=fundos  style="overflow-y: auto; width: 100px; height: 100px; margin-left: 35px;" >
                     <div class=backImg ng-repeat="item in backGroundItems" back-img="/styleBackgrounds/{{item}}" ng-click="backgroundUrl_set('/styleBackgrounds/'+item)"></div>
                 </div>
-                <!-- END MODULE #3 --><br><hr>
-                <h4>Enviar imagem</h4>
+                <!-- END MODULE #3 --><br>
+                <button  class="btn-md btn-info" ng-click="backgroundUrl_clear();">Apagar fundo</button>
                 <form name="myForm">
-      <fieldset>
-        <label class="btn btn-default btn-file">
-          <span class="glyphicon glyphicon-picture"></span><input id=file-input type="file" ngf-select ng-model="picFile2" name="file"
-               accept="image/*" ngf-max-size="2MB" required
-               ngf-model-invalid="errorFile" hidden>
-       </label>
-        <div  style="margin-left:57px;">
-        <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile2" class="thumb">
-        <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
-      </div>
-<br>
-        <button id=upload-btn class="btn btn-info btn" ng-disabled="!myForm.$valid"
-                ng-click="uploadPic(picFile2)"><span class="glyphicon glyphicon-upload"></span> Enviar</button>
-        <br>
-        <span class="progress" ng-show="picFile2.progress >= 0">
-          <div style="width:{{picFile2.progress}}%"
-              ng-bind="picFile2.progress + '%'"></div>
-        </span>
-        <span ng-show="picFile2.result">Upload Successful</span>
-        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-        <i ng-show="myForm.file.$error.required">*required</i><br>
-        <i ng-show="myForm.file.$error.maxSize">File too large
-            {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-      </fieldset>
-      <br>
-    </form>
-    <script>
-    $('#file-input').on('change', function(evt) {
-        var file = evt.target.files[0];
-        if (file){
-            $('#upload-btn').show();
-        } else {
-            $('#upload-btn').hide();
-        }
-    });
-    </script>
+                  <fieldset>
+                    <label class="btn btn-default btn-file">
+                      <span class="glyphicon glyphicon-picture"></span><input id=file-input type="file" ngf-select ng-model="picFile2" name="file"
+                        accept="image/*" ngf-max-size="2MB" required
+                        ngf-model-invalid="errorFile" hidden>
+                    </label>
+                    <div  style="margin-left:57px;">
+                      <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile2" class="thumb">
+                      <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
+                    </div>
+                    <br>
+                    <button ng-show="picFile2"  id=upload-btn class="btn btn-info btn" ng-disabled="!myForm.$valid"
+                            ng-click="uploadPic(picFile2)"><span class="glyphicon glyphicon-upload"></span> Enviar</button>
+                    <br>
+                    <span class="progress" ng-show="picFile2.progress >= 0">
+                      <div style="width:{{picFile2.progress}}%"
+                          ng-bind="picFile2.progress + '%'"></div>
+                    </span>
+                    <span ng-show="picFile2.result">Upload Successful</span>
+                    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                    <i ng-show="myForm.file.$error.required">*required</i><br>
+                    <i ng-show="myForm.file.$error.maxSize">File too large
+                        {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                  </fieldset>
+                  <br>
+                </form>
                 </div><!-- end predefined_styles -->
           </div><!-- end col -->
-          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="predefined_styles">
-            <h4>Cor de fundo</h4>
-            <!-- MODULE #5 -->
-            <div class="demoPanel">
-              <input class="form-control" id="cp1"/>
-              <div id="tests" class="demo-links">
-              </div>
-            </div>
-            <!-- END MODULE #5 -->
-            <hr>
-            <h4>Cor da fonte</h4>
-            <!-- MODULE #6 -->
-            <div class="demoPanel">
-              <input class="form-control" id="cp2"/>
-              <div id="tests" class="demo-links">
-              </div>
-            </div>
-            <!-- END MODULE #6 -->
-
-            </div><!-- end predefined_styles -->
-          </div><!-- end col -->
+        <!-- end col -->
         </div><!-- end row -->
     </div><!-- end form_holder -->
   </div><!-- end demo_changer -->

@@ -407,6 +407,16 @@ post '/objSave' do
 
   # Confere qual foi a ordem passada
   case @obj
+
+    when "site.head.backgroundUrl"
+      @data["head"]["backgroundUrl"] = @val
+
+    when "site.head.backgroundColor"
+      @data["head"]["backgroundColor"] = @val
+
+    when "site.head.fontColor"
+      @data["head"]["fontColor"] = @val
+
     when "site.moldura.logo.label"
       @data["moldura"]["logo"]["label"] = @val
 
@@ -457,7 +467,6 @@ post '/objSave' do
     when "item.tags"
        portfolioItem["tags"] = @val.compact
        puts ">>item.tags<< #{@val.compact}"
-
 
     when "tags"
        portfolioItem["cat"] = @val

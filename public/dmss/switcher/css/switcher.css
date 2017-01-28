@@ -7,7 +7,7 @@
 .demo_changer{
     z-index: 900;
     position: fixed;
-    left: -401px;
+    left: -201px;
     top: 120px;
 	font-family: 'PT Sans',sans-serif;
     font-weight: 400 !important;
@@ -169,7 +169,7 @@ a.evo-hist{margin-left:6px}
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-8 */
     float: right;
 	padding:20px;
-    width: 400px;
+    width: 200px;
 }
 .demo_changer .form_holder p{
     font-size: 12px;

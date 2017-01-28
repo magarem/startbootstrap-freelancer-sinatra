@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['ngjsColorPicker', 'siyfion.sfTypeahead', 'jsTag', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
+var mod = angular.module("myapp", ['color.picker', 'siyfion.sfTypeahead', 'jsTag', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
 
 mod.filter('filterByTags', function () {
   return function (items, tag) {
@@ -277,6 +277,27 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   $scope.isLogged = false;
   $scope.crop_box = false
 
+  // api event handlers
+  $scope.eventApi = {
+      onBlur: function(api, color, $event) {
+        // $scope.site.head.backgroundColor = color
+        $scope.saveDiv('site.head.backgroundColor')
+      }
+  };
+  // api event handlers
+  $scope.eventApi2 = {
+      onBlur: function(api, color, $event) {
+        // $scope.site.head.fontColor = color
+        $scope.saveDiv('site.head.fontColor')
+      }
+  };
+
+  $scope.backgroundUrl_clear = function(){
+    $scope.backgroundUrl = '';
+    $scope.site.head.backgroundUrl = ""
+    $scope.saveDiv('site.head.backgroundUrl')
+  }
+
   $scope.backGroundItems = [];
 
   SiteData.loadStyleBackgrounds().then(function(response) {
@@ -310,9 +331,12 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
     total: 52
   };
 
-  $scope.backgroundUrl_set = function(imgUrl){
-    $scope.backgroundUrl=imgUrl
+  $scope.backgroundUrl_set = function(backgroundUrl){
+    // $scope.backgroundUrl=backgroundUrl
+    $scope.site.head.backgroundUrl = backgroundUrl
+    $scope.saveDiv('site.head.backgroundUrl')
   }
+
   SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
@@ -320,9 +344,14 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.picFile = $scope.site.pages.home.img;
+
+    // $scope.backgroundColor = $scope.site.head.backgroundColor;
+    // $scope.backgroundUrl = $scope.site.head.backgroundUrl;
+    // $scope.fontColor = $scope.site.head.fontColor;
   })
 
   $scope.saveDiv = function(obj){
+    console.log("obj:", obj)
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }

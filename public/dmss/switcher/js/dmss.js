@@ -60,7 +60,7 @@
 	jQuery('.demo_changer .demo-icon').click(function(){
 
 		if(jQuery('.demo_changer').hasClass("active")){
-			jQuery('.demo_changer').animate({"left":"-400px"},function(){
+			jQuery('.demo_changer').animate({"left":"-200px"},function(){
 				jQuery('.demo_changer').toggleClass("active");
 			});
 		}else{
@@ -102,20 +102,23 @@
 		var backFontColor = $("header").css("color");
 
 		$('#cp1').colorpicker({color:backColor})
-		.on('change.color', function(evt, color){
-			var backFontColor = $("header").css("color");
-			$('header').attr('style','background-color:'+color+'; color:'+backFontColor);
-		})
+		// .on('change.color', function(evt, color){
+		// 	// var backFontColor = $("header").css("color");
+		// 	// $('header').attr('style','background-color:'+color+'; color:'+backFontColor);
+		// })
+
 		$('#cp2').colorpicker({color:backFontColor})
 		.on('change.color', function(evt, color){
 			var backColor = $("header").css("background-color");
+			var backgroundImage = $('header').css("background-image");
+			// $('header').css("background-image", "url("+backgroundImage+")");
 			$('header').attr('style','color:'+color+'; background-color:'+backColor);
 			$('header hr.star-light').attr('style','border-color:'+color);
 		})
 
 		$('#fundos button').click(function(){
 		  // do my image switching logic here.
-			alert()
+
 			var img = jQuery(this).children("img").attr('ng-src');
 			$('header').css("background-image", "url("+img+")");
 		});
