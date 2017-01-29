@@ -1,4 +1,12 @@
-<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + site.head.backgroundUrl + ')', 'background-color': site.head.backgroundColor, 'color': site.head.fontColor }">
+<style>
+  header {
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-attachment: scroll;
+  }
+</style>
+<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + site.head.backgroundUrl + ') ', 'background-color': site.head.backgroundColor, 'color': site.head.fontColor }">
   <!-- Start Switcher -->
   <div class="demo_changer" >
     <div class="demo-icon">
@@ -6,12 +14,12 @@
     </div><!-- end opener icon -->
     <div class="form_holder">
       <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="predefined_styles">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="predefined_styles center-block">
                 <style>
                   div .backImg{
-                    width: 80px;
-                    height: 50px;
+                    width: 100px;
+                    height: 60px;
                     color: #fff;
                     margin-bottom: 10px;
                   }
@@ -42,21 +50,30 @@
                     position: relative;
                     top: 7px;
                   }
+                  .hh {
+                    text-center;
+                    center-block;
+                  }
+
                 </style>
-<color-picker ng-model="site.head.backgroundColor" event-api="eventApi" ></color-picker>
-<color-picker ng-model="site.head.fontColor"  event-api="eventApi2"></color-picker>
+                <h4>Editor de estilos</h4>
+                <div  style="margin-left: 12px;">
+                  <b>Fonte</b><br><color-picker ng-model="site.head.fontColor"  event-api="eventApi2" options="options"></color-picker>
+                  <br><b>Fundo</b><color-picker ng-model="site.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
+                </div>
                 <!-- END MODULE #2 -->
                     <!-- <h4>Imagem de fundo</h4> -->
-                <!-- MODULE #3 -->
-                <div id=fundos  style="overflow-y: auto; width: 100px; height: 100px; margin-left: 35px;" >
-                    <div class=backImg ng-repeat="item in backGroundItems" back-img="/styleBackgrounds/{{item}}" ng-click="backgroundUrl_set('/styleBackgrounds/'+item)"></div>
+                <!-- MODULE #3 --><br>
+                <b>Imagem de fundo</b>
+                <div id=fundos  style="overflow-y: auto; width: 140px; height: 100px;  background-color: #d9d9d9; outline: 1px solid #737373;" class="text-center" >
+                    <div class="backImg center-block" style="outline: 1px solid #b3b3b3;" ng-repeat="item in backGroundItems" back-img="/styleBackgrounds/{{item}}" ng-click="backgroundUrl_set('/styleBackgrounds/'+item)"></div>
                 </div>
                 <!-- END MODULE #3 --><br>
                 <button  class="btn-md btn-info" ng-click="backgroundUrl_clear();">Apagar fundo</button>
                 <form name="myForm">
                   <fieldset>
                     <label class="btn btn-default btn-file">
-                      <span class="glyphicon glyphicon-picture"></span><input id=file-input type="file" ngf-select ng-model="picFile2" name="file"
+                      <span class="glyphicon glyphicon-folder-open"></span><input id=file-input type="file" ngf-select ng-model="picFile2" name="file"
                         accept="image/*" ngf-max-size="2MB" required
                         ngf-model-invalid="errorFile" hidden>
                     </label>
@@ -64,7 +81,7 @@
                       <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile2" class="thumb">
                       <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
                     </div>
-                    <br>
+
                     <button ng-show="picFile2"  id=upload-btn class="btn btn-info btn" ng-disabled="!myForm.$valid"
                             ng-click="uploadPic(picFile2)"><span class="glyphicon glyphicon-upload"></span> Enviar</button>
                     <br>
@@ -100,6 +117,10 @@
             padding: 2px;
             }
 
+            .sombra {
+              text-shadow: 5px 5px 5px black;
+            }
+
             <% if @isLogged then%>
               .isLogged{
                 border: 2px dashed #ffffff;
@@ -127,10 +148,11 @@
                 select-non-editable="true"
                 ng-blur="saveDiv('site.pages.home.label')"
                 placeholder="Texto de apresentação..."
+                class=sombra
                 >
             </div>
           </span>
-          <hr class="star-light">
+          <hr class="star-light sombra">
           <span class="skills">
             <div contenteditable="{{isLogged}}"
                 ng-model="site.pages.home.body"
@@ -138,6 +160,7 @@
                 select-non-editable="true"
                 ng-blur="saveDiv('site.pages.home.body')"
                 placeholder="Sub-texto de apresentação..."
+                class=sombra
                 >
             </div>
           </span>

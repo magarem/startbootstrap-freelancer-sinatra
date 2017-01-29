@@ -6,13 +6,13 @@ style:
   headerStyle: light-layout
   avatarStyle: 'true'
 head:
-  backgroundColor: hsl(266, 19%, 64%)
-  backgroundUrl: "/styleBackgrounds/blue_gradient-wallpaper-1440x900.jpg"
-  fontColor: hsl(0, 0%, 89%)
+  backgroundColor: hsl(266, 28%, 51%)
+  backgroundUrl: "/styleBackgrounds/abstract_2_00-wallpaper-1440x900.jpg"
+  fontColor: hsl(0, 0%, 95%)
   title: Portfolio geral
   description: Site portfolio
   author: marcelo magalhaes
-  backGroundImg: contas/192/img/backGround/backGround.jpg?1485566754
+  backGroundImg: contas/192/img/backGround/backGround.jpg?1485634549
 moldura:
   label: Portfolio
   logo:
@@ -34,9 +34,9 @@ moldura:
       web mais rápido e fácil
 pages:
   home:
-    label: Levando a saúde
+    label: pura saúde
     img: contas/192/img/avatar.jpg?1485390796
-    body: styleswitch
+    body: Brasil
   about:
     label: quem somos
     body1: Gatas lindas

@@ -277,6 +277,12 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   $scope.isLogged = false;
   $scope.crop_box = false
 
+  $scope.options = {
+
+    // color
+    placeholder: 'teste',
+  };
+
   // api event handlers
   $scope.eventApi = {
       onBlur: function(api, color, $event) {
