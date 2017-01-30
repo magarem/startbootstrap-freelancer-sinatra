@@ -55,7 +55,13 @@ before do
       tt = request.host_with_port.split(".")[-1]
       redirect "http://#{tt}/site/index.html"
   end
+
   puts "[@site_nome]>#{@site_nome}"
+
+  if @site_nome == "radiando" then
+    tt = request.host_with_port.split(".")[-1]
+    redirect "http://#{tt}/site/index.html"
+  end  
 
   #Testa se existe o site
   if File.exist? File.expand_path "./public/contas/"+@site_nome then
