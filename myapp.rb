@@ -41,16 +41,19 @@ before do
   @isLogged = @logado
 
   #Hack para teste
-  session[:logado] = true
-  session[:site_nome] = "192"
-  @edit_flag = "true"
+  # session[:logado] = true
+  # session[:site_nome] = "192"
+  # @edit_flag = "true"
 
   puts ">[@logado]>>#{@logado}"
   # puts ">request.subdomain.split(".").first >>" + request.host.split(".").first
 
   # Pega o nome do site
   if request.host.include? "." then
-    @site_nome = request.host.split(".").first
+      @site_nome = request.host.split(".").first
+    else
+      tt = request.host_with_port.split(".")[-1]
+      redirect "http://#{tt}/site/index.html"
   end
   puts "[@site_nome]>#{@site_nome}"
 
@@ -102,9 +105,7 @@ get "/" do
   end
 
   # @str1 = ""
-  # a = Dir.entries("./public/fundos").sort
-  # a.each do |nome|
-  #   if nome != "." && nome != ".." then
+  # a = Dir.entries("./public  tt = request.host_with_port.split(".")[-1]!= ".." then
   #     @str1 << "<button img=/fundos/#{nome} class=''>
   #        <img src=/fundos/#{nome}  style='width: 30px; height: 20px;'>
   #     </button>\n"
@@ -417,7 +418,7 @@ post '/objSave' do
 
   case @obj
 
-  
+
     when "site.pages.home.label"
       @data["pages"]["home"]["label"] = @val
 

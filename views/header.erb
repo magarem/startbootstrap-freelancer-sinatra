@@ -108,7 +108,7 @@ padding : 5px 15px;
 </style>
 <header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + site.head.backgroundUrl + ') ', 'background-color': site.head.backgroundColor, 'color': site.head.fontColor }">
   <div class="demo_changer" >
-    <div class="demo-icon">
+    <div class="demo-icon" ng-show=isLogged>
       <i class="fa fa-cog fa-spin fa-2x"></i>
     </div><!-- end opener icon -->
     <div class="form_holder">
@@ -255,7 +255,7 @@ padding : 5px 15px;
                 >
             </div>
           </span>
-          <hr ng-show=headSubtitulo2 class="star-light sombra">
+          <hr ng-show=site.head.items.description class="star-light sombra">
           <span class="skills">
             <div contenteditable="{{isLogged}}"
                 ng-show=site.head.items.description

@@ -5,14 +5,14 @@ senha: 1
 head:
   backgroundColor: hsl(2, 18%, 72%)
   backgroundUrl: "/styleBackgrounds/abstract_2_00-wallpaper-1440x900.jpg"
-  fontColor: hsl(0, 2%, 27%)
+  fontColor: hsl(0, 0%, 97%)
   title: Portfolio geral
   description: Site portfolio
   author: marcelo magalhaes
   items:
-    avatar: false
+    avatar: true
     title: true
-    description: false
+    description: true
     sombra: true
 moldura:
   label: Portfolio
@@ -36,7 +36,7 @@ moldura:
 pages:
   home:
     label: pura saúde
-    img: contas/192/img/avatar.jpg?1485704643
+    img: contas/192/img/avatar.jpg?1485785027
     body: Brasil
   about:
     label: quem somos
