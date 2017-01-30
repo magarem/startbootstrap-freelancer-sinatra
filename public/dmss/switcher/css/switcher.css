@@ -49,7 +49,7 @@ a.evo-hist{margin-left:6px}
 .evo-pop {
     background:#FFFFFF;
     border: 1px solid #DEDEDE;
-    padding: 10px !important;
+    padding: 0px !important;
     width: 225px !important;
     z-index: 10000;
 }
@@ -62,13 +62,13 @@ a.evo-hist{margin-left:6px}
     width: 20px;
 }
 .demo_changer p {
-	margin:10px 0;
+	margin:1px 0;
 }
 .demo_changer .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
 	background:#fff;
 }
 .demo_changer h4 {
-	margin:10px 0 !important;
+	margin:1px 0 !important;
 	color: #545454 !important;
 	text-transform:none !important;
 	font-family: 'PT Sans',sans-serif;
@@ -137,7 +137,7 @@ a.evo-hist{margin-left:6px}
 	font-size:21px;
 }
 .demo_changer .btn{
-	margin-top:10px;
+	margin-top:3px;
 }
 .demo_changer .demo-icon{
     cursor: pointer;

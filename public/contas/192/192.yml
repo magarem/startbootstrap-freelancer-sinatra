@@ -2,21 +2,22 @@
 name: 192
 email: contato@magaweb.com.br
 senha: 1
-style:
-  headerStyle: light-layout
-  avatarStyle: 'true'
 head:
-  backgroundColor: hsl(266, 28%, 51%)
+  backgroundColor: hsl(2, 18%, 72%)
   backgroundUrl: "/styleBackgrounds/abstract_2_00-wallpaper-1440x900.jpg"
-  fontColor: hsl(0, 0%, 95%)
+  fontColor: hsl(0, 2%, 27%)
   title: Portfolio geral
   description: Site portfolio
   author: marcelo magalhaes
-  backGroundImg: contas/192/img/backGround/backGround.jpg?1485634549
+  items:
+    avatar: false
+    title: true
+    description: false
+    sombra: true
 moldura:
   label: Portfolio
   logo:
-    label: Amazônia nativa
+    label: Amazônia nativa!
     link: index.ttt
   menu:
   - label: Fotos
@@ -35,7 +36,7 @@ moldura:
 pages:
   home:
     label: pura saúde
-    img: contas/192/img/avatar.jpg?1485390796
+    img: contas/192/img/avatar.jpg?1485704643
     body: Brasil
   about:
     label: quem somos

@@ -1,4 +1,104 @@
 <style>
+  div .backImg{
+    width: 100px;
+    height: 60px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .btn-file {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    /*right: 0;*/shadow
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+  }
+
+  .thumb {
+    width: 200px;
+    height: auto;
+    float: none;
+    position: relative;
+    /*top: 7px;*/
+  }
+  .hh {
+    text-center;
+    center-block;
+  }
+
+  label.myLabel input[type="file"] {
+position: fixed;
+top: -1000px;
+}
+
+/***** Example custom styling *****/
+.myLabel {
+border: 2px solid #AAA;
+border-radius: 4px;
+padding: 2px 5px;
+margin: 2px;
+background: #DDD;
+display: inline-block;
+}
+.myLabel:hover {
+background: #CCC;
+}
+.myLabel:active {
+background: #CCF;
+}
+.myLabel :invalid + span {
+color: #A44;
+}
+.myLabel :valid + span {
+color: #4A4;
+}
+
+</style>
+<style>
+
+
+#exTab1 .tab-content {
+color : white;
+background-color: #428bca;
+padding : 5px 15px;
+}
+
+#exTab2 h3 {
+color : white;
+background-color: #428bca;
+padding : 5px 15px;
+}
+
+/* remove border radius for the tab */
+
+#exTab1 .nav-pills > li > a {
+border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills > li > a {
+border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 .tab-content {
+color : white;
+background-color: #428bca;
+padding : 5px 15px;
+}
+</style>
+<style>
   header {
     background-size: cover;
     background-attachment: fixed;
@@ -7,82 +107,55 @@
   }
 </style>
 <header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + site.head.backgroundUrl + ') ', 'background-color': site.head.backgroundColor, 'color': site.head.fontColor }">
-  <!-- Start Switcher -->
   <div class="demo_changer" >
     <div class="demo-icon">
       <i class="fa fa-cog fa-spin fa-2x"></i>
     </div><!-- end opener icon -->
     <div class="form_holder">
-      <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="predefined_styles center-block">
-                <style>
-                  div .backImg{
-                    width: 100px;
-                    height: 60px;
-                    color: #fff;
-                    margin-bottom: 10px;
-                  }
-                  .btn-file {
-                    position: relative;
-                    overflow: hidden;
-                  }
-                  .btn-file input[type=file] {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    min-width: 100%;
-                    min-height: 100%;
-                    font-size: 100px;
-                    text-align: right;
-                    filter: alpha(opacity=0);
-                    opacity: 0;
-                    outline: none;
-                    background: white;
-                    cursor: inherit;
-                    display: block;
-                  }
-
-                  .thumb {
-                    width: 200px;
-                    height: auto;
-                    float: none;
-                    position: relative;
-                    top: 7px;
-                  }
-                  .hh {
-                    text-center;
-                    center-block;
-                  }
-
-                </style>
-                <h4>Editor de estilos</h4>
-                <div  style="margin-left: 12px;">
-                  <b>Fonte</b><br><color-picker ng-model="site.head.fontColor"  event-api="eventApi2" options="options"></color-picker>
-                  <br><b>Fundo</b><color-picker ng-model="site.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
+      <ul  class="nav nav-pills" id="exTab1">
+        <li class="active"><a  href="#1a" data-toggle="tab">cor</a></li>
+        <li><a href="#2a" data-toggle="tab">img</a></li>
+        <li><a href="#3a" data-toggle="tab">itens</a></li>
+      </ul>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="predefined_styles center-block">
+          <div class="tab-content clearfix">
+            <div class="tab-pane active row" id="1a">
+                <div  style="margin-left: 12px;"><br>
+                  <label for="fundo">Fundo:</label>
+                  <color-picker ng-model="site.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
+                  <br>
+                  <label for="fonte">Fonte:</label>
+                  <color-picker ng-model="site.head.fontColor"  event-api="eventApi2" options="options"></color-picker>
+                  <div class="checkbox">
+                    <label><input type="checkbox" ng-model="site.head.items.sombra" >Sombra</label>
+                  </div>
                 </div>
-                <!-- END MODULE #2 -->
-                    <!-- <h4>Imagem de fundo</h4> -->
-                <!-- MODULE #3 --><br>
-                <b>Imagem de fundo</b>
-                <div id=fundos  style="overflow-y: auto; width: 140px; height: 100px;  background-color: #d9d9d9; outline: 1px solid #737373;" class="text-center" >
-                    <div class="backImg center-block" style="outline: 1px solid #b3b3b3;" ng-repeat="item in backGroundItems" back-img="/styleBackgrounds/{{item}}" ng-click="backgroundUrl_set('/styleBackgrounds/'+item)"></div>
-                </div>
-                <!-- END MODULE #3 --><br>
-                <button  class="btn-md btn-info" ng-click="backgroundUrl_clear();">Apagar fundo</button>
-                <form name="myForm">
+            </div>
+            <div class="tab-pane  row" id="2a">
+              <!-- END MODULE #2 -->
+              <!-- <h4>Imagem de fundo</h4> -->
+              <!-- MODULE #3 --><br>
+              <label for="fundo">Imagem de fundo</label>
+              <div id=fundos  style="overflow-y: auto; width: 140px; height: 100px;  background-color: #d9d9d9; outline: 1px solid #9a9292;" class="text-center" >
+                <div class="backImg center-block" style="outline: 1px solid #b3b3b3;" ng-repeat="item in backGroundItems" back-img="/styleBackgrounds/{{item}}" ng-click="backgroundUrl_set('/styleBackgrounds/'+item)"></div>
+              </div>
+              <!-- END MODULE #3 --><br>
+              <form name="myForm">
                   <fieldset>
-                    <label class="btn btn-default btn-file">
-                      <span class="glyphicon glyphicon-folder-open"></span><input id=file-input type="file" ngf-select ng-model="picFile2" name="file"
-                        accept="image/*" ngf-max-size="2MB" required
-                        ngf-model-invalid="errorFile" hidden>
+                    <button  class="btn-md btn-info" style="margin-bottom: 15px;" ng-click="backgroundUrl_clear();">Apagar fundo</button>
+                    <label class="myLabel">
+                      <input id=file-input type="file" ngf-select ng-model="picFile2" name="file"
+                        accept="image/*" ngf-max-size="10MB" required
+                        ngf-model-invalid="errorFile" ngf-fix-orientation="true" hidden>
+                      <span>Selecionar arquivo</span>
                     </label>
                     <div  style="margin-left:57px;">
                       <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile2" class="thumb">
                       <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
                     </div>
 
-                    <button ng-show="picFile2"  id=upload-btn class="btn btn-info btn" ng-disabled="!myForm.$valid"
+                    <button ng-show="picFile2"  id=upload-btn class="btn" ng-disabled="!myForm.$valid"
                             ng-click="uploadPic(picFile2)"><span class="glyphicon glyphicon-upload"></span> Enviar</button>
                     <br>
                     <span class="progress" ng-show="picFile2.progress >= 0">
@@ -97,12 +170,37 @@
                   </fieldset>
                   <br>
                 </form>
-                </div><!-- end predefined_styles -->
-          </div><!-- end col -->
+            </div>
+            <div class="tab-pane row" id="3a">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"
+                         ng-model="site.head.items.avatar"
+                         ng-blur="saveDiv('site.head.items.avatar')">Imagem principal
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"
+                         ng-model="site.head.items.title"
+                         ng-blur="saveDiv('site.head.items.title')">Sub-titulo #1
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"
+                         ng-model="site.head.items.description"
+                         ng-blur="saveDiv('site.head.items.description')">Sub-titulo #2
+                </label>
+              </div>
+            </div>
+          </div><!-- end predefined_styles -->
+        </div><!-- end col -->
         <!-- end col -->
-        </div><!-- end row -->
-    </div><!-- end form_holder -->
-  </div><!-- end demo_changer -->
+      </div><!-- end row -->
+    </div>
+  </div><!-- end form_holder -->
+
   <!-- End Switcher -->
   <div class="container">
     <div class="row">
@@ -111,14 +209,18 @@
          <style>
            .c{
             border-radius: 100%;
-            box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+            box-shadow: 0 0 8px rgba(0, 0, 0, .8) ;
             -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
             -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
             padding: 2px;
             }
 
             .sombra {
-              text-shadow: 5px 5px 5px black;
+              text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.6);
+            }
+
+            .sombra2 {
+              text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.5);
             }
 
             <% if @isLogged then%>
@@ -131,7 +233,7 @@
 
          </style>
 
-        <img class="c isLogged avatarImg"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
+        <img ng-show=site.head.items.avatar class="c isLogged avatarImg"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
 
 
         <div id=div1></div>
@@ -143,24 +245,26 @@
         <div class="intro-text">
           <span class="name">
             <div contenteditable="{{isLogged}}"
+                ng-show=site.head.items.title
                 ng-model="site.pages.home.label"
                 strip-br="true"
                 select-non-editable="true"
                 ng-blur="saveDiv('site.pages.home.label')"
                 placeholder="Texto de apresentação..."
-                class=sombra
+                ng-class="{sombra: site.head.items.sombra}"
                 >
             </div>
           </span>
-          <hr class="star-light sombra">
+          <hr ng-show=headSubtitulo2 class="star-light sombra">
           <span class="skills">
             <div contenteditable="{{isLogged}}"
+                ng-show=site.head.items.description
                 ng-model="site.pages.home.body"
                 strip-br="true"
                 select-non-editable="true"
                 ng-blur="saveDiv('site.pages.home.body')"
                 placeholder="Sub-texto de apresentação..."
-                class=sombra
+                ng-class="{sombra2: site.head.items.sombra}"
                 >
             </div>
           </span>

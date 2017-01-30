@@ -277,14 +277,21 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   $scope.isLogged = false;
   $scope.crop_box = false
 
-  $scope.options = {
 
-    // color
-    placeholder: 'teste',
+
+  $scope.options = {
+    id: 'fundo',
+  };
+
+  $scope.options2 = {
+    id: 'fonte',
   };
 
   // api event handlers
   $scope.eventApi = {
+      onChange: function(api, color, $event) {
+        $scope.backgroundUrl_clear();
+      },
       onBlur: function(api, color, $event) {
         // $scope.site.head.backgroundColor = color
         $scope.saveDiv('site.head.backgroundColor')
@@ -338,7 +345,6 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   };
 
   $scope.backgroundUrl_set = function(backgroundUrl){
-    // $scope.backgroundUrl=backgroundUrl
     $scope.site.head.backgroundUrl = backgroundUrl
     $scope.saveDiv('site.head.backgroundUrl')
   }
@@ -350,6 +356,8 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
     $scope.picFile = $scope.site.pages.home.img;
+
+    $scope.site.head.sombra = true
 
     // $scope.backgroundColor = $scope.site.head.backgroundColor;
     // $scope.backgroundUrl = $scope.site.head.backgroundUrl;
@@ -389,6 +397,11 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   };
 
   $scope.uploadPic = function(file) {
+    var siteNome = SiteData.getSiteNome();
+    //Pegando a extenção do arquivo
+    var dotIndex = file.name.lastIndexOf('.');
+    var fileExt = file.name.substring(dotIndex);
+
      file.upload = Upload.upload({
        url: '/backGroundImgUpload',
        data: {file: file},
@@ -398,11 +411,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
        $timeout(function () {
          file.result = response.data;
          console.log("file.result:", file);
-         var siteNome = SiteData.getSiteNome();
-         //Pegando a extenção do arquivo
-         var dotIndex = file.name.lastIndexOf('.');
-         var fileExt = file.name.substring(dotIndex);
-         $scope.backgroundUrl_set("/contas/"+siteNome+"/img/backGround/backGround"+fileExt+"?decache=" + Math.random())
+         $scope.site.head.backgroundUrl = "/contas/"+siteNome+"/img/backGround/backGround.jpg?decache=" + Math.random()
 
        });
      }, function (response) {
@@ -411,6 +420,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
      }, function (evt) {
        // Math.min is to fix IE which reports 200% sometimes
        file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+       //$scope.site.head.backgroundUrl = "/contas/"+siteNome+"/img/backGround/backGround"+fileExt+"?decache=" + Math.random()
      });
      }
 }])

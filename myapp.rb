@@ -406,20 +406,18 @@ post '/objSave' do
   end
 
   # Confere qual foi a ordem passada
+  s = ""
+  @obj.split(".").each_with_index do |item, index|
+    if index > 0 then s = s + "['#{item}']" end
+  end
+  comando = "@data#{s} = @val"
+  puts @val
+  puts "$$$> #{comando}"
+  eval(comando)
+
   case @obj
 
-    when "site.head.backgroundUrl"
-      @data["head"]["backgroundUrl"] = @val
-
-    when "site.head.backgroundColor"
-      @data["head"]["backgroundColor"] = @val
-
-    when "site.head.fontColor"
-      @data["head"]["fontColor"] = @val
-
-    when "site.moldura.logo.label"
-      @data["moldura"]["logo"]["label"] = @val
-
+  
     when "site.pages.home.label"
       @data["pages"]["home"]["label"] = @val
 
@@ -526,13 +524,18 @@ post "/backGroundImgUpload" do
       f.write(file.read)
     end
 
-    # # Reduz o tamanho da imagem
-    # image = MiniMagick::Image.open("./public/contas/#{@site_nome}/img/#{@filename}")
-    # image.resize "256x256"
-    # image.write "./public/contas/#{@site_nome}/img/#{@filename}"
+    #Converte a imagem para jpg
+    # i = Image.read("./public/contas/#{@site_nome}/img/backGround/#{@filename}").first
+    # i.format = "JPEG"
+    # i.write("./public/contas/#{@site_nome}/img/backGround/backGround.jpg") { self.quality = 100 }
+
+    #Converte a imagem para jpg
+    image = MiniMagick::Image.open("./public/contas/#{@site_nome}/img/backGround/#{@filename}")
+    image.format "jpg"
+    image.write "./public/contas/#{@site_nome}/img/backGround/backGround.jpg"
 
     # Salva o nome da imagem o arquivo fonte
-    @data["head"]["backGroundImg"] = "contas/#{@site_nome}/img/backGround/#{@filename}?#{Time.now.to_i}"
+    @data["head"]["backgroundUrl"] = "contas/#{@site_nome}/img/backGround/backGround.jpg?#{Time.now.to_i}"
     f = File.open @data_path, 'w'
     YAML.dump @data, f
     f.close

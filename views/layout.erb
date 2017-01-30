@@ -253,48 +253,6 @@ div.materialpicker-white.selected {
           });
       }
     </script>
-    <script>
-     headerStyleSet = function(headerStyle){
-        $.ajax({
-          type: "POST",
-          url: "/headerStyleSet",
-          data: { headerStyle: headerStyle, avatarStyle: $("#hide-show-content").is(":checked")},
-          success: function(result){
-          // $("#div1").html(result);
-          }
-        });
-    }
-    avatarStyleSet = function(){
-       $.ajax({
-         type: "POST",
-         url: "/avatarStyleSet",
-         data: {avatarStyle: $("#hide-show-content").is(":checked")},
-         success: function(result){
-         // $("#div1").html(result);
-         }
-       });
-   }
-    $(document).ready(function() {
-        $.ajax({
-          type: "GET",
-          url: "/headerStyleGet",
-          success: function(result){
-            console.log(result)
-            $("#" + result).prop('checked', true);
-          }
-        });
-    });
-    $(document).ready(function() {
-        $.ajax({
-          type: "GET",
-          url: "/avatarStyleGet",
-          success: function(result){
-            console.log("avatar:",result)
-            $("#hide-show-content").prop('checked', (result === 'true'));
-          }
-        });
-    });
-    </script>
 
     <!-- UI jQuery (For Module #5 and #6) -->
 
