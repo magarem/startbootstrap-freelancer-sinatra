@@ -106,14 +106,14 @@ padding : 5px 15px;
     background-attachment: scroll;
   }
 </style>
-<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + site.head.backgroundUrl + ') ', 'background-color': site.head.backgroundColor, 'color': site.head.fontColor }">
+<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + head.backgroundUrl + ') ', 'background-color': head.backgroundColor, 'color': head.fontColor }">
   <div class="demo_changer" >
     <div class="demo-icon" ng-show=isLogged>
       <i class="fa fa-cog fa-spin fa-2x"></i>
     </div><!-- end opener icon -->
     <div class="form_holder">
       <ul  class="nav nav-pills" id="exTab1">
-        <li class="active"><a  href="#1a" data-toggle="tab">cor</a></li>
+        <li class="active"><a href="#1a" data-toggle="tab">cor</a></li>
         <li><a href="#2a" data-toggle="tab">img</a></li>
         <li><a href="#3a" data-toggle="tab">itens</a></li>
       </ul>
@@ -123,12 +123,12 @@ padding : 5px 15px;
             <div class="tab-pane active row" id="1a">
                 <div  style="margin-left: 12px;"><br>
                   <label for="fundo">Fundo:</label>
-                  <color-picker ng-model="site.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
+                  <color-picker ng-model="head.backgroundColor" event-api="eventApi" options="options"></color-picker>
                   <br>
                   <label for="fonte">Fonte:</label>
-                  <color-picker ng-model="site.head.fontColor"  event-api="eventApi2" options="options"></color-picker>
+                  <color-picker ng-model="head.fontColor"  event-api="eventApi2" options="options"></color-picker>
                   <div class="checkbox">
-                    <label><input type="checkbox" ng-model="site.head.items.sombra" >Sombra</label>
+                    <label><input type="checkbox" ng-model="head.show.txtShadow" >Sombra</label>
                   </div>
                 </div>
             </div>
@@ -175,22 +175,22 @@ padding : 5px 15px;
               <div class="checkbox">
                 <label>
                   <input type="checkbox"
-                         ng-model="site.head.items.avatar"
-                         ng-blur="saveDiv('site.head.items.avatar')">Imagem principal
+                         ng-model="head.show.avatar"
+                         ng-blur="saveDiv('head.show.avatar')">Imagem principal
                 </label>
               </div>
               <div class="checkbox">
                 <label>
                   <input type="checkbox"
                          ng-model="site.head.items.title"
-                         ng-blur="saveDiv('site.head.items.title')">Sub-titulo #1
+                         ng-blur="saveDiv('head.show.txt1')">Sub-titulo #1
                 </label>
               </div>
               <div class="checkbox">
                 <label>
                   <input type="checkbox"
                          ng-model="site.head.items.description"
-                         ng-blur="saveDiv('site.head.items.description')">Sub-titulo #2
+                         ng-blur="saveDiv('head.show.txt2')">Sub-titulo #2
                 </label>
               </div>
             </div>
@@ -206,7 +206,7 @@ padding : 5px 15px;
     <div class="row">
   <!-- <input type="text" ng-model="selected"> -->
       <div class="col-lg-12">
-         <style>
+        <style>
            .c{
             border-radius: 100%;
             box-shadow: 0 0 8px rgba(0, 0, 0, .8) ;
@@ -230,41 +230,35 @@ padding : 5px 15px;
               .isLogged:hover {
                 border: 2px dashed #0090D2;}
            <% end %>
-
-         </style>
-
-        <img ng-show=site.head.items.avatar class="c isLogged avatarImg"  ng-src="{{ site.pages.home.img }}" ng-click="!isLogged || openHeaderModal()"/>
-
-
+        </style>
+        <img ng-show=head.show.avatar
+             class="c isLogged avatarImg"
+             ng-src="{{ head.avatar }}"
+             ng-click="!isLogged || openHeaderModal()"/>
         <div id=div1></div>
-        <!-- Indicates a successful or positive action -->
-
-        <!--button id=header_img_confirm type="button" class="btn btn-primary" style="display: none" onclick="$('#uploadimage').submit();$('#header_img_confirm').hide();">Confirmar imagem</button-->
-
-
         <div class="intro-text">
           <span class="name">
             <div contenteditable="{{isLogged}}"
-                ng-show=site.head.items.title
-                ng-model="site.pages.home.label"
+                ng-show=head.show.txt1
+                ng-model="head.txt1"
                 strip-br="true"
                 select-non-editable="true"
-                ng-blur="saveDiv('site.pages.home.label')"
+                ng-blur="saveDiv('head.txt1')"
                 placeholder="Texto de apresentação..."
-                ng-class="{sombra: site.head.items.sombra}"
+                ng-class="{sombra: head.show.shadow}"
                 >
             </div>
           </span>
-          <hr ng-show=site.head.items.description class="star-light sombra">
+          <hr ng-show=head.show.txt2 class="star-light sombra">
           <span class="skills">
             <div contenteditable="{{isLogged}}"
-                ng-show=site.head.items.description
-                ng-model="site.pages.home.body"
+                ng-show=head.show.txt2
+                ng-model="head.txt2"
                 strip-br="true"
                 select-non-editable="true"
-                ng-blur="saveDiv('site.pages.home.body')"
+                ng-blur="saveDiv('head.txt2')"
                 placeholder="Sub-texto de apresentação..."
-                ng-class="{sombra2: site.head.items.sombra}"
+                ng-class="{sombra2: head.show.shadow}"
                 >
             </div>
           </span>

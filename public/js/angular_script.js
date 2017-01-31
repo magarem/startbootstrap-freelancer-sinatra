@@ -1,5 +1,4 @@
 var mod = angular.module("myapp", ['color.picker', 'siyfion.sfTypeahead', 'jsTag', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
-
 mod.filter('filterByTags', function () {
   return function (items, tag) {
     console.log("tag:", tag)
@@ -23,7 +22,6 @@ mod.filter('filterByTags', function () {
     return filtered;
   };
 });
-
 mod.directive('customOnChange', function() {
   return {
     restrict: 'A',
@@ -33,7 +31,6 @@ mod.directive('customOnChange', function() {
     }
   };
 });
-
 mod.directive('backImg', function(){
     return function(scope, element, attrs){
         attrs.$observe('backImg', function(value) {
@@ -44,7 +41,6 @@ mod.directive('backImg', function(){
         });
     };
 });
-
 mod.directive('onErrorSrc', function() {
   return {
     link: function(scope, element, attrs) {
@@ -56,14 +52,12 @@ mod.directive('onErrorSrc', function() {
     }
   }
 });
-
 mod.filter('htmlToPlaintext', function() {
     return function(text) {
       return angular.element(text).text();
     }
   }
 );
-
 mod.directive('imageonload', function() {
     return {
         restrict: 'A',
@@ -75,7 +69,6 @@ mod.directive('imageonload', function() {
         }
     };
 });
-
 mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) { return {
     restrict: 'A',
     require: '?ngModel',
@@ -164,7 +157,6 @@ mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) {
       }
     }
   }}])
-
 mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     var logged = $http.get('/logged');
@@ -216,7 +208,6 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     }
 
   }]);
-
 mod.controller('topCtrl', function ($scope, $http, SiteData) {
 
   $scope.site = {};
@@ -235,7 +226,6 @@ mod.controller('topCtrl', function ($scope, $http, SiteData) {
     })
   }
 })
-
 mod.controller('styleSelectCtrl', function ($scope, $http, SiteData) {
 
   $scope.items = [];
@@ -251,7 +241,6 @@ mod.controller('styleSelectCtrl', function ($scope, $http, SiteData) {
 
 
 })
-
 mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, $rootScope, SiteData) {
 
   $scope.site = {};
@@ -262,7 +251,7 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
   })
 
   SiteData.loadSiteData().then(function(response) {
-    $scope.site = response.data;
+    $scope.navbar = response.data.navbar;
   })
 
   $scope.saveDiv = function(obj){
@@ -270,14 +259,11 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
   })
   }
 }])
-
 mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, Upload, $timeout, $http, SiteData, $uibModal) {
 
   $scope.site = {};
   $scope.isLogged = false;
   $scope.crop_box = false
-
-
 
   $scope.options = {
     id: 'fundo',
@@ -294,21 +280,21 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
       },
       onBlur: function(api, color, $event) {
         // $scope.site.head.backgroundColor = color
-        $scope.saveDiv('site.head.backgroundColor')
+        $scope.saveDiv('head.backgroundColor')
       }
   };
   // api event handlers
   $scope.eventApi2 = {
       onBlur: function(api, color, $event) {
         // $scope.site.head.fontColor = color
-        $scope.saveDiv('site.head.fontColor')
+        $scope.saveDiv('head.fontColor')
       }
   };
 
   $scope.backgroundUrl_clear = function(){
     $scope.backgroundUrl = '';
     $scope.site.head.backgroundUrl = ""
-    $scope.saveDiv('site.head.backgroundUrl')
+    $scope.saveDiv('head.backgroundUrl')
   }
 
   $scope.backGroundItems = [];
@@ -346,7 +332,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
 
   $scope.backgroundUrl_set = function(backgroundUrl){
     $scope.site.head.backgroundUrl = backgroundUrl
-    $scope.saveDiv('site.head.backgroundUrl')
+    $scope.saveDiv('head.backgroundUrl')
   }
 
   SiteData.logged().then(function(response) {
@@ -354,14 +340,9 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   })
 
   SiteData.loadSiteData().then(function(response) {
-    $scope.site = response.data;
-    $scope.picFile = $scope.site.pages.home.img;
-
-    $scope.site.head.sombra = true
-
-    // $scope.backgroundColor = $scope.site.head.backgroundColor;
-    // $scope.backgroundUrl = $scope.site.head.backgroundUrl;
-    // $scope.fontColor = $scope.site.head.fontColor;
+    $scope.head = response.data.head;
+    $scope.picFile = $scope.head.avatar;
+    $scope.head.show.txtShadow = true
   })
 
   $scope.saveDiv = function(obj){
@@ -411,7 +392,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
        $timeout(function () {
          file.result = response.data;
          console.log("file.result:", file);
-         $scope.site.head.backgroundUrl = "/contas/"+siteNome+"/img/backGround/backGround.jpg?decache=" + Math.random()
+         $scope.head.backgroundUrl = "/contas/"+siteNome+"/img/backGround/backGround.jpg?decache=" + Math.random()
 
        });
      }, function (response) {
@@ -424,7 +405,6 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
      });
      }
 }])
-
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
 
   $scope.isLogged = false;
@@ -474,7 +454,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
       $timeout(function () {
         $scope.result = response.data;
         $scope.crop_box = false
-        $scope.site.pages.home.img = dataUrl
+        $scope.head.avatar = dataUrl
         $scope.flgUploadOk = true;
         $scope.cancel()
       });
@@ -487,16 +467,15 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   }
   $scope.CropBoxOpen = function(){
     $scope.flgUploadOk = false;
-    $scope.res = $scope.site.pages.home.img
-    $scope.site.pages.home.img = ""
+    $scope.res = $scope.head.avatar
+    $scope.head.avatar = ""
     $scope.crop_box = true
   }
   $scope.uploadCancel = function(){
-    $scope.site.pages.home.img = $scope.res
+    $scope.head.avatar = $scope.res
     $scope.crop_box = false
   }
 }]);
-
 mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', '$location', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, $location, SiteData, deviceDetector) {
 
   //Busca informações do device que está utilizando o site
@@ -519,9 +498,9 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   SiteData.loadSiteData().then(function(response) {
     var siteNome = response.data.name
     console.log("siteNome:", siteNome);
-    $scope.portfolio = response.data.pages.portfolio;
-    $scope.portfolioItems = response.data.pages.portfolio.items;
-    $scope.portfolioItemsTags = response.data.pages.portfolio.itemsTags;
+    $scope.portfolio = response.data.portfolio;
+    $scope.portfolioItems = response.data.portfolio.items;
+    $scope.portfolioItemsTags = response.data.portfolio.itemsTags;
     // portfolioItemsTags_update();
   })
 
@@ -711,7 +690,6 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   }
 
 }]);
-
 mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInstance, $timeout, SiteData, siteNome, item, JSTagsCollection) {
 
   $scope.item = item;
@@ -730,7 +708,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     return newArray;
   }
   SiteData.loadSiteData().then(function(response) {
-    $scope.portfolio = response.data.pages.portfolio;
+    $scope.portfolio = response.data.portfolio;
     console.log($scope.tags)
     // Build JSTagsCollection
     $scope.tags = new JSTagsCollection($scope.tags);
@@ -810,7 +788,6 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     $rootScope.$emit("portfolioItemsTags_update");
   }
 });
-
 mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
 
   $scope.imgUploadBtn = true;
@@ -904,24 +881,22 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   };
 
 }]);
-
 mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
-
   $scope.isLogged = false;
+
   SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
 
   $scope.about = {};
   SiteData.loadSiteData().then(function(response) {
-    $scope.about = response.data.pages.about
+    $scope.about = response.data.about
   })
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }
 })
-
 mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
 
   $scope.isLogged = false;
@@ -931,8 +906,8 @@ mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
   })
 
   SiteData.loadSiteData().then(function(response) {
-    $scope.site = response.data
-    $scope.contact = response.data.pages.contact
+    $scope.siteNome = response.data.info.name
+    $scope.contact = response.data.contact
   })
 
   $scope.saveDiv = function(obj){
@@ -940,14 +915,13 @@ mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
     })
   }
 })
-
 mod.controller('footerCtrl', function ($scope, $http, SiteData) {
 
-  $scope.site = {};
+  $scope.footer = {};
   $scope.isLogged = false;
 
   SiteData.loadSiteData().then(function(response) {
-    $scope.site = response.data;
+    $scope.footer = response.data.footer;
   })
 
   $scope.saveDiv = function(obj){
@@ -959,7 +933,6 @@ mod.controller('footerCtrl', function ($scope, $http, SiteData) {
     $scope.isLogged = (response.data === 'true');
   })
 })
-
 mod.controller('loginCtrl', function ($scope, $http, SiteData) {
 
   $scope.site = {};

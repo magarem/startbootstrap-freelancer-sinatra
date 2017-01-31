@@ -95,11 +95,15 @@ get "/cardPanel" do
 end
 
 #
-#  Carregamento do site
+#  Lê o diretório com os nomes das imagens de fundo
 #
 get "/styleBackgrounds" do
   Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
 end
+
+#
+#  Carregamento do site
+#
 get "/" do
   if !request.host.include? "." || @site_nome == "teste" then redirect 'teste/index.html' end
   if !request.host.include? "." || @site_nome == "radiando" then redirect 'site/index.html' end
