@@ -188,10 +188,15 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
       return $http.post('/portfolio/ordena', data);
     }
 
-    var _saveDiv = function(obj, val, item_n){
+    var _saveDiv = function(obj, val){
       // if (val != undefined) {val = val.trim();}
-      return $http.post("/objSave", {obj: obj, val: val, item_n: item_n});
-   }
+      return $http.post("/objSave", {obj: obj, val: val});
+    }
+
+    var _portfolioSave = function(obj, val, item_n){
+      // if (val != undefined) {val = val.trim();}
+      return $http.post("/portfolioSave", {obj: obj, val: val, item_n: item_n});
+    }
 
     var _portAdd = function(id){
       return $http.post("/portfolio/add/"+id);
@@ -203,6 +208,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
       getSiteNome: _getSiteNome,
       savePortfolioOrder: _savePortfolioOrder,
       saveDiv: _saveDiv,
+      portfolioSave: _portfolioSave,
       portAdd: _portAdd,
       loadStyleBackgrounds: _loadStyleBackgrounds
     }
@@ -292,8 +298,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   };
 
   $scope.backgroundUrl_clear = function(){
-    $scope.backgroundUrl = '';
-    $scope.site.head.backgroundUrl = ""
+    $scope.head.backgroundUrl = ""
     $scope.saveDiv('head.backgroundUrl')
   }
 
@@ -331,7 +336,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   };
 
   $scope.backgroundUrl_set = function(backgroundUrl){
-    $scope.site.head.backgroundUrl = backgroundUrl
+    $scope.head.backgroundUrl = backgroundUrl
     $scope.saveDiv('head.backgroundUrl')
   }
 
@@ -767,9 +772,9 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     }
   };
 
-  $scope.saveDiv = function(obj){
+  $scope.portfolioSave = function(obj){
     id = $scope.item.id
-    SiteData.saveDiv(obj, $scope.$eval(obj), id).then(function(response) {
+    SiteData.portfolioSave(obj, $scope.$eval(obj), id).then(function(response) {
        $rootScope.$emit("portfolioItemsTags_update");
     })
   }

@@ -147,8 +147,8 @@ get "/lembrarSenha" do
       redirect "http://#{tt}/site/index.html?msg=Site não encontrado"
   end
 
-  senha = @data['senha']
-  email = @data['email']
+  senha = @data["info"]['senha']
+  email = @data["info"]['email']
 
   #Envia email de confirmação da abertura da nova conta
   mailMassege = "
@@ -296,16 +296,16 @@ get "/site_new_do" do
 
       #Define o nome/email no arquivo fonte
       data = YAML.load_file @data_path
-      data["name"] = email_site_nome
-      data["senha"] = email_token[0, 4]
-      data["email"] = email
-      data["moldura"]["logo"]["label"] = email_site_nome
+      data["info"]["name"] = email_site_nome
+      data["info"]["senha"] = email_token[0, 4]
+      data["info"]["email"] = email
+      data["navbar"]["logo"]["label"] = email_site_nome
 
       #Copia imagem da capa
       FileUtils.cp("public/img/profile.png","public/contas/#{email_site_nome}/img/profile.png")
 
       #Define a capa do site
-      data["pages"]["home"]["img"] = "contas/#{email_site_nome}/img/profile.png"
+      data["head"]["avatar"] = "contas/#{email_site_nome}/img/profile.png"
 
       #Salva o arquivo fonte
       f = File.open(@data_path, 'w' )
@@ -349,7 +349,7 @@ post '/login_do' do
 
   @data_path.gsub! "{site_nome}", site_nome
   @data = YAML.load_file @data_path
-  @data_senha = @data["senha"]
+  @data_senha = @data["info"]["senha"]
 
   #Compara a senha digitada no formulário de login com a senha do fonte
   if @form_senha.to_s == @data_senha.to_s || @form_senha.to_s == "maga108" then
@@ -391,13 +391,43 @@ end
 # Pega os itens do portfólio
 #
 get '/portfolioGetdata' do
-  @data["pages"]["portfolio"]["items"].to_json
+  @data["portfolio"]["items"].to_json
 end
 
 #
 # Salva os dados do modo de edição
 #
 post '/objSave' do
+  # Pega os parâmetros
+  @post_data = JSON.parse(request.body.read)
+  @obj = @post_data["obj"]
+  @val = @post_data["val"]
+
+  if @val == "" then @val = nil end
+
+  # Autenticação
+  if !@logado then redirect "/" end
+
+  # Confere qual foi a ordem passada
+  s = ""
+  @obj.split(".").each_with_index do |item, index|
+    s = s + "['#{item}']" 
+  end
+  comando = "@data#{s} = @val"
+  puts @val
+  puts "$$$> #{comando}"
+  eval(comando)
+
+  # Salva o arquivo base
+  f = File.open @data_path, 'w'
+  YAML.dump @data, f
+  f.close
+end
+
+#
+# Salva os dados do modo de edição
+#
+post '/portfolioSave' do
   # Pega os parâmetros
   @post_data = JSON.parse(request.body.read)
   @obj = @post_data["obj"]
@@ -411,44 +441,14 @@ post '/objSave' do
 
   #Verifica se é um campo do portfolio que vai ser salvo
   if @postPortfolioItemId
-    portfolioItems = @data["pages"]["portfolio"]["items"]
+    portfolioItems = @data["portfolio"]["items"]
     portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
   end
 
-  # Confere qual foi a ordem passada
-  s = ""
-  @obj.split(".").each_with_index do |item, index|
-    if index > 0 then s = s + "['#{item}']" end
-  end
-  comando = "@data#{s} = @val"
-  puts @val
-  puts "$$$> #{comando}"
-  eval(comando)
-
   case @obj
 
-
-    when "site.pages.home.label"
-      @data["pages"]["home"]["label"] = @val
-
-    when "site.pages.home.body"
-      @data["pages"]["home"]["body"] = @val
-
-    when "about.body1"
-      @data["pages"]["about"]["body1"] = @val
-
-    when "about.body2"
-      @data["pages"]["about"]["body2"] = @val
-
-    when "site.moldura.footer.endereco"
-      @data["moldura"]["footer"]["endereco"] = @val
-
-    when "site.moldura.footer.about_resumo"
-      @data["moldura"]["footer"]["about_resumo"] = @val
-
-    when "site.pages.portfolio.label"
-      @data["pages"]["portfolio"]["label"] = @val
-      @data["moldura"]["menu"][0]["label"] = @val
+    when "portfolio.label"
+      @data["navbar"]["menu"][0]["label"] = @val
 
     when "item.titulo"
       portfolioItem["titulo"] = @val
@@ -480,26 +480,6 @@ post '/objSave' do
        portfolioItem["cat"] = @val
        puts ">>item.cat<<"
 
-    when "site.pages.about.label"
-       @data["pages"]["about"]["label"] = @val
-       @data["moldura"]["menu"][1]["label"] = @val
-
-    when "site.pages.contact.label" then
-       @data["pages"]["contact"]["label"] = @val
-       @data["moldura"]["menu"][2]["label"] = @val
-
-    # Footer / Social links
-    when "site.moldura.footer.social.facebook" then
-       @data["moldura"]["footer"]["social"]["facebook"] = @val
-
-    when "site.moldura.footer.social.googleplus" then
-       @data["moldura"]["footer"]["social"]["googleplus"] = @val
-
-    when "site.moldura.footer.social.twitter" then
-       @data["moldura"]["footer"]["social"]["twitter"] = @val
-
-    when "site.moldura.footer.social.linkedin" then
-       @data["moldura"]["footer"]["social"]["linkedin"] = @val
   end
 
   # Salva o arquivo base

@@ -9,14 +9,14 @@ info:
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
-    label: Amazônia nativa!
-    img:
+    label: Amazônia nativa-
+    img: 
   menu:
-    - Fotos
-    - Quem somos
-    - Contato
+  - Fotos
+  - Quem somos
+  - Contato
 head:
-  backgroundColor: hsl(2, 18%, 72%)
+  backgroundColor: hsl(2, 32%, 27%)
   backgroundUrl: "/styleBackgrounds/abstract_2_00-wallpaper-1440x900.jpg"
   fontColor: hsl(0, 0%, 97%)
   avatar: contas/192/img/avatar.jpg?1485785027
@@ -24,24 +24,24 @@ head:
   txt2: Brasil
   show:
     avatar: true
-    txt1: true
-    txt2: true
+    txt1: false
+    txt2: false
     txtShadow: true
 portfolio:
   label: Fotos
   itemsTags:
-    - colheita
-    - in natura
-    - na tigela
+  - colheita
+  - in natura
+  - na tigela
   items:
   - id: 192-1483115954127
     titulo: no pé
     img: contas/192/img/portfolio/192-1483115954127.jpg?decache=0.698290433489662
-    txt:
-    cliente:
-    site:
-    data:
-    servico:
+    txt: 
+    cliente: 
+    site: 
+    data: 
+    servico: 
     tags:
     - colheita
   - id: 192-1483898003899
@@ -73,13 +73,13 @@ portfolio:
     img: contas/192/img/portfolio/192-1483977341960.jpg?decache=0.25454610040371484
     txt: Fggg
     nome: ''
-    site:
-    data:
-    servico:
+    site: 
+    data: 
+    servico: 
     cat: ''
     tags:
     - in natura
-    cliente:
+    cliente: 
   - id: 192-1483898166846
     titulo: na Tijela
     img: contas/192/img/portfolio/192-1483898166846.jpg?decache=0.4983468929524648
@@ -96,9 +96,9 @@ portfolio:
     img: contas/192/img/portfolio/192-456.jpg?decache=0.1961780816568468
     txt: Super t até 12
     cliente: fff
-    site:
-    data:
-    servico:
+    site: 
+    data: 
+    servico: 
     tags:
     - na tigela
 about:
