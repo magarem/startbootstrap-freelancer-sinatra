@@ -1,4 +1,40 @@
-var mod = angular.module("myapp", ['color.picker', 'siyfion.sfTypeahead', 'jsTag', 'ng.deviceDetector', 'frapontillo.bootstrap-switch', 'ngSanitize', 'ngFileUpload', 'ngImgCrop', 'ng-sortable', 'ngAnimate', 'ui.bootstrap']);
+var mod = angular.module("myapp", ['color.picker',
+                                   'siyfion.sfTypeahead',
+                                   'jsTag',
+                                   'ng.deviceDetector',
+                                   'ngSanitize',
+                                   'ngFileUpload',
+                                   'ngImgCrop',
+                                   'ng-sortable',
+                                   'ngAnimate',
+                                   'ui.bootstrap']);
+mod.directive('bootstrapSwitch', [
+        function() {
+            return {
+                restrict: 'A',
+                require: '?ngModel',
+                link: function(scope, element, attrs, ngModel) {
+                    element.bootstrapSwitch();
+
+                    element.on('switchChange.bootstrapSwitch', function(event, state) {
+                        if (ngModel) {
+                            scope.$apply(function() {
+                                ngModel.$setViewValue(state);
+                            });
+                        }
+                    });
+
+                    scope.$watch(attrs.ngModel, function(newValue, oldValue) {
+                        if (newValue) {
+                            element.bootstrapSwitch('state', true, true);
+                        } else {
+                            element.bootstrapSwitch('state', false, true);
+                        }
+                    });
+                }
+            };
+        }
+    ]);
 mod.filter('filterByTags', function () {
   return function (items, tag) {
     console.log("tag:", tag)
@@ -489,18 +525,6 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   vm.data = deviceDetector;
   vm.allData = JSON.stringify(vm.data, null, 2);
 
-  // switch button
-  $scope.isSelected = 'nope';
-  $scope.onText = 'Arrastar';
-  $scope.offText = 'Fixo';
-  $scope.isActive = true;
-  $scope.size = 'normal';
-  $scope.animate = true;
-  $scope.radioOff = true;
-  $scope.handleWidth = "auto";
-  $scope.labelWidth = "auto";
-  $scope.inverse = true;
-
   SiteData.loadSiteData().then(function(response) {
     var siteNome = response.data.name
     console.log("siteNome:", siteNome);
@@ -587,6 +611,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   $scope.valueSelected = function (value) {
     if (value === null) $scope.tagSelect = undefined;
+    if (value == "") $scope.filtraZero();
   };
 
   $scope.filtraZero = function () {

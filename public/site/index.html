@@ -110,7 +110,11 @@
               </p>
                <script>
                function actionChange(){
-                 formLogin.action = 'http://'+formLogin.site.value+'.'+location.host+'/login_do'
+                 if (location.host == "localhost:3000"){
+                   formLogin.action = 'http://'+formLogin.site.value+'.'+location.host+'/login_do'
+                 }else{
+                   formLogin.action = 'http://'+location.host+'/login_do'
+                 }
                }
                function lembrarSenha(){
                  if (formLogin.site.value.length > 0) {
@@ -154,7 +158,7 @@
         </div>
       </section>
       </div>
-      </section> 
+      </section>
       <!--   *** CUSTOMERS END ***-->
       <!--   *** FEATURES ***-->
       <section id="features" class="section">
