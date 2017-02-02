@@ -411,7 +411,7 @@ post '/objSave' do
   # Confere qual foi a ordem passada
   s = ""
   @obj.split(".").each_with_index do |item, index|
-    s = s + "['#{item}']" 
+    s = s + "['#{item}']"
   end
   comando = "@data#{s} = @val"
   puts @val
@@ -562,7 +562,7 @@ post "/avatarUpload" do
     image.write "./public/contas/#{@site_nome}/img/#{@filename}"
 
     # Salva o nome da imagem o arquivo fonte
-    @data["pages"]["home"]["img"] = "contas/#{@site_nome}/img/#{@filename}?#{Time.now.to_i}"
+    @data["head"]["avatar"] = "contas/#{@site_nome}/img/#{@filename}?#{Time.now.to_i}"
     f = File.open @data_path, 'w'
     YAML.dump @data, f
     f.close
@@ -652,7 +652,7 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
   if (port_img == "" || port_img == "undefined" || port_img == nil) then port_img = @item["img"] end
 
   #Seleciona o item do portfolio
-  portfolioItems = @data["pages"]["portfolio"]["items"]
+  portfolioItems = @data["portfolio"]["items"]
   portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
   portfolioItem["img"] = port_img
 

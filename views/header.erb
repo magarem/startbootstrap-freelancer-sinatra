@@ -215,11 +215,11 @@ padding : 5px 15px;
             padding: 2px;
             }
 
-            .sombra {
+            .txtShadow {
               text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.6);
             }
 
-            .sombra2 {
+            .txtShadow2 {
               text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.5);
             }
 
@@ -245,11 +245,11 @@ padding : 5px 15px;
                 select-non-editable="true"
                 ng-blur="saveDiv('head.txt1')"
                 placeholder="Texto de apresentação..."
-                ng-class="{sombra: head.show.shadow}"
+                ng-class="{txtShadow: head.show.txtShadow}"
                 >
             </div>
           </span>
-          <hr ng-show=head.show.txt2 class="star-light sombra">
+          <hr ng-show=head.show.txt2 class="star-light" ng-class="{txtShadow2: head.show.txtShadow}">
           <span class="skills">
             <div contenteditable="{{isLogged}}"
                 ng-show=head.show.txt2
@@ -258,7 +258,7 @@ padding : 5px 15px;
                 select-non-editable="true"
                 ng-blur="saveDiv('head.txt2')"
                 placeholder="Sub-texto de apresentação..."
-                ng-class="{sombra2: head.show.shadow}"
+                ng-class="{txtShadow2: head.show.txtShadow}"
                 >
             </div>
           </span>

@@ -428,10 +428,11 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   })
 
   SiteData.loadSiteData().then(function(response) {
-    $scope.site = response.data;
+    var siteNome = SiteData.getSiteNome()
+    $scope.head = response.data.head;
     $scope.picFile = null;
     $scope.croppedDataUrl = null;
-    var siteNome = $scope.site.name
+
   })
 
   $rootScope.$on("ModalClose", function(){
@@ -772,7 +773,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     }
   };
 
-  $scope.portfolioSave = function(obj){
+  $scope.saveDiv = function(obj){
     id = $scope.item.id
     SiteData.portfolioSave(obj, $scope.$eval(obj), id).then(function(response) {
        $rootScope.$emit("portfolioItemsTags_update");
@@ -873,7 +874,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
   $scope.saveDiv = function(obj){
     id = $scope.item.id
-    SiteData.saveDiv(obj, $scope.$eval(obj), id).then(function(response) {
+    SiteData.portfolioSave(obj, $scope.$eval(obj), id).then(function(response) {
        $rootScope.$emit("portfolioItemsTags_update");
     })
   }
