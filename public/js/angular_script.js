@@ -8,6 +8,33 @@ var mod = angular.module("myapp", ['color.picker',
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap']);
+mod.directive('eventFocus', function(focus) {
+   return function(scope, elem, attr) {
+     elem.on(attr.eventFocus, function() {
+       focus(attr.eventFocusId);
+       $(attr.eventFocusId).focus();
+     });
+
+     // Removes bound events in the element itself
+     // when the scope is destroyed
+     scope.$on('$destroy', function() {
+       elem.off(attr.eventFocus);
+     });
+   };
+ });
+mod.factory('focus', function($timeout, $window) {
+    return function(id) {
+      // timeout makes sure that it is invoked after any other event has been triggered.
+      // e.g. click events that need to run before the focus or
+      // inputs elements that are in a disabled state but are enabled when those events
+      // are triggered.
+      $timeout(function() {
+        var element = $window.document.getElementById(id);
+        if(element)
+          element.focus();
+      });
+    };
+  });
 mod.directive('bootstrapSwitch', [
         function() {
             return {
@@ -537,7 +564,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
     //confere se está logado para bloquear o img drag
-    $scope.isSelected = $scope.isLogged
+    // $scope.isSelected = $scope.isLogged
+    $scope.isSelected = false;
   })
 
   $scope.saveDiv = function(obj){
