@@ -37,25 +37,21 @@ end
 
 before do
   @logado = session[:logado]
-
   @isLogged = @logado
-
   #Hack para teste
   # session[:logado] = true
   # session[:site_nome] = "192"
   # @edit_flag = "true"
-
   puts ">[@logado]>>#{@logado}"
   # puts ">request.subdomain.split(".").first >>" + request.host.split(".").first
-
   # Pega o nome do site
   if request.host.include? "." then
       @site_nome = request.host.split(".").first
     else
-      tt = request.host_with_port.split(".")[-1]
-      redirect "http://#{tt}/site/index.html"
+      # tt = request.host_with_port.split(".")[-1]
+      # redirect "http://#{tt}/site/index.html"
+      @site_nome = "site"
   end
-
   puts "[@site_nome]>#{@site_nome}"
 
   if @site_nome == "radiando" then
@@ -70,8 +66,11 @@ before do
     @data = YAML.load_file @data_path
     puts @data
   end
+end
 
-
+get '/radiando' do
+  tt = request.host_with_port
+  redirect "http://#{tt}/site/index.html"
 end
 
 #
@@ -183,11 +182,11 @@ end
 #
 #  Pedir novo site
 #
-get "/site_new" do
+post "/site_new" do
 
   #Pega os parâmetros
-  formSiteNome = params["site_nome"].downcase
-  formUserEmail = params["email"]
+  formSiteNome = params[:site_nome].downcase
+  formUserEmail = params[:email]
 
   #Gera uma senha de 4 dígitos aleatória
   randomString = SecureRandom.hex
@@ -207,7 +206,7 @@ get "/site_new" do
     itemNew = {
       "nome"   => formSiteNome,
       "email"  => formUserEmail,
-      "senha"  => senha,
+      "senha"  => randomSenha,
       "token"  => randomString
     }
     data["sites"] << itemNew
@@ -264,6 +263,7 @@ get "/site_new_do" do
   email_site_nome = params["site_nome"]
   email_token = params["token"]
 
+  puts email_site_nome
   # Define a flag de busca
   flg_achou = false
 
@@ -356,8 +356,8 @@ post '/login_do' do
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
-    # puts "http://#{request.host_with_port}"
-    redirect "/"
+    redirect "http://#{request.host_with_port}"
+    # redirect "/"
     # erb :index
   else
     session[:logado] = false
@@ -417,6 +417,16 @@ post '/objSave' do
   puts @val
   puts "$$$> #{comando}"
   eval(comando)
+
+  #Confere se é algum item do menu
+  case s
+    when "['portfolio']['label']"
+      @data['navbar']['menu'][0] = @val
+    when "['about']['label']"
+      @data['navbar']['menu'][1] = @val
+    when "['contact']['label']"
+      @data['navbar']['menu'][2] = @val
+  end
 
   # Salva o arquivo base
   f = File.open @data_path, 'w'
@@ -605,7 +615,7 @@ post "/portfolio/ordena" do
   if !@logado then redirect "/" end
 
   # Lê o arquivo fonte
-  @data["pages"]["portfolio"]["items"] = @post_data
+  @data["portfolio"]["items"] = @post_data
   f = File.open @data_path, 'w'
   YAML.dump @data, f
   f.close

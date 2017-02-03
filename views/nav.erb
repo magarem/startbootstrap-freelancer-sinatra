@@ -23,14 +23,16 @@
       </style>
       <a class="navbar-brand"
          href="#page-top">
-        <div contenteditable="{{isLogged}}"
+        <div id=logo contenteditable="{{isLogged}}"
           ng-model="navbar.logo.label"
           strip-br="true"
           select-non-editable="true"
           ng-blur="saveDiv('navbar.logo.label')"
-          placeholder="Entre com o titulo...">
+          placeholder="&nbsp;"
+          style="min-width: 50px;"
+          >
         </div>
-      </a>
+      </a><a ng-show="isLogged" href="#page-top" class="navbar-brand" ng-click="navbar.logo.label=''" event-focus="click" event-focus-id="#logo"><i class="glyphicon glyphicon-remove-sign"></i></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

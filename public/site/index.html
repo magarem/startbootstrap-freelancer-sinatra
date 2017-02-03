@@ -66,14 +66,13 @@
               <h4 class="modal-title text-center">Comece agora</h4>
             </div>
             <div class="modal-body">
-              <form name=form1 method=get action="/site_new" onSubmit="return validar(form1);">
+              <form name=form1 method=post action="/site_new" onSubmit="return validar(form1);">
                 <div class="form-group">
-                    <input id="email_modal" type="email" placeholder="E-mail"  class="form-control" name=email required>
+                    <input id="email_modal" type="email"    name=email placeholder="E-mail" class="form-control" required>
                     <input id="site_nome_modal" type="text" name=site_nome placeholder="Nome do portfólio" style="margin-top:10px;" class="form-control" onblur="this.value=makeslug(this.value, '.')" required>
                 </div>
-
                 <p class="text-center">
-                  <button class="btn btn-primary"><i class="pe-7s-magic-wand"></i> Criar</button>
+                  <button class="btn btn-primary" type="submit" ><i class="pe-7s-magic-wand"></i> Criar</button>
                 </p>
 </form>
               <p class="text-center text-muted">Receba por e-mail todas as instruções de como ativar sua nova conta</p>
@@ -95,11 +94,8 @@
             <div class="modal-body">
               <form name=formLogin onSubmit="return validarLogin(formLogin)" action=/login_do method="POST">
                 <div class="form-group">
-
                     <input type="text" name="site" placeholder="Nome do portfólio"  class="form-control" required>
-
                     <input type="password" name="senha" value="" class="form-control"  placeholder="Entre com a senha" style="margin-top:10px;" required>
-
                 </div>
                 <p class="text-center">
                   <button class="btn btn-primary" type="submit" onclick="actionChange()"><i class="pe-7s-magic-wand"></i> Login</button>
@@ -110,11 +106,7 @@
               </p>
                <script>
                function actionChange(){
-                 if (location.host == "localhost:3000"){
                    formLogin.action = 'http://'+formLogin.site.value+'.'+location.host+'/login_do'
-                 }else{
-                   formLogin.action = 'http://'+location.host+'/login_do'
-                 }
                }
                function lembrarSenha(){
                  if (formLogin.site.value.length > 0) {
@@ -142,7 +134,7 @@
           <div class="row">
             <div class="col-md-12">
               <!-- <p>Editor 100% integrado</p> -->
-              <form name=form2 method=get onsubmit="return validar(form2);" action="/site_new" class="form-inline margin-top sign-up-form">
+              <form name=form2 method=post onsubmit="return validar(form2);" action="/site_new" class="form-inline margin-top sign-up-form">
                 <input id="email_intro" style=""
                        type="email" placeholder="E-mail"
                        class="form-control input-lg" name=email required>
@@ -241,7 +233,7 @@
           return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
       var msg = getParameterByName('msg');
-      bootbox.alert(msg)
+      if (msg) bootbox.alert(msg)
 
       //Form validation
       function validar(formName){
