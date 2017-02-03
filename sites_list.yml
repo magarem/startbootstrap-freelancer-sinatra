@@ -1,10 +1,13 @@
 ---
-sites:
 - nome: maga
   email: contato@magaweb.com.br
-  senha: '8654'
+  senha: 8654
   token: 18654f26f16c4968288e559464b71b39a
 - nome: tttdfdf
   email: contato@magaweb.com.br
   senha: a057
   token: a0578855910c33dfbe88bb95498c6a98
+- nome: ingrydsabino
+  email: contato@magaweb.com.br
+  senha: ca96
+  token: ca96fdb04fbb051695afd0324b550cb6

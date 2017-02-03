@@ -8,7 +8,6 @@ require 'fileutils'
 require 'securerandom'
 require 'mail'
 
-
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
 enable :sessions
 
@@ -54,7 +53,7 @@ before do
   end
   puts "[@site_nome]>#{@site_nome}"
 
-  if request.host == "radiando.net" then
+  if request.fullpath == "radiando.net" then
     redirect "http://radiando.net/site/index.html"
   end
 
@@ -104,7 +103,7 @@ end
 #  Carregamento do site
 #
 get "/" do
-  if !request.host.include? "." || @site_nome == "teste" then redirect 'teste/index.html' end
+  # if !request.host.include? "." || @site_nome == "teste" then redirect 'teste/index.html' end
   if !request.host.include? "." || @site_nome == "radiando" then redirect 'site/index.html' end
 
   #Testa se existe o site
@@ -209,7 +208,7 @@ post "/site_new" do
       "senha"  => randomSenha,
       "token"  => randomString
     }
-    data["sites"] << itemNew
+    data << itemNew
 
     #Salva o arquivo modificado
     f = File.open("sites_list.yml", 'w' )
@@ -218,7 +217,7 @@ post "/site_new" do
 
     #Envia email de confirmação da abertura da nova conta
     mailMessage = "
-Bem-vindo ao Radiando.net!
+Bem-vindo ao Radiando.net, o seu construtor de site portfólio na web!
 
 Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
 
@@ -227,7 +226,8 @@ http://radiando.net/site_new_do?email=#{formUserEmail}&site_nome=#{formSiteNome}
 Depois de confirmada a sua conta seu site já estará no ar no endereço:
 http://#{formSiteNome}.radiando.net
 
-Para editar o conteúdo do seu site clique no botão 'login' no rodapé da página e digite sua senha:
+Acesse o site radiando.net para editar o conteúdo de seu site, informando os dados abaixo:
+Nome do portfólio: #{formSiteNome}
 Senha: #{randomSenha}
 
 Qualquer dúvida entre em contato conosco.
@@ -264,8 +264,6 @@ get "/site_new_do" do
   email_token = params["token"]
 
   puts email_site_nome
-  # Define a flag de busca
-  flg_achou = false
 
   @sites_list_path = "./sites_list.yml"
 
@@ -273,20 +271,23 @@ get "/site_new_do" do
   @y = YAML.load_file @sites_list_path
 
   #Laço de conferencia para ver se os dados do email conferem
-  @y["sites"].each do |key|
-
+  @y.each do |key|
+    puts "!"
     yml_nome = key['nome']
     yml_email = key['email']
     yml_senha = key['senha']
     yml_token = key['token']
 
-    #Confere se os dados do email conferem
+    # puts "#{email}, #{email_site_nome}, #{email_site_nome}"
+    #Verifica se os dados do email conferem
     if email == yml_email && email_site_nome == yml_nome && email_token == yml_token then
-      @data_path.gsub! "{site_nome}", email_site_nome
+
+      @data_path = "public/contas/#{email_site_nome}/#{email_site_nome}.yml"
       #Cria diretório principal
       install_dir = "public/contas/#{email_site_nome}"
       FileUtils::mkdir_p install_dir
 
+      puts "@data_path: #{@data_path}"
       #Clona o arquivo base
       FileUtils.cp("site.yml", @data_path)
 
@@ -318,11 +319,12 @@ get "/site_new_do" do
       # Abre o site recem criado no modo de edição
       #redirect "#{email_site_nome}.radiando.net"
       redirect "http://#{email_site_nome}.#{request.host_with_port}"
-    else
-      # Mostra mensagem de erro de token
-      redirect "site/index.html?msg=Erro de token"
     end
+    # "@data_path: #{@data_path}"
   end
+  #Não achou o token
+  redirect "site/index.html?msg=Erro de token"
+  # "@data_path: #{@data_path}"
 end
 
 #
@@ -479,7 +481,7 @@ post '/portfolioSave' do
        portfolioItem["servico"] = @val
 
     when "portfolio.itemsTags"
-        @data["pages"]["portfolio"]["itemsTags"] = @val
+        @data["portfolio"]["itemsTags"] = @val
         puts ">>portfolio.itemsTags<< #{@val}"
 
     when "item.tags"
@@ -591,9 +593,9 @@ post "/portfolio/delete/:postPortfolioItemId" do
   if !@logado then redirect "/" end
 
   # Abre o arquivo fonte e exclui o item
-  portfolioItems = @data["pages"]["portfolio"]["items"]
+  portfolioItems = @data["portfolio"]["items"]
   portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
-  @data["pages"]["portfolio"]["items"].delete(portfolioItem)
+  @data["portfolio"]["items"].delete(portfolioItem)
   puts (portfolioItem)
 
   # Salva o arquivo com a alteração (exclusão)
@@ -692,11 +694,11 @@ post "/portfolio/add/:postPortfolioItemId" do
     "site"    => "",
     "data"    => "",
     "servico" => "",
-    "cat"     => ""
+    "tags"     => ""
   }
 
   # Insere o novo item na array do arquivo fonte
-  @data["pages"]["portfolio"]["items"] << portfolioItemNew
+  @data["portfolio"]["items"] << portfolioItemNew
 
   # Salva o arquivo modificado
   f = File.open @data_path, 'w'

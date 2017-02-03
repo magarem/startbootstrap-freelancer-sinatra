@@ -658,7 +658,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
       "site"   : "",
       "data"   : "",
       "servico": "",
-      "cat"    : ""
+      "tags"    : ""
     }
     //Salva no disco o novo registro
     SiteData.portAdd(newId).then(function(response) {})
