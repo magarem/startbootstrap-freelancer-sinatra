@@ -54,7 +54,7 @@ before do
   end
   puts "[@site_nome]>#{@site_nome}"
 
-  if @site_nome == "radiando" then
+  if request.host == "radiando.net" then
     redirect "http://radiando.net/site/index.html"
   end
 
