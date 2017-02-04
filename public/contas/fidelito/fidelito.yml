@@ -1,16 +1,16 @@
 ---
 info:
-  name: site
-  email:
-  senha: 1
+  name: fidelito
+  email: contato@magaweb.com.br
+  senha: f18d
   title: Portfolio geral
   description: Site portfolio
   author: marcelo magalhaes
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
-    label: novosite
-    img:
+    label: fidelito
+    img: 
   menu:
   - portfólio
   - sobre
@@ -19,7 +19,7 @@ head:
   backgroundColor: hsl(2, 60%, 50%)
   backgroundUrl: "/styleBackgrounds/aurora_burst_lime_green-wallpaper-1440x900.jpg"
   fontColor: hsl(247, 13%, 87%)
-  avatar: contas/192/img/avatar.jpg?1486077361
+  avatar: contas/fidelito/img/profile.png
   txt1: texto 1
   txt2: texto 2
   show:
@@ -29,18 +29,18 @@ head:
     txtShadow: true
 portfolio:
   label: portfólio
-  itemsTags:
+  itemsTags: 
   items:
-    - id: 1
-      titulo: titulo
-      img: http://placehold.it/360x260/e67e22/fff
-      txt:
-      nome: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-      tags:
+  - id: 1
+    titulo: titulo
+    img: http://placehold.it/360x260/e67e22/fff
+    txt: 
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    cat: ''
+    tags: 
 about:
   label: sobre
   body1: texto 1
@@ -48,7 +48,7 @@ about:
 contact:
   label: contato
 footer:
-  endereco:
+  endereco: 
   social:
     facebook: facebook
     googleplus: googleplus

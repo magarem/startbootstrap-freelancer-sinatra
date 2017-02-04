@@ -44,15 +44,21 @@ before do
   puts ">[@logado]>>#{@logado}"
   # puts ">request.subdomain.split(".").first >>" + request.host.split(".").first
   # Pega o nome do site
-  if request.host.include? "." then
-      @site_nome = request.host.split(".").first
-    else
-      # tt = request.host_with_port.split(".")[-1]
-      # redirect "http://#{tt}/site/index.html"
-      @site_nome = "site"
-  end
-  puts "[@site_nome]>#{@site_nome}"
 
+  url = request.host_with_port
+
+  if url.include? "." then
+    @site_nome = request.host.split(".").first
+    if @site_nome == "radiando" then redirect "http://radiando.net/site/index.html" end
+  else
+    #Para o caso de endereço = localhost
+    tt = request.host_with_port.split(".")[-1]
+    redirect "http://#{tt}/site/index.html"
+  end
+
+
+  puts "[@site_nome]>#{@site_nome}"
+  puts "request.host_with_port: #{request.host_with_port}"
   if request.fullpath == "radiando.net" then
     redirect "http://radiando.net/site/index.html"
   end
@@ -104,20 +110,12 @@ end
 #
 get "/" do
   # if !request.host.include? "." || @site_nome == "teste" then redirect 'teste/index.html' end
-  if !request.host.include? "." || @site_nome == "radiando" then redirect 'site/index.html' end
+  # if !request.host.include? "." || @site_nome == "radiando" then redirect 'site/index.html' end
 
   #Testa se existe o site
   if !File.exist? File.expand_path "./public/contas/"+@site_nome then
       redirect 'site/index.html?msg=Site não encontrado'
   end
-
-  # @str1 = ""
-  # a = Dir.entries("./public  tt = request.host_with_port.split(".")[-1]!= ".." then
-  #     @str1 << "<button img=/fundos/#{nome} class=''>
-  #        <img src=/fundos/#{nome}  style='width: 30px; height: 20px;'>
-  #     </button>\n"
-  #   end
-  # end
 
   @edit_flag = session[:logado]
   if @edit_flag
@@ -173,7 +171,6 @@ radiando.net"
 
   mail.delivery_method :sendmail
   mail.deliver
-
   domain = request.host_with_port.split(".")[-1]
   redirect "http://#{domain}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
 end
@@ -307,6 +304,10 @@ get "/site_new_do" do
 
       #Define a capa do site
       data["head"]["avatar"] = "contas/#{email_site_nome}/img/profile.png"
+
+      id = SecureRandom.hex[0, 10].downcase
+
+      data["portfolio"]["items"][0]["id"] = "#{email_site_nome}-#{id}"
 
       #Salva o arquivo fonte
       f = File.open(@data_path, 'w' )

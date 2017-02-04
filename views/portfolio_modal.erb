@@ -33,7 +33,7 @@
       padding: 0px;
       margin: 0px;
     }
-    [contenteditable="true"],img  {
+    [contenteditable="true"], .imgEdit  {
       padding: 1px;
       outline: 2px dashed #CCC;
     }
@@ -51,7 +51,7 @@
                 </div>
               </h2>
               <hr class="star-primary">
-                <img
+                <img ng-class="{imgEdit: isLogged}"
                   class="img-responsive img-centered"
                   style="max-width:100%; margin-bottom: 13px;"
                   ng-src="{{item.img}}"

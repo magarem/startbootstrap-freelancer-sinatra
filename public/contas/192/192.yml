@@ -29,13 +29,7 @@ head:
     txtShadow: true
 portfolio:
   label: portfólio
-  itemsTags:
-  - colheita
-  - Legal
-  - rosali
-  - linda
-  - in natura
-  - na tigela
+  itemsTags: []
   items:
   - id: 192-1483983088597
     titulo: a caminho
@@ -46,10 +40,7 @@ portfolio:
     data: ''
     servico: ''
     cat: ''
-    tags:
-    - colheita
-    - in natura
-    - linda
+    tags: []
     cliente: Trt
   - id: 192-1483898003899
     titulo: Do bom
@@ -60,9 +51,7 @@ portfolio:
     data: ''
     servico: ''
     cat: ''
-    tags:
-    - colheita
-    - Legal
+    tags: []
   - id: 192-1483115954127
     titulo: no pé
     img: contas/192/img/portfolio/192-1483115954127.jpg
@@ -71,10 +60,7 @@ portfolio:
     site: ofidelito.com
     data: 10/10/10
     servico: todos :(
-    tags:
-    - colheita
-    - rosali
-    - linda
+    tags: []
   - id: 192-1483977341960
     titulo: açai2
     img: contas/192/img/portfolio/192-1483977341960.jpg?decache=0.25454610040371484
@@ -84,8 +70,7 @@ portfolio:
     data: 
     servico: 
     cat: ''
-    tags:
-    - in natura
+    tags: []
     cliente: 
   - id: 192-1483898166846
     titulo: na Tijela
@@ -96,8 +81,7 @@ portfolio:
     data: ''
     servico: ''
     cat: ''
-    tags:
-    - na tigela
+    tags: []
   - id: 192-456
     titulo: Bem acompanhado
     img: contas/192/img/portfolio/192-456.jpg?decache=0.1961780816568468
@@ -106,8 +90,7 @@ portfolio:
     site: 
     data: 
     servico: 
-    tags:
-    - na tigela
+    tags: []
 about:
   label: sobre
   body1: super textossdsd fdgygvt

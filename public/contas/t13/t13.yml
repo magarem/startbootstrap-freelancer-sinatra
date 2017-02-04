@@ -1,0 +1,68 @@
+---
+info:
+  name: t13
+  email: contato@magaweb.com.br
+  senha: e753
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: super teste 22
+    img: 
+  menu:
+  - portfólio
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(2, 60%, 50%)
+  backgroundUrl: "/styleBackgrounds/abstract_aurora_purple_and_orange-wallpaper-1440x900.jpg"
+  fontColor: hsl(247, 13%, 87%)
+  avatar: contas/t13/img/profile.png
+  txt1: texto 1
+  txt2: texto 2
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+portfolio:
+  label: portfólio
+  itemsTags:
+  - sds
+  items:
+  - id: t13-1486164907059
+    titulo: dfdf
+    img: contas/t13/img/portfolio/t13-1486164907059.jpeg?decache=0.16336495786275407
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: t13-495f8e79da
+    titulo: tituldsfsdo
+    img: contas/t13/img/portfolio/t13-495f8e79da.jpeg?decache=0.5731932184732285
+    txt: asasdsa
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    cat: ''
+    tags:
+    - sds
+about:
+  label: sobre
+  body1: texto 1
+  body2: texto 2
+contact:
+  label: contato
+footer:
+  endereco: 
+  social:
+    facebook: facebook
+    googleplus: googleplus
+    twitter: twitter
+    linkedin: linkedin
+  about_resumo: texto de resumo
