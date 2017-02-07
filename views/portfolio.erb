@@ -53,15 +53,17 @@
                <!-- code to render the regular video block -->
              </div>
           </div>
-          <span ng-show="(vm.data.device != 'iphone' && vm.data.device != 'android' && portfolioItemsTags.length > 0)" class="center" >
-            <button ng-show="portfolio.itemsTags" class="btn btn-primary" ng-click="filtraZero()">todas</button>
-            <button ng-show="portfolio.itemsTags" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolio.itemsTags track by $index" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
-          </span>
-          <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android') && portfolioItemsTags.length > 0" class="center" >
-            <select ng-options="tag for tag in portfolioItemsTags" ng-model="$parent.tagSelect">
-              <option value="">Todos</option>
-            </select><br>
-          </span>
+          <div ng-show="portfolio.itemsTags.length > 0">
+            <span ng-show="(vm.data.device != 'iphone' && vm.data.device != 'android')" class="center" >
+              <button ng-show="portfolio.itemsTags" class="btn btn-primary" ng-click="filtraZero()">todas</button>
+              <button ng-show="portfolio.itemsTags" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolio.itemsTags track by $index" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
+            </span>
+            <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
+              <select ng-options="tag for tag in portfolioItemsTags" ng-model="$parent.tagSelect">
+                <option value="">Todos</option>
+              </select><br>
+            </span>
+         </div>
         </div>
     </div>
     <div ng-show="isLogged">

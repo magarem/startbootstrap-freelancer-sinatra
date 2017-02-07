@@ -69,7 +69,7 @@
               <form name=form1 method=post action="/site_new" onSubmit="return validar(form1);">
                 <div class="form-group">
                     <input id="email_modal" type="email"    name=email placeholder="E-mail" class="form-control" required>
-                    <input id="site_nome_modal" type="text" name=site_nome placeholder="Nome do portfólio" style="margin-top:10px;" class="form-control" onblur="this.value=makeslug(this.value, '.')" required>
+                    <input id="site_nome_modal" type="text" name=site_nome placeholder="Nome do portfólio" style="margin-top:10px;" class="form-control" onblur="this.value=makeslug(this.value, '')" required>
                 </div>
                 <p class="text-center">
                   <button class="btn btn-primary" type="submit" ><i class="pe-7s-magic-wand"></i> Criar</button>
@@ -139,7 +139,7 @@
                        type="email" placeholder="E-mail"
                        class="form-control input-lg" name=email required>
 
-                <input  type="text" style="" onblur="this.value=makeslug(this.value, '.')" placeholder="Nome do portfólio" class="form-control input-lg" name=site_nome required>
+                <input  type="text" style="" onblur="this.value=makeslug(this.value, '')" placeholder="Nome do portfólio" class="form-control input-lg" name=site_nome required>
                 <input id="register" type="submit" value="Criar portfólio" class="btn btn-primary" >
               </form>
             </div>

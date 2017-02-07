@@ -43,9 +43,9 @@ function makeslug(val, replaceBy) {
   }
 
   val = val.toLowerCase();
-  val = val.replace(/[^a-z0-9\-]/g, " ");
+  val = val.replace(/[^a-z0-9\-]/g, "");
 
-  val = val.replace(/ {2,}/g, " ");
+  val = val.replace(/ {2,}/g, "");
 
   val = val.trim();
   val = val.replace(/\s/g, replaceBy);
