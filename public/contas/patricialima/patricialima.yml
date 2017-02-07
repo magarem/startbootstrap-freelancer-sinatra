@@ -1,0 +1,81 @@
+---
+name: patricialima
+senha: 12345
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: patrícia lima
+  menu:
+  - label: Portfólio
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: Arraial D'Juda - BA - Brasil
+    social:
+      facebook: patricia.lima.969
+      googleplus: patricia.lima.969
+      twitter: patricia.lima.969
+      linkedin: 
+    about_resumo: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+      pellentesque commodo accumsan. Vivamus&nbsp;
+pages:
+  home:
+    label: sereia
+    img: contas/patricialima/img/avatar.jpg
+    body: 
+  about:
+    label: Sobre
+    body1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pellentesque
+      commodo accumsan. Vivamus mattis sem eu augue lobortis, vel congue purus laoreet.
+      Ut turpis felis, iaculis vitae ullamcorper non, dignissim eget felis. Curabitur
+      dictum est sit amet mi faucibus, sed porttitor mi bibendum.
+    body2: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pellentesque
+      commodo accumsan. Vivamus mattis sem eu augue lobortis, vel congue purus laoreet.
+      Ut turpis felis, iaculis vitae ullamcorper non, dignissim eget felis. Curabitur
+      dictum est sit amet mi faucibus, sed porttitor mi bibendum.
+  portfolio:
+    label: Portfólio
+    items:
+    - id: 0
+      titulo: ''
+      img: "/contas/patricialima/img/portfolio/1479584478515.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: 
+      img: "/contas/patricialima/img/portfolio/1479584438896.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: 
+      img: "/contas/patricialima/img/portfolio/1479584421001.jpg"
+      txt: ''
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: ''
+    - id: ''
+      titulo: 
+      img: "/contas/patricialima/img/portfolio/1479584459371.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+  contact:
+    label: Contato

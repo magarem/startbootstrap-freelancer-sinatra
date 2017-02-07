@@ -1,0 +1,49 @@
+---
+name: amores
+senha: 4a1c
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: Amorsitos
+  menu:
+  - label: Portfólio
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: Minha rua
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: Me acompanhe aqui no meu site
+pages:
+  home:
+    label: Lindas
+    img: contas/amores/img/avatar.jpg
+    body: Bem vindo
+  about:
+    label: Sobre
+    body1: Esse é meu novo site criado na plataforma Radiando.net. Aqui vou colocar
+      um texto explicando um pouco sobre meu site.
+    body2: A idéia é que esse meu novo site possua uma galeria aonde vou expor minhas
+      idéias.
+  portfolio:
+    label: Portfólio
+    items:
+    - id: '0'
+      titulo: 
+      img: contas/amores/img/portfolio/1481255830762.jpg
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+  contact:
+    label: Contato

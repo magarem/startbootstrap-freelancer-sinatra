@@ -1,0 +1,58 @@
+---
+name: espacoconsciencia
+senha: d940
+email: nilzafialho@hotmail.com
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: espacoconsciencia
+  menu:
+  - label: Portfólio
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: Minha rua
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: Me acompanhe aqui no meu site
+pages:
+  home:
+    label: saber viver
+    img: contas/espacoconsciencia/img/avatar.jpg
+    body: Bem vindo
+  about:
+    label: Sobre
+    body1: A idéia é passar bons exemplos de uma vida saudável:&nbsp;
+    body2: Alimentação, exercícos e boa convivência com seus amigos.
+  portfolio:
+    label: Portfólio
+    items:
+    - id: 0
+      titulo: alimentação
+      img: "/contas/espacoconsciencia/img/portfolio/1477150804532.jpg"
+      txt: Você é o que vc come, portanto, cuide bem de sua alimentação.
+      nome: ''
+      site: 
+      data: 
+      servico: 
+      cat: 
+      cliente: 
+    - id: '0'
+      titulo: caminhadas
+      img: "/contas/espacoconsciencia/img/portfolio/1477150523567.JPG"
+      txt: correndo atrás dos netos...um bom exercício!
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+  contact:
+    label: Contato
+l: Contato

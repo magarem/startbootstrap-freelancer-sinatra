@@ -1,0 +1,57 @@
+---
+info:
+  name: roberto.morais
+  email: robertipanema@icloud.com
+  senha: ffe7
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: roberto.morais
+    img: 
+  menu:
+  - portfólio
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(2, 60%, 50%)
+  backgroundUrl: "/styleBackgrounds/aurora_burst_lime_green-wallpaper-1440x900.jpg"
+  fontColor: hsl(247, 13%, 87%)
+  avatar: contas/roberto.morais/img/profile.png
+  txt1: texto 1
+  txt2: texto 2
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+portfolio:
+  label: portfólio
+  itemsTags: 
+  items:
+  - id: roberto.morais-15f6640653
+    titulo: titulo
+    img: http://placehold.it/360x260/e67e22/fff
+    txt: 
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    cat: ''
+    tags: 
+about:
+  label: sobre
+  body1: texto 1
+  body2: texto 2
+contact:
+  label: contato
+footer:
+  endereco: 
+  social:
+    facebook: facebook
+    googleplus: googleplus
+    twitter: twitter
+    linkedin: linkedin
+  about_resumo: texto de resumo

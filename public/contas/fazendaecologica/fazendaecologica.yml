@@ -1,0 +1,58 @@
+---
+name: fazendaecologica
+senha: fd24
+email: jurandir@fazendaecologica.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: "&nbsp;FAZENDA ECOLÓGICA À VENDA"
+  menu:
+  - label: Portfólio
+  - label: 
+  - label: Contato
+  footer:
+    endereco: Minha rua
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: Me acompanhe aqui no meu site
+pages:
+  home:
+    label: FAZENDA ECOLÓGICA
+    img: contas/fazendaecologica/img/avatar.jpg
+    body: UM MODELO DE PRODUÇÃO AGROPECUÁRIA SUSTENTÁVEL
+  about:
+    label: 
+    body1: Esse é meu novo site criado na plataforma Radiando.net. Aqui vou colocar
+      um texto explicando um pouco sobre meu site.
+    body2: A idéia é que esse meu novo site possua uma galeria aonde vou expor minhas
+      idéias.
+  portfolio:
+    label: Portfólio
+    items:
+    - id: '0'
+      titulo: 
+      img: "/img/cabin.png"
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+    - id: ''
+      titulo: ''
+      img: "/img/balao.jpg"
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: 
+  contact:
+    label: Contato

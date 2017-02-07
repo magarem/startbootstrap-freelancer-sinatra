@@ -1,0 +1,85 @@
+---
+name: sereias
+senha: amor
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: sereias
+  menu:
+  - label: Portfólio
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: Minha rua
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: Me acompanhe aqui no meu site
+pages:
+  home:
+    label: Biquinis
+    img: contas/sereias/img/avatar.jpg
+    body: 
+  about:
+    label: Sobre
+    body1: Esse é meu novo site criado na plataforma Radiando.net. Aqui vou colocar
+      um texto explicando um pouco sobre meu site.
+    body2: A idéia é que esse meu novo site possua uma galeria aonde vou expor minhas
+      idéias.
+  portfolio:
+    label: Portfólio
+    items:
+    - id: '0'
+      titulo: Azul
+      img: contas/sereias/img/portfolio/1480818005833.jpg
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+    - id: ''
+      titulo: Rajado
+      img: contas/sereias/img/portfolio/1480818044113.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: Babado
+      img: contas/sereias/img/portfolio/1480818082117.jpg
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+    - id: ''
+      titulo: ''
+      img: contas/sereias/img/portfolio/1480822207094.jpg
+      txt: ''
+      cliente: 
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: Branco
+      img: contas/sereias/img/portfolio/1480952857823.jpg
+      txt: ''
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: ''
+  contact:
+    label: Contato

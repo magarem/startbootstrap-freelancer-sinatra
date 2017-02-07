@@ -1,0 +1,70 @@
+---
+info:
+  name: madrinharita
+  email: contato@magaweb.com.br
+  senha: fa34
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: madrinha rita
+    img: 
+  menu:
+  - portfólio
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(2, 40%, 37%)
+  backgroundUrl: "/styleBackgrounds/aurora_burst_blue-wallpaper-1440x900.jpg"
+  fontColor: hsl(247, 41%, 86%)
+  avatar: contas/madrinharita/img/avatar.jpg?1486415304
+  txt1: a nossa madrinha
+  txt2: bem vindo
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+portfolio:
+  label: portfólio
+  itemsTags:
+  - mapia
+  - teste
+  items:
+  - id: madrinharita-45638d3d4b
+    titulo: trabalho 1
+    img: contas/madrinharita/img/portfolio/madrinharita-45638d3d4b.jpg
+    txt: 
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    cat: ''
+    tags: 
+  - id: madrinharita-1486415557806
+    titulo: foto 2
+    img: contas/madrinharita/img/portfolio/madrinharita-1486415557806.jpg
+    txt: aqui é o Padrinho
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - mapia
+    - teste
+about:
+  label: sobre
+  body1: texto 1
+  body2: texto 2
+contact:
+  label: contato
+footer:
+  endereco: 
+  social:
+    facebook: facebook
+    googleplus: googleplus
+    twitter: twitter
+    linkedin: linkedin
+  about_resumo: texto de resumo

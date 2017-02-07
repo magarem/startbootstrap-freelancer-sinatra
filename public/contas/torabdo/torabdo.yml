@@ -1,0 +1,126 @@
+---
+name: torabdo
+senha: '9913'
+email: torabdo7@gmail.com
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: agro tudo
+  menu:
+  - label: arvores e plantas
+  - label: Sobre
+  - label: contato
+  footer:
+    endereco: 
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: 
+pages:
+  home:
+    label: site floresta
+    img: contas/torabdo/img/avatar.jpg
+    body: muito cuidado com a floresta e com tudo que precisa ser cuidado
+  about:
+    label: Sobre
+    body1: o site é sobre agrofloresta.<div>nós fazemos o melhor para a natureza e
+      etc,as vezes cortamos algumas arvores para botar no triturador que faz a palha
+      e agente começa a plantar, e com a palha nós cobrimos a terra com o adubo, o
+      adubo é cocô de cabrito das minhocas dos bichos e etc.<br>aqui agente fica trabalhando
+      até tipo as 6:00 ou 7:00 por ai, é bem pesado o trabalho não é fácil, vou convidar
+      a Sophia minha melhor amiga, ouviu AMIGA!!!!<br>depois eu penso se eu levo o
+      Gabriel ou o Mateus to brincando eu vou levar os dois juntos ou separados mas
+      vou levar, (tomara que seja juntos) mas a Beatriz Rodrigues do Amarante e a
+      Bia b vão adorar esse lugar então vou fazer o que eu puder para levar essas
+      garotas aqui, e eu e o Mateus vamos fazer uma aventura e tanto.<br>Mensagem
+      para o Mateus-tem muito morro aqui.<br>uma coisa muito importante que tem que
+      tomar cuidado é que tem cobra aqui não tem muita mas é sempre bem vindo o cuidado.</div>
+    body2: e...e...eu sou o dono do site e eu fiz esse site graças a esse lugar lindo,
+      eu tenho 9 anos e vou fazer 10 em 6 de março aqui é bem loco tipo tem que sobreviver,
+      cri cri cri cri aaaaa voltando (eu estava bebendo agua) cri cr... chega desse
+      cri cri e deixa eu fazer meu site, aff.
+  portfolio:
+    label: arvores e plantas
+    items:
+    - id: ''
+      titulo: Cuidar É bom
+      img: contas/torabdo/img/portfolio/1476113478822
+      txt: "Estavamos plantando aprendendo e visitando os canteiros quando no meio
+        do nada resovi abraçar uma arvore cheia de espinhos,cuidar é bom, melhor ainda
+        é ser bem cuidado, e não espetado\U0001F602\U0001F602"
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+    - id: ''
+      titulo: a plantaçao
+      img: contas/torabdo/img/portfolio/1476059272755
+      txt: nós agora estamos plantando alface alho poró e&nbsp;
+      cliente: '990725'
+      site: 
+      data: '2016'
+      servico: 
+      cat: 
+    - id: ''
+      titulo: as plantas que dão agua para o céu
+      img: contas/torabdo/img/portfolio/1476060774218
+      txt: eu estou cortando a folha que da agua para o céu. (é a planta que dá agua
+        para o céu)<br>não é muito bom para a planta porque ela fica sem agua e morre<br>uyguybyu
+        ytuy
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+    - id: ''
+      titulo: mc michel o lingua solta
+      img: contas/torabdo/img/portfolio/1476226362436.jpg
+      txt: estavamos escutando michel e sua lingua solta depois namastê começou a
+        falar das plantas e no final o michel e jackson falaram em que lugar as plantas
+        ficavam tipo entre o milho ou entre orégano e assim se foi a explicação maneira.
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+    - id: ''
+      titulo: o que as plantas são?
+      img: contas/torabdo/img/portfolio/1476201987847
+      txt: as plantas servem para alimentar (nem todas, tome cuidado com o que você
+        come) para ajudar a natureza para passar informaçoes para as outras plantas
+        que estão nacendo mas as arvores velhas você tem que derrubar se não elas
+        passão informação velha para as novas e se passar as novas vão crescer meio
+        sem destino então derrube todas as arvores velhas que você conseguir, a não
+        ser que não esteja perto de uma nova plantinha.
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+    - id: ''
+      titulo: ''
+      img: contas/torabdo/img/portfolio/1476667079143.JPG
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: No meio Da praia
+      img: contas/torabdo/img/portfolio/1476804554041.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+  contact:
+    label: contato

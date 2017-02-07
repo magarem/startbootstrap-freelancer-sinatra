@@ -1,0 +1,57 @@
+---
+info:
+  name: fidelis
+  email: contato@magaweb.com.br
+  senha: '1128'
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: fidelis
+    img: 
+  menu:
+  - portfólio
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(2, 60%, 50%)
+  backgroundUrl: "/styleBackgrounds/aurora_burst_lime_green-wallpaper-1440x900.jpg"
+  fontColor: hsl(247, 13%, 87%)
+  avatar: contas/fidelis/img/profile.png
+  txt1: texto 1
+  txt2: texto 2
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+portfolio:
+  label: portfólio
+  itemsTags: 
+  items:
+  - id: fidelis-c4d38fe28c
+    titulo: titulo
+    img: http://placehold.it/360x260/e67e22/fff
+    txt: 
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    cat: ''
+    tags: 
+about:
+  label: sobre
+  body1: texto 1
+  body2: texto 2
+contact:
+  label: contato
+footer:
+  endereco: 
+  social:
+    facebook: facebook
+    googleplus: googleplus
+    twitter: twitter
+    linkedin: linkedin
+  about_resumo: texto de resumo

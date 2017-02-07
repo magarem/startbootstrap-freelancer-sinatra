@@ -1,0 +1,58 @@
+---
+info:
+  name: marcela
+  email: contato@magaweb.com.br
+  senha: '9273'
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: marcela
+    img: 
+  menu:
+  - portfólio
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(2, 60%, 50%)
+  backgroundUrl: "/styleBackgrounds/abstract_rainbow_flow-wallpaper-1440x900.jpg"
+  fontColor: hsl(247, 13%, 87%)
+  avatar: contas/marcela/img/avatar.png?1486158493
+  txt1: texto 1
+  txt2: texto 2
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+portfolio:
+  label: portfólio
+  itemsTags: []
+  items:
+  - id: 1
+    titulo: tituloiii
+    img: http://placehold.it/360x260/e67e22/fff
+    txt: 
+    nome: ''
+    site: 
+    data: 
+    servico: 
+    cat: ''
+    tags: 
+    cliente: 
+about:
+  label: sobre
+  body1: texto 1
+  body2: texto 2
+contact:
+  label: contato
+footer:
+  endereco: 
+  social:
+    facebook: facebook
+    googleplus: googleplus
+    twitter: twitter
+    linkedin: linkedin
+  about_resumo: texto de resumo

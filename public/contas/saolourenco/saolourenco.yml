@@ -1,0 +1,99 @@
+---
+name: saolourenco
+senha: 12345
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: são lourenço
+  menu:
+  - label: fotos
+  - label: sobre
+  - label: Contato
+  footer:
+    endereco: São Lourenço - MG - Brasil
+    social:
+      facebook: '11'
+      googleplus: '22'
+      twitter: '33'
+      linkedin: '44'
+    about_resumo: Um vale cercado por montes suaves, no encontro de três rios, era
+      dispu- tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases.&nbsp;
+pages:
+  home:
+    label: Parque das águas
+    img: contas/saolourenco/img/saolourenco.jpg
+    body: São Lourenço - MG - Brasil
+  about:
+    label: sobre
+    body1: Um vale cercado por montes suaves, no encontro de três rios, era dispu-
+      tado palmo a palmo pelos bandeirantes e pelos temidos índios Cata- guases. Essa
+      foi a primeira vez que a região, hoje conhecida como São Lourenço, despontou
+      no mapa.
+    body2: Em 1675, Lourenço Castanho Tazques derrotou os Cataguases e fundou na região
+      um pequeno acampamento, que passou a ser chamado de Pouso do Lourenço. As propriedades
+      terapêuticas da água mineral que brotava do local só foram descobertas no século
+      XIX.
+  portfolio:
+    label: fotos
+    items:
+    - id: 0
+      titulo: foto v
+      img: "/contas/saolourenco/img/portfolio/1473382031148.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: 0
+      titulo: foto ii
+      img: "/contas/saolourenco/img/portfolio/1473381770881.jpg"
+      txt: Fonta água ferruginoza
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: fonte
+    - id: 0
+      titulo: foto iii
+      img: "/contas/saolourenco/img/portfolio/1473381902685.jpg"
+      txt: Restaurante Pitoresco
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: restaurante
+    - id: '0'
+      titulo: foto i
+      img: "/contas/saolourenco/img/portfolio/1473381682444.jpg"
+      txt: Praça do chafariz
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: fonte, verde &nbsp;
+    - id: 0
+      titulo: foto iV
+      img: "/contas/saolourenco/img/portfolio/1473381976467.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: 0
+      titulo: ''
+      img: "/contas/saolourenco/img/portfolio/1473381850623.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+  contact:
+    label: Contato

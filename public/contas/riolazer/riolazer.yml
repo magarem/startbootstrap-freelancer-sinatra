@@ -1,0 +1,131 @@
+---
+name: riolazer
+senha: d1ca
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: rio lazer mÓveis
+  menu:
+  - label: GaleRia
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: Minha rua
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: Me acompanhe aqui no meu site
+pages:
+  home:
+    label: Móveis em ALUMÍNIO e madeira
+    img: contas/riolazer/img/avatar.jpg
+    body: Recreio dos bandeirantes &nbsp;e Niteroi
+  about:
+    label: Sobre
+    body1: 'A loja Rio Lazer Móveis oferece aos seu consumidores móveis de alta qualidade,
+      conforto e beleza.<div><span style="line-height: 1.42857143; -webkit-text-size-adjust:
+      100%;">Os nossos móveis são de fabricação própria, produzidos a base de alumínio
+      com pintura eletrostática, com acabamentos em fibra sintética com alta durabilidade
+      e conforto.</span><br></div>'
+    body2: 'Também possui uma equipe profissional para melhor atender os clientes,
+      desenvolvendo junto ao&nbsp;<span style="line-height: 1.42857143; -webkit-text-size-adjust:
+      100%;">nossos projetistas a melhor forma de preencher sua área de encontros
+      e lazer.</span><div><span style="line-height: 1.42857143; -webkit-text-size-adjust:
+      100%;">Cada ano que passa ganhando mais experiência e mais força junto ao mercado,
+      estamos no mercado moveleiro há mais de 20 anos, realizando projetos e sonhos
+      de nossos clientes.</span></div>'
+  portfolio:
+    label: GaleRia
+    items:
+    - id: '0'
+      titulo: Banqueta indaiá
+      img: contas/riolazer/img/portfolio/1480959668005.jpg
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+    - id: ''
+      titulo: ChaIse amanda
+      img: contas/riolazer/img/portfolio/1480959801538.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: Chaise fortAleza
+      img: contas/riolazer/img/portfolio/1480960197861.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: ChaIse ninho
+      img: contas/riolazer/img/portfolio/1480960296224.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: Chaise India
+      img: contas/riolazer/img/portfolio/1481067206590.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: Chaise Lua
+      img: contas/riolazer/img/portfolio/1481067269246.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: Conjunto california
+      img: contas/riolazer/img/portfolio/1481067394219.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Conjunto
+    - id: ''
+      titulo: Conjunto andes
+      img: contas/riolazer/img/portfolio/1481067455111.jpg
+      txt: '<div><span style="line-height: 1.42857143; -webkit-text-size-adjust: 100%;">Sofá
+        de 3 lugares</span><br></div><div>Duas poltronas</div><div>Puff</div><div>Mesa
+        Lateral</div>'
+      cliente: ''
+      site: 
+      data: ''
+      servico: ''
+      cat: Conjunto
+    - id: ''
+      titulo: Conjunto anGra
+      img: contas/riolazer/img/portfolio/1481067658714.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Conjunto
+  contact:
+    label: Contato

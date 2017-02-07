@@ -49,7 +49,7 @@ before do
 
   if url.include? "." then
     @site_nome = request.host.split(".").first
-    if @site_nome == "radiando" then redirect "http://radiando.net/site/index.html" end
+    if request.fullpath.length == 1 && @site_nome == "radiando" then redirect "http://radiando.net/site/index.html" end  
   else
     #Para o caso de endereço = localhost
     tt = request.host_with_port.split(".")[-1]

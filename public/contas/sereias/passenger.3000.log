@@ -1,0 +1,24 @@
+[ 2016-12-04 17:41:48.7981 269/7fbc1929e7c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-12-04 17:41:48.8091 272/7f83da38a7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-12-04 17:41:48.8094 272/7f83da38a7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-12-04 17:41:48.8117 272/7f83da38a7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 272
+[ 2016-12-04 17:41:48.8324 277/7f12381437c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-12-04 17:41:48.8348 277/7f12381437c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 277
+2016/12/04 17:41:50 [error] 291#0: *4 "/home/app/webapp/public/contas/sereias/public/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: _, request: "HEAD / HTTP/1.1", host: "0.0.0.0"
+2016/12/04 17:41:58 [error] 291#0: *5 "/home/app/webapp/public/contas/sereias/public/index.html" is not found (2: No such file or directory), client: 66.249.85.15, server: _, request: "GET / HTTP/1.1", host: "sereias.radiando.net"
+2016/12/04 17:42:03 [error] 291#0: *5 "/home/app/webapp/public/contas/sereias/public/index.html" is not found (2: No such file or directory), client: 66.249.85.15, server: _, request: "GET / HTTP/1.1", host: "sereias.radiando.net"
+
+[ 2016-12-04 17:42:25.8762 272/7f83d3bba700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2016-12-04 17:42:25.8764 272/7f83da38a7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-12-04 17:42:25.8766 272/7f83d33b9700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2016-12-04 17:42:25.8767 272/7f83d33b9700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2016-12-04 17:42:25.8770 272/7f83d3bba700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2016-12-04 17:42:25.8771 272/7f83d3bba700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+
+[ 2016-12-04 17:42:25.8846 277/7f1231938700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2016-12-04 17:42:25.8847 277/7f12381437c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-12-04 17:42:25.8849 277/7f1231137700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2016-12-04 17:42:25.8849 277/7f1231137700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2016-12-04 17:42:25.8854 277/7f1231938700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2016-12-04 17:42:25.8857 277/7f12381437c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2016-12-04 17:42:25.8889 272/7f83da38a7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished

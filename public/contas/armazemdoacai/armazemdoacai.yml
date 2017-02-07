@@ -1,0 +1,85 @@
+---
+name: armazemdoacai
+senha: d86e
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: ARMAZÉM do açai
+  menu:
+  - label: Produtos
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: Amazônia - AM
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: Pra quem realmente gosta do verdadeiro açai
+pages:
+  home:
+    label: 100% puro
+    img: contas/armazemdoacai/img/avatar.jpg
+    body: O original da floresta pra você
+  about:
+    label: Sobre
+    body1: O verdadeiro açaí para os apreciadores do ouro negro da floresta
+    body2: Completamente puro, sem xarope de guaraná, sem açúcar, sem espessastes,
+      conservantes ou qualquer outro aditivo que não seja o próprio açaí. Adoce a
+      gosto
+  portfolio:
+    label: Produtos
+    items:
+    - id: 0
+      titulo: Polpa
+      img: "/contas/armazemdoacai/img/portfolio/1480776513142.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: ''
+      titulo: Barra 1k
+      img: contas/armazemdoacai/img/portfolio/1480769482705.jpg
+      txt: ''
+      cliente: ''
+      site: 
+      data: 
+      servico: ''
+      cat: 
+    - id: 0
+      titulo: cremoso
+      img: "/contas/armazemdoacai/img/portfolio/1480776554764.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: sugestões
+    - id: 0
+      titulo: Creme
+      img: "/contas/armazemdoacai/img/portfolio/1480776617134.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: Na tijela
+      img: contas/armazemdoacai/img/portfolio/1480769272637.jpg
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: 
+  contact:
+    label: Contato

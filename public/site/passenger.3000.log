@@ -1,0 +1,75 @@
+[ 2016-11-05 17:45:10.9244 310/7fbc654b07c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-11-05 17:45:10.9359 313/7f8bc29cc7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-11-05 17:45:10.9361 313/7f8bc29cc7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-11-05 17:45:10.9388 313/7f8bc29cc7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 313
+[ 2016-11-05 17:45:10.9493 318/7fbe561f97c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-11-05 17:45:10.9505 318/7fbe561f97c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 318
+2016/11/05 17:45:13 [error] 334#0: *4 "/home/app/webapp/public/site/public/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: _, request: "HEAD / HTTP/1.1", host: "0.0.0.0"
+2016/11/05 17:45:49 [error] 334#0: *5 open() "/home/app/webapp/public/site/public/site/index.html" failed (2: No such file or directory), client: 177.142.41.184, server: _, request: "GET /site/index.html?msg=Um%20email%20de%20confirma%C3%A7%C3%A3o%20foi%20enviado%20para%20contato@magaweb.com.br HTTP/1.1", host: "radiando.net", referrer: "http://radiando.net/site/index.html?msg=Esse%20nome%20de%20site%20j%C3%A1%20foi%20escolhido,%20favor%20definir%20outro."
+2016/11/05 17:45:50 [error] 334#0: *5 open() "/home/app/webapp/public/site/public/favicon.ico" failed (2: No such file or directory), client: 177.142.41.184, server: _, request: "GET /favicon.ico HTTP/1.1", host: "radiando.net", referrer: "http://radiando.net/site/index.html?msg=Um%20email%20de%20confirma%C3%A7%C3%A3o%20foi%20enviado%20para%20contato@magaweb.com.br"
+
+[ 2016-11-05 17:45:59.5809 313/7f8bbc1fc700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2016-11-05 17:45:59.5811 313/7f8bc29cc7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-11-05 17:45:59.5813 313/7f8bbb9fb700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2016-11-05 17:45:59.5813 313/7f8bbb9fb700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2016-11-05 17:45:59.5817 313/7f8bbc1fc700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2016-11-05 17:45:59.5817 313/7f8bbc1fc700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+
+[ 2016-11-05 17:45:59.5823 318/7fbe4f9ee700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2016-11-05 17:45:59.5824 318/7fbe561f97c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-11-05 17:45:59.5825 318/7fbe4f1ed700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2016-11-05 17:45:59.5826 318/7fbe4f1ed700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2016-11-05 17:45:59.5828 318/7fbe4f9ee700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2016-11-05 17:45:59.5831 318/7fbe561f97c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2016-11-05 17:45:59.5932 313/7f8bc29cc7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2016-11-05 17:46:38.1224 366/7f6eebf3c7c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-11-05 17:46:38.1320 369/7efc0ac4c7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-11-05 17:46:38.1322 369/7efc0ac4c7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-11-05 17:46:38.1345 369/7efc0ac4c7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 369
+[ 2016-11-05 17:46:38.1438 374/7efc1b9427c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-11-05 17:46:38.1449 374/7efc1b9427c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 374
+2016/11/05 17:46:40 [error] 388#0: *4 "/home/app/webapp/public/site/public/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: _, request: "HEAD / HTTP/1.1", host: "0.0.0.0"
+
+[ 2016-11-05 17:46:52.3830 369/7efc0447c700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2016-11-05 17:46:52.3831 369/7efc0ac4c7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-11-05 17:46:52.3832 369/7efc03c7b700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2016-11-05 17:46:52.3832 369/7efc03c7b700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2016-11-05 17:46:52.3833 369/7efc0447c700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2016-11-05 17:46:52.3833 369/7efc0447c700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+
+[ 2016-11-05 17:46:52.3837 374/7efc15137700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2016-11-05 17:46:52.3837 374/7efc1b9427c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2016-11-05 17:46:52.3838 374/7efc14936700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2016-11-05 17:46:52.3838 374/7efc14936700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2016-11-05 17:46:52.3839 374/7efc15137700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2016-11-05 17:46:52.3841 374/7efc1b9427c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2016-11-05 17:46:52.3942 369/7efc0ac4c7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-03 01:40:32.7880 66/7f0fed8837c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-03 01:40:32.8218 69/7f24e719e7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-03 01:40:32.8225 69/7f24e719e7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-03 01:40:32.8332 69/7f24e719e7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 69
+[ 2017-02-03 01:40:32.8628 74/7fcc7b90e7c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-03 01:40:32.8672 74/7fcc7b90e7c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 74
+2017/02/03 01:40:34 [error] 88#0: *4 "/home/app/webapp/public/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: _, request: "HEAD / HTTP/1.1", host: "0.0.0.0"
+2017/02/03 01:40:38 [error] 88#0: *5 open() "/home/app/webapp/public/site/index.html" failed (2: No such file or directory), client: 177.142.33.201, server: _, request: "GET /site/index.html HTTP/1.1", host: "radiando.net"
+2017/02/03 01:40:38 [error] 88#0: *5 open() "/home/app/webapp/public/favicon.ico" failed (2: No such file or directory), client: 177.142.33.201, server: _, request: "GET /favicon.ico HTTP/1.1", host: "radiando.net", referrer: "http://radiando.net/site/index.html"
+2017/02/03 01:40:44 [error] 88#0: *5 "/home/app/webapp/public/index.html" is not found (2: No such file or directory), client: 177.142.33.201, server: _, request: "GET / HTTP/1.1", host: "radiando.net"
+2017/02/03 01:40:44 [error] 88#0: *5 "/home/app/webapp/public/index.html" is not found (2: No such file or directory), client: 177.142.33.201, server: _, request: "GET / HTTP/1.1", host: "radiando.net"
+2017/02/03 01:41:05 [error] 88#0: *12 "/home/app/webapp/public/index.html" is not found (2: No such file or directory), client: 177.142.33.201, server: _, request: "GET / HTTP/1.1", host: "192.radiando.net"
+2017/02/03 01:41:55 [error] 88#0: *12 "/home/app/webapp/public/index.html" is not found (2: No such file or directory), client: 177.142.33.201, server: _, request: "GET / HTTP/1.1", host: "192.radiando.net"
+2017/02/03 01:42:00 [error] 88#0: *18 "/home/app/webapp/public/index.html" is not found (2: No such file or directory), client: 177.142.33.201, server: _, request: "GET / HTTP/1.1", host: "radiando.net"
+
+[ 2017-02-03 01:42:26.6523 69/7f24e09ce700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-03 01:42:26.6527 69/7f24e719e7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-03 01:42:26.6532 69/7f24cbfff700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-03 01:42:26.6533 69/7f24cbfff700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-03 01:42:26.6541 69/7f24e09ce700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-03 01:42:26.6542 69/7f24e09ce700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+
+[ 2017-02-03 01:42:26.6561 74/7fcc75103700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-03 01:42:26.6571 74/7fcc7b90e7c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-03 01:42:26.6573 74/7fcc74902700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-03 01:42:26.6574 74/7fcc74902700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-03 01:42:26.6579 74/7fcc75103700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-03 01:42:26.6585 74/7fcc7b90e7c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-03 01:42:26.6617 69/7f24e719e7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished

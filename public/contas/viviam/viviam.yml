@@ -1,0 +1,239 @@
+---
+name: viviam
+senha: 6b73
+email: contato@magaweb.com.br
+style:
+  headerStyle: image-layout
+  avatarStyle: 'false'
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: Vicky Pinheiro
+  menu:
+  - label: Portfólio
+  - label: Sobre
+  - label: Contact
+  footer:
+    endereco: Brasília - DF - Brasil!
+    social:
+      facebook: 
+      googleplus: 
+      twitter: 
+      linkedin: 
+    about_resumo: |-
+      <p class="MsoNormal"><span>Planejador
+      Estratégico:<br></span>Gerência
+      de projetos de comunicação On-Line e Off-Line</p>
+pages:
+  home:
+    label: Planejador estratégico On &amp; off - LINE!
+    img: contas/viviam/img/avatar.jpg
+    body: 
+  about:
+    label: Sobre
+    body1: PLANEJADOR ESTRATÉGICO:<div>+ Gerência de Projetos de Comunicação On e
+      Off- Line<br></div><div>+ Desenvolvimento de Briefing&nbsp;</div><div>+ Análise
+      Mercadológica</div><div>+ Análise de tendências e movimentos do mercado</div><div>+
+      Desenvolvimento de Planos de Marketing e Business Plan</div><div>+ Elaboração
+      e implementação de planos de Comunicação</div><div>+ Acompanhamento de vendas
+      e reposicionamento do produto</div><div>+ Controle  e execução budget anual</div><div>+
+      Negociação com fornecedores</div><div>+ Articular com comunicadores internos</div><div>+
+      Planejamento e execução de eventos  internos e externos</div>
+    body2: PLANEJADOR TÁCTICO E OPERACIONAL:<div>+ Direção da construção de layouts
+      de peças publicitárias on e off -line<br></div><div>+ Implantação e controle
+      de cronogramas estratégicos e operacionais</div><div>+ Calendário de postagen
+      facebook e atualização de site</div><div>+ Direção da Criação e ou adaptação
+      de Identidade Visual e Brand book</div><div>+ Análise de roteiros e coordenação
+      de produção de vídeos&nbsp;</div><div>+ Projetos de Stand para eventos</div><div>+
+      Coordenação de ensaios fotográficos e vídeos tradicionais e aéreos.</div><div>+
+      Acompanhamento de cronogramas de trabalhos, projetos e relatórios</div><div>+
+      Monitoramento do departamento on-line e apresentação dos resultados obtidos</div>
+  portfolio:
+    label: Portfólio
+    items:
+    - id: 0
+      titulo: Artigo
+      img: "/contas/viviam/img/portfolio/artigo.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Artigo
+    - id: 0
+      titulo: CBV-direção de arte
+      img: contas/viviam/img/portfolio/1479075423622.jpg
+      txt: "- Display de Folders -"
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Arte
+    - id: 0
+      titulo: CBV-direção de arte
+      img: "/contas/viviam/img/portfolio/Frontlight.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Arte
+    - id: 0
+      titulo: Eventos
+      img: contas/viviam/img/portfolio/1479075699337.jpg
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Eventos
+    - id: 0
+      titulo: direção de arte
+      img: "/contas/viviam/img/portfolio/PCMobiles.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Arte
+    - id: 0
+      titulo: T.O-direção de arte
+      img: contas/viviam/img/portfolio/1479076640230.jpg
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Arte
+    - id: 0
+      titulo: T.O-direção de arte
+      img: contas/viviam/img/portfolio/1479076690583.jpg
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Arte
+    - id: 0
+      titulo: direção de arte
+      img: contas/viviam/img/portfolio/1479076785280.jpg
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Arte
+    - id: 0
+      titulo: FREE CENTER-DIREÇÃO DE ARTE
+      img: contas/viviam/img/portfolio/1479076837191.jpg
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Arte
+    - id: 0
+      titulo: FREE CENTER-direção de arte
+      img: "/contas/viviam/img/portfolio/PCMobiles.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Arte
+    - id: 0
+      titulo: FREE CENTER-direção de arte
+      img: contas/viviam/img/portfolio/1479076938772.jpg
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Arte
+    - id: 0
+      titulo: endomarketing
+      img: "/contas/viviam/img/portfolio/celeiro.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Endomarketing
+    - id: 0
+      titulo: endomarketing
+      img: contas/viviam/img/portfolio/1479077029019.jpg
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Endomarketing
+    - id: 0
+      titulo: dIREÇÃO FOTO
+      img: "/contas/viviam/img/portfolio/301.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Foto
+    - id: 0
+      titulo: direção de video
+      img: "/contas/viviam/img/portfolio/cel.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Direção de Video
+    - id: 0
+      titulo: brindes
+      img: "/contas/viviam/img/portfolio/IMG3522.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Brindes
+    - id: 0
+      titulo: brindes
+      img: "/contas/viviam/img/portfolio/brinde.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Brindes
+    - id: 0
+      titulo: brindes
+      img: contas/viviam/img/portfolio/1479079452105.jpg
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Brindes
+    - id: 0
+      titulo: brindes
+      img: contas/viviam/img/portfolio/1479079522853.jpg
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Brindes
+    - id: 0
+      titulo: endomarketing
+      img: "/contas/viviam/img/portfolio/alm.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: Endomarketing
+  contact:
+    label: Contact

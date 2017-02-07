@@ -1,0 +1,74 @@
+---
+info:
+  name: robertomorais
+  email: robertipanema@icloud.com
+  senha: 12fd
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: Roberto moraIs
+    img: 
+  menu:
+  - Vocalista
+  - sobre
+  - contato
+head:
+  backgroundColor: hsla(266, 20%, 74%, 0.47)
+  backgroundUrl: "/styleBackgrounds/blue_fire_flower-wallpaper-1440x900.jpg"
+  fontColor: hsl(247, 13%, 87%)
+  avatar: contas/robertomorais/img/avatar.png?1486298158
+  txt1: "Vocalista\U0001F3B6\U0001F3B6\U0001F3B6"
+  txt2: texto 2
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+portfolio:
+  label: Vocalista
+  itemsTags: []
+  items:
+  - id: robertomorais-1486296371346
+    titulo: Julie NobrEga&amp;Roberto morais
+    img: contas/robertomorais/img/portfolio/robertomorais-1486296371346.png
+    txt: Sinônimos/Lapa
+    cliente: ''
+    site: ''
+    data: 
+    servico: ''
+    tags: []
+  - id: robertomorais-1486297194915
+    titulo: ''
+    img: contas/robertomorais/img/portfolio/robertomorais-1486297194915.png
+    txt: 
+    cliente: 
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: robertomorais-1486300148436
+    titulo: ''
+    img: contas/robertomorais/img/portfolio/robertomorais-1486300148436.png
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+about:
+  label: sobre
+  body1: texto 1
+  body2: texto 2
+contact:
+  label: contato
+footer:
+  endereco: 
+  social:
+    facebook: facebook
+    googleplus: googleplus
+    twitter: twitter
+    linkedin: linkedin
+  about_resumo: texto de resumo

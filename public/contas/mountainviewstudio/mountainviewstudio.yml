@@ -1,0 +1,164 @@
+---
+name: mountainviewstudio
+senha: 5a1f
+email: contato@magaweb.com.br
+head:
+  title: Portfólio
+  description: 
+  author: 
+moldura:
+  label: Portfolio
+  logo:
+    label: copacabana studio
+  menu:
+  - label: Galeria
+  - label: Sobre
+  - label: Contato
+  footer:
+    endereco: Copacabana
+    social:
+      facebook: https://www.airbnb.com.br/rooms/439879
+      googleplus: https://www.airbnb.com.br/rooms/439879
+      twitter: https://www.airbnb.com.br/rooms/439879
+      linkedin: https://www.airbnb.com.br/rooms/439879
+    about_resumo: Mountain view Studio in Copacabana with FREE Wi-Fi
+pages:
+  home:
+    label: vista sempre verde
+    img: contas/mountainviewstudio/img/avatar.jpg
+    body: Wellcome!
+  about:
+    label: Sobre
+    body1: "<div>Recently renovated, this 650 square-foot, top-floor apartment delivers
+      modern comfort and unobstructed mountain and forest views while being centrally
+      located in beautiful Copacabana.</div><div>Perfect for a small group of friends,
+      two couples, or an executive to call home while visiting Rio. The apartment
+      is fully furnished with an eye for quality and detail throughout:</div><div>-
+      firm, pillow-top queen bed with clean, fresh linens (sleeps 2 adults)</div><div>-
+      firm, pillow-top double bed with clean, fresh linens (sleeps 2 adults)</div><div>-
+      modern kitchen with stove/oven, full-size refrigerator, microwave oven - - dishes
+      and silverware for 4 guests, a toaster, and a blender<br>- pots and pans for
+      cooking</div><div>- spacious bathroom with clean, fresh hand/bath towels</div><div>-
+      new clothes washer and service area with utility basin</div><div>- new air-conditioner
+      in bedroom</div><div>- wi-fi throughout</div><div>- 40-inch LCD w DVD player</div><div>-
+      NET (cable with several English-speaking channels)&nbsp;<br>- maid service included
+      for stays of 7 days or more</div><div>Also close by are several excellent restaurants.
+      Cervantes is a local favorite and highly recommended - try the filet mignon
+      &amp; pineapple sandwich. You can sit in the dining area or (email hidden).
+      I prefer to (email hidden) and have an ice cold chopp (draft beer).<br>All calls
+      to my Florida number are forwarded to my cellphone here in Rio. Be sure to let
+      the call ring several times as there is a slight delay when forwarding calls
+      to Brasil.</div>"
+    body2: "<div>A five minute walk puts you on the sands of Copacabana beach, and
+      the famous Copacabana Palace Hotel. Also close by are several excellent restaurants.
+      Cervantes is a local favorite and highly recommended - try the filet mignon
+      &amp; pineapple sandwich. You can sit in the dining area or (email hidden).
+      I prefer to (email hidden) and have an ice cold chopp (draft beer).<br></div><div>Every
+      Thursday there is an open-market across the street where they sell fresh fish,
+      chicken, eggs, veggies and fruits of all kinds, flowers... just about anything
+      you need. Also, there are several supermarkets to chose from within 5 minutes
+      walking distance.</div><div>The hills surrounding the apartment are owned by
+      the Brasilian Army. As such, the area has been protected from urban development
+      for decades. This provides a calm, quiet environment and beautiful mountain
+      views from the apartment.</div><div>A few homes have been built for officer
+      housing but they are barely visible.</div><div>The metro station Cardial Arcoverde
+      is only a three minute walk, putting all of Rio at your doorstep - Ipanema is
+      less than 10 minutes by metro and Downtown/Lapa is less than 20 minutes away.</div><div>The
+      building is safe and well-managed. A doorman is present 24 hours per day and
+      we have closed-circuit TV in the hallways and elevators. With no stores or restaurants
+      on the ground floor, it is clean and family-friendly.</div>"
+  portfolio:
+    label: Galeria
+    items:
+    - id: 0
+      titulo: portaria
+      img: "/contas/mountainviewstudio/img/portfolio/1479951721036.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+    - id: '0'
+      titulo: 
+      img: contas/mountainviewstudio/img/portfolio/1479861590963.jpg
+      txt: 
+      cliente: 
+      site: 
+      data: 
+      servico: 
+      cat: cozinha
+    - id: 0
+      titulo: ''
+      img: "/contas/mountainviewstudio/img/portfolio/1479952033972.jpg"
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: cozinha
+    - id: ''
+      titulo: ''
+      img: contas/mountainviewstudio/img/portfolio/1479861629608.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: serviço
+    - id: ''
+      titulo: ''
+      img: contas/mountainviewstudio/img/portfolio/1479861669240.jpg
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: 
+    - id: ''
+      titulo: dormitório
+      img: contas/mountainviewstudio/img/portfolio/1480003090532.png
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: dormitório
+    - id: ''
+      titulo: dormitório
+      img: contas/mountainviewstudio/img/portfolio/1480003274379.png
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: dormitório
+    - id: ''
+      titulo: Sala
+      img: contas/mountainviewstudio/img/portfolio/1480003435266.png
+      txt: Home theater, 40 inch LCD with digital cable TV
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: sala
+    - id: ''
+      titulo: ''
+      img: contas/mountainviewstudio/img/portfolio/1480003855101.png
+      txt: Mountain view Studio in Copacabana with FREE Wi-Fi
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: sala
+    - id: ''
+      titulo: banheiro
+      img: http://placehold.it/360x260/e67e22/fff
+      txt: ''
+      cliente: ''
+      site: ''
+      data: ''
+      servico: ''
+      cat: ''
+  contact:
+    label: Contato

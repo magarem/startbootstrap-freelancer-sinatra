@@ -3,19 +3,27 @@
   email: contato@magaweb.com.br
   senha: 8654
   token: 18654f26f16c4968288e559464b71b39a
-- nome: tttdfdf
-  email: contato@magaweb.com.br
-  senha: a057
-  token: a0578855910c33dfbe88bb95498c6a98
 - nome: ingrydsabino
   email: contato@magaweb.com.br
-  senha: ca96
-  token: ca96fdb04fbb051695afd0324b550cb6
-- nome: fidelito
+  senha: 4bf3
+  token: 4bf364f51f73868bfa79d21c52ee473c
+- nome: mariaclara
   email: contato@magaweb.com.br
-  senha: f18d
-  token: f18dc0fa4f964edb0a44f95f7781dc6d
-- nome: t13
+  senha: '9347'
+  token: 93477eca63e79311dda851f70029f56f
+- nome: roberto.morais
+  email: robertipanema@icloud.com
+  senha: ffe7
+  token: ffe7f84d2679c11ec10da0151e5b46fd
+- nome: fidelis
   email: contato@magaweb.com.br
-  senha: e753
-  token: e753a1785e799f23343c34b3ef584cf8
+  senha: '1128'
+  token: 1128a2cbfb0c0b5d35a4ebfc0eb74ed0
+- nome: robertomorais
+  email: robertipanema@icloud.com
+  senha: 12fd
+  token: 12fdca72601058a83ca18db545c95d5b
+- nome: madrinharita
+  email: contato@magaweb.com.br
+  senha: fa34
+  token: fa34c67ca5d5ed8618a889ae957bd3f5
