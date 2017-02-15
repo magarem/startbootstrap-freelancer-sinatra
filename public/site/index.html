@@ -51,7 +51,7 @@
                 <li><a href="#testimonials" class="scroll-to">Testimonials</a></li>
                 <li><a href="#contact" class="scroll-to">Contact</a></li> -->
               </ul><a href="#" data-toggle="modal" data-target="#get-started" class="btn navbar-btn btn-ghost">Comece agora</a>
-              <a href="#" data-toggle="modal" data-target="#login" class="btn navbar-btn btn-ghost">Log in</a>
+              <a id=loginButton href="#" data-toggle="modal" data-target="#login" class="btn navbar-btn btn-ghost">Log in</a>
             </div>
           </div>
         </div>
@@ -94,8 +94,8 @@
             <div class="modal-body">
               <form name=formLogin onSubmit="return validarLogin(formLogin)" action=/login_do method="POST">
                 <div class="form-group">
-                    <input type="text" name="site" placeholder="Nome do portfólio"  class="form-control" required>
-                    <input type="password" name="senha" value="" class="form-control"  placeholder="Entre com a senha" style="margin-top:10px;" required>
+                    <input type="text" id="site" name="site" placeholder="Nome do portfólio"  class="form-control" required>
+                    <input type="password" id="password" name="senha" value="" class="form-control"  placeholder="Entre com a senha" style="margin-top:10px;" required>
                 </div>
                 <p class="text-center">
                   <button class="btn btn-primary" type="submit" onclick="actionChange()"><i class="pe-7s-magic-wand"></i> Login</button>
@@ -106,7 +106,11 @@
               </p>
                <script>
                function actionChange(){
-                   formLogin.action = 'http://'+formLogin.site.value+'.'+location.host+'/login_do'
+                  if (window.location.href.indexOf("168.") > 0){
+                     formLogin.action = 'http://'+location.host+'/login_do'
+                  }else{
+                     formLogin.action = 'http://'+formLogin.site.value+'.'+location.host+'/login_do'
+                  }
                }
                function lembrarSenha(){
                  if (formLogin.site.value.length > 0) {
@@ -232,7 +236,10 @@
           if (!results[2]) return '';
           return decodeURIComponent(results[2].replace(/\+/g, " "));
       }
+      cmd = null
       var msg = getParameterByName('msg');
+      var cmd = getParameterByName('cmd');
+      var site = getParameterByName('site');
       if (msg) bootbox.alert(msg)
 
       //Form validation
@@ -250,6 +257,11 @@
         if (formName.senha.value.length < 1) ok  = false;
         if (!ok) alert("Erro no preenchimento do formulário, favor revisar");
         return ok
+      }
+      if (cmd=="login") {
+        $( "#loginButton" ).trigger( "click" );
+        $( "#site" ).val(site);
+        $( "#password" ).focus();
       }
    </script>
    <script>

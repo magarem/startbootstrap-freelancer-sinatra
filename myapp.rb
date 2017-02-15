@@ -49,13 +49,12 @@ before do
 
   if url.include? "." then
     @site_nome = request.host.split(".").first
-    if request.fullpath.length == 1 && @site_nome == "radiando" then redirect "http://radiando.net/site/index.html" end  
+    if request.fullpath.length == 1 && @site_nome == "radiando" then redirect "http://radiando.net/site/index.html" end
   else
     #Para o caso de endereço = localhost
     tt = request.host_with_port.split(".")[-1]
     redirect "http://#{tt}/site/index.html"
   end
-
 
   puts "[@site_nome]>#{@site_nome}"
   puts "request.host_with_port: #{request.host_with_port}"
@@ -69,13 +68,22 @@ before do
     @data_path = "public/contas/{site_nome}/{site_nome}.yml"
     @data_path.gsub! "{site_nome}", @site_nome
     @data = YAML.load_file @data_path
-    puts @data
+    # puts @data
   end
 end
 
-get '/radiando' do
-  tt = request.host_with_port
-  redirect "http://#{tt}/site/index.html"
+get '/adm' do
+  site = request.host_with_port.split(".")[0]
+  url = request.host_with_port.split(".")[-1]
+  puts "request.host_with_port:#{request.host_with_port}"
+  # Teste Hack
+  if request.host_with_port.include? "168" then
+    puts "***"
+    redirect "http://#{request.host_with_port}/site/index.html?cmd=login&site=#{site}"
+  else
+    puts "---"
+    redirect "http://#{url}/site/index.html?cmd=login&site=#{site}"
+  end
 end
 
 #
@@ -92,7 +100,7 @@ get '/partials/:name' do
 end
 
 get "/cardPanel" do
-  puts params["id"]
+  # puts params["id"]
   #Carrega o titulo do site para o header
   @data = YAML.load_file @data_path
   erb :portfolio_modal_pagina
@@ -269,7 +277,6 @@ get "/site_new_do" do
 
   #Laço de conferencia para ver se os dados do email conferem
   @y.each do |key|
-    puts "!"
     yml_nome = key['nome']
     yml_email = key['email']
     yml_senha = key['senha']
@@ -347,7 +354,13 @@ post '/login_do' do
   #Testa se existe o site
   if !File.exist? File.expand_path "./public/contas/"+site_nome then
       domain = request.host_with_port.split(".")[-1]
-      redirect "http://#{domain}/site/index.html?msg=Site não encontrado"
+      puts "domain:#{domain}"
+      if request.host_with_port.include? "168" then
+        #Celular test hack
+        redirect "http://#{request.host_with_port}/site/index.html?msg=Site não encontrado"
+      else
+        redirect "http://#{domain}/site/index.html?msg=Site não encontrado"
+      end
   end
 
   @data_path.gsub! "{site_nome}", site_nome
@@ -368,7 +381,14 @@ post '/login_do' do
     @edit_flag = "false"
     # redirect 'site/index.html?msg=Erro de autenticação'
     domain = request.host_with_port.split(".")[-1]
-    redirect "http://#{domain}/site/index.html?msg=Erro de autenticação"
+
+    #Desvia conforme a origem
+    if request.host_with_port.include? "168" then
+      #Celular test hack
+      redirect "http://#{request.host_with_port}/site/index.html?msg=Erro de autenticação"
+    else
+      redirect "http://#{domain}/site/index.html?msg=Erro de autenticação"
+    end
 
   end
 end

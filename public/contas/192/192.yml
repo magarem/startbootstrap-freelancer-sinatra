@@ -16,8 +16,8 @@ navbar:
   - sobre
   - contato
 head:
-  backgroundColor: hsl(2, 60%, 50%)
-  backgroundUrl: "/styleBackgrounds/aurora_burst_lime_green-wallpaper-1440x900.jpg"
+  backgroundColor: hsl(2, 39%, 48%)
+  backgroundUrl: "/styleBackgrounds/6935544-blue-backgrounds-hd.jpg"
   fontColor: hsl(247, 13%, 87%)
   avatar: contas/192/img/avatar.jpg?1486077361
   txt1: Nilzete
