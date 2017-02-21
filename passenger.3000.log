@@ -18190,3 +18190,1998 @@ App 29770 stdout: {"info"=>{"name"=>"robertomorais", "email"=>"robertipanema@icl
 App 29753 stderr: 186.216.206.202 - - [07/Feb/2017:15:24:19 +0000] "GET / HTTP/1.1" 200 42170 0.0912
 App 30645 stdout: 
 [ 2017-02-07 15:29:19.2865 503/7fa17bcea700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 29770, application /home/app/webapp/public (development)
+[ 2017-02-18 20:40:01.1010 75/7f4306db77c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 20:40:01.1226 78/7f3c2920e7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 20:40:01.1229 78/7f3c2920e7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 20:40:01.1270 78/7f3c2920e7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 78
+[ 2017-02-18 20:40:01.1509 88/7fd9d31eb7c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 20:40:01.1533 88/7fd9d31eb7c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 88
+App 121 stderr: stdin: is not a tty
+App 121 stdout: 
+App 138 stdout: 
+App 138 stdout: >[@logado]>>
+App 138 stdout: [@site_nome]>0
+App 138 stdout: request.host_with_port: 0.0.0.0
+App 121 stderr: 2017-02-18 20:40:05 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 121 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 121 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 121 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 121 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_17394800'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 121 stderr: 	/home/app/webapp/myapp.rb:138:in `block in <top (required)>'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 121 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 121 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 121 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 121 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 121 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 121 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 121 stderr: [ 2017-02-18 20:40:05.1410 138/0x0000000212d8e0(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 138, thread 0x0000000212d8e0(Worker 1)):
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 121 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 121 stderr: 	from (erb):183:in `each'
+App 121 stderr: 	from (erb):183:in `block in pretty'
+App 121 stderr: 	from (erb):155:in `each'
+App 121 stderr: 	from (erb):155:in `pretty'
+App 121 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 121 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 121 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 121 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 121 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 121 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 121 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 121 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+[ 2017-02-18 20:40:05.1411 78/7f3c22a3e700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 138 stdout: >[@logado]>>
+App 121 stderr: 172.17.0.1 - - [18/Feb/2017:20:40:08 +0000] "POST /site_new HTTP/1.1" 303 - 0.0098
+App 138 stdout: >[@logado]>>
+App 121 stderr: 172.17.0.1 - - [18/Feb/2017:20:40:20 +0000] "POST /site_new HTTP/1.1" 303 - 0.0017
+App 138 stdout: >[@logado]>>
+App 121 stderr: 172.17.0.1 - - [18/Feb/2017:20:40:30 +0000] "POST /site_new HTTP/1.1" 303 - 0.0012
+App 138 stdout: >[@logado]>>
+App 121 stderr: 172.17.0.1 - - [18/Feb/2017:20:41:16 +0000] "POST /site_new HTTP/1.1" 303 - 0.0014
+
+[ 2017-02-18 20:41:38.4624 78/7f3c22a3e700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+
+[ 2017-02-18 20:41:38.4625 78/7f3c2920e7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:41:38.4625 88/7fd9cc9e0700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 20:41:38.4625 78/7f3c2920e7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 138, application /home/app/webapp/public (development)
+[ 2017-02-18 20:41:38.4625 88/7fd9d31eb7c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:41:38.4626 88/7fd9cc9e0700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 20:41:38.4627 88/7fd9bffff700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:41:38.4627 88/7fd9bffff700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 20:41:38.4630 78/7f3c221bc700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 20:41:38.4630 78/7f3c221bc700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 20:41:38.4631 78/7f3c22a3e700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 20:41:38.4631 78/7f3c22a3e700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 20:41:38.4633 78/7f3c2193a700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 20:41:38.4633 78/7f3c2193a700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 20:41:38.4635 78/7f3c210b8700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 20:41:38.4636 78/7f3c210b8700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 20:41:38.4639 88/7fd9d31eb7c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 20:41:38.4639 78/7f3c20836700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:41:38.4640 78/7f3c20836700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 20:41:38.4641 78/7f3c2920e7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 138, application /home/app/webapp/public (development)
+[ 2017-02-18 20:41:38.7039 78/7f3c2920e7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 20:41:39.4865 197/7f64701c17c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 20:41:39.4928 200/7f10f11e47c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 20:41:39.4930 200/7f10f11e47c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 20:41:39.4947 200/7f10f11e47c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 200
+[ 2017-02-18 20:41:39.5048 209/7f408be957c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 20:41:39.5058 209/7f408be957c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 209
+App 243 stderr: stdin: is not a tty
+App 243 stdout: 
+App 260 stdout: 
+App 260 stdout: >[@logado]>>
+App 260 stdout: [@site_nome]>0
+App 260 stdout: 
+App 260 stdout: request.host_with_port: 0.0.0.0
+App 243 stderr: 2017-02-18 20:41:42 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 243 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 243 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 243 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 243 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_14985180'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 243 stderr: 	/home/app/webapp/myapp.rb:138:in `block in <top (required)>'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 243 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 243 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 243 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 243 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 243 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 243 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 243 stderr: [ 2017-02-18 20:41:42.9298 260/0x00000001c94fb8(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 260, thread 0x00000001c94fb8(Worker 1)):
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 243 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 243 stderr: 	from (erb):183:in `each'
+App 243 stderr: 	from (erb):183:in `block in pretty'
+[ 2017-02-18 20:41:42.9299 200/7f10eaa14700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 243 stderr: 	from (erb):155:in `each'
+App 243 stderr: 	from (erb):155:in `pretty'
+App 243 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 243 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 243 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 243 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 243 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 243 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 243 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 243 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 260 stdout: >[@logado]>>
+App 243 stderr: 172.17.0.1 - - [18/Feb/2017:20:41:49 +0000] "POST /site_newgg HTTP/1.1" 303 - 0.0086
+
+
+[ 2017-02-18 20:42:27.5864 200/7f10eaa14700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 20:42:27.5864 209/7f408568a700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 20:42:27.5865 209/7f408be957c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:42:27.5866 200/7f10f11e47c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:42:27.5866 209/7f4084e89700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:42:27.5866 209/7f4084e89700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 20:42:27.5866 200/7f10f11e47c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 260, application /home/app/webapp/public (development)
+[ 2017-02-18 20:42:27.5872 200/7f10e9910700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 20:42:27.5872 200/7f10e9910700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 20:42:27.5872 200/7f10e908e700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 20:42:27.5873 200/7f10e908e700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 20:42:27.5873 200/7f10ea192700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 20:42:27.5874 200/7f10ea192700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 20:42:27.5876 200/7f10e880c700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:42:27.5876 200/7f10e880c700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 20:42:27.5877 209/7f408568a700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 20:42:27.5877 200/7f10eaa14700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 20:42:27.5878 200/7f10eaa14700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 20:42:27.5880 209/7f408be957c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 20:42:27.5880 200/7f10f11e47c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 260, application /home/app/webapp/public (development)
+[ 2017-02-18 20:42:27.7901 200/7f10f11e47c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 20:42:29.0848 301/7f0bdf5bb7c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 20:42:29.0911 304/7fae1883e7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 20:42:29.0912 304/7fae1883e7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 20:42:29.0929 304/7fae1883e7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 304
+[ 2017-02-18 20:42:29.1049 313/7fe65ad827c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 20:42:29.1066 313/7fe65ad827c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 313
+App 347 stderr: stdin: is not a tty
+App 347 stdout: 
+App 364 stdout: 
+App 364 stdout: >[@logado]>>
+App 364 stdout: [@site_nome]>0
+App 364 stdout: request.host_with_port: 0.0.0.0
+App 347 stderr: 2017-02-18 20:42:32 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 347 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 347 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 347 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 347 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_5396100'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 347 stderr: 	/home/app/webapp/myapp.rb:138:in `block in <top (required)>'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 347 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 347 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 347 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 347 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 347 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 347 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 347 stderr: [ 2017-02-18 20:42:32.5668 364/0x00000000a4ad08(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 364, thread 0x00000000a4ad08(Worker 1)):
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 347 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 347 stderr: 	from (erb):183:in `each'
+App 347 stderr: 	from (erb):183:in `block in pretty'
+App 347 stderr: 	from (erb):155:in `each'
+App 347 stderr: 	from (erb):155:in `pretty'
+App 347 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 347 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 347 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 347 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+[ 2017-02-18 20:42:32.5670 304/7fae1206e700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 347 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 347 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 347 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 347 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 364 stdout: >[@logado]>>
+App 347 stderr: 172.17.0.1 - - [18/Feb/2017:20:43:16 +0000] "GET / HTTP/1.1" 302 - 0.0077
+App 364 stdout: >[@logado]>>
+App 364 stdout: 
+App 347 stderr: 172.17.0.1 - - [18/Feb/2017:20:43:16 +0000] "GET / HTTP/1.1" 302 - 0.0013
+
+
+[ 2017-02-18 20:43:18.6905 304/7fae1206e700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 20:43:18.6905 313/7fe64ffff700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 20:43:18.6906 313/7fe65ad827c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:43:18.6906 304/7fae1883e7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:43:18.6907 304/7fae1883e7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 364, application /home/app/webapp/public (development)
+[ 2017-02-18 20:43:18.6907 313/7fe64ffff700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 20:43:18.6907 313/7fe64f7fe700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:43:18.6907 313/7fe64f7fe700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 20:43:18.6911 304/7fae117ec700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 20:43:18.6911 304/7fae117ec700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 20:43:18.6914 304/7fae10f6a700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 20:43:18.6915 304/7fae10f6a700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 20:43:18.6917 313/7fe65ad827c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 20:43:18.6917 304/7fadebfff700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 20:43:18.6918 304/7fadebfff700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 20:43:18.6921 304/7fae1206e700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 20:43:18.6922 304/7fae1206e700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 20:43:18.6923 304/7fadeb7fe700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:43:18.6924 304/7fadeb7fe700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 20:43:18.6933 304/7fae1883e7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 364, application /home/app/webapp/public (development)
+[ 2017-02-18 20:43:18.9066 304/7fae1883e7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 20:43:20.6686 405/7fd9bda767c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 20:43:20.6797 408/7f833ccf77c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 20:43:20.6799 408/7f833ccf77c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 20:43:20.6821 408/7f833ccf77c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 408
+[ 2017-02-18 20:43:20.6902 419/7fd18f54b7c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 20:43:20.6910 419/7fd18f54b7c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 419
+App 451 stderr: stdin: is not a tty
+App 451 stdout: 
+App 468 stdout: 
+App 468 stdout: >[@logado]>>
+App 468 stdout: 
+App 468 stdout: [@site_nome]>0
+App 468 stdout: 
+App 468 stdout: request.host_with_port: 0.0.0.0
+App 468 stdout: 
+App 475 stdout: 
+App 482 stdout: 
+App 475 stdout: >[@logado]>>
+App 475 stdout: 
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:43:24 +0000] "GET / HTTP/1.1" 302 - 0.0191
+App 482 stdout: >[@logado]>>
+App 451 stderr: 2017-02-18 20:43:24 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 451 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 451 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 451 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 451 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_16704500'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 451 stderr: 	/home/app/webapp/myapp.rb:138:in `block in <top (required)>'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 451 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 451 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 451 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 451 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 451 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 451 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:43:24 +0000] "GET / HTTP/1.1" 302 - 0.0170
+App 451 stderr: [ 2017-02-18 20:43:24.1966 468/0x00000001fdc7e8(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 468, thread 0x00000001fdc7e8(Worker 1)):
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 451 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 451 stderr: 	from (erb):183:in `each'
+App 451 stderr: 	from (erb):183:in `block in pretty'
+App 451 stderr: 	from (erb):155:in `each'
+App 451 stderr: 	from (erb):155:in `pretty'
+App 451 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 451 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 451 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 451 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 451 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 451 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 451 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 451 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+[ 2017-02-18 20:43:24.1970 408/7f8336527700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 468 stdout: >[@logado]>>
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:46:28 +0000] "GET / HTTP/1.1" 302 - 0.0086
+App 468 stdout: >[@logado]>>true
+App 468 stdout: [@site_nome]>192
+App 468 stdout: request.host_with_port: 192.localhost:3000
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:46:33 +0000] "GET / HTTP/1.1" 200 42488 0.0245
+App 468 stdout: >[@logado]>>true
+App 468 stdout: [@site_nome]>192
+App 468 stdout: request.host_with_port: 192.localhost:3000
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:46:33 +0000] "GET / HTTP/1.1" 200 42488 0.0313
+App 468 stdout: >[@logado]>>true
+App 468 stdout: [@site_nome]>192
+App 468 stdout: request.host_with_port: 192.localhost:3000
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:46:33 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0058
+App 468 stdout: >[@logado]>>true
+App 468 stdout: 
+App 468 stdout: [@site_nome]>192
+App 468 stdout: 
+App 468 stdout: request.host_with_port: 192.localhost:3000
+App 468 stdout: 
+App 475 stdout: >[@logado]>>true
+App 475 stdout: [@site_nome]>192
+App 475 stdout: request.host_with_port: 192.localhost:3000
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:46:34 +0000] "GET /logged HTTP/1.1" 200 4 0.0054
+App 468 stdout: >[@logado]>>true
+App 468 stdout: [@site_nome]>192
+App 468 stdout: request.host_with_port: 192.localhost:3000
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:46:34 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0065
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:46:34 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0035
+App 468 stdout: >[@logado]>>true
+App 468 stdout: [@site_nome]>192
+App 468 stdout: request.host_with_port: 192.localhost:3000
+App 451 stderr: 172.17.0.1 - - [18/Feb/2017:20:46:34 +0000] "GET / HTTP/1.1" 200 42488 0.0405
+[ 2017-02-18 20:48:24.1533 408/7f833ccb4700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 482, application /home/app/webapp/public (development)
+
+
+[ 2017-02-18 20:48:47.6006 408/7f8336527700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 20:48:47.6006 419/7fd188d40700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 20:48:47.6007 408/7f833ccf77c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:48:47.6007 419/7fd18f54b7c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:48:47.6007 408/7f833ccf77c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 468, application /home/app/webapp/public (development)
+[ 2017-02-18 20:48:47.6008 419/7fd188d40700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 20:48:47.6008 408/7f833ccf77c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 475, application /home/app/webapp/public (development)
+[ 2017-02-18 20:48:47.6012 408/7f8335ca5700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 20:48:47.6012 408/7f8335ca5700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 20:48:47.6015 408/7f8335423700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 20:48:47.6015 408/7f8335423700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 20:48:47.6017 419/7fd17bfff700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:48:47.6017 419/7fd17bfff700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 20:48:47.6018 408/7f8334ba1700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 20:48:47.6018 408/7f8334ba1700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 20:48:47.6024 408/7f8336527700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 20:48:47.6024 408/7f8336527700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 20:48:47.6027 408/7f8307fff700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:48:47.6027 408/7f8307fff700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 20:48:47.6029 408/7f833ccf77c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 468, application /home/app/webapp/public (development)
+[ 2017-02-18 20:48:47.6030 408/7f833ccf77c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 475, application /home/app/webapp/public (development)
+[ 2017-02-18 20:48:47.6040 419/7fd18f54b7c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 20:48:47.8157 408/7f833ccf77c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 20:48:48.6458 634/7f78bac967c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 20:48:48.6520 637/7fe4552387c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 20:48:48.6521 637/7fe4552387c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 20:48:48.6544 637/7fe4552387c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 637
+[ 2017-02-18 20:48:48.6641 642/7f1b06f327c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 20:48:48.6650 642/7f1b06f327c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 642
+App 680 stderr: stdin: is not a tty
+App 680 stdout: 
+App 697 stdout: 
+App 697 stdout: >[@logado]>>
+App 697 stdout: [@site_nome]>0
+App 697 stdout: request.host_with_port: 0.0.0.0
+App 680 stderr: 127.0.0.1 - - [18/Feb/2017:20:48:52 +0000] "HEAD / HTTP/1.1" 404 456 0.0042
+App 697 stdout: >[@logado]>>true
+App 697 stdout: [@site_nome]>192
+App 697 stdout: request.host_with_port: 192.localhost:3000
+App 680 stderr: 172.17.0.1 - - [18/Feb/2017:20:48:58 +0000] "GET / HTTP/1.1" 404 466 0.0233
+App 697 stdout: >[@logado]>>true
+App 697 stdout: [@site_nome]>192
+App 697 stdout: request.host_with_port: 192.localhost:3000
+App 680 stderr: 172.17.0.1 - - [18/Feb/2017:20:48:58 +0000] "GET /__sinatra__/404.png HTTP/1.1" 200 18893 0.0571
+App 697 stdout: >[@logado]>>true
+App 697 stdout: [@site_nome]>192
+App 697 stdout: request.host_with_port: 192.localhost:3000
+App 680 stderr: 172.17.0.1 - - [18/Feb/2017:20:48:58 +0000] "GET /favicon.ico HTTP/1.1" 404 477 0.0032
+
+
+[ 2017-02-18 20:49:46.5476 642/7f1afbfff700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 20:49:46.5476 637/7fe44ea68700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 20:49:46.5476 637/7fe4552387c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:49:46.5476 642/7f1b06f327c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 20:49:46.5477 637/7fe4552387c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 697, application /home/app/webapp/public (development)
+[ 2017-02-18 20:49:46.5477 642/7f1afbfff700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 20:49:46.5477 642/7f1afb7fe700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:49:46.5478 642/7f1afb7fe700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 20:49:46.5482 637/7fe44ea68700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 20:49:46.5483 637/7fe44ea68700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 20:49:46.5483 637/7fe44e1e6700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 20:49:46.5483 637/7fe44e1e6700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 20:49:46.5483 637/7fe44d0e2700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 20:49:46.5483 637/7fe44d0e2700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 20:49:46.5485 637/7fe44c860700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 20:49:46.5485 637/7fe44c860700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 20:49:46.5486 637/7fe44d964700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 20:49:46.5486 637/7fe44d964700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 20:49:46.5487 637/7fe4552387c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 697, application /home/app/webapp/public (development)
+[ 2017-02-18 20:49:46.5493 642/7f1b06f327c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 20:49:46.7611 637/7fe4552387c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 20:49:48.1789 742/7ff1b58f07c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 20:49:48.1871 745/7efcc6a6a7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 20:49:48.1873 745/7efcc6a6a7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 20:49:48.1889 745/7efcc6a6a7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 745
+[ 2017-02-18 20:49:48.2009 753/7f1801fee7c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 20:49:48.2016 753/7f1801fee7c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 753
+App 788 stderr: stdin: is not a tty
+App 788 stdout: 
+App 805 stdout: 
+App 805 stdout: >[@logado]>>
+App 805 stdout: [@site_nome]>0
+App 805 stdout: request.host_with_port: 0.0.0.0
+App 812 stdout: 
+App 812 stdout: >[@logado]>>true
+App 812 stdout: [@site_nome]>192
+App 812 stdout: request.host_with_port: 192.localhost:3000
+App 788 stderr: 2017-02-18 20:49:51 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 788 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 788 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 788 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 788 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_7618500'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 788 stderr: 	/home/app/webapp/myapp.rb:120:in `block in <top (required)>'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 788 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 788 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 788 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 788 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 788 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 788 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 788 stderr: 172.17.0.1 - - [18/Feb/2017:20:49:51 +0000] "GET / HTTP/1.1" 200 42488 0.0467
+App 788 stderr: [ 2017-02-18 20:49:51.6648 805/0x00000000e87f88(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 805, thread 0x00000000e87f88(Worker 1)):
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 788 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 788 stderr: 	from (erb):183:in `each'
+App 788 stderr: 	from (erb):183:in `block in pretty'
+App 788 stderr: 	from (erb):155:in `each'
+App 788 stderr: 	from (erb):155:in `pretty'
+App 788 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 788 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+[ 2017-02-18 20:49:51.6650 745/7efcb3fff700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 788 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 788 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 788 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 788 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 788 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 788 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 805 stdout: >[@logado]>>true
+App 805 stdout: 
+App 805 stdout: [@site_nome]>192
+App 805 stdout: 
+App 805 stdout: request.host_with_port: 192.localhost:3000
+App 805 stdout: 
+App 788 stderr: 172.17.0.1 - - [18/Feb/2017:20:49:51 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0126
+App 805 stdout: >[@logado]>>true
+App 805 stdout: [@site_nome]>192
+App 805 stdout: request.host_with_port: 192.localhost:3000
+App 788 stderr: 172.17.0.1 - - [18/Feb/2017:20:49:52 +0000] "GET /logged HTTP/1.1" 200 4 0.0032
+App 805 stdout: >[@logado]>>true
+App 805 stdout: 
+App 805 stdout: [@site_nome]>192
+App 805 stdout: 
+App 805 stdout: request.host_with_port: 192.localhost:3000
+App 805 stdout: 
+App 812 stdout: >[@logado]>>true
+App 812 stdout: [@site_nome]>192
+App 812 stdout: request.host_with_port: 192.localhost:3000
+App 788 stderr: 172.17.0.1 - - [18/Feb/2017:20:49:52 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0043
+App 788 stderr: 172.17.0.1 - - [18/Feb/2017:20:49:52 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0040
+App 805 stdout: >[@logado]>>true
+App 805 stdout: 
+App 805 stdout: [@site_nome]>192
+App 805 stdout: 
+App 805 stdout: request.host_with_port: 192.localhost:3000
+App 805 stdout: 
+App 788 stderr: 172.17.0.1 - - [18/Feb/2017:20:49:52 +0000] "GET / HTTP/1.1" 200 42488 0.0449
+App 805 stdout: >[@logado]>>
+App 788 stderr: 172.17.0.1 - - [18/Feb/2017:20:50:07 +0000] "GET / HTTP/1.1" 302 - 0.0013
+App 805 stdout: >[@logado]>>
+App 788 stderr: 172.17.0.1 - - [18/Feb/2017:20:50:08 +0000] "GET / HTTP/1.1" 302 - 0.0010
+App 805 stdout: >[@logado]>>
+App 788 stderr: 172.17.0.1 - - [18/Feb/2017:20:50:16 +0000] "POST /site_newgg HTTP/1.1" 303 - 0.0016
+[ 2017-02-18 20:54:52.4150 745/7efcc6a27700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 812, application /home/app/webapp/public (development)
+
+[ 2017-02-18 21:12:39.6145 745/7efcb3fff700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:12:39.6146 745/7efcc6a6a7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:12:39.6146 745/7efcc6a6a7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 805, application /home/app/webapp/public (development)
+[ 2017-02-18 21:12:39.6150 745/7efcb37fe700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 21:12:39.6150 745/7efcb37fe700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 21:12:39.6153 745/7efcb2ffd700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 21:12:39.6153 745/7efcb2ffd700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 21:12:39.6155 745/7efcb27fc700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 21:12:39.6156 745/7efcb27fc700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 21:12:39.6159 745/7efcb3fff700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 21:12:39.6159 745/7efcb3fff700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 21:12:39.6161 745/7efcb1ffb700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:12:39.6161 745/7efcb1ffb700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 21:12:39.6162 745/7efcc6a6a7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 805, application /home/app/webapp/public (development)
+
+[ 2017-02-18 21:12:39.6164 753/7f17fb7e3700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:12:39.6165 753/7f1801fee7c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:12:39.6166 753/7f17fafe2700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:12:39.6166 753/7f17fafe2700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 21:12:39.6166 753/7f17fb7e3700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 21:12:39.6170 753/7f1801fee7c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 21:12:39.8182 745/7efcc6a6a7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 21:12:40.7267 1382/7fb453b667c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 21:12:40.7331 1385/7f492644c7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 21:12:40.7332 1385/7f492644c7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 21:12:40.7354 1385/7f492644c7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 1385
+[ 2017-02-18 21:12:40.7501 1396/7fb12120f7c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 21:12:40.7517 1396/7fb12120f7c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 1396
+App 1428 stderr: stdin: is not a tty
+App 1428 stdout: 
+App 1445 stdout: 
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>0
+App 1445 stdout: request.host_with_port: 0.0.0.0
+App 1428 stderr: 2017-02-18 21:12:44 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 1428 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 1428 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 1428 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 1428 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_12428820'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 1428 stderr: 	/home/app/webapp/myapp.rb:128:in `block in <top (required)>'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 1428 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 1428 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 1428 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 1428 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 1428 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 1428 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 1428 stderr: [ 2017-02-18 21:12:44.2766 1445/0x000000017b4c28(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 1445, thread 0x000000017b4c28(Worker 1)):
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 1428 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 1428 stderr: 	from (erb):183:in `each'
+App 1428 stderr: 	from (erb):183:in `block in pretty'
+App 1428 stderr: 	from (erb):155:in `each'
+App 1428 stderr: 	from (erb):155:in `pretty'
+App 1428 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 1428 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 1428 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 1428 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+[ 2017-02-18 21:12:44.2767 1385/7f491b7fe700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 1428 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 1428 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 1428 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 1428 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 1445 stdout: >[@logado]>>
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:12:52 +0000] "GET / HTTP/1.1" 302 - 0.0126
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:12:54 +0000] "GET / HTTP/1.1" 302 - 0.0011
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:12:54 +0000] "GET / HTTP/1.1" 200 42170 0.0306
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:12:55 +0000] "GET / HTTP/1.1" 200 42170 0.0330
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:12:55 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0047
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:12:56 +0000] "GET /logged HTTP/1.1" 200 5 0.0042
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:12:56 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0035
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:12:56 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0034
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: 
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: 
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: 
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:12:56 +0000] "GET / HTTP/1.1" 200 42170 0.0414
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: 
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:25:19 +0000] "GET / HTTP/1.1" 200 42170 0.0443
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: 
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: 
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: 
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:25:20 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0048
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: 
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: 
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: 
+App 1755 stderr: stdin: is not a tty
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:25:20 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0077
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: 
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: 
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: 
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:25:20 +0000] "GET /logged HTTP/1.1" 200 5 0.0051
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: 
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: 
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: 
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:25:20 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0056
+App 1755 stdout: 
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:25:21 +0000] "GET / HTTP/1.1" 200 42170 0.0480
+App 1772 stdout: 
+App 1445 stdout: >[@logado]>>
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:25:25 +0000] "GET / HTTP/1.1" 302 - 0.0010
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: request.host_with_port:192.localhost:3000
+App 1445 stdout: 
+App 1445 stdout: ---
+App 1445 stdout: 
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:26:09 +0000] "GET /adm HTTP/1.1" 302 - 0.0063
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: request.host_with_port:192.localhost:3000
+App 1445 stdout: 
+App 1445 stdout: ---
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:26:10 +0000] "GET /adm HTTP/1.1" 302 - 0.0042
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:26:41 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0057
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: 
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: 
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: 
+App 1445 stdout: request.host_with_port:192.localhost:3000
+App 1445 stdout: 
+App 1445 stdout: ---
+App 1445 stdout: 
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:26:46 +0000] "GET /adm HTTP/1.1" 302 - 0.0068
+App 1445 stdout: >[@logado]>>
+App 1445 stdout: [@site_nome]>192
+App 1445 stdout: request.host_with_port: 192.localhost:3000
+App 1445 stdout: request.host_with_port:192.localhost:3000
+App 1445 stdout: 
+App 1445 stdout: ---
+App 1445 stdout: 
+App 1428 stderr: 172.17.0.1 - - [18/Feb/2017:21:26:47 +0000] "GET /adm HTTP/1.1" 302 - 0.0056
+
+
+[ 2017-02-18 21:27:26.0979 1385/7f491b7fe700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:27:26.0979 1396/7fb11aa04700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:27:26.0980 1396/7fb12120f7c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:27:26.0980 1385/7f492644c7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:27:26.0980 1385/7f492644c7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 1445, application /home/app/webapp/public (development)
+[ 2017-02-18 21:27:26.0980 1396/7fb11a203700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:27:26.0981 1396/7fb11a203700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 21:27:26.0981 1385/7f492644c7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 1772, application /home/app/webapp/public (development)
+[ 2017-02-18 21:27:26.0982 1396/7fb11aa04700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 21:27:26.0985 1385/7f491affd700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 21:27:26.0985 1385/7f491affd700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 21:27:26.0986 1385/7f491a7fc700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 21:27:26.0986 1385/7f491a7fc700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 21:27:26.0988 1385/7f491b7fe700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 21:27:26.0989 1385/7f491b7fe700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 21:27:26.0989 1385/7f4919ffb700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 21:27:26.0990 1385/7f4919ffb700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 21:27:26.0991 1385/7f49197fa700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:27:26.0992 1385/7f49197fa700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 21:27:26.0993 1385/7f492644c7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 1445, application /home/app/webapp/public (development)
+[ 2017-02-18 21:27:26.0994 1385/7f492644c7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 1772, application /home/app/webapp/public (development)
+[ 2017-02-18 21:27:26.1000 1396/7fb12120f7c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 21:27:26.3018 1385/7f492644c7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 21:27:49.0589 1845/7f9b8f4ed7c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 21:27:49.0687 1848/7f6dd0f117c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 21:27:49.0689 1848/7f6dd0f117c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 21:27:49.0710 1848/7f6dd0f117c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 1848
+[ 2017-02-18 21:27:49.0780 1859/7f46d9ac27c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 21:27:49.0787 1859/7f46d9ac27c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 1859
+App 1891 stderr: stdin: is not a tty
+App 1891 stdout: 
+App 1891 stdout: 
+[ 2017-02-18 21:27:52.0431 1848/7f6dc84b8700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /home/app/webapp: An error occurred while starting up the preloader.
+  Error ID: ad3d64f1
+  Error details saved to: /tmp/passenger-error-LrgpAf.html
+  Message from application: /home/app/webapp/myapp.rb:88: syntax error, unexpected tSTRING_BEG, expecting keyword_then or ';' or '\n'
+...quest.host_with_port.include? "localhost" then
+...                               ^
+/home/app/webapp/myapp.rb:88: syntax error, unexpected keyword_then, expecting keyword_end
+/home/app/webapp/myapp.rb:91: syntax error, unexpected keyword_else, expecting keyword_end
+/home/app/webapp/myapp.rb:95: syntax error, unexpected keyword_end, expecting end-of-input (SyntaxError)
+  config.ru:2:in `require'
+  config.ru:2:in `block in <main>'
+  /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/builder.rb:55:in `instance_eval'
+  /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/builder.rb:55:in `initialize'
+  config.ru:1:in `new'
+  config.ru:1:in `<main>'
+  /usr/share/passenger/helper-scripts/rack-preloader.rb:110:in `eval'
+  /usr/share/passenger/helper-scripts/rack-preloader.rb:110:in `preload_app'
+  /usr/share/passenger/helper-scripts/rack-preloader.rb:156:in `<module:App>'
+  /usr/share/passenger/helper-scripts/rack-preloader.rb:30:in `<module:PhusionPassenger>'
+  /usr/share/passenger/helper-scripts/rack-preloader.rb:29:in `<main>'
+
+
+[ 2017-02-18 21:27:52.0510 1848/7f6dca741700 age/Cor/Con/CheckoutSession.cpp:277 ]: [Client 1-1] Cannot checkout session because a spawning error occurred. The identifier of the error is ad3d64f1. Please see earlier logs for details about the error.
+[ 2017-02-18 21:27:52.0510 1848/7f6dc9ebf700 age/Cor/Con/CheckoutSession.cpp:277 ]: [Client 2-1] Cannot checkout session because a spawning error occurred. The identifier of the error is ad3d64f1. Please see earlier logs for details about the error.
+
+[ 2017-02-18 21:28:48.4452 1859/7f46d32b7700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:28:48.4453 1859/7f46d9ac27c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:28:48.4454 1859/7f46d32b7700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 21:28:48.4454 1859/7f46d2ab6700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:28:48.4454 1859/7f46d2ab6700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 21:28:48.4458 1859/7f46d9ac27c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+
+[ 2017-02-18 21:28:48.4459 1848/7f6dca741700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:28:48.4460 1848/7f6dd0f117c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:28:48.4463 1848/7f6dc9ebf700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 21:28:48.4464 1848/7f6dc9ebf700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 21:28:48.4469 1848/7f6dc963d700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 21:28:48.4469 1848/7f6dc963d700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 21:28:48.4472 1848/7f6dc8dbb700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 21:28:48.4472 1848/7f6dc8dbb700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 21:28:48.4473 1848/7f6d9bfff700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:28:48.4473 1848/7f6d9bfff700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 21:28:48.4474 1848/7f6dca741700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 21:28:48.4474 1848/7f6dca741700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 21:28:48.4595 1848/7f6dd0f117c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 21:28:49.4611 1923/7f8a948267c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 21:28:49.4694 1926/7f269cc0b7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 21:28:49.4696 1926/7f269cc0b7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 21:28:49.4764 1926/7f269cc0b7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 1926
+[ 2017-02-18 21:28:49.4846 1933/7fa32596a7c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 21:28:49.4856 1933/7fa32596a7c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 1933
+App 1967 stderr: stdin: is not a tty
+App 1967 stdout: 
+App 1986 stdout: 
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: request.host_with_port: 192.localhost:3000
+App 1993 stdout: 
+App 1993 stdout: >[@logado]>>
+App 1993 stdout: [@site_nome]>0
+App 1993 stdout: request.host_with_port: 0.0.0.0
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:28:52 +0000] "GET / HTTP/1.1" 200 42170 0.0435
+App 1967 stderr: 2017-02-18 21:28:52 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 1967 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 1967 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 1967 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 1967 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_13377900'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 1967 stderr: 	/home/app/webapp/myapp.rb:128:in `block in <top (required)>'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 1967 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 1967 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 1967 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 1967 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 1967 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 1967 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 1967 stderr: 
+App 1967 stderr: [ 2017-02-18 21:28:52.8573 1993/0x000000019842d8(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 1993, thread 0x000000019842d8(Worker 1)):
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 1967 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 1967 stderr: 	from (erb):183:in `each'
+App 1967 stderr: 	from (erb):183:in `block in pretty'
+App 1967 stderr: 	from (erb):155:in `each'
+App 1967 stderr: 	from (erb):155:in `pretty'
+App 1967 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 1967 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 1967 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 1967 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 1967 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 1967 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 1967 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 1967 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+[ 2017-02-18 21:28:52.8627 1926/7f2695bb9700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 2-1] Sending 502 response: application did not send a complete response
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: request.host_with_port: 192.localhost:3000
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:28:52 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0045
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: request.host_with_port: 192.localhost:3000
+App 1993 stdout: >[@logado]>>
+App 1993 stdout: [@site_nome]>192
+App 1993 stdout: request.host_with_port: 192.localhost:3000
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:28:53 +0000] "GET /logged HTTP/1.1" 200 5 0.0034
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: 
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: 
+App 1986 stdout: request.host_with_port: 192.localhost:3000
+App 1986 stdout: 
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:28:53 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0107
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:28:53 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0072
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: 
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: 
+App 1986 stdout: request.host_with_port: 192.localhost:3000
+App 1986 stdout: 
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:28:53 +0000] "GET / HTTP/1.1" 200 42170 0.0473
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: 
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: 
+App 1986 stdout: request.host_with_port: 192.localhost:3000
+App 1986 stdout: 
+App 1986 stdout: request.host_with_port:192.localhost:3000
+App 1986 stdout: 
+App 1986 stdout: ***
+App 1986 stdout: 
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:28:58 +0000] "GET /adm HTTP/1.1" 302 - 0.0077
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: 
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: 
+App 1986 stdout: request.host_with_port: 192.localhost:3000
+App 1986 stdout: 
+App 1986 stdout: request.host_with_port:192.localhost:3000
+App 1986 stdout: ***
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:28:58 +0000] "GET /adm HTTP/1.1" 302 - 0.0038
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: request.host_with_port: 192.192.localhost:3000
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:29:01 +0000] "POST /login_do HTTP/1.1" 303 - 0.0048
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:29:01 +0000] "GET / HTTP/1.1" 302 - 0.0019
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: request.host_with_port: 192.192.localhost:3000
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:29:01 +0000] "GET / HTTP/1.1" 200 42170 0.0269
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: 
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: 
+App 1986 stdout: request.host_with_port: 192.192.localhost:3000
+App 1986 stdout: 
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:29:01 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 500 0.0047
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: request.host_with_port: 192.192.localhost:3000
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:29:02 +0000] "GET /logged HTTP/1.1" 200 5 0.0037
+App 1993 stdout: >[@logado]>>
+App 1993 stdout: [@site_nome]>192
+App 1993 stdout: request.host_with_port: 192.192.localhost:3000
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: request.host_with_port: 192.192.localhost:3000
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:29:02 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0041
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:29:02 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0047
+App 1986 stdout: >[@logado]>>
+App 1986 stdout: 
+App 1986 stdout: [@site_nome]>192
+App 1986 stdout: 
+App 1986 stdout: request.host_with_port: 192.192.localhost:3000
+App 1986 stdout: 
+App 1967 stderr: 172.17.0.1 - - [18/Feb/2017:21:29:02 +0000] "GET / HTTP/1.1" 200 42170 0.0498
+
+
+[ 2017-02-18 21:32:04.8519 1926/7f269643b700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:32:04.8519 1933/7fa31f15f700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:32:04.8520 1933/7fa32596a7c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:32:04.8520 1926/7f269cc0b7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:32:04.8520 1926/7f269cc0b7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 1986, application /home/app/webapp/public (development)
+[ 2017-02-18 21:32:04.8521 1933/7fa31f15f700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 21:32:04.8521 1926/7f269cc0b7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 1993, application /home/app/webapp/public (development)
+[ 2017-02-18 21:32:04.8523 1933/7fa31e95e700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:32:04.8523 1933/7fa31e95e700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 21:32:04.8524 1926/7f2695bb9700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 21:32:04.8525 1926/7f2695bb9700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 21:32:04.8526 1926/7f2695337700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 21:32:04.8527 1926/7f2695337700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 21:32:04.8530 1926/7f2694ab5700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 21:32:04.8530 1926/7f2694ab5700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 21:32:04.8534 1926/7f269643b700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 21:32:04.8535 1926/7f269643b700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 21:32:04.8536 1926/7f2667fff700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:32:04.8536 1926/7f2667fff700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 21:32:04.8538 1926/7f269cc0b7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 1986, application /home/app/webapp/public (development)
+[ 2017-02-18 21:32:04.8539 1926/7f269cc0b7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 1993, application /home/app/webapp/public (development)
+[ 2017-02-18 21:32:04.8542 1933/7fa32596a7c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 21:32:05.0561 1926/7f269cc0b7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 21:32:06.0338 2092/7f1c40e0c7c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 21:32:06.0411 2095/7f70ad0017c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 21:32:06.0413 2095/7f70ad0017c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 21:32:06.0442 2095/7f70ad0017c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 2095
+[ 2017-02-18 21:32:06.0551 2104/7f29af3187c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 21:32:06.0559 2104/7f29af3187c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 2104
+App 2138 stderr: stdin: is not a tty
+App 2138 stdout: 
+App 2155 stdout: 
+App 2155 stdout: >[@logado]>>
+App 2155 stdout: [@site_nome]>0
+App 2155 stdout: request.host_with_port: 0.0.0.0
+App 2138 stderr: 2017-02-18 21:32:09 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 2138 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 2138 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 2138 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 2138 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_16334800'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 2138 stderr: 	/home/app/webapp/myapp.rb:131:in `block in <top (required)>'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 2138 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 2138 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 2138 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 2138 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 2138 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 2138 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 2138 stderr: [ 2017-02-18 21:32:09.5785 2155/0x00000001f27fa0(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 2155, thread 0x00000001f27fa0(Worker 1)):
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+[ 2017-02-18 21:32:09.5787 2095/7f70a6831700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 2138 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 2138 stderr: 	from (erb):183:in `each'
+App 2138 stderr: 	from (erb):183:in `block in pretty'
+App 2138 stderr: 	from (erb):155:in `each'
+App 2138 stderr: 	from (erb):155:in `pretty'
+App 2138 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 2138 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 2138 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 2138 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 2138 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 2138 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 2138 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 2138 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+
+
+[ 2017-02-18 21:32:14.9117 2095/7f70a6831700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:32:14.9118 2104/7f29a8b0d700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:32:14.9118 2095/7f70ad0017c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:32:14.9118 2104/7f29af3187c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:32:14.9119 2095/7f70ad0017c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2155, application /home/app/webapp/public (development)
+[ 2017-02-18 21:32:14.9119 2104/7f29a8b0d700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 21:32:14.9119 2104/7f299bfff700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:32:14.9119 2104/7f299bfff700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 21:32:14.9123 2095/7f70a5faf700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 21:32:14.9124 2095/7f70a5faf700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 21:32:14.9124 2095/7f70a572d700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 21:32:14.9125 2095/7f70a572d700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 21:32:14.9126 2095/7f70a4eab700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 21:32:14.9127 2095/7f70a4eab700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 21:32:14.9128 2095/7f7077fff700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:32:14.9128 2095/7f7077fff700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 21:32:14.9128 2104/7f29af3187c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 21:32:14.9130 2095/7f70a6831700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 21:32:14.9131 2095/7f70a6831700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 21:32:14.9132 2095/7f70ad0017c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2155, application /home/app/webapp/public (development)
+[ 2017-02-18 21:32:15.1266 2095/7f70ad0017c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 21:32:15.7583 2180/7ff641b847c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 21:32:15.7664 2183/7fdb4ed7e7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 21:32:15.7665 2183/7fdb4ed7e7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 21:32:15.7694 2183/7fdb4ed7e7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 2183
+[ 2017-02-18 21:32:15.7783 2189/7f2d99bcd7c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 21:32:15.7791 2189/7f2d99bcd7c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 2189
+App 2226 stderr: stdin: is not a tty
+App 2226 stdout: 
+App 2243 stdout: 
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>0
+App 2243 stdout: 
+App 2243 stdout: request.host_with_port: 0.0.0.0
+App 2243 stdout: 
+App 2226 stderr: 2017-02-18 21:32:19 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 2226 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 2226 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 2226 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 2226 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_8695580'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 2226 stderr: 	/home/app/webapp/myapp.rb:131:in `block in <top (required)>'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 2226 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 2226 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 2226 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 2226 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 2226 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 2226 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 2226 stderr: [ 2017-02-18 21:32:19.2172 2243/0x00000001095e38(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 2243, thread 0x00000001095e38(Worker 1)):
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 2226 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+[ 2017-02-18 21:32:19.2173 2183/7fdb3bfff700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 2226 stderr: 	from (erb):183:in `each'
+App 2226 stderr: 	from (erb):183:in `block in pretty'
+App 2226 stderr: 	from (erb):155:in `each'
+App 2226 stderr: 	from (erb):155:in `pretty'
+App 2226 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 2226 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 2226 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 2226 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 2226 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 2226 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 2226 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 2226 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:32:55 +0000] "GET / HTTP/1.1" 200 42170 0.0596
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:32:55 +0000] "GET / HTTP/1.1" 200 42170 0.0334
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:32:56 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0051
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: 
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:32:56 +0000] "GET /logged HTTP/1.1" 200 5 0.0030
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: 
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: 
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: 
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:32:56 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0070
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: 
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: 
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: 
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:32:56 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0051
+App 2265 stdout: 
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:32:56 +0000] "GET / HTTP/1.1" 200 42170 0.0432
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: 
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:02 +0000] "GET / HTTP/1.1" 200 42170 0.0440
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: 
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: 
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: 
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:02 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0047
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:02 +0000] "GET /logged HTTP/1.1" 200 5 0.0035
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: 
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: 
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: 
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:02 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0055
+App 2265 stdout: >[@logado]>>
+App 2265 stdout: [@site_nome]>192
+App 2265 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:02 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0217
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: 
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: 
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: 
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:02 +0000] "GET / HTTP/1.1" 200 42170 0.0486
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: request.host_with_port:192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:09 +0000] "GET /adm HTTP/1.1" 302 - 0.0063
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: request.host_with_port:192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:09 +0000] "GET /adm HTTP/1.1" 302 - 0.0069
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:11 +0000] "POST /login_do HTTP/1.1" 303 - 0.0056
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:11 +0000] "GET / HTTP/1.1" 302 - 0.0013
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:11 +0000] "GET / HTTP/1.1" 200 42170 0.0279
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:11 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0041
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:12 +0000] "GET /logged HTTP/1.1" 200 5 0.0028
+App 2265 stdout: >[@logado]>>
+App 2265 stdout: [@site_nome]>192
+App 2265 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:12 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0029
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:12 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0033
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:33:12 +0000] "GET / HTTP/1.1" 200 42170 0.0406
+[ 2017-02-18 21:38:12.3794 2183/7fdb4ed3b700 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2265, application /home/app/webapp/public (development)
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: request.host_with_port:192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:32 +0000] "GET /adm HTTP/1.1" 302 - 0.0033
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: request.host_with_port:192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:33 +0000] "GET /adm HTTP/1.1" 302 - 0.0040
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:50 +0000] "POST /login_do HTTP/1.1" 303 - 0.0054
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:50 +0000] "GET / HTTP/1.1" 302 - 0.0008
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:50 +0000] "GET / HTTP/1.1" 200 42170 0.0310
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:50 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0031
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2243 stdout: 
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:51 +0000] "GET /logged HTTP/1.1" 200 5 0.0034
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:51 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0043
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:51 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0047
+App 2243 stdout: >[@logado]>>
+App 2243 stdout: [@site_nome]>192
+App 2243 stdout: request.host_with_port: 192.localhost:3000
+App 2226 stderr: 172.17.0.1 - - [18/Feb/2017:21:43:51 +0000] "GET / HTTP/1.1" 200 42170 0.0523
+
+
+[ 2017-02-18 21:48:36.7659 2183/7fdb3bfff700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:48:36.7659 2189/7f2d933c2700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:48:36.7660 2183/7fdb4ed7e7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:48:36.7660 2189/7f2d99bcd7c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:48:36.7660 2183/7fdb4ed7e7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2243, application /home/app/webapp/public (development)
+[ 2017-02-18 21:48:36.7661 2189/7f2d933c2700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 21:48:36.7666 2183/7fdb3affd700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 21:48:36.7666 2183/7fdb3affd700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 21:48:36.7666 2183/7fdb3bfff700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 21:48:36.7667 2183/7fdb3bfff700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 21:48:36.7669 2183/7fdb3b7fe700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 21:48:36.7669 2183/7fdb3b7fe700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 21:48:36.7669 2183/7fdb3a7fc700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 21:48:36.7670 2183/7fdb3a7fc700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 21:48:36.7670 2189/7f2d92bc1700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:48:36.7670 2189/7f2d92bc1700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 21:48:36.7672 2183/7fdb39ffb700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:48:36.7672 2183/7fdb39ffb700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 21:48:36.7674 2183/7fdb4ed7e7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2243, application /home/app/webapp/public (development)
+[ 2017-02-18 21:48:36.7676 2189/7f2d99bcd7c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 21:48:36.9808 2183/7fdb4ed7e7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 21:48:37.6126 2665/7f33d4d627c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 21:48:37.6196 2668/7facdafb97c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 21:48:37.6198 2668/7facdafb97c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 21:48:37.6221 2668/7facdafb97c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 2668
+[ 2017-02-18 21:48:37.6316 2673/7f75d4cb17c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 21:48:37.6326 2673/7f75d4cb17c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 2673
+App 2711 stderr: stdin: is not a tty
+App 2711 stdout: 
+App 2728 stdout: 
+App 2728 stdout: >[@logado]>>
+App 2728 stdout: [@site_nome]>0
+App 2728 stdout: request.host_with_port: 0.0.0.0
+App 2711 stderr: 2017-02-18 21:48:41 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 2711 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 2711 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 2711 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 2711 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_17019820'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 2711 stderr: 	/home/app/webapp/myapp.rb:131:in `block in <top (required)>'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 2711 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 2711 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 2711 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 2711 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 2711 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 2711 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 2711 stderr: [ 2017-02-18 21:48:41.1010 2728/0x00000002076758(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 2728, thread 0x00000002076758(Worker 1)):
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+[ 2017-02-18 21:48:41.1011 2668/7facc7fff700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 2711 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 2711 stderr: 	from (erb):183:in `each'
+App 2711 stderr: 	from (erb):183:in `block in pretty'
+App 2711 stderr: 	from (erb):155:in `each'
+App 2711 stderr: 	from (erb):155:in `pretty'
+App 2711 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 2711 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 2711 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 2711 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 2711 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 2711 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 2711 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 2711 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 2728 stdout: >[@logado]>>
+App 2728 stdout: [@site_nome]>192
+App 2728 stdout: request.host_with_port: 192.localhost:3000
+App 2728 stdout: yes
+App 2711 stderr: 172.17.0.1 - - [18/Feb/2017:21:48:43 +0000] "POST /login_do HTTP/1.1" 303 - 0.0145
+App 2711 stderr: 172.17.0.1 - - [18/Feb/2017:21:48:43 +0000] "GET / HTTP/1.1" 302 - 0.0009
+App 2728 stdout: >[@logado]>>
+App 2728 stdout: [@site_nome]>192
+App 2728 stdout: request.host_with_port: 192.localhost:3000
+App 2711 stderr: 172.17.0.1 - - [18/Feb/2017:21:48:43 +0000] "GET / HTTP/1.1" 200 42170 0.0332
+App 2728 stdout: >[@logado]>>
+App 2728 stdout: [@site_nome]>192
+App 2728 stdout: request.host_with_port: 192.localhost:3000
+App 2711 stderr: 172.17.0.1 - - [18/Feb/2017:21:48:44 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0044
+App 2728 stdout: >[@logado]>>
+App 2728 stdout: [@site_nome]>192
+App 2728 stdout: request.host_with_port: 192.localhost:3000
+App 2711 stderr: 172.17.0.1 - - [18/Feb/2017:21:48:45 +0000] "GET /logged HTTP/1.1" 200 5 0.0045
+App 2728 stdout: >[@logado]>>
+App 2728 stdout: [@site_nome]>192
+App 2728 stdout: request.host_with_port: 192.localhost:3000
+App 2711 stderr: 172.17.0.1 - - [18/Feb/2017:21:48:45 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0093
+App 2728 stdout: >[@logado]>>
+App 2728 stdout: [@site_nome]>192
+App 2728 stdout: request.host_with_port: 192.localhost:3000
+App 2711 stderr: 172.17.0.1 - - [18/Feb/2017:21:48:45 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0045
+App 2738 stdout: 
+App 2728 stdout: >[@logado]>>
+App 2728 stdout: [@site_nome]>192
+App 2728 stdout: request.host_with_port: 192.localhost:3000
+App 2711 stderr: 172.17.0.1 - - [18/Feb/2017:21:48:45 +0000] "GET / HTTP/1.1" 200 42170 0.0525
+
+[ 2017-02-18 21:49:01.9378 2668/7facc7fff700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:49:01.9379 2668/7facdafb97c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:49:01.9379 2668/7facdafb97c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2728, application /home/app/webapp/public (development)
+[ 2017-02-18 21:49:01.9380 2668/7facdafb97c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2738, application /home/app/webapp/public (development)
+[ 2017-02-18 21:49:01.9383 2668/7facc7fff700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+
+[ 2017-02-18 21:49:01.9384 2668/7facc7fff700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 21:49:01.9385 2673/7f75ce4a6700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:49:01.9385 2673/7f75d4cb17c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:49:01.9386 2673/7f75cdca5700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:49:01.9386 2668/7facc6ffd700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 21:49:01.9386 2673/7f75cdca5700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 21:49:01.9387 2668/7facc6ffd700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 21:49:01.9384 2668/7facc77fe700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 21:49:01.9387 2668/7facc77fe700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 21:49:01.9388 2668/7facc67fc700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 21:49:01.9390 2673/7f75ce4a6700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 21:49:01.9391 2668/7facc5ffb700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:49:01.9391 2668/7facc5ffb700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 21:49:01.9394 2673/7f75d4cb17c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 21:49:01.9388 2668/7facc67fc700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-18 21:49:01.9401 2668/7facdafb97c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2728, application /home/app/webapp/public (development)
+[ 2017-02-18 21:49:01.9402 2668/7facdafb97c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2738, application /home/app/webapp/public (development)
+[ 2017-02-18 21:49:02.1433 2668/7facdafb97c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished
+[ 2017-02-18 21:49:03.3917 2767/7f5dde8967c0 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2017-02-18 21:49:03.3994 2770/7f991982c7c0 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2017-02-18 21:49:03.3996 2770/7f991982c7c0 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2017-02-18 21:49:03.4014 2770/7f991982c7c0 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 2770
+[ 2017-02-18 21:49:03.4134 2775/7feea5f247c0 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2017-02-18 21:49:03.4141 2775/7feea5f247c0 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 2775
+App 2813 stderr: stdin: is not a tty
+App 2813 stdout: 
+App 2830 stdout: 
+App 2830 stdout: >[@logado]>>
+App 2830 stdout: [@site_nome]>0
+App 2830 stdout: request.host_with_port: 0.0.0.0
+App 2813 stderr: 2017-02-18 21:49:06 - NoMethodError - undefined method `[]' for nil:NilClass:
+App 2813 stderr: 	/home/app/webapp/views/layout.erb:8:in `block in singleton class'
+App 2813 stderr: 	/home/app/webapp/views/layout.erb:-6:in `instance_eval'
+App 2813 stderr: 	/home/app/webapp/views/layout.erb:-6:in `singleton class'
+App 2813 stderr: 	/home/app/webapp/views/layout.erb:-8:in `__tilt_9482680'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in `render'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `block in render'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `catch'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:832:in `render'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in `erb'
+App 2813 stderr: 	/home/app/webapp/myapp.rb:131:in `block in <top (required)>'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1611:in `block in compile!'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `[]'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (3 levels) in route!'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:994:in `route_eval'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:975:in `block (2 levels) in route!'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1015:in `block in process_route'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `catch'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1013:in `process_route'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:973:in `block in route!'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `each'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:972:in `route!'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1085:in `block in dispatch!'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1082:in `dispatch!'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `block in call!'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `block in invoke'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `catch'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1067:in `invoke'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:907:in `call!'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:895:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/logger.rb:15:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:212:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/methodoverride.rb:22:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 2813 stderr: 	/var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 2813 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 2813 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 2813 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 2813 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 2813 stderr: 	/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 2813 stderr: [ 2017-02-18 21:49:07.0036 2830/0x00000001216370(Worker 1) utils.rb:87 ]: *** Exception ArgumentError in Rack application object (invalid byte sequence in US-ASCII) (process 2830, thread 0x00000001216370(Worker 1)):
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `gsub'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/utils.rb:249:in `escape_html'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:103:in `h'
+App 2813 stderr: 	from (erb):184:in `block (2 levels) in pretty'
+App 2813 stderr: 	from (erb):183:in `each'
+App 2813 stderr: 	from (erb):183:in `block in pretty'
+App 2813 stderr: 	from (erb):155:in `each'
+App 2813 stderr: 	from (erb):155:in `pretty'
+App 2813 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `eval'
+App 2813 stderr: 	from /usr/lib/ruby/2.2.0/erb.rb:863:in `result'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:97:in `pretty'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:34:in `rescue in call'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+App 2813 stderr: 	from /var/lib/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+App 2813 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 2813 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 2813 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 2813 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 2813 stderr: 	from /usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+[ 2017-02-18 21:49:07.0038 2770/7f991305c700 age/Cor/Con/InternalUtils.cpp:105 ]: [Client 1-1] Sending 502 response: application did not send a complete response
+App 2830 stdout: >[@logado]>>
+App 2830 stdout: 
+App 2830 stdout: [@site_nome]>192
+App 2830 stdout: 
+App 2830 stdout: request.host_with_port: 192.localhost:3000
+App 2830 stdout: 
+App 2830 stdout: yes
+App 2813 stderr: 172.17.0.1 - - [18/Feb/2017:21:49:11 +0000] "POST /login_do HTTP/1.1" 303 - 0.0105
+App 2813 stderr: 172.17.0.1 - - [18/Feb/2017:21:49:11 +0000] "GET / HTTP/1.1" 302 - 0.0016
+App 2830 stdout: >[@logado]>>
+App 2830 stdout: [@site_nome]>192
+App 2830 stdout: request.host_with_port: 192.localhost:3000
+App 2813 stderr: 172.17.0.1 - - [18/Feb/2017:21:49:11 +0000] "GET / HTTP/1.1" 200 42170 0.0273
+App 2830 stdout: >[@logado]>>
+App 2830 stdout: [@site_nome]>192
+App 2830 stdout: request.host_with_port: 192.localhost:3000
+App 2813 stderr: 172.17.0.1 - - [18/Feb/2017:21:49:11 +0000] "GET /css/ng-tags-input.css.map HTTP/1.1" 404 496 0.0040
+App 2830 stdout: >[@logado]>>
+App 2830 stdout: [@site_nome]>192
+App 2830 stdout: request.host_with_port: 192.localhost:3000
+App 2813 stderr: 172.17.0.1 - - [18/Feb/2017:21:49:12 +0000] "GET /logged HTTP/1.1" 200 5 0.0045
+App 2830 stdout: >[@logado]>>
+App 2830 stdout: [@site_nome]>192
+App 2830 stdout: request.host_with_port: 192.localhost:3000
+App 2813 stderr: 172.17.0.1 - - [18/Feb/2017:21:49:12 +0000] "GET /dataLoad HTTP/1.1" 200 2261 0.0050
+App 2830 stdout: >[@logado]>>
+App 2830 stdout: [@site_nome]>192
+App 2830 stdout: request.host_with_port: 192.localhost:3000
+App 2813 stderr: 172.17.0.1 - - [18/Feb/2017:21:49:12 +0000] "GET /styleBackgrounds HTTP/1.1" 200 4429 0.0058
+App 2840 stdout: 
+App 2830 stdout: >[@logado]>>
+App 2830 stdout: [@site_nome]>192
+App 2830 stdout: request.host_with_port: 192.localhost:3000
+App 2813 stderr: 172.17.0.1 - - [18/Feb/2017:21:49:12 +0000] "GET / HTTP/1.1" 200 42170 0.0379
+
+[ 2017-02-18 21:49:50.1775 2770/7f991305c700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:49:50.1776 2770/7f991982c7c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:49:50.1776 2770/7f991982c7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2830, application /home/app/webapp/public (development)
+[ 2017-02-18 21:49:50.1777 2770/7f991982c7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2840, application /home/app/webapp/public (development)
+[ 2017-02-18 21:49:50.1780 2770/7f99127da700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-18 21:49:50.1780 2770/7f99127da700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-18 21:49:50.1783 2770/7f9911f58700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-18 21:49:50.1783 2770/7f9911f58700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-18 21:49:50.1786 2770/7f99116d6700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-18 21:49:50.1786 2770/7f99116d6700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+
+[ 2017-02-18 21:49:50.1789 2775/7fee9f719700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-18 21:49:50.1790 2775/7feea5f247c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-18 21:49:50.1790 2775/7fee9ef18700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:49:50.1791 2775/7fee9ef18700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-18 21:49:50.1792 2770/7f991305c700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-18 21:49:50.1792 2770/7f991305c700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-18 21:49:50.1793 2775/7fee9f719700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-18 21:49:50.1793 2770/7f9910e54700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-18 21:49:50.1794 2770/7f9910e54700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-18 21:49:50.1795 2770/7f991982c7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2830, application /home/app/webapp/public (development)
+[ 2017-02-18 21:49:50.1796 2770/7f991982c7c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 2840, application /home/app/webapp/public (development)
+[ 2017-02-18 21:49:50.1797 2775/7feea5f247c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+[ 2017-02-18 21:49:50.3817 2770/7f991982c7c0 age/Cor/CoreMain.cpp:942 ]: Passenger core shutdown finished

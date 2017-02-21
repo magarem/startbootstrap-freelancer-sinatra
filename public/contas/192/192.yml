@@ -9,7 +9,7 @@ info:
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
-    label: Maria Clara
+    label: Maria Clara!
     img: 
   menu:
   - portfólio
@@ -19,9 +19,9 @@ head:
   backgroundColor: hsl(2, 39%, 48%)
   backgroundUrl: "/styleBackgrounds/6935544-blue-backgrounds-hd.jpg"
   fontColor: hsl(247, 13%, 87%)
-  avatar: contas/192/img/avatar.jpg?1486077361
-  txt1: Nilzete
-  txt2: Esmorfismo
+  avatar: contas/192/img/avatar.jpeg?1487621237
+  txt1: maria clara!
+  txt2: filhota punk!
   show:
     avatar: true
     txt1: true
@@ -29,18 +29,23 @@ head:
     txtShadow: true
 portfolio:
   label: portfólio
-  itemsTags: []
+  itemsTags:
+  - '222'
+  - jjj
+  - '111'
+  - lll5
   items:
   - id: 192-1483983088597
     titulo: a caminho
     img: contas/192/img/portfolio/192-1483983088597.jpg?decache=0.9348386853923367
     txt: Ggggg
     nome: ''
-    site: ''
+    site: sdsds
     data: ''
     servico: ''
-    cat: ''
-    tags: []
+    tags:
+    - '222'
+    - jjj
     cliente: Trt
   - id: 192-1483898003899
     titulo: Do bom
@@ -50,17 +55,19 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    cat: ''
-    tags: []
+    tags:
+    - '111'
+    cliente: aa
   - id: 192-1483115954127
-    titulo: no pé
-    img: contas/192/img/portfolio/192-1483115954127.jpg
-    txt: uma roza é uma roza e é uma roza
+    titulo: no pé da flor sim!
+    img: contas/192/img/portfolio/192-1483115954127.jpeg
+    txt: uma roza é uma roza e é uma roza. E disse tudo ;)
     cliente: fidelis
     site: ofidelito.com
     data: 10/10/10
-    servico: todos :(
-    tags: []
+    servico: hh
+    tags:
+    - lll5
   - id: 192-1483977341960
     titulo: açai2
     img: contas/192/img/portfolio/192-1483977341960.jpg?decache=0.25454610040371484
@@ -69,7 +76,6 @@ portfolio:
     site: 
     data: 
     servico: 
-    cat: ''
     tags: []
     cliente: 
   - id: 192-1483898166846
@@ -80,7 +86,6 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    cat: ''
     tags: []
   - id: 192-456
     titulo: Bem acompanhado
@@ -93,15 +98,15 @@ portfolio:
     tags: []
 about:
   label: sobre
-  body1: super textossdsd fdgygvt
+  body1: super textossdsd fdgygvtfdgdfg<br>FgfdgDF<br>GDF<br>GDF<br>G
   body2: estão aqui ssvvg tvfgggg
 contact:
   label: contato
 footer:
   endereco: Boca do Acre - Amazônia &nbsp;- &nbsp;Brasil
   social:
-    facebook: sdsds
+    facebook: sdsds--
     googleplus: '222'
     twitter: '333'
     linkedin: '444'
-  about_resumo: tudo a ver com tudo
+  about_resumo: aqui sou eu \o/

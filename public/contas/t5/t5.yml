@@ -1,0 +1,65 @@
+---
+info:
+  name: t5
+  email: contato@magaweb.com.br
+  senha: 5cb6
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: novo teste
+    img: 
+  menu:
+  - fotos
+  - sobre
+  - contato1
+head:
+  backgroundColor: hsl(242, 68%, 27%)
+  backgroundUrl: contas/t5/img/backGround/backGround.jpg?1487685949
+  fontColor: hsl(247, 72%, 69%)
+  avatar: contas/t5/img/avatar.jpeg?1487686094
+  txt1: modelo
+  txt2: ghgh
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+portfolio:
+  label: fotos
+  itemsTags: []
+  items:
+  - id: t5-1487698672327
+    titulo: ''
+    img: contas/t5/img/portfolio/t5-1487698672327.jpeg?decache=0.8284919526805632
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: t5-1487698488084
+    titulo: ''
+    img: contas/t5/img/portfolio/t5-1487698488084.jpeg?decache=0.12640403900520303
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+about:
+  label: sobre
+  body1: ghfgkhg ghgfhgfhfghfghgh<br>GhfghG<br>HGHFghFG<br>HGH<br>gH<br>GHfg
+  body2: j hgjhgj hgj hgj<br>9*9999
+contact:
+  label: contato1
+footer:
+  endereco: tttt
+  social:
+    facebook: facebook1
+    googleplus: googleplus2
+    twitter: twitter3
+    linkedin: linkedin4
+  about_resumo: texto de resumohh

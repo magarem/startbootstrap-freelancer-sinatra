@@ -1,85 +1,77 @@
 ---
-name: t2
-senha: 0fce
-email: contato@magaweb.com.br
-head:
-  title: Portfólio
-  description: 
-  author: 
-moldura:
-  label: Portfolio
+info:
+  name: t2
+  email: contato@magaweb.com.br
+  senha: 60b3
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
   logo:
-    label: t2
+    label: Fidelito
+    img: 
   menu:
-  - label: Portfólio
-  - label: Sobre
-  - label: Contato
-  footer:
-    endereco: Minha rua
-    social:
-      facebook: 
-      googleplus: 
-      twitter: 
-      linkedin: 
-    about_resumo: Me acompanhe aqui no meu site
-pages:
-  home:
-    label: Meu novo site
-    img: contas/t2/img/profile.png
-    body: Bem vindo
-  about:
-    label: Sobre
-    body1: Esse é meu novo site criado na plataforma Radiando.net. Aqui vou colocar
-      um texto explicando um pouco sobre meu site.
-    body2: A idéia é que esse meu novo site possua uma galeria aonde vou expor minhas
-      idéias.
-  portfolio:
-    label: Portfólio
-    items:
-    - id: '0'
-      titulo: 
-      img: "/img/img_begin.png"
-      txt: 
-      cliente: 
-      site: 
-      data: 
-      servico: 
-      cat: 
-    - id: ''
-      titulo: t2
-      img: http://placehold.it/360x260/e67e22/fff
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
-      titulo: 
-      img: http://placehold.it/360x260/e67e22/fff
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-    - id: ''
-      titulo: t4
-      img: http://placehold.it/360x260/e67e22/fff
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: er
-    - id: ''
-      titulo: ''
-      img: http://placehold.it/360x260/e67e22/fff
-      txt: ''
-      cliente: ''
-      site: ''
-      data: ''
-      servico: ''
-      cat: ''
-  contact:
-    label: Contato
+  - portfólio
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(168, 41%, 24%)
+  backgroundUrl: contas/t2/img/backGround/backGround.jpg?1487684342
+  fontColor: hsl(0, 35%, 17%)
+  avatar: contas/t2/img/profile.png
+  txt1: Esse é o cara
+  txt2: confere aí
+  show:
+    avatar: false
+    txt1: true
+    txt2: false
+    txtShadow: false
+portfolio:
+  label: portfólio
+  itemsTags:
+  - dfd
+  items:
+  - id: t2-1487683897992
+    titulo: ''
+    img: contas/t2/img/portfolio/t2-1487683897992.jpeg?decache=0.9219096891445087
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: t2-1487683835993
+    titulo: ''
+    img: contas/t2/img/portfolio/t2-1487683835993.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: t2-a234edc2f2
+    titulo: titgfgfulo
+    img: contas/t2/img/portfolio/t2-a234edc2f2.jpeg
+    txt: 
+    nome: 
+    site: 
+    data: 
+    servico: 
+    tags:
+    - dfd
+    cliente: dfd
+about:
+  label: sobre
+  body1: texto 1dfdf
+  body2: texto 2sdsd
+contact:
+  label: contato
+footer:
+  endereco: sdsds
+  social:
+    facebook: facebosdsok
+    googleplus: goosdsgleplus
+    twitter: twittersds
+    linkedin: linkesdsdin
+  about_resumo: texto de resudfdfmo

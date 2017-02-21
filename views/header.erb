@@ -106,7 +106,7 @@ padding : 5px 15px;
     background-attachment: scroll;
   }
 </style>
-<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-image': 'url(' + head.backgroundUrl + ') ', 'background-color': head.backgroundColor, 'color': head.fontColor }">
+<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-color': head.backgroundColor, 'color': head.fontColor, 'background-image': head.backgroundUrl ? 'url(' + head.backgroundUrl + ')':''}">
   <div class="demo_changer" >
     <div class="demo-icon" ng-show=isLogged>
       <i class="fa fa-cog fa-spin fa-2x"></i>
@@ -128,7 +128,7 @@ padding : 5px 15px;
                   <label for="fonte">Fonte:</label>
                   <color-picker ng-model="head.fontColor"  event-api="eventApi2" options="options"></color-picker>
                   <div class="checkbox">
-                    <label><input type="checkbox" ng-model="head.show.txtShadow" >Sombra</label>
+                    <label><input type="checkbox" ng-model="head.show.txtShadow" ng-click="saveDiv('head.show.txtShadow')" >Sombra</label>
                   </div>
                 </div>
             </div>

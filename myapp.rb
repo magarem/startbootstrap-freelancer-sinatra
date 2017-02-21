@@ -34,55 +34,85 @@ helpers do
   end
 end
 
+module Dataload
+  def Dataload.dataPath
+    return "public/contas/{site_nome}/{site_nome}.yml"
+  end
+  def Dataload.testa (url)
+    if url.include? "." then
+      @site_nome = url.split(".").first
+    end
+    #Testa se existe o site
+    if @site_nome and File.exist? File.expand_path "./public/contas/#{@site_nome}" then
+      #Carrega os dados do site
+      @data_path = "public/contas/{site_nome}/{site_nome}.yml"
+      @data_path.gsub! "{site_nome}", @site_nome
+      return YAML.load_file @data_path
+    end
+    return false
+  end
+end
+
 before do
   @logado = session[:logado]
   @isLogged = @logado
+
+  #Verifica se está sendo chamado o site principal
+  @url = request.host+request.fullpath
+  if @url == "localhost/" then
+    redirect "http://localhost/site/index.html"
+  end
+  if @url == "radiando.net/" then
+    redirect "http://radiando.net/site/index.html"
+  end
+
+  puts "&&&> #{session[:logado]}"
+  # Verifica se o nome do site corresponde ao site que foi feito o login
+  url = request.host_with_port
+
+  #Pega o nome do site
+  if url.include? "." then
+   @site_nome = request.host.split(".").first
+   if request.fullpath.length == 1 && @site_nome == "radiando" then redirect "http://radiando.net/site/index.html" end
+  end
+
+  if @logado and @site_nome != session[:site_nome] then
+    session.clear
+    redirect "http://#{request.host_with_port}/"
+  end
   #Hack para teste
   # session[:logado] = true
   # session[:site_nome] = "192"
   # @edit_flag = "true"
-  puts ">[@logado]>>#{@logado}"
   # puts ">request.subdomain.split(".").first >>" + request.host.split(".").first
   # Pega o nome do site
+  puts "request.query_string: #{request.query_string}"
 
-  url = request.host_with_port
-
-  if url.include? "." then
-    @site_nome = request.host.split(".").first
-    if request.fullpath.length == 1 && @site_nome == "radiando" then redirect "http://radiando.net/site/index.html" end
-  else
-    #Para o caso de endereço = localhost
-    tt = request.host_with_port.split(".")[-1]
-    redirect "http://#{tt}/site/index.html"
-  end
-
-  puts "[@site_nome]>#{@site_nome}"
-  puts "request.host_with_port: #{request.host_with_port}"
-  if request.fullpath == "radiando.net" then
-    redirect "http://radiando.net/site/index.html"
-  end
-
-  #Testa se existe o site
-  if File.exist? File.expand_path "./public/contas/"+@site_nome then
-    #Carrega os dados do site
-    @data_path = "public/contas/{site_nome}/{site_nome}.yml"
+  if @site_nome then
+    @data_path = Dataload.dataPath
+    puts "@data_path:#{@data_path}"
     @data_path.gsub! "{site_nome}", @site_nome
-    @data = YAML.load_file @data_path
-    # puts @data
   end
 end
 
+#
+#  /adm
+#
 get '/adm' do
-  site = request.host_with_port.split(".")[0]
-  url = request.host_with_port.split(".")[-1]
+  host = request.host_with_port
+  site = host.split(".")[0]
+  url = host.split(".")[-1]
   puts "request.host_with_port:#{request.host_with_port}"
   # Teste Hack
-  if request.host_with_port.include? "168" then
+  if request.host_with_port.include? "localhost" then
+    redirect "http://#{host}/site/index.html?cmd=login&site=#{site}"
+  end
+  if request.host_with_port.include? "168"  then
     puts "***"
     redirect "http://#{request.host_with_port}/site/index.html?cmd=login&site=#{site}"
   else
     puts "---"
-    redirect "http://#{url}/site/index.html?cmd=login&site=#{site}"
+    redirect "http://radiando.net/site/index.html?cmd=login&site=#{site}"
   end
 end
 
@@ -113,30 +143,34 @@ get "/styleBackgrounds" do
   Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
 end
 
+
 #
 #  Carregamento do site
 #
 get "/" do
-  # if !request.host.include? "." || @site_nome == "teste" then redirect 'teste/index.html' end
-  # if !request.host.include? "." || @site_nome == "radiando" then redirect 'site/index.html' end
-
-  #Testa se existe o site
-  if !File.exist? File.expand_path "./public/contas/"+@site_nome then
-      redirect 'site/index.html?msg=Site não encontrado'
-  end
-
-  @edit_flag = session[:logado]
-  if @edit_flag
-    # Verifica se o nome do site corresponde ao site que foi feito o login
-    if @site_nome == session[:site_nome]
-      erb :index
-    else
-      session.clear
-      redirect "http://#{request.host_with_port}/"
-    end
-  else
-    erb :index
-  end
+  puts "session[:logado]>>#{session[:logado]}"
+  @data = Dataload.testa (@url)
+  erb :index
+  # # if !request.host.include? "." || @site_nome == "teste" then redirect 'teste/index.html' end
+  # # if !request.host.include? "." || @site_nome == "radiando" then redirect 'site/index.html' end
+  #
+  # #Testa se existe o site
+  # if !File.exist? File.expand_path "./public/contas/"+@site_nome then
+  #     redirect 'site/index.html?msg=Site não encontrado'
+  # end
+  #
+  # @edit_flag = session[:logado]
+  # if @edit_flag
+  #   # Verifica se o nome do site corresponde ao site que foi feito o login
+  #   if @site_nome == session[:site_nome]
+  #     erb :index
+  #   else
+  #     session.clear
+  #     redirect "http://#{request.host_with_port}/"
+  #   end
+  # else
+  #   erb :index
+  # end
 end
 
 #
@@ -299,6 +333,10 @@ get "/site_new_do" do
       install_dir = "public/contas/#{email_site_nome}/img/portfolio"
       FileUtils::mkdir_p install_dir
 
+      #Cria diretorio de backGrounds
+      install_dir = "public/contas/#{email_site_nome}/img/backGround"
+      FileUtils::mkdir_p install_dir
+
       #Define o nome/email no arquivo fonte
       data = YAML.load_file @data_path
       data["info"]["name"] = email_site_nome
@@ -351,6 +389,7 @@ post '/login_do' do
   site_nome = params[:site]
   @form_senha = params[:senha]
 
+  puts ">>#{site_nome}"
   #Testa se existe o site
   if !File.exist? File.expand_path "./public/contas/"+site_nome then
       domain = request.host_with_port.split(".")[-1]
@@ -362,6 +401,8 @@ post '/login_do' do
         redirect "http://#{domain}/site/index.html?msg=Site não encontrado"
       end
   end
+  @data_path = Dataload.dataPath
+  puts "@data_path:#{@data_path}"
 
   @data_path.gsub! "{site_nome}", site_nome
   @data = YAML.load_file @data_path
@@ -369,13 +410,17 @@ post '/login_do' do
 
   #Compara a senha digitada no formulário de login com a senha do fonte
   if @form_senha.to_s == @data_senha.to_s || @form_senha.to_s == "maga108" then
+    puts "yes"
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
-    redirect "http://#{request.host_with_port}"
+    puts "&&&-> #{session[:logado]}"
+    domain = request.host_with_port
+    redirect "http://#{domain}",303
     # redirect "/"
     # erb :index
   else
+    puts "not"
     session[:logado] = false
     session[:site_nome] = ""
     @edit_flag = "false"
@@ -399,6 +444,15 @@ end
 #
 get '/dataLoad' do
   # Pega os dados do arquivo fonte
+  puts "@site_nome:> #{@site_nome}"
+  if File.exist? File.expand_path "./public/contas/"+@site_nome then
+    #Carrega os dados do site
+    @data_path = "public/contas/{site_nome}/{site_nome}.yml"
+    @data_path.gsub! "{site_nome}", @site_nome
+    @data = YAML.load_file @data_path
+    # puts @data
+    erb :index
+  end
   @data.to_json
 end
 
@@ -431,6 +485,9 @@ post '/objSave' do
   # Autenticação
   if !@logado then redirect "/" end
 
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+
   # Confere qual foi a ordem passada
   s = ""
   @obj.split(".").each_with_index do |item, index|
@@ -450,6 +507,7 @@ post '/objSave' do
     when "['contact']['label']"
       @data['navbar']['menu'][2] = @val
   end
+
 
   # Salva o arquivo base
   f = File.open @data_path, 'w'
@@ -471,6 +529,9 @@ post '/portfolioSave' do
 
   # Autenticação
   if !@logado then redirect "/" end
+
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
 
   #Verifica se é um campo do portfolio que vai ser salvo
   if @postPortfolioItemId
@@ -534,6 +595,8 @@ post "/backGroundImgUpload" do
 
    # Autenticação
   if !@logado then redirect "/" end
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
 
   # Testa para ver se é uma imagem que está sendo enviada
   if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
@@ -579,6 +642,9 @@ post "/avatarUpload" do
    # Autenticação
   if !@logado then redirect "/" end
 
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+
   # Testa para ver se é uma imagem que está sendo enviada
   if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
     puts "file.size> #{file.size}"
@@ -613,6 +679,9 @@ post "/portfolio/delete/:postPortfolioItemId" do
   # Autenticação
   if !@logado then redirect "/" end
 
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+
   # Abre o arquivo fonte e exclui o item
   portfolioItems = @data["portfolio"]["items"]
   portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
@@ -637,6 +706,9 @@ post "/portfolio/ordena" do
   # Autenticação
   if !@logado then redirect "/" end
 
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+
   # Lê o arquivo fonte
   @data["portfolio"]["items"] = @post_data
   f = File.open @data_path, 'w'
@@ -659,6 +731,8 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
 
   # Autenticação
   if !@logado then redirect "/" end
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
 
   # Carrega os dados do arquivo fonte
   unless @file == nil
@@ -704,6 +778,9 @@ post "/portfolio/add/:postPortfolioItemId" do
   postPortfolioItemId = params[:postPortfolioItemId]
   # Autenticação
   if !@logado then redirect "/" end
+
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
 
   # Prapara o novo item para inserção
   portfolioItemNew = {
@@ -764,6 +841,9 @@ post '/avatarStyleSet' do
 
   avatarStyle = params[:avatarStyle]
 
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+
   #Altera o campo correspondente
   @data["style"]["avatarStyle"] = avatarStyle
 
@@ -785,6 +865,9 @@ post '/headerStyleSet' do
   headerStyle = params[:headerStyle]
   avatarStyle = params[:avatarStyle]
 
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+
   #Altera o campo correspondente
   @data["style"]["headerStyle"] = headerStyle
   @data["style"]["avatarStyle"] = avatarStyle
@@ -804,6 +887,8 @@ get '/headerStyleGet' do
   # Autenticação
   # if !@logado then redirect "http://#{request.host_with_port}" end
 
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
   # Carrega os dados do arquivo fonte
   @data["style"]["headerStyle"]
 end
@@ -815,5 +900,7 @@ get '/avatarStyleGet' do
   # Autenticação
   # if !@logado then redirect "http://#{request.host_with_port}" end
   # Carrega os dados do arquivo fonte
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
   @data["style"]["avatarStyle"]
 end

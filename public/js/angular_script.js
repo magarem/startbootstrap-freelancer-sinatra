@@ -346,16 +346,15 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   $scope.eventApi = {
       onChange: function(api, color, $event) {
         $scope.backgroundUrl_clear();
+        $scope.saveDiv('head.backgroundColor')
       },
       onBlur: function(api, color, $event) {
-        // $scope.site.head.backgroundColor = color
         $scope.saveDiv('head.backgroundColor')
       }
   };
   // api event handlers
   $scope.eventApi2 = {
-      onBlur: function(api, color, $event) {
-        // $scope.site.head.fontColor = color
+      onChange: function(api, color, $event) {
         $scope.saveDiv('head.fontColor')
       }
   };
@@ -410,7 +409,6 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   SiteData.loadSiteData().then(function(response) {
     $scope.head = response.data.head;
     $scope.picFile = $scope.head.avatar;
-    $scope.head.show.txtShadow = true
   })
 
   $scope.saveDiv = function(obj){
@@ -556,7 +554,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     var siteNome = response.data.name
     console.log("siteNome:", siteNome);
     $scope.portfolio = response.data.portfolio;
-    $scope.portfolioItems = response.data.portfolio.items;
+    // $scope.portfolioItems = response.data.portfolio.items;
     $scope.portfolioItemsTags = response.data.portfolio.itemsTags;
     // portfolioItemsTags_update();
   })
@@ -598,7 +596,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     return newArray;
   }
 
-  // Atualizar as lista de tags no campo itemTags
+  // Atualizar as lista de #18BC9Ctags no campo itemTags
   var portfolioItemsTags_update = function (){
     HTMLsanitizeRegex = /(<([^>]+)>)/ig
     $scope.portfolio.itemsTags = []
@@ -631,8 +629,10 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   }
 
   var delImg = function(id){
+    console.log("id>"+id)
     itemRemoved = $scope.portfolio.items.filter(function(v) {
-      return v.id !== id; // Filter out the appropriate one
+      console.log(v)
+      return v.id.toString() !== id; // Filter out the appropriate one
     })
     $scope.portfolio.items = itemRemoved
   };
@@ -847,6 +847,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     $rootScope.$emit("portfolioItemsTags_update");
   }
 });
+
 mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
 
   $scope.imgUploadBtn = true;

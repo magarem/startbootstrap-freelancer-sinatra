@@ -74,7 +74,7 @@
     <div class="clearfix"></div>
       <br />
       <div class="row" ng-sortable="barConfig">
-         <div id="anchor{{$index}}" class="col-sm-4 portfolio-item " ng-repeat="item in portfolioItems | filterByTags:tagSelect ||undefined" >
+         <div id="anchor{{$index}}" class="col-sm-4 portfolio-item " ng-repeat="item in portfolio.items | filterByTags:tagSelect ||undefined" >
            <div ng-if="isLogged && (vm.data.device == 'iphone' || vm.data.device == 'android') && isSelected " class="drag-handle tile center" style="text-align: center;">
              <i style="font-size: 24px;" class="glyphicon glyphicon-move"></i>
            </div>
