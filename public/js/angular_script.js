@@ -64,7 +64,7 @@ mod.directive('bootstrapSwitch', [
     ]);
 mod.filter('filterByTags', function () {
   return function (items, tag) {
-    console.log("tag:", tag)
+    // console.log("tag:", tag)
     var filtered = [];
     (items || []).forEach(function (item) {
       // Para o caso de ser uma array de tags de filtro
@@ -551,12 +551,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   vm.allData = JSON.stringify(vm.data, null, 2);
 
   SiteData.loadSiteData().then(function(response) {
-    var siteNome = response.data.name
-    console.log("siteNome:", siteNome);
+    var siteNome = response.data.info.name
     $scope.portfolio = response.data.portfolio;
-    // $scope.portfolioItems = response.data.portfolio.items;
-    $scope.portfolioItemsTags = response.data.portfolio.itemsTags;
-    // portfolioItemsTags_update();
   })
 
   SiteData.logged().then(function(response) {

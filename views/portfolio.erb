@@ -58,7 +58,7 @@
               <button ng-show="portfolio.itemsTags" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolio.itemsTags track by $index" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
             </span>
             <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
-              <select ng-options="tag for tag in portfolioItemsTags" ng-model="$parent.tagSelect">
+              <select ng-options="tag for tag in portfolio.itemsTags" ng-model="$parent.tagSelect">
                 <option value="">Todos</option>
               </select><br>
             </span>

@@ -18,7 +18,7 @@ navbar:
 head:
   backgroundColor: hsl(168, 77%, 42%)
   backgroundUrl:
-  fontColor: hsl(247, 13%, 87%)
+  fontColor: hsl(0, 0%, 100%)
   avatar: contas/192/img/avatar.jpg?1486077361
   txt1: texto 1
   txt2: texto 2

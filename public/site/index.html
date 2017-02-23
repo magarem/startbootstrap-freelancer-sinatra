@@ -92,6 +92,7 @@
               <h4 class="modal-title text-center">Log in</h4>
             </div>
             <div class="modal-body">
+              <p id=loginModalMsg class="text-left" style="margin-bottom: 2px; color: red;"></p>
               <form name=formLogin onSubmit="return validarLogin(formLogin)" action=/login_do method="POST">
                 <div class="form-group">
                     <input type="text" id="site" name="site" placeholder="Nome do portfólio"  class="form-control" required>
@@ -106,15 +107,17 @@
               </p>
                <script>
                function actionChange(){
-                  if (window.location.href.indexOf("168.") > 0){
-                     formLogin.action = 'http://'+location.host+'/login_do'
-                  }else{
-                     formLogin.action = 'http://'+location.host+'/login_do'
-                  }
+                  formLogin.action = 'http://'+location.host+'/login_do'
+                  // if (window.location.href.indexOf("168.") > 0){
+                  //
+                  // }else{
+                  //    formLogin.action = 'http://'+location.host+'/login_do'
+                  // }
                }
                function lembrarSenha(){
-                 if (formLogin.site.value.length > 0) {
-                    location.href = 'http://'+formLogin.site.value+'.'+location.host+'/lembrarSenha'
+                 site = formLogin.site.value
+                 if (site.length > 0) {
+                    location.href = 'http://'+site+"."+location.host+'/lembrarSenha'
                  }else{
                     alert("Defina o nome do portfolio")
                  }
@@ -202,7 +205,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-6">
-                <p>&copy;2016 Radiando</p>
+                <p>&copy;2017 Radiando</p>
               </div>
               <div class="col-md-6">
                 <p class="credit pull-right">Design by <a href="http://bootstrapious.com/landing-pages" class="external">Bootstrapious</a></p>
@@ -216,7 +219,7 @@
     <!-- Javascript files-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"> </script>
-    <script src="js/bootbox.min.js"> </script>
+    <script src="js/bootbox.min.js"> </script>msg=Erro%20de%20autenticação
 
     <script src="js/jquery.cookie.js"> </script>
     <script src="js/ekko-lightbox.js"></script>
@@ -238,6 +241,7 @@
       }
       cmd = null
       var msg = getParameterByName('msg');
+      var msg2 = getParameterByName('msg2');
       var cmd = getParameterByName('cmd');
       var site = getParameterByName('site');
       if (msg) bootbox.alert(msg)
@@ -258,9 +262,17 @@
         if (!ok) alert("Erro no preenchimento do formulário, favor revisar");
         return ok
       }
+      $( "#loginModalMsg" ).hide()
       if (cmd=="login") {
         $( "#loginButton" ).trigger( "click" );
         $( "#site" ).val(site);
+        $( "#password" ).focus();
+      }
+      if (cmd=="loginErr") {
+        $( "#loginButton" ).trigger( "click" );
+        $( "#site" ).val(site);
+        $( "#loginModalMsg" ).show()
+        $( "#loginModalMsg" ).text("Erro de autenticação");
         $( "#password" ).focus();
       }
    </script>

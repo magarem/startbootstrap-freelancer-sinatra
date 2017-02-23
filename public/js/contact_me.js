@@ -9,7 +9,7 @@ $(function() {
             // Prevent spam click and default submit behaviour
             $("#btnSubmit").attr("disabled", true);
             event.preventDefault();
-            
+
             // get values from FORM
             var site_nome = $("input#site_nome").val();
             var name = $("input#name").val();
@@ -22,7 +22,7 @@ $(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "/email_envia",
+                url: "/contact/emailSend",
                 type: "POST",
                 data: {
                     site_nome: site_nome,

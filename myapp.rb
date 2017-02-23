@@ -112,7 +112,7 @@ get '/adm' do
     redirect "http://#{request.host_with_port}/site/index.html?cmd=login&site=#{site}"
   else
     puts "---"
-    redirect "http://radiando.net/site/index.html?cmd=login&site=#{site}"
+    redirect "http://#{site}.radiando.net/site/index.html?cmd=login&site=#{site}"
   end
 end
 
@@ -185,6 +185,7 @@ get "/lembrarSenha" do
       redirect "http://#{tt}/site/index.html?msg=Site não encontrado"
   end
 
+  @data = Dataload.testa (@url)
   senha = @data["info"]['senha']
   email = @data["info"]['email']
 
@@ -425,16 +426,13 @@ post '/login_do' do
     session[:site_nome] = ""
     @edit_flag = "false"
     # redirect 'site/index.html?msg=Erro de autenticação'
-    domain = request.host_with_port.split(".")[-1]
-
+    url = request.host_with_port.split(".")[-1]
     #Desvia conforme a origem
     if request.host_with_port.include? "168" then
       #Celular test hack
-      redirect "http://#{request.host_with_port}/site/index.html?msg=Erro de autenticação"
-    else
-      redirect "http://#{domain}/site/index.html?msg=Erro de autenticação"
+      url = request.host_with_port
     end
-
+    redirect "http://#{url}/site/index.html?cmd=loginErr&site=t5"
   end
 end
 
@@ -493,10 +491,12 @@ post '/objSave' do
   @obj.split(".").each_with_index do |item, index|
     s = s + "['#{item}']"
   end
-  comando = "@data#{s} = @val"
-  puts @val
-  puts "$$$> #{comando}"
-  eval(comando)
+  if @val then
+    comando = "@data#{s} = @val"
+    puts @val
+    puts "$$$> #{comando}"
+    eval(comando)
+  end
 
   #Confere se é algum item do menu
   case s
@@ -539,12 +539,14 @@ post '/portfolioSave' do
     portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
   end
 
+  puts "@val> #{@val}"
   case @obj
 
     when "portfolio.label"
       @data["navbar"]["menu"][0]["label"] = @val
 
     when "item.titulo"
+
       portfolioItem["titulo"] = @val
 
     when "item.txt"
@@ -807,7 +809,7 @@ end
 #
 #  Envia um email para o administrados com os dados digitados no formulário de contato
 #
-post '/emailSend' do
+post '/contact/emailSend' do
 
   # Pega os dados do formulário
   formName = params[:name]
@@ -815,7 +817,10 @@ post '/emailSend' do
   formPhone = params[:phone]
   formMessage = params[:message]
 
-  dataEmail = data["email"]
+  #Carrega os dados do site
+  data = Dataload.testa (@url)
+
+  dataEmail = data["info"]["email"]
 
   mailMessage = "Você recebeu um email de: #{formName} / #{formEmail} / #{formPhone}
                  #{formMessage}"

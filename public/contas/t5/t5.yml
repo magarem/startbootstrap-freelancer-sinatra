@@ -12,9 +12,9 @@ navbar:
     label: novo teste
     img: 
   menu:
-  - fotos
+  - fotoss
   - sobre
-  - contato1
+  - contato
 head:
   backgroundColor: hsl(242, 68%, 27%)
   backgroundUrl: contas/t5/img/backGround/backGround.jpg?1487685949
@@ -28,33 +28,34 @@ head:
     txt2: true
     txtShadow: true
 portfolio:
-  label: fotos
+  label: fotoss
   itemsTags: []
   items:
   - id: t5-1487698672327
-    titulo: ''
+    titulo: '2'
     img: contas/t5/img/portfolio/t5-1487698672327.jpeg?decache=0.8284919526805632
     txt: ''
     nome: ''
     site: ''
-    data: ''
+    data: '2'
     servico: ''
     tags: ''
+    cliente: '111'
   - id: t5-1487698488084
     titulo: ''
     img: contas/t5/img/portfolio/t5-1487698488084.jpeg?decache=0.12640403900520303
-    txt: ''
-    cliente: ''
-    site: ''
-    data: ''
-    servico: ''
+    txt: 
+    cliente: '4433'
+    site: '555'
+    data: '333'
+    servico: '444'
     tags: ''
 about:
   label: sobre
   body1: ghfgkhg ghgfhgfhfghfghgh<br>GhfghG<br>HGHFghFG<br>HGH<br>gH<br>GHfg
   body2: j hgjhgj hgj hgj<br>9*9999
 contact:
-  label: contato1
+  label: contato
 footer:
   endereco: tttt
   social:
