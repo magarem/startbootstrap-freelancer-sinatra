@@ -222,8 +222,8 @@ mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) {
   }}])
 mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
-    var logged = $http.get('/logged');
     var siteData = $http.get('/dataLoad');
+    var logged = siteData["logged"];
     var styleBackgrounds = $http.get('/styleBackgrounds');
 
     //Prepara o URL de destino do upload
@@ -282,12 +282,13 @@ mod.controller('topCtrl', function ($scope, $http, SiteData) {
   $scope.site = {};
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  // })
 
   SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
+    $scope.isLogged = response.data["logged"]
   })
 
   $scope.saveDiv = function(obj){
@@ -315,12 +316,13 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
   $scope.site = {};
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  // })
 
   SiteData.loadSiteData().then(function(response) {
     $scope.navbar = response.data.navbar;
+    $scope.isLogged = response.data["logged"]
   })
 
   $scope.saveDiv = function(obj){
@@ -402,13 +404,14 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
     $scope.saveDiv('head.backgroundUrl')
   }
 
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  // })
 
   SiteData.loadSiteData().then(function(response) {
     $scope.head = response.data.head;
     $scope.picFile = $scope.head.avatar;
+    $scope.isLogged = response.data["logged"]
   })
 
   $scope.saveDiv = function(obj){
@@ -484,16 +487,16 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.searchButtonText = "Enviando";
   }
 
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  // })
 
   SiteData.loadSiteData().then(function(response) {
     var siteNome = SiteData.getSiteNome()
     $scope.head = response.data.head;
     $scope.picFile = null;
     $scope.croppedDataUrl = null;
-
+    $scope.isLogged = response.data["logged"]
   })
 
   $rootScope.$on("ModalClose", function(){
@@ -553,14 +556,16 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   SiteData.loadSiteData().then(function(response) {
     var siteNome = response.data.info.name
     $scope.portfolio = response.data.portfolio;
-  })
-
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-    //confere se está logado para bloquear o img drag
-    // $scope.isSelected = $scope.isLogged
+    $scope.isLogged = response.data["logged"]
     $scope.isSelected = false;
   })
+
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  //   //confere se está logado para bloquear o img drag
+  //   // $scope.isSelected = $scope.isLogged
+  //   $scope.isSelected = false;
+  // })
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {})
@@ -764,6 +769,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   }
   SiteData.loadSiteData().then(function(response) {
     $scope.portfolio = response.data.portfolio;
+    $scope.isLogged = response.data["logged"]
     console.log($scope.tags)
     // Build JSTagsCollection
     $scope.tags = new JSTagsCollection($scope.tags);
@@ -803,9 +809,9 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
 
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  // })
 
   $rootScope.$on("ModalClose", function(){
       $scope.cancel();
@@ -904,9 +910,9 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  // })
 
   $scope.up = function(){
     angular.element('#file').trigger('click');
@@ -940,13 +946,14 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  // })
 
   $scope.about = {};
   SiteData.loadSiteData().then(function(response) {
     $scope.about = response.data.about
+    $scope.isLogged = response.data["logged"]
   })
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
@@ -957,13 +964,14 @@ mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
 
   $scope.isLogged = false;
 
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  // })
 
   SiteData.loadSiteData().then(function(response) {
     $scope.siteNome = response.data.info.name
     $scope.contact = response.data.contact
+    $scope.isLogged = response.data["logged"]
   })
 
   $scope.saveDiv = function(obj){
@@ -978,16 +986,17 @@ mod.controller('footerCtrl', function ($scope, $http, SiteData) {
 
   SiteData.loadSiteData().then(function(response) {
     $scope.footer = response.data.footer;
+    $scope.isLogged = response.data["logged"]
   })
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }
-
-  SiteData.logged().then(function(response) {
-    $scope.isLogged = (response.data === 'true');
-  })
+  // 
+  // SiteData.logged().then(function(response) {
+  //   $scope.isLogged = (response.data === 'true');
+  // })
 })
 mod.controller('loginCtrl', function ($scope, $http, SiteData) {
 

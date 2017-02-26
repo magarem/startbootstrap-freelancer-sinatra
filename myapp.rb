@@ -448,8 +448,9 @@ get '/dataLoad' do
     @data_path = "public/contas/{site_nome}/{site_nome}.yml"
     @data_path.gsub! "{site_nome}", @site_nome
     @data = YAML.load_file @data_path
+    @data["logged"] = session[:logado]
     # puts @data
-    erb :index
+    # erb :index
   end
   @data.to_json
 end
@@ -458,8 +459,9 @@ end
 # Verifica se usuário está logado
 #
 get '/logged' do
-  @edit_flag = session[:logado] || false
-  "#{@edit_flag}"
+  @a = session[:logado]
+  puts @a
+  "#{@a}"
 end
 
 #

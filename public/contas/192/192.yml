@@ -17,9 +17,9 @@ navbar:
   - contato
 head:
   backgroundColor: hsl(2, 39%, 48%)
-  backgroundUrl: "/styleBackgrounds/6935544-blue-backgrounds-hd.jpg"
-  fontColor: hsl(247, 13%, 87%)
-  avatar: contas/192/img/avatar.jpeg?1487621237
+  backgroundUrl: contas/192/img/backGround/backGround.jpg?1488044306
+  fontColor: hsl(0, 0%, 99%)
+  avatar: contas/192/img/avatar.jpg?1488147323
   txt1: maria clara!
   txt2: filhota punk!
   show:
