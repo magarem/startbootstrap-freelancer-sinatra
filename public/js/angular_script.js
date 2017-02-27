@@ -223,7 +223,6 @@ mod.directive('contenteditable', ['$timeout', '$sce', function($timeout, $sce) {
 mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     var siteData = $http.get('/dataLoad');
-    var logged = siteData["logged"];
     var styleBackgrounds = $http.get('/styleBackgrounds');
 
     //Prepara o URL de destino do upload
@@ -237,6 +236,10 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     var _loadSiteData = function(){
       return siteData;
+    }
+
+    var _loadSiteDataLogged = function(){
+      return siteData["logged"];
     }
 
     var _loadStyleBackgrounds = function(){
@@ -268,6 +271,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
     return {
       logged: _logged,
       loadSiteData: _loadSiteData,
+      loadSiteDataLogged: _loadSiteDataLogged,
       getSiteNome: _getSiteNome,
       savePortfolioOrder: _savePortfolioOrder,
       saveDiv: _saveDiv,
@@ -770,11 +774,14 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   SiteData.loadSiteData().then(function(response) {
     $scope.portfolio = response.data.portfolio;
     $scope.isLogged = response.data["logged"]
-    console.log($scope.tags)
+    console.log($scope.isLogged === true)
     // Build JSTagsCollection
+    console.log($scope.tags);
+    $scope.tagsJoin = $scope.tags.join(", ");
     $scope.tags = new JSTagsCollection($scope.tags);
     // Export jsTags options, inlcuding our own tags object
     $scope.jsTagOptions = {
+      'edit': $scope.isLogged === true,
       'tags': $scope.tags
     };
     // **** Typeahead code **** //
@@ -807,7 +814,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     };
   })
 
-  $scope.isLogged = false;
+
 
   // SiteData.logged().then(function(response) {
   //   $scope.isLogged = (response.data === 'true');
@@ -908,9 +915,9 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     );
   }
 
-  $scope.isLogged = false;
+  // $scope.isLogged = false;
 
-  // SiteData.logged().then(function(response) {
+  // SiteData.loadSiteDataLogged().then(function(response) {
   //   $scope.isLogged = (response.data === 'true');
   // })
 
@@ -993,7 +1000,7 @@ mod.controller('footerCtrl', function ($scope, $http, SiteData) {
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }
-  // 
+  //
   // SiteData.logged().then(function(response) {
   //   $scope.isLogged = (response.data === 'true');
   // })

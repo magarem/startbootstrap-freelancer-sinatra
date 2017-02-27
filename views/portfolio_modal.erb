@@ -133,8 +133,11 @@
                      </div>
                    </strong>
                  </li>
-                 <li ng-show="item.cat || isLogged" >Tags:
+                 <li ng-show="item.tags && isLogged" >Marcadores:
                    <js-tag js-tag-mode="typeahead" js-tag-options="jsTagOptions" ></js-tag>
+                 </li>
+                 <li ng-show="item.tags && !isLogged" >Marcadores:<br>
+                    <b>{{tagsJoin}}</b>
                  </li>
               </ul>
               <input id="imgSelect" type="file"
