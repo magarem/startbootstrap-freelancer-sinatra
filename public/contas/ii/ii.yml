@@ -1,0 +1,56 @@
+---
+info:
+  name: ii
+  email: contato@magaweb.com.br
+  senha: '3071'
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: ii
+    img: 
+  menu:
+  - portfólio
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(168, 77%, 42%)
+  backgroundUrl: 
+  fontColor: hsl(0, 0%, 100%)
+  avatar: contas/ii/img/profile.png
+  txt1: texto 1
+  txt2: texto 2
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: false
+portfolio:
+  label: portfólio
+  itemsTags: 
+  items:
+  - id: ii-12de03a39e
+    titulo: titulo
+    img: http://placehold.it/360x260/e67e22/fff
+    txt: 
+    nome: 
+    site: 
+    data: 
+    servico: 
+    tags: 
+about:
+  label: sobre
+  body1: texto 1
+  body2: texto 2
+contact:
+  label: contato
+footer:
+  endereco: 
+  social:
+    facebook: facebook
+    googleplus: googleplus
+    twitter: twitter
+    linkedin: linkedin
+  about_resumo: texto de resumo

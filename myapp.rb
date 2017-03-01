@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'sinatra'
 require 'pry'
 require 'yaml'
@@ -7,6 +8,8 @@ require 'mini_magick'
 require 'fileutils'
 require 'securerandom'
 require 'mail'
+require 'openssl'
+require "aescrypt"
 
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
 enable :sessions
@@ -34,6 +37,7 @@ helpers do
   end
 end
 
+
 module Dataload
   def Dataload.dataPath
     return "public/contas/{site_nome}/{site_nome}.yml"
@@ -54,6 +58,8 @@ module Dataload
 end
 
 before do
+  headers 'Content-Type' => 'text/html; charset=utf-8'
+  # Encoding.default_internal = Encoding::UTF_8
   @logado = session[:logado]
   @isLogged = @logado
 
@@ -95,6 +101,15 @@ before do
   end
 end
 
+get "/tt" do
+  chave = params["key"]
+  message = "contato@magaweb.com.br/fidelis/jk8g"
+password = "this_is_a_secret_key_that_you_and_only_you_should_know"
+encrypted_data = AESCrypt.encrypt(message, password)
+puts "encrypted_data: key=#{encrypted_data}"
+message = AESCrypt.decrypt(chave, password)
+puts "message: #{message}"
+end
 #
 #  /adm
 #
@@ -140,37 +155,19 @@ end
 #  Lê o diretório com os nomes das imagens de fundo
 #
 get "/styleBackgrounds" do
-  Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
+  if @isLogged then
+     Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
+  end
 end
 
 
 #
 #  Carregamento do site
 #
-get "/" do
+
   puts "session[:logado]>>#{session[:logado]}"
   @data = Dataload.testa (@url)
   erb :index
-  # # if !request.host.include? "." || @site_nome == "teste" then redirect 'teste/index.html' end
-  # # if !request.host.include? "." || @site_nome == "radiando" then redirect 'site/index.html' end
-  #
-  # #Testa se existe o site
-  # if !File.exist? File.expand_path "./public/contas/"+@site_nome then
-  #     redirect 'site/index.html?msg=Site não encontrado'
-  # end
-  #
-  # @edit_flag = session[:logado]
-  # if @edit_flag
-  #   # Verifica se o nome do site corresponde ao site que foi feito o login
-  #   if @site_nome == session[:site_nome]
-  #     erb :index
-  #   else
-  #     session.clear
-  #     redirect "http://#{request.host_with_port}/"
-  #   end
-  # else
-  #   erb :index
-  # end
 end
 
 #
@@ -181,7 +178,9 @@ get "/lembrarSenha" do
   #Testa se existe o site
   if !File.exist? File.expand_path "./public/contas/"+@site_nome then
       # Se não existir o site é carregada a mensagem de site não encontrado
-      tt = request.host_with_port.split(".")[-1]
+      # tt = request.host_with_port.split(".")[-1]
+      tt = request.host_with_port
+      #redirect "http://#{tt}/site/index.html?msg=Site não encontrado"
       redirect "http://#{tt}/site/index.html?msg=Site não encontrado"
   end
 
@@ -214,7 +213,8 @@ radiando.net"
 
   mail.delivery_method :sendmail
   mail.deliver
-  domain = request.host_with_port.split(".")[-1]
+  # domain = request.host_with_port.split(".")[-1]
+  domain = request.host_with_port
   redirect "http://#{domain}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
 end
 
@@ -224,44 +224,47 @@ end
 post "/site_new" do
 
   #Pega os parâmetros
-  formSiteNome = params[:site_nome].downcase
+  formSiteNome = params[:site_nome]
   formUserEmail = params[:email]
 
   #Gera uma senha de 4 dígitos aleatória
   randomString = SecureRandom.hex
-  randomSenha = randomString[0, 4].downcase
+  randomSenha = randomString[0, 4]
+
+  chave = "#{formUserEmail}/#{formSiteNome}/#{randomSenha}".downcase
+  puts "chave: #{chave}"
+
+  # message = "contato@magaweb.com.br/fidelis/jk8g"
+  password = "this_is_a_secret_key_that_you_and_only_you_should_know"
+  encrypted_data = AESCrypt.encrypt(chave, password)
+  puts "encrypted_data: key=#{encrypted_data}"
+  # message = AESCrypt.decrypt(encrypted_data, password)
+  # puts "message: #{message}"
+
+  # cipher = OpenSSL::Cipher.new('aes-256-gcm')
+  # cipher.encrypt # Required before '#random_key' or '#random_iv' can be called. http://ruby-doc.org/stdlib-2.0.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html#method-i-encrypt
+  # secret_key = cipher.random_key # Insures that the key is the correct length respective to the algorithm used.
+  # iv = cipher.random_iv # Insures that the IV is the correct length respective to the algorithm used.
+  # salt = SecureRandom.random_bytes(16)
+  # encrypted_value = Encryptor.encrypt(value: chave, key: secret_key, iv: iv, salt: salt)
+  # decrypted_value = Encryptor.decrypt(value: encrypted_value, key: secret_key, iv: iv, salt: salt)
+
+
 
   # Carrega o arquivo de controle de novos sites
-  data = YAML.load_file "sites_list.yml"
+  # data = YAML.load_file "sites_list.yml"
 
   # Verifica se o nome pretendido já existe
   flgNomeJaExiste = File.directory?("public/contas/#{formSiteNome}")
 
-  if flgNomeJaExiste == false
-    #Grava em sites_lista.yml o nome do site com seu token
-    # Insere o novo item na array do arquivo fonte
+  if !flgNomeJaExiste
 
-    # Prapara o novo item para inserção
-    itemNew = {
-      "nome"   => formSiteNome,
-      "email"  => formUserEmail,
-      "senha"  => randomSenha,
-      "token"  => randomString
-    }
-    data << itemNew
-
-    #Salva o arquivo modificado
-    f = File.open("sites_list.yml", 'w' )
-    YAML.dump( data, f )
-    f.close
-
-    #Envia email de confirmação da abertura da nova conta
     mailMessage = "
 Bem-vindo ao Radiando.net, o seu construtor de site portfólio na web!
 
 Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
 
-http://radiando.net/site_new_do?email=#{formUserEmail}&site_nome=#{formSiteNome}&token=#{randomString}
+http://radiando.net/site_new_do?key=#{encrypted_data}
 
 Depois de confirmada a sua conta seu site já estará no ar no endereço:
 http://#{formSiteNome}.radiando.net
@@ -298,79 +301,76 @@ end
 #
 get "/site_new_do" do
 
-  #Pega os parâmetros
-  email = params["email"]
-  email_site_nome = params["site_nome"]
-  email_token = params["token"]
+  chave = params["key"]
+  puts "chave: #{chave}"
 
-  puts email_site_nome
+  # message = "contato@magaweb.com.br/fidelis/jk8g"
+  # password = "this_is_a_secret_key_that_you_and_only_you_should_know"
+  # encrypted_data = AESCrypt.encrypt(chave, password)
+  # puts "encrypted_data: key=#{encrypted_data}"
+  password = "this_is_a_secret_key_that_you_and_only_you_should_know"
+  decrypted = AESCrypt.decrypt(chave, password)
+  # puts "message: #{message}"
 
-  @sites_list_path = "./sites_list.yml"
+  emailParams = decrypted.split("/")
+  email = emailParams[0]
+  email_site_nome = emailParams[1]
+  email_senha = emailParams[2]
 
-  # Confere se o token informado pelo link do email está correto
-  @y = YAML.load_file @sites_list_path
+  puts "#{email}"
 
-  #Laço de conferencia para ver se os dados do email conferem
-  @y.each do |key|
-    yml_nome = key['nome']
-    yml_email = key['email']
-    yml_senha = key['senha']
-    yml_token = key['token']
+  #Verifica se o site já foi criado
+  flgNomeJaExiste = File.directory?("public/contas/#{email_site_nome}")
 
-    # puts "#{email}, #{email_site_nome}, #{email_site_nome}"
-    #Verifica se os dados do email conferem
-    if email == yml_email && email_site_nome == yml_nome && email_token == yml_token then
+  if !flgNomeJaExiste
+    @data_path = "public/contas/#{email_site_nome}/#{email_site_nome}.yml"
+    #Cria diretório principal
+    install_dir = "public/contas/#{email_site_nome}"
+    FileUtils::mkdir_p install_dir
 
-      @data_path = "public/contas/#{email_site_nome}/#{email_site_nome}.yml"
-      #Cria diretório principal
-      install_dir = "public/contas/#{email_site_nome}"
-      FileUtils::mkdir_p install_dir
+    puts "@data_path: #{@data_path}"
+    #Clona o arquivo base
+    FileUtils.cp("site.yml", @data_path)
 
-      puts "@data_path: #{@data_path}"
-      #Clona o arquivo base
-      FileUtils.cp("site.yml", @data_path)
+    #Cria diretorio de imagens
+    install_dir = "public/contas/#{email_site_nome}/img/portfolio"
+    FileUtils::mkdir_p install_dir
 
-      #Cria diretorio de imagens
-      install_dir = "public/contas/#{email_site_nome}/img/portfolio"
-      FileUtils::mkdir_p install_dir
+    #Cria diretorio de backGrounds
+    install_dir = "public/contas/#{email_site_nome}/img/backGround"
+    FileUtils::mkdir_p install_dir
 
-      #Cria diretorio de backGrounds
-      install_dir = "public/contas/#{email_site_nome}/img/backGround"
-      FileUtils::mkdir_p install_dir
+    #Define o nome/email no arquivo fonte
+    data = YAML.load_file @data_path
+    data["info"]["name"] = email_site_nome
+    data["info"]["senha"] = email_senha
+    data["info"]["email"] = email
+    data["navbar"]["logo"]["label"] = email_site_nome
 
-      #Define o nome/email no arquivo fonte
-      data = YAML.load_file @data_path
-      data["info"]["name"] = email_site_nome
-      data["info"]["senha"] = email_token[0, 4]
-      data["info"]["email"] = email
-      data["navbar"]["logo"]["label"] = email_site_nome
+    #Copia imagem da capa
+    FileUtils.cp("public/img/profile.png","public/contas/#{email_site_nome}/img/profile.png")
 
-      #Copia imagem da capa
-      FileUtils.cp("public/img/profile.png","public/contas/#{email_site_nome}/img/profile.png")
+    #Define a capa do site
+    data["head"]["avatar"] = "contas/#{email_site_nome}/img/profile.png"
 
-      #Define a capa do site
-      data["head"]["avatar"] = "contas/#{email_site_nome}/img/profile.png"
+    id = SecureRandom.hex[0, 10].downcase
 
-      id = SecureRandom.hex[0, 10].downcase
+    data["portfolio"]["items"][0]["id"] = "#{email_site_nome}-#{id}"
 
-      data["portfolio"]["items"][0]["id"] = "#{email_site_nome}-#{id}"
+    #Salva o arquivo fonte
+    f = File.open(@data_path, 'w' )
+    YAML.dump( data, f )
+    f.close
 
-      #Salva o arquivo fonte
-      f = File.open(@data_path, 'w' )
-      YAML.dump( data, f )
-      f.close
+    session[:site_nome] = email_site_nome
+    session[:login] = true
 
-      session[:site_nome] = email_site_nome
-      session[:login] = true
-
-      # Abre o site recem criado no modo de edição
-      #redirect "#{email_site_nome}.radiando.net"
-      redirect "http://#{email_site_nome}.#{request.host_with_port}"
-    end
-    # "@data_path: #{@data_path}"
+    # Abre o site recem criado no modo de edição
+    #redirect "#{email_site_nome}.radiando.net"
+    redirect "http://#{email_site_nome}.#{request.host_with_port}"
   end
   #Não achou o token
-  redirect "site/index.html?msg=Erro de token"
+  redirect "site/index.html?msg=Erro de chave ou o site já exite"
   # "@data_path: #{@data_path}"
 end
 
@@ -426,7 +426,8 @@ post '/login_do' do
     session[:site_nome] = ""
     @edit_flag = "false"
     # redirect 'site/index.html?msg=Erro de autenticação'
-    url = request.host_with_port.split(".")[-1]
+    # url = request.host_with_port.split(".")[-1]
+    url = request.host_with_port
     #Desvia conforme a origem
     if request.host_with_port.include? "168" then
       #Celular test hack
