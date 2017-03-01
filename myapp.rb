@@ -37,7 +37,6 @@ helpers do
   end
 end
 
-
 module Dataload
   def Dataload.dataPath
     return "public/contas/{site_nome}/{site_nome}.yml"
@@ -155,8 +154,8 @@ end
 #  Lê o diretório com os nomes das imagens de fundo
 #
 get "/styleBackgrounds" do
-  if @isLogged then
-     Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
+  if @isLogged
+    Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
   end
 end
 
@@ -164,7 +163,7 @@ end
 #
 #  Carregamento do site
 #
-
+get "/" do
   puts "session[:logado]>>#{session[:logado]}"
   @data = Dataload.testa (@url)
   erb :index
@@ -300,8 +299,9 @@ end
 # Criar novo site
 #
 get "/site_new_do" do
-
+puts "---------------------"
   chave = params["key"]
+
   puts "chave: #{chave}"
 
   # message = "contato@magaweb.com.br/fidelis/jk8g"
@@ -393,7 +393,7 @@ post '/login_do' do
   puts ">>#{site_nome}"
   #Testa se existe o site
   if !File.exist? File.expand_path "./public/contas/"+site_nome then
-      domain = request.host_with_port.split(".")[-1]
+      domain = request.host_with_port
       puts "domain:#{domain}"
       if request.host_with_port.include? "168" then
         #Celular test hack
@@ -426,13 +426,12 @@ post '/login_do' do
     session[:site_nome] = ""
     @edit_flag = "false"
     # redirect 'site/index.html?msg=Erro de autenticação'
-    # url = request.host_with_port.split(".")[-1]
     url = request.host_with_port
     #Desvia conforme a origem
-    if request.host_with_port.include? "168" then
-      #Celular test hack
-      url = request.host_with_port
-    end
+    # if request.host_with_port.include? "168" then
+    #   #Celular test hack
+    #   url = request.host_with_port
+    # end
     redirect "http://#{url}/site/index.html?cmd=loginErr&site=t5"
   end
 end
