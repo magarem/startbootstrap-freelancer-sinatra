@@ -164,7 +164,6 @@ padding : 5px 15px;
                     </span>
                     <span ng-show="picFile2.result">Upload Successful</span>
                     <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-                    <i ng-show="myForm.file.$error.required">*required</i><br>
                     <i ng-show="myForm.file.$error.maxSize">File too large
                         {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
                   </fieldset>
@@ -249,7 +248,7 @@ padding : 5px 15px;
                 >
             </div>
           </span>
-          <hr ng-show=head.show.txt2 class="star-light" ng-class="{txtShadow2: head.show.txtShadow}">
+          <hr ng-show="head.show.txt1 && head.show.txt2" class="star-light" ng-class="{txtShadow2: head.show.txtShadow}">
           <span class="skills">
             <div contenteditable="{{isLogged}}"
                 ng-show=head.show.txt2

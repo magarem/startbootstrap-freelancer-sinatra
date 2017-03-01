@@ -419,7 +419,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   })
 
   $scope.saveDiv = function(obj){
-    console.log("obj:", obj)
+    console.log("!!obj:", obj)
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }
@@ -856,7 +856,6 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     $rootScope.$emit("portfolioItemsTags_update");
   }
 });
-
 mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
 
   $scope.imgUploadBtn = true;

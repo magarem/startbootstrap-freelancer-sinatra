@@ -10,6 +10,7 @@ require 'securerandom'
 require 'mail'
 require 'openssl'
 require "aescrypt"
+require 'open-uri'
 
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
 enable :sessions
@@ -59,80 +60,52 @@ end
 before do
   headers 'Content-Type' => 'text/html; charset=utf-8'
   # Encoding.default_internal = Encoding::UTF_8
+
+  @url = request.host_with_port
+  @url_full = request.host+request.fullpath
+  @url_qs = request.query_string
   @logado = session[:logado]
   @isLogged = @logado
 
-  #Verifica se está sendo chamado o site principal
-  @url = request.host+request.fullpath
-  if @url == "localhost/" then
-    redirect "http://localhost/site/index.html"
-  end
-  if @url == "radiando.net/" then
-    redirect "http://radiando.net/site/index.html"
-  end
+  #Monitor
+  puts "request.host_with_port: #{@url}"
+  puts "request.host+request.fullpath: #{@url_full}"
+  puts "request.query_string: #{@url_qs}"
+  puts "session[:logado]: #{session[:logado]}"
 
-  puts "&&&> #{session[:logado]}"
-  # Verifica se o nome do site corresponde ao site que foi feito o login
-  url = request.host_with_port
+  #Verifica se está sendo chamado o site principal
+  if @url_full == "localhost/" or @url_full == "radiando.net/" then
+    redirect "http://#{@url_full}/site/index.html"
+  end
 
   #Pega o nome do site
-  if url.include? "." then
+  if @url.include? "." then
    @site_nome = request.host.split(".").first
-   if request.fullpath.length == 1 && @site_nome == "radiando" then redirect "http://radiando.net/site/index.html" end
+   puts "@site_nome: #{@site_nome}"
   end
-
-  if @logado and @site_nome != session[:site_nome] then
-    session.clear
-    redirect "http://#{request.host_with_port}/"
-  end
-  #Hack para teste
-  # session[:logado] = true
-  # session[:site_nome] = "192"
-  # @edit_flag = "true"
-  # puts ">request.subdomain.split(".").first >>" + request.host.split(".").first
-  # Pega o nome do site
-  puts "request.query_string: #{request.query_string}"
 
   if @site_nome then
     @data_path = Dataload.dataPath
     puts "@data_path:#{@data_path}"
     @data_path.gsub! "{site_nome}", @site_nome
   end
+
+  #Confere se é o mesmo nome de site doque foi logado
+  if @logado and @site_nome != session[:site_nome] then
+    session.clear
+    redirect "http://#{request.host_with_port}/"
+  end
 end
 
-get "/tt" do
-  chave = params["key"]
-  message = "contato@magaweb.com.br/fidelis/jk8g"
-password = "this_is_a_secret_key_that_you_and_only_you_should_know"
-encrypted_data = AESCrypt.encrypt(message, password)
-puts "encrypted_data: key=#{encrypted_data}"
-message = AESCrypt.decrypt(chave, password)
-puts "message: #{message}"
-end
 #
 #  /adm
 #
 get '/adm' do
-  host = request.host_with_port
-  site = host.split(".")[0]
-  url = host.split(".")[-1]
-  puts "request.host_with_port:#{request.host_with_port}"
-  # Teste Hack
-  if request.host_with_port.include? "localhost" then
-    redirect "http://#{host}/site/index.html?cmd=login&site=#{site}"
-  end
-  if request.host_with_port.include? "168"  then
-    puts "***"
-    redirect "http://#{request.host_with_port}/site/index.html?cmd=login&site=#{site}"
-  else
-    puts "---"
-    redirect "http://#{site}.radiando.net/site/index.html?cmd=login&site=#{site}"
-  end
+  puts "@host: #{@url}"
+  redirect "http://#{@url}/site/index.html?cmd=login&site=#{@site_nome}"
 end
 
-#
-#   Pedir novo site
-#
+
 Mail.defaults do
   delivery_method :sendmail
 end
@@ -164,7 +137,6 @@ end
 #  Carregamento do site
 #
 get "/" do
-  puts "session[:logado]>>#{session[:logado]}"
   @data = Dataload.testa (@url)
   erb :index
 end
@@ -173,14 +145,10 @@ end
 # Lembrar a senha [Pedido no formulário de login]
 #
 get "/lembrarSenha" do
-
   #Testa se existe o site
   if !File.exist? File.expand_path "./public/contas/"+@site_nome then
-      # Se não existir o site é carregada a mensagem de site não encontrado
-      # tt = request.host_with_port.split(".")[-1]
-      tt = request.host_with_port
-      #redirect "http://#{tt}/site/index.html?msg=Site não encontrado"
-      redirect "http://#{tt}/site/index.html?msg=Site não encontrado"
+    # Se não existir o site é carregada a mensagem de site não encontrado
+    redirect "http://#{@url}/site/index.html?msg=Site não encontrado"
   end
 
   @data = Dataload.testa (@url)
@@ -212,9 +180,7 @@ radiando.net"
 
   mail.delivery_method :sendmail
   mail.deliver
-  # domain = request.host_with_port.split(".")[-1]
-  domain = request.host_with_port
-  redirect "http://#{domain}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
+  redirect "http://#{@url}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
 end
 
 #
@@ -230,28 +196,12 @@ post "/site_new" do
   randomString = SecureRandom.hex
   randomSenha = randomString[0, 4]
 
-  chave = "#{formUserEmail}/#{formSiteNome}/#{randomSenha}".downcase
+  chave = "radiando/#{formUserEmail}/#{formSiteNome}/#{randomSenha}".downcase
   puts "chave: #{chave}"
 
-  # message = "contato@magaweb.com.br/fidelis/jk8g"
-  password = "this_is_a_secret_key_that_you_and_only_you_should_know"
+  password = "!Mariaclara@mArcelamaria#maGa108$"
   encrypted_data = AESCrypt.encrypt(chave, password)
   puts "encrypted_data: key=#{encrypted_data}"
-  # message = AESCrypt.decrypt(encrypted_data, password)
-  # puts "message: #{message}"
-
-  # cipher = OpenSSL::Cipher.new('aes-256-gcm')
-  # cipher.encrypt # Required before '#random_key' or '#random_iv' can be called. http://ruby-doc.org/stdlib-2.0.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html#method-i-encrypt
-  # secret_key = cipher.random_key # Insures that the key is the correct length respective to the algorithm used.
-  # iv = cipher.random_iv # Insures that the IV is the correct length respective to the algorithm used.
-  # salt = SecureRandom.random_bytes(16)
-  # encrypted_value = Encryptor.encrypt(value: chave, key: secret_key, iv: iv, salt: salt)
-  # decrypted_value = Encryptor.decrypt(value: encrypted_value, key: secret_key, iv: iv, salt: salt)
-
-
-
-  # Carrega o arquivo de controle de novos sites
-  # data = YAML.load_file "sites_list.yml"
 
   # Verifica se o nome pretendido já existe
   flgNomeJaExiste = File.directory?("public/contas/#{formSiteNome}")
@@ -263,7 +213,7 @@ Bem-vindo ao Radiando.net, o seu construtor de site portfólio na web!
 
 Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
 
-http://radiando.net/site_new_do?key=#{encrypted_data}
+http://radiando.net/site_new_do?key=#{URI::encode(encrypted_data)}
 
 Depois de confirmada a sua conta seu site já estará no ar no endereço:
 http://#{formSiteNome}.radiando.net
@@ -299,30 +249,21 @@ end
 # Criar novo site
 #
 get "/site_new_do" do
-puts "---------------------"
   chave = params["key"]
-
   puts "chave: #{chave}"
-
-  # message = "contato@magaweb.com.br/fidelis/jk8g"
-  # password = "this_is_a_secret_key_that_you_and_only_you_should_know"
-  # encrypted_data = AESCrypt.encrypt(chave, password)
-  # puts "encrypted_data: key=#{encrypted_data}"
-  password = "this_is_a_secret_key_that_you_and_only_you_should_know"
+  password = password = "!Mariaclara@mArcelamaria#maGa108$"
   decrypted = AESCrypt.decrypt(chave, password)
-  # puts "message: #{message}"
 
   emailParams = decrypted.split("/")
-  email = emailParams[0]
-  email_site_nome = emailParams[1]
-  email_senha = emailParams[2]
-
-  puts "#{email}"
+  verifica = emailParams[0]
+  email = emailParams[1]
+  email_site_nome = emailParams[2]
+  email_senha = emailParams[3]
 
   #Verifica se o site já foi criado
   flgNomeJaExiste = File.directory?("public/contas/#{email_site_nome}")
 
-  if !flgNomeJaExiste
+  if !flgNomeJaExiste and verifica == "radiando" and email.include? "@"
     @data_path = "public/contas/#{email_site_nome}/#{email_site_nome}.yml"
     #Cria diretório principal
     install_dir = "public/contas/#{email_site_nome}"
@@ -370,7 +311,7 @@ puts "---------------------"
     redirect "http://#{email_site_nome}.#{request.host_with_port}"
   end
   #Não achou o token
-  redirect "site/index.html?msg=Erro de chave ou o site já exite"
+  redirect "site/index.html?msg=Erro de chave ou o site já foi criado"
   # "@data_path: #{@data_path}"
 end
 
@@ -379,7 +320,7 @@ end
 #
 get '/logout' do
   session.clear
-  redirect "http://#{request.host_with_port}"
+  redirect "http://#{@url}"
 end
 
 #
@@ -393,14 +334,7 @@ post '/login_do' do
   puts ">>#{site_nome}"
   #Testa se existe o site
   if !File.exist? File.expand_path "./public/contas/"+site_nome then
-      domain = request.host_with_port
-      puts "domain:#{domain}"
-      if request.host_with_port.include? "168" then
-        #Celular test hack
-        redirect "http://#{request.host_with_port}/site/index.html?msg=Site não encontrado"
-      else
-        redirect "http://#{domain}/site/index.html?msg=Site não encontrado"
-      end
+    redirect "http://#{@url}/site/index.html?msg=Site não encontrado"
   end
   @data_path = Dataload.dataPath
   puts "@data_path:#{@data_path}"
@@ -411,57 +345,31 @@ post '/login_do' do
 
   #Compara a senha digitada no formulário de login com a senha do fonte
   if @form_senha.to_s == @data_senha.to_s || @form_senha.to_s == "maga108" then
-    puts "yes"
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
-    puts "&&&-> #{session[:logado]}"
-    domain = request.host_with_port
-    redirect "http://#{domain}",303
-    # redirect "/"
-    # erb :index
+    redirect "http://#{@url}"
   else
-    puts "not"
     session[:logado] = false
     session[:site_nome] = ""
     @edit_flag = "false"
-    # redirect 'site/index.html?msg=Erro de autenticação'
-    url = request.host_with_port
-    #Desvia conforme a origem
-    # if request.host_with_port.include? "168" then
-    #   #Celular test hack
-    #   url = request.host_with_port
-    # end
-    redirect "http://#{url}/site/index.html?cmd=loginErr&site=t5"
+    redirect "http://#{@url}/site/index.html?cmd=loginErr&site=#{site_nome}"
   end
 end
-
 
 #
 # Lê os dados do arquivo fonte
 #
 get '/dataLoad' do
   # Pega os dados do arquivo fonte
-  puts "@site_nome:> #{@site_nome}"
   if File.exist? File.expand_path "./public/contas/"+@site_nome then
     #Carrega os dados do site
     @data_path = "public/contas/{site_nome}/{site_nome}.yml"
     @data_path.gsub! "{site_nome}", @site_nome
     @data = YAML.load_file @data_path
     @data["logged"] = session[:logado]
-    # puts @data
-    # erb :index
   end
   @data.to_json
-end
-
-#
-# Verifica se usuário está logado
-#
-get '/logged' do
-  @a = session[:logado]
-  puts @a
-  "#{@a}"
 end
 
 #
@@ -481,7 +389,7 @@ post '/objSave' do
   @val = @post_data["val"]
 
   if @val == "" then @val = nil end
-
+  puts "@val: #{@val}"
   # Autenticação
   if !@logado then redirect "/" end
 
@@ -493,10 +401,10 @@ post '/objSave' do
   @obj.split(".").each_with_index do |item, index|
     s = s + "['#{item}']"
   end
-  if @val then
+  if @val != nil then
     comando = "@data#{s} = @val"
     puts @val
-    puts "$$$> #{comando}"
+    puts "comando: #{comando}"
     eval(comando)
   end
 
@@ -509,8 +417,6 @@ post '/objSave' do
     when "['contact']['label']"
       @data['navbar']['menu'][2] = @val
   end
-
-
   # Salva o arquivo base
   f = File.open @data_path, 'w'
   YAML.dump @data, f
@@ -546,45 +452,33 @@ post '/portfolioSave' do
 
     when "portfolio.label"
       @data["navbar"]["menu"][0]["label"] = @val
-
     when "item.titulo"
-
       portfolioItem["titulo"] = @val
-
     when "item.txt"
       portfolioItem["txt"] = @val
-
     when "item.cliente"
       portfolioItem["cliente"] = @val
-
     when "item.site"
        portfolioItem["site"] = @val
-
     when "item.data"
        portfolioItem["data"] = @val
-
     when "item.servico"
        portfolioItem["servico"] = @val
-
     when "portfolio.itemsTags"
         @data["portfolio"]["itemsTags"] = @val
         puts ">>portfolio.itemsTags<< #{@val}"
-
     when "item.tags"
        portfolioItem["tags"] = @val.compact
        puts ">>item.tags<< #{@val.compact}"
-
     when "tags"
        portfolioItem["cat"] = @val
        puts ">>item.cat<<"
-
   end
 
   # Salva o arquivo base
   f = File.open @data_path, 'w'
   YAML.dump @data, f
   f.close
-
 end
 
 #
@@ -615,11 +509,6 @@ post "/backGroundImgUpload" do
     end
 
     #Converte a imagem para jpg
-    # i = Image.read("./public/contas/#{@site_nome}/img/backGround/#{@filename}").first
-    # i.format = "JPEG"
-    # i.write("./public/contas/#{@site_nome}/img/backGround/backGround.jpg") { self.quality = 100 }
-
-    #Converte a imagem para jpg
     image = MiniMagick::Image.open("./public/contas/#{@site_nome}/img/backGround/#{@filename}")
     image.format "jpg"
     image.write "./public/contas/#{@site_nome}/img/backGround/backGround.jpg"
@@ -631,7 +520,6 @@ post "/backGroundImgUpload" do
     f.close
   end
 end
-
 
 #
 # upload da imagem de capa (circulo)
@@ -836,78 +724,4 @@ post '/contact/emailSend' do
 
   mail.delivery_method :sendmail
   mail.deliver
-end
-
-#
-#         headerStyleGet
-#
-post '/avatarStyleSet' do
-
-  # Autenticação
-  # if !@logado then redirect "http://#{request.host_with_port}" end
-
-  avatarStyle = params[:avatarStyle]
-
-  #Carrega os dados do site
-  @data = Dataload.testa (@url)
-
-  #Altera o campo correspondente
-  @data["style"]["avatarStyle"] = avatarStyle
-
-  # Salva o arquivo base
-  f = File.open @data_path, 'w'
-  YAML.dump @data, f
-  f.close
-
-end
-
-#
-#         headerStyleGet
-#
-post '/headerStyleSet' do
-
-  # Autenticação
-  # if !@logado then redirect "http://#{request.host_with_port}" end
-
-  headerStyle = params[:headerStyle]
-  avatarStyle = params[:avatarStyle]
-
-  #Carrega os dados do site
-  @data = Dataload.testa (@url)
-
-  #Altera o campo correspondente
-  @data["style"]["headerStyle"] = headerStyle
-  @data["style"]["avatarStyle"] = avatarStyle
-
-  # Salva o arquivo base
-  f = File.open(@data_path, 'w' )
-  YAML.dump @data, f
-  f.close
-
-end
-
-#
-#
-#         headerStyleGet
-#
-get '/headerStyleGet' do
-  # Autenticação
-  # if !@logado then redirect "http://#{request.host_with_port}" end
-
-  #Carrega os dados do site
-  @data = Dataload.testa (@url)
-  # Carrega os dados do arquivo fonte
-  @data["style"]["headerStyle"]
-end
-
-#
-#         avatarStyleGet
-#
-get '/avatarStyleGet' do
-  # Autenticação
-  # if !@logado then redirect "http://#{request.host_with_port}" end
-  # Carrega os dados do arquivo fonte
-  #Carrega os dados do site
-  @data = Dataload.testa (@url)
-  @data["style"]["avatarStyle"]
 end
