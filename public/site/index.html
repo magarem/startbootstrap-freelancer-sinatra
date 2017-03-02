@@ -117,7 +117,7 @@
                function lembrarSenha(){
                  site = formLogin.site.value
                  if (site.length > 0) {
-                    location.href = 'http://'+location.host+'/lembrarSenha'
+                    location.href = 'http://'+location.host+'/lembrarSenha?site='+site
                  }else{
                     alert("Defina o nome do portfolio")
                  }

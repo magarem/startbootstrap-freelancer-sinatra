@@ -145,6 +145,14 @@ end
 # Lembrar a senha [Pedido no formulário de login]
 #
 get "/lembrarSenha" do
+
+  if @site_nome==nil then
+    @site_nome = params[:site]
+    @url = @site_nome+"."+@url
+  end
+
+  puts "@site_nome : |#{@site_nome}|"
+  puts "params[:site]: |#{params[:site]}|"
   #Testa se existe o site
   if !File.exist? File.expand_path "./public/contas/"+@site_nome then
     # Se não existir o site é carregada a mensagem de site não encontrado
