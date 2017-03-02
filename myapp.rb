@@ -348,7 +348,12 @@ post '/login_do' do
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
-    redirect "http://#{@url}"
+
+    #Verifica se nome do site já está no endereço
+    @url_ = @url
+    @url_split_array = @url.split(".")
+    if @url_split_array.length == 1 then @url_ = "#{site_nome}.#{@url}" end
+    redirect "http://#{@url_}"
   else
     session[:logado] = false
     session[:site_nome] = ""

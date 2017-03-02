@@ -777,7 +777,8 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     console.log($scope.isLogged === true)
     // Build JSTagsCollection
     console.log($scope.tags);
-    $scope.tagsJoin = $scope.tags.join(", ");
+    $scope.tagsJoin = ""
+    if ($scope.tags.length > 1) $scope.tagsJoin = $scope.tags.join(", ");
     $scope.tags = new JSTagsCollection($scope.tags);
     // Export jsTags options, inlcuding our own tags object
     $scope.jsTagOptions = {
