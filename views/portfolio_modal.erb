@@ -23,7 +23,7 @@
     }
     .progressBar{
       background-color: #2980b9;
-      color: #FFF;
+      color: green;
       padding: 1em .5em;
       font-weight: 300;
       margin-bottom: 10px;
@@ -38,7 +38,7 @@
       outline: 2px dashed #CCC;
     }
   </style>
-  <div class="modal-body" ng-controller="MyFormCtrl">
+  <div class="modal-body" ng-controller="MyFormCtrl" >
     <div class="modal-content">
       <div class="container-fluid">
         <div class="row">
@@ -51,33 +51,48 @@
                 </div>
               </h2>
               <hr class="star-primary">
+              <div ng-show="isLogged">
+                <input type="radio" ng-model="item.mediaType" value="imagem"  ng-change="saveDiv('item.mediaType')">Image
+                <input type="radio" ng-model="item.mediaType" value="video"   ng-change="saveDiv('item.mediaType')">Video
+              </div>
+              <div ng-if="item.mediaType == 'imagem'">
                 <img ng-class="{imgEdit: isLogged}"
                   class="img-responsive img-centered"
                   style="max-width:100%; margin-bottom: 13px;"
                   ng-src="{{item.img}}"
-                  ng-show="!picFile || imgJaSubiu"
+                  ng-show="!picFile || true"
                   <% if @isLogged then%>
                     onclick="$('#imgSelect').trigger('click');"
                   <% end %>
-                />
+                  />
                 <div ng-show="isLogged && !imgJaSubiu" >
                   <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado
-                       {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
-                  <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp;
-                  <button type="submit" ng-disabled="isDisabled"
-                    ng-show="isLogged && picFile" class="btn btn-primary"
-                    ng-click="search(); uploadPic(picFile)">
-                    <span ng-show="searchButtonText == 'Enviando'">
-                      <i class="glyphicon glyphicon-refresh spinning"></i>
-                    </span>
-                     {{ searchButtonText }}
-                  </button>
+                         {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
+                  <!-- <img ng-show="myForm.file.$valid && !imgJaSubiu" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp; -->
                   <div ng-show="picFile.progress >= 0"><br></div>
-                   <span class="progress" ng-show="picFile.progress >= 0">
+                  <span class="progress" ng-show="picFile.progress >= 0 && picFile.progress != 100">
                      <div class="progressBar" style="width:{{picFile.progress}}%;" ng-bind="picFile.progress + '%'"></div>
-                   </span>
-                   <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-                 </div>
+                  </span>
+                  <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                </div>
+                <button  ng-show="isLogged" ng-click="item.img = ' ';saveDiv('item.img')">Excluir imagem</button>
+                <input id="imgSelect" type="file"
+                  ng-show=isLogged
+                  ngf-select
+                  ng-Change = "uploadPic(picFile)"
+                  ng-model="picFile" name="file"
+                  accept="image/*" ngf-max-size="10MB"
+                  required ngf-model-invalid="errorFile"
+                  ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
+                  >
+              </div>
+              <div ng-if="item.mediaType == 'video'">
+                 <ng-youtube-embed   video="item.video" width="560" height="315" >
+                 </ng-youtube-embed>
+                 <form ng-show="isLogged">
+                   <input  class="form-control" type="text" id="link" name="link" placeholder="Change URL" ng-model="item.video" ng-blur="saveDiv('item.video')">
+                 </form>
+              </div>
                 <p style="margin: 0px 200px 0px 200px">
                   <div contenteditable="{{isLogged}}"
                     style = "font-size: 20px;"
@@ -140,13 +155,6 @@
                     <b>{{tagsJoin}}</b>
                  </li>
               </ul>
-              <input id="imgSelect" type="file"
-                style="display: none;" ngf-select
-                ng-model="picFile" name="file"
-                accept="image/*" ngf-max-size="10MB"
-                required ngf-model-invalid="errorFile"
-                ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
-                style="display:none">
               <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir();"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
               <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="saveTags(tags)"><i class="glyphicon glyphicon-save"></i> Salvar</button>
               <button type="button"  class="btn btn-secondary" ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove"></i> Fechar</button>

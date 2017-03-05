@@ -80,7 +80,8 @@
            </div>
            <div class="thumbnail">
              <a href=javascript:void(0); class="portfolio-link" style="text-align: center;" ng-click="preOpen(item);">
-               <div class="imgBox" back-img="{{item.img}}"></div>
+               <div ng-if="item.mediaType == 'video'" class="imgBox" back-img="https://youtube.https.co/.img/vi/{{item.video | youtube_parser}}/sddefault.jpg"></div>
+               <div ng-if="item.mediaType == 'imagem'" class="imgBox" back-img="{{item.img}}"></div>
                <p><strong>{{item.titulo | limitTo:30}}</strong></p>
              </a>
           </div>

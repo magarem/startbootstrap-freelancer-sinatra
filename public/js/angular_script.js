@@ -1,4 +1,5 @@
-var mod = angular.module("myapp", ['color.picker',
+var mod = angular.module("myapp", ['ngYoutubeEmbed',
+                                   'color.picker',
                                    'siyfion.sfTypeahead',
                                    'jsTag',
                                    'ng.deviceDetector',
@@ -8,6 +9,27 @@ var mod = angular.module("myapp", ['color.picker',
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap']);
+mod.filter('youtube_parser', function() {
+  return function(url) {
+    if (url){
+      // do some bounds checking here to ensure it has that index
+      var regExp = /^.*((yt.https.co\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+      var match = url.match(regExp);
+      return (match&&match[7].length==11)? match[7] : false;
+    }
+  }
+});
+mod.directive('showtab',
+       function () {
+           return {
+               link: function (scope, element, attrs) {
+                   element.click(function(e) {
+                       e.preventDefault();
+                       $(element).tab('show');
+                   });
+               }
+           };
+       });
 mod.directive('eventFocus', function(focus) {
    return function(scope, elem, attr) {
      elem.on(attr.eventFocus, function() {
@@ -778,7 +800,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
     // Build JSTagsCollection
     console.log($scope.tags);
     $scope.tagsJoin = ""
-    if ($scope.tags.length > 1) $scope.tagsJoin = $scope.tags.join(", ");
+    if ($scope.tags) $scope.tagsJoin = $scope.tags.join(", ");
     $scope.tags = new JSTagsCollection($scope.tags);
     // Export jsTags options, inlcuding our own tags object
     $scope.jsTagOptions = {

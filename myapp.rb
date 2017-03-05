@@ -15,6 +15,12 @@ require 'open-uri'
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
 enable :sessions
 
+Mail.defaults do
+  delivery_method :sendmail
+end
+
+set :public_folder, 'public'
+
 module IndiceArray
   def self.set_site_nome site_nome
     @site_nome = site_nome
@@ -84,13 +90,18 @@ before do
    puts "@site_nome: #{@site_nome}"
   end
 
+  #Testa se existe o site
   if @site_nome then
+    if !File.exist? File.expand_path "./public/contas/"+@site_nome then
+      # Se não existir o site é carregada a mensagem de site não encontrado
+      redirect "http://#{@url}/site/index.html?msg=Site não encontrado"
+    end
     @data_path = Dataload.dataPath
     puts "@data_path:#{@data_path}"
     @data_path.gsub! "{site_nome}", @site_nome
   end
 
-  #Confere se é o mesmo nome de site doque foi logado
+  #Confere se é o mesmo nome de site do que foi logado
   if @logado and @site_nome != session[:site_nome] then
     session.clear
     redirect "http://#{request.host_with_port}/"
@@ -101,23 +112,10 @@ end
 #  /adm
 #
 get '/adm' do
-  puts "@host: #{@url}"
   redirect "http://#{@url}/site/index.html?cmd=login&site=#{@site_nome}"
 end
 
-
-Mail.defaults do
-  delivery_method :sendmail
-end
-
-set :public_folder, 'public'
-
-get '/partials/:name' do
-  erb params[:name].to_sym, layout: false
-end
-
 get "/cardPanel" do
-  # puts params["id"]
   #Carrega o titulo do site para o header
   @data = YAML.load_file @data_path
   erb :portfolio_modal_pagina
@@ -131,7 +129,6 @@ get "/styleBackgrounds" do
     Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
   end
 end
-
 
 #
 #  Carregamento do site
@@ -204,7 +201,10 @@ post "/site_new" do
   randomString = SecureRandom.hex
   randomSenha = randomString[0, 4]
 
-  chave = "radiando/#{formUserEmail}/#{formSiteNome}/#{randomSenha}".downcase
+  #Pega o timestamp
+  time = Time.now.getutc
+
+  chave = "radiando/#{formUserEmail}/#{formSiteNome}/#{randomSenha}/#{time}".downcase
   puts "chave: #{chave}"
 
   password = "!Mariaclara@mArcelamaria#maGa108$"
@@ -221,7 +221,7 @@ Bem-vindo ao Radiando.net, o seu construtor de site portfólio na web!
 
 Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
 
-http://radiando.net/site_new_do?key=#{URI::encode(encrypted_data)}
+http://radiando.net/siteNewDo/#{URI::encode(encrypted_data)}
 
 Depois de confirmada a sua conta seu site já estará no ar no endereço:
 http://#{formSiteNome}.radiando.net
@@ -256,8 +256,8 @@ end
 #
 # Criar novo site
 #
-get "/site_new_do" do
-  chave = params["key"]
+get "/siteNewDo/:chave" do
+  chave = params["chave"]
   puts "chave: #{chave}"
   password = password = "!Mariaclara@mArcelamaria#maGa108$"
   decrypted = AESCrypt.decrypt(chave, password)
@@ -267,6 +267,7 @@ get "/site_new_do" do
   email = emailParams[1]
   email_site_nome = emailParams[2]
   email_senha = emailParams[3]
+  email_time = emailParams[4]
 
   #Verifica se o site já foi criado
   flgNomeJaExiste = File.directory?("public/contas/#{email_site_nome}")
@@ -294,6 +295,7 @@ get "/site_new_do" do
     data["info"]["name"] = email_site_nome
     data["info"]["senha"] = email_senha
     data["info"]["email"] = email
+    data["info"]["created"] = email_time
     data["navbar"]["logo"]["label"] = email_site_nome
 
     #Copia imagem da capa
@@ -430,6 +432,10 @@ post '/objSave' do
     when "['contact']['label']"
       @data['navbar']['menu'][2] = @val
   end
+
+  # Define a data de modificação
+  @data["info"]["modified"] = Time.now.getutc
+
   # Salva o arquivo base
   f = File.open @data_path, 'w'
   YAML.dump @data, f
@@ -467,6 +473,12 @@ post '/portfolioSave' do
       @data["navbar"]["menu"][0]["label"] = @val
     when "item.titulo"
       portfolioItem["titulo"] = @val
+    when "item.mediaType"
+      portfolioItem["mediaType"] = @val
+    when "item.img"
+      portfolioItem["img"] = @val
+    when "item.video"
+      portfolioItem["video"] = @val
     when "item.txt"
       portfolioItem["txt"] = @val
     when "item.cliente"
@@ -487,6 +499,9 @@ post '/portfolioSave' do
        portfolioItem["cat"] = @val
        puts ">>item.cat<<"
   end
+
+  # Define a data de modificação
+  @data["info"]["modified"] = Time.now.getutc
 
   # Salva o arquivo base
   f = File.open @data_path, 'w'
@@ -656,7 +671,7 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
 
       #reduz a imagem
       image = MiniMagick::Image.open(img_path)
-      image.resize "1100x1100" if image.width >= 1100
+      image.resize "800x800" if image.width >= 800
       image.write img_path
       port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
     end

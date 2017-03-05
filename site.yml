@@ -5,7 +5,7 @@ info:
   senha: 1
   title: Portfolio geral
   description: Site portfolio
-  author: marcelo magalhaes
+  author: Radiando
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
@@ -20,8 +20,8 @@ head:
   backgroundUrl:
   fontColor: hsl(0, 0%, 100%)
   avatar: contas/192/img/avatar.jpg?1486077361
-  txt1: texto 1
-  txt2: texto 2
+  txt1:
+  txt2: 
   show:
     avatar: true
     txt1: true
@@ -32,7 +32,7 @@ portfolio:
   itemsTags:
   items:
     - id: 1
-      titulo: titulo
+      titulo:
       img: http://placehold.it/360x260/e67e22/fff
       txt:
       nome:
@@ -42,8 +42,8 @@ portfolio:
       tags:
 about:
   label: sobre
-  body1: texto 1
-  body2: texto 2
+  body1:
+  body2:
 contact:
   label: contato
 footer:
@@ -53,4 +53,4 @@ footer:
     googleplus: googleplus
     twitter: twitter
     linkedin: linkedin
-  about_resumo: texto de resumo
+  about_resumo:
