@@ -24352,3 +24352,27 @@ App 19869 stderr: Non US-ASCII detected and no charset defined.
 App 19869 stderr: Defaulting to UTF-8, set your own if this is incorrect.
 App 19886 stdout: postdrop: warning: public/pickup is not a socket or a fifo
 App 19869 stderr: 172.17.0.1 - - [23/Feb/2017:17:53:52 +0000] "POST /site_new HTTP/1.1" 303 - 0.6446
+
+[ 2017-02-24 09:44:41.9857 19826/7fed45c56700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-24 09:44:42.1190 19826/7fed4c4267c0 age/Cor/CoreMain.cpp:876 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-24 09:44:42.1626 19826/7fed4c4267c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 19886, application /home/app/webapp/public (development)
+
+[ 2017-02-24 09:44:42.2148 19826/7fed1f7fe700 Ser/Server.h:759 ]: [ApiServer] Freed 0 spare client objects
+[ 2017-02-24 09:44:42.2149 19826/7fed1f7fe700 Ser/Server.h:444 ]: [ApiServer] Shutdown finished
+[ 2017-02-24 09:44:42.1650 19836/7f5f626bd700 age/Ust/UstRouterMain.cpp:397 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ 2017-02-24 09:44:42.2253 19836/7f5f68ec87c0 age/Ust/UstRouterMain.cpp:467 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ 2017-02-24 09:44:42.2152 19826/7fed45c56700 Ser/Server.h:759 ]: [ServerThr.1] Freed 128 spare client objects
+[ 2017-02-24 09:44:42.2153 19826/7fed453d4700 Ser/Server.h:759 ]: [ServerThr.2] Freed 128 spare client objects
+[ 2017-02-24 09:44:42.2152 19826/7fed44b52700 Ser/Server.h:759 ]: [ServerThr.3] Freed 128 spare client objects
+[ 2017-02-24 09:44:42.2152 19826/7fed1ffff700 Ser/Server.h:759 ]: [ServerThr.4] Freed 128 spare client objects
+[ 2017-02-24 09:44:42.2463 19836/7f5f626bd700 Ser/Server.h:444 ]: [UstRouter] Shutdown finished
+[ 2017-02-24 09:44:42.2463 19836/7f5f61ebc700 Ser/Server.h:759 ]: [UstRouterApiServer] Freed 0 spare client objects
+[ 2017-02-24 09:44:42.2464 19836/7f5f61ebc700 Ser/Server.h:444 ]: [UstRouterApiServer] Shutdown finished
+[ 2017-02-24 09:44:42.2465 19826/7fed44b52700 Ser/Server.h:444 ]: [ServerThr.3] Shutdown finished
+[ 2017-02-24 09:44:42.2465 19826/7fed453d4700 Ser/Server.h:444 ]: [ServerThr.2] Shutdown finished
+[ 2017-02-24 09:44:42.2466 19826/7fed1ffff700 Ser/Server.h:444 ]: [ServerThr.4] Shutdown finished
+[ 2017-02-24 09:44:42.2466 19826/7fed45c56700 Ser/Server.h:444 ]: [ServerThr.1] Shutdown finished
+[ 2017-02-24 09:44:42.2533 19826/7fed4c4267c0 age/Cor/CoreMain.cpp:794 ]: Disconnecting long-running connections for process 19886, application /home/app/webapp/public (development)
+[ 2017-02-24 09:44:42.7127 19836/7f5f68ec87c0 age/Ust/UstRouterMain.cpp:498 ]: Passenger UstRouter shutdown finished
+
+[ 2017-02-24 09:44:42.7177 19826/7fed45c56700 age/Cor/CoreMain.cpp:507 ]: Signal received. Gracefully shutting down... (send signal 1 more time(s) to force shutdown)

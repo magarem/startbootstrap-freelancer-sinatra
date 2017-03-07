@@ -26,6 +26,8 @@
   .modal {
     -webkit-overflow-scrolling: auto
 }
+
+
 </style>
   <section ng-controller="imgGridCtrl as vm" id="portfolio" >
     <div class="container">
@@ -79,11 +81,10 @@
              <i style="font-size: 24px;" class="glyphicon glyphicon-move"></i>
            </div>
            <div class="thumbnail">
-             <a href=javascript:void(0); class="portfolio-link" style="text-align: center;" ng-click="preOpen(item);">
-               <div ng-if="item.mediaType == 'video'" class="imgBox" back-img="https://youtube.https.co/.img/vi/{{item.video | youtube_parser}}/sddefault.jpg"></div>
-               <div ng-if="item.mediaType == 'imagem'" class="imgBox" back-img="{{item.img}}"></div>
-               <p><strong>{{item.titulo | limitTo:30}}</strong></p>
-             </a>
+               <a href=javascript:void(0); class="portfolio-link" style="text-align: center;" ng-click="preOpen(item);">
+                 <div class="imgBox" back-img="{{item.img}}"></div>
+                 <p><strong>{{item.titulo | limitTo:30}}</strong></p>
+               </a>
           </div>
         </div>
      </div>

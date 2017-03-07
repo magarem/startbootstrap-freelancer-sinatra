@@ -9,16 +9,185 @@ var mod = angular.module("myapp", ['ngYoutubeEmbed',
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap']);
-mod.filter('youtube_parser', function() {
-  return function(url) {
-    if (url){
-      // do some bounds checking here to ensure it has that index
-      var regExp = /^.*((yt.https.co\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-      var match = url.match(regExp);
-      return (match&&match[7].length==11)? match[7] : false;
-    }
-  }
+mod.factory('mediaService', function($http, $q) {
+ function youtube_id_from_url(url) {
+   var id = '';
+   url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+   if(url[2] !== undefined) {
+     id = url[2].split(/[^0-9a-z_]/i);
+     id = id[0];
+   } else {
+     id = url;
+   }
+   return id;
+ }
+
+ function vimeo_id_from_url(url) {
+
+   var regExp = /(http:\/\/|https:\/\/)?(www\.)?vimeo.com\/(\d+)(\/)?(#.*)?/
+
+   var match = url.match(regExp)
+
+   if (match)
+       return match[3]
+
+ }
+
+ function getPropByString(obj, propString) {
+   if (!propString)
+       return obj;
+
+   var prop, props = propString.split('.');
+
+   for (var i = 0, iLen = props.length - 1; i < iLen; i++) {
+       prop = props[i];
+
+       var candidate = obj[prop];
+       if (candidate !== undefined) {
+           obj = candidate;
+       } else {
+           break;
+       }
+   }
+   return obj[props[i]];
+ }
+
+ var apiNames = ['youtube','vimeo'];
+
+ var apis = {
+   youtube : {
+     url : 'http://gdata.youtube.com/feeds/api/videos/%s%?v=2&alt=jsonc',
+     title : 'data.title',
+     description : 'data.description',
+     preview_thumb : 'data.thumbnail.sqDefault',
+     parse: youtube_id_from_url
+
+   },
+   vimeo : {
+     url : 'http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/%s%',
+     title : 'title',
+     description : 'description',
+     preview_thumb : 'thumbnail_url',
+     parse : vimeo_id_from_url
+   },
+   image : {
+     title : '%s%',
+     description : '',
+     preview_thumb : '%s%',
+     parse : function(url) { return url; }
+   }
+ }
+
+ var obj = {
+   getHash : function(url) {
+     var hash = {
+       preview_thumb: '',
+       meta: {
+         title : '',
+         description : '',
+       }
+     };
+     var api = 'image';
+     var id = '';
+
+     apiNames.map(function(el, ix, arr) {
+       if(url.indexOf(el) > -1) {
+         api = el;
+       }
+     });
+
+     var deferred = $q.defer();
+
+     if(apis[api].url) {
+       var apiUrl = apis[api].url.replace('%s%', apis[api].parse(url));
+       $http({method: 'GET', url : apiUrl}).
+         success(function(data, status, headers, config) {
+           hash.preview_thumb = getPropByString(data,apis[api].preview_thumb);
+           hash.meta.title = getPropByString(data, apis[api].title);
+           hash.meta.description = getPropByString(data,apis[api].description);
+           //The rest from the api, if you want it.
+           hash.meta.data = data;
+           deferred.resolve(hash);
+         }).
+          error(function(data, status, headers, config) {
+           deferred.reject(data);
+         });
+     } else {
+       if(url.length && url.length > 4) {
+         hash.preview_thumb = url;
+         hash.meta.title = url;
+         hash.meta.description = '';
+         //The rest from the api, if you want it.
+         deferred.resolve(hash);
+       } else {
+         deferred.reject({'error' : 'invalid url'});
+       }
+     }
+
+     return deferred.promise;
+   }
+ };
+ return obj;
 });
+mod.directive("anguvideo", ['$sce', function ($sce) {
+       return {
+           restrict: 'EA',
+           scope: {
+               source: '=ngModel',
+               width: '@',
+               height: '@'
+           },
+           replace: true,
+           template: '<div class="anguvideo">' +
+           '<iframe class="videoClass" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{url}}" allowfullscreen frameborder="0"></iframe>' +
+           '</div>',
+           link: function (scope, element, attrs) {
+               var embedFriendlyUrl = "",
+                   urlSections,
+                   index;
+
+               var youtubeParams = (attrs.hideControls ? '?autoplay=0&showinfo=0&controls=0' : '');
+
+               scope.$watch('source', function (newVal) {
+                   if (newVal) {
+                       /*
+                        * Need to convert the urls into a friendly url that can be embedded and be used in the available online players the services have provided
+                        * for youtube: src="//www.youtube.com/embed/{{video_id}}"
+                        * for vimeo: src="http://player.vimeo.com/video/{{video_id}}
+                        */
+
+                       if (newVal.indexOf("vimeo") >= 0) { // Displaying a vimeo video
+                           if (newVal.indexOf("player.vimeo") >= 0) {
+                               embedFriendlyUrl = newVal;
+                           } else {
+                               embedFriendlyUrl = newVal.replace("http:", "https:");
+                               urlSections = embedFriendlyUrl.split(".com/");
+                               embedFriendlyUrl = embedFriendlyUrl.replace("vimeo", "player.vimeo");
+                               embedFriendlyUrl = embedFriendlyUrl.replace("/" + urlSections[urlSections.length - 1], "/video/" + urlSections[urlSections.length - 1] + "");
+                           }
+                       } else if (newVal.indexOf("youtu.be") >= 0) {
+
+                           index = newVal.indexOf(".be/");
+
+                           embedFriendlyUrl = newVal.slice(index + 4, newVal.length);
+                           embedFriendlyUrl = "https://www.youtube.com/embed/" + embedFriendlyUrl + youtubeParams;
+                       } else if (newVal.indexOf("youtube.com") >= 0) { // displaying a youtube video
+                           if (newVal.indexOf("embed") >= 0) {
+                               embedFriendlyUrl = newVal + youtubeParams;
+                           } else {
+                               embedFriendlyUrl = newVal.replace("/watch?v=", "/embed/") + youtubeParams;
+                               if (embedFriendlyUrl.indexOf('m.youtube.com') != -1) {
+                                   embedFriendlyUrl = embedFriendlyUrl.replace("m.youtube.com", "youtube.com");
+                               }
+                           }
+                       }
+
+                       scope.url = $sce.trustAsResourceUrl(embedFriendlyUrl);
+                   }
+               });
+           }
+       };
+   }]);
 mod.directive('showtab',
        function () {
            return {
@@ -272,6 +441,12 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
       return siteNome;
     }
 
+    var _getPortfolioVideoThumb = function(siteNome, id){
+      img = $http.get('/dataLoadPortfolioImg/'+siteNome+"/"+id);
+      console.log("img --> ",img)
+      return img
+    }
+
     var _savePortfolioOrder = function(data){
       return $http.post('/portfolio/ordena', data);
     }
@@ -295,6 +470,7 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
       loadSiteData: _loadSiteData,
       loadSiteDataLogged: _loadSiteDataLogged,
       getSiteNome: _getSiteNome,
+      getPortfolioVideoThumb: _getPortfolioVideoThumb,
       savePortfolioOrder: _savePortfolioOrder,
       saveDiv: _saveDiv,
       portfolioSave: _portfolioSave,
@@ -304,17 +480,10 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
   }]);
 mod.controller('topCtrl', function ($scope, $http, SiteData) {
-
   $scope.site = {};
-  $scope.isLogged = false;
-
-  // SiteData.logged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  // })
-
   SiteData.loadSiteData().then(function(response) {
     $scope.site = response.data;
-    $scope.isLogged = response.data["logged"]
+    $scope.isLogged = response.data["logged"] == false
   })
 
   $scope.saveDiv = function(obj){
@@ -323,10 +492,7 @@ mod.controller('topCtrl', function ($scope, $http, SiteData) {
   }
 })
 mod.controller('styleSelectCtrl', function ($scope, $http, SiteData) {
-
   $scope.items = [];
-  $scope.isLogged = false;
-
   SiteData.logged().then(function(response) {
     $scope.isLogged = (response.data === 'true');
   })
@@ -334,21 +500,12 @@ mod.controller('styleSelectCtrl', function ($scope, $http, SiteData) {
   SiteData.loadStyleBackgrounds().then(function(response) {
     $scope.items = response.data;
   })
-
-
 })
 mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, $rootScope, SiteData) {
-
   $scope.site = {};
-  $scope.isLogged = false;
-
-  // SiteData.logged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  // })
-
   SiteData.loadSiteData().then(function(response) {
     $scope.navbar = response.data.navbar;
-    $scope.isLogged = response.data["logged"]
+    $scope.isLogged = response.data["logged"] == true
   })
 
   $scope.saveDiv = function(obj){
@@ -359,7 +516,6 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
 mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, Upload, $timeout, $http, SiteData, $uibModal) {
 
   $scope.site = {};
-  $scope.isLogged = false;
   $scope.crop_box = false
 
   $scope.options = {
@@ -430,14 +586,10 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
     $scope.saveDiv('head.backgroundUrl')
   }
 
-  // SiteData.logged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  // })
-
   SiteData.loadSiteData().then(function(response) {
     $scope.head = response.data.head;
     $scope.picFile = $scope.head.avatar;
-    $scope.isLogged = response.data["logged"]
+    $scope.isLogged = response.data["logged"] == true
   })
 
   $scope.saveDiv = function(obj){
@@ -502,7 +654,6 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
 }])
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
 
-  $scope.isLogged = false;
   $scope.searchButtonText = "Enviar";
   $scope.test = "false";
   $scope.isDisabled = false;
@@ -513,16 +664,12 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.searchButtonText = "Enviando";
   }
 
-  // SiteData.logged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  // })
-
   SiteData.loadSiteData().then(function(response) {
     var siteNome = SiteData.getSiteNome()
     $scope.head = response.data.head;
     $scope.picFile = null;
     $scope.croppedDataUrl = null;
-    $scope.isLogged = response.data["logged"]
+    $scope.isLogged = response.data["logged"] == true
   })
 
   $rootScope.$on("ModalClose", function(){
@@ -582,16 +729,9 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   SiteData.loadSiteData().then(function(response) {
     var siteNome = response.data.info.name
     $scope.portfolio = response.data.portfolio;
-    $scope.isLogged = response.data["logged"]
+    $scope.isLogged = response.data["logged"] == true
     $scope.isSelected = false;
   })
-
-  // SiteData.logged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  //   //confere se está logado para bloquear o img drag
-  //   // $scope.isSelected = $scope.isLogged
-  //   $scope.isSelected = false;
-  // })
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {})
@@ -601,9 +741,13 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     delImg(id);
   });
 
-  $rootScope.$on("ImgChange", function(event, src, id, siteNome){
-    ImgChange(src, id, siteNome)
+  $rootScope.$on("ImgChange", function(event, src, id, siteNome, flgSetAllPath){
+    flgSetAllPath = flgSetAllPath || false;
+    console.log("src -->", src)
+
+    // ImgChange(src, id, siteNome, flgSetAllPath)
   });
+
 
   $rootScope.$on("portfolioItemsTags_update", function(event){
     portfolioItemsTags_update()
@@ -647,8 +791,23 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     $scope.saveDiv("portfolio.itemsTags")
   }
 
-  var ImgChange = function (src, id, conta){
-    src = "/contas/"+conta+"/img/portfolio/"+src+"?decache=" + Math.random();
+  var ImgChange = function (src, id, conta, flgSetAllPath){
+    if (flgSetAllPath){
+      src = "/contas/"+conta+"/img/portfolio/"+src
+    }
+    //Seleciona o item pelo ID
+    id = "192-1483898166846"
+    alert(id)
+    console.log("id:", id)
+    $scope.portfolio.items.filter(function(v, index, arr) {
+      console.log("index:>", index)
+      console.log("arr:>", arr)
+      return v.id === id; // Filter out the appropriate one
+    }).img = src; // Get result and access the foo property
+    console.log("portfolio.items[0].img --> ", $scope.portfolio.items[0].img)
+  }
+
+  var videoThumbChange = function (src, id, conta){
     //Seleciona o item pelo ID
     $scope.portfolio.items.filter(function(v) {
       return v.id === id; // Filter out the appropriate one
@@ -795,7 +954,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
   }
   SiteData.loadSiteData().then(function(response) {
     $scope.portfolio = response.data.portfolio;
-    $scope.isLogged = response.data["logged"]
+    $scope.isLogged = response.data["logged"] == true
     console.log($scope.isLogged === true)
     // Build JSTagsCollection
     console.log($scope.tags);
@@ -835,13 +994,14 @@ mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInsta
       hint: false,
       highlight: true
     };
+
+    // mediaService.getHash('https://www.youtube.com/watch?v=uPU9cEK5YsM')
+    //  .then(function(data) {
+    //    $scope.video_thumb = data.preview_thumb;
+    //  });
+
+
   })
-
-
-
-  // SiteData.logged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  // })
 
   $rootScope.$on("ModalClose", function(){
       $scope.cancel();
@@ -915,6 +1075,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
           function () {
             $scope.portfolio
             file.result = response.data;
+            console.log("siteNome:", siteNome)
             $rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
             src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
             $scope.item.img = src
@@ -937,15 +1098,13 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     );
   }
 
-  // $scope.isLogged = false;
-
-  // SiteData.loadSiteDataLogged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  // })
-
   $scope.up = function(){
     angular.element('#file').trigger('click');
   };
+
+  $scope.videoAlt = function(src){
+    $scope.item.img = src
+  }
 
   $scope.excluir = function(){
     item_id = $scope.item.id
@@ -961,6 +1120,18 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     id = $scope.item.id
     SiteData.portfolioSave(obj, $scope.$eval(obj), id).then(function(response) {
        $rootScope.$emit("portfolioItemsTags_update");
+       //Testa se é um video para atualizar a imagem do grid
+       console.log("obj", obj);
+       if (obj == "item.video"){
+         console.log("$scope.$eval(obj) --> ",$scope.$eval(obj));
+         console.log("$scope.videoThumb($scope.$eval(obj)) --> ", $scope.videoThumb($scope.$eval(obj)))
+         getVideoPreviewImg($scope.$eval(obj), function(responseText) {
+            console.log("$scope.item.id>>>",$scope.item.id)
+            $scope.item.img = responseText
+            // $rootScope.$emit("ImgChange", responseText, $scope.item.id, siteNome, false);
+         });
+
+       }
     })
   }
 
@@ -971,18 +1142,71 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     }, 0);
   };
 
+  //
+  //  Video preview image
+  //
+  function parseURL (url) {
+      url.match(/(http:|https:|)\/\/(player.|www.|m.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com))\/(video\/|embed\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/);
+      if (RegExp.$3.indexOf('youtu') > -1) {
+          var type = 'youtube';
+      } else if (RegExp.$3.indexOf('vimeo') > -1) {
+          var type = 'vimeo';
+      }
+      return {
+          type: type,
+          id: RegExp.$6
+      };
+  }
+  var getVideoPreviewImg = (function(e, cb) {
+    var videoDetails = parseURL(e);
+    var videoType = videoDetails.type;
+    var videoID = videoDetails.id;
+
+    if (videoType == 'youtube') {
+      var thumbSRC = 'https://img.youtube.com/vi/' + videoID + '/0.jpg';
+      cb(thumbSRC)
+    }
+    else if (videoType == 'vimeo') {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://vimeo.com/api/v2/video/"+ videoID +".json", true);
+      xhr.onload = function (e) {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            var data = xhr.responseText;
+            var parsedData = JSON.parse(data);
+            thumbSRClarge = parsedData[0].thumbnail_large;
+            // split url of large thumbnail at 640
+            thumbSplit = thumbSRClarge.split(/\d{3}(?=.jpg)/);
+            // add 1280x720 to parts and get bigger thumbnail
+            thumbSRC = thumbSplit[0] + '1280x720' + thumbSplit[1];
+            cb(thumbSRC)
+          } else {
+            console.error(xhr.statusText);
+          }
+        }
+      };
+      xhr.onerror = function (e) {
+        console.error(xhr.statusText);
+      };
+      xhr.send(null);
+    }
+  });
+
+  $scope.videoThumb = function(videoUrl) {
+    getVideoPreviewImg(videoUrl, function(responseText) {
+       console.log(">",responseText)
+       return responseText
+    });
+  }
+
+
+
 }]);
 mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
-  $scope.isLogged = false;
-
-  // SiteData.logged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  // })
-
   $scope.about = {};
   SiteData.loadSiteData().then(function(response) {
     $scope.about = response.data.about
-    $scope.isLogged = response.data["logged"]
+    $scope.isLogged = response.data["logged"] == true
   })
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
@@ -990,17 +1214,10 @@ mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
   }
 })
 mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
-
-  $scope.isLogged = false;
-
-  // SiteData.logged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  // })
-
   SiteData.loadSiteData().then(function(response) {
     $scope.siteNome = response.data.info.name
     $scope.contact = response.data.contact
-    $scope.isLogged = response.data["logged"]
+    $scope.isLogged = response.data["logged"] == true
   })
 
   $scope.saveDiv = function(obj){
@@ -1011,21 +1228,17 @@ mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
 mod.controller('footerCtrl', function ($scope, $http, SiteData) {
 
   $scope.footer = {};
-  $scope.isLogged = false;
 
   SiteData.loadSiteData().then(function(response) {
     $scope.footer = response.data.footer;
-    $scope.isLogged = response.data["logged"]
+    $scope.isLogged = response.data["logged"] == true
   })
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }
-  //
-  // SiteData.logged().then(function(response) {
-  //   $scope.isLogged = (response.data === 'true');
-  // })
+
 })
 mod.controller('loginCtrl', function ($scope, $http, SiteData) {
 

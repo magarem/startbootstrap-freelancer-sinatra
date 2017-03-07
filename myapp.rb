@@ -11,6 +11,7 @@ require 'mail'
 require 'openssl'
 require "aescrypt"
 require 'open-uri'
+require 'video_thumb'
 
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
 enable :sessions
@@ -479,6 +480,10 @@ post '/portfolioSave' do
       portfolioItem["img"] = @val
     when "item.video"
       portfolioItem["video"] = @val
+      #Define a miniatura do vídeo
+      puts "VideoThumb::get(@val) -->  #{VideoThumb::get(@val)}"
+      #Salva a miniatura do video na imagem
+      portfolioItem["img"] = VideoThumb::get(@val)
     when "item.txt"
       portfolioItem["txt"] = @val
     when "item.cliente"
