@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['ngYoutubeEmbed',
+var mod = angular.module("myapp", ['videosharing-embed','ngYoutubeEmbed',
                                    'color.picker',
                                    'siyfion.sfTypeahead',
                                    'jsTag',
@@ -9,6 +9,9 @@ var mod = angular.module("myapp", ['ngYoutubeEmbed',
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap']);
+mod.config(function($sceProvider) {
+    $sceProvider.enabled(true);
+});
 mod.factory('mediaService', function($http, $q) {
  function youtube_id_from_url(url) {
    var id = '';
@@ -138,8 +141,8 @@ mod.directive("anguvideo", ['$sce', function ($sce) {
                height: '@'
            },
            replace: true,
-           template: '<div class="anguvideo">' +
-           '<iframe class="videoClass" type="text/html" width="{{width}}" height="{{height}}" ng-src="{{url}}" allowfullscreen frameborder="0"></iframe>' +
+           template: '<div class="embed-responsive embed-responsive-4by3">' +
+           '<iframe  type="text/html"  ng-src="{{url}}" allowfullscreen ></iframe>' +
            '</div>',
            link: function (scope, element, attrs) {
                var embedFriendlyUrl = "",
@@ -935,7 +938,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   }
 
 }]);
-mod.controller('ModalInstanceCtrl', function ($scope, $rootScope, $uibModalInstance, $timeout, SiteData, siteNome, item, JSTagsCollection) {
+mod.controller('ModalInstanceCtrl', function ($scope, $sce, $rootScope, $uibModalInstance, $timeout, SiteData, siteNome, item, JSTagsCollection) {
 
   $scope.item = item;
   $scope.tags = item.tags
