@@ -24,7 +24,7 @@
     .modal-body {
       position: relative;
       padding: 0px;
-      margin-top: 10px !important;
+      /*margin-top: 10px !important;*/
     }
     [contenteditable="true"], .imgEdit  {
       padding: 1px;
@@ -72,9 +72,31 @@
     <div class="modal-content">
       <div class="container" >
         <div class="row">
-          <div class="col-lg-12  col-xs-12">
+        <style>
+        .padding0{
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+        .padding15{
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+        .icon-arrow-right {
+          float: right;
+        }
+        </style>
+          <div class="col-lg-12  col-xs-12 padding0">
             <div class="modal-body">
-
+              <div class="panel-heading">
+                <a href ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove-sign pull-right" style="font-size:30px;"></i></a>
+                <h2 style="font-size: 25px;">
+                  <div style="text-align:left;" contenteditable="{{isLogged}}" ng-model="item.titulo"
+                    strip-br="true" select-non-editable="true"
+                    ng-blur="saveDiv('item.titulo')" placeholder="Titulo">
+                  </div>
+                </h2>
+            </div>
+            <!-- <i class="material-icons " style="font-size:36px;">highlight_off</i> -->
               <div ng-if="item.mediaType == 'imagem'">
                 <img ng-class="{imgEdit: isLogged}"
                   class="img-responsive img-centered topImg"
@@ -128,6 +150,7 @@
                  height: auto;
                  margin-left: 10%;
               }
+
               </style>
               <div ng-if="item.mediaType == 'video'" class=element-container>
                  <!-- <ng-youtube-embed   video="item.video" width="560" height="315" >
@@ -137,82 +160,80 @@
                    <embed-video   iframe-id="vimeo1" api="1" player_id="vimeo1"  ng-href="{{item.video}}"></embed-video>
                  </div>
                  <form ng-show="isLogged">
-                   <input  class="form-control" type="text" id="link" name="link" placeholder="Endereço do vídeo do Youtube ou do Vimeo" ng-model="item.video" ng-blur="saveDiv('item.video')">
+                   <input  class="form-control" type="text" id="link" name="link" plaitem.txtceholder="Endereço do vídeo do Youtube ou do Vimeo" ng-model="item.video" ng-blur="saveDiv('item.video')">
                    ou <a href ng-click="item.mediaType = 'imagem'; saveDiv('item.mediaType')" style="margin-top: 10px; margin-bottom: 10px;">Enviar imagem</a>
                  </form>
               </div>
-              <h2>
-                <div style="margin-top: 16px; margin-bottom: 19px; text-align:left;" contenteditable="{{isLogged}}" ng-model="item.titulo"
-                  strip-br="true" select-non-editable="true"
-                  ng-blur="saveDiv('item.titulo')" placeholder="Titulo">
-                </div>
-              </h2>
-              <!-- <hr class="star-primary"> -->
-                <p style="margin: 0px 0px 0px 0px">
-                  <div contenteditable="{{isLogged}}"
-                    style = "font-size: 20px; text-align:left;"
-                    ng-model="item.txt"
-                    strip-br="true"
-                    select-non-editable="true"
-                    ng-blur="saveDiv('item.txt')"
-                    placeholder="Descrição"
-                    >
-                  </div>
-                </p>
-                <ul class="list-inline item-details">
-                  <li ng-show="item.cliente || isLogged">cliente
-                    <strong>
+              <div class=padding15>
+                  <!-- <hr class="star-primary"> -->
+                    <p style="margin: 10px 0px 0px 0px">
                       <div contenteditable="{{isLogged}}"
-                        ng-model="item.cliente"
+                        style = "font-size: 20px; text-align:left;"
+                        ng-model="item.txt"
                         strip-br="true"
                         select-non-editable="true"
-                        ng-blur="saveDiv('item.cliente')"
-                        placeholder="_"></div>
-                    </strong>
-                  </li>
-                  <li ng-show="item.data || isLogged">data
-                    <strong>
-                      <div contenteditable="{{isLogged}}"
-                       ng-model="item.data"
-                       strip-br="true"
-                       select-non-editable="true"
-                       ng-blur="saveDiv('item.data')"
-                       placeholder="_">
+                        ng-blur="saveDiv('item.txt')"
+                        placeholder="Descrição"
+                        >
                       </div>
-                    </strong>
-                  </li>
-                  <li ng-show="item.servico || isLogged">serviço
-                    <strong>
-                       <div contenteditable="{{isLogged}}"
-                         ng-model="item.servico"
-                         strip-br="true"
-                         select-non-editable="true"
-                         ng-blur="saveDiv('item.servico')"
-                         placeholder="_">
-                       </div>
-                   </strong>
-                 </li>
-                 <li ng-show="item.site || isLogged">site
-                   <strong>
-                     <div contenteditable="{{isLogged}}"
-                       ng-model="item.site"
-                       strip-br="true"
-                       select-non-editable="true"
-                       ng-blur="saveDiv('item.site')"
-                       placeholder="_">
-                     </div>
-                   </strong>
-                 </li>
-                 <li ng-show="isLogged" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
-                   <js-tag js-tag-mode="typeahead" js-tag-options="jsTagOptions" ></js-tag>
-                 </li>
-                 <li ng-show="item.tags.length && !isLogged" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><br>
-                    <b>{{tagsJoin}}</b>
-                 </li>
-              </ul>
+                    </p>
+                    <ul class="list-inline item-details">
+                      <li ng-show="item.cliente || isLogged">cliente
+                        <strong>
+                          <div contenteditable="{{isLogged}}"
+                            ng-model="item.cliente"
+                            strip-br="true"
+                            select-non-editable="true"
+                            ng-blur="saveDiv('item.cliente')"
+                            placeholder="_"></div>
+                        </strong>
+                      </li>
+                      <li ng-show="item.data || isLogged">data
+                        <strong>
+                          <div contenteditable="{{isLogged}}"
+                           ng-model="item.data"
+                           strip-br="true"
+                           select-non-editable="true"
+                           ng-blur="saveDiv('item.data')"
+                           placeholder="_">
+                          </div>
+                        </strong>
+                      </li>
+                      <li ng-show="item.servico || isLogged">serviço
+                        <strong>
+                           <div contenteditable="{{isLogged}}"
+                             ng-model="item.servico"
+                             strip-br="true"
+                             select-non-editable="true"
+                             ng-blur="saveDiv('item.servico')"
+                             placeholder="_">
+                           </div>
+                       </strong>
+                     </li>
+                     <li ng-show="item.site || isLogged">site
+                       <strong>
+                         <div contenteditable="{{isLogged}}"
+                           ng-model="item.site"
+                           strip-br="true"
+                           select-non-editable="true"
+                           ng-blur="saveDiv('item.site')"
+                           placeholder="_">
+                         </div>
+                       </strong>
+                     </li>
+                     <li ng-show="isLogged" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+                       <js-tag js-tag-mode="typeahead" js-tag-options="jsTagOptions" ></js-tag>
+                     </li>
+                     <li ng-show="item.tags.length && !isLogged" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><br>
+                        <b>{{tagsJoin}}</b>
+                     </li>
+                  </ul>
+              </div>
               <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir();"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
               <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="saveTags(tags)"><i class="glyphicon glyphicon-save"></i> Salvar</button>
-              <button type="button"  class="btn btn-secondary" ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove"></i> Fechar</button>
+              <a href ng-if="item.txt.length > 100" ng-click="cancel(picFile);" style="margin-top: 10px;"><i class="glyphicon glyphicon-remove-sign" style="font-size:30px;"></i></a>
+              <br>
+              <br>
             </div>
           </div>
         </div>
