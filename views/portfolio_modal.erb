@@ -1,12 +1,5 @@
 <script type="text/ng-template" id="myModalContent.html">
   <style>
-    .thumb {
-        width: 200px;
-        height: auto;
-        float: none;
-        position: relative;
-        top: 7px;
-    }
     form .progress {
         line-height: 15px;
     }
@@ -31,51 +24,60 @@
     .modal-body {
       position: relative;
       padding: 0px;
-      margin: 0px;
+      margin-top: 10px !important;
     }
     [contenteditable="true"], .imgEdit  {
       padding: 1px;
       outline: 2px dashed #CCC;
     }
-    @media screen {
-      iframe {
-        /*height: 29vw;*/
-        width: 100%;
-      }
-
-
-    .video-container {
-      position: relative;
-      padding-bottom: 20px;
-      padding-top: 30px;
-      width: 500px;
-      max-width: 100%;
-      overflow:hidden;
-      margin: 0 auto;
-      -webkit-overflow-scrolling: touch;
+    .center {
+      display:table;
+      margin: 0 auto !important; /* I have added the !important attribute just for debugging, you can remove it. */
     }
-}
+    .col-md-12 column form {
+       display:table;
+       margin:auto;
+    }
+
+    @media only screen
+      and (min-device-width : 768px)
+      and (max-device-width : 1024px)  {
+          .topImg {
+            width: 100%;
+          }
+          iframe {
+            /*height: 29vw;*/
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+          }
+          .video-container {
+            position: relative;
+            padding-bottom: 5px;
+            padding-top: 0px;
+            width: 100%;
+            max-width: 100%;
+            overflow:hidden;
+            margin: 0 auto;
+            -webkit-overflow-scrolling: touch;
+          }
+          .modal-body {
+            position: relative;
+            padding: 0px;
+            margin-top: 10px !important;
+          }
+      }
   </style>
-  <div class="modal-body" ng-controller="MyFormCtrl" >
+  <div class="modal-dialog" ng-controller="MyFormCtrl" >
     <div class="modal-content">
-      <div class="container-fluid">
+      <div class="container" >
         <div class="row">
           <div class="col-lg-12  col-xs-12">
             <div class="modal-body">
-              <h2>
-                <div contenteditable="{{isLogged}}" ng-model="item.titulo"
-                  strip-br="true" select-non-editable="true"
-                  ng-blur="saveDiv('item.titulo')" placeholder="Titulo">
-                </div>
-              </h2>
-              <hr class="star-primary">
-              <div ng-show="isLogged">
-                <input type="radio" ng-model="item.mediaType" value="imagem"  ng-change="saveDiv('item.mediaType')">Image
-                <input type="radio" ng-model="item.mediaType" value="video"   ng-change="saveDiv('item.mediaType')">Video
-              </div>
+
               <div ng-if="item.mediaType == 'imagem'">
                 <img ng-class="{imgEdit: isLogged}"
-                  class="img-responsive img-centered"
+                  class="img-responsive img-centered topImg"
                   style="max-width:100%; margin-bottom: 13px;"
                   ng-src="{{item.img}}"
                   ng-show="!picFile || true"
@@ -87,36 +89,68 @@
                   <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado
                          {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
                   <!-- <img ng-show="myForm.file.$valid && !imgJaSubiu" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp; -->
-                  <div ng-show="picFile.progress >= 0"><br></div>
+                  <div ng-show="picFile.progress >= 0"></div>
                   <span class="progress" ng-show="picFile.progress >= 0 && picFile.progress != 100">
                      <div class="progressBar" style="width:{{picFile.progress}}%;" ng-bind="picFile.progress + '%'"></div>
                   </span>
                   <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
                 </div>
-                <button  ng-show="isLogged" ng-click="item.img = ' ';saveDiv('item.img')">Excluir imagem</button>
-                <input id="imgSelect" type="file"
-                  ng-show=isLogged
-                  ngf-select
-                  ng-Change = "uploadPic(picFile)"
-                  ng-model="picFile" name="file"
-                  accept="image/*" ngf-max-size="10MB"
-                  required ngf-model-invalid="errorFile"
-                  ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
-                  >
+                <div ng-show="isLogged" style="margin-bottom:10px;">
+                  <!-- <input type="radio" ng-model="item.mediaType" value="video"   ng-change="saveDiv('item.mediaType')">Video -->
+
+                  <button  class="btn btn-warning btn-sm" ng-show="isLogged" ng-click="item.img = ' ';saveDiv('item.img')">Excluir imagem</button>
+                  <label class="btn btn-default btn-file btn-sm">
+                  Eviar imagem
+                  <input id="imgSelect" type="file"
+                    class="form-control ce "
+                    ng-show=isLogged
+                    ngf-select
+                    ng-Change = "uploadPic(picFile)"
+                    ng-model="picFile" name="file"
+                    accept="image/*" ngf-max-size="10MB"
+                    required ngf-model-invalid="errorFile"
+                    ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
+                    style="display: none;"
+                    >
+                  </label>
+                  <a href style="margin-left:10px;" ng-click="item.mediaType = 'video'; saveDiv('item.mediaType')">Anexar vídeo</a>
+                </div>
               </div>
-              <div ng-if="item.mediaType == 'video'">
+              <style>
+              .element-container{
+                 width:100%;
+                 max-width: 500px;
+                 margin: 0px auto;
+              }
+              .element{
+                 width: 80%;
+                 max-width: 500px;
+                 height: auto;
+                 margin-left: 10%;
+              }
+              </style>
+              <div ng-if="item.mediaType == 'video'" class=element-container>
                  <!-- <ng-youtube-embed   video="item.video" width="560" height="315" >
                  </ng-youtube-embed> -->
-                 <div class="video-container" >
-                   <anguvideo ng-model="item.video" width="560" height="315"></anguvideo>
+                   <!-- <anguvideo ng-model="item.video"  hideControls></anguvideo> -->
+                 <div class="embed-responsive embed-responsive-16by9 " class=element >
+                   <embed-video   iframe-id="vimeo1" api="1" player_id="vimeo1"  ng-href="{{item.video}}"></embed-video>
                  </div>
                  <form ng-show="isLogged">
-                   <input  class="form-control" type="text" id="link" name="link" placeholder="Change URL" ng-model="item.video" ng-blur="saveDiv('item.video')">
+                   <input  class="form-control" type="text" id="link" name="link" placeholder="Endereço do vídeo do Youtube ou do Vimeo" ng-model="item.video" ng-blur="saveDiv('item.video')">
+                   ou <a href ng-click="item.mediaType = 'imagem'; saveDiv('item.mediaType')" style="margin-top: 10px; margin-bottom: 10px;">Enviar imagem</a>
                  </form>
               </div>
-                <p style="margin: 0px 200px 0px 200px">
+              <h2>
+                <div style="margin-top: 16px; margin-bottom: 19px; text-align:left;" contenteditable="{{isLogged}}" ng-model="item.titulo"
+                  strip-br="true" select-non-editable="true"
+                  ng-blur="saveDiv('item.titulo')" placeholder="Titulo">
+                </div>
+              </h2>
+              <!-- <hr class="star-primary"> -->
+                <p style="margin: 0px 0px 0px 0px">
                   <div contenteditable="{{isLogged}}"
-                    style = "font-size: 20px;"
+                    style = "font-size: 20px; text-align:left;"
                     ng-model="item.txt"
                     strip-br="true"
                     select-non-editable="true"
@@ -126,7 +160,7 @@
                   </div>
                 </p>
                 <ul class="list-inline item-details">
-                  <li ng-show="item.cliente || isLogged">Cliente:
+                  <li ng-show="item.cliente || isLogged">cliente
                     <strong>
                       <div contenteditable="{{isLogged}}"
                         ng-model="item.cliente"
@@ -136,7 +170,7 @@
                         placeholder="_"></div>
                     </strong>
                   </li>
-                  <li ng-show="item.data || isLogged">Data:
+                  <li ng-show="item.data || isLogged">data
                     <strong>
                       <div contenteditable="{{isLogged}}"
                        ng-model="item.data"
@@ -147,7 +181,7 @@
                       </div>
                     </strong>
                   </li>
-                  <li ng-show="item.servico || isLogged">Serviço:
+                  <li ng-show="item.servico || isLogged">serviço
                     <strong>
                        <div contenteditable="{{isLogged}}"
                          ng-model="item.servico"
@@ -158,7 +192,7 @@
                        </div>
                    </strong>
                  </li>
-                 <li ng-show="item.site || isLogged">Site:
+                 <li ng-show="item.site || isLogged">site
                    <strong>
                      <div contenteditable="{{isLogged}}"
                        ng-model="item.site"
@@ -169,10 +203,10 @@
                      </div>
                    </strong>
                  </li>
-                 <li ng-show="isLogged" >Marcadores:
+                 <li ng-show="isLogged" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                    <js-tag js-tag-mode="typeahead" js-tag-options="jsTagOptions" ></js-tag>
                  </li>
-                 <li ng-show="item.tags && !isLogged" >Marcadores:<br>
+                 <li ng-show="item.tags.length && !isLogged" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><br>
                     <b>{{tagsJoin}}</b>
                  </li>
               </ul>

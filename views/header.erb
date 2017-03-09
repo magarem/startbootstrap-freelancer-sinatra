@@ -38,65 +38,78 @@
   }
 
   label.myLabel input[type="file"] {
-position: fixed;
-top: -1000px;
-}
+    position: fixed;
+    top: -1000px;
+  }
 
-/***** Example custom styling *****/
-.myLabel {
-border: 2px solid #AAA;
-border-radius: 4px;
-padding: 2px 5px;
-margin: 2px;
-background: #DDD;
-display: inline-block;
-}
-.myLabel:hover {
-background: #CCC;
-}
-.myLabel:active {
-background: #CCF;
-}
-.myLabel :invalid + span {
-color: #A44;
-}
-.myLabel :valid + span {
-color: #4A4;
-}
+    /***** Example custom styling *****/
+    .myLabel {
+    border: 2px solid #AAA;
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin: 2px;
+    background: #DDD;
+    display: inline-block;
+    }
+    .myLabel:hover {
+    background: #CCC;
+    }
+    .myLabel:active {
+    background: #CCF;
+    }
+    .myLabel :invalid + span {
+    color: #A44;
+    }
+    .myLabel :valid + span {
+    color: #4A4;
+    }
 
 </style>
 <style>
+  /* The only rule that matters */
+  #video-background {
+  /*  making the video fullscreen  */
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+  }
 
+</style>
+<style>
+    #exTab1 .tab-content {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+    }
 
-#exTab1 .tab-content {
-color : white;
-background-color: #428bca;
-padding : 5px 15px;
-}
+    #exTab2 h3 {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+    }
 
-#exTab2 h3 {
-color : white;
-background-color: #428bca;
-padding : 5px 15px;
-}
+    /* remove border radius for the tab */
 
-/* remove border radius for the tab */
+    #exTab1 .nav-pills > li > a {
+    border-radius: 0;
+    }
 
-#exTab1 .nav-pills > li > a {
-border-radius: 0;
-}
+    /* change border radius for the tab , apply corners on top*/
 
-/* change border radius for the tab , apply corners on top*/
+    #exTab3 .nav-pills > li > a {
+    border-radius: 4px 4px 0 0 ;
+    }
 
-#exTab3 .nav-pills > li > a {
-border-radius: 4px 4px 0 0 ;
-}
-
-#exTab3 .tab-content {
-color : white;
-background-color: #428bca;
-padding : 5px 15px;
-}
+    #exTab3 .tab-content {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+    }
 </style>
 <style>
   header {
@@ -105,9 +118,36 @@ padding : 5px 15px;
     background-position: center center;
     background-attachment: scroll;
   }
+  header {
+    position: relative;
+    height: 100vh;
+    z-index: 0;
+  }
+  header h1 {
+    text-align: center;
+    font: 3em/1.4 helvetica neue, helvetica, arial, sans-serif;
+    color: #fff
+  }
+  header video {
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+}
 </style>
 <header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-color': head.backgroundColor, 'color': head.fontColor, 'background-image': head.backgroundUrl ? 'url(' + head.backgroundUrl + ')':''}">
+
   <div class="demo_changer" >
+
     <div class="demo-icon" ng-show=isLogged>
       <i class="fa fa-cog fa-spin fa-2x"></i>
     </div><!-- end opener icon -->
@@ -203,6 +243,7 @@ padding : 5px 15px;
   <!-- End Switcher -->
   <div class="container">
     <div class="row">
+
   <!-- <input type="text" ng-model="selected"> -->
       <div class="col-lg-12">
         <style>
