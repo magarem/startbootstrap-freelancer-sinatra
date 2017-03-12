@@ -93,10 +93,7 @@ before do
 
   #Testa se existe o site
   if @site_nome then
-    if !File.exist? File.expand_path "./public/contas/"+@site_nome then
-      # Se não existir o site é carregada a mensagem de site não encontrado
-      redirect "http://#{@url}/site/index.html?msg=Site não encontrado"
-    end
+
     @data_path = Dataload.dataPath
     puts "@data_path:#{@data_path}"
     @data_path.gsub! "{site_nome}", @site_nome
@@ -135,6 +132,13 @@ end
 #  Carregamento do site
 #
 get "/" do
+
+  #Testa exiência do site
+  if !File.exist? File.expand_path "./public/contas/"+@site_nome then
+    # Se não existir o site é carregada a mensagem de site não encontrado
+    redirect "http://#{@url}/site/index.html?msg=Site não encontrado"
+  end
+
   @data = Dataload.testa (@url)
   erb :index
 end
@@ -211,6 +215,7 @@ post "/site_new" do
   password = "!Mariaclara@mArcelamaria#maGa108$"
   encrypted_data = AESCrypt.encrypt(chave, password)
   puts "encrypted_data: key=#{encrypted_data}"
+  puts "encrypted_data: key=#{URI::encode(encrypted_data)}"
 
   # Verifica se o nome pretendido já existe
   flgNomeJaExiste = File.directory?("public/contas/#{formSiteNome}")
@@ -222,7 +227,7 @@ Bem-vindo ao Radiando.net, o seu construtor de site portfólio na web!
 
 Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
 
-http://radiando.net/siteNewDo/#{URI::encode(encrypted_data)}
+http://radiando.net/siteNewDo?k=#{URI::encode(encrypted_data)}
 
 Depois de confirmada a sua conta seu site já estará no ar no endereço:
 http://#{formSiteNome}.radiando.net
@@ -257,10 +262,10 @@ end
 #
 # Criar novo site
 #
-get "/siteNewDo/:chave" do
-  chave = params["chave"]
+get "/siteNewDo" do
+  chave = params[:k]
   puts "chave: #{chave}"
-  password = password = "!Mariaclara@mArcelamaria#maGa108$"
+  password = "!Mariaclara@mArcelamaria#maGa108$"
   decrypted = AESCrypt.decrypt(chave, password)
 
   emailParams = decrypted.split("/")
