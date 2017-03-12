@@ -709,15 +709,16 @@ post "/portfolio/add/:postPortfolioItemId" do
 
   # Prapara o novo item para inserção
   portfolioItemNew = {
-    "id"      => postPortfolioItemId,
-    "titulo"  => "",
-    "img"     => "http://placehold.it/360x260/e67e22/fff",
-    "txt"     => "",
-    "cliente" => "",
-    "site"    => "",
-    "data"    => "",
-    "servico" => "",
-    "tags"     => ""
+    "id"        => postPortfolioItemId,
+    "titulo"    => "",
+    "mediaType" => "imagem",
+    "img"       => "http://placehold.it/360x260/e67e22/fff",
+    "txt"       => "",
+    "cliente"   => "",
+    "site"      => "",
+    "data"      => "",
+    "servico"   => "",
+    "tags"      => ""
   }
 
   # Insere o novo item na array do arquivo fonte

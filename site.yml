@@ -21,7 +21,7 @@ head:
   fontColor: hsl(0, 0%, 100%)
   avatar: contas/192/img/avatar.jpg?1486077361
   txt1:
-  txt2: 
+  txt2:
   show:
     avatar: true
     txt1: true
@@ -33,6 +33,7 @@ portfolio:
   items:
     - id: 1
       titulo:
+      mediaType: imagem
       img: http://placehold.it/360x260/e67e22/fff
       txt:
       nome:

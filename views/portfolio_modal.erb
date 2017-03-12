@@ -231,7 +231,8 @@
               </div>
               <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="excluir();"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
               <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="saveTags(tags)"><i class="glyphicon glyphicon-save"></i> Salvar</button>
-              <a href ng-if="item.txt.length > 100" ng-click="cancel(picFile);" style="margin-top: 10px;"><i class="glyphicon glyphicon-remove-sign" style="font-size:30px;"></i></a>
+              <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="cancel(picFile);"><i class="glyphicon glyphicon-close"></i> Fechar</button>
+              <a href ng-if="item.txt.length > 100 && !isLogged" ng-click="cancel(picFile);" style="margin-top: 10px;"><i class="glyphicon glyphicon-remove-sign" style="font-size:30px;"></i></a>
               <br>
               <br>
             </div>

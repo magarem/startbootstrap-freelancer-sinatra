@@ -7,7 +7,7 @@ info:
   description: Site portfolio
   author: marcelo magalhaes
   created: 
-  modified: 2017-03-09 02:17:25.367619042 Z
+  modified: 2017-03-12 18:06:21.902360887 Z
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
@@ -18,34 +18,26 @@ navbar:
   - sobre
   - contato
 head:
-  backgroundColor: hsl(2, 39%, 48%)
-  backgroundUrl: contas/192/img/backGround/backGround.jpg?1488044306
-  fontColor: hsl(0, 0%, 99%)
-  avatar: contas/192/img/avatar.jpg?1488147323
+  backgroundColor: hsl(0, 21%, 43%)
+  backgroundUrl: "/styleBackgrounds/abstract_2_00-wallpaper-1440x900.jpg"
+  backgroundVideoShow: false
+  backgroundVideo: dq2iQNdwlTI
+  fontColor: hsl(223, 20%, 28%)
+  avatar: contas/192/img/avatar.jpg?1489341948
   txt1: IDmaria clara!
   txt2: filhota punk!
   show:
     avatar: true
     txt1: true
-    txt2: false
-    txtShadow: true
+    txt2: true
+    txtShadow: false
 portfolio:
   label: portfólio
   itemsTags:
   - classica
   - '111'
+  - ttt
   items:
-  - id: 192-456
-    titulo: acompa
-    mediaType: video
-    img: http://i.vimeocdn.com/video/69201804_640.jpg
-    video: https://vimeo.com/12264061
-    txt: Super t até 12
-    cliente: fff
-    site: 
-    data: 
-    servico: 
-    tags: []
   - id: 192-1488682337148
     titulo: teste
     img: https://img.youtube.com/vi/O6NRLYUThrY/sddefault.jpg
@@ -100,6 +92,35 @@ portfolio:
     tags:
     - '111'
     cliente: aa
+  - id: 192-1489159659768
+    titulo: ''
+    mediaType: imagem
+    img: contas/192/img/portfolio/192-1489159659768.jpeg
+    txt: 
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1489341716830
+    titulo: teste
+    img: contas/192/img/portfolio/192-1489341716830.jpeg
+    txt: dfdf
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - ttt
+  - id: 192-1489341862372
+    titulo: Iii
+    img: contas/192/img/portfolio/192-1489341862372.JPG
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
 about:
   label: sobre
   body1: super textossdsd fdgygvtfdgdfg<br>FgfdgDF<br>GDF<br>GDF<br>G

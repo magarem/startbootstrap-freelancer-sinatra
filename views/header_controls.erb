@@ -1,0 +1,101 @@
+<style>
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+}
+</style>
+<div class="demo_changer" >
+   <div class="demo-icon" ng-show=isLogged>
+     <i class="fa fa-cog fa-spin fa-2x"></i>
+   </div><!-- end opener icon -->
+   <div class="form_holder">
+     <div class="btn-group">
+       <a href="#1a" data-toggle="tab" class="btn btn-primary btn-xs">Cor</a>
+       <a href="#2a" data-toggle="tab" class="btn btn-primary btn-xs">Imagem</a>
+       <a href="#3a" data-toggle="tab" class="btn btn-primary btn-xs">Itens</a>
+     </div>
+     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+       <div class="predefined_styles center-block">
+         <div class="tab-content clearfix">
+           <div class="tab-pane active row" id="1a">
+               <div  style="margin-left: 12px;"  class="center"><br>
+                 <label for="fundo">Fundo</label>
+                 <color-picker ng-model="head.backgroundColor" event-api="eventApi" options="options"></color-picker>
+                 <br>
+                 <label for="fonte">Fonte</label>
+                 <color-picker ng-model="head.fontColor"  event-api="eventApi2" options="options"></color-picker>
+                 <div class="checkbox">
+                   <label><input type="checkbox" ng-model="head.show.txtShadow" ng-click="saveDiv('head.show.txtShadow')" >Sombra</label>
+                 </div>
+               </div>
+           </div>
+           <div class="tab-pane  row" id="2a">
+             <!-- END MODULE #2 -->
+             <!-- <h4>Imagem de fundo</h4> -->
+             <!-- MODULE #3 --><br>
+             <label for="fundo">Imagem de fundo</label>
+             <div id=fundos  class="center" style="overflow-y: auto; width: 140px; height: 100px;  background-color: #d9d9d9; outline: 1px solid #9a9292;" class="text-center" >
+               <div class="backImg center-block" style="outline: 1px solid #b3b3b3;" ng-repeat="item in backGroundItems" back-img="/styleBackgrounds/{{item}}" ng-click="backgroundUrl_set('/styleBackgrounds/'+item)"></div>
+             </div>
+             <!-- END MODULE #3 --><br>
+             <form name="myForm">
+                 <fieldset>
+                   <button   class="btn btn-primary btn-xs" style="margin-bottom: 15px;" ng-click="backgroundUrl_clear();">Apagar fundo</button>
+                   <label class="myLabel">
+                     <input id=file-input type="file" ngf-select ng-model="picFile2" name="file"
+                       accept="image/*" ngf-max-size="10MB" required
+                       ngf-model-invalid="errorFile" ngf-fix-orientation="true" hidden>
+                     <span>Selecionar arquivo</span>
+                   </label>
+                   <div  style="margin-left:57px;">
+                     <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile2" class="thumb">
+                     <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
+                   </div>
+
+                   <button ng-show="picFile2"  id=upload-btn class="btn" ng-disabled="!myForm.$valid"
+                           ng-click="uploadPic(picFile2)"><span class="glyphicon glyphicon-upload"></span> Enviar</button>
+                   <br>
+                   <span class="progress" ng-show="picFile2.progress >= 0">
+                     <div style="width:{{picFile2.progress}}%"
+                         ng-bind="picFile2.progress + '%'"></div>
+                   </span>
+                   <span ng-show="picFile2.result">Upload Successful</span>
+                   <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                   <i ng-show="myForm.file.$error.maxSize">File too large
+                       {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                 </fieldset>
+                 <br>
+               </form>
+           </div>
+           <div class="tab-pane row" id="3a">
+             <div class="checkbox">
+               <label>
+                 <input type="checkbox"
+                        ng-model="head.show.avatar"
+                        ng-click="saveDiv('head.show.avatar')">Imagem principal
+               </label>
+             </div>
+             <div class="checkbox">
+               <label>
+                 <input type="checkbox"
+                        ng-model="head.show.txt1"
+                        ng-click="saveDiv('head.show.txt1')">Sub-titulo #1
+               </label>
+             </div>
+             <div class="checkbox">
+               <label>
+                 <input type="checkbox"
+                        ng-model="head.show.txt2"
+                        ng-click="saveDiv('head.show.txt2')">Sub-titulo #2
+               </label>
+             </div>
+           </div>
+         </div><!-- end predefined_styles -->
+       </div><!-- end col -->
+       <!-- end col -->
+     </div><!-- end row -->
+   </div>
+ </div><!-- end form_holder -->
+
+ <!-- End Switcher -->
