@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['videosharing-embed','ngYoutubeEmbed',
+var mod = angular.module("myapp", ['videosharing-embed','ngImageCompress','ngYoutubeEmbed',
                                    'color.picker',
                                    'siyfion.sfTypeahead',
                                    'jsTag',
