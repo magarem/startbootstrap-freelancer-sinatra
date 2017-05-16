@@ -1295,10 +1295,29 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
     var dotIndex = file.name.lastIndexOf('.');
     var fileExt = file.name.substring(dotIndex);
 
+    file.upload = Upload.upload({
+      url: "https://api.cloudinary.com/v1_1/magaweb/upload",
+      url: "https://api.cloudinary.com/v1_1/magaweb/upload",
+      data: {
+        upload_preset: 'iby0ddnx',
+        tags: 'myphotoalbum',
+        disableImageResize: false,
+    imageMaxWidth: 800,                           // 800 is an example value
+    imageMaxHeight: 600,                          // 600 is an example value
+    maxFileSize: 20000000,                        // 20MB is an example value
+    loadImageMaxFileSize: 20000000,               // default is 10MB
+    acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
+    imageCrop: true, // Force cropped images
+        context: 'photo=t1',
+          file: file
+      }
+    });
+
      file.upload = Upload.upload({
        url: '/backGroundImgUpload',
        data: {file: file},
      });
+
 
      file.upload.then(function (response) {
        $timeout(function () {
@@ -1350,14 +1369,34 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     })
   }
 
+
+
   // Image upload
   $scope.upload = function (dataUrl, name) {
+
+    console.log("Upload.dataUrltoBlob: ", Upload.dataUrltoBlob(dataUrl, name))
+
+    console.log("name:", name)
+
     var uploadURL = '/avatarUpload'
+
     Upload.upload({
+      //url: "https://api.cloudinary.com/v1_1/magaweb/upload",
       url: uploadURL,
       data: {
-          file: Upload.dataUrltoBlob(dataUrl, name)
-      },
+        upload_preset: 'iby0ddnx',
+        tags: 'myphotoalbum',
+        disableImageResize: false,
+        imageMaxHeight: 600,                          // 600 is an example value
+        maxFileSize: 20000000,                        // 20MB is an example value
+        loadImageMaxFileSize: 20000000,               // default is 10MB
+        acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
+        imageCrop: true, // Force cropped images
+        context: 'photo=teste22',
+
+        //file: dataUrl
+        file: Upload.dataUrltoBlob(dataUrl, name),
+      }
     }).then(function (response) {
       $timeout(function () {
         $scope.result = response.data;
@@ -1723,17 +1762,44 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     $scope.searchButtonText = "Enviando";
   }
 
+  $scope.searchButtonText = "Enviar imagem"
+
+
   $scope.uploadPic = function(file) {
+    $scope.UpMsg=true;
+    $scope.searchButtonText = 'Enviando'
     //Pegando a extenção do arquivo
-    var dotIndex = file.name.lastIndexOf('.');
-    var ext = file.name.substring(dotIndex);
+    //var dotIndex = file.name.lastIndexOf('.');
+    //var ext = file.name.substring(dotIndex);
     //var new_name = Date.now().toString()+ext;
-    var new_name = $scope.item.id+ext;
+    //var new_name = $scope.item.id+ext;
+    var new_name = $scope.item.id;
+    console.log("file:", file)
+
 
     file.upload = Upload.upload({
       url: upDestino,
       data: {new_name: new_name, file: file},
     });
+
+    // file.upload =  Upload.upload({
+    //   url: "https://api.cloudinary.com/v1_1/magaweb/upload",
+    //   data: {
+    //     upload_preset: 'iby0ddnx',
+    //     tags: 'radiando_portfolio',
+    //     disableImageResize: false,
+    //     imageMaxWidth: 800,                           // 800 is an example value
+    //     imageMaxHeight: 600,                          // 600 is an example value
+    //     maxFileSize: 20000000,                        // 20MB is an example value
+    //     loadImageMaxFileSize: 20000000,               // default is 10MB
+    //     acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
+    //     imageCrop: true, // Force cropped images
+    //     context: 'photo='+$scope.item.id,
+    //     folder: siteNome,
+    //     public_id: $scope.item.id,
+    //     //format: 'jpg',
+    //     file: file
+    //   }});
 
     file.upload.then(
       function (response) {
@@ -1743,7 +1809,8 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
             file.result = response.data;
             console.log("siteNome:", siteNome)
             $rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
-            src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
+            //src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
+            src = "http://res.cloudinary.com/magaweb/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name+".jpg";
             $scope.item.img = src
             $scope.imgJaSubiu = true;
             $scope.imgNewSelected = false;
@@ -1751,6 +1818,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
             aa = false
             $scope.searchButtonText = "Enviar";
             $scope.isDisabled = false;
+            $scope.UpMsg=false;
          }
        );
       },

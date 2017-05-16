@@ -12,6 +12,7 @@ require 'openssl'
 require "aescrypt"
 require 'open-uri'
 require 'video_thumb'
+require 'cloudinary'
 
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
 enable :sessions
@@ -566,6 +567,7 @@ post "/avatarUpload" do
 
   # Pega os parametros
   @filename = params[:file][:filename]
+  puts "@filename: #{@filename}"
   file = params[:file][:tempfile]
   imagem_tipo = params[:file][:type]
 
@@ -578,20 +580,31 @@ post "/avatarUpload" do
   # Testa para ver se é uma imagem que está sendo enviada
   if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
     puts "file.size> #{file.size}"
+
+    Cloudinary::Uploader.upload(
+      file,
+      api_key: '767586258454699',
+      api_secret: 'GpFyvI8BE64r-yFyrUbCAz0mmNs',
+      cloud_name: 'magaweb',
+      folder: @site_nome,
+      public_id: 'avatar',
+      format: 'jpg')
+
     # Salva imagem no disco (upload)
-    @filename = "avatar."+params["file"][:filename].split(".").last.downcase
+    #@filename = "avatar."+params["file"][:filename].split(".").last.downcase
     # @filename_after = "avatar.png"
-    File.open("./public/contas/#{@site_nome}/img/#{@filename}", 'wb') do |f|
-      f.write(file.read)
-    end
+    #File.open("./public/contas/#{@site_nome}/img/#{@filename}", 'wb') do |f|
+    #  f.write(file.read)
+    #end
 
     # Reduz o tamanho da imagem
-    image = MiniMagick::Image.open("./public/contas/#{@site_nome}/img/#{@filename}")
-    image.resize "256x256"
-    image.write "./public/contas/#{@site_nome}/img/#{@filename}"
+    #image = MiniMagick::Image.open("./public/contas/#{@site_nome}/img/#{@filename}")
+    #image.resize "256x256"
+    #image.write "./public/contas/#{@site_nome}/img/#{@filename}"
 
     # Salva o nome da imagem o arquivo fonte
-    @data["head"]["avatar"] = "contas/#{@site_nome}/img/#{@filename}?#{Time.now.to_i}"
+    #@data["head"]["avatar"] = "contas/#{@site_nome}/img/#{@filename}?#{Time.now.to_i}"
+    @data["head"]["avatar"] = "http://res.cloudinary.com/magaweb/image/upload/v1494728429/#{@site_nome}/avatar.jpg?#{Time.now.to_i}"
     f = File.open @data_path, 'w'
     YAML.dump @data, f
     f.close
@@ -666,25 +679,42 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
 
   # Carrega os dados do arquivo fonte
   unless @file == nil
-    @filename = params[:file][:filename]
+    #@filename = params[:file][:filename]
 
-    puts "@filename> #{@filename}"
-    file = params[:file][:tempfile]
-    imagem_tipo = params[:file][:type]
+    #puts "@filename> #{@filename}"
+    #file = params[:file][:tempfile]
+    #imagem_tipo = params[:file][:type]
 
     # Testa para ver se é uma imagem que está sendo enviada
-    if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
-      img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@new_name}"
-      File.open img_path, 'wb' do |f|
-        f.write file.read
-      end
+  # if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
+
+      #img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@new_name}"
+      #File.open img_path, 'wb' do |f|
+      # f.write file.read
+      #end
+      puts "@file: #{@file}"
+      puts "@site_nome: #{@site_nome}"
+      puts "@new_name,: #{@new_name}"
+      cl = Cloudinary::Uploader.upload(
+       params[:file][:tempfile],
+       api_key: '767586258454699',
+       api_secret: 'GpFyvI8BE64r-yFyrUbCAz0mmNs',
+       cloud_name: 'magaweb',
+       folder: @site_nome,
+       public_id: @new_name,
+       invalidate: true,
+       format: 'jpg')
+
 
       #reduz a imagem
-      image = MiniMagick::Image.open(img_path)
-      image.resize "800x800" if image.width >= 800
-      image.write img_path
-      port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
-    end
+      #image = MiniMagick::Image.open(img_path)
+      #image.resize "800x800" if image.width >= 800
+      #image.write img_path
+      #port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
+      port_img = "http://res.cloudinary.com/magaweb/image/upload/v#{cl['version']}/#{@site_nome}/#{@new_name}.jpg"
+
+     puts "port_img: #{port_img}"
+   #end
   end
   if (port_img == "" || port_img == "undefined" || port_img == nil) then port_img = @item["img"] end
 

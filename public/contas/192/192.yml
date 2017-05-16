@@ -7,7 +7,7 @@ info:
   description: Site portfolio
   author: marcelo magalhaes
   created: 
-  modified: 2017-03-12 18:47:08.815718127 Z
+  modified: 2017-05-15 16:20:03.848297490 Z
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
@@ -23,7 +23,7 @@ head:
   backgroundVideoShow: false
   backgroundVideo: dq2iQNdwlTI
   fontColor: hsl(223, 20%, 28%)
-  avatar: contas/192/img/avatar.jpg?1489341948
+  avatar: http://res.cloudinary.com/magaweb/image/upload/v1494728429/192/avatar.jpg?1494973150
   txt1: IDmaria clara!
   txt2: filhota punk!
   show:
@@ -40,7 +40,7 @@ portfolio:
   items:
   - id: 192-1488682337148
     titulo: teste
-    img: https://img.youtube.com/vi/O6NRLYUThrY/sddefault.jpg
+    img: http://res.cloudinary.com/magaweb/image/upload/v1494973829/192/192-1488682337148.jpg
     txt: 
     nome: ''
     site: ''
@@ -48,12 +48,12 @@ portfolio:
     servico: ''
     tags:
     - classica
-    mediaType: video
+    mediaType: imagem
     video: https://www.youtube.com/watch?v=O6NRLYUThrY
   - id: 192-1483898166846
     titulo: Na tijela
-    mediaType: video
-    img: http://i.vimeocdn.com/video/217427857_640.jpg
+    mediaType: imagem
+    img: http://res.cloudinary.com/magaweb/image/upload/v1494973979/192/192-1483898166846.jpg
     video: https://vimeo.com/32172090
     txt: Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais
       precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias
@@ -70,7 +70,7 @@ portfolio:
   - id: 192-1483977341960
     titulo: açai2
     mediaType: imagem
-    img: contas/192/img/portfolio/192-1483977341960.jpg
+    img: http://res.cloudinary.com/magaweb/image/upload/v1494968668/192/192-1483977341960.jpg
     video: https://www.youtube.com/watch?v=fpHabwkWrpk
     txt: Fggg
     nome: ''
@@ -82,7 +82,7 @@ portfolio:
   - id: 192-1483898003899
     titulo: Do bom
     mediaType: imagem
-    img: contas/192/img/portfolio/192-1483898003899.jpg?decache=0.4114793279010791
+    img: http://res.cloudinary.com/magaweb/image/upload/v1494961018/192/192-1483898003899.jpg
     video: https://www.youtube.com/watch?v=fpHabwkWrpk
     txt: Caprixo
     nome: ''
