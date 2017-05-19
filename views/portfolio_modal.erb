@@ -97,16 +97,21 @@
                 </h2>
             </div>
             <!-- <i class="material-icons " style="font-size:36px;">highlight_off</i> -->
-              <div ng-if="item.mediaType == 'imagem'">
+
+              <div>
                 <img ng-class="{imgEdit: isLogged}"
                   class="img-responsive img-centered topImg"
                   style="max-width:100%; margin-bottom: 13px;"
-                  ng-src="{{item.img}}"
-                  ng-show="!picFile || true"
+                  src="{{item.img}}"
+                  ng-show="(!picFile || true) && item.mediaType == 'image'"
                   <% if @isLogged then%>
                     onclick="$('#imgSelect').trigger('click');"
                   <% end %>
-                  />
+                />
+                <video ng-show="item.img_ && item.mediaType == 'video'" ng-src="{{item.img_}}"   width="320" height="240" controls>
+                </video>
+                <video ng-show="!item.img_ && item.mediaType == 'video'" ng-src="{{item.img}}"  width="320" height="240" controls>
+                </video>
                 <div ng-show="isLogged && !imgJaSubiu" >
                   <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado
                          {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
@@ -128,7 +133,7 @@
                     ng-show=isLogged
                     ngf-select = "uploadPic(picFile)"
                     ng-model="picFile" name="file"
-                    accept="image/*" ngf-max-size="30MB"
+                    accept="image/*, video/*" ngf-max-size="30MB"
                     required ngf-model-invalid="errorFile"
                     ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
                     style="display: none;"
@@ -139,10 +144,30 @@
                     <span ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
                     {{ searchButtonText }}
                   </label>
+                  <label class="btn btn-default btn-file btn-sm">
+                  <input id="imgSelect2" type="file"
+                    class="form-control ce "
+                    ng-show=isLogged
+                    ngf-select = "uploadVideo(picFile)"
+                    ng-model="picFile" name="file"
+                    accept="image/*, video/*" ngf-max-size="30MB"
+                    required ngf-model-invalid="errorFile"
+                    ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
+                    style="display: none;"
+                    ngf-pattern="'.pdf,.jpg,video/*,!.jog'"
+                    ngf-resize="{width: 800, height: 800}"
+                    ngf-validate="{size: {min: 10, max: '30MB'}}"
+                    />
+                    <span ng-show="searchButtonText2 == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                    {{ searchButtonText2 }}
+                  </label>
                   <!-- ng-Change = "uploadPic(picFile)" -->
                   <!--button ng-show="picFile != undefined" type="submit" ng-click="uploadPic(picFile)">Enviar</button-->
                   <a href style="margin-left:10px;" ng-click="item.mediaType = 'video'; saveDiv('item.mediaType')">Anexar vídeo</a>
+
                 </div>
+
+
                 <ul>
       <span class="progress" ng-show="file.progress >= 0">
         <div style="width:{{file.progress}}%"
@@ -167,12 +192,12 @@
               }
 
               </style>
-              <div ng-if="item.mediaType == 'video'" class=element-container>
+              <div ng-if="item.mediaType == 'vsddideo'" class=element-container>
                  <!-- <ng-youtube-embed   video="item.video" width="560" height="315" >
                  </ng-youtube-embed> -->
                    <!-- <anguvideo ng-model="item.video"  hideControls></anguvideo> -->
                  <div class="embed-responsive embed-responsive-16by9 " class=element >
-                   <embed-video   iframe-id="vimeo1" api="1" player_id="vimeo1"  ng-href="{{item.video}}"></embed-video>
+                   <embed-video iframe-id="vimeo1" api="1" player_id="vimeo1"  ng-href="{{item.video}}"></embed-video>
                  </div>
                  <form ng-show="isLogged">
                    <input  class="form-control" type="text" id="link" name="link" plaitem.txtceholder="Endereço do vídeo do Youtube ou do Vimeo" ng-model="item.video" ng-blur="saveDiv('item.video')">

@@ -703,7 +703,7 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
        folder: @site_nome,
        public_id: @new_name,
        invalidate: true,
-       format: 'jpg')
+       resource_type: 'image')
 
 
       #reduz a imagem
@@ -711,7 +711,80 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
       #image.resize "800x800" if image.width >= 800
       #image.write img_path
       #port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
-      port_img = "http://res.cloudinary.com/magaweb/image/upload/v#{cl['version']}/#{@site_nome}/#{@new_name}.jpg"
+      port_img = "http://res.cloudinary.com/magaweb/image/upload/v#{cl['version']}/#{@site_nome}/#{@new_name}"
+      #port_img = "#{@site_nome}/#{@new_name}?#{cl['version']}"
+
+     puts "resource_type: #{cl['resource_type']}"
+   #end
+  end
+  if (port_img == "" || port_img == "undefined" || port_img == nil) then port_img = @item["img"] end
+
+  #Seleciona o item do portfolio
+  portfolioItems = @data["portfolio"]["items"]
+  portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
+  portfolioItem["img"] = port_img
+  portfolioItem["mediaType"] = 'image'
+
+  # Salva os dados alterados
+  f = File.open(@data_path, 'w' )
+  YAML.dump( @data, f )
+  f.close
+end
+
+#
+#  Portfolio: upload item video
+#
+post "/portfolio/uploadVideo/:postPortfolioItemId" do
+
+  # Pega os parâmetros
+  @item = params[:item]
+  @postPortfolioItemId = params[:postPortfolioItemId]
+  @file = params[:file]
+  @new_name = params[:new_name]
+
+  port_img = ""
+
+  # Autenticação
+  if !@logado then redirect "/" end
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+
+  # Carrega os dados do arquivo fonte
+  unless @file == nil
+    #@filename = params[:file][:filename]
+
+    #puts "@filename> #{@filename}"
+    #file = params[:file][:tempfile]
+    #imagem_tipo = params[:file][:type]
+
+    # Testa para ver se é uma imagem que está sendo enviada
+  # if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
+
+      #img_path = "./public/contas/#{@site_nome}/img/portfolio/#{@new_name}"
+      #File.open img_path, 'wb' do |f|
+      # f.write file.read
+      #end
+      puts "@file: #{@file}"
+      puts "@site_nome: #{@site_nome}"
+      puts "@new_name,: #{@new_name}"
+      cl = Cloudinary::Uploader.upload(
+       params[:file][:tempfile],
+       api_key: '767586258454699',
+       api_secret: 'GpFyvI8BE64r-yFyrUbCAz0mmNs',
+       cloud_name: 'magaweb',
+       folder: @site_nome,
+       public_id: @new_name,
+       resource_type: 'video',
+       invalidate: true)
+
+
+      #reduz a imagem
+      #image = MiniMagick::Image.open(img_path)
+      #image.resize "800x800" if image.width >= 800
+      #image.write img_path
+      #port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
+      port_img = "http://res.cloudinary.com/magaweb/video/upload/v#{cl['version']}/#{@site_nome}/#{@new_name}"
+      #port_img = "#{@site_nome}/#{@new_name}"
 
      puts "port_img: #{port_img}"
    #end
@@ -722,6 +795,7 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
   portfolioItems = @data["portfolio"]["items"]
   portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
   portfolioItem["img"] = port_img
+  portfolioItem["mediaType"] = "video"
 
   # Salva os dados alterados
   f = File.open(@data_path, 'w' )

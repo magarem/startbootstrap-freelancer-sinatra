@@ -1,4 +1,4 @@
-var mod = angular.module("myapp", ['videosharing-embed','ngImageCompress','ngYoutubeEmbed',
+var mod = angular.module("myapp", ['cloudinary','videosharing-embed','ngImageCompress','ngYoutubeEmbed',
                                    'color.picker',
                                    'siyfion.sfTypeahead',
                                    'jsTag',
@@ -9,6 +9,15 @@ var mod = angular.module("myapp", ['videosharing-embed','ngImageCompress','ngYou
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap']);
+mod.filter( 'safeUrl', [   '$sce',
+                                       function( $sce ){
+                                           return function(url){
+                                                //not sure which one you need here
+                                                url = url.split("/")[url.split("/").length-2]+"/"+url.split("/")[url.split("/").length-1]
+                                                return $sce.trustAsResourceUrl("http://res.cloudinary.com/magaweb/video/upload/c_fill,h_260,w_360/v"+parseInt(Math.random()*1000000)+"/"+url+".jpg")
+                                           }
+                                       }
+                                   ]);
 mod.directive('materialPicker', [
     '$parse',
     function ($parse) {
@@ -1430,6 +1439,10 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   vm.data = deviceDetector;
   vm.allData = JSON.stringify(vm.data, null, 2);
 
+  $scope.getRandomSpan = function(){
+    return parseInt(Math.random()*1000000);
+  }
+
   SiteData.loadSiteData().then(function(response) {
     var siteNome = response.data.info.name
     $scope.portfolio = response.data.portfolio;
@@ -1456,6 +1469,10 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   $rootScope.$on("portfolioItemsTags_update", function(event){
     portfolioItemsTags_update()
   });
+
+  $scope.stripFileType = function (filename) {
+    return parts.replace(/\..+$/, '');
+  }
 
   function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
@@ -1507,7 +1524,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
       console.log("index:>", index)
       console.log("arr:>", arr)
       return v.id === id; // Filter out the appropriate one
-    }).img = src; // Get result and access the foo property
+    }).img = $sce.trustAsResourceUrl(src); // Get result and access the foo property
     console.log("portfolio.items[0].img --> ", $scope.portfolio.items[0].img)
   }
 
@@ -1744,17 +1761,23 @@ mod.controller('ModalInstanceCtrl', function ($scope, $sce, $rootScope, $uibModa
     $rootScope.$emit("portfolioItemsTags_update");
   }
 });
-mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData) {
+mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', '$sce', function ($scope,  $rootScope, Upload, $timeout, $http, SiteData, $sce) {
 
   $scope.imgUploadBtn = true;
   $scope.imgJaSubiu = false;
 
   var upDestino = '/portfolio/uploadPic/'+$scope.item.id
+  var upDestino2 = '/portfolio/uploadVideo/'+$scope.item.id
   console.log($scope.item.id)
 
   $scope.searchButtonText = "Enviar";
   $scope.test = "false";
   $scope.isDisabled = false;
+
+  $scope.isImage = function (filename) {
+    var parts = filename.split('.');
+    return parts[parts.length - 1] == 'jpg';
+  }
 
   $scope.search = function () {
     $scope.isDisabled = true;
@@ -1763,7 +1786,10 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   }
 
   $scope.searchButtonText = "Enviar imagem"
+  $scope.searchButtonText2 = "Enviar vídeo"
 
+  $scope.item.img = $sce.trustAsResourceUrl($scope.item.img);
+  $scope.item.img_ = "";
 
   $scope.uploadPic = function(file) {
     $scope.UpMsg=true;
@@ -1782,24 +1808,54 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
       data: {new_name: new_name, file: file},
     });
 
-    // file.upload =  Upload.upload({
-    //   url: "https://api.cloudinary.com/v1_1/magaweb/upload",
-    //   data: {
-    //     upload_preset: 'iby0ddnx',
-    //     tags: 'radiando_portfolio',
-    //     disableImageResize: false,
-    //     imageMaxWidth: 800,                           // 800 is an example value
-    //     imageMaxHeight: 600,                          // 600 is an example value
-    //     maxFileSize: 20000000,                        // 20MB is an example value
-    //     loadImageMaxFileSize: 20000000,               // default is 10MB
-    //     acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
-    //     imageCrop: true, // Force cropped images
-    //     context: 'photo='+$scope.item.id,
-    //     folder: siteNome,
-    //     public_id: $scope.item.id,
-    //     //format: 'jpg',
-    //     file: file
-    //   }});
+    file.upload.then(
+      function (response) {
+        $timeout(
+          function () {
+            $scope.portfolio
+            file.result = response.data;
+            console.log("siteNome:", siteNome)
+            //$rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
+            //src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
+            src = "http://res.cloudinary.com/magaweb/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name;
+            //src = siteNome+"/"+new_name+"?"+parseInt(Math.random()*1000000)
+            $scope.item.img = src
+            $scope.item.mediaType = "image"
+            $scope.imgJaSubiu = true;
+            $scope.imgNewSelected = false;
+            $scope.picFile = false;
+            aa = false
+            $scope.searchButtonText = "Enviar";
+            $scope.isDisabled = false;
+            $scope.UpMsg=false;
+         }
+       );
+      },
+      function (response) {
+        if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+      },
+      function (evt) {
+          // Math.min is to fix IE which reports 200% sometimes
+          file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+      }
+    );
+  }
+
+  $scope.uploadVideo = function(file) {
+    $scope.UpMsg=true;
+    $scope.searchButtonText2 = 'Enviando'
+    //Pegando a extenção do arquivo
+    //var dotIndex = file.name.lastIndexOf('.');
+    //var ext = file.name.substring(dotIndex);
+    //var new_name = Date.now().toString()+ext;
+    //var new_name = $scope.item.id+ext;
+    var new_name = $scope.item.id;
+    console.log("file:", file)
+
+    file.upload = Upload.upload({
+      url: upDestino2,
+      data: {new_name: new_name, file: file},
+    });
 
     file.upload.then(
       function (response) {
@@ -1808,15 +1864,18 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
             $scope.portfolio
             file.result = response.data;
             console.log("siteNome:", siteNome)
-            $rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
+            //$rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
             //src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
-            src = "http://res.cloudinary.com/magaweb/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name+".jpg";
+            src = "http://res.cloudinary.com/magaweb/video/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name;
+            //src = siteNome+"/"+new_name
             $scope.item.img = src
+            $scope.item.img_ = $sce.trustAsResourceUrl(src)
+            $scope.item.mediaType = "video"
             $scope.imgJaSubiu = true;
             $scope.imgNewSelected = false;
             $scope.picFile = false;
             aa = false
-            $scope.searchButtonText = "Enviar";
+            $scope.searchButtonText2 = "Enviar";
             $scope.isDisabled = false;
             $scope.UpMsg=false;
          }
