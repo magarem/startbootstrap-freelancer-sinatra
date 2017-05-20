@@ -4,7 +4,7 @@ require 'pry'
 require 'yaml'
 require 'pony'
 require 'json'
-require 'mini_magick'
+#require 'mini_magick'
 require 'fileutils'
 require 'securerandom'
 require 'mail'
@@ -583,9 +583,9 @@ post "/avatarUpload" do
 
     Cloudinary::Uploader.upload(
       file,
-      api_key: '767586258454699',
-      api_secret: 'GpFyvI8BE64r-yFyrUbCAz0mmNs',
-      cloud_name: 'magaweb',
+      api_key: '526244569845626',
+      api_secret: 'qpyLf_nv9v40Uummu-ujHESY5e8',
+      cloud_name: 'radiando',
       folder: @site_nome,
       public_id: 'avatar',
       format: 'jpg')
@@ -604,7 +604,7 @@ post "/avatarUpload" do
 
     # Salva o nome da imagem o arquivo fonte
     #@data["head"]["avatar"] = "contas/#{@site_nome}/img/#{@filename}?#{Time.now.to_i}"
-    @data["head"]["avatar"] = "http://res.cloudinary.com/magaweb/image/upload/v1494728429/#{@site_nome}/avatar.jpg?#{Time.now.to_i}"
+    @data["head"]["avatar"] = "http://res.cloudinary.com/radiando/image/upload/v1494728429/#{@site_nome}/avatar.jpg?#{Time.now.to_i}"
     f = File.open @data_path, 'w'
     YAML.dump @data, f
     f.close
@@ -697,9 +697,9 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
       puts "@new_name,: #{@new_name}"
       cl = Cloudinary::Uploader.upload(
        params[:file][:tempfile],
-       api_key: '767586258454699',
-       api_secret: 'GpFyvI8BE64r-yFyrUbCAz0mmNs',
-       cloud_name: 'magaweb',
+       api_key: '526244569845626',
+       api_secret: 'qpyLf_nv9v40Uummu-ujHESY5e8',
+       cloud_name: 'radiando',
        folder: @site_nome,
        public_id: @new_name,
        invalidate: true,
@@ -711,7 +711,7 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
       #image.resize "800x800" if image.width >= 800
       #image.write img_path
       #port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
-      port_img = "http://res.cloudinary.com/magaweb/image/upload/v#{cl['version']}/#{@site_nome}/#{@new_name}"
+      port_img = "http://res.cloudinary.com/radiando/image/upload/v#{cl['version']}/#{@site_nome}/#{@new_name}"
       #port_img = "#{@site_nome}/#{@new_name}?#{cl['version']}"
 
      puts "resource_type: #{cl['resource_type']}"
@@ -769,9 +769,9 @@ post "/portfolio/uploadVideo/:postPortfolioItemId" do
       puts "@new_name,: #{@new_name}"
       cl = Cloudinary::Uploader.upload(
        params[:file][:tempfile],
-       api_key: '767586258454699',
-       api_secret: 'GpFyvI8BE64r-yFyrUbCAz0mmNs',
-       cloud_name: 'magaweb',
+       api_key: '526244569845626',
+       api_secret: 'qpyLf_nv9v40Uummu-ujHESY5e8',
+       cloud_name: 'radiando',
        folder: @site_nome,
        public_id: @new_name,
        resource_type: 'video',
@@ -783,7 +783,7 @@ post "/portfolio/uploadVideo/:postPortfolioItemId" do
       #image.resize "800x800" if image.width >= 800
       #image.write img_path
       #port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
-      port_img = "http://res.cloudinary.com/magaweb/video/upload/v#{cl['version']}/#{@site_nome}/#{@new_name}"
+      port_img = "http://res.cloudinary.com/radiando/video/upload/v#{cl['version']}/#{@site_nome}/#{@new_name}"
       #port_img = "#{@site_nome}/#{@new_name}"
 
      puts "port_img: #{port_img}"
@@ -820,7 +820,7 @@ post "/portfolio/add/:postPortfolioItemId" do
   portfolioItemNew = {
     "id"        => postPortfolioItemId,
     "titulo"    => "",
-    "mediaType" => "imagem",
+    "mediaType" => "image",
     "img"       => "http://placehold.it/360x260/e67e22/fff",
     "txt"       => "",
     "cliente"   => "",

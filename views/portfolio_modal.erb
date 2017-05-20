@@ -73,17 +73,17 @@
       <div class="container" >
         <div class="row">
         <style>
-        .padding0{
-          padding-left: 0px;
-          padding-right: 0px;
-        }
-        .padding15{
-          padding-left: 15px;
-          padding-right: 15px;
-        }
-        .icon-arrow-right {
-          float: right;
-        }
+          .padding0{
+            padding-left: 0px;
+            padding-right: 0px;
+          }
+          .padding15{
+            padding-left: 15px;
+            padding-right: 15px;
+          }
+          .icon-arrow-right {
+            float: right;
+          }
         </style>
           <div class="col-lg-12  col-xs-12 padding0">
             <div class="modal-body">
@@ -98,20 +98,28 @@
             </div>
             <!-- <i class="material-icons " style="font-size:36px;">highlight_off</i> -->
 
-              <div>
+            <div>
+              <div class="row">
+              <div class="col-xs-12 col-md-8 col-md-offset-2">
                 <img ng-class="{imgEdit: isLogged}"
                   class="img-responsive img-centered topImg"
                   style="max-width:100%; margin-bottom: 13px;"
-                  src="{{item.img}}"
+                  ng-src="{{item.img}}"
                   ng-show="(!picFile || true) && item.mediaType == 'image'"
                   <% if @isLogged then%>
                     onclick="$('#imgSelect').trigger('click');"
                   <% end %>
                 />
-                <video ng-show="item.img_ && item.mediaType == 'video'" ng-src="{{item.img_}}"   width="320" height="240" controls>
-                </video>
-                <video ng-show="!item.img_ && item.mediaType == 'video'" ng-src="{{item.img}}"  width="320" height="240" controls>
-                </video>
+                <div class=row>
+                <div align="center" class="col-xs-12 col-md-12 " >
+                  <video autoplay=”false” ng-show="item.img_ && item.mediaType == 'video'" ng-src="{{item.img_}}"   width=100% controls="true" class="embed-responsive-item">
+                  </video>
+                  <video autoplay=”false” ng-show="!item.img_ && item.mediaType == 'video'" ng-src="{{item.img}}"  width=100%  controls="true" class="embed-responsive-item">
+                  </video>
+                </div>
+              </div>
+              </div>
+            </div>
                 <div ng-show="isLogged && !imgJaSubiu" >
                   <i ng-show="myForm.file.$error.maxSize">Arquivo muito pesado
                          {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
@@ -133,11 +141,11 @@
                     ng-show=isLogged
                     ngf-select = "uploadPic(picFile)"
                     ng-model="picFile" name="file"
-                    accept="image/*, video/*" ngf-max-size="30MB"
+                    accept="image/*" ngf-max-size="30MB"
                     required ngf-model-invalid="errorFile"
                     ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
                     style="display: none;"
-                    ngf-pattern="'.pdf,.jpg,video/*,!.jog'"
+                    ngf-pattern="'.jpg,!.jog'"
                     ngf-resize="{width: 800, height: 800}"
                     ngf-validate="{size: {min: 10, max: '30MB'}}"
                     />
@@ -150,11 +158,11 @@
                     ng-show=isLogged
                     ngf-select = "uploadVideo(picFile)"
                     ng-model="picFile" name="file"
-                    accept="image/*, video/*" ngf-max-size="30MB"
+                    accept="video/*" ngf-max-size="30MB"
                     required ngf-model-invalid="errorFile"
                     ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
                     style="display: none;"
-                    ngf-pattern="'.pdf,.jpg,video/*,!.jog'"
+                    ngf-pattern="'video/*,!.jog'"
                     ngf-resize="{width: 800, height: 800}"
                     ngf-validate="{size: {min: 10, max: '30MB'}}"
                     />
@@ -163,12 +171,9 @@
                   </label>
                   <!-- ng-Change = "uploadPic(picFile)" -->
                   <!--button ng-show="picFile != undefined" type="submit" ng-click="uploadPic(picFile)">Enviar</button-->
-                  <a href style="margin-left:10px;" ng-click="item.mediaType = 'video'; saveDiv('item.mediaType')">Anexar vídeo</a>
-
+                  <!--a href style="margin-left:10px;" ng-click="item.mediaType = 'video'; saveDiv('item.mediaType')">Anexar vídeo</a-->
                 </div>
-
-
-                <ul>
+              <ul>
       <span class="progress" ng-show="file.progress >= 0">
         <div style="width:{{file.progress}}%"
             ng-bind="file.progress + '%'"></div>
