@@ -12,10 +12,11 @@ var mod = angular.module("myapp", ['cloudinary','videosharing-embed','ngImageCom
 mod.filter( 'safeUrl', [   '$sce',
   function( $sce ){
     return function(url){
+      console.log("url::>",url);
       if (url) {
         url = url.toString()
         url = url.split("/")[url.split("/").length-2]+"/"+url.split("/")[url.split("/").length-1]
-        return $sce.trustAsResourceUrl("http://res.cloudinary.com/radiando/video/upload/c_fill,h_260,w_360/v"+parseInt(Math.random()*1000000)+"/"+url+".jpg")
+        return $sce.trustAsResourceUrl("http://res.cloudinary.com/radiando/video/upload/c_crop,h_260,w_360/"+url+".jpg")
       }
     }
   }

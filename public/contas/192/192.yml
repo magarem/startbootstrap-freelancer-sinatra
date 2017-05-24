@@ -7,61 +7,54 @@ info:
   description: Site portfolio
   author: marcelo magalhaes
   created: 
-  modified: 2017-05-20 03:02:30.956983425 Z
+  modified: 2017-05-23 18:20:46.775582515 Z
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
-    label: Maria Clara!
+    label: João personal
     img: 
   menu:
   - portfólio2
   - sobre
   - contato
 head:
-  backgroundColor: hsl(0, 21%, 43%)
-  backgroundUrl: "/styleBackgrounds/abstract_2_00-wallpaper-1440x900.jpg"
+  backgroundColor: hsl(0, 27%, 31%)
+  backgroundUrl: "/styleBackgrounds/abstract_sun_rays_2-wallpaper-1440x900.jpg"
   backgroundVideoShow: false
   backgroundVideo: dq2iQNdwlTI
-  fontColor: hsl(223, 20%, 28%)
-  avatar: http://res.cloudinary.com/radiando/image/upload/v1494728429/192/avatar.jpg?1495249398
-  txt1: IDmaria clara!
-  txt2: filhota punk!
+  fontColor: hsl(223, 34%, 91%)
+  avatar: http://res.cloudinary.com/radiando/image/upload/v1494728429/192/avatar.jpg?1495466230
+  txt1: Boa saúde!
+  txt2: bem vindo
   show:
     avatar: true
     txt1: true
     txt2: true
-    txtShadow: false
+    txtShadow: true
 portfolio:
   label: portfólio2
   itemsTags:
+  - asa
   - classica
+  - reggae
+  - selva
   items:
   - id: 192-1483977341960
-    titulo: açai2
+    titulo: Personal runner
     mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1495249300/192/192-1483977341960
+    img: http://res.cloudinary.com/radiando/image/upload/v1495466296/192/192-1483977341960
     video: https://www.youtube.com/watch?v=fpHabwkWrpk
-    txt: Fggg
+    txt: Nessa atividade criamos grupos...
     nome: ''
     site: 
     data: 
     servico: 
-    tags: []
+    tags:
+    - asa
     cliente: 
-  - id: 192-1495249462901
-    titulo: ''
-    mediaType: video
-    img: {}
-    txt: ''
-    nome: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags: ''
-    img_: {}
   - id: 192-1488682337148
     titulo: teste
-    img: http://res.cloudinary.com/radiando/image/upload/v1495248948/192/192-1488682337148
+    img: http://res.cloudinary.com/radiando/video/upload/v1495515340/192/192-1488682337148
     txt: 
     nome: ''
     site: ''
@@ -69,12 +62,12 @@ portfolio:
     servico: ''
     tags:
     - classica
-    mediaType: image
+    mediaType: video
     video: https://www.youtube.com/watch?v=O6NRLYUThrY
   - id: 192-1483898166846
     titulo: Na tijela
-    mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1495249280/192/192-1483898166846
+    mediaType: video
+    img: http://res.cloudinary.com/radiando/video/upload/v1495490082/192/192-1483898166846
     video: https://vimeo.com/32172090
     txt: Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais
       precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias
@@ -87,7 +80,39 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: []
+    tags:
+    - reggae
+  - id: 192-1495493977807
+    titulo: ''
+    mediaType: video
+    img: http://res.cloudinary.com/radiando/video/upload/v1495494014/192/192-1495493977807
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495515024167
+    titulo: ''
+    mediaType: video
+    img: http://res.cloudinary.com/radiando/video/upload/v1495515277/192/192-1495515024167
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495562753024
+    titulo: ''
+    mediaType: video
+    img: http://res.cloudinary.com/radiando/video/upload/v1495563548/192/192-1495562753024
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - selva
 about:
   label: sobre
   body1: super textossdsd fdgygvtfdgdfg<br>FgfdgDF<br>GDF<br>GDF<br>G
