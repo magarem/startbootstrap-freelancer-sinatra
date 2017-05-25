@@ -7,7 +7,7 @@ info:
   description: Site portfolio
   author: marcelo magalhaes
   created: 
-  modified: 2017-05-23 18:20:46.775582515 Z
+  modified: 2017-05-25 13:52:13.797891879 Z
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
@@ -39,6 +39,39 @@ portfolio:
   - reggae
   - selva
   items:
+  - id: 192-1495719884395
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v196217/192/192-1495719884395
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495718919116
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v464120/192/192-1495718919116
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495718795872
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v483773/192/192-1495718795872
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
   - id: 192-1483977341960
     titulo: Personal runner
     mediaType: image
@@ -113,6 +146,128 @@ portfolio:
     servico: ''
     tags:
     - selva
+  - id: 192-1495717093253
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1495717108/192/192-1495717093253
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495717986998
+    titulo: lll
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1495718100/192/192-1495717986998
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495718224849
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1495718230/192/192-1495718224849
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495718287667
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1495718292/192/192-1495718287667
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495718344378
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1495718350/192/192-1495718344378
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495718722277
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1495718727/192/192-1495718722277
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495718976683
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1495718982/192/192-1495718976683
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495719233913
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1495719239/192/192-1495719233913
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495719820004
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v372292/192/192-1495719820004
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495719329898
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1495719335/192/192-1495719329898
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495720528783
+    titulo: ''
+    mediaType: video
+    img: http://res.cloudinary.com/radiando/video/upload/v475957/192/192-1495720528783
+    img_: http://res.cloudinary.com/radiando/video/upload/v475957/192/192-1495720528783
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: 192-1495720413092
+    titulo: ''
+    mediaType: video
+    img: http://res.cloudinary.com/radiando/video/upload/v1495720434/192/192-1495720413092
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
 about:
   label: sobre
   body1: super textossdsd fdgygvtfdgdfg<br>FgfdgDF<br>GDF<br>GDF<br>G

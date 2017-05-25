@@ -83,7 +83,7 @@
            <div class="thumbnail">
                <a href=javascript:void(0); class="portfolio-link" style="text-align: center;" ng-click="preOpen(item);">
                  <div class="imgBox" ng-if="item.mediaType != 'video'" back-img="{{item.img}}"></div>
-                 <div class="imgBox" ng-if="item.mediaType == 'video'" back-img="{{item.img | safeUrl}}"></div>
+                 <div class="imgBox" ng-if="item.mediaType == 'video'" back-img="{{item.img | safeUrlVideo}}"></div>
                  <p ng-if="item.titulo.length == 0">&nbsp;</p>
                  <p ng-if="item.titulo.length > 0"><strong>{{item.titulo | limitTo:30}}</strong></p>
                </a>

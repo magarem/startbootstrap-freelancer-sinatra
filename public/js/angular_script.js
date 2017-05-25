@@ -9,14 +9,28 @@ var mod = angular.module("myapp", ['cloudinary','videosharing-embed','ngImageCom
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap']);
+mod.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist(['**']);
+});
 mod.filter( 'safeUrl', [   '$sce',
+  function( $sce ){
+    return function(url){
+      console.log("url::>",url);
+      if (url) {
+        return $sce.trustAsResourceUrl(url)
+      }
+    }
+  }
+]);
+mod.filter( 'safeUrlVideo', [   '$sce',
   function( $sce ){
     return function(url){
       console.log("url::>",url);
       if (url) {
         url = url.toString()
         url = url.split("/")[url.split("/").length-2]+"/"+url.split("/")[url.split("/").length-1]
-        return $sce.trustAsResourceUrl("http://res.cloudinary.com/radiando/video/upload/c_crop,h_260,w_360/v"+parseInt(Math.random()*1000000)+"/"+url+".jpg")
+        //return $sce.trustAsResourceUrl("http://res.cloudinary.com/radiando/video/upload/c_crop,h_260,w_360/v"+parseInt(Math.random()*1000000)+"/"+url+".jpg")
+        return "http://res.cloudinary.com/radiando/video/upload/c_crop,h_260,w_360/v"+parseInt(Math.random()*1000000)+"/"+url+".jpg"
       }
     }
   }
@@ -1461,11 +1475,10 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     delImg(id);
   });
 
-  //$rootScope.$on("ImgChange", function(event, src, id, siteNome, flgSetAllPath){
-  //  flgSetAllPath = flgSetAllPath || false;
-  //  console.log("src -->", src)
-    // ImgChange(src, id, siteNome, flgSetAllPath)
-  //});
+  $rootScope.$on("ImgChange", function(event, id, src){
+    console.log("id, src: ", id, src)
+    ImgChange(id, src)
+  });
 
 
   $rootScope.$on("portfolioItemsTags_update", function(event){
@@ -1531,6 +1544,17 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     console.log("portfolio.items[0].img --> ", $scope.portfolio.items[0].img)
   }
  */
+
+  var ImgChange = function (id, src){
+
+    console.log("id:", id)
+    $scope.portfolio.items.filter(function(el) {
+      console.log("el:>", el)
+      return el.id === id; // Filter out the appropriate one
+    }).img = src; // Get result and access the foo property
+    //console.log("portfolio.items[0].img --> ", $scope.portfolio.items[0].img)
+  }
+
   var videoThumbChange = function (src, id, conta){
     //Seleciona o item pelo ID
     $scope.portfolio.items.filter(function(v) {
@@ -1562,8 +1586,9 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     itemNew = {
       "id"     : newId,
       "titulo" : "",
-      "mediaType" : "imagem",
-      "img"    : "http://placehold.it/360x260/e67e22/fff/imagem",
+      "mediaType" : "image",
+      "img"    : "",
+      "img_"   : "",
       "txt"    : "",
       "nome"   : "",
       "site"   : "",
@@ -1800,7 +1825,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   $scope.item.img_ = "";
 
   $scope.uploadPic = function(file) {
-    $scope.UpMsg=true;
+    $scope.UpMsg = true;
     $scope.searchButtonText = 'Enviando'
     //Pegando a extenção do arquivo
     //var dotIndex = file.name.lastIndexOf('.');
@@ -1820,14 +1845,16 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
         function (response) {
           $timeout(
             function () {
-              $scope.portfolio
               file.result = response.data;
               console.log("siteNome:", siteNome)
               //$rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
               //src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
               src = "http://res.cloudinary.com/radiando/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name;
               //src = siteNome+"/"+new_name+"?"+parseInt(Math.random()*1000000)
-              $scope.item.img = $sce.trustAsResourceUrl(src)
+              //$scope.item.img = $sce.trustAsResourceUrl(src)
+              console.log("$scope.item.img:", $scope.item.img);
+              $scope.item.img = src
+              //$rootScope.$emit("ImgChange", $scope.item.id, src);
               $scope.item.mediaType = "image"
               $scope.imgJaSubiu = true;
               $scope.imgNewSelected = false;
@@ -1877,8 +1904,10 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
               //src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
               src = "http://res.cloudinary.com/radiando/video/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name;
               //src = siteNome+"/"+new_name
-              $scope.item.img = $sce.trustAsResourceUrl(src.toString())
-              $scope.item.img_ = $sce.trustAsResourceUrl(src.toString())
+              // $scope.item.img = $sce.trustAsResourceUrl(src.toString())
+              // $scope.item.img_ = $sce.trustAsResourceUrl(src.toString())
+              $scope.item.img = src.toString()
+              $scope.item.img_ = src.toString()
               $scope.item.mediaType = "video"
               $scope.imgJaSubiu = true;
               $scope.imgNewSelected = false;
