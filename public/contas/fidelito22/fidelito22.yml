@@ -1,15 +1,16 @@
 ---
 info:
-  name: gg
+  name: fidelito22
   email: contato@magaweb.com.br
-  senha: '4030'
+  senha: 0efe
   title: Portfolio geral
   description: Site portfolio
-  author: marcelo magalhaes
+  author: Radiando
+  created: 2017-05-24 17:29:00 utc
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
-    label: gg
+    label: fidelito22
     img: 
   menu:
   - portfólio
@@ -19,9 +20,9 @@ head:
   backgroundColor: hsl(168, 77%, 42%)
   backgroundUrl: 
   fontColor: hsl(0, 0%, 100%)
-  avatar: contas/gg/img/profile.png
-  txt1: texto 1
-  txt2: texto 2
+  avatar: contas/fidelito22/img/profile.png
+  txt1: 
+  txt2: 
   show:
     avatar: true
     txt1: true
@@ -31,8 +32,9 @@ portfolio:
   label: portfólio
   itemsTags: 
   items:
-  - id: gg-b7a9dbd714
-    titulo: titulo
+  - id: fidelito22-3fdc960d80
+    titulo: 
+    mediaType: imagem
     img: http://placehold.it/360x260/e67e22/fff
     txt: 
     nome: 
@@ -42,8 +44,8 @@ portfolio:
     tags: 
 about:
   label: sobre
-  body1: texto 1
-  body2: texto 2
+  body1: 
+  body2: 
 contact:
   label: contato
 footer:
@@ -53,4 +55,4 @@ footer:
     googleplus: googleplus
     twitter: twitter
     linkedin: linkedin
-  about_resumo: texto de resumo
+  about_resumo: 

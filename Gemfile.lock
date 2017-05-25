@@ -54,6 +54,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    urlcrypt (0.1.1)
     video_thumb (0.1.2)
       json
       nokogiri
@@ -71,6 +72,7 @@ DEPENDENCIES
   pry
   sinatra
   thin
+  urlcrypt (~> 0.1.1)
   video_thumb
 
 BUNDLED WITH

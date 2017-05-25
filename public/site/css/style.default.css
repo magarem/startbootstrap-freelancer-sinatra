@@ -1,10 +1,10 @@
-/* 
-========================================= 
-========================================= 
+/*
+=========================================
+=========================================
 
-Startup Template By Bootstrapious.com 
+Startup Template By Bootstrapious.com
 
-========================================= 
+=========================================
 ========================================= */
 /* variant 4 - red */
 /*
@@ -27,7 +27,7 @@ header {
 }
 section {
   position: relative;
-  padding-top: 90px;
+  padding-top: 50px;
   padding-bottom: 90px;
 }
 section.background-gray-lighter {
@@ -88,7 +88,7 @@ section.background-secondary {
   margin: 0 -15px;
 }
 .margin-top {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 .margin-top--big {
   margin-top: 60px !important;

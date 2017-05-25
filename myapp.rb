@@ -13,6 +13,7 @@ require "aescrypt"
 require 'open-uri'
 require 'video_thumb'
 require 'cloudinary'
+require 'URLcrypt'
 
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
 enable :sessions
@@ -83,7 +84,7 @@ before do
 
   #Verifica se está sendo chamado o site principal
   if @url_full == "localhost/" or @url_full == "radiando.net/" then
-    redirect "http://#{@url_full}/site/index.html"
+    redirect "http://#{@url_full}site/index.html"
   end
 
   #Pega o nome do site
@@ -107,43 +108,43 @@ before do
   end
 end
 
-get "/t/:str" do
-  # for more info, see http://ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html
+get "/crypto" do
+      # for more info, see http://ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html
 
-str = params[:str]
+    str = params[:str]
 
-require 'openssl'
-require 'digest/sha1'
-require 'uri'
-# create the cipher for encrypting
-cipher = OpenSSL::Cipher::Cipher.new("aes-256-cbc")
-cipher.encrypt
+    puts "str: #{str}"
 
-# you will need to store these for later, in order to decrypt your data
-key = Digest::SHA1.hexdigest("yourpass")
-iv = cipher.random_iv
+    # encrypt and encode with 256-bit AES
+    # one-time setup, set this to a securely random key with at least 256 bits, see below
+    URLcrypt.key = 'jkj jkh kjh jkh kj jkh kjh kjh kjhkj hk'
 
-# load them into the cipher
-cipher.key = key
-cipher.iv = iv
+    # now encrypt and decrypt!
+    URLcrypt.encrypt(str)        # => "sgmt40kbmnh1663nvwknxk5l0mZ6Av2ndhgw80rkypnp17xmmg5hy"
 
-# encrypt the message
-encrypted = cipher.update('This is a secure message, meet at the clock-tower at dawn.')
-encrypted << cipher.final
-a =  URI.escape(encrypted)
-puts "encrypted: #{a}\n"
+    #URLcrypt.decrypt(str)
 
-# now we create a sipher for decrypting
-cipher = OpenSSL::Cipher::Cipher.new("aes-256-cbc")
-cipher.decrypt
-cipher.key = key
-cipher.iv = iv
+      # => "chunky bacon!"
 
+end
 
-# and decrypt it
-decrypted = cipher.update(URI.unescape(str))
-decrypted << cipher.final
-puts "decrypted: #{decrypted}\n"
+get "/decrypto" do
+      # for more info, see http://ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html
+    str = params[:str]
+
+    puts "str: #{str}"
+
+    # encrypt and encode with 256-bit AES
+    # one-time setup, set this to a securely random key with at least 256 bits, see below
+    URLcrypt.key = 'jkj jkh kjh jkh kj jkh kjh kjh kjhkj hk'
+
+    # now encrypt and decrypt!
+    #URLcrypt.encrypt('chunky / ? # $ bacon!')        # => "sgmt40kbmnh1663nvwknxk5l0mZ6Av2ndhgw80rkypnp17xmmg5hy"
+
+    URLcrypt.decrypt(str)
+
+      # => "chunky bacon!"
+
 end
 #
 #  /adm
@@ -157,7 +158,6 @@ get "/cardPanel" do
   @data = YAML.load_file @data_path
   erb :portfolio_modal_pagina
 end
-
 #
 #  Lê o diretório com os nomes das imagens de fundo
 #
@@ -166,7 +166,6 @@ get "/styleBackgrounds" do
     Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
   end
 end
-
 #
 #  Carregamento do site
 #
@@ -181,7 +180,6 @@ get "/" do
   @data = Dataload.testa (@url)
   erb :index
 end
-
 #
 # Lembrar a senha [Pedido no formulário de login]
 #
@@ -206,17 +204,17 @@ get "/lembrarSenha" do
 
   #Envia email de confirmação da abertura da nova conta
   mailMassege = "
-Olá #{@site_nome},
+ Olá #{@site_nome},
 
-Esse é um email enviado pelo Radiando.net para lembra sua senha administrativa, conforme solicitado.
+ Esse é um email enviado pelo Radiando.net para lembra sua senha administrativa, conforme solicitado.
 
-Sua senha é: #{senha}
+ Sua senha é: #{senha}
 
-Qualquer dúvida entre em contato conosco.
+ Qualquer dúvida entre em contato conosco.
 
-Um abraço,
-Equipe Radiando
-radiando.net"
+ Um abraço,
+ Equipe Radiando
+ radiando.net"
 
   puts mailMassege
 
@@ -231,7 +229,6 @@ radiando.net"
   mail.deliver
   redirect "http://#{@url}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
 end
-
 #
 #  Pedir novo site
 #
@@ -252,9 +249,15 @@ post "/site_new" do
   puts "chave: #{chave}"
 
   password = "!Mariaclara@mArcelamaria#maGa108$"
-  encrypted_data = AESCrypt.encrypt(chave, password)
+
+  # encrypt and encode with 256-bit AES
+  # one-time setup, set this to a securely random key with at least 256 bits, see below
+  URLcrypt.key = password
+
+  # now encrypt!
+  encrypted_data = URLcrypt.encrypt(chave)
+
   puts "encrypted_data: key=#{encrypted_data}"
-  puts "encrypted_data: key=#{URI::encode(encrypted_data)}"
 
   # Verifica se o nome pretendido já existe
   flgNomeJaExiste = File.directory?("public/contas/#{formSiteNome}")
@@ -262,24 +265,24 @@ post "/site_new" do
   if !flgNomeJaExiste
 
     mailMessage = "
-Bem-vindo ao Radiando.net, o seu construtor de site portfólio na web!
+ Bem-vindo ao Radiando.net, o seu construtor de site portfólio na web!
 
-Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
+ Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
 
-http://radiando.net/siteNewDo?k=#{URI::encode(encrypted_data)}
+ http://radiando.net/siteNewDo?k=#{encrypted_data}
 
-Depois de confirmada a sua conta seu site já estará no ar no endereço:
-http://#{formSiteNome}.radiando.net
+ Depois de confirmada a sua conta seu site já estará no ar no endereço:
+ http://#{formSiteNome}.radiando.net
 
-Acesse o site radiando.net para editar o conteúdo de seu site, informando os dados abaixo:
-Nome do portfólio: #{formSiteNome}
-Senha: #{randomSenha}
+ Acesse o site radiando.net para editar o conteúdo de seu site, informando os dados abaixo:
+ Nome do portfólio: #{formSiteNome}
+ Senha: #{randomSenha}
 
-Qualquer dúvida entre em contato conosco.
+ Qualquer dúvida entre em contato conosco.
 
-Um abraço,
-Equipe Radiando
-radiando.net"
+ Um abraço,
+ Equipe Radiando
+ radiando.net"
 
     mail = Mail.new do
       from     'contato@radiando.net'
@@ -297,7 +300,6 @@ radiando.net"
     redirect "site/index.html?msg=Esse nome de portfólio já foi escolhido, favor definir outro"
   end
 end
-
 #
 # Criar novo site
 #
@@ -305,7 +307,15 @@ get "/siteNewDo" do
   chave = params[:k]
   puts "chave: #{chave}"
   password = "!Mariaclara@mArcelamaria#maGa108$"
-  decrypted = AESCrypt.decrypt(chave, password)
+
+  # encrypt and encode with 256-bit AES
+  # one-time setup, set this to a securely random key with at least 256 bits, see below
+  URLcrypt.key = password
+
+  # now encrypt and decrypt!
+  #URLcrypt.encrypt('chunky / ? # $ bacon!')        # => "sgmt40kbmnh1663nvwknxk5l0mZ6Av2ndhgw80rkypnp17xmmg5hy"
+
+  decrypted = URLcrypt.decrypt(chave)
 
   emailParams = decrypted.split("/")
   verifica = emailParams[0]
@@ -369,7 +379,6 @@ get "/siteNewDo" do
   redirect "site/index.html?msg=Erro de chave ou o site já foi criado"
   # "@data_path: #{@data_path}"
 end
-
 #
 # Encerra a seção de edição
 #
@@ -377,7 +386,6 @@ get '/logout' do
   session.clear
   redirect "http://#{@url}"
 end
-
 #
 # Verificação de login
 #
@@ -416,7 +424,6 @@ post '/login_do' do
     redirect "http://#{@url}/site/index.html?cmd=loginErr&site=#{site_nome}"
   end
 end
-
 #
 # Lê os dados do arquivo fonte
 #
@@ -431,14 +438,12 @@ get '/dataLoad' do
   end
   @data.to_json
 end
-
 #
 # Pega os itens do portfólio
 #
 get '/portfolioGetdata' do
   @data["portfolio"]["items"].to_json
 end
-
 #
 # Salva os dados do modo de edição
 #
@@ -486,7 +491,6 @@ post '/objSave' do
   YAML.dump @data, f
   f.close
 end
-
 #
 # Salva os dados do modo de edição
 #
@@ -557,7 +561,6 @@ post '/portfolioSave' do
   YAML.dump @data, f
   f.close
 end
-
 #
 # upload da imagem de capa (circulo)
 #
@@ -597,7 +600,6 @@ post "/backGroundImgUpload" do
     f.close
   end
 end
-
 #
 # upload da imagem de capa (circulo)
 #
@@ -648,7 +650,6 @@ post "/avatarUpload" do
     f.close
   end
 end
-
 #
 #  portfolio: Excluindo um item
 #
@@ -676,7 +677,6 @@ post "/portfolio/delete/:postPortfolioItemId" do
 
   "Delete -> #{@postPortfolioItemId}"
 end
-
 #
 #  Portfolio: Mudança na ordenação
 #
@@ -696,7 +696,6 @@ post "/portfolio/ordena" do
   YAML.dump @data, f
   f.close
 end
-
 #
 #  Portfolio: upload da imagem do item
 #
@@ -768,7 +767,6 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
   YAML.dump( @data, f )
   f.close
 end
-
 #
 #  Portfolio: upload item video
 #
@@ -840,7 +838,6 @@ post "/portfolio/uploadVideo/:postPortfolioItemId" do
   YAML.dump( @data, f )
   f.close
 end
-
 #
 #  Portfolio: adicionando um novo item
 #
@@ -876,7 +873,6 @@ post "/portfolio/add/:postPortfolioItemId" do
   YAML.dump @data, f
   f.close
 end
-
 #
 #  Envia um email para o administrados com os dados digitados no formulário de contato
 #

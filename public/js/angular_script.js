@@ -16,7 +16,7 @@ mod.filter( 'safeUrl', [   '$sce',
       if (url) {
         url = url.toString()
         url = url.split("/")[url.split("/").length-2]+"/"+url.split("/")[url.split("/").length-1]
-        return $sce.trustAsResourceUrl("http://res.cloudinary.com/radiando/video/upload/c_crop,h_260,w_360/"+url+".jpg")
+        return $sce.trustAsResourceUrl("http://res.cloudinary.com/radiando/video/upload/c_crop,h_260,w_360/v"+parseInt(Math.random()*1000000)+"/"+url+".jpg")
       }
     }
   }
