@@ -163,7 +163,21 @@ end
 #
 get "/styleBackgrounds" do
   if @isLogged
-    Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
+   img_name = []
+   #Dir.entries("./public/styleBackgrounds").sort.reject { |f| File.directory?(f) }.to_json
+   #cloudinary.api.resources(function(result){},{ type: 'upload', prefix: 'my_folder/' });
+   a = Cloudinary::Api.resources(
+     api_key: '526244569845626',
+     api_secret: 'qpyLf_nv9v40Uummu-ujHESY5e8',
+     cloud_name: 'radiando',
+     type: 'upload',
+     prefix: 'headerBackground/thumbs',
+     max_results: 1000)
+
+   a['resources'].each do |n|
+      img_name << n["url"].split("/").last
+   end
+   img_name.to_json
   end
 end
 #
@@ -564,7 +578,7 @@ end
 #
 # upload da imagem de capa (circulo)
 #
-post "/backGroundImgUpload" do
+post "/backGroundImgUpload__" do
 
   # Pega os parametros
   @filename = params[:file][:filename]
@@ -595,6 +609,40 @@ post "/backGroundImgUpload" do
 
     # Salva o nome da imagem o arquivo fonte
     @data["head"]["backgroundUrl"] = "contas/#{@site_nome}/img/backGround/backGround.jpg?#{Time.now.to_i}"
+    f = File.open @data_path, 'w'
+    YAML.dump @data, f
+    f.close
+  end
+end
+
+post "/backGroundImgUpload" do
+
+  # Pega os parametros
+  @filename = params[:file][:filename]
+  puts "@filename: #{@filename}"
+  file = params[:file][:tempfile]
+  imagem_tipo = params[:file][:type]
+
+   # Autenticação
+  if !@logado then redirect "/" end
+
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+
+  # Testa para ver se é uma imagem que está sendo enviada
+  if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
+    puts "file.size> #{file.size}"
+
+    Cloudinary::Uploader.upload(
+      file,
+      api_key: '526244569845626',
+      api_secret: 'qpyLf_nv9v40Uummu-ujHESY5e8',
+      cloud_name: 'radiando',
+      folder: @site_nome + "/headerBackground",
+      public_id: 'backGround',
+      format: 'jpg')
+
+    @data["head"]["backgroundUrl"] = "http://res.cloudinary.com/radiando/image/upload/v#{Time.now.to_i}/#{@site_nome}/headerBackground/backGround.jpg?#{Time.now.to_i}"
     f = File.open @data_path, 'w'
     YAML.dump @data, f
     f.close
@@ -644,7 +692,7 @@ post "/avatarUpload" do
 
     # Salva o nome da imagem o arquivo fonte
     #@data["head"]["avatar"] = "contas/#{@site_nome}/img/#{@filename}?#{Time.now.to_i}"
-    @data["head"]["avatar"] = "http://res.cloudinary.com/radiando/image/upload/v1494728429/#{@site_nome}/avatar.jpg?#{Time.now.to_i}"
+    @data["head"]["avatar"] = "http://res.cloudinary.com/radiando/image/upload/v#{Time.now.to_i}/#{@site_nome}/avatar.jpg?#{Time.now.to_i}"
     f = File.open @data_path, 'w'
     YAML.dump @data, f
     f.close

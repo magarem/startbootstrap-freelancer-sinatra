@@ -97,7 +97,6 @@
                 </h2>
             </div>
             <!-- <i class="material-icons " style="font-size:36px;">highlight_off</i> -->
-
             <div>
               <div class="row">
               <div class="col-xs-12 col-md-8 col-md-offset-2">
@@ -146,6 +145,7 @@
                     ngf-fix-orientation="true" ng-click="imgJaSubiu=false;"
                     style="display: none;"
                     ngf-pattern="'.jpg,!.jog'"
+                    ngf-resize-if="$width > 800 || $height > 800"
                     ngf-resize="{width: 800, height: 800}"
                     ngf-validate="{size: {min: 10, max: '30MB'}}"
                     />

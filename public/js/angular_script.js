@@ -1193,8 +1193,10 @@ mod.controller('styleSelectCtrl', function ($scope, $http, SiteData) {
 })
 mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, $rootScope, SiteData) {
   $scope.site = {};
+
   SiteData.loadSiteData().then(function(response) {
     $scope.navbar = response.data.navbar;
+    $scope.head = response.data.head;
     $scope.isLogged = response.data["logged"] == true
   })
 
@@ -1202,11 +1204,7 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
   })
   }
-}])
-mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, Upload, $timeout, $http, SiteData, $uibModal) {
 
-  $scope.site = {};
-  $scope.crop_box = false
 
   $scope.options = {
     id: 'fundo',
@@ -1272,21 +1270,8 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   };
 
   $scope.backgroundUrl_set = function(backgroundUrl){
-    $scope.head.backgroundUrl = backgroundUrl
+    $scope.head.backgroundUrl = "http://res.cloudinary.com/radiando/image/upload/headerBackground/"+backgroundUrl
     $scope.saveDiv('head.backgroundUrl')
-  }
-
-  SiteData.loadSiteData().then(function(response) {
-    $scope.head = response.data.head;
-    $scope.picFile = $scope.head.avatar;
-    $scope.isLogged = response.data["logged"] == true
-
-  })
-
-  $scope.saveDiv = function(obj){
-    console.log("obj:", obj)
-    SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
-    })
   }
 
   $scope.imgSelectTriger = function() {
@@ -1295,6 +1280,63 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
       angular.element(el).triggerHandler('click');
     }, 0);
   };
+
+  $scope.uploadPic = function(file) {
+    $scope.UpMsg = true;
+    $scope.searchButtonText = 'Enviando'
+    console.log("file:", file)
+
+    if (file) {
+      file.upload = Upload.upload({
+        url: "/backGroundImgUpload",
+        data: {file: file}
+      });
+
+      file.upload.then(
+        function (response) {
+          $timeout(
+            function () {
+              var siteNome = SiteData.getSiteNome();
+              file.result = response.data;
+              console.log("siteNome:", siteNome)
+              $scope.head.backgroundUrl = "http://res.cloudinary.com/radiando/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/headerBackground/backGround.jpg"
+              $scope.imgJaSubiu = true;
+              $scope.imgNewSelected = false;
+              $scope.picFile = undefined;
+              $scope.searchButtonText = "Enviar";
+              $scope.isDisabled = false;
+              $scope.UpMsg=false;
+           }
+         );
+        },
+        function (response) {
+          if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+        },
+        function (evt) {
+            // Math.min is to fix IE which reports 200% sometimes
+            file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+        }
+      );
+   }
+  }
+
+}])
+mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, Upload, $timeout, $http, SiteData, $uibModal) {
+
+  $scope.site = {};
+  $scope.crop_box = false
+
+  SiteData.loadSiteData().then(function(response) {
+    $scope.head = response.data.head;
+    $scope.picFile = $scope.head.avatar;
+    $scope.isLogged = response.data["logged"] == true
+  })
+
+  $scope.saveDiv = function(obj){
+    console.log("obj:", obj)
+    SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
+    })
+  }
 
   //  avatar img window Modal
   $scope.animationsEnabled = true;
@@ -1315,53 +1357,8 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
     });
   };
 
-  $scope.uploadPic = function(file) {
-    var siteNome = SiteData.getSiteNome();
-    //Pegando a extenção do arquivo
-    var dotIndex = file.name.lastIndexOf('.');
-    var fileExt = file.name.substring(dotIndex);
-
-    file.upload = Upload.upload({
-      url: "https://api.cloudinary.com/v1_1/radiando/upload",
-      url: "https://api.cloudinary.com/v1_1/radiando/upload",
-      data: {
-        upload_preset: 'iby0ddnx',
-        tags: 'myphotoalbum',
-        disableImageResize: false,
-    imageMaxWidth: 800,                           // 800 is an example value
-    imageMaxHeight: 600,                          // 600 is an example value
-    maxFileSize: 20000000,                        // 20MB is an example value
-    loadImageMaxFileSize: 20000000,               // default is 10MB
-    acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
-    imageCrop: true, // Force cropped images
-        context: 'photo=t1',
-          file: file
-      }
-    });
-
-     file.upload = Upload.upload({
-       url: '/backGroundImgUpload',
-       data: {file: file},
-     });
-
-
-     file.upload.then(function (response) {
-       $timeout(function () {
-         file.result = response.data;
-         console.log("file.result:", file);
-         $scope.head.backgroundUrl = "/contas/"+siteNome+"/img/backGround/backGround.jpg?decache=" + Math.random()
-
-       });
-     }, function (response) {
-       if (response.status > 0)
-         $scope.errorMsg = response.status + ': ' + response.data;
-     }, function (evt) {
-       // Math.min is to fix IE which reports 200% sometimes
-       file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-       //$scope.site.head.backgroundUrl = "/contas/"+siteNome+"/img/backGround/backGround"+fileExt+"?decache=" + Math.random()
-     });
-     }
 }])
+
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
 
   $scope.searchButtonText = "Enviar";

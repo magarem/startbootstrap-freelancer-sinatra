@@ -163,13 +163,63 @@
       .isLogged:hover {
         border: 2px dashed #0090D2;}
    <% end %>
+
 </style>
+<style>
+.hamburger {
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.line {
+  width: 20px;
+  height: 4px;
+  background: #BCAD90;
+  margin-bottom: 2px;
+}
+
+.menu {
+  width: 200px;
+  height: 100%;
+  background: #BCAD90;
+  position: fixed;
+  top: 0;
+  left: -320px;
+  transition: left .1s;
+}
+
+.menu-item:first-child {
+  margin-top: 180px;
+}
+
+.menu--open {
+  left: 0;
+}
+
+.menu-item {
+  color: #fff;
+  width: 100%;
+  padding: 1rem 3rem;
+  box-sizing: border-box;
+}
+
+.menu-item:hover {
+  background: #91966E;
+  cursor: pointer;
+}
+</style>
+
 <header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-color': head.backgroundColor, 'color': head.fontColor, 'background-image': head.backgroundUrl ? 'url(' + head.backgroundUrl + ')':''}">
 
   <div class="container">
     <div class="row">
       <div class="col-lg-12" >
-        <%= erb :header_controls %>
+        <div class=hamburger>
+            <div class=line></div>
+            <div class=line></div>
+            <div class=line></div>
+        </div>
         <img ng-show=head.show.avatar
              class="c isLogged avatarImg"
              ng-src="{{ head.avatar }}"
