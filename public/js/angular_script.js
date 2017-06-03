@@ -1191,9 +1191,9 @@ mod.controller('styleSelectCtrl', function ($scope, $http, SiteData) {
     $scope.items = response.data;
   })
 })
-mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, $rootScope, SiteData) {
+mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope', 'SiteData', function ($scope, Upload, $timeout, $http, $rootScope, SiteData) {
   $scope.site = {};
-
+  $scope.searchButtonText = 'Enviar'
   SiteData.loadSiteData().then(function(response) {
     $scope.navbar = response.data.navbar;
     $scope.head = response.data.head;
@@ -1287,6 +1287,7 @@ mod.controller('navCtrl',['$scope', '$rootScope', 'SiteData', function ($scope, 
     console.log("file:", file)
 
     if (file) {
+      $scope.searchButtonText = 'Enviando'
       file.upload = Upload.upload({
         url: "/backGroundImgUpload",
         data: {file: file}

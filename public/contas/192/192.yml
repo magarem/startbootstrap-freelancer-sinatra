@@ -7,7 +7,7 @@ info:
   description: Site portfolio
   author: marcelo magalhaes
   created: 
-  modified: 2017-06-02 18:46:09.094669412 Z
+  modified: 2017-06-03 02:38:07.134972974 Z
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
@@ -18,11 +18,11 @@ navbar:
   - sobre
   - contato
 head:
-  backgroundColor: hsl(0, 56%, 41%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/abstract_maze_2-wallpaper-1440x900.jpg
+  backgroundColor: hsl(0, 0%, 22%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/v1496457630/192/headerBackground/backGround.jpg?1496457630
   backgroundVideoShow: false
   backgroundVideo: dq2iQNdwlTI
-  fontColor: hsl(223, 25%, 91%)
+  fontColor: hsl(223, 24%, 91%)
   avatar: http://res.cloudinary.com/radiando/image/upload/v1496355495/192/avatar.jpg?1496355495
   txt1: Boa saúde!
   txt2: bem vindo
@@ -30,7 +30,7 @@ head:
     avatar: true
     txt1: true
     txt2: true
-    txtShadow: true
+    txtShadow: false
 portfolio:
   label: portfólio2
   itemsTags:

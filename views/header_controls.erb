@@ -53,28 +53,28 @@
              <!-- END MODULE #3 --><br>
              <form name="myForm">
                  <fieldset>
-                   <button   class="btn btn-primary btn-xs" style="margin-bottom: 15px;" ng-click="backgroundUrl_clear();">Apagar fundo</button>
-                   <label class="myLabel">
-                     <input id=file-input type="file" ngf-select ng-model="picFile2" name="file"
-                       accept="image/*" ngf-max-size="10MB" required
-                       ngf-model-invalid="errorFile" ngf-fix-orientation="true" hidden>
-                     <span>Selecionar arquivo</span>
+                   <div class="btn-group" role="group" aria-label="Basic example">
+                   <button  type="button" class="btn btn-default btn-sm" style="font-size: 12px;" ng-click="backgroundUrl_clear();">Limpar</button>
+                   <label class="btn btn-default btn-file btn-sm"  style="font-size: 12px;">
+                     <input id=file-input ng-show=isLogged type="file" ngf-select= "uploadPic(picFile2)" ng-model="picFile2" name="file"
+                       accept="image/*" ngf-max-size="3MB" required
+                       ngf-model-invalid="errorFile" ngf-fix-orientation="true" hidden
+                       ngf-resize-if="$width > 1500 || $height > 800"
+                       ngf-resize="{width: 1500, height: 800}"
+                       >
+                       <span  ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                       {{ searchButtonText }}
                    </label>
-                   <div  style="margin-left:57px;">
-                     <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile2" class="thumb">
-                     <!-- <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
-                   </div>
+</div>
 
-                   <button ng-show="picFile2"  id=upload-btn class="btn" ng-disabled="!myForm.$valid"
-                           ng-click="uploadPic(picFile2)"><span class="glyphicon glyphicon-upload"></span> Enviar</button>
-                   <br>
+
                    <span class="progress" ng-show="picFile2.progress >= 0">
                      <div style="width:{{picFile2.progress}}%"
                          ng-bind="picFile2.progress + '%'"></div>
                    </span>
-                   <span ng-show="picFile2.result">Upload Successful</span>
+                   <span ng-show="picFile2.result">Imagem enviada!</span>
                    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-                   <i ng-show="myForm.file.$error.maxSize">File too large
+                   <i ng-show="myForm.file.$error.maxSize">Imagem muito pesada
                        {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
                  </fieldset>
                </form>
