@@ -1274,12 +1274,7 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
     $scope.saveDiv('head.backgroundUrl')
   }
 
-  $scope.imgSelectTriger = function() {
-    $timeout(function() {
-      var el = document.getElementById('imgSelect');
-      angular.element(el).triggerHandler('click');
-    }, 0);
-  };
+
 
   $scope.uploadPic = function(file) {
     $scope.UpMsg = true;
@@ -1356,6 +1351,13 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
         }
       }
     });
+  };
+
+  $scope.imgSelectTriger = function() {
+    $timeout(function() {
+      var el = document.getElementById('imgSelect');
+      angular.element(el).triggerHandler('click');
+    }, 0);
   };
 
 }])
