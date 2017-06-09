@@ -45,11 +45,11 @@
         <li class="hidden">
             <a href="#page-top"></a>
         </li>
-        <li class="page-scroll"><a
+        <li ng-if="isLogged || (portfolio.show && portfolio.items.length > 0)" class="page-scroll"><a
             href="#portfolio">{{navbar.menu[0]}}</a></li>
-        <li class="page-scroll"><a
+        <li ng-if="isLogged || (about.show && (about.txt1.length > 0 || about.txt2.length > 0))" class="page-scroll"><a
             href="#about">{{navbar.menu[1]}}</a></li>
-        <li class="page-scroll"><a
+        <li ng-if="isLogged || contact.show" class="page-scroll"><a
             href="#contact">{{navbar.menu[2]}}</a></li>
       </ul>
     </div>

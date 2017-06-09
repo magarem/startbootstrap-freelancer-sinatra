@@ -1,7 +1,7 @@
 <!-- Footer -->
-<footer class="text-center" ng-controller="footerCtrl">
-  <div class="footer-above">
-    <div class="container">
+<footer  class="text-center" ng-controller="footerCtrl">
+  <div  class="footer-above" ng-if="isLogged || contact.show && (footer.endereco.length > 0 || footer.about_resumo.length > 0)">
+    <div class="container" >
       <div class="row">
         <div class="footer-col col-md-4">
           <h3>Endereço</h3>
@@ -13,9 +13,14 @@
             placeholder="Entre com o endereço...">
           </div>
         </div>
-        <div class="footer-col col-md-4">
+        <div ng-if="isLogged ||
+           footer.social.facebook.length > 0 ||
+           footer.social.googleplus.length > 0 ||
+           footer.social.twitter.length > 0 ||
+           footer.social.linkedin.length > 0 ||
+           footer.site.email.length > 0" class="footer-col col-md-4">
           <h3>Links</h3>
-             <form  ng-show="isLogged">
+             <form ng-show="isLogged">
                <div contenteditable="{{isLogged}}"
                  ng-model="footer.social.facebook"
                  strip-br="true"
@@ -78,6 +83,9 @@
             ng-blur="saveDiv('footer.about_resumo')"
             placeholder="Entre com texto...">
           </div>
+        </div>
+        <div ng-if="isLogged" class="checkbox" style="float: right">
+          <label><input type="checkbox"  name="checkbox_footer_show" ng-model="footer.show" ng-change="saveDiv('footer.show')">Mostrar</label>
         </div>
       </div>
     </div>

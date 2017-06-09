@@ -1,45 +1,50 @@
 <!-- About Section -->
-<section class="success" id="about" ng-controller="aboutCtrl">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2>
-          <div contenteditable="{{isLogged}}"
-            ng-model="about.label"
-            strip-br="true"
-            select-non-editable="true"
-            ng-blur="saveDiv('about.label')"
-            placeholder="Entre com o titulo">
+<div ng-controller="aboutCtrl">
+  <section ng-show="isLogged || (about.show && (about.body1.length > 0 || about.body2.length > 0))" class="success" id="about" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2>
+            <div contenteditable="{{isLogged}}"
+              ng-model="about.label"
+              strip-br="true"
+              select-non-editable="true"
+              ng-blur="saveDiv('about.label')"
+              placeholder="Entre com o titulo">
+            </div>
+          </h2>
+          <hr class="star-light">
+        </div>
+      </div>
+      <div ng-show="isLogged" class="checkbox" style="float: right">
+        <label><input type="checkbox"  name="checkbox_about_show" ng-model="about.show" ng-change="saveDiv('about.show')">Mostrar</label>
+      </div>
+      <div class="row">
+          <div class="col-lg-4 col-lg-offset-2"><p>
+            <p contenteditable="{{isLogged}}"
+              ng-model="about.body1"
+              strip-br="true"
+              select-non-editable="true"
+              ng-blur="saveDiv('about.body1')"
+              placeholder="Entre com o texto 1..."
+              >
+            </p>
           </div>
-        </h2>
-        <hr class="star-light">
+          <div class="col-lg-4"><p>
+           <p contenteditable="{{isLogged}}"
+              ng-model="about.body2"
+              strip-br="true"
+              select-non-editable="true"
+              ng-blur="saveDiv('about.body2')"
+              placeholder="Entre com o texto 2...">
+            </p>
+          </div>
+          <!-- <div class="col-lg-8 col-lg-offset-2 text-center">
+              <a href="/s?txt=" class="btn btn-lg btn-outline">
+                  <i class="fa fa-download"></i> Baixe o curriculo
+              </a>
+          </div> -->
       </div>
     </div>
-    <div class="row">
-        <div class="col-lg-4 col-lg-offset-2"><p>
-          <p contenteditable="{{isLogged}}"
-            ng-model="about.body1"
-            strip-br="true"
-            select-non-editable="true"
-            ng-blur="saveDiv('about.body1')"
-            placeholder="Entre com o texto 1..."
-            >
-          </p>
-        </div>
-        <div class="col-lg-4"><p>
-         <p contenteditable="{{isLogged}}"
-            ng-model="about.body2"
-            strip-br="true"
-            select-non-editable="true"
-            ng-blur="saveDiv('about.body2')"
-            placeholder="Entre com o texto 2...">
-          </p>
-        </div>
-        <!-- <div class="col-lg-8 col-lg-offset-2 text-center">
-            <a href="/s?txt=" class="btn btn-lg btn-outline">
-                <i class="fa fa-download"></i> Baixe o curriculo
-            </a>
-        </div> -->
-    </div>
-  </div>
-</section>
+  </section>
+</div>

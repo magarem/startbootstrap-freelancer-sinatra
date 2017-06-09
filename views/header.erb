@@ -156,6 +156,7 @@
     .txtShadow2 {
       text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.5);
     }
+
     <% if @isLogged then%>
       .isLogged{
         border: 2px dashed #ffffff;
@@ -166,52 +167,61 @@
 
 </style>
 <style>
-.hamburger {
-  position: absolute;
-  z-index: 2;
-  cursor: pointer;
-}
+  .hamburger {
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+  }
 
-.line {
-  width: 20px;
-  height: 4px;
-  background: #BCAD90;
-  margin-bottom: 2px;
-}
+  .line {
+    width: 20px;
+    height: 4px;
+    background: #BCAD90;
+    margin-bottom: 2px;
+  }
 
-.menu {
-  width: 200px;
-  height: 100%;
-  background: #BCAD90;
-  position: fixed;
-  top: 0;
-  left: -320px;
-  transition: left .1s;
-}
+  .menu {
+    width: 200px;
+    height: 100%;
+    background: #BCAD90;
+    position: fixed;
+    top: 0;
+    left: -320px;
+    transition: left .1s;
+  }
 
-.menu-item:first-child {
-  margin-top: 180px;
-}
+  .menu-item:first-child {
+    margin-top: 180px;
+  }
 
-.menu--open {
-  left: 0;
-}
+  .menu--open {
+    left: 0;
+  }
 
-.menu-item {
-  color: #fff;
-  width: 100%;
-  padding: 1rem 3rem;
-  box-sizing: border-box;
-}
+  .menu-item {
+    color: #fff;
+    width: 100%;
+    padding: 1rem 3rem;
+    box-sizing: border-box;
+  }
 
-.menu-item:hover {
-  background: #91966E;
-  cursor: pointer;
-}
+  .menu-item:hover {
+    background: #91966E;
+    cursor: pointer;
+  }
 </style>
-
-<header ng-controller="headerCtrl" class="main-wrapper"  ng-style="{'background-color': head.backgroundColor, 'color': head.fontColor, 'background-image': head.backgroundUrl ? 'url(' + head.backgroundUrl + ')':''}">
-
+<style>
+  .portfolio_class {
+      padding-bottom:0px;
+  }
+  .contact_class {
+      padding-top:50px;
+  }
+</style>
+<header ng-controller="headerCtrl" class="main-wrapper"
+        ng-style="{'background-color': head.backgroundColor,
+                   'color': head.fontColor,
+                   'background-image': head.backgroundUrl ? 'url(' + head.backgroundUrl + ')':''}">
   <div class="container">
     <div class="row">
       <div class="col-lg-12" >
@@ -238,8 +248,14 @@
                 >
             </div>
           </span>
-          <hr ng-show="head.show.txt1 && head.show.txt2" class="star-light" ng-class="{txtShadow2: head.show.txtShadow}">
+          <style>
+          hr#head_star.star-light:after, hr#head_star.star-primary:after {
+             color:{{head.fontColor}};
+           }
+          </style>
+          <hr id=head_star ng-show="head.show.ruler" style="color:#e3cf7a; content:'\f006'" ng-style="{'border-color': head.fontColor}" class="star-light" ng-class="{txtShadow2: head.show.txtShadow}">
           <span class="skills">
+            
             <div contenteditable="{{isLogged}}"
                 ng-show=head.show.txt2
                 ng-model="head.txt2"

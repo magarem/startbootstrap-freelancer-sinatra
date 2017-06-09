@@ -29,7 +29,8 @@
 
 
 </style>
-  <section ng-controller="imgGridCtrl as vm" id="portfolio" >
+<div ng-controller="imgGridCtrl as vm" >
+  <section ng-show="isLogged || (portfolio.show && portfolio.items.length > 0)" id="portfolio"  ng-class="{'portfolio_class': !isLogged && (about.body1.length == null && about.body2.length == null)}">
     <div class="container">
        <div class="row">
           <div class="col-lg-12 text-center">
@@ -57,9 +58,7 @@
           <div ng-show="portfolio.itemsTags.length > 0">
             <span ng-show="(vm.data.device != 'iphone' && vm.data.device != 'android')" class="center" >
               <button ng-show="portfolio.itemsTags" class="btn btn-primary" ng-click="filtraZero()">todas</button>
-              <button ng-show="portfolio.itemsTags" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolio.itemsTags track by $index" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
-            </span>
-            <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
+              <button ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
               <select ng-options="tag for tag in portfolio.itemsTags" ng-model="$parent.tagSelect">
                 <option value="">Todos</option>
               </select><br>
@@ -68,9 +67,11 @@
         </div>
     </div>
     <div ng-show="isLogged">
-      <button ng-show="isLogged" type="button" class="btn btn-second" ng-click="portfolio_add()"><i class="glyphicon glyphicon-plus"></i> Novo</button>
+      <button class="btn btn-warning btn-sm" ng-show="isLogged" type="button"  ng-click="portfolio_add()"><i class="glyphicon glyphicon-plus"></i> Novo</button>
       <div class="checkbox" style="float: right">
-        <label><input type="checkbox"  name="my-checkbox" ng-model="isSelected">Arrastar</label>
+        <label><input type="checkbox"  name="my-checkbox" ng-model="isSelected">Arrastar</label>&nbsp;&nbsp;
+        <label><input type="checkbox"  name="checkbox_title" ng-model="portfolio.showGridTitles" ng-change="saveDiv('portfolio.showGridTitles')">Títulos</label>&nbsp;&nbsp;
+        <label><input type="checkbox"  name="checkbox_portfolio_show" ng-model="portfolio.show" ng-change="saveDiv('portfolio.show')">Mostrar</label>
       </div>
     </div>
     <div class="clearfix"></div>
@@ -84,10 +85,14 @@
                <a href=javascript:void(0); class="portfolio-link" style="text-align: center;" ng-click="preOpen(item);">
                  <div class="imgBox" ng-if="item.mediaType != 'video'" back-img="{{item.img}}"></div>
                  <div class="imgBox" ng-if="item.mediaType == 'video'" back-img="{{item.img | safeUrlVideo}}"></div>
-                 <p ng-if="item.titulo.length == 0">&nbsp;</p>
-                 <p ng-if="item.titulo.length > 0"><strong>{{item.titulo | limitTo:30}}</strong></p>
+                 <div ng-if="portfolio.showGridTitles">
+                   <p ng-if="item.titulo.length == 0">&nbsp;</p>
+                   <p ng-if="item.titulo.length > 0"><strong>{{item.titulo | limitTo:30}}</strong></p>
+                 </div>
                </a>
           </div>
         </div>
      </div>
+    </div>
    </section>
+</div>

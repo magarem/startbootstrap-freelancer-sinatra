@@ -7,22 +7,22 @@ info:
   description: Site portfolio
   author: marcelo magalhaes
   created: 
-  modified: 2017-06-03 02:38:07.134972974 Z
+  modified: 2017-06-09 03:19:39.736087471 Z
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
     label: açai saúde
     img: 
   menu:
-  - portfólio2
+  - portfólio
   - sobre
   - contato
 head:
   backgroundColor: hsl(0, 0%, 22%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/v1496457630/192/headerBackground/backGround.jpg?1496457630
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
   backgroundVideoShow: false
   backgroundVideo: dq2iQNdwlTI
-  fontColor: hsl(223, 24%, 91%)
+  fontColor: hsl(223, 18%, 93%)
   avatar: http://res.cloudinary.com/radiando/image/upload/v1496458996/192/avatar.jpg?1496458996
   txt1: Boa saúde!
   txt2: bem vindo
@@ -30,20 +30,19 @@ head:
     avatar: true
     txt1: true
     txt2: true
-    txtShadow: false
+    txtShadow: true
+    ruler: false
 portfolio:
-  label: portfólio2
+  label: portfólio
   itemsTags:
-  - asa
   - classica
-  - reggae
   - selva
   - '22'
   items:
-  - id: 192-1495719884395
+  - id: 192-1496846075099
     titulo: ''
     mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1496257182/192/192-1495719884395
+    img: http://res.cloudinary.com/radiando/image/upload/v962636/192/192-1496846075099
     img_: ''
     txt: ''
     nome: ''
@@ -51,10 +50,10 @@ portfolio:
     data: ''
     servico: ''
     tags: ''
-  - id: 192-1495718919116
+  - id: 192-1496800407056
     titulo: ''
     mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v464120/192/192-1495718919116
+    img: http://res.cloudinary.com/radiando/image/upload/v108697/192/192-1496800407056
     img_: ''
     txt: ''
     nome: ''
@@ -73,19 +72,17 @@ portfolio:
     data: ''
     servico: ''
     tags: ''
-  - id: 192-1483977341960
-    titulo: Personal runner
+  - id: 192-1495719884395
+    titulo: ''
     mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1495466296/192/192-1483977341960
-    video: https://www.youtube.com/watch?v=fpHabwkWrpk
-    txt: Nessa atividade criamos grupos...
+    img: http://res.cloudinary.com/radiando/image/upload/v1496257182/192/192-1495719884395
+    img_: ''
+    txt: ''
     nome: ''
-    site: 
-    data: 
-    servico: 
-    tags:
-    - asa
-    cliente: 
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
   - id: 192-1488682337148
     titulo: teste
     img: http://res.cloudinary.com/radiando/video/upload/v1495515340/192/192-1488682337148
@@ -98,24 +95,6 @@ portfolio:
     - classica
     mediaType: video
     video: https://www.youtube.com/watch?v=O6NRLYUThrY
-  - id: 192-1483898166846
-    titulo: Na tijela
-    mediaType: video
-    img: http://res.cloudinary.com/radiando/video/upload/v1495663934/192/192-1483898166846
-    video: https://vimeo.com/32172090
-    txt: Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais
-      precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias
-      de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos
-      linguísticos e culturais. Seu tamanho é variável.<div>“Conjunto de palavras
-      e frases articuladas, escritas sobre qualquer suporte”[1].</div><div>“Obra escrita
-      considerada na sua redação original e autêntica (por oposição a sumário, tradução,
-      notas, comentários, etc.)”[2].</div>
-    nome: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags:
-    - reggae
   - id: 192-1495493977807
     titulo: ''
     mediaType: video
@@ -126,12 +105,13 @@ portfolio:
     data: ''
     servico: ''
     tags: ''
-  - id: 192-1495515024167
+  - id: 192-1495718919116
     titulo: ''
-    mediaType: video
-    img: http://res.cloudinary.com/radiando/video/upload/v1495515277/192/192-1495515024167
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v464120/192/192-1495718919116
+    img_: ''
     txt: ''
-    cliente: ''
+    nome: ''
     site: ''
     data: ''
     servico: ''
@@ -147,20 +127,21 @@ portfolio:
     servico: ''
     tags:
     - selva
-  - id: 192-1495717093253
+  - id: 192-1495718344378
     titulo: ''
     mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1495717108/192/192-1495717093253
+    img: http://res.cloudinary.com/radiando/image/upload/v1495718350/192/192-1495718344378
     txt: ''
     cliente: ''
     site: ''
     data: ''
     servico: ''
-    tags: ''
-  - id: 192-1495717986998
-    titulo: lll
+    tags:
+    - '22'
+  - id: 192-1495717093253
+    titulo: ''
     mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1495718100/192/192-1495717986998
+    img: http://res.cloudinary.com/radiando/image/upload/v1495717108/192/192-1495717093253
     txt: ''
     cliente: ''
     site: ''
@@ -177,27 +158,16 @@ portfolio:
     data: ''
     servico: ''
     tags: ''
-  - id: 192-1495718287667
-    titulo: ''
+  - id: 192-1495717986998
+    titulo: lll
     mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1495718292/192/192-1495718287667
+    img: http://res.cloudinary.com/radiando/image/upload/v1495718100/192/192-1495717986998
     txt: ''
     cliente: ''
     site: ''
     data: ''
     servico: ''
     tags: ''
-  - id: 192-1495718344378
-    titulo: ''
-    mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1495718350/192/192-1495718344378
-    txt: ''
-    cliente: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags:
-    - '22'
   - id: 192-1495718722277
     titulo: ''
     mediaType: image
@@ -218,21 +188,11 @@ portfolio:
     data: ''
     servico: ''
     tags: ''
-  - id: 192-1495719233913
+  - id: 192-1495720528783
     titulo: ''
-    mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1495719239/192/192-1495719233913
-    txt: ''
-    cliente: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags: ''
-  - id: 192-1495719820004
-    titulo: ''
-    mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v372292/192/192-1495719820004
-    img_: ''
+    mediaType: video
+    img: http://res.cloudinary.com/radiando/video/upload/v475957/192/192-1495720528783
+    img_: http://res.cloudinary.com/radiando/video/upload/v475957/192/192-1495720528783
     txt: ''
     nome: ''
     site: ''
@@ -245,17 +205,6 @@ portfolio:
     img: http://res.cloudinary.com/radiando/image/upload/v1495719335/192/192-1495719329898
     txt: ''
     cliente: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags: ''
-  - id: 192-1495720528783
-    titulo: ''
-    mediaType: video
-    img: http://res.cloudinary.com/radiando/video/upload/v475957/192/192-1495720528783
-    img_: http://res.cloudinary.com/radiando/video/upload/v475957/192/192-1495720528783
-    txt: ''
-    nome: ''
     site: ''
     data: ''
     servico: ''
@@ -276,6 +225,7 @@ about:
   body2: estão aqui ssvvg tvfgggg
 contact:
   label: contato
+  show: true
 footer:
   endereco: Boca do Acre - Amazônia &nbsp;- &nbsp;Brasil
   social:

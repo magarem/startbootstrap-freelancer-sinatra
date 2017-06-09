@@ -325,10 +325,6 @@ get "/siteNewDo" do
   # encrypt and encode with 256-bit AES
   # one-time setup, set this to a securely random key with at least 256 bits, see below
   URLcrypt.key = password
-
-  # now encrypt and decrypt!
-  #URLcrypt.encrypt('chunky / ? # $ bacon!')        # => "sgmt40kbmnh1663nvwknxk5l0mZ6Av2ndhgw80rkypnp17xmmg5hy"
-
   decrypted = URLcrypt.decrypt(chave)
 
   emailParams = decrypted.split("/")
@@ -375,23 +371,22 @@ get "/siteNewDo" do
 
     id = SecureRandom.hex[0, 10].downcase
 
-    data["portfolio"]["items"][0]["id"] = "#{email_site_nome}-#{id}"
+    #data["portfolio"]["items"][0]["id"] = "#{email_site_nome}-#{id}"
 
     #Salva o arquivo fonte
     f = File.open(@data_path, 'w' )
     YAML.dump( data, f )
     f.close
 
+    #Carrega as variáveis de seção
     session[:site_nome] = email_site_nome
     session[:login] = true
 
     # Abre o site recem criado no modo de edição
-    #redirect "#{email_site_nome}.radiando.net"
     redirect "http://#{email_site_nome}.#{request.host_with_port}"
   end
   #Não achou o token
-  redirect "site/index.html?msg=Erro de chave ou o site já foi criado"
-  # "@data_path: #{@data_path}"
+  redirect "site/index.html?msg=Erro de token ou o site já foi criado"
 end
 #
 # Encerra a seção de edição
@@ -480,12 +475,12 @@ post '/objSave' do
   @obj.split(".").each_with_index do |item, index|
     s = s + "['#{item}']"
   end
-  if @val != nil then
+  #if @val != nil then
     comando = "@data#{s} = @val"
     puts @val
     puts "comando: #{comando}"
     eval(comando)
-  end
+  #end
 
   #Confere se é algum item do menu
   case s
@@ -914,6 +909,7 @@ post "/portfolio/add/:postPortfolioItemId" do
   }
 
   # Insere o novo item na array do arquivo fonte
+  @data["portfolio"]["items"] = @data["portfolio"]["items"] || []
   @data["portfolio"]["items"] << portfolioItemNew
 
   # Salva o arquivo modificado

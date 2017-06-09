@@ -1,15 +1,15 @@
 ---
 info:
   name: site
-  email: contato@magaweb.com.br
+  email:
   senha: 1
-  title: Portfólio geral
-  description: Site portfólio
+  title: Portfolio geral
+  description: Site portfolio
   author: Radiando
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
-    label: novo site
+    label: novosite
     img:
   menu:
     - portfólio
@@ -28,24 +28,20 @@ head:
     txt2: true
     txtShadow: false
 portfolio:
-  show: true
   label: portfólio
   itemsTags:
   items:
 about:
-  show: true
   label: sobre
   body1:
   body2:
 contact:
-  show: true
   label: contato
 footer:
-  show: true
   endereco:
   social:
-    facebook:
-    googleplus:
-    twitter:
-    linkedin:
+    facebook: facebook
+    googleplus: googleplus
+    twitter: twitter
+    linkedin: linkedin
   about_resumo:

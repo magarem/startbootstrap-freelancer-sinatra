@@ -1361,7 +1361,6 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   };
 
 }])
-
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
 
   $scope.searchButtonText = "Enviar";
@@ -1468,6 +1467,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   })
 
   $scope.saveDiv = function(obj){
+    console.log(obj, $scope.$eval(obj));
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {})
   }
 
@@ -1598,6 +1598,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     }
     //Salva no disco o novo registro
     SiteData.portAdd(newId).then(function(response) {})
+    $scope.portfolio.items = $scope.portfolio.items || []
     $scope.portfolio.items.push(itemNew)
     $scope.preOpen(itemNew, $scope.portfolio.items.length-1)
   };
@@ -1821,7 +1822,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
   $scope.searchButtonText = "Enviar imagem"
   $scope.searchButtonText2 = "Enviar vídeo"
 
-  $scope.item.img = $sce.trustAsResourceUrl($scope.item.img.toString());
+  //$scope.item.img = $sce.trustAsResourceUrl($scope.item.img.toString());
   $scope.item.img_ = "";
 
   $scope.uploadPic = function(file) {
@@ -2041,6 +2042,7 @@ mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
     $scope.isLogged = response.data["logged"] == true
   })
   $scope.saveDiv = function(obj){
+    console.log($scope.$eval(obj));
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }
@@ -2048,6 +2050,8 @@ mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
 mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
   SiteData.loadSiteData().then(function(response) {
     $scope.siteNome = response.data.info.name
+    $scope.portfolio = response.data.portfolio;
+    $scope.about = response.data.about
     $scope.contact = response.data.contact
     $scope.isLogged = response.data["logged"] == true
   })

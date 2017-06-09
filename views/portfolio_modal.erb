@@ -104,7 +104,7 @@
                   class="img-responsive img-centered topImg"
                   style="max-width:100%; margin-bottom: 13px;"
                   ng-src="{{item.img}}"
-                  ng-show="(!picFile || true) && item.mediaType == 'image'"
+                  ng-show="item.img && item.mediaType == 'image'"
                   <% if @isLogged then%>
                     onclick="$('#imgSelect').trigger('click');"
                   <% end %>
@@ -124,9 +124,9 @@
                          {{errorFile.size / 10000000|number:1}}MB: max 2M</i>
                   <!-- <img ng-show="myForm.file.$valid && !imgJaSubiu" ngf-thumbnail="picFile" class="thumb" > &nbsp;&nbsp; -->
                   <div ng-show="picFile.progress >= 0"></div>
-                  <span class="progress" ng-show="picFile.progress >= 0 && picFile.progress != 100">
+                  <!--span class="progress" ng-show="picFile.progress >= 0 && picFile.progress != 100">
                      <div class="progressBar" style="width:{{picFile.progress}}%;" ng-bind="picFile.progress + '%'"></div>
-                  </span>
+                  </span-->
                   <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
                 </div>
                 <div ng-show="isLogged" style="margin-bottom:10px;">
