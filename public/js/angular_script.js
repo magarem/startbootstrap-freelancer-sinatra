@@ -8,7 +8,6 @@ var mod = angular.module("myapp", ['cloudinary',
                                    'ng.deviceDetector',
                                    'ngSanitize',
                                    'ngFileUpload',
-                                   'ngImgCrop',
                                    'ngCropper',
                                    'ng-sortable',
                                    'ngAnimate',
@@ -1342,6 +1341,10 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   $scope.animationsEnabled = true;
   $scope.openHeaderModal = function () {
     $scope.imgSelectTriger();
+    $timeout(function () {
+      angular.element(document.querySelector('#avatarImgSelect')).click();
+    
+    }, 250);
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       windowTopClass: "portfolio-modal modal",
@@ -1379,8 +1382,6 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.test = "true";
     $scope.searchButtonText = "Enviando";
     //10 seconds delay
-
-
   }
 
   SiteData.loadSiteData().then(function(response) {
@@ -1404,19 +1405,12 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     })
   }
 
-
   // Image upload
   $scope.upload = function (dataUrl) {
     name = "teste"
     console.log("Upload.dataUrltoBlob: ", Upload.dataUrltoBlob(dataUrl, name))
-
     console.log("name:", name)
-
     var uploadURL = '/avatarUpload'
-
-
-
-
     Upload.upload({
       //url: "https://api.cloudinary.com/v1_1/radiando/upload",
       url: uploadURL,
@@ -1459,12 +1453,6 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.head.avatar = $scope.res
     $scope.crop_box = false
   }
-
-
-
-
-
-
    /**
     * Method is called every time file input's value changes.
     * Because of Angular has not ng-change for file inputs a hack is needed -

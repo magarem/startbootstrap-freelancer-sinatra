@@ -60,23 +60,30 @@
       .product .img-responsive {
           margin: 0 auto;
       }
+
+      #img_div {
+      	width: 700px;
+      	max-width: 90%;
+      }
+
+      #img_crop {
+          max-width: 100%;
+          height: auto;
+      }
     </style>
 
 
     <!-- <h3>Imagem de capa</h3><br> -->
-    <!-- <img class="c avatarImg" ng-show="!picFile" ng-src="{{ head.avatar }}"
+    <img class="c avatarImg" ng-show="!dataUrl" ng-src="{{ head.avatar }}"
     <% if @isLogged then%>
       onclick="$('#avatarImgSelect').trigger('click');"
     <% end %>
-    /> -->
+    />
     <!-- <div class='row' *ng-if='picFile != undefined' class="content"> -->
       <!-- <input type="file" onchange="angular.element(this).scope().onFile(this.files[0])"> -->
  <!-- <button ng-click="clear()">Clear selection</button> -->
-
-   <br />
-
-   <div ng-if="dataUrl" class="text-center center-block" style="width: 600px;">
-     <img ng-if="dataUrl" ng-src="{{dataUrl}}" width="400"
+   <div id=img_div ng-if="dataUrl" class="text-center center-block ">
+     <img id=img_crop ng-if="dataUrl" ng-src="{{dataUrl}}"
           class="cropArea_ center-block img-responsive"
           ng-cropper
           ng-cropper-proxy="cropperProxy"
@@ -98,6 +105,7 @@
    <button class="btn btn-primary"  ng-click="cancel()" >Cancelar</button>
    <label class="btn btn-default btn-file">
      <input type="file" id=avatarImgSelect
+           ng-click = "dataUrl = undefined"
            onchange="angular.element(this).scope().onFile(this.files[0])"
            ngf-fix-orientation="true"
            ng-init="imgSelectTriger()"
