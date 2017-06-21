@@ -1,0 +1,19 @@
+Bem-vindo ao Radiando.net!
+
+Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
+
+http://radiando.net/siteNewDo?k=<%=encrypted_data%>
+
+Depois de confirmada a sua conta seu site já estará no ar no endereço:
+http://<%=formSiteNome%>.radiando.net
+
+Para começar a editar o conteúdo do seu site entre no modo de edição pelo endereço:
+http://<%=formSiteNome%>.radiando.net/adm
+Digitando a senha: <%=randomSenha%>
+
+No modo de edição todas as caixas pontilhadas podem ser editadas e seu conteúdo será automaticamente salvo.
+
+Qualquer dúvida entre em contato conosco.
+
+Um abraço,
+radiando.net

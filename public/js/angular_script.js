@@ -1,4 +1,7 @@
-var mod = angular.module("myapp", ['cloudinary','videosharing-embed','ngImageCompress','ngYoutubeEmbed',
+var mod = angular.module("myapp", ['cloudinary',
+                                   'videosharing-embed',
+                                   'ngImageCompress',
+                                   'ngYoutubeEmbed',
                                    'color.picker',
                                    'siyfion.sfTypeahead',
                                    'jsTag',
@@ -6,6 +9,7 @@ var mod = angular.module("myapp", ['cloudinary','videosharing-embed','ngImageCom
                                    'ngSanitize',
                                    'ngFileUpload',
                                    'ngImgCrop',
+                                   'ngCropper',
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap']);
@@ -1361,16 +1365,22 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
   };
 
 }])
-mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
+mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', 'Cropper', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData, Cropper) {
+
+  var file, data;
 
   $scope.searchButtonText = "Enviar";
   $scope.test = "false";
+  $scope.aa = "fidelis";
   $scope.isDisabled = false;
 
   $scope.search = function () {
     $scope.isDisabled = true;
     $scope.test = "true";
     $scope.searchButtonText = "Enviando";
+    //10 seconds delay
+
+
   }
 
   SiteData.loadSiteData().then(function(response) {
@@ -1395,15 +1405,17 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   }
 
 
-
   // Image upload
-  $scope.upload = function (dataUrl, name) {
-
+  $scope.upload = function (dataUrl) {
+    name = "teste"
     console.log("Upload.dataUrltoBlob: ", Upload.dataUrltoBlob(dataUrl, name))
 
     console.log("name:", name)
 
     var uploadURL = '/avatarUpload'
+
+
+
 
     Upload.upload({
       //url: "https://api.cloudinary.com/v1_1/radiando/upload",
@@ -1447,7 +1459,93 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.head.avatar = $scope.res
     $scope.crop_box = false
   }
+
+
+
+
+
+
+   /**
+    * Method is called every time file input's value changes.
+    * Because of Angular has not ng-change for file inputs a hack is needed -
+    * call `angular.element(this).scope().onFile(this.files[0])`
+    * when input's event is fired.
+    */
+   $scope.onFile = function(blob) {
+     Cropper.encode((file = blob)).then(function(dataUrl) {
+       $scope.dataUrl = dataUrl;
+       $timeout(showCropper);  // wait for $digest to set image's src
+     });
+   };
+
+   /**
+    * Croppers container object should be created in controller's scope
+    * for updates by directive via prototypal inheritance.
+    * Pass a full proxy name to the `ng-cropper-proxy` directive attribute to
+    * enable proxing.
+    */
+   $scope.cropper = {};
+   $scope.cropperProxy = 'cropper.first';
+
+   /**
+    * When there is a cropped image to show encode it to base64 string and
+    * use as a source for an image element.
+    */
+   $scope.preview = function(xx) {
+     if (!file || !data) return;
+     Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
+       ($scope.preview || ($scope.preview = {})).dataUrl = dataUrl;
+       $scope.upload(dataUrl)
+     });
+   };
+
+   /**
+    * Use cropper function proxy to call methods of the plugin.
+    * See https://github.com/fengyuanchen/cropper#methods
+    */
+   $scope.clear = function(degrees) {
+     if (!$scope.cropper.first) return;
+     $scope.cropper.first('clear');
+   };
+
+   $scope.scale = function(width) {
+     Cropper.crop(file, data)
+       .then(function(blob) {
+         return Cropper.scale(blob, {width: width});
+       })
+       .then(Cropper.encode).then(function(dataUrl) {
+         ($scope.preview || ($scope.preview = {})).dataUrl = dataUrl;
+       });
+   }
+
+   /**
+    * Object is used to pass options to initalize a cropper.
+    * More on options - https://github.com/fengyuanchen/cropper#options
+    */
+   $scope.options = {
+     maximize: true,
+     aspectRatio: 1 / 1,
+     crop: function(dataNew) {
+       data = dataNew;
+     }
+   };
+
+   /**
+    * Showing (initializing) and hiding (destroying) of a cropper are started by
+    * events. The scope of the `ng-cropper` directive is derived from the scope of
+    * the controller. When initializing the `ng-cropper` directive adds two handlers
+    * listening to events passed by `ng-cropper-show` & `ng-cropper-hide` attributes.
+    * To show or hide a cropper `$broadcast` a proper event.
+    */
+   $scope.showEvent = 'show';
+   $scope.hideEvent = 'hide';
+
+   function showCropper() { $scope.$broadcast($scope.showEvent); }
+   function hideCropper() { $scope.$broadcast($scope.hideEvent); }
+
 }]);
+
+
 mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', '$location', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, $location, SiteData, deviceDetector) {
 
   //Busca informações do device que está utilizando o site
@@ -2037,9 +2135,21 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 }]);
 mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
   $scope.about = {};
+
   SiteData.loadSiteData().then(function(response) {
     $scope.about = response.data.about
     $scope.isLogged = response.data["logged"] == true
+
+    //Verifica se apenas a primeira caixa de texto está preechida
+    //para centraliza-la
+
+    $scope.about_body1_offset = 2;
+
+    if (!$scope.isLogged && ($scope.about.body2 == null || !$scope.about.body2.length > 0)) {
+       $scope.about_body1_offset = 4;
+    }
+    console.log("$scope.about.body1_offset:", $scope.about.body1_offset);
+    console.log("!$scope.isLogged && ($scope.about.body2 == null || !$scope.about.body2.length > 0:", !$scope.isLogged && ($scope.about.body2 == null || !$scope.about.body2.length > 0));
   })
   $scope.saveDiv = function(obj){
     console.log($scope.$eval(obj));

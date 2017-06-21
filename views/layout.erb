@@ -35,7 +35,9 @@
   <!-- <link type="text/css" rel="stylesheet" href="css/bootstrap.css" media="screen"> -->
   <!-- Switcher Only -->
 
+  <link href="/bower_components/ng-cropper/dist/ngCropper.all.css" rel="stylesheet">
 
+  <link href="/bower_components/cropperjs/dist/cropper.css" rel="stylesheet">
   <style>
    [contenteditable=true]:empty:before{
      content: attr(placeholder);
@@ -256,8 +258,12 @@ div.materialpicker-white.selected {
     <!-- UI jQuery (For Module #5 and #6) -->
 
     <script src="/node_modules/cloudinary-angular/dist/cloudinary-angular.min.js"></script>
+    <script src="/bower_components/cropperjs/dist/cropper.js"></script>
 
-<script>
+
+    <script src="/bower_components/ng-cropper/dist/ngCropper.all.js"></script>
+    <script>
+
 /* @ngInject */
 function configure(CloudinaryProvider) {
     CloudinaryProvider.configure({

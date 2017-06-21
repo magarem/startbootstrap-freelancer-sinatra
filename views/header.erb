@@ -217,6 +217,12 @@
   .contact_class {
       padding-top:50px;
   }
+  .avatarImg {
+    height: auto;
+    width: auto;
+    max-width: 250px;
+    max-height: 250px;
+  }
 </style>
 <header ng-controller="headerCtrl" class="main-wrapper"
         ng-style="{'background-color': head.backgroundColor,
@@ -255,7 +261,7 @@
           </style>
           <hr id=head_star ng-show="head.show.ruler" style="color:#e3cf7a; content:'\f006'" ng-style="{'border-color': head.fontColor}" class="star-light" ng-class="{txtShadow2: head.show.txtShadow}">
           <span class="skills">
-            
+
             <div contenteditable="{{isLogged}}"
                 ng-show=head.show.txt2
                 ng-model="head.txt2"

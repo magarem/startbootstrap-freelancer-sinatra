@@ -6,7 +6,7 @@ info:
   title: Portfolio geral
   description: Site portfolio
   author: Radiando
-  modified: 2017-06-09 03:05:36.976061542 Z
+  modified: 2017-06-10 01:47:35.769977423 Z
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
@@ -70,12 +70,14 @@ portfolio:
   show: true
 about:
   label: sobre
-  body1: sdsd
-  body2: ssdsd22
-  show: false
+  body1: dsf dfsd fsdf sdf sdf sd fsdf sdf sdf sdf &nbsp;sdf &nbsp;sjhas jhg dhjdg
+    sahjdgsa dhsgd dg ashjdgas dhjsgd ashdg sahdgas dhasgd sahdg ashdgas dhasg dashd
+    ashd asdhga shdgsa hgasdj sdgj dgsajd&nbsp;
+  body2: dfsdf sdf sdf sdf
+  show: true
 contact:
   label: contato
-  show: false
+  show: true
 footer:
   endereco: asdasda
   social:
@@ -84,4 +86,4 @@ footer:
     twitter: twitter
     linkedin: linkedin
   about_resumo: 
-  show: true
+  show: false

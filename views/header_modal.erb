@@ -6,8 +6,7 @@
           overflow: hidden;
           width:500px;
           height:350px;
-          max-width: 100%;
-      }
+  }
       form .progress {
           line-height: 15px;
       }
@@ -21,40 +20,94 @@
           background: orange;
           width: 0;
       }
+
+
+            .img-container {
+        max-width: 800px;
+        float: left;
+      }
+
+      .preview-container {
+        float: right;
+      }
+
+      .preview-container img {
+        max-width: 400px;
+      }
+
+
+      .container {
+        max-width: 300px;
+        margin: 20px auto;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .cropper-view-box,
+      .cropper-face {
+        border-radius: 50%;
+      }
+
+      .avatarImg {
+        height: auto;
+        width: auto;
+        max-width: 250px;
+        max-height: 250px;
+      }
+
+      .product .img-responsive {
+          margin: 0 auto;
+      }
     </style>
-    <h3>Imagem de capa</h3><br>
-    <img class="c" ng-show="!picFile" ng-src="{{ head.avatar }}"
+
+
+    <!-- <h3>Imagem de capa</h3><br> -->
+    <!-- <img class="c avatarImg" ng-show="!picFile" ng-src="{{ head.avatar }}"
     <% if @isLogged then%>
       onclick="$('#avatarImgSelect').trigger('click');"
     <% end %>
-    />
-    <div class='row' ng-if='picFile != undefined' class="content">
-      <div ngf-drop ng-model="picFile"
-           ngf-pattern="image/*" class="cropArea center-block">
-        <img-crop
-          image="picFile | ngfDataUrl"
-          result-image="croppedDataUrl"
-          ng-init="croppedDataUrl=''" >
-        </img-crop>
-      </div>
+    /> -->
+    <!-- <div class='row' *ng-if='picFile != undefined' class="content"> -->
+      <!-- <input type="file" onchange="angular.element(this).scope().onFile(this.files[0])"> -->
+ <!-- <button ng-click="clear()">Clear selection</button> -->
+
+   <br />
+
+   <div ng-if="dataUrl" class="text-center center-block" style="width: 600px;">
+     <img ng-if="dataUrl" ng-src="{{dataUrl}}" width="400"
+          class="cropArea_ center-block img-responsive"
+          ng-cropper
+          ng-cropper-proxy="cropperProxy"
+          ng-cropper-show="showEvent"
+          ng-cropper-hide="hideEvent"
+          ng-cropper-options="options">
+   </div>
+
+
+
       <br>
-      <button ng-disabled="isDisabled" ng-show="isLogged && picFile" class="btn btn-primary" ng-click="search(); upload(croppedDataUrl, picFile.name)">
+      <button ng-disabled="isDisabled" ng-show="isLogged && dataUrl" class="btn btn-primary" ng-click="search(); preview(preview.dataUrl)">
         <span ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
         {{ searchButtonText }}
       </button>
       <span ng-show="result">Enviado com sucesso</span>
       <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-   </div>
-   <br>
+   <!-- </div> -->
    <button class="btn btn-primary"  ng-click="cancel()" >Cancelar</button>
-   <button id=avatarImgSelect
-           style="display:none"
+   <label class="btn btn-default btn-file">
+     <input type="file" id=avatarImgSelect
+           onchange="angular.element(this).scope().onFile(this.files[0])"
            ngf-fix-orientation="true"
            ng-init="imgSelectTriger()"
            class="btn btn-primary"
            ng-show="isLogged"
            ngf-select
-           ng-model="picFile"
-           accept="image/*">Selecionar imagem</button>
+           accept="image/*"
+           ngf-resize-if="$width > 250 || $height > 250"
+           ngf-resize="{width: 250, height: 250}"
+           >Selecionar imagem...
+  </label>
  </div>
 </script>

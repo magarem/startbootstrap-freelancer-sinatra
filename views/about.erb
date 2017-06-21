@@ -20,18 +20,17 @@
         <label><input type="checkbox"  name="checkbox_about_show" ng-model="about.show" ng-change="saveDiv('about.show')">Mostrar</label>
       </div>
       <div class="row">
-          <div class="col-lg-4 col-lg-offset-2"><p>
+          <div class="col-lg-4 col-lg-offset-{{about_body1_offset}}"><p>
             <p contenteditable="{{isLogged}}"
               ng-model="about.body1"
               strip-br="true"
               select-non-editable="true"
               ng-blur="saveDiv('about.body1')"
-              placeholder="Entre com o texto 1..."
-              >
+              placeholder="Entre com o texto 1...">
             </p>
           </div>
           <div class="col-lg-4"><p>
-           <p contenteditable="{{isLogged}}"
+            <p contenteditable="{{isLogged}}"
               ng-model="about.body2"
               strip-br="true"
               select-non-editable="true"

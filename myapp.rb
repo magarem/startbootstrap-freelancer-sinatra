@@ -15,6 +15,7 @@ require 'video_thumb'
 require 'cloudinary'
 require 'URLcrypt'
 
+set :public_folder, 'public'
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
 enable :sessions
 
@@ -22,31 +23,11 @@ Mail.defaults do
   delivery_method :sendmail
 end
 
-set :public_folder, 'public'
-
 module IndiceArray
   def self.set_site_nome site_nome
     @site_nome = site_nome
   end
 end
-
-configure do
-  # App Paths
-  set :root, File.dirname(__FILE__)
-  set :views, File.dirname(__FILE__) + '/views'
-  set :public_folder, Proc.new { File.join(root, "public") }
-end
-
-helpers do
-  def h(text)
-    Rack::Utils.escape_html(text)
-  end
-
-  def str_clean str
-    str.to_s.gsub("<br>", "\n").gsub(/<\/?[^>]*>/, "").gsub("&nbsp;", "")
-  end
-end
-
 module Dataload
   def Dataload.dataPath
     return "public/contas/{site_nome}/{site_nome}.yml"
@@ -66,6 +47,21 @@ module Dataload
   end
 end
 
+configure do
+  # App Paths
+  set :root, File.dirname(__FILE__)
+  set :views, File.dirname(__FILE__) + '/views'
+  set :public_folder, Proc.new { File.join(root, "public") }
+end
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+
+  def str_clean str
+    str.to_s.gsub("<br>", "\n").gsub(/<\/?[^>]*>/, "").gsub("&nbsp;", "")
+  end
+end
 before do
   headers 'Content-Type' => 'text/html; charset=utf-8'
   # Encoding.default_internal = Encoding::UTF_8
@@ -106,45 +102,6 @@ before do
     session.clear
     redirect "http://#{request.host_with_port}/"
   end
-end
-
-get "/crypto" do
-      # for more info, see http://ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html
-
-    str = params[:str]
-
-    puts "str: #{str}"
-
-    # encrypt and encode with 256-bit AES
-    # one-time setup, set this to a securely random key with at least 256 bits, see below
-    URLcrypt.key = 'jkj jkh kjh jkh kj jkh kjh kjh kjhkj hk'
-
-    # now encrypt and decrypt!
-    URLcrypt.encrypt(str)        # => "sgmt40kbmnh1663nvwknxk5l0mZ6Av2ndhgw80rkypnp17xmmg5hy"
-
-    #URLcrypt.decrypt(str)
-
-      # => "chunky bacon!"
-
-end
-
-get "/decrypto" do
-      # for more info, see http://ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html
-    str = params[:str]
-
-    puts "str: #{str}"
-
-    # encrypt and encode with 256-bit AES
-    # one-time setup, set this to a securely random key with at least 256 bits, see below
-    URLcrypt.key = 'jkj jkh kjh jkh kj jkh kjh kjh kjhkj hk'
-
-    # now encrypt and decrypt!
-    #URLcrypt.encrypt('chunky / ? # $ bacon!')        # => "sgmt40kbmnh1663nvwknxk5l0mZ6Av2ndhgw80rkypnp17xmmg5hy"
-
-    URLcrypt.decrypt(str)
-
-      # => "chunky bacon!"
-
 end
 #
 #  /adm
@@ -217,26 +174,14 @@ get "/lembrarSenha" do
   email = @data["info"]['email']
 
   #Envia email de confirmação da abertura da nova conta
-  mailMassege = "
- Olá #{@site_nome},
-
- Esse é um email enviado pelo Radiando.net para lembra sua senha administrativa, conforme solicitado.
-
- Sua senha é: #{senha}
-
- Qualquer dúvida entre em contato conosco.
-
- Um abraço,
- Equipe Radiando
- radiando.net"
-
-  puts mailMassege
+  mailMessage = ERB.new(File.read('views/email_password_remember.txt')).result(binding)
+  puts mailMessage
 
   mail = Mail.new do
     from     'contato@radiando.net'
     to       email
     subject  'Lembrete de senha'
-    body     mailMassege
+    body     mailMessage
   end
 
   mail.delivery_method :sendmail
@@ -276,27 +221,10 @@ post "/site_new" do
   # Verifica se o nome pretendido já existe
   flgNomeJaExiste = File.directory?("public/contas/#{formSiteNome}")
 
-  if !flgNomeJaExiste
+  if !flgNomeJaExiste then
 
-    mailMessage = "
- Bem-vindo ao Radiando.net, o seu construtor de site portfólio na web!
-
- Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
-
- http://radiando.net/siteNewDo?k=#{encrypted_data}
-
- Depois de confirmada a sua conta seu site já estará no ar no endereço:
- http://#{formSiteNome}.radiando.net
-
- Acesse o site radiando.net para editar o conteúdo de seu site, informando os dados abaixo:
- Nome do portfólio: #{formSiteNome}
- Senha: #{randomSenha}
-
- Qualquer dúvida entre em contato conosco.
-
- Um abraço,
- Equipe Radiando
- radiando.net"
+    mailMessage = ERB.new(File.read('views/email_new_account.txt')).result(binding)
+    puts mailMessage
 
     mail = Mail.new do
       from     'contato@radiando.net'
@@ -308,7 +236,7 @@ post "/site_new" do
     mail.delivery_method :sendmail
     mail.deliver
 
-    # Abre o site recem criado no modo de edição
+    # exibe a confirmação da operção
     redirect "site/index.html?msg=Foi enviado um email de confirmação para #{formUserEmail}"
   else
     redirect "site/index.html?msg=Esse nome de portfólio já foi escolhido, favor definir outro"
@@ -573,43 +501,6 @@ end
 #
 # upload da imagem de capa (circulo)
 #
-post "/backGroundImgUpload__" do
-
-  # Pega os parametros
-  @filename = params[:file][:filename]
-  file = params[:file][:tempfile]
-  imagem_tipo = params[:file][:type]
-
-   # Autenticação
-  if !@logado then redirect "/" end
-  #Carrega os dados do site
-  @data = Dataload.testa (@url)
-
-  # Testa para ver se é uma imagem que está sendo enviada
-  if (imagem_tipo == 'image/png' || imagem_tipo == 'image/jpeg' || imagem_tipo == 'image/gif') && file.size < 10000000 then
-    puts "file.size> #{file.size}"
-    # Salva imagem no disco (upload)
-    @filename = "backGround."+params["file"][:filename].split(".").last.downcase
-    # @filename_after = "avatar.png"
-
-    # Salva o arquivo enviado no servidor
-    File.open("./public/contas/#{@site_nome}/img/backGround/#{@filename}", 'wb') do |f|
-      f.write(file.read)
-    end
-
-    #Converte a imagem para jpg
-    image = MiniMagick::Image.open("./public/contas/#{@site_nome}/img/backGround/#{@filename}")
-    image.format "jpg"
-    image.write "./public/contas/#{@site_nome}/img/backGround/backGround.jpg"
-
-    # Salva o nome da imagem o arquivo fonte
-    @data["head"]["backgroundUrl"] = "contas/#{@site_nome}/img/backGround/backGround.jpg?#{Time.now.to_i}"
-    f = File.open @data_path, 'w'
-    YAML.dump @data, f
-    f.close
-  end
-end
-
 post "/backGroundImgUpload" do
 
   # Pega os parametros
@@ -666,12 +557,15 @@ post "/avatarUpload" do
 
     Cloudinary::Uploader.upload(
       file,
-      api_key: '526244569845626',
-      api_secret: 'qpyLf_nv9v40Uummu-ujHESY5e8',
-      cloud_name: 'radiando',
-      folder: @site_nome,
-      public_id: 'avatar',
-      format: 'jpg')
+      :api_key => '526244569845626',
+      :api_secret => 'qpyLf_nv9v40Uummu-ujHESY5e8',
+      :cloud_name => 'radiando',
+      :crop => :limit,
+      :width => 250,
+      :height => 250,
+      :folder => @site_nome,
+      :public_id => 'avatar',
+      :format => 'jpg')
 
     # Salva imagem no disco (upload)
     #@filename = "avatar."+params["file"][:filename].split(".").last.downcase

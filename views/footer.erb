@@ -1,6 +1,7 @@
 <!-- Footer -->
 <footer  class="text-center" ng-controller="footerCtrl">
-  <div  class="footer-above" ng-if="isLogged || contact.show && (footer.endereco.length > 0 || footer.about_resumo.length > 0)">
+  ???{{isLogged || footer.show && (footer.endereco.length > 0 || footer.about_resumo.length > 0)}}
+  <div  class="footer-above" ng-if="isLogged || footer.show && (footer.endereco.length > 0 || footer.about_resumo.length > 0)">
     <div class="container" >
       <div class="row">
         <div class="footer-col col-md-4">
