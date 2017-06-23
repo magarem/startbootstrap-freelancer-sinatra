@@ -28,18 +28,19 @@ head:
     txt2: true
     txtShadow: false
 portfolio:
-  show: true
   label: portfólio
   itemsTags:
   items:
+  hide: false
 about:
-  show: true
   label: sobre
   body1:
   body2:
+  hide: false
 contact:
   show: true
   label: contato
+  hide: false
 footer:
   show: true
   endereco:
@@ -49,3 +50,4 @@ footer:
     twitter:
     linkedin:
   about_resumo:
+  hide: false

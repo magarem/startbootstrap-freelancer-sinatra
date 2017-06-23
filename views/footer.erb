@@ -1,7 +1,6 @@
 <!-- Footer -->
 <footer  class="text-center" ng-controller="footerCtrl">
-  ???{{isLogged || footer.show && (footer.endereco.length > 0 || footer.about_resumo.length > 0)}}
-  <div  class="footer-above" ng-if="isLogged || footer.show && (footer.endereco.length > 0 || footer.about_resumo.length > 0)">
+  <div  class="footer-above" ng-if="isLogged || !footer.hide && (footer.endereco.length > 0 || footer.about_resumo.length > 0)">
     <div class="container" >
       <div class="row">
         <div class="footer-col col-md-4">
@@ -86,7 +85,7 @@
           </div>
         </div>
         <div ng-if="isLogged" class="checkbox" style="float: right">
-          <label><input type="checkbox"  name="checkbox_footer_show" ng-model="footer.show" ng-change="saveDiv('footer.show')">Mostrar</label>
+          <label><input type="checkbox"  name="checkbox_footer_hide" ng-model="footer.hide" ng-change="saveDiv('footer.hide')">Esconder</label>
         </div>
       </div>
     </div>

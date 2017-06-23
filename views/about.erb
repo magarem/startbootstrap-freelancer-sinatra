@@ -1,6 +1,6 @@
 <!-- About Section -->
 <div ng-controller="aboutCtrl">
-  <section ng-show="isLogged || (about.show && (about.body1.length > 0 || about.body2.length > 0))" class="success" id="about" >
+  <section ng-show="isLogged || (!about.hide && (about.body1.length > 0 || about.body2.length > 0))" class="success" id="about" >
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -17,7 +17,7 @@
         </div>
       </div>
       <div ng-show="isLogged" class="checkbox" style="float: right">
-        <label><input type="checkbox"  name="checkbox_about_show" ng-model="about.show" ng-change="saveDiv('about.show')">Mostrar</label>
+        <label><input type="checkbox"  name="checkbox_about_hide" ng-model="about.hide" ng-change="saveDiv('about.hide')">Esconder</label>
       </div>
       <div class="row">
           <div class="col-lg-4 col-lg-offset-{{about_body1_offset}}"><p>

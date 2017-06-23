@@ -12,6 +12,15 @@ var mod = angular.module("myapp", ['cloudinary',
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap']);
+mod.run(['$http','$rootScope',
+  function ($http, $rootScope) {
+     $http.get('/dataLoad').then(function(response) {
+       $rootScope.siteData = response.data;
+       $rootScope.isLogged = $rootScope.siteData["logged"] == true;
+       console.log("$rootScope.siteData:", $rootScope.siteData);
+     })
+
+}])
 mod.config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist(['**']);
 });
@@ -1195,19 +1204,23 @@ mod.controller('styleSelectCtrl', function ($scope, $http, SiteData) {
   })
 })
 mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope', 'SiteData', function ($scope, Upload, $timeout, $http, $rootScope, SiteData) {
+
   $scope.site = {};
   $scope.searchButtonText = 'Enviar'
-  SiteData.loadSiteData().then(function(response) {
-    $scope.navbar = response.data.navbar;
-    $scope.head = response.data.head;
-    $scope.isLogged = response.data["logged"] == true
-  })
+
+  load = function(){
+    $scope.siteData = $rootScope.siteData;
+    $scope.navbar = $rootScope.siteData.navbar;
+    $scope.head = $rootScope.siteData.head;
+    $scope.isLogged = $rootScope.isLogged;
+  }
+
+  $timeout(load)
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
   })
   }
-
 
   $scope.options = {
     id: 'fundo',
@@ -1277,8 +1290,6 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
     $scope.saveDiv('head.backgroundUrl')
   }
 
-
-
   $scope.uploadPic = function(file) {
     $scope.UpMsg = true;
     $scope.searchButtonText = 'Enviando'
@@ -1320,16 +1331,19 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
   }
 
 }])
-mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, Upload, $timeout, $http, SiteData, $uibModal) {
+mod.controller('headerCtrl',['$scope', '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, $rootScope, Upload, $timeout, $http, SiteData, $uibModal) {
 
   $scope.site = {};
   $scope.crop_box = false
 
-  SiteData.loadSiteData().then(function(response) {
-    $scope.head = response.data.head;
-    $scope.picFile = $scope.head.avatar;
-    $scope.isLogged = response.data["logged"] == true
-  })
+  load = function(){
+    var siteNome    = $rootScope.siteData.info.name
+    $scope.head     = $rootScope.siteData.head;
+    $scope.picFile  = $scope.head.avatar;
+    $scope.isLogged = $rootScope.isLogged
+  }
+
+  $timeout(load)
 
   $scope.saveDiv = function(obj){
     console.log("obj:", obj)
@@ -1343,8 +1357,7 @@ mod.controller('headerCtrl',['$scope', 'Upload', '$timeout', '$http', 'SiteData'
     $scope.imgSelectTriger();
     $timeout(function () {
       angular.element(document.querySelector('#avatarImgSelect')).click();
-    
-    }, 250);
+    }, 300);
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       windowTopClass: "portfolio-modal modal",
@@ -1532,8 +1545,6 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
    function hideCropper() { $scope.$broadcast($scope.hideEvent); }
 
 }]);
-
-
 mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', '$location', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, $location, SiteData, deviceDetector) {
 
   //Busca informações do device que está utilizando o site
@@ -1545,12 +1556,21 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     return parseInt(Math.random()*1000000);
   }
 
-  SiteData.loadSiteData().then(function(response) {
-    var siteNome = response.data.info.name
-    $scope.portfolio = response.data.portfolio;
-    $scope.isLogged = response.data["logged"] == true
+
+  // SiteData.loadSiteData().then(function(response) {
+  //   var siteNome = response.data.info.name
+  //   $scope.portfolio = response.data.portfolio;
+  //   $scope.isLogged = response.data["logged"] == true
+  //   $scope.isSelected = false;
+  // })
+  load = function(){
+    var siteNome = $rootScope.siteData.info.name
+    $scope.portfolio = $rootScope.siteData.portfolio
+    $scope.isLogged = $rootScope.isLogged
     $scope.isSelected = false;
-  })
+  }
+
+  $timeout(load)
 
   $scope.saveDiv = function(obj){
     console.log(obj, $scope.$eval(obj));
@@ -2121,52 +2141,66 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 
 
 }]);
-mod.controller('aboutCtrl', function ($scope, $http, SiteData) {
+mod.controller('aboutCtrl', function ($scope, $rootScope, $timeout, $http, SiteData) {
   $scope.about = {};
 
+  load = function(){
+    $scope.siteData = $rootScope.siteData;
+    $scope.navbar = $rootScope.siteData.navbar;
+    $scope.head = $rootScope.siteData.head;
+    $scope.isLogged = $rootScope.isLogged;
+  }
+
+  $timeout(load)
+
   SiteData.loadSiteData().then(function(response) {
-    $scope.about = response.data.about
-    $scope.isLogged = response.data["logged"] == true
+    $scope.about = $rootScope.siteData.about
+    $scope.isLogged = $rootScope.isLogged;
 
     //Verifica se apenas a primeira caixa de texto está preechida
     //para centraliza-la
-
     $scope.about_body1_offset = 2;
 
     if (!$scope.isLogged && ($scope.about.body2 == null || !$scope.about.body2.length > 0)) {
        $scope.about_body1_offset = 4;
     }
-    console.log("$scope.about.body1_offset:", $scope.about.body1_offset);
-    console.log("!$scope.isLogged && ($scope.about.body2 == null || !$scope.about.body2.length > 0:", !$scope.isLogged && ($scope.about.body2 == null || !$scope.about.body2.length > 0));
+
   })
+
   $scope.saveDiv = function(obj){
     console.log($scope.$eval(obj));
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }
 })
-mod.controller('ContactCtrl', function ($scope, $http, SiteData) {
-  SiteData.loadSiteData().then(function(response) {
-    $scope.siteNome = response.data.info.name
-    $scope.portfolio = response.data.portfolio;
-    $scope.about = response.data.about
-    $scope.contact = response.data.contact
-    $scope.isLogged = response.data["logged"] == true
-  })
+mod.controller('ContactCtrl', function ($scope, $rootScope, $timeout, $http, SiteData) {
+
+
+  load = function(){
+    $scope.siteNome  = $rootScope.siteData.info.name
+    $scope.portfolio = $rootScope.siteData.portfolio;
+    $scope.about     = $rootScope.siteData.about
+    $scope.contact   = $rootScope.siteData.contact
+    $scope.isLogged  = $rootScope.isLogged
+  }
+
+  $timeout(load)
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })
   }
 })
-mod.controller('footerCtrl', function ($scope, $http, SiteData) {
+mod.controller('footerCtrl', function ($scope, $rootScope, $timeout, $http, SiteData) {
 
   $scope.footer = {};
 
-  SiteData.loadSiteData().then(function(response) {
-    $scope.footer = response.data.footer;
-    $scope.isLogged = response.data["logged"] == true
-  })
+  load = function(){
+    $scope.footer = $rootScope.siteData.footer;
+    $scope.isLogged  = $rootScope.isLogged
+  }
+
+  $timeout(load)
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {

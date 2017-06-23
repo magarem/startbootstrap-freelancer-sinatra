@@ -44,13 +44,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="hidden">
             <a href="#page-top"></a>
-        </li>
-        <li ng-if="isLogged || (portfolio.show && portfolio.items.length > 0)" class="page-scroll"><a
-            href="#portfolio">{{navbar.menu[0]}}</a></li>
-        <li ng-if="isLogged || (about.show && (about.txt1.length > 0 || about.txt2.length > 0))" class="page-scroll"><a
-            href="#about">{{navbar.menu[1]}}</a></li>
-        <li ng-if="isLogged || contact.show" class="page-scroll"><a
-            href="#contact">{{navbar.menu[2]}}</a></li>
+        </li>{{(siteDataportfolio.items.length)}}
+        <li ng-if="(!siteData.portfolio.hide && siteData.portfolio.items.length > 0)" class="page-scroll"><a
+            href="#portfolio">{{siteData.portfolio.label}}</a></li>
+        <li ng-if="(!siteData.about.hide && (!siteData.about.txt1.length > 0 || !siteData.about.txt2.length > 0))" class="page-scroll"><a
+            href="#about">{{siteData.about.label}}</a></li>
+        <li ng-if="!siteData.contact.hide" class="page-scroll"><a
+            href="#contact">{{siteData.contact.label}}</a></li>
       </ul>
     </div>
       <!-- /.navbar-collapse -->
