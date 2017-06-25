@@ -364,6 +364,20 @@ end
 #
 # Lê os dados do arquivo fonte
 #
+get '/dataLoad2' do
+  # Pega os dados do arquivo fonte
+  if File.exist? File.expand_path "./public/contas/"+@site_nome then
+    #Carrega os dados do site
+    @data_path = "public/contas/{site_nome}/{site_nome}.json"
+    @data_path.gsub! "{site_nome}", @site_nome
+    @data = YAML.load_file @data_path
+    @data["logged"] = session[:logado]
+  end
+  @data
+end
+#
+# Lê os dados do arquivo fonte
+#
 get '/dataLoad' do
   # Pega os dados do arquivo fonte
   if File.exist? File.expand_path "./public/contas/"+@site_nome then
@@ -400,7 +414,7 @@ post '/objSave' do
 
   # Confere qual foi a ordem passada
   s = ""
-  @obj.split(".").each_with_index do |item, index|
+  @obj.split(".").drop(1).each_with_index do |item, index|
     s = s + "['#{item}']"
   end
   #if @val != nil then

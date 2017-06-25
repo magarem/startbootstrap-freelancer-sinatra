@@ -2,27 +2,25 @@
   <div class="modal-body">
     <style>
       .cropArea {
-          background: #E4E4E4;
-          overflow: hidden;
-          width:500px;
-          height:350px;
-  }
+        background: #E4E4E4;
+        overflow: hidden;
+        width:500px;
+        height:350px;
+      }
       form .progress {
-          line-height: 15px;
+        line-height: 15px;
       }
       .progress {
-          display: inline-block;
-          width: 100px;
-          border: 3px groove #CCC;
+        display: inline-block;
+        width: 100px;
+        border: 3px groove #CCC;
       }
       .progress div {
-          font-size: smaller;
-          background: orange;
-          width: 0;
+        font-size: smaller;
+        background: orange;
+        width: 0;
       }
-
-
-            .img-container {
+      .img-container {
         max-width: 800px;
         float: left;
       }
@@ -34,33 +32,26 @@
       .preview-container img {
         max-width: 400px;
       }
-
-
       .container {
         max-width: 300px;
         margin: 20px auto;
       }
-
       img {
         max-width: 100%;
       }
-
       .cropper-view-box,
       .cropper-face {
         border-radius: 50%;
       }
-
       .avatarImg {
         height: auto;
         width: auto;
         max-width: 250px;
         max-height: 250px;
       }
-
       .product .img-responsive {
           margin: 0 auto;
       }
-
       #img_div {
       	width: 700px;
       	max-width: 90%;
@@ -71,10 +62,8 @@
           height: auto;
       }
     </style>
-
-
     <!-- <h3>Imagem de capa</h3><br> -->
-    <img class="c avatarImg" ng-show="!dataUrl" ng-src="{{ head.avatar }}"
+    <img class="c avatarImg" ng-show="!dataUrl" ng-src="{{ siteData.head.avatar }}"
     <% if @isLogged then%>
       onclick="$('#avatarImgSelect').trigger('click');"
     <% end %>
@@ -84,23 +73,20 @@
  <!-- <button ng-click="clear()">Clear selection</button> -->
    <div id=img_div ng-if="dataUrl" class="text-center center-block ">
      <img id=img_crop ng-if="dataUrl" ng-src="{{dataUrl}}"
-          class="cropArea_ center-block img-responsive"
-          ng-cropper
-          ng-cropper-proxy="cropperProxy"
-          ng-cropper-show="showEvent"
-          ng-cropper-hide="hideEvent"
-          ng-cropper-options="options">
+        class="cropArea_ center-block img-responsive"
+        ng-cropper
+        ng-cropper-proxy="cropperProxy"
+        ng-cropper-show="showEvent"
+        ng-cropper-hide="hideEvent"
+        ng-cropper-options="options">
    </div>
-
-
-
-      <br>
-      <button ng-disabled="isDisabled" ng-show="isLogged && dataUrl" class="btn btn-primary" ng-click="search(); preview(preview.dataUrl)">
-        <span ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
-        {{ searchButtonText }}
-      </button>
-      <span ng-show="result">Enviado com sucesso</span>
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+   <br>
+   <button ng-disabled="isDisabled" ng-show="isLogged && dataUrl" class="btn btn-primary" ng-click="search(); preview(preview.dataUrl)">
+      <span ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+      {{ searchButtonText }}
+   </button>
+   <span ng-show="result">Enviado com sucesso</span>
+   <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
    <!-- </div> -->
    <button class="btn btn-primary"  ng-click="cancel()" >Cancelar</button>
    <label class="btn btn-default btn-file">

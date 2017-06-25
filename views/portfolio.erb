@@ -28,16 +28,16 @@
 }
 </style>
 <div ng-controller="imgGridCtrl as vm" >
-  <section ng-show="isLogged || (!portfolio.hide && portfolio.items.length > 0)" id="portfolio"  ng-class="{'portfolio_class': !isLogged && (about.body1.length == null && about.body2.length == null)}">
+  <section ng-show="isLogged || (!siteData.portfolio.hide && siteData.portfolio.items.length > 0)" id="portfolio"  ng-class="{'portfolio_class': !isLogged && (siteData.about.body1.length == null && siteData.about.body2.length == null)}">
     <div class="container">
        <div class="row">
           <div class="col-lg-12 text-center">
             <h2>
              <div contenteditable="{{isLogged}}"
-               ng-model="portfolio.label"
+               ng-model="siteData.portfolio.label"
                strip-br="true"
                select-non-editable="true"
-               ng-blur="saveDiv('portfolio.label')">
+               ng-blur="saveDiv('siteData.portfolio.label')">
              </div>
             </h2>
             <hr class="star-primary">
@@ -54,10 +54,10 @@
              </div>
           </div>
 
-          <div ng-show="portfolio.itemsTags.length > 0">
+          <div ng-show="siteData.portfolio.itemsTags.length > 0">
             <span ng-show="(vm.data.device != 'iphone' && vm.data.device != 'android')" class="center" >
-              <button ng-show="portfolio.itemsTags" class="btn btn-primary" ng-click="filtraZero()">todas</button>
-              <button ng-show="portfolio.itemsTags" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolio.itemsTags track by $index" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
+              <button ng-show="siteData.portfolio.itemsTags" class="btn btn-primary" ng-click="filtraZero()">todas</button>
+              <button ng-show="siteData.portfolio.itemsTags" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolio.itemsTags track by $index" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
             </span>
             <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
               <select ng-options="tag for tag in portfolio.itemsTags" ng-model="$parent.tagSelect">
@@ -71,14 +71,14 @@
       <button class="btn btn-warning btn-sm" ng-show="isLogged" type="button"  ng-click="portfolio_add()"><i class="glyphicon glyphicon-plus"></i> Novo</button>
       <div class="checkbox" style="float: right">
         <label><input type="checkbox"  name="my-checkbox" ng-model="isSelected">Arrastar</label>&nbsp;&nbsp;
-        <label><input type="checkbox"  name="checkbox_title" ng-model="portfolio.showGridTitles" ng-change="saveDiv('portfolio.showGridTitles')">Títulos</label>&nbsp;&nbsp;
-        <label><input type="checkbox"  name="checkbox_portfolio_show" ng-model="portfolio.hide" ng-change="saveDiv('portfolio.hide')">Esconder</label>
+        <label><input type="checkbox"  name="checkbox_title" ng-model="siteData.portfolio.showGridTitles" ng-change="saveDiv('siteData.portfolio.showGridTitles')">Títulos</label>&nbsp;&nbsp;
+        <label><input type="checkbox"  name="checkbox_portfolio_show" ng-model="siteData.portfolio.hide" ng-change="saveDiv('siteData.portfolio.hide')">Esconder</label>
       </div>
     </div>
     <div class="clearfix"></div>
       <br />
       <div class="row" ng-sortable="barConfig">
-         <div id="anchor{{$index}}" class="col-sm-4 portfolio-item " ng-repeat="item in portfolio.items | filterByTags:tagSelect ||undefined" >
+         <div id="anchor{{$index}}" class="col-sm-4 portfolio-item " ng-repeat="item in siteData.portfolio.items | filterByTags:tagSelect ||undefined" >
            <div ng-if="isLogged && (vm.data.device == 'iphone' || vm.data.device == 'android') && isSelected " class="drag-handle tile center" style="text-align: center;">
              <i style="font-size: 24px;" class="glyphicon glyphicon-move"></i>
            </div>
@@ -86,7 +86,7 @@
                <a href=javascript:void(0); class="portfolio-link" style="text-align: center;" ng-click="preOpen(item);">
                  <div class="imgBox" ng-if="item.mediaType != 'video'" back-img="{{item.img}}"></div>
                  <div class="imgBox" ng-if="item.mediaType == 'video'" back-img="{{item.img | safeUrlVideo}}"></div>
-                 <div ng-if="portfolio.showGridTitles">
+                 <div ng-if="siteData.portfolio.showGridTitles">
                    <p ng-if="item.titulo.length == 0">&nbsp;</p>
                    <p ng-if="item.titulo.length > 0"><strong>{{item.titulo | limitTo:30}}</strong></p>
                  </div>

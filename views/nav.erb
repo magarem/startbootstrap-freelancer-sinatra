@@ -28,7 +28,7 @@
       <a class="navbar-brand"
          href="#page-top">
         <div id=logo contenteditable="{{isLogged}}"
-          ng-model="navbar.logo.label"
+          ng-model="siteData.navbar.logo.label"
           strip-br="true"
           select-non-editable="true"
           ng-blur="saveDiv('navbar.logo.label')"
@@ -44,7 +44,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="hidden">
             <a href="#page-top"></a>
-        </li>{{(siteDataportfolio.items.length)}}
+        </li>
         <li ng-if="(!siteData.portfolio.hide && siteData.portfolio.items.length > 0)" class="page-scroll"><a
             href="#portfolio">{{siteData.portfolio.label}}</a></li>
         <li ng-if="(!siteData.about.hide && (!siteData.about.txt1.length > 0 || !siteData.about.txt2.length > 0))" class="page-scroll"><a

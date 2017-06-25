@@ -33,12 +33,12 @@
            <div >
                <div  style=""  class="center"><br>
                  <label for="fundo">Cor de fundo</label>
-                 <color-picker ng-model="head.backgroundColor" event-api="eventApi" options="options"></color-picker>
+                 <color-picker ng-model="siteData.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
                  <br>
                  <label for="fonte">Cor da fonte</label>
-                 <color-picker ng-model="head.fontColor"  event-api="eventApi2" options="options"></color-picker>
+                 <color-picker ng-model="siteData.head.fontColor"  event-api="eventApi2" options="options"></color-picker>
                  <div class="checkbox">
-                   <label><input type="checkbox" ng-model="head.show.txtShadow" ng-click="saveDiv('head.show.txtShadow')" >Sombra</label>
+                   <label><input type="checkbox" ng-model="siteData.head.show.txtShadow" ng-click="saveDiv('siteData.head.show.txtShadow')" >Sombra</label>
                  </div>
                </div>
            </div>
@@ -65,10 +65,8 @@
                        <span  ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
                        {{ searchButtonText }}
                    </label>
-</div>
-
-
-                   <span class="progress" ng-show="picFile2.progress >= 0">
+                  </div>
+                  <span class="progress" ng-show="picFile2.progress >= 0">
                      <div style="width:{{picFile2.progress}}%"
                          ng-bind="picFile2.progress + '%'"></div>
                    </span>
@@ -83,29 +81,29 @@
              <div class="checkbox">
                <label>
                  <input type="checkbox"
-                        ng-model="head.show.avatar"
-                        ng-click="saveDiv('head.show.avatar')">Ativar imagem principal
+                        ng-model="siteData.head.show.avatar"
+                        ng-click="saveDiv('siteData.head.show.avatar')">Ativar imagem principal
                </label>
              </div>
              <div class="checkbox">
                <label>
                  <input type="checkbox"
-                        ng-model="head.show.txt1"
-                        ng-click="saveDiv('head.show.txt1')">Ativar sub-titulo #1
+                        ng-model="siteData.head.show.txt1"
+                        ng-click="saveDiv('siteData.head.show.txt1')">Ativar sub-titulo #1
                </label>
              </div>
              <div class="checkbox">
                <label>
                  <input type="checkbox"
-                        ng-model="head.show.ruler"
-                        ng-click="saveDiv('head.show.ruler')">Ativar regua
+                        ng-model="siteData.head.show.ruler"
+                        ng-click="saveDiv('siteData.head.show.ruler')">Ativar regua
                </label>
              </div>
              <div class="checkbox">
                <label>
                  <input type="checkbox"
-                        ng-model="head.show.txt2"
-                        ng-click="saveDiv('head.show.txt2')">Ativar sub-titulo #2
+                        ng-model="siteData.head.show.txt2"
+                        ng-click="saveDiv('siteData.head.show.txt2')">Ativar sub-titulo #2
                </label>
              </div>
            </div>

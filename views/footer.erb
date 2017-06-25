@@ -1,75 +1,75 @@
 <!-- Footer -->
 <footer  class="text-center" ng-controller="footerCtrl">
-  <div  class="footer-above" ng-if="isLogged || !footer.hide && (footer.endereco.length > 0 || footer.about_resumo.length > 0)">
+  <div  class="footer-above" ng-if="isLogged || !siteData.footer.hide && (siteData.footer.endereco.length > 0 || siteData.footer.about_resumo.length > 0)">
     <div class="container" >
       <div class="row">
         <div class="footer-col col-md-4">
           <h3>Endereço</h3>
           <div contenteditable="{{isLogged}}"
-            ng-model="footer.endereco"
+            ng-model="siteData.footer.endereco"
             strip-br="true"
             select-non-editable="true"
-            ng-blur="saveDiv('footer.endereco')"
+            ng-blur="saveDiv('siteData.footer.endereco')"
             placeholder="Entre com o endereço...">
           </div>
         </div>
         <div ng-if="isLogged ||
-           footer.social.facebook.length > 0 ||
-           footer.social.googleplus.length > 0 ||
-           footer.social.twitter.length > 0 ||
-           footer.social.linkedin.length > 0 ||
-           footer.site.email.length > 0" class="footer-col col-md-4">
+           siteData.footer.social.facebook.length > 0 ||
+           siteData.footer.social.googleplus.length > 0 ||
+           siteData.footer.social.twitter.length > 0 ||
+           siteData.footer.social.linkedin.length > 0 ||
+           siteData.footer.site.email.length > 0" class="footer-col col-md-4">
           <h3>Links</h3>
              <form ng-show="isLogged">
                <div contenteditable="{{isLogged}}"
-                 ng-model="footer.social.facebook"
+                 ng-model="siteData.footer.social.facebook"
                  strip-br="true"
                  select-non-editable="true"
-                 ng-blur="saveDiv('footer.social.facebook')"
+                 ng-blur="saveDiv('siteData.footer.social.facebook')"
                  placeholder="Link Facebook...">
                </div>
                <br>
                <div contenteditable="{{isLogged}}"
-                  ng-model="footer.social.googleplus"
+                  ng-model="siteData.footer.social.googleplus"
                   strip-br="true"
                   select-non-editable="true"
-                  ng-blur="saveDiv('footer.social.googleplus')"
+                  ng-blur="saveDiv('siteData.footer.social.googleplus')"
                   placeholder="Link Google Plus...">
                </div>
                <br>
                <div contenteditable="{{isLogged}}"
-                  ng-model="footer.social.twitter"
+                  ng-model="siteData.footer.social.twitter"
                   strip-br="true"
                   select-non-editable="true"
-                  ng-blur="saveDiv('footer.social.twitter')"
+                  ng-blur="saveDiv('siteData.footer.social.twitter')"
                   placeholder="Link Twitter...">
                </div>
                <br>
                <div contenteditable="{{isLogged}}"
-                  ng-model="footer.social.linkedin"
+                  ng-model="siteData.footer.social.linkedin"
                   strip-br="true"
                   select-non-editable="true"
-                  ng-blur="saveDiv('footer.social.linkedin')"
+                  ng-blur="saveDiv('siteData.footer.social.linkedin')"
                   placeholder="Link Linkedin...">
                </div>
                <br>
             </form>
 
              <ul class="list-inline" ng-show="!isLogged">
-               <li ng-hide="footer.social.facebook || footer.social.googleplus || footer.social.twitter ||footer.social.linkedin">
-                {{site.email}}
+               <li ng-hide="siteData.footer.social.facebook || siteData.footer.social.googleplus || siteData.footer.social.twitter || siteData.footer.social.linkedin">
+                {{siteData.info.email}}
                </li>
-               <li ng-if="footer.social.facebook">
-                  <a href="https://facebook.com/{{footer.social.facebook}}" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+               <li ng-if="siteData.footer.social.facebook">
+                  <a href="https://facebook.com/{{siteData.footer.social.facebook}}" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
                </li>
-               <li ng-if="footer.social.googleplus">
-                  <a href="https://plus.google.com//{{footer.social.googleplus}}" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+               <li ng-if="siteData.footer.social.googleplus">
+                  <a href="https://plus.google.com//{{siteData.footer.social.googleplus}}" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
                </li>
-               <li ng-if="footer.social.twitter">
-                  <a href="https://twitter.com/{{footer.social.twitter}}" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+               <li ng-if="siteData.footer.social.twitter">
+                  <a href="https://twitter.com/{{siteData.footer.social.twitter}}" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
                </li>
-               <li ng-if="site.moldura.footer.social.linkedin">
-                  <a href="https://www.linkedin.com/{{footer.social.linkedin}}" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+               <li ng-if="siteData.footer.social.linkedin">
+                  <a href="https://www.linkedin.com/{{siteData.footer.social.linkedin}}" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
                </li>
             </ul>
 
@@ -77,15 +77,15 @@
         <div class="footer-col col-md-4">
           <h3>Sobre</h3>
           <div contenteditable="{{isLogged}}"
-            ng-model="footer.about_resumo"
+            ng-model="siteData.footer.about_resumo"
             strip-br="true"
             select-non-editable="true"
-            ng-blur="saveDiv('footer.about_resumo')"
+            ng-blur="saveDiv('siteData.footer.about_resumo')"
             placeholder="Entre com texto...">
           </div>
         </div>
         <div ng-if="isLogged" class="checkbox" style="float: right">
-          <label><input type="checkbox"  name="checkbox_footer_hide" ng-model="footer.hide" ng-change="saveDiv('footer.hide')">Esconder</label>
+          <label><input type="checkbox"  name="checkbox_footer_hide" ng-model="siteData.footer.hide" ng-change="saveDiv('siteData.footer.hide')">Esconder</label>
         </div>
       </div>
     </div>

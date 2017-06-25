@@ -14,10 +14,14 @@ var mod = angular.module("myapp", ['cloudinary',
                                    'ui.bootstrap']);
 mod.run(['$http','$rootScope',
   function ($http, $rootScope) {
+    $rootScope.aa = 10;
+    console.log("aa:", $rootScope.aa);
      $http.get('/dataLoad').then(function(response) {
        $rootScope.siteData = response.data;
-       $rootScope.isLogged = $rootScope.siteData["logged"] == true;
-       console.log("$rootScope.siteData:", $rootScope.siteData);
+       $rootScope.isLogged = true;
+       var siteNome = $rootScope.siteData.info.name
+       console.log("$rootScope.isLogged:", $rootScope.isLogged);
+       $rootScope.$broadcast('dataLoad_WasUpdated');
      })
 
 }])
@@ -1183,8 +1187,9 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
   }]);
 mod.controller('topCtrl', function ($scope, $http, SiteData) {
   $scope.site = {};
+
   SiteData.loadSiteData().then(function(response) {
-    $scope.site = response.data;
+    $scope.siteData = response.data;
     $scope.isLogged = response.data["logged"] == false
   })
 
@@ -1208,18 +1213,15 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
   $scope.site = {};
   $scope.searchButtonText = 'Enviar'
 
-  load = function(){
-    $scope.siteData = $rootScope.siteData;
-    $scope.navbar = $rootScope.siteData.navbar;
-    $scope.head = $rootScope.siteData.head;
-    $scope.isLogged = $rootScope.isLogged;
-  }
-
-  $timeout(load)
+  //Get site data
+  SiteData.loadSiteData().then(function(response) {
+    $scope.siteData = response.data;
+    $scope.isLogged = response.data["logged"] == true
+  })
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
-  })
+    })
   }
 
   $scope.options = {
@@ -1234,22 +1236,22 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
   $scope.eventApi = {
       onChange: function(api, color, $event) {
         $scope.backgroundUrl_clear();
-        $scope.saveDiv('head.backgroundColor')
+        $scope.saveDiv('siteData.head.backgroundColor')
       },
       onBlur: function(api, color, $event) {
-        $scope.saveDiv('head.backgroundColor')
+        $scope.saveDiv('siteData.head.backgroundColor')
       }
   };
   // api event handlers
   $scope.eventApi2 = {
       onChange: function(api, color, $event) {
-        $scope.saveDiv('head.fontColor')
+        $scope.saveDiv('siteData.head.fontColor')
       }
   };
 
   $scope.backgroundUrl_clear = function(){
-    $scope.head.backgroundUrl = " "
-    $scope.saveDiv('head.backgroundUrl')
+    $scope.siteData.head.backgroundUrl = " "
+    $scope.saveDiv('siteData.head.backgroundUrl')
   }
 
   $scope.backGroundItems = [];
@@ -1286,8 +1288,8 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
   };
 
   $scope.backgroundUrl_set = function(backgroundUrl){
-    $scope.head.backgroundUrl = "http://res.cloudinary.com/radiando/image/upload/headerBackground/"+backgroundUrl
-    $scope.saveDiv('head.backgroundUrl')
+    $scope.siteData.head.backgroundUrl = "http://res.cloudinary.com/radiando/image/upload/headerBackground/"+backgroundUrl
+    $scope.saveDiv('siteData.head.backgroundUrl')
   }
 
   $scope.uploadPic = function(file) {
@@ -1309,7 +1311,7 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
               var siteNome = SiteData.getSiteNome();
               file.result = response.data;
               console.log("siteNome:", siteNome)
-              $scope.head.backgroundUrl = "http://res.cloudinary.com/radiando/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/headerBackground/backGround.jpg"
+              $scope.siteData.head.backgroundUrl = "http://res.cloudinary.com/radiando/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/headerBackground/backGround.jpg"
               $scope.imgJaSubiu = true;
               $scope.imgNewSelected = false;
               $scope.picFile = undefined;
@@ -1334,51 +1336,45 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
 mod.controller('headerCtrl',['$scope', '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, $rootScope, Upload, $timeout, $http, SiteData, $uibModal) {
 
   $scope.site = {};
-  $scope.crop_box = false
+   $scope.crop_box = false
 
-  load = function(){
-    var siteNome    = $rootScope.siteData.info.name
-    $scope.head     = $rootScope.siteData.head;
-    $scope.picFile  = $scope.head.avatar;
-    $scope.isLogged = $rootScope.isLogged
-  }
+   SiteData.loadSiteData().then(function(response) {
+     $scope.siteData = response.data;
+     $scope.picFile = $scope.siteData.head.avatar;
+     $scope.isLogged = response.data["logged"] == true
+   })
 
-  $timeout(load)
+   $scope.saveDiv = function(obj){
+     console.log("obj:", obj)
+     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
+     })
+   }
 
-  $scope.saveDiv = function(obj){
-    console.log("obj:", obj)
-    SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
-    })
-  }
+   //  avatar img window Modal
+   $scope.animationsEnabled = true;
+   $scope.openHeaderModal = function () {
+     $scope.imgSelectTriger();
+     var modalInstance = $uibModal.open({
+       animation: $scope.animationsEnabled,
+       windowTopClass: "portfolio-modal modal",
+       templateUrl: 'headerModal.html',
+       controller: 'headerModalInstanceCtrl',
+       windowClass: 'app-modal-window',
+       size: 'lg',
+       resolve: {
+         item: function () {
+           return 0;
+         }
+       }
+     });
+   };
 
-  //  avatar img window Modal
-  $scope.animationsEnabled = true;
-  $scope.openHeaderModal = function () {
-    $scope.imgSelectTriger();
-    $timeout(function () {
-      angular.element(document.querySelector('#avatarImgSelect')).click();
-    }, 300);
-    var modalInstance = $uibModal.open({
-      animation: $scope.animationsEnabled,
-      windowTopClass: "portfolio-modal modal",
-      templateUrl: 'headerModal.html',
-      controller: 'headerModalInstanceCtrl',
-      windowClass: 'app-modal-window',
-      size: 'lg',
-      resolve: {
-        item: function () {
-          return 0;
-        }
-      }
-    });
-  };
-
-  $scope.imgSelectTriger = function() {
-    $timeout(function() {
-      var el = document.getElementById('imgSelect');
-      angular.element(el).triggerHandler('click');
-    }, 0);
-  };
+   $scope.imgSelectTriger = function() {
+     $timeout(function() {
+       var el = document.getElementById('imgSelect');
+       angular.element(el).triggerHandler('click');
+     }, 0);
+    };
 
 }])
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', 'Cropper', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData, Cropper) {
@@ -1386,24 +1382,22 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   var file, data;
 
   $scope.searchButtonText = "Enviar";
-  $scope.test = "false";
-  $scope.aa = "fidelis";
   $scope.isDisabled = false;
 
   $scope.search = function () {
     $scope.isDisabled = true;
-    $scope.test = "true";
     $scope.searchButtonText = "Enviando";
-    //10 seconds delay
   }
 
+  //Get site data
   SiteData.loadSiteData().then(function(response) {
-    var siteNome = SiteData.getSiteNome()
-    $scope.head = response.data.head;
+    $scope.siteData = response.data;
+    $scope.isLogged = response.data["logged"] == true
+    var siteNome    = response.data.info.name
     $scope.picFile = null;
     $scope.croppedDataUrl = null;
-    $scope.isLogged = response.data["logged"] == true
   })
+
 
   $rootScope.$on("ModalClose", function(){
       $scope.cancel();
@@ -1445,7 +1439,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
       $timeout(function () {
         $scope.result = response.data;
         $scope.crop_box = false
-        $scope.head.avatar = dataUrl
+        $scope.siteData.head.avatar = dataUrl
         $scope.flgUploadOk = true;
         $scope.cancel()
       });
@@ -1458,12 +1452,12 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   }
   $scope.CropBoxOpen = function(){
     $scope.flgUploadOk = false;
-    $scope.res = $scope.head.avatar
-    $scope.head.avatar = ""
+    $scope.res = $scope.siteData.head.avatar
+    $scope.siteData.head.avatar = ""
     $scope.crop_box = true
   }
   $scope.uploadCancel = function(){
-    $scope.head.avatar = $scope.res
+    $scope.siteData.head.avatar = $scope.res
     $scope.crop_box = false
   }
    /**
@@ -1547,6 +1541,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
 }]);
 mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', '$location', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, $location, SiteData, deviceDetector) {
 
+  //$scope.aa = 22
   //Busca informações do device que está utilizando o site
   var vm = this;
   vm.data = deviceDetector;
@@ -1556,21 +1551,13 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     return parseInt(Math.random()*1000000);
   }
 
-
-  // SiteData.loadSiteData().then(function(response) {
-  //   var siteNome = response.data.info.name
-  //   $scope.portfolio = response.data.portfolio;
-  //   $scope.isLogged = response.data["logged"] == true
-  //   $scope.isSelected = false;
-  // })
-  load = function(){
-    var siteNome = $rootScope.siteData.info.name
-    $scope.portfolio = $rootScope.siteData.portfolio
-    $scope.isLogged = $rootScope.isLogged
+  //Get site data
+  SiteData.loadSiteData().then(function(response) {
+    var siteNome = response.data.info.name
+    $scope.siteData = response.data;
+    $scope.isLogged = response.data["logged"] == true
     $scope.isSelected = false;
-  }
-
-  $timeout(load)
+  })
 
   $scope.saveDiv = function(obj){
     console.log(obj, $scope.$eval(obj));
@@ -1612,8 +1599,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   // Atualizar as lista de #18BC9Ctags no campo itemTags
   var portfolioItemsTags_update = function (){
     HTMLsanitizeRegex = /(<([^>]+)>)/ig
-    $scope.portfolio.itemsTags = []
-    $scope.portfolio.items.forEach(function(item){
+    $scope.siteData.portfolio.itemsTags = []
+    $scope.siteData.portfolio.items.forEach(function(item){
       if (item.tags){
         item.tags.forEach(function(tag){
           if (tag){
@@ -1623,14 +1610,14 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
             tag = tag.replace(/'/g, "");
             tag = tag.replace(/^\s+|\s+$/gm,''); // trim left and right
             // tag = tag.charAt(0).toUpperCase() + tag.substr(1);
-            $scope.portfolio.itemsTags.push(tag)
+            $scope.siteData.portfolio.itemsTags.push(tag)
           }
         })
-        $scope.portfolio.itemsTags = cleanArray($scope.portfolio.itemsTags)
-        $scope.portfolio.itemsTags = $scope.portfolio.itemsTags.filter(onlyUnique)
+        $scope.siteData.portfolio.itemsTags = cleanArray($scope.siteData.portfolio.itemsTags)
+        $scope.siteData.portfolio.itemsTags = $scope.siteData.portfolio.itemsTags.filter(onlyUnique)
       }
     })
-    $scope.saveDiv("portfolio.itemsTags")
+    $rootScope.saveDiv("portfolio.itemsTags")
   }
 
  /*
@@ -1654,7 +1641,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   var ImgChange = function (id, src){
 
     console.log("id:", id)
-    $scope.portfolio.items.filter(function(el) {
+    $scope.siteData.portfolio.items.filter(function(el) {
       console.log("el:>", el)
       return el.id === id; // Filter out the appropriate one
     }).img = src; // Get result and access the foo property
@@ -1663,18 +1650,18 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   var videoThumbChange = function (src, id, conta){
     //Seleciona o item pelo ID
-    $scope.portfolio.items.filter(function(v) {
+    $scope.siteData.portfolio.items.filter(function(v) {
       return v.id === id; // Filter out the appropriate one
     }).img = src; // Get result and access the foo property
   }
 
   var delImg = function(id){
     console.log("del img id:"+id)
-    itemRemoved = $scope.portfolio.items.filter(function(v) {
+    itemRemoved = $scope.siteData.portfolio.items.filter(function(v) {
       console.log(v)
       return v.id.toString() !== id; // Filter out the appropriate one
     })
-    $scope.portfolio.items = itemRemoved
+    $scope.siteData.portfolio.items = itemRemoved
   };
 
   $scope.valueSelected = function (value) {
@@ -1687,8 +1674,8 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   };
 
   $scope.portfolio_add = function () {
-    var siteNome = SiteData.getSiteNome()
-    var newId = siteNome+"-"+Date.now().toString();
+    //var siteNome = SiteData.getSiteNome()
+    var newId = $scope.siteNome+"-"+Date.now().toString();
     itemNew = {
       "id"     : newId,
       "titulo" : "",
@@ -1704,9 +1691,9 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     }
     //Salva no disco o novo registro
     SiteData.portAdd(newId).then(function(response) {})
-    $scope.portfolio.items = $scope.portfolio.items || []
-    $scope.portfolio.items.push(itemNew)
-    $scope.preOpen(itemNew, $scope.portfolio.items.length-1)
+    $scope.siteData.portfolio.items = $scope.siteData.portfolio.items || []
+    $scope.siteData.portfolio.items.push(itemNew)
+    $scope.preOpen(itemNew, $scope.siteData.portfolio.items.length-1)
   };
   //
   //  Modal
@@ -1815,11 +1802,10 @@ mod.controller('ModalInstanceCtrl', function ($scope, $sce, $rootScope, $uibModa
   }
 
   SiteData.loadSiteData().then(function(response) {
-    $scope.portfolio = response.data.portfolio;
+    $scope.siteData = response.data;
     $scope.isLogged = response.data["logged"] == true
-    console.log($scope.isLogged === true)
     // Build JSTagsCollection
-    console.log($scope.tags);
+    //console.log($scope.tags);
     $scope.tagsJoin = ""
     if ($scope.tags) $scope.tagsJoin = $scope.tags.join(", ");
     $scope.tags = new JSTagsCollection($scope.tags);
@@ -1832,7 +1818,7 @@ mod.controller('ModalInstanceCtrl', function ($scope, $sce, $rootScope, $uibModa
     // Build suggestions array
     // $scope.portfolio.itemsTags = $scope.portfolio.itemsTags.map(function(x){ return x.toLowerCase() })
 
-    var suggestions = $scope.portfolio.itemsTags || []
+    var suggestions = $scope.siteData.portfolio.itemsTags || []
     suggestions = suggestions.map(function(item) { return { "suggestion": item } });
 
     // Instantiate the bloodhound suggestion engine
@@ -2144,24 +2130,17 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
 mod.controller('aboutCtrl', function ($scope, $rootScope, $timeout, $http, SiteData) {
   $scope.about = {};
 
-  load = function(){
-    $scope.siteData = $rootScope.siteData;
-    $scope.navbar = $rootScope.siteData.navbar;
-    $scope.head = $rootScope.siteData.head;
-    $scope.isLogged = $rootScope.isLogged;
-  }
-
-  $timeout(load)
-
   SiteData.loadSiteData().then(function(response) {
-    $scope.about = $rootScope.siteData.about
-    $scope.isLogged = $rootScope.isLogged;
+    $scope.siteData = response.data;
+    $scope.isLogged = response.data["logged"] == true
 
     //Verifica se apenas a primeira caixa de texto está preechida
     //para centraliza-la
     $scope.about_body1_offset = 2;
 
-    if (!$scope.isLogged && ($scope.about.body2 == null || !$scope.about.body2.length > 0)) {
+    if (!$scope.isLogged &&
+       ($scope.siteData.about.body2 == null ||
+       !$scope.siteData.about.body2.length > 0)) {
        $scope.about_body1_offset = 4;
     }
 
@@ -2175,16 +2154,12 @@ mod.controller('aboutCtrl', function ($scope, $rootScope, $timeout, $http, SiteD
 })
 mod.controller('ContactCtrl', function ($scope, $rootScope, $timeout, $http, SiteData) {
 
-
-  load = function(){
+  //Get site data
+  SiteData.loadSiteData().then(function(response) {
+    $scope.siteData = response.data;
+    $scope.isLogged = response.data["logged"] == false
     $scope.siteNome  = $rootScope.siteData.info.name
-    $scope.portfolio = $rootScope.siteData.portfolio;
-    $scope.about     = $rootScope.siteData.about
-    $scope.contact   = $rootScope.siteData.contact
-    $scope.isLogged  = $rootScope.isLogged
-  }
-
-  $timeout(load)
+  })
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
@@ -2195,12 +2170,12 @@ mod.controller('footerCtrl', function ($scope, $rootScope, $timeout, $http, Site
 
   $scope.footer = {};
 
-  load = function(){
-    $scope.footer = $rootScope.siteData.footer;
-    $scope.isLogged  = $rootScope.isLogged
-  }
-
-  $timeout(load)
+  //Get site data
+  SiteData.loadSiteData().then(function(response) {
+    $scope.siteData = response.data;
+    $scope.isLogged = response.data["logged"] == true
+    $scope.siteNome  = $rootScope.siteData.info.name
+  })
 
   $scope.saveDiv = function(obj){
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
@@ -2212,8 +2187,11 @@ mod.controller('loginCtrl', function ($scope, $http, SiteData) {
 
   $scope.site = {};
 
+  //Get site data
   SiteData.loadSiteData().then(function(response) {
-    $scope.site = response.data;
+    $scope.siteData = response.data;
+    $scope.isLogged = response.data["logged"] == false
+    $scope.siteNome  = $scope.siteData.info.name
   })
 
   $scope.saveDiv = function(obj){

@@ -225,9 +225,9 @@
   }
 </style>
 <header ng-controller="headerCtrl" class="main-wrapper"
-        ng-style="{'background-color': head.backgroundColor,
-                   'color': head.fontColor,
-                   'background-image': head.backgroundUrl ? 'url(' + head.backgroundUrl + ')':''}">
+        ng-style="{'background-color': siteData.head.backgroundColor,
+                   'color': siteData.head.fontColor,
+                   'background-image': siteData.head.backgroundUrl ? 'url(' + siteData.head.backgroundUrl + ')':''}">
   <div class="container">
     <div class="row">
       <div class="col-lg-12" >
@@ -236,40 +236,39 @@
             <div class=line></div>
             <div class=line></div>
         </div>
-        <img ng-show=head.show.avatar
+        <img ng-show=siteData.head.show.avatar
              class="c isLogged avatarImg"
-             ng-src="{{ head.avatar }}"
+             ng-src="{{ siteData.head.avatar }}"
              ng-click="!isLogged || openHeaderModal()"/>
         <div id=div1></div>
         <div class="intro-text">
           <span class="name">
             <div contenteditable="{{isLogged}}"
-                ng-show=head.show.txt1
-                ng-model="head.txt1"
+                ng-show=siteData.head.show.txt1
+                ng-model="siteData.head.txt1"
                 strip-br="true"
                 select-non-editable="true"
-                ng-blur="saveDiv('head.txt1')"
+                ng-blur="saveDiv('siteData.head.txt1')"
                 placeholder="texto 1"
-                ng-class="{txtShadow: head.show.txtShadow}"
+                ng-class="{txtShadow: siteData.head.show.txtShadow}"
                 >
             </div>
           </span>
           <style>
           hr#head_star.star-light:after, hr#head_star.star-primary:after {
-             color:{{head.fontColor}};
+             color:{{siteData.head.fontColor}};
            }
           </style>
-          <hr id=head_star ng-show="head.show.ruler" style="color:#e3cf7a; content:'\f006'" ng-style="{'border-color': head.fontColor}" class="star-light" ng-class="{txtShadow2: head.show.txtShadow}">
+          <hr id=head_star ng-show="siteData.head.show.ruler" style="color:#e3cf7a; content:'\f006'" ng-style="{'border-color': siteData.head.fontColor}" class="star-light" ng-class="{txtShadow2: siteData.head.show.txtShadow}">
           <span class="skills">
-
             <div contenteditable="{{isLogged}}"
-                ng-show=head.show.txt2
-                ng-model="head.txt2"
+                ng-show=siteData.head.show.txt2
+                ng-model="siteData.head.txt2"
                 strip-br="true"
                 select-non-editable="true"
-                ng-blur="saveDiv('head.txt2')"
+                ng-blur="saveDiv('siteData.head.txt2')"
                 placeholder="texto 2"
-                ng-class="{txtShadow2: head.show.txtShadow}"
+                ng-class="{txtShadow2: siteData.head.show.txtShadow}"
                 >
             </div>
           </span>
