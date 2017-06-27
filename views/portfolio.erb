@@ -57,10 +57,10 @@
           <div ng-show="siteData.portfolio.itemsTags.length > 0">
             <span ng-show="(vm.data.device != 'iphone' && vm.data.device != 'android')" class="center" >
               <button ng-show="siteData.portfolio.itemsTags" class="btn btn-primary" ng-click="filtraZero()">todas</button>
-              <button ng-show="siteData.portfolio.itemsTags" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in portfolio.itemsTags track by $index" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
+              <button ng-show="siteData.portfolio.itemsTags" class="btn btn-primary" style="margin: 5px;" ng-repeat="tag in siteData.portfolio.itemsTags track by $index" ng-click="$parent.tagSelect = tag"> {{tag}} </button>
             </span>
             <span ng-show="(vm.data.device == 'iphone' || vm.data.device == 'android')" class="center" >
-              <select ng-options="tag for tag in portfolio.itemsTags" ng-model="$parent.tagSelect">
+              <select ng-options="tag for tag in siteData.portfolio.itemsTags" ng-model="$parent.tagSelect">
                 <option value="">Todos</option>
               </select><br>
             </span>

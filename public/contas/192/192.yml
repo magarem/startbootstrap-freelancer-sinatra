@@ -7,7 +7,7 @@ info:
   description: Site portfolio
   author: marcelo magalhaes
   created: 
-  modified: 2017-06-25 02:01:50.299258790 Z
+  modified: 2017-06-26 23:50:50.665855968 Z
 navbar:
   backgroundColor: hsl(2, 18%, 72%)
   logo:
@@ -23,7 +23,7 @@ head:
   backgroundVideoShow: false
   backgroundVideo: dq2iQNdwlTI
   fontColor: hsl(223, 41%, 94%)
-  avatar: http://res.cloudinary.com/radiando/image/upload/v1498355301/192/avatar.jpg?1498355301
+  avatar: http://res.cloudinary.com/radiando/image/upload/v1498532286/192/avatar.jpg?1498532286
   txt1: "!Boa saúde!"
   txt2: Bem vindo
   show:
@@ -54,6 +54,8 @@ portfolio:
     servico: ''
     tags:
     - '22'
+    - ff
+    - hh
   - id: 192-1496846075099
     titulo: sdd
     mediaType: image
@@ -66,6 +68,9 @@ portfolio:
     servico: ''
     tags:
     - casa
+    - kkk
+    - '55'
+    - hhh
   - id: 192-1495718795872
     titulo: ''
     mediaType: image
@@ -79,6 +84,7 @@ portfolio:
     tags:
     - '55'
     - '99'
+    - '11'
   - id: 192-1495719884395
     titulo: ''
     mediaType: image
@@ -245,3 +251,4 @@ footer:
     linkedin: '444'
   about_resumo: aqui sou eu \o/
   hide: true
+itemsTags: 

@@ -25,19 +25,13 @@
      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <link href="/bower_components/ng-img-crop/compile/minified/ng-img-crop.css" rel="stylesheet">
   <link href="/css/bootstrap-switch.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/ng-tags-input.css">
   <link rel="stylesheet" href="/css/jsTag.css">
 
 
-  <!-- Bootstrap Styles -->
-  <!-- <link type="text/css" rel="stylesheet" href="css/bootstrap.css" media="screen"> -->
-  <!-- Switcher Only -->
-
   <link href="/bower_components/ng-cropper/dist/ngCropper.all.css" rel="stylesheet">
 
-  <link href="/bower_components/cropperjs/dist/cropper.css" rel="stylesheet">
   <style>
    [contenteditable=true]:empty:before{
      content: attr(placeholder);
@@ -257,12 +251,11 @@ div.materialpicker-white.selected {
     <!-- UI jQuery (For Module #5 and #6) -->
 
     <script src="/node_modules/cloudinary-angular/dist/cloudinary-angular.min.js"></script>
-    <script src="/bower_components/cropperjs/dist/cropper.js"></script>
 
-
+    <script src="/node_modules/@fengyuanchen/loader/dist/loader.js"></script>
     <script src="/bower_components/ng-cropper/dist/ngCropper.all.js"></script>
     <script>
-
+    
 /* @ngInject */
 function configure(CloudinaryProvider) {
     CloudinaryProvider.configure({

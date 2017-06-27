@@ -1617,7 +1617,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
         $scope.siteData.portfolio.itemsTags = $scope.siteData.portfolio.itemsTags.filter(onlyUnique)
       }
     })
-    $rootScope.saveDiv("portfolio.itemsTags")
+    $scope.saveDiv("portfolio.itemsTags")
   }
 
  /*
