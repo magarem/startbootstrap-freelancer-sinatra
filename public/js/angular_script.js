@@ -1,5 +1,6 @@
 var mod = angular.module("myapp", ['cloudinary',
                                    'videosharing-embed',
+                                   'image-load',
                                    'ngImageCompress',
                                    'ngYoutubeEmbed',
                                    'color.picker',
@@ -51,6 +52,69 @@ mod.filter( 'safeUrlVideo', [   '$sce',
     }
   }
 ]);
+mod.directive('imgOrientation', function(){
+  return {
+    restrict: 'A',
+    link: function(scope, element/*, attrs*/) {
+      function setTransform(transform) {
+        element.css('-ms-transform', transform);
+        element.css('-webkit-transform', transform);
+        element.css('-moz-transform', transform);
+        element.css('transform', transform);
+      }
+
+      var parent = element.parent();
+      $(element).bind('load', function() {
+        EXIF.getData(element[0], function() {
+          var orientation = EXIF.getTag(element[0], 'Orientation');
+          var height = element.height();
+          var width = element.width();
+          if (orientation && orientation !== 1) {
+            switch (orientation) {
+              case 2:
+                setTransform('rotateY(180deg)');
+                break;
+              case 3:
+                setTransform('rotate(180deg)');
+                break;
+              case 4:
+                setTransform('rotateX(180deg)');
+                break;
+              case 5:
+                setTransform('rotateZ(90deg) rotateX(180deg)');
+                if (width > height) {
+                  parent.css('height', width + 'px');
+                  element.css('margin-top', ((width -height) / 2) + 'px');
+                }
+                break;
+              case 6:
+                setTransform('rotate(90deg)');
+                if (width > height) {
+                  parent.css('height', width + 'px');
+                  element.css('margin-top', ((width -height) / 2) + 'px');
+                }
+                break;
+              case 7:
+                setTransform('rotateZ(90deg) rotateY(180deg)');
+                if (width > height) {
+                  parent.css('height', width + 'px');
+                  element.css('margin-top', ((width -height) / 2) + 'px');
+                }
+                break;
+              case 8:
+                setTransform('rotate(-90deg)');
+                if (width > height) {
+                  parent.css('height', width + 'px');
+                  element.css('margin-top', ((width -height) / 2) + 'px');
+                }
+                break;
+            }
+          }
+        });
+      });
+    }
+  };
+});
 mod.directive('materialPicker', [
     '$parse',
     function ($parse) {
@@ -715,6 +779,69 @@ mod.directive('materialPicker', [
         };
     }
 ]);
+mod.directive('imgOrientation', function(){
+  return {
+    restrict: 'A',
+    link: function(scope, element/*, attrs*/) {
+      function setTransform(transform) {
+        element.css('-ms-transform', transform);
+        element.css('-webkit-transform', transform);
+        element.css('-moz-transform', transform);
+        element.css('transform', transform);
+      }
+
+      var parent = element.parent();
+      $(element).bind('load', function() {
+        EXIF.getData(element[0], function() {
+          var orientation = EXIF.getTag(element[0], 'Orientation');
+          var height = element.height();
+          var width = element.width();
+          if (orientation && orientation !== 1) {
+            switch (orientation) {
+              case 2:
+                setTransform('rotateY(180deg)');
+                break;
+              case 3:
+                setTransform('rotate(180deg)');
+                break;
+              case 4:
+                setTransform('rotateX(180deg)');
+                break;
+              case 5:
+                setTransform('rotateZ(90deg) rotateX(180deg)');
+                if (width > height) {
+                  parent.css('height', width + 'px');
+                  element.css('margin-top', ((width -height) / 2) + 'px');
+                }
+                break;
+              case 6:
+                setTransform('rotate(90deg)');
+                if (width > height) {
+                  parent.css('height', width + 'px');
+                  element.css('margin-top', ((width -height) / 2) + 'px');
+                }
+                break;
+              case 7:
+                setTransform('rotateZ(90deg) rotateY(180deg)');
+                if (width > height) {
+                  parent.css('height', width + 'px');
+                  element.css('margin-top', ((width -height) / 2) + 'px');
+                }
+                break;
+              case 8:
+                setTransform('rotate(-90deg)');
+                if (width > height) {
+                  parent.css('height', width + 'px');
+                  element.css('margin-top', ((width -height) / 2) + 'px');
+                }
+                break;
+            }
+          }
+        });
+      });
+    }
+  };
+});
 mod.factory('mediaService', function($http, $q) {
  function youtube_id_from_url(url) {
    var id = '';
@@ -1378,7 +1505,6 @@ mod.controller('headerCtrl',['$scope', '$rootScope', 'Upload', '$timeout', '$htt
 
 }])
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', 'Cropper', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData, Cropper) {
-
   var file, data;
 
   $scope.searchButtonText = "Enviar";
@@ -1407,9 +1533,9 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $uibModalInstance.dismiss('cancel');
   };
 
-  $scope.saveDiv = function(obj, i){
-    SiteData.saveDiv(obj, $scope.$eval(obj), i).then(function(response) {
-    })
+  $scope.saveDiv = function(obj){
+    console.log(obj, $scope.$eval(obj));
+    SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {})
   }
 
   // Image upload
@@ -1466,12 +1592,19 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     * call `angular.element(this).scope().onFile(this.files[0])`
     * when input's event is fired.
     */
-   $scope.onFile = function(blob) {
-     Cropper.encode((file = blob)).then(function(dataUrl) {
-       $scope.dataUrl = dataUrl;
-       $timeout(showCropper);  // wait for $digest to set image's src
-     });
-   };
+    $scope.onFile = function(blob) {
+      Cropper.encode((file = blob)).then(function(dataUrl) {
+
+        EXIF.getData(file, function() {
+          var Orientation = EXIF.getTag(this, "Orientation");
+          $scope.siteData.head.avatar_exif_orientation = Orientation
+        });
+
+        $scope.dataUrl = dataUrl;
+        $timeout(showCropper);  // wait for $digest to set image's src
+
+      });
+    };
 
    /**
     * Croppers container object should be created in controller's scope
@@ -1488,8 +1621,14 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     */
    $scope.preview = function(xx) {
      if (!file || !data) return;
+
      Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
        ($scope.preview || ($scope.preview = {})).dataUrl = dataUrl;
+
+
+       console.log("$scope.siteData.head.avatar_exif_orientation:", $scope.siteData.head.avatar_exif_orientation);
+       $scope.saveDiv("siteData.head.avatar_exif_orientation")
+
        $scope.upload(dataUrl)
      });
    };

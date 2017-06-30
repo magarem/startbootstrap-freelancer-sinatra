@@ -1,0 +1,42 @@
+{
+  "name": "mobile-image-load",
+  "version": "1.0.2",
+  "authors": [
+    "alvaropaco <alvaropaco@tokenlab.com.br>"
+  ],
+  "description": "This directive allow to load and render some image through various EXIF orientation flags, in both landscape and portrait orientation.",
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "angular": "~1.2.0",
+    "Blob": "*",
+    "blueimp-load-image": "1.13.0"
+  },
+  "devDependencies": {
+    "Blob": "*",
+    "blueimp-load-image": "1.13.0"
+  },
+  "main": "image-load-directive.js",
+  "keywords": [
+    "image",
+    "rotation",
+    "mobile",
+    "exif",
+    "orientation",
+    "jpg",
+    "jpge",
+    "images",
+    "upload"
+  ],
+  "license": "MIT",
+  "homepage": "https://www.openhub.net/accounts/alvaropaco",
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.2",
+    "commit": "cf2854355d29f7654c901052b683d783b64884df"
+  },
+  "_source": "https://github.com/ScalaSoft/mobile-image-load.git",
+  "_target": "^1.0.2",
+  "_originalSource": "mobile-image-load",
+  "_direct": true
+}
