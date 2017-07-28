@@ -1,6 +1,6 @@
 var mod = angular.module("myapp", ['cloudinary',
                                    'videosharing-embed',
-                                   'image-load',
+                                //   'image-load',
                                    'ngImageCompress',
                                    'ngYoutubeEmbed',
                                    'color.picker',
@@ -1360,7 +1360,37 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
   };
 
   // api event handlers
-  $scope.eventApi = {
+  $scope.eventApi_navbar_logo_fontColor = {
+      onChange: function(api, color, $event) {
+        console.log("eventApi.navbar.logo.fontColor")
+        $scope.saveDiv('siteData.navbar.logo.fontColor')
+      },
+      onBlur: function(api, color, $event) {
+        $scope.saveDiv('siteData.navbar.logo.fontColor')
+      }
+  };
+  // api event handlers
+  $scope.eventApi_navbar_backgroundColor = {
+      onChange: function(api, color, $event) {
+        console.log("eventApi.navbar.backgroundColor")
+        $scope.saveDiv('siteData.navbar.backgroundColor')
+      },
+      onBlur: function(api, color, $event) {
+        $scope.saveDiv('siteData.navbar.backgroundColor')
+      }
+  };
+  // api event handlers
+  $scope.eventApi_navbar_fontColor = {
+      onChange: function(api, color, $event) {
+        console.log("eventApi.navbar.fontColor")
+        $scope.saveDiv('siteData.navbar.fontColor')
+      },
+      onBlur: function(api, color, $event) {
+        $scope.saveDiv('siteData.navbar.fontColor')
+      }
+  };
+  // api event handlers
+  $scope.eventApi_head_backgroundColor = {
       onChange: function(api, color, $event) {
         $scope.backgroundUrl_clear();
         $scope.saveDiv('siteData.head.backgroundColor')
@@ -1370,7 +1400,7 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
       }
   };
   // api event handlers
-  $scope.eventApi2 = {
+  $scope.eventApi_head_fontColor = {
       onChange: function(api, color, $event) {
         $scope.saveDiv('siteData.head.fontColor')
       }

@@ -17,7 +17,7 @@
 </style>
 
 <div class="menu" >
-  <h2 class=text-center>Ajustes</h2>
+  <h3 class=text-center>Ajustes</h3>
    <!-- <div class="demo-icon" ng-show=isLogged>
      <i class="fa fa-cog fa-spin fa-2x"></i>
    </div><!-- end opener icon -->
@@ -31,23 +31,33 @@
        <div class="predefined_styles center-block">
          <div class="tab-content clearfix">
            <div >
-               <div  style=""  class="center"><br>
-                 <label for="fundo">Cor de fundo</label>
-                 <color-picker ng-model="siteData.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
-                 <br>
-                 <label for="fonte">Cor da fonte</label>
-                 <color-picker ng-model="siteData.head.fontColor"  event-api="eventApi2" options="options"></color-picker>
-                 <div class="checkbox">
-                   <label><input type="checkbox" ng-model="siteData.head.show.txtShadow" ng-click="saveDiv('siteData.head.show.txtShadow')" >Sombra</label>
+               <div class="center"><br>
+                 <button type="button" class="btn btn-info btn-sm" data-toggle="collapse" data-target="#demo">Cores</button>
+                 <div id="demo" class="collapse">
+                   Logo <color-picker ng-model="siteData.navbar.logo.fontColor" event-api="eventApi_navbar_logo_fontColor" options="options"></color-picker>
+                   <br>
+                   Menu (fundo) <color-picker ng-model="siteData.navbar.backgroundColor" event-api="eventApi_navbar_backgroundColor" options="options"></color-picker>
+                   <br>
+                   Menu (fonte)
+                   <color-picker ng-model="siteData.navbar.fontColor"  event-api="eventApi_navbar_fontColor" options="options"></color-picker>
+                   <br>
+                   Topo (fundo)
+                   <color-picker ng-model="siteData.head.backgroundColor" event-api="eventApi_head_backgroundColor" options="options"></color-picker>
+                   <br>
+                   Topo (fonte)
+                   <color-picker ng-model="siteData.head.fontColor"  event-api="eventApi_head_fontColor" options="options"></color-picker>
+                   <div class="checkbox">
+                     <label><input type="checkbox" ng-model="siteData.head.show.txtShadow" ng-click="saveDiv('siteData.head.show.txtShadow')" >Sombra</label>
+                   </div>
                  </div>
                </div>
            </div>
            <div >
              <!-- END MODULE #2 -->
              <!-- <h4>Imagem de fundo</h4> -->
-             <!-- MODULE #3 --><br>
+             <!-- MODULE #3 -->
              <label for="fundo">Imagem de fundo</label>
-             <div id=fundos   style="overflow-y: auto;  width: 120px; height: 100px;  background-color: #d9d9d9; outline: 1px solid #9a9292;"  >
+             <div id=fundos   style="overflow-y: auto;  width: 120px; height: 70px;  background-color: #d9d9d9; outline: 1px solid #9a9292;"  >
                <div class="backImg " style="outline: 1px solid #b3b3b3; margin-left: 1px;" ng-repeat="item in backGroundItems" back-img="http://res.cloudinary.com/radiando/image/upload/headerBackground/thumbs/{{item}}" ng-click="backgroundUrl_set(item)"></div>
              </div>
              <!-- END MODULE #3 --><br>

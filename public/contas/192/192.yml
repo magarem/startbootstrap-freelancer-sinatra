@@ -7,22 +7,24 @@ info:
   description: Site portfolio
   author: marcelo magalhaes
   created: 
-  modified: 2017-06-30 02:37:03.837148351 Z
+  modified: 2017-07-28 01:51:34.764643349 Z
 navbar:
-  backgroundColor: hsl(2, 18%, 72%)
+  backgroundColor: hsla(3, 18%, 9%, 0.66)
   logo:
+    fontColor: hsl(0, 22%, 82%)
     label: açai saúde
     img: 
   menu:
   - Meus trabalhos
   - um pouco sobre mim
   - me chama aqui
+  fontColor: hsl(0, 20%, 92%)
 head:
-  backgroundColor: hsl(0, 9%, 45%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/v1498356033/192/headerBackground/backGround.jpg?1498356033
+  backgroundColor: hsl(200, 67%, 75%)
+  backgroundUrl: " "
   backgroundVideoShow: false
   backgroundVideo: dq2iQNdwlTI
-  fontColor: hsl(223, 41%, 94%)
+  fontColor: hsl(223, 19%, 59%)
   avatar: http://res.cloudinary.com/radiando/image/upload/v1498790227/192/avatar.jpg?1498790227
   txt1: "!Boa saúde!"
   txt2: Bem vindo
