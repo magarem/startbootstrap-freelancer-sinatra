@@ -1,0 +1,66 @@
+---
+info:
+  name: '172'
+  email: contato@magaweb.com.br
+  senha: ab0f
+  title: Portfólio geral
+  description: Site portfólio
+  author: Radiando
+  created: 2018-01-04 01:49:47 utc
+  modified: 2018-01-04 02:00:46.991505409 Z
+navbar:
+  backgroundColor: hsl(2, 50%, 38%)
+  logo:
+    label: '172'
+    img: 
+  menu:
+  - portfólio
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(168, 77%, 42%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/16k_glass-wallpaper-1440x900.jpg
+  fontColor: hsl(0, 0%, 100%)
+  avatar: contas/172/img/profile.png
+  txt1: sdsd
+  txt2: dsd
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: false
+portfolio:
+  label: portfólio
+  itemsTags: 
+  items:
+  - id: undefined-1515030659771
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1515030671/172/undefined-1515030659771
+    txt: fdgd df gfg dg
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  hide: false
+about:
+  label: sobre
+  body1: 
+  body2: 
+  hide: false
+contact:
+  show: true
+  label: contato
+  hide: false
+footer:
+  show: true
+  endereco: 
+  social:
+    facebook: 
+    googleplus: 
+    twitter: 
+    linkedin: 
+  about_resumo: 
+  hide: false
+itemsTags: 
