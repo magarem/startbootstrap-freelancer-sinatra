@@ -1,0 +1,54 @@
+---
+info:
+  name: fgfgfgfg
+  email: contato@magaweb.com.br
+  senha: 047a
+  title: Portfólio geral
+  description: Site portfólio
+  author: Radiando
+  created: 2018-01-05 16:31:12 utc
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: fgfgfgfg
+    img: 
+  menu:
+  - portfólio
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(168, 77%, 42%)
+  backgroundUrl: 
+  fontColor: hsl(0, 0%, 100%)
+  avatar: contas/fgfgfgfg/img/profile.png
+  txt1: 
+  txt2: 
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: false
+portfolio:
+  label: portfólio
+  itemsTags: 
+  items: 
+  hide: false
+about:
+  label: sobre
+  body1: 
+  body2: 
+  hide: false
+contact:
+  show: true
+  label: contato
+  hide: false
+footer:
+  show: true
+  endereco: 
+  social:
+    facebook: 
+    googleplus: 
+    twitter: 
+    linkedin: 
+  about_resumo: 
+  hide: false

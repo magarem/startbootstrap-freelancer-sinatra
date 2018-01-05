@@ -9,12 +9,14 @@ require 'fileutils'
 require 'securerandom'
 require 'mail'
 require 'openssl'
-require "aescrypt"
+#require "aescrypt"
 require 'open-uri'
 require 'video_thumb'
 require 'cloudinary'
 #require 'URLcrypt'
 require 'openssl'
+require 'base64'
+require 'hex_string'
 
 set :public_folder, 'public'
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
@@ -55,27 +57,52 @@ configure do
   set :public_folder, Proc.new { File.join(root, "public") }
 end
 helpers do
-  class String
-    def encrypt(key)
-      cipher = OpenSSL::Cipher::Cipher.new('DES-EDE3-CBC').encrypt
-      cipher.key = Digest::SHA1.hexdigest key
-      s = cipher.update(self) + cipher.final
+  def t
+    "fidelicia"
+  end
+  def encrypt(data)
+    cipher = OpenSSL::Cipher::AES.new(128, :CBC)
+    cipher.encrypt
+    key = "20137077242520702926"
+    #Convert from hex to raw bytes:
+    key = [key].pack('H*')
+    #Pad with zero bytes to correct length:
+    key << ("\x00" * (16 - key.length))
+    iv ="123789123789123789"
+    #Convert from hex to raw bytes:
+    iv = [iv].pack('H*')
+    #Pad with zero bytes to correct length:
+    iv << ("\x00" * (16 - iv.length))
 
-      s.unpack('H*')[0].upcase
-    end
+    cipher.key = key
+    cipher.iv = iv
 
-    def decrypt(key)
-      cipher = OpenSSL::Cipher::Cipher.new('DES-EDE3-CBC').decrypt
-      cipher.key = Digest::SHA1.hexdigest key
-      s = [self].pack("H*").unpack("C*").pack("c*")
+    encrypted = cipher.update(data) + cipher.final
 
-      cipher.update(s) + cipher.final
-    end
+    URI::escape(encrypted)
+  end
+  def decrypt(encoded)
+    #encoded = params['nome']
+    #encoded = URI::unescape(encoded)
+    decipher = OpenSSL::Cipher::AES.new(128, :CBC)
+    decipher.decrypt
+    key = "20137077242520702926"
+    #Convert from hex to raw bytes:
+    key = [key].pack('H*')
+    #Pad with zero bytes to correct length:
+    key << ("\x00" * (16 - key.length))
+    iv ="123789123789123789"
+    #Convert from hex to raw bytes:
+    iv = [iv].pack('H*')
+    #Pad with zero bytes to correct length:
+    iv << ("\x00" * (16 - iv.length))
+    decipher.key = key
+    decipher.iv = iv
+    decipher.update(encoded) + decipher.final
   end
   def h(text)
     Rack::Utils.escape_html(text)
   end
-
   def str_clean str
     str.to_s.gsub("<br>", "\n").gsub(/<\/?[^>]*>/, "").gsub("&nbsp;", "")
   end
@@ -89,6 +116,11 @@ before do
   @url_qs = request.query_string
   @logado = session[:logado]
   @isLogged = @logado
+
+  cipher = OpenSSL::Cipher.new 'aes-256-cbc'
+  cipher.encrypt
+  @cipher_key = cipher.random_key
+  @cipher_iv = cipher.random_iv
 
   #Monitor
   puts "request.host_with_port: #{@url}"
@@ -121,17 +153,69 @@ before do
     redirect "http://#{request.host_with_port}/"
   end
 end
+get '/q' do
+  t
+end
 #
 #  /adm
 #
-get '/a' do
+get '/crypt' do
+  data = "Maguete é o cara crazy né ;)"
+  cipher = OpenSSL::Cipher::AES.new(128, :CBC)
+  cipher.encrypt
 
-  puts plain = 'fidelização compĺeta da macacheira doida'           # confidential
-  puts key = 'rrrrrr'                   # secret
-  puts cipher = plain.encrypt(key)      # 5C6D4C5FAFFCF09F271E01C5A132BE89
+  key = "20137077242520702926"
+  #Convert from hex to raw bytes:
+  key = [key].pack('H*')
+  #Pad with zero bytes to correct length:
+  key << ("\x00" * (16 - key.length))
 
-  #puts cipher.decrypt('guess')          # raises OpenSSL::Cipher::CipherError
-  puts cipher.decrypt(key)              # confidential
+  iv ="123789123789123789"
+  #Convert from hex to raw bytes:
+  iv = [iv].pack('H*')
+  #Pad with zero bytes to correct length:
+  iv << ("\x00" * (16 - iv.length))
+
+  cipher.key = key
+  cipher.iv = iv
+
+  encrypted = cipher.update(data) + cipher.final
+
+  puts URI::escape(encrypted)
+
+  decipher = OpenSSL::Cipher::AES.new(128, :CBC)
+  decipher.decrypt
+
+  decipher.key = key
+  decipher.iv = iv
+
+  plain = decipher.update(encrypted) + decipher.final
+  puts data
+  puts data == plain #=> true
+end
+get '/decrypt/:nome' do
+    encoded = params['nome']
+    #encoded = URI::unescape(encoded)
+
+    decipher = OpenSSL::Cipher::AES.new(128, :CBC)
+    decipher.decrypt
+
+    key = "20137077242520702926"
+    #Convert from hex to raw bytes:
+    key = [key].pack('H*')
+    #Pad with zero bytes to correct length:
+    key << ("\x00" * (16 - key.length))
+
+    iv ="123789123789123789"
+    #Convert from hex to raw bytes:
+    iv = [iv].pack('H*')
+    #Pad with zero bytes to correct length:
+    iv << ("\x00" * (16 - iv.length))
+
+    decipher.key = key
+    decipher.iv = iv
+
+    plain = decipher.update(encoded) + decipher.final
 
 end
 
@@ -236,7 +320,7 @@ post "/site_new" do
   chave = "radiando/#{formUserEmail}/#{formSiteNome}/#{randomSenha}/#{time}".downcase
   puts "chave: #{chave}"
 
-  password = "!Mariaclara@mArcelamaria#maGa108$"
+  #password = "!Mariaclara@mArcelamaria#maGa108$"
 
   # encrypt and encode with 256-bit AES
   # one-time setup, set this to a securely random key with at least 256 bits, see below
@@ -244,7 +328,8 @@ post "/site_new" do
 
   # now encrypt!
   #encrypted_data = URLcrypt.encrypt(chave)
-  encrypted_data = chave.encrypt(password)
+  #encrypted_data = chave.encrypt(password)
+  encrypted_data = encrypt(chave)
 
   puts "encrypted_data: key=#{encrypted_data}"
 
@@ -276,16 +361,15 @@ end
 # Criar novo site
 #
 get "/siteNewDo" do
-  chave = params[:k]
-  puts "chave: #{chave}"
-  password = "!Mariaclara@mArcelamaria#maGa108$"
-
+  encode = params[:k]
+  puts "encode: #{encode}"
   # encrypt and encode with 256-bit AES
   # one-time setup, set this to a securely random key with at least 256 bits, see below
-  URLcrypt.key = password
+  #URLcrypt.key = password
   #decrypted = URLcrypt.decrypt(chave)
-  decrypted = chave.decrypt(password)
-
+  #decrypted = chave.decrypt(password)
+  decrypted = decrypt(encode)
+  decrypted
   emailParams = decrypted.split("/")
   verifica = emailParams[0]
   email = emailParams[1]
