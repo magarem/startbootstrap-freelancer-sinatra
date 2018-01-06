@@ -1,0 +1,129 @@
+---
+info:
+  name: riolazermoveis
+  email: contato@magaweb.com.br
+  senha: 576f
+  title: Portfólio geral
+  description: Site portfólio
+  author: Radiando
+  created: 2017-09-12 14:21:35 utc
+  modified: 2017-11-06 18:12:07.683630314 Z
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: rio lazer móveis
+    img: 
+  menu:
+  - Galeria
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(168, 77%, 42%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/polygon_green-wallpaper-1440x900.jpg
+  fontColor: hsl(0, 0%, 100%)
+  avatar: http://res.cloudinary.com/radiando/image/upload/v1509992421/riolazermoveis/avatar.jpg?1509992421
+  txt1: interior e exterior
+  txt2: Fabricação própria
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: false
+portfolio:
+  label: Galeria
+  itemsTags: 
+  items:
+  - id: undefined-1509983691495
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v642016/riolazermoveis/undefined-1509983691495
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: undefined-1509983717199
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v439278/riolazermoveis/undefined-1509983717199
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: undefined-1505227097152
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1505227109/riolazermoveis/undefined-1505227097152
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: undefined-1509983952434
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1509983960/riolazermoveis/undefined-1509983952434
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: undefined-1509983968392
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1509983977/riolazermoveis/undefined-1509983968392
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: undefined-1509983983529
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1509983990/riolazermoveis/undefined-1509983983529
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: undefined-1509991878660
+    titulo: ''
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1509991922/riolazermoveis/undefined-1509991878660
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  hide: false
+about:
+  label: sobre
+  body1: A 20 anos no mercado a Rio Lazer se consolida fabricando e vendendo móveis
+    de qualidade e beleza para a área interna e externa da sua residência&nbsp;
+  body2: 
+  hide: false
+contact:
+  show: true
+  label: contato
+  hide: false
+footer:
+  show: true
+  endereco: Avenida das americas 13822 <br>Recreio dos Bandeirantes
+  social:
+    facebook: riolazer.moveis
+    googleplus: 
+    twitter: 
+    linkedin: 
+  about_resumo: Tel. 2437-4560
+  hide: false
+itemsTags: 

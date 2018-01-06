@@ -1,0 +1,132 @@
+---
+info:
+  name: hortifruti
+  email: contato@magaweb.com.br
+  senha: 8e3f
+  title: Portfólio geral
+  description: Site portfólio
+  author: Radiando
+  created: 2017-06-23 03:50:00 utc
+  modified: 2017-08-14 23:25:36.088365670 Z
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: hortifruti
+    img: 
+  menu:
+  - Produtos
+  - sobre
+  - contato
+head:
+  backgroundColor: hsl(168, 77%, 42%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/summer_grass_3-wallpaper-1440x900.jpg
+  fontColor: hsl(0, 0%, 100%)
+  avatar: http://res.cloudinary.com/radiando/image/upload/v1498189904/hortifruti/avatar.jpg?1498189904
+  txt1: 'Disque entrega: <br>3598-8092 / 96412-0060'
+  txt2: Bem vindo!
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+    ruler: true
+portfolio:
+  label: Produtos
+  itemsTags:
+  - frutas
+  - verduras
+  items:
+  - id: hortifruti-1498189953231
+    titulo: banana
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1498189961/hortifruti/hortifruti-1498189953231
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - frutas
+  - id: undefined-1498365357528
+    titulo: batata
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v426529/hortifruti/undefined-1498365357528
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - legumes
+  - id: undefined-1498365391589
+    titulo: beterraba
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v64791/hortifruti/undefined-1498365391589
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - legumes
+  - id: hortifruti-1498190022063
+    titulo: cheiro verde
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1498190034/hortifruti/hortifruti-1498190022063
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - verduras
+  - id: undefined-1498365251810
+    titulo: rúcula
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v387897/hortifruti/undefined-1498365251810
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - verduras
+  - id: hortifruti-1498189983590
+    titulo: tangerina
+    mediaType: image
+    img: http://res.cloudinary.com/radiando/image/upload/v1498189993/hortifruti/hortifruti-1498189983590
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - frutas
+  hide: false
+  showGridTitles: true
+about:
+  label: sobre
+  body1: Criamos um jeito diferente de oferecer o frescor das feiras com a praticidade
+    dos grandes mercados. E nosso compromisso é levar sempre até a sua mesa o que
+    a natureza tem de melhor, com frutas, legumes e verduras fresquinhos e o sorriso
+    que não pode faltar.<div><br></div>
+  body2: 
+  hide: false
+contact:
+  show: true
+  label: contato
+  hide: false
+footer:
+  show: true
+  endereco: Terreirão - Recreio - RJ
+  social:
+    facebook: terrafruti
+    googleplus: 
+    twitter: 
+    linkedin: 
+  about_resumo: Entregas rápidas
+  hide: false
+itemsTags: 

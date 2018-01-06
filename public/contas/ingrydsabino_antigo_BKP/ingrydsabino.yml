@@ -1,0 +1,129 @@
+---
+info:
+  name: ingryd sabino
+  email: contato@magaweb.com.br
+  senha: 4bf3
+  title: Portfolio geral
+  description: Site portfolio
+  author: marcelo magalhaes
+navbar:
+  backgroundColor: hsl(2, 18%, 72%)
+  logo:
+    label: ingryd sabino
+    img: 
+  menu:
+  - portfólio
+  - 
+  - contato
+head:
+  backgroundColor: hsl(300, 60%, 50%)
+  backgroundUrl: "/styleBackgrounds/aurora_reloaded-wallpaper-1440x900.jpg"
+  fontColor: hsl(0, 15%, 53%)
+  avatar: contas/ingrydsabino/img/avatar.jpeg?1486168632
+  txt1: modelo fotográfica
+  txt2: Book
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+portfolio:
+  label: portfólio
+  itemsTags: []
+  items:
+  - id: ingrydsabino-1486168709157
+    titulo: foto3
+    img: contas/ingrydsabino/img/portfolio/ingrydsabino-1486168709157.jpeg?decache=0.05847306469467273
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: ingrydsabino-8ff386f2d0
+    titulo: foto1
+    img: contas/ingrydsabino/img/portfolio/ingrydsabino-8ff386f2d0.jpeg?decache=0.7144719557438868
+    txt: 
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    cat: ''
+    tags: 
+  - id: ingrydsabino-1486168685636
+    titulo: foto2
+    img: contas/ingrydsabino/img/portfolio/ingrydsabino-1486168685636.jpeg?decache=0.7343244747101498
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: ingrydsabino-1486168734003
+    titulo: foto4
+    img: contas/ingrydsabino/img/portfolio/ingrydsabino-1486168734003.jpeg?decache=0.2822455712950689
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: ingrydsabino-1486168763429
+    titulo: foto5
+    img: contas/ingrydsabino/img/portfolio/ingrydsabino-1486168763429.jpeg?decache=0.8184784507818923
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: ingrydsabino-1486168789055
+    titulo: foto6
+    img: contas/ingrydsabino/img/portfolio/ingrydsabino-1486168789055.jpeg?decache=0.834411112962449
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: ingrydsabino-1486343613158
+    titulo: ''
+    img: contas/ingrydsabino/img/portfolio/ingrydsabino-1486343613158.jpeg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: ingrydsabino-1486343670039
+    titulo: ''
+    img: contas/ingrydsabino/img/portfolio/ingrydsabino-1486343670039.jpeg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: ingrydsabino-1486343692702
+    titulo: ''
+    img: http://placehold.it/360x260/e67e22/fff
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+about:
+  label: 
+  body1: texto 1
+  body2: texto 2
+contact:
+  label: contato
+footer:
+  endereco: 
+  social:
+    facebook: facebook
+    googleplus: googleplus
+    twitter: twitter
+    linkedin: linkedin
+  about_resumo: texto de resumo
