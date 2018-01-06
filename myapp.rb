@@ -9,11 +9,14 @@ require 'fileutils'
 require 'securerandom'
 require 'mail'
 require 'openssl'
-require "aescrypt"
 require 'open-uri'
 require 'video_thumb'
 require 'cloudinary'
-require 'URLcrypt'
+require 'openssl'
+require 'base64'
+require 'hex_string'
+require 'sendgrid-ruby'
+include SendGrid
 
 set :public_folder, 'public'
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
@@ -54,6 +57,48 @@ configure do
   set :public_folder, Proc.new { File.join(root, "public") }
 end
 helpers do
+
+  def encrypt(data)
+    cipher = OpenSSL::Cipher::AES.new(128, :CBC)
+    cipher.encrypt
+    key = "20137077242520702926"
+    #Convert from hex to raw bytes:
+    key = [key].pack('H*')
+    #Pad with zero bytes to correct length:
+    key << ("\x00" * (16 - key.length))
+    iv ="123789123789123789"
+    #Convert from hex to raw bytes:
+    iv = [iv].pack('H*')
+    #Pad with zero bytes to correct length:
+    iv << ("\x00" * (16 - iv.length))
+
+    cipher.key = key
+    cipher.iv = iv
+
+    encrypted = cipher.update(data) + cipher.final
+
+    URI::escape(encrypted)
+  end
+  def decrypt(encoded)
+    #encoded = params['nome']
+    #encoded = URI::unescape(encoded)
+    decipher = OpenSSL::Cipher::AES.new(128, :CBC)
+    decipher.decrypt
+    key = "20137077242520702926"
+    #Convert from hex to raw bytes:
+    key = [key].pack('H*')
+    #Pad with zero bytes to correct length:
+    key << ("\x00" * (16 - key.length))
+    iv ="123789123789123789"
+    #Convert from hex to raw bytes:
+    iv = [iv].pack('H*')
+    #Pad with zero bytes to correct length:
+    iv << ("\x00" * (16 - iv.length))
+    decipher.key = key
+    decipher.iv = iv
+    decipher.update(encoded) + decipher.final
+  end
+
   def h(text)
     Rack::Utils.escape_html(text)
   end
@@ -207,14 +252,16 @@ post "/site_new" do
   chave = "radiando/#{formUserEmail}/#{formSiteNome}/#{randomSenha}/#{time}".downcase
   puts "chave: #{chave}"
 
-  password = "!Mariaclara@mArcelamaria#maGa108$"
+  #password = "!Mariaclara@mArcelamaria#maGa108$"
 
   # encrypt and encode with 256-bit AES
   # one-time setup, set this to a securely random key with at least 256 bits, see below
-  URLcrypt.key = password
+  #URLcrypt.key = password
 
   # now encrypt!
-  encrypted_data = URLcrypt.encrypt(chave)
+  #encrypted_data = URLcrypt.encrypt(chave)
+  #encrypted_data = chave.encrypt(password)
+  encrypted_data = encrypt(chave)
 
   puts "encrypted_data: key=#{encrypted_data}"
 
@@ -246,15 +293,15 @@ end
 # Criar novo site
 #
 get "/siteNewDo" do
-  chave = params[:k]
-  puts "chave: #{chave}"
-  password = "!Mariaclara@mArcelamaria#maGa108$"
-
+  encode = params[:k]
+  puts "encode: #{encode}"
   # encrypt and encode with 256-bit AES
   # one-time setup, set this to a securely random key with at least 256 bits, see below
-  URLcrypt.key = password
-  decrypted = URLcrypt.decrypt(chave)
-
+  #URLcrypt.key = password
+  #decrypted = URLcrypt.decrypt(chave)
+  #decrypted = chave.decrypt(password)
+  decrypted = decrypt(encode)
+  decrypted
   emailParams = decrypted.split("/")
   verifica = emailParams[0]
   email = emailParams[1]
