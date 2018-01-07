@@ -59,13 +59,14 @@ end
 helpers do
 
   def encrypt(data)
-    cipher = OpenSSL::Cipher::AES.new(128, :CBC)
+
+    cipher = OpenSSL::Cipher.new 'aes-256-cbc'
     cipher.encrypt
-    key = "20137077242520702926"
+    key = "2013707724252070292620137077242520702926"
     #Convert from hex to raw bytes:
     key = [key].pack('H*')
     #Pad with zero bytes to correct length:
-    key << ("\x00" * (16 - key.length))
+    key << ("\x00" * (32 - key.length))
     iv ="123789123789123789"
     #Convert from hex to raw bytes:
     iv = [iv].pack('H*')
@@ -76,19 +77,25 @@ helpers do
     cipher.iv = iv
 
     encrypted = cipher.update(data) + cipher.final
-
-    URI::escape(encrypted)
+    encoded = Base64.encode64(encrypted).encode('utf-8')
+    #decoded = Base64.decode64 encoded.encode('ascii-8bit')
+    #encoded
+    CGI::escape(encoded)
+    #decrypt(encrypted)
   end
   def decrypt(encoded)
+    #encoded = Base64.decode64 encoded.encode('ascii-8bit')
     #encoded = params['nome']
-    #encoded = URI::unescape(encoded)
-    decipher = OpenSSL::Cipher::AES.new(128, :CBC)
+    #encoded = CGI::unescape(encoded)
+    encoded = Base64.decode64 encoded.encode('ascii-8bit')
+    #Base64.decode64(encoded.encode('ascii-8bit'))
+    decipher = OpenSSL::Cipher.new 'aes-256-cbc'
     decipher.decrypt
-    key = "20137077242520702926"
+    key = "2013707724252070292620137077242520702926"
     #Convert from hex to raw bytes:
     key = [key].pack('H*')
     #Pad with zero bytes to correct length:
-    key << ("\x00" * (16 - key.length))
+    key << ("\x00" * (32 - key.length))
     iv ="123789123789123789"
     #Convert from hex to raw bytes:
     iv = [iv].pack('H*')
@@ -151,6 +158,13 @@ end
 #
 #  /adm
 #
+get '/encrypt/:str' do
+  encrypt params[:str]
+end
+get '/decrypt/:str' do
+  decrypt params[:str]
+end
+
 get '/adm' do
   redirect "http://#{@url}/site/index.html?cmd=login&site=#{@site_nome}"
 end
