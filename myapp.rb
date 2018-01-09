@@ -19,8 +19,7 @@ require 'base64'
 require 'hex_string'
 require 'sendgrid-ruby'
 include SendGrid
-#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
-#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
+
 set :public_folder, 'public'
 set :session_secret, "328479283uf923fu8932fu923uf9832f23f232"
 enable :sessions
