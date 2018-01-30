@@ -7,10 +7,11 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2017-09-12 14:21:35 utc
-  modified: 2017-11-06 18:12:07.683630314 Z
+  modified: 2018-01-30 00:28:38.807564473 Z
 navbar:
-  backgroundColor: hsl(2, 18%, 72%)
+  backgroundColor: hsl(198, 75%, 14%)
   logo:
+    fontFamily: Cherry Cream Soda
     label: rio lazer móveis
     img: 
   menu:
@@ -18,9 +19,10 @@ navbar:
   - sobre
   - contato
 head:
-  backgroundColor: hsl(168, 77%, 42%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/polygon_green-wallpaper-1440x900.jpg
-  fontColor: hsl(0, 0%, 100%)
+  backgroundColor: hsl(168, 19%, 19%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
+  fontFamily: Architects Daughter
+  fontColor: hsl(212, 100%, 1%)
   avatar: http://res.cloudinary.com/radiando/image/upload/v1509992421/riolazermoveis/avatar.jpg?1509992421
   txt1: interior e exterior
   txt2: Fabricação própria
@@ -28,7 +30,8 @@ head:
     avatar: true
     txt1: true
     txt2: true
-    txtShadow: false
+    txtShadow: true
+    ruler: true
 portfolio:
   label: Galeria
   itemsTags: 
@@ -106,6 +109,7 @@ portfolio:
     servico: ''
     tags: []
   hide: false
+  showGridTitles: false
 about:
   label: sobre
   body1: A 20 anos no mercado a Rio Lazer se consolida fabricando e vendendo móveis

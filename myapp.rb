@@ -84,11 +84,7 @@ helpers do
     #decrypt(encrypted)
   end
   def decrypt(encoded)
-    #encoded = Base64.decode64 encoded.encode('ascii-8bit')
-    #encoded = params['nome']
-    #encoded = CGI::unescape(encoded)
     encoded = Base64.decode64 encoded.encode('ascii-8bit')
-    #Base64.decode64(encoded.encode('ascii-8bit'))
     decipher = OpenSSL::Cipher.new 'aes-256-cbc'
     decipher.decrypt
     key = "2013707724252070292620137077242520702926"

@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/angularjs-color-picker.min.css" />
   <!-- only include if you use bootstrap -->
   <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family={{siteData.navbar.logo.fontFamily}}|{{siteData.head.fontFamily}}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/freelancer.css" rel="stylesheet">
@@ -146,13 +147,20 @@ div.materialpicker-white.selected {
     border-color: #a94442;
     box-shadow: 0 1px 5px #a94442;
 }
+
+[ng-cloak] {
+      display: none;
+    }
  </style>
  <link rel="stylesheet" id="switcher-css" type="text/css" href="/dmss/switcher/css/switcher.css" media="all">
 
+ <link rel="stylesheet" type="text/css" href="/bower_components/angular-fontselect/dist/angular-fontselect.css">
+
+<link rel="stylesheet" type="text/css" href="/css/fontselect-alternate.css" />
   <script src="/js/jquery.js"></script>
 </head>
 
-<body id="page-top" class="index" ng-controller="topCtrl">
+<body id="page-top" class="index" ng-controller="topCtrl" ng-cloak>
   <%= yield %>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
   <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
@@ -164,6 +172,7 @@ div.materialpicker-white.selected {
   <!-- AngularJs -->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+
   <!-- Sortable.js -->
 
   <script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
@@ -250,32 +259,31 @@ div.materialpicker-white.selected {
 
     <!-- UI jQuery (For Module #5 and #6) -->
 
-    <script src="/node_modules/cloudinary-angular/dist/cloudinary-angular.min.js"></script>
+      <script src="/node_modules/cloudinary-angular/dist/cloudinary-angular.min.js"></script>
+      <script src="/node_modules/@fengyuanchen/loader/dist/loader.js"></script>
+      <script src="/bower_components/ng-cropper/dist/ngCropper.all.js"></script>
+      <script>
+        /* @ngInject */
+        function configure(CloudinaryProvider) {
+            CloudinaryProvider.configure({
+                cloud_name: 'magaweb',
+                api_key: '767586258454699'
+            });
+        }
+        angular
+            .module('myapp')
+            .config(configure);
 
-    <script src="/node_modules/@fengyuanchen/loader/dist/loader.js"></script>
-    <script src="/bower_components/ng-cropper/dist/ngCropper.all.js"></script>
-    <script>
-    
-/* @ngInject */
-function configure(CloudinaryProvider) {
-    CloudinaryProvider.configure({
-        cloud_name: 'magaweb',
-        api_key: '767586258454699'
-    });
-}
-angular
-    .module('myapp')
-    .config(configure);
-</script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js" type="text/javascript"></script>
-    <!-- Bootstrap jQuery -->
-    <script src="/dmss/js/bootstrap.js"></script>
-    <!-- Bootstrap Select Tool (For Module #4) -->
-    <script src="/dmss/switcher/js/bootstrap-select.js"></script>
-    <!-- Evol Color Picker jQuery (For Module #5 and #6) -->
-    <script src="/dmss/switcher/js/evol.colorpicker.min.js" type="text/javascript"></script>
-    <!-- All Scripts & Plugins -->
-    <script src="/dmss/switcher/js/dmss.js"></script>
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js" type="text/javascript"></script>
+      <!-- Bootstrap jQuery -->
+      <script src="/dmss/js/bootstrap.js"></script>
+      <!-- Bootstrap Select Tool (For Module #4) -->
+      <script src="/dmss/switcher/js/bootstrap-select.js"></script>
+      <!-- Evol Color Picker jQuery (For Module #5 and #6) -->
+      <script src="/dmss/switcher/js/evol.colorpicker.min.js" type="text/javascript"></script>
+      <!-- All Scripts & Plugins -->
+      <script src="/dmss/switcher/js/dmss.js"></script>
 
       <!--script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script-->
       <script src="/bower_components/tinycolor/dist/tinycolor-min.js"></script>
@@ -286,5 +294,76 @@ angular
       <script src="/bower_components/fluidvids/src/fluidvids.js"></script>
       <script src="/bower_components/angular-image-compress/angular-image-compress.js"></script>
       <script src="/js/BootSideMenu.js"></script>
+      <script src="/js/fontSelector/fontSelector.js"></script>
+      <script src="/bower_components/angular-fontselect/dist/angular-fontselect.js"></script>
+
+      <% if @logado %>
+        <script>
+          $( document ).ready(function() {
+            $(document).mousemove(function(event){
+                if (event.pageX<20 && event.pageY<700){
+                  console.log("abrir sidebar");
+                  $(".menu").css("left", "0px");
+                  $(".line").css("background", "#FFF");
+                  menuOpen = true;
+                }
+              });
+              console.log( "ready!" );
+          });
+        </script>
+      <% end %>
+
+      <script src="/js/jquery.fontselect.js"></script>
+      <script>
+        $(function(){
+          $('#logoFontSelector').fontselect().change(function(){
+
+            // replace + signs with spaces for css
+            var font = $(this).val().replace(/\+/g, ' ');
+
+            // split font into family and weight
+            font = font.split(':');
+            console.log(font[0])
+            // set family on paragraphs
+            $('#logoFont').css('font-family', font[0]);
+
+            //Salva no script
+            $.ajax({
+              type: "post",
+              url: "/objSave",
+              data: JSON.stringify({"obj":"siteData.navbar.logo.fontFamily", "val":font[0]}),
+              contentType: "application/json; charset=utf-8",
+              success: function (result) {
+                   //do somthing here
+              }
+            });
+
+          });
+          $('#headerFontSelector').fontselect().change(function(){
+
+            // replace + signs with spaces for css
+            var font = $(this).val().replace(/\+/g, ' ');
+
+            // split font into family and weight
+            font = font.split(':');
+
+            console.log(font[0])
+
+            // set family on paragraphs
+            $('#headerFont1').css('font-family', font[0]);
+            $('#headerFont2').css('font-family', font[0]);
+
+            $.ajax({
+              type: "post",
+              url: "/objSave",
+              data: JSON.stringify({"obj":"siteData.head.fontFamily", "val":font[0]}),
+              contentType: "application/json; charset=utf-8",
+              success: function (result) {
+                   //do somthing here
+              }
+            });
+          });
+        });
+      </script>
   </body>
   </html>

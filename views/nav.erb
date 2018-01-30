@@ -1,10 +1,12 @@
  <!-- Navigation -->
-
+ <style>
+  .navbar-default {
+    background-color:{{siteData.navbar.backgroundColor}}
+  }
+ </style>
 <nav ng-controller="navCtrl" class="navbar navbar-default navbar-fixed-top">
-
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
-
     <div class="navbar-header page-scroll">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -27,30 +29,32 @@
       <%= erb :header_controls %>
       <a class="navbar-brand"
          href="#page-top">
-        <div id=logo contenteditable="{{isLogged}}"
+        <div
+          id=logoFont
+          contenteditable="{{isLogged}}"
           ng-model="siteData.navbar.logo.label"
           strip-br="true"
           select-non-editable="true"
           ng-blur="saveDiv('siteData.navbar.logo.label')"
           placeholder="&nbsp;"
-          style="min-width: 50px;"
+          style="min-width: 50px; color:{{siteData.navbar.logoColor}}; font-family: {{siteData.navbar.logo.fontFamily}};"
+          ng-style="{{'siteData.atual'}}"
           >
         </div>
       </a><a ng-show="isLogged" href="#page-top" class="navbar-brand" ng-click="navbar.logo.label=''" event-focus="click" event-focus-id="#logo"><i class="glyphicon glyphicon-remove-sign"></i></a>
-
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+      <ul class="nav navbar-nav navbar-right" >
         <li class="hidden">
             <a href="#page-top"></a>
         </li>
         <li ng-if="(!siteData.portfolio.hide && siteData.portfolio.items.length > 0)" class="page-scroll"><a
-            href="#portfolio">{{siteData.portfolio.label}}</a></li>
+            href="#portfolio" style="color:{{siteData.navbar.menuColor}}">{{siteData.portfolio.label}}</a></li>
         <li ng-if="(!siteData.about.hide && (!siteData.about.txt1.length > 0 || !siteData.about.txt2.length > 0))" class="page-scroll"><a
-            href="#about">{{siteData.about.label}}</a></li>
+            href="#about" style="color:{{siteData.navbar.menuColor}}">{{siteData.about.label}}</a></li>
         <li ng-if="!siteData.contact.hide" class="page-scroll"><a
-            href="#contact">{{siteData.contact.label}}</a></li>
+            href="#contact" style="color:{{siteData.navbar.menuColor}}">{{siteData.contact.label}}</a></li>
       </ul>
     </div>
       <!-- /.navbar-collapse -->

@@ -7,7 +7,7 @@
   .menu {
     font-family: 'Helvetica Neue';
     font-weight: 100;
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   .menu > h3 {
     font-family: 'Helvetica Neue';
@@ -15,103 +15,237 @@
     font-size: 1.5rem;
   }
 </style>
-
-<div class="menu" >
+<style>
+  .font-dropdown {
+    width: 130px;
+    border-radius: 5px;
+    position: relative;
+    margin: 10px auto 0;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    outline: none;
+  }
+  .font-dropdown .label {
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 1.2em;
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 36px;
+    line-height: 36px;
+    z-index: 2;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .font-dropdown .label:after {
+    -moz-transition: -moz-transform 0.3s;
+    -o-transition: -o-transform 0.3s;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: "";
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #ccc;
+    left: auto;
+    right: 11px;
+    bottom: 13px;
+  }
+  .font-dropdown .dropdown-list {
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 130px;
+    border-radius: 5px;
+    max-height: 66.66667px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .font-dropdown.active .dropdown-list {
+    max-height: 100px;
+    top: 37px;
+    opacity: 1;
+    visibility: visible;
+  }
+  .font-dropdown.active .label:after {
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  .font-dropdown li {
+    padding: 0 10px;
+    font-size: 1.4em;
+    line-height: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .font-dropdown li:hover {
+    color: #fff;
+    background-color: #2689d6;
+  }
+  .font-dropdown .sel {
+    background-color: #f0f0f0;
+    color: #2689d6;
+  }
+</style>
+<div class="menu">
   <h2 class=text-center>Ajustes</h2>
-   <!-- <div class="demo-icon" ng-show=isLogged>
-     <i class="fa fa-cog fa-spin fa-2x"></i>
-   </div><!-- end opener icon -->
-   <div class="form_holder" style="margin-top:0px;">
-     <!-- <div class="btn-group">
-       <a href="#1a" data-toggle="tab" class="btn btn-primary btn-xs">Cor</a>
-       <a href="#2a" data-toggle="tab" class="btn btn-primary btn-xs">Imagem</a>
-       <a href="#3a" data-toggle="tab" class="btn btn-primary btn-xs">Itens</a>
-     </div> -->
-     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-       <div class="predefined_styles center-block">
-         <div class="tab-content clearfix">
-           <div >
-               <div  style=""  class="center"><br>
-                 <label for="fundo">Cor de fundo</label>
-                 <color-picker ng-model="siteData.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
-                 <br>
-                 <label for="fonte">Cor da fonte</label>
-                 <color-picker ng-model="siteData.head.fontColor"  event-api="eventApi2" options="options"></color-picker>
-                 <div class="checkbox">
-                   <label><input type="checkbox" ng-model="siteData.head.show.txtShadow" ng-click="saveDiv('siteData.head.show.txtShadow')" >Sombra</label>
-                 </div>
-               </div>
-           </div>
-           <div >
-             <!-- END MODULE #2 -->
-             <!-- <h4>Imagem de fundo</h4> -->
-             <!-- MODULE #3 --><br>
-             <label for="fundo">Imagem de fundo</label>
-             <div id=fundos   style="overflow-y: auto;  width: 120px; height: 100px;  background-color: #d9d9d9; outline: 1px solid #9a9292;"  >
-               <div class="backImg " style="outline: 1px solid #b3b3b3; margin-left: 1px;" ng-repeat="item in backGroundItems" back-img="http://res.cloudinary.com/radiando/image/upload/headerBackground/thumbs/{{item}}" ng-click="backgroundUrl_set(item)"></div>
-             </div>
-             <!-- END MODULE #3 --><br>
-             <form name="myForm">
-                 <fieldset>
-                   <div class="btn-group" role="group" aria-label="Basic example">
-                   <button  type="button" class="btn btn-default btn-sm" style="font-size: 12px;" ng-click="backgroundUrl_clear();">Limpar</button>
-                   <label class="btn btn-default btn-file btn-sm"  style="font-size: 12px;">
-                     <input id=file-input ng-show=isLogged type="file" ngf-select= "uploadPic(picFile2)" ng-model="picFile2" name="file"
-                       accept="image/*" ngf-max-size="3MB" required
-                       ngf-model-invalid="errorFile" ngf-fix-orientation="true" hidden
-                       ngf-resize-if="$width > 1500 || $height > 800"
-                       ngf-resize="{width: 1500, height: 800}"
-                       >
-                       <span  ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              Menu
+            </a>
+          </h4>
+        </div>
+
+        <div id="collapseOne" class="panel-collapse collapse out">
+          <div class="panel-body">
+            <div style="" class="center">
+              <label for="fundo">Fundo</label>
+              <color-picker ng-model="siteData.navbar.backgroundColor" event-api="eventApi" options="options"></color-picker>
+              <br>
+              <label for="fundo">Logo Cor</label>
+              <color-picker ng-model="siteData.navbar.logoColor" event-api="eventApi" options="options"></color-picker>
+              <br>
+              <label for="fundo">Menu Cor</label>
+              <color-picker ng-model="siteData.navbar.menuColor" event-api="eventApi" options="options"></color-picker>
+              <br>
+              <label for="fonte">Logo letra</label>
+              <!-- <div class="font-dropdown" tabindex="1" fd-font-dropdown>
+                <span class="label" ng-style="{{'fontslist[selectedIdx].style'}}">{{fontslist[selectedIdx].name}}</span>
+                <ul class="dropdown-list">
+                    <li ng-repeat="font in fontslist" ng-click="changeFont($index)" ng-class="{'sel': $index == selectedIdx}" ng-style="{{font.style}}">
+                        {{font.name}}
+                    </li>
+                </ul>
+              </div> -->
+              <input id="logoFontSelector" type="text" />
+
+              <!-- <div class="checkbox">
+                <label><input type="checkbox" ng-model="siteData.head.show.txtShadow" ng-click="saveDiv('siteData.head.show.txtShadow')" >Sombra</label>
+              </div> --><br><br>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+              Topo
+            </a>
+          </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse out">
+          <div class="panel-body">
+            <div class="center">
+              <label for="fonte">Texto letra</label>
+              <input id="headerFontSelector" type="text" /><br>
+              <label for="fonte">Cor da fonte</label>
+              <color-picker ng-model="siteData.head.fontColor"  event-api="eventApi2" options="options"></color-picker>
+              <div class="checkbox">
+                <label><input type="checkbox" ng-model="siteData.head.show.txtShadow" ng-click="saveDiv('siteData.head.show.txtShadow')" >Sombra</label>
+              </div>
+              <label for="fundo">Cor de fundo</label>
+              <color-picker ng-model="siteData.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
+              <br>
+              <label for="fundo">Imagem de fundo</label>
+              <div id=fundos style="overflow-y: auto; width: 120px; height: 100px;  background-color: #d9d9d9; outline: 1px solid #9a9292;"  >
+                <div class="backImg" style="outline: 1px solid #b3b3b3; margin-left: 1px;" ng-repeat="item in backGroundItems" back-img="http://res.cloudinary.com/radiando/image/upload/headerBackground/thumbs/{{item}}" ng-click="backgroundUrl_set(item)"></div>
+              </div>
+              <br>
+              <form name="myForm">
+                <fieldset>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button  type="button" class="btn btn-default btn-sm" style="font-size: 12px;" ng-click="backgroundUrl_clear();">Limpar</button>
+                    <label class="btn btn-default btn-file btn-sm"  style="font-size: 12px;">
+                      <input id=file-input ng-show=isLogged type="file" ngf-select= "uploadPic(picFile2)" ng-model="picFile2" name="file"
+                        accept="image/*" ngf-max-size="5MB" required
+                        ngf-model-invalid="errorFile" ngf-fix-orientation="true" hidden
+                        ngf-resize-if="$width > 1500 || $height > 800"
+                        ngf-resize="{width: 1500, height: 800}">
+                      <span  ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
                        {{ searchButtonText }}
-                   </label>
+                    </label>
                   </div>
                   <span class="progress" ng-show="picFile2.progress >= 0">
-                     <div style="width:{{picFile2.progress}}%"
-                         ng-bind="picFile2.progress + '%'"></div>
-                   </span>
-                   <span ng-show="picFile2.result">Imagem enviada!</span>
-                   <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-                   <i ng-show="myForm.file.$error.maxSize">Imagem muito pesada
-                       {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                   <div style="width:{{picFile2.progress}}%" ng-bind="picFile2.progress + '%'"></div>
+                  </span>
+                  <span ng-show="picFile2.result">Imagem enviada!</span>
+                  <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                  <i ng-show="myForm.file.$error.maxSize">Imagem muito pesada
+                   {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
                  </fieldset>
                </form>
-           </div>
-           <div >
-             <div class="checkbox">
-               <label>
-                 <input type="checkbox"
-                        ng-model="siteData.head.show.avatar"
-                        ng-click="saveDiv('siteData.head.show.avatar')">Ativar imagem principal
-               </label>
              </div>
-             <div class="checkbox">
-               <label>
-                 <input type="checkbox"
-                        ng-model="siteData.head.show.txt1"
-                        ng-click="saveDiv('siteData.head.show.txt1')">Ativar sub-titulo #1
-               </label>
-             </div>
-             <div class="checkbox">
-               <label>
-                 <input type="checkbox"
-                        ng-model="siteData.head.show.ruler"
-                        ng-click="saveDiv('siteData.head.show.ruler')">Ativar regua
-               </label>
-             </div>
-             <div class="checkbox">
-               <label>
-                 <input type="checkbox"
-                        ng-model="siteData.head.show.txt2"
-                        ng-click="saveDiv('siteData.head.show.txt2')">Ativar sub-titulo #2
-               </label>
-             </div>
-           </div>
-         </div><!-- end predefined_styles -->
-       </div><!-- end col -->
-       <!-- end col -->
-     </div><!-- end row -->
-   </div>
- </div><!-- end form_holder -->
-
- <!-- End Switcher -->
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+              Itens
+            </a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse out">
+          <div class="panel-body">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"
+                  ng-model="siteData.head.show.avatar"
+                  ng-click="saveDiv('siteData.head.show.avatar')">Ativar imagem principal
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"
+                  ng-model="siteData.head.show.txt1"
+                  ng-click="saveDiv('siteData.head.show.txt1')">Ativar sub-titulo #1
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"
+                  ng-model="siteData.head.show.ruler"
+                  ng-click="saveDiv('siteData.head.show.ruler')">Ativar regua
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"
+                  ng-model="siteData.head.show.txt2"
+                  ng-click="saveDiv('siteData.head.show.txt2')">Ativar sub-titulo #2
+              </label>
+            </div>
+          </div>
+        </div><!-- end predefined_styles -->
+      </div><!-- end col -->
+    </div>
+  </div>
+</div>

@@ -231,11 +231,11 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12" >
-        <div ng-show="isLogged" class=hamburger>
+        <!-- <div ng-show="isLogged" class=hamburger>
             <div class=line></div>
             <div class=line></div>
             <div class=line></div>
-        </div>
+        </div> -->
         <img ng-show=siteData.head.show.avatar
              class="c isLogged avatarImg"
              ng-src="{{ siteData.head.avatar }}"
@@ -251,14 +251,22 @@
                 ng-blur="saveDiv('siteData.head.txt1')"
                 placeholder="texto 1"
                 ng-class="{txtShadow: siteData.head.show.txtShadow}"
+                style="font-family: {{siteData.head.fontFamily}};"
+                id=headerFont1
                 >
             </div>
           </span>
           <style>
-          hr#head_star.star-light:after, hr#head_star.star-primary:after {
+           hr#head_star.star-light:after, hr#head_star.star-primary:after {
              color:{{siteData.head.fontColor}};
            }
+           hr {
+               box-sizing: content-box;
+               height: 0;
+               overflow: visible;
+           }
           </style>
+
           <hr id=head_star ng-show="siteData.head.show.ruler" style="color:#e3cf7a; content:'\f006'" ng-style="{'border-color': siteData.head.fontColor}" class="star-light" ng-class="{txtShadow2: siteData.head.show.txtShadow}">
           <span class="skills">
             <div contenteditable="{{isLogged}}"
@@ -269,6 +277,8 @@
                 ng-blur="saveDiv('siteData.head.txt2')"
                 placeholder="texto 2"
                 ng-class="{txtShadow2: siteData.head.show.txtShadow}"
+                style="font-family: {{siteData.head.fontFamily}};"
+                id=headerFont2
                 >
             </div>
           </span>

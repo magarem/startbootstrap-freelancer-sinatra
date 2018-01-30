@@ -11,7 +11,8 @@ var mod = angular.module("myapp", ['cloudinary',
                                    'ngCropper',
                                    'ng-sortable',
                                    'ngAnimate',
-                                   'ui.bootstrap']);
+                                   'ui.bootstrap',
+                                   'fdApp']);
 mod.run(['$http','$rootScope',
   function ($http, $rootScope) {
     $rootScope.aa = 10;
@@ -25,6 +26,9 @@ mod.run(['$http','$rootScope',
      })
 
 }])
+mod.constant('jdFontselectConfig', {
+              googleApiKey: 'AIzaSyDTZJrLVoNqsFhMRT2qtrbRbmjEAkmgb0A'
+            })
 mod.config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist(['**']);
 });
@@ -1236,10 +1240,10 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
   $scope.eventApi = {
       onChange: function(api, color, $event) {
         $scope.backgroundUrl_clear();
-        $scope.saveDiv('siteData.head.backgroundColor')
+        $scope.saveDiv('siteData.navbar.backgroundColor')
       },
       onBlur: function(api, color, $event) {
-        $scope.saveDiv('siteData.head.backgroundColor')
+        $scope.saveDiv('siteData.navbar.backgroundColor')
       }
   };
   // api event handlers
@@ -1253,8 +1257,6 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
     $scope.siteData.head.backgroundUrl = " "
     $scope.saveDiv('siteData.head.backgroundUrl')
   }
-
-  $scope.backGroundItems = [];
 
   SiteData.loadStyleBackgrounds().then(function(response) {
     $scope.backGroundItems = response.data;
@@ -1375,6 +1377,7 @@ mod.controller('headerCtrl',['$scope', '$rootScope', 'Upload', '$timeout', '$htt
        angular.element(el).triggerHandler('click');
      }, 0);
     };
+
 
 }])
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', 'Cropper', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData, Cropper) {
