@@ -161,6 +161,18 @@ get '/decrypt/:str' do
   decrypt params[:str]
 end
 
+get '/testeEnvio' do
+  from = Email.new(email: 'contato@radiando.net')
+  to = Email.new(email: 'contato@magaweb.com.br')
+  subject = 'Sending with SendGrid is Fun'
+  content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
+  mail = SendGrid::Mail.new(from, subject, to, content)
+  sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+  response = sg.client.mail._('send').post(request_body: mail.to_json)
+  puts response.status_code
+  puts response.body
+  puts response.headers
+end
 get '/adm' do
   redirect "http://#{@url}/site/index.html?cmd=login&site=#{@site_nome}"
 end
@@ -241,6 +253,7 @@ get "/lembrarSenha" do
 
   mail.delivery_method :sendmail
   mail.deliver
+
   redirect "http://#{@url}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
 end
 #
@@ -261,8 +274,6 @@ post "/site_new" do
 
   chave = "radiando/#{formUserEmail}/#{formSiteNome}/#{randomSenha}/#{time}".downcase
   puts "chave: #{chave}"
-
-  #password = "!Mariaclara@mArcelamaria#maGa108$"
 
   # encrypt and encode with 256-bit AES
   # one-time setup, set this to a securely random key with at least 256 bits, see below
@@ -910,4 +921,46 @@ post '/contact/emailSend' do
 
   mail.delivery_method :sendmail
   mail.deliver
+end
+
+post '/modal_alterarEmailESenha_form' do
+
+  #Carrega os dados do site
+  data = Dataload.testa (@url)
+  dataEmail = data["info"]["email"]
+  dataSenha = data["info"]["senha"]
+
+  # Pega os dados do formulário
+  modal_alterarEmailESenha_form_email = params[:modal_alterarEmailESenha_form_email]
+  modal_alterarEmailESenha_form_senhaAtual = params[:modal_alterarEmailESenha_form_senhaAtual]
+  modal_alterarEmailESenha_form_novaSenha = params[:modal_alterarEmailESenha_form_novaSenha]
+  modal_alterarEmailESenha_form_novaSenha_confirma = params[:modal_alterarEmailESenha_form_novaSenha_confirma]
+
+  # Define uma flag de analise do formulário enviado
+  modal_alterarEmailESenha_form_flag_ok = true
+
+  # Faz as críticas dos dados do formulário
+  if modal_alterarEmailESenha_form_email.to_s.empty?
+    modal_alterarEmailESenha_form_flag_ok = false
+  end
+  if modal_alterarEmailESenha_form_senhaAtual.to_s.empty?
+    modal_alterarEmailESenha_form_flag_ok = false
+  end
+  if !modal_alterarEmailESenha_form_novaSenha.to_s.empty?
+    if modal_alterarEmailESenha_form_novaSenha != modal_alterarEmailESenha_form_novaSenha_confirma
+      modal_alterarEmailESenha_form_flag_ok = false
+    end
+  end
+
+  #Confere se a senha informada é verdadeira
+  if modal_alterarEmailESenha_form_senhaAtual != dataSenha
+    redirect "?erro=1"
+  end
+
+  # Retorna com uma mensagem de erro caso tenha sido
+  # encontrado falhas no preenchimento do formulário
+  if !modal_alterarEmailESenha_form_flag_ok
+    redirect "?erro=0"
+  end
+
 end

@@ -1334,6 +1334,8 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
    }
   }
 
+
+
 }])
 mod.controller('headerCtrl',['$scope', '$rootScope', 'Upload', '$timeout', '$http', 'SiteData', '$uibModal', function ($scope, $rootScope, Upload, $timeout, $http, SiteData, $uibModal) {
 

@@ -5,7 +5,6 @@
        margin-right: auto;
   }
   .menu {
-    font-family: 'Helvetica Neue';
     font-weight: 100;
     font-size: 1.3rem;
   }
@@ -107,9 +106,12 @@
     background-color: #f0f0f0;
     color: #2689d6;
   }
+
+  .panel-title {
+      font-size: 15px;}
 </style>
 <div class="menu">
-  <h2 class=text-center>Ajustes</h2>
+  <h2 class=text-center style="font-size: 17px">Configurações</h2>
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default">
@@ -219,30 +221,46 @@
               <label>
                 <input type="checkbox"
                   ng-model="siteData.head.show.avatar"
-                  ng-click="saveDiv('siteData.head.show.avatar')">Ativar imagem principal
+                  ng-click="saveDiv('siteData.head.show.avatar')">Imagem principal
               </label>
             </div>
             <div class="checkbox">
               <label>
                 <input type="checkbox"
                   ng-model="siteData.head.show.txt1"
-                  ng-click="saveDiv('siteData.head.show.txt1')">Ativar sub-titulo #1
+                  ng-click="saveDiv('siteData.head.show.txt1')">Sub-titulo #1
               </label>
             </div>
             <div class="checkbox">
               <label>
                 <input type="checkbox"
                   ng-model="siteData.head.show.ruler"
-                  ng-click="saveDiv('siteData.head.show.ruler')">Ativar regua
+                  ng-click="saveDiv('siteData.head.show.ruler')">Regua
               </label>
             </div>
             <div class="checkbox">
               <label>
                 <input type="checkbox"
                   ng-model="siteData.head.show.txt2"
-                  ng-click="saveDiv('siteData.head.show.txt2')">Ativar sub-titulo #2
+                  ng-click="saveDiv('siteData.head.show.txt2')">Sub-titulo #2
               </label>
             </div>
+          </div>
+        </div><!-- end predefined_styles -->
+      </div><!-- end col -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+              Conta
+            </a>
+          </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse out">
+          <div class="panel-body">
+            <a href="#ex2" data-toggle="modal" data-target="#modal_alterarEmailESenha">Alterar email/senha</a><br><br>
+            <!-- <a href=>Pedido de suporte</a><br><br> -->
+            <a href="#ex3" data-toggle="modal" data-target="#modal_excluirSite">Excluir Site</a>
           </div>
         </div><!-- end predefined_styles -->
       </div><!-- end col -->

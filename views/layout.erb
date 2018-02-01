@@ -32,6 +32,8 @@
 
 
   <link href="/bower_components/ng-cropper/dist/ngCropper.all.css" rel="stylesheet">
+  <link href="/bower_components/ngModal/dist/ng-modal.css" rel="stylesheet">
+
 
   <style>
    [contenteditable=true]:empty:before{
@@ -151,16 +153,20 @@ div.materialpicker-white.selected {
 [ng-cloak] {
       display: none;
     }
+
+
  </style>
  <link rel="stylesheet" id="switcher-css" type="text/css" href="/dmss/switcher/css/switcher.css" media="all">
 
  <link rel="stylesheet" type="text/css" href="/bower_components/angular-fontselect/dist/angular-fontselect.css">
 
 <link rel="stylesheet" type="text/css" href="/css/fontselect-alternate.css" />
-  <script src="/js/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body id="page-top" class="index" ng-controller="topCtrl" ng-cloak>
+<%= erb :modals %>
   <%= yield %>
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
   <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
@@ -179,7 +185,7 @@ div.materialpicker-white.selected {
   <!-- ng-sortable.js -->
   <script src="http://rubaxa.github.io/Sortable/ng-sortable.js"></script>
   <!-- Upload -->
-  <script src="/js/bootstrap.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
   <script src="/js/classie.js"></script>
   <script src="/js/cbpAnimatedHeader.js"></script>
 
@@ -364,6 +370,37 @@ div.materialpicker-white.selected {
             });
           });
         });
+
+
+      </script>
+
+
+      <script>
+        $(document).ready(function(){
+            $("#myBtn").click(function(){
+                $("#modal_login").modal();
+            });
+        });
+
+        //Script para pegar a query string
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var erro = getParameterByName('erro');
+        if (erro.length>0) {
+          erro_msg = []
+          erro_msg[0] = "<p>Aconteceu algum erro em nossos servidores!<p><p>Favor tentar a operação novamente, se o erro persistir favor entrar em contato com nossa equipe pelo e-mail: contato@radiando.net</p>"
+          erro_msg[1] = "A senha não confere"
+          $("#modal_erro_msgs").html(erro_msg[erro]);
+          $('#modal_erro').modal('show');
+        }
       </script>
   </body>
   </html>
