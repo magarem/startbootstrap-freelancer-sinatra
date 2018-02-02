@@ -1,3 +1,16 @@
+<script type="text/javascript" language="javascript">
+  function valida_email(field){
+    ret = true
+    var filter = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    if(!filter.test(field)){
+      ret = false
+    }
+    return ret
+  }
+  function valida_senha(field){
+    return (field.length >= 4 && field.length <= 15)
+  }
+</script>
 <style>
    #modal_login .modal-header , .title , .close {
       background-color: #5cb85c;
@@ -49,7 +62,6 @@
 </div>
 
 <style>
-
   #modal_alterarEmailESenha {
     height: 450px;
     width: 400px;
@@ -113,10 +125,23 @@
      }
 
      if (modal_alterarEmailESenha_form_novaSenha) {
-        if (modal_alterarEmailESenha_form_novaSenha != modal_alterarEmailESenha_form_novaSenha_confirma){
+        if (modal_alterarEmailESenha_form_novaSenha == modal_alterarEmailESenha_form_novaSenha_confirma){
+          if (!valida_senha(modal_alterarEmailESenha_form_novaSenha)){
+            modal_alterarEmailESenha_form_flag_ok = false
+            modal_alterarEmailESenha_form_msg += "Erro: A senha deve ter entre 4 e 15 dígitos<Br>"
+          }
+        }else{
+          //Testa se a senha está dentro do padrão
           modal_alterarEmailESenha_form_flag_ok = false
           modal_alterarEmailESenha_form_msg += "Erro: Campo nova senha e campo nova senha de confirmação estão diferentes<Br>"
         }
+
+     }
+
+     //Confere se o email digitado está correto
+     if (!valida_email(modal_alterarEmailESenha_form_email)){
+       modal_alterarEmailESenha_form_flag_ok = false
+       modal_alterarEmailESenha_form_msg += "Erro: O email digitado está em um formato incorreto<Br>"
      }
 
      console.log(modal_alterarEmailESenha_form_flag_ok)
@@ -140,21 +165,70 @@
 </style>
 <div class="modal fade" id="modal_excluirSite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
+   <form id=modal_excluirSite_form action="modal_excluirSite" method="post">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Configurações de conta</h5>
       </div>
       <div class="modal-body">
-        <form>
           <div class="form-group">
             <label for="recipient-name" class="form-control-label">Seu site será permanentemente excluído de nossos servidores. Para confirmar essa operação digite sua senha de acesso:</label>
+            <input type="password" class="form-control" id="modal_excluirSite_form_senha" name=modal_excluirSite_form_senha>
+            <span id=modal_excluirSite_form_msgs style="color:red;"></span>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Ok</button>
+      </div>
+    </div>
+   </form>
+  </div>
+</div>
+<script>
+  $('#modal_excluirSite_form').submit(function() {
+     //Pegando os valores do formulário
+     modal_excluirSite_form_senha = $("#modal_excluirSite_form_senha").val()
+
+     //Define flag de crítica de formulário
+     modal_excluirSite_form_flag_ok = true
+     modal_excluirSite_form_msg = ""
+
+     if (!modal_excluirSite_form_senha) {
+         modal_excluirSite_form_flag_ok = false
+         modal_excluirSite_form_msg += "Erro: Campo senha está vazio<Br>"
+     }
+
+     $("#modal_excluirSite_form_msgs").html(modal_excluirSite_form_msg);
+
+     return modal_excluirSite_form_flag_ok
+  });
+</script>
+
+<style>
+  #modal_backup {
+    height: 310px;
+    width: 400px;
+    margin: auto;
+  }
+</style>
+<div class="modal fade" id="modal_backup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Baixar cópia de segurança</h5>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="form-control-label">Confirme sua senha para baixar a cópia de segurança de seu site.</label>
             <input type="text" class="form-control" id="recipient-name">
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-primary">Ok</button>
       </div>
     </div>
   </div>

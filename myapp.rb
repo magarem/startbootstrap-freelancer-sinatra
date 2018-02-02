@@ -244,15 +244,13 @@ get "/lembrarSenha" do
   mailMessage = ERB.new(File.read('views/email_password_remember.txt')).result(binding)
   puts mailMessage
 
-  mail = Mail.new do
-    from     'contato@radiando.net'
-    to       email
-    subject  'Lembrete de senha'
-    body     mailMessage
-  end
-
-  mail.delivery_method :sendmail
-  mail.deliver
+  from = Email.new(email: 'contato@radiando.net')
+  to = Email.new(email: email)
+  subject = 'Lembrete de senha'
+  content = Content.new(type: 'text/plain', value: mailMessage)
+  mail = SendGrid::Mail.new(from, subject, to, content)
+  sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+  response = sg.client.mail._('send').post(request_body: mail.to_json)
 
   redirect "http://#{@url}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
 end
@@ -294,15 +292,13 @@ post "/site_new" do
     mailMessage = ERB.new(File.read('views/email_new_account.txt')).result(binding)
     puts mailMessage
 
-    mail = Mail.new do
-      from     'contato@radiando.net'
-      to       formUserEmail
-      subject  'Bem vindo!'
-      body     mailMessage
-    end
-
-    mail.delivery_method :sendmail
-    mail.deliver
+    from = Email.new(email: 'contato@radiando.net')
+    to = Email.new(email: formUserEmail)
+    subject = 'Bem vindo!'
+    content = Content.new(type: 'text/plain', value: mailMessage)
+    mail = SendGrid::Mail.new(from, subject, to, content)
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
 
     # exibe a confirmação da operção
     redirect "site/index.html?msg=Foi enviado um email de confirmação para #{formUserEmail}"
@@ -906,29 +902,27 @@ post '/contact/emailSend' do
 
   #Carrega os dados do site
   data = Dataload.testa (@url)
-
   dataEmail = data["info"]["email"]
-
   mailMessage = "Você recebeu um email de: #{formName} / #{formEmail} / #{formPhone}
                  #{formMessage}"
 
-  mail = Mail.new do
-    from     'contato@radiando.net'
-    to       dataEmail
-    subject  'Formulário de contato'
-    body     mailMessage
-  end
+  #Envia o e-mail
+  from = Email.new(email: 'contato@radiando.net')
+  to = Email.new(email: dataEmail)
+  subject = 'Formulário de contato'
+  content = Content.new(type: 'text/plain', value: mailMessage)
+  mail = SendGrid::Mail.new(from, subject, to, content)
+  sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+  response = sg.client.mail._('send').post(request_body: mail.to_json)
 
-  mail.delivery_method :sendmail
-  mail.deliver
 end
 
 post '/modal_alterarEmailESenha_form' do
 
   #Carrega os dados do site
-  data = Dataload.testa (@url)
-  dataEmail = data["info"]["email"]
-  dataSenha = data["info"]["senha"]
+  @data = Dataload.testa (@url)
+  dataEmail = @data["info"]["email"]
+  dataSenha = @data["info"]["senha"]
 
   # Pega os dados do formulário
   modal_alterarEmailESenha_form_email = params[:modal_alterarEmailESenha_form_email]
@@ -953,7 +947,7 @@ post '/modal_alterarEmailESenha_form' do
   end
 
   #Confere se a senha informada é verdadeira
-  if modal_alterarEmailESenha_form_senhaAtual != dataSenha
+  if modal_alterarEmailESenha_form_senhaAtual.to_s != dataSenha.to_s
     redirect "?erro=1"
   end
 
@@ -963,4 +957,41 @@ post '/modal_alterarEmailESenha_form' do
     redirect "?erro=0"
   end
 
+  # Altera o email
+  @data["info"]["email"] = modal_alterarEmailESenha_form_email
+
+  puts modal_alterarEmailESenha_form_novaSenha
+  # Verifica se foi alterado a senha
+  if (!modal_alterarEmailESenha_form_novaSenha.to_s.empty?)
+    @data["info"]["senha"] = modal_alterarEmailESenha_form_novaSenha.to_s
+  end
+
+  # Define a data de modificação
+  @data["info"]["modified"] = Time.now.getutc
+
+  # Salva o arquivo base
+  f = File.open @data_path, 'w'
+  YAML.dump @data, f
+  f.close
+
+  redirect "/"
+end
+
+post '/modal_excluirSite' do
+  # Pega os dados do formulário
+  modal_excluirSite_form_senha = params[:modal_excluirSite_form_senha]
+
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+  dataName = @data["info"]["name"]
+  dataSenha = @data["info"]["senha"]
+
+  #Exclui o site se a senha passar
+  if modal_excluirSite_form_senha.to_s == dataSenha.to_s
+    FileUtils.remove_dir("public/contas/"+dataName)
+  else
+    redirect "?erro=1"
+  end
+
+  redirect "http://radiando.net"
 end

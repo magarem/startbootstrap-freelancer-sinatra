@@ -2,12 +2,12 @@
 info:
   name: riolazermoveis
   email: contato@magaweb.com.br
-  senha: 576f
+  senha: '1212'
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
   created: 2017-09-12 14:21:35 utc
-  modified: 2018-01-30 17:38:15.023752506 Z
+  modified: 2018-02-02 16:21:36.410991003 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
