@@ -1,0 +1,26 @@
+<!-- Header -->
+<header class="masthead bg-primary text-white text-center"
+        :style="{'background-color': siteData.head.backgroundColor,
+                 'color': siteData.head.fontColor,
+                 'background-image': siteData.head.backgroundUrl ? 'url(' + siteData.head.backgroundUrl + ')':''}">
+  <div class="container">
+    <img :show=siteData.head.show.avatar
+         class="img-fluid mb-5 d-block mx-auto avatar_circle avatarImg"
+         :src="siteData.head.avatar"
+         alt="">
+    <h1 :show="siteData.head.show.txt1"
+        class="text-uppercase mb-0"
+        :class="{txtShadow: siteData.head.show.txtShadow}"
+        :style="{'font-family': siteData.head.fontFamily}">{{siteData.head.txt1}}</h1>
+    <hr id=head_star
+        :show="siteData.head.show.ruler"
+        style=" content:'\f006'"
+        :style="{'border-color': siteData.head.fontColor, 'color': siteData.head.fontColor}"
+        class="star-light"
+        :class="{txtShadow2: siteData.head.show.txtShadow}">
+    <h2 :show="siteData.head.show.txt2"
+        class="font-weight-light mb-0"
+        :class="{txtShadow: siteData.head.show.txtShadow}"
+        :style="{'font-family': siteData.head.fontFamily}">{{siteData.head.txt2}}</h2>
+  </div>
+</header>

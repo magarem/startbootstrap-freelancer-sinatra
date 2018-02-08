@@ -13,11 +13,14 @@ navbar:
   logo:
     fontFamily: Cherry Cream Soda
     label: rio lazer móveis
-    img: 
+    img:
   menu:
-  - Galeria
-  - sobre
-  - contato
+   - label: Galeria
+     link: #galeria
+   - label: Sobre
+     link: #sobre
+   - label: Contato
+     link: #contato
 head:
   backgroundColor: hsl(168, 19%, 19%)
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
@@ -34,7 +37,7 @@ head:
     ruler: true
 portfolio:
   label: Galeria
-  itemsTags: 
+  itemsTags:
   items:
   - id: undefined-1509983691495
     titulo: ''
@@ -114,7 +117,7 @@ about:
   label: sobre
   body1: A 20 anos no mercado a Rio Lazer se consolida fabricando e vendendo móveis
     de qualidade e beleza para a área interna e externa da sua residência&nbsp;
-  body2: 
+  body2:
   hide: false
 contact:
   show: true
@@ -125,9 +128,9 @@ footer:
   endereco: Avenida das americas 13822 <br>Recreio dos Bandeirantes
   social:
     facebook: riolazer.moveis
-    googleplus: 
-    twitter: 
-    linkedin: 
+    googleplus:
+    twitter:
+    linkedin:
   about_resumo: Tel. 2437-4560
   hide: false
-itemsTags: 
+itemsTags:

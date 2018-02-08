@@ -6,20 +6,23 @@ info:
   title: Portfolio geral
   description: Site portfolio
   author: marcelo magalhaes
-  created: 
-  modified: 2017-06-26 23:50:50.665855968 Z
+  created:
+  modified: 2018-02-08 00:59:22.279177933 Z
 navbar:
-  backgroundColor: hsl(2, 18%, 72%)
+  backgroundColor: hsl(2, 15%, 28%)
   logo:
     label: açai saúde
-    img: 
+    img:
   menu:
-  - Meus trabalhos
-  - um pouco sobre mim
-  - me chama aqui
+  - label: Galeria
+    link: portfolio
+  - label: Sobre
+    link: about
+  - label: Contato
+    link: contact
 head:
   backgroundColor: hsl(0, 9%, 45%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/v1498356033/192/headerBackground/backGround.jpg?1498356033
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/abstract_sun_rays_2-wallpaper-1440x900.jpg
   backgroundVideoShow: false
   backgroundVideo: dq2iQNdwlTI
   fontColor: hsl(223, 41%, 94%)
@@ -43,11 +46,14 @@ portfolio:
   - selva
   items:
   - id: 192-1496800407056
-    titulo: ffff22
+    titulo: Biquini
     mediaType: image
     img: http://res.cloudinary.com/radiando/image/upload/v108697/192/192-1496800407056
     img_: ''
-    txt: ''
+    txt: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque
+      assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam
+      velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque.
+      Nam.
     nome: ''
     site: ''
     data: ''
@@ -57,7 +63,7 @@ portfolio:
     - ff
     - hh
   - id: 192-1496846075099
-    titulo: sdd
+    titulo:
     mediaType: image
     img: http://res.cloudinary.com/radiando/image/upload/v962636/192/192-1496846075099
     img_: ''
@@ -99,7 +105,7 @@ portfolio:
   - id: 192-1488682337148
     titulo: teste
     img: http://res.cloudinary.com/radiando/video/upload/v1495515340/192/192-1488682337148
-    txt: 
+    txt:
     nome: ''
     site: ''
     data: ''
@@ -236,14 +242,14 @@ portfolio:
   showGridTitles: true
 about:
   label: um pouco sobre mim
-  body1: super textossdsd fdgygvtfdgdfg<br>FgfdgDF<br>GDF<br>GDF<br>G
+  body1: super textossdsd fdgygvtfdgdfg
   body2: estão aqui ssvvg tvfgggg
   hide: false
 contact:
   label: me chama aqui
   hide: false
 footer:
-  endereco: Boca do Acre - Amazônia &nbsp;- &nbsp;Brasil
+  endereco: Boca do Acre - Amazônia - Brasil
   social:
     facebook: sdsds--
     googleplus: '222'
@@ -251,4 +257,4 @@ footer:
     linkedin: '444'
   about_resumo: aqui sou eu \o/
   hide: true
-itemsTags: 
+itemsTags:

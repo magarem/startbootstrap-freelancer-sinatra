@@ -43,6 +43,7 @@ module Dataload
     if @site_nome and File.exist? File.expand_path "./public/contas/#{@site_nome}" then
       #Carrega os dados do site
       @data_path = "public/contas/{site_nome}/{site_nome}.yml"
+      @data_path_preview = "public/contas/{site_nome}_preview/{site_nome}_preview.yml"
       @data_path.gsub! "{site_nome}", @site_nome
       return YAML.load_file @data_path
     end
@@ -139,7 +140,6 @@ before do
 
   #Testa se existe o site
   if @site_nome then
-
     @data_path = Dataload.dataPath
     puts "@data_path:#{@data_path}"
     @data_path.gsub! "{site_nome}", @site_nome
@@ -326,13 +326,15 @@ get "/siteNewDo" do
   email_senha = emailParams[3]
   email_time = emailParams[4]
 
+  email_site_nome_real = email_site_nome
+  # email_site_nome = email_site_nome+"_preview"
   #Verifica se o site já foi criado
-  flgNomeJaExiste = File.directory?("public/contas/#{email_site_nome}")
+  flgNomeJaExiste = File.directory?("public/contas/#{email_site_nome}_preview")
 
   if !flgNomeJaExiste and verifica == "radiando" and email.include? "@"
-    @data_path = "public/contas/#{email_site_nome}/#{email_site_nome}.yml"
+    @data_path = "public/contas/#{email_site_nome}_preview/#{email_site_nome}_preview.yml"
     #Cria diretório principal
-    install_dir = "public/contas/#{email_site_nome}"
+    install_dir = "public/contas/#{email_site_nome}_preview"
     FileUtils::mkdir_p install_dir
 
     puts "@data_path: #{@data_path}"
@@ -340,11 +342,11 @@ get "/siteNewDo" do
     FileUtils.cp("site.yml", @data_path)
 
     #Cria diretorio de imagens
-    install_dir = "public/contas/#{email_site_nome}/img/portfolio"
+    install_dir = "public/contas/#{email_site_nome}_preview/img/portfolio"
     FileUtils::mkdir_p install_dir
 
     #Cria diretorio de backGrounds
-    install_dir = "public/contas/#{email_site_nome}/img/backGround"
+    install_dir = "public/contas/#{email_site_nome}_preview/img/backGround"
     FileUtils::mkdir_p install_dir
 
     #Define o nome/email no arquivo fonte
@@ -353,13 +355,13 @@ get "/siteNewDo" do
     data["info"]["senha"] = email_senha
     data["info"]["email"] = email
     data["info"]["created"] = email_time
-    data["navbar"]["logo"]["label"] = email_site_nome
+    data["navbar"]["logo"]["label"] = email_site_nome.chomp("_preview")
 
     #Copia imagem da capa
-    FileUtils.cp("public/img/profile.png","public/contas/#{email_site_nome}/img/profile.png")
+    FileUtils.cp("public/img/profile.png","public/contas/#{email_site_nome}_preview/img/profile.png")
 
     #Define a capa do site
-    data["head"]["avatar"] = "contas/#{email_site_nome}/img/profile.png"
+    data["head"]["avatar"] = "contas/#{email_site_nome}_preview/img/profile.png"
 
     id = SecureRandom.hex[0, 10].downcase
 
@@ -371,11 +373,11 @@ get "/siteNewDo" do
     f.close
 
     #Carrega as variáveis de seção
-    session[:site_nome] = email_site_nome
+    session[:site_nome] = email_site_nome.chomp("_preview")
     session[:login] = true
 
     # Abre o site recem criado no modo de edição
-    redirect "http://#{email_site_nome}.#{request.host_with_port}"
+    redirect "http://#{email_site_nome}_preview.#{request.host_with_port}"
   end
   #Não achou o token
   redirect "site/index.html?msg=Erro de token ou o site já foi criado"
@@ -383,6 +385,23 @@ end
 #
 # Encerra a seção de edição
 #
+get "/postSiteDo" do
+  # Depois de o site editado ele será publicado com o nome real sem
+  # o sufixo preview
+  @site_dir_preview = "public/contas/#{@site_nome}"
+  @site_ymlfile_preview = "public/contas/#{@site_nome}/#{@site_nome}.yml"
+  puts "@data_path: #{@data_path}"
+  puts "@site_ymlfile_preview.gsub:"+@site_ymlfile_preview.gsub('_preview','')
+
+  # Clona o arquivo base
+  puts "@site_dir_preview:"+@site_dir_preview
+  puts "@site_dir_preview_sub:"+@site_dir_preview.gsub('_preview','')
+  FileUtils.copy_entry(@site_dir_preview, @site_dir_preview.gsub('_preview',''))
+  # Altera o nome do site original retirando o sufixo _preview
+  FileUtils.mv("public/contas/#{@site_nome}".gsub('_preview','')+"/#{@site_nome}.yml", @site_ymlfile_preview.gsub('_preview',''))
+  # Abre o site publicado
+  redirect "http://#{email_site_nome}.#{request.host_with_port}"
+end
 get '/logout' do
   session.clear
   redirect "http://#{@url}"

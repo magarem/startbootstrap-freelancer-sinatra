@@ -1,0 +1,24 @@
+<section
+   class="bg-primary text-white mb-0"
+   id="about"
+   :show="(!siteData.about.hide && (siteData.about.body1.length > 0 || siteData.about.body2.length > 0))"
+   >
+  <div class="container">
+    <h2 class="text-center text-uppercase text-white">{{siteData.about.label}}</h2>
+    <hr class="star-light mb-5">
+    <div class="row">
+      <div class="col-lg-4 ml-auto">
+        <p class="lead">{{siteData.about.body1}}</p>
+      </div>
+      <div class="col-lg-4 mr-auto">
+        <p class="lead">{{siteData.about.body2}}</p>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a class="btn btn-xl btn-outline-light" href="#">
+        <i class="fa fa-download mr-2"></i>
+        Download Now!
+      </a>
+    </div>
+  </div>
+</section>
