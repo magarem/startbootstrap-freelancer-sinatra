@@ -38,9 +38,15 @@ head:
 portfolio:
   label: Galeria
   itemsTags:
+    - 11
+    - 22
+    - 33
+    - '44'
+    - casa
+    - fidelis
   items:
   - id: undefined-1509983691495
-    titulo: ''
+    titulo: '22'
     mediaType: image
     img: http://res.cloudinary.com/radiando/image/upload/v642016/riolazermoveis/undefined-1509983691495
     img_: ''
@@ -49,9 +55,11 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: []
+    tags:
+      - 11
+      - 22
   - id: undefined-1509983717199
-    titulo: ''
+    titulo: '22'
     mediaType: image
     img: http://res.cloudinary.com/radiando/image/upload/v439278/riolazermoveis/undefined-1509983717199
     img_: ''
@@ -60,7 +68,12 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: []
+    tags:
+      - '22'
+      - '33'
+      - '44'
+      - casa
+      - fidelis
   - id: undefined-1505227097152
     titulo: ''
     mediaType: image
@@ -70,7 +83,8 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: []
+    tags:
+      - 44
   - id: undefined-1509983952434
     titulo: ''
     mediaType: image
@@ -80,7 +94,9 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: []
+    tags:
+      - '44'
+      - casa
   - id: undefined-1509983968392
     titulo: ''
     mediaType: image
@@ -90,7 +106,9 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: []
+    tags:
+      - '44'
+      - casa
   - id: undefined-1509983983529
     titulo: ''
     mediaType: image
@@ -110,7 +128,8 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: []
+    tags:
+      - fidelis
   hide: false
   showGridTitles: false
 about:

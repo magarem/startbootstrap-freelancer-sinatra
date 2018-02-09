@@ -2,24 +2,36 @@
   <div class="container">
     <h2 class="text-center text-uppercase text-secondary mb-0">Portfolio</h2>
     <hr class="star-dark mb-5">
-
+    <div class="row justify-content-center" style="margin-bottom: 20px;">
+      <div class="col-xs-12">
+    		<button class="btn btn-small btn-danger" v-on:click="select('all')">
+					Todos
+			  </button>
+				<button
+          class="btn btn-small btn-danger"
+          style="margin: 5px;"
+          data-toggle="portfilter"
+          v-on:click="select(item)"
+          v-for="(item, index) in siteData.portfolio.itemsTags">
+					{{item}}
+				</button>
+			</div>
+    </div>
     <div class="row">
-
       <!-- Button trigger modal -->
-
       <div class="col-md-6 col-lg-4"
-           v-for="(item, index) in siteData.portfolio.items">
+           v-for="(item, index) in filteredList">
+       <div class="thumbnail" >
         <a class="portfolio-item d-block mx-auto" data-toggle="modal" :data-target="'#exampleModalLong'+index">
-          <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-              <i class="fa fa-search-plus fa-3x"></i>
-            </div>
-          </div>
-          <!-- <img class="img-fluid" :src="item.img" alt=""> -->
-          <div class="imgBox"  :style="{ backgroundImage: 'url(' + item.img + ')'}"></div>
-
+           <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+             <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+               <i class="fa fa-search-plus fa-3x"></i>
+             </div>
+           </div>
+           <!-- <img class="img-fluid" :src="item.img" alt=""> -->
+           <div  class="imgBox"  :style="{ backgroundImage: 'url(' + item.img + ')'}"></div>
         </a>
-
+       </div>
       </div>
 
 

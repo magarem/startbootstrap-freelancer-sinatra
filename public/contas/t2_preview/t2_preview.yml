@@ -61,7 +61,8 @@ portfolio:
     servico: ''
     tags:
     - '22'
-
+    - ff
+    - hh
   - id: 192-1496846075099
     titulo:
     mediaType: image
@@ -73,7 +74,10 @@ portfolio:
     data: ''
     servico: ''
     tags:
+    - casa
+    - kkk
     - '55'
+    - hhh
   - id: 192-1495718795872
     titulo: ''
     mediaType: image
@@ -85,7 +89,9 @@ portfolio:
     data: ''
     servico: ''
     tags:
+    - '55'
     - '99'
+    - '11'
   - id: 192-1495719884395
     titulo: ''
     mediaType: image
@@ -191,7 +197,7 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: 'selva'
+    tags: ''
   - id: 192-1495718976683
     titulo: ''
     mediaType: image
@@ -201,9 +207,7 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags:
-      -'selva'
-      - '22'
+    tags: ''
   - id: 192-1495720528783
     titulo: ''
     mediaType: video
@@ -214,7 +218,7 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: 'selva'
+    tags: ''
   - id: 192-1495719329898
     titulo: ''
     mediaType: image

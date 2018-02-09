@@ -411,8 +411,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Radiando.net2</title>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <!-- Bootstrap core CSS -->
     <link href="/realSite/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -422,7 +424,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Plugin CSS -->
-    <link href="/realSite/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <!-- <link href="/realSite/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css"> -->
 
     <!-- Custom styles for this template -->
     <link href="/realSite/css/freelancer.min.css" rel="stylesheet">
@@ -503,11 +505,22 @@
       .modal-body {
         padding: 0rem;
       }
-      .close {
-        font-size: 3em;
-        color: green;
+      .fa-3x {
+          font-size: 2em;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+    // Load a Google font by name.
+    var loadFont = function(font) {
+      WebFont.load({
+        google: {
+          families: [font]
+        }
+      });
+    };
+
+    </script>
   </head>
   <body id="page-top" >
     <div id="app" v-if="dataIsLoaded">
@@ -520,7 +533,7 @@
 
     <!-- Plugin JavaScript -->
     <script src="/realSite/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="/realSite/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
 
     <!-- Contact Form JavaScript -->
     <script src="/realSite/js/jqBootstrapValidation.js"></script>
@@ -533,9 +546,9 @@
 
     <script>
 
-    function trimObj(badJson) {
-      return JSON.parse(JSON.stringify(badJson).replace(/(\\)?"\s*|\s+"/g, ($0, $1) => $1 ? $0 : '"'))
-    }
+    // function trimObj(badJson) {
+    //   return JSON.parse(JSON.stringify(badJson).replace(/(\\)?"\s*|\s+"/g, ($0, $1) => $1 ? $0 : '"'))
+    // }
 
     // register modal component
     // register modal component
@@ -557,20 +570,46 @@
       data: {
         siteData: {},
         dataIsLoaded:false,
-        showModal: false
+        showModal: false,
+        tagSelector: 'all'
       },
       created: function () {
         this.fetchData();
+        // this.loadFont(this.siteData.navbar.logo.fontFamily)
+      },
+      updated: function (){
+        //Carregas as fontes do Google
+        this.loadFont(this.siteData.navbar.logo.fontFamily)
+        this.loadFont(this.siteData.head.fontFamily)
       },
       methods: {
+        select: function(event) {
+          this.tagSelector = event
+          console.log(event); // returns 'foo'
+        },
         fetchData: function () {
           var self = this;
           $.getJSON( dataURL, function( data ) {
-              self.siteData = trimObj(data);
+              self.siteData = data;
               console.log(self.siteData)
               self.dataIsLoaded = true;
           });
+
+        },
+        loadFont: function (font){
+          loadFont(font);
         }
+      },
+        computed: {
+          filteredList() {
+            return this.siteData.portfolio.items.filter( item => {
+              if (this.tagSelector == "all"){
+                return item.tags
+              }else{
+                return item.tags.includes(this.tagSelector)
+              }
+            })
+          }
       }
     });
 
