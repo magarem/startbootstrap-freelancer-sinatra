@@ -1,0 +1,179 @@
+---
+info:
+  name: shiva3
+  email: contato@magaweb.com.br
+  senha: 1be6
+  title: Portfólio geral
+  description: Site portfólio
+  author: Radiando
+  created: 2018-02-16 20:07:19 utc
+  modified: 2018-02-19 02:46:24.429895951 Z
+navbar:
+  backgroundColor: hsl(198, 75%, 14%)
+  logo:
+    fontFamily: Cherry Cream Soda
+    label: shiva3
+    img:
+  menu:
+  - label: Galeria
+    link: galeria
+  - label: Sobre
+    link: sobre
+  - label: Contato
+    link: contato
+head:
+  backgroundColor: hsl(168, 19%, 19%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
+  fontFamily: Architects Daughter
+  fontColor: hsl(212, 100%, 1%)
+  avatar: contas/shiva3_preview/img/avatar.jpg?1519011694
+  txt1: teste
+  txt2: 22 total
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+    ruler: true
+portfolio:
+  label: Galeria
+  itemsTags:
+  - teste1
+  - teste2
+  items:
+  - id: shiva3-1518873762758
+    titulo: Shiva meditation
+    mediaType: image
+    img: shiva3-1518873762758.jpg
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - meditando
+  - id: shiva3-1519007311179
+    titulo: ''
+    mediaType: image
+    img: shiva3-1519007311179.png?decache=0.8861093944415062
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+      - pensamentos
+  - id: shiva3-1518987274091
+    titulo: ''
+    mediaType: image
+    img: shiva3-1518987274091.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: shiva3-1518987632745
+    titulo: ''
+    mediaType: image
+    img: shiva3-1518987632745.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: shiva3-1518988005743
+    titulo: ''
+    mediaType: image
+    img: shiva3-1518988005743.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: shiva3-1519006440568
+    titulo: ''
+    mediaType: image
+    img: shiva3-1519006440568.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: shiva3-1519006477034
+    titulo: ''
+    mediaType: image
+    img: shiva3-1519006477034.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: shiva3-1519006577623
+    titulo: ''
+    mediaType: image
+    img: shiva3-1519006577623.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: shiva3-1519006667034
+    titulo: ''
+    mediaType: image
+    img: shiva3-1519006667034.jpeg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: shiva3-1519006712161
+    titulo: ''
+    mediaType: image
+    img: shiva3-1519006712161.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: shiva3-1519006821838
+    titulo: ''
+    mediaType: image
+    img: shiva3-1519006821838.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  hide: false
+  showGridTitles: true
+about:
+  label: Sobre
+  body1: texto 1
+  body2: texto 2
+  hide: false
+contact:
+  show: true
+  label: contato
+  hide: false
+footer:
+  show: true
+  endereco:
+  social:
+    facebook:
+    googleplus:
+    twitter:
+    linkedin:
+  about_resumo:
+  hide: false
+itemsTags:

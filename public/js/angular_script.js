@@ -977,7 +977,7 @@ mod.filter('filterByTags', function () {
       }else{
         //Cria cópia em caracteres minusculos para comparação
         // tags_toLowerCase = item.tags.map(function(str){return (str || "").toLowerCase()})
-        matches = (item.tags.indexOf(tag) > -1);
+        matches = ((item.tags || []).indexOf(tag) > -1);
       }
       if (matches) {
         filtered.push(item);
@@ -1418,28 +1418,28 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   }
 
   // Image upload
-  $scope.upload = function (dataUrl) {
-    name = "teste"
+  $scope.upload = function (dataUrl, name) {
     console.log("Upload.dataUrltoBlob: ", Upload.dataUrltoBlob(dataUrl, name))
     console.log("name:", name)
     var uploadURL = '/avatarUpload'
     Upload.upload({
       //url: "https://api.cloudinary.com/v1_1/radiando/upload",
       url: uploadURL,
-      data: {
-        upload_preset: 'iby0ddnx',
-        tags: 'myphotoalbum',
-        disableImageResize: false,
-        imageMaxHeight: 600,                          // 600 is an example value
-        maxFileSize: 20000000,                        // 20MB is an example value
-        loadImageMaxFileSize: 20000000,               // default is 10MB
-        acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
-        imageCrop: true, // Force cropped images
-        context: 'photo=teste22',
-
-        //file: dataUrl
-        file: Upload.dataUrltoBlob(dataUrl, name),
-      }
+      // data: {
+      //   upload_preset: 'iby0ddnx',
+      //   tags: 'myphotoalbum',
+      //   disableImageResize: false,
+      //   imageMaxHeight: 600,                          // 600 is an example value
+      //   maxFileSize: 20000000,                        // 20MB is an example value
+      //   loadImageMaxFileSize: 20000000,               // default is 10MB
+      //   acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
+      //   imageCrop: true, // Force cropped images
+      //   context: 'photo=teste22',
+      //
+      //   //file: dataUrl
+      //   file: Upload.dataUrltoBlob(dataUrl, name),
+      // }
+      data: {file: Upload.dataUrltoBlob(dataUrl, name)},
     }).then(function (response) {
       $timeout(function () {
         $scope.result = response.data;
@@ -1493,9 +1493,10 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     */
    $scope.preview = function(xx) {
      if (!file || !data) return;
+     console.log(file,data);
      Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
        ($scope.preview || ($scope.preview = {})).dataUrl = dataUrl;
-       $scope.upload(dataUrl)
+       $scope.upload(dataUrl, file.name)
      });
    };
 
@@ -1680,7 +1681,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   $scope.portfolio_add = function () {
     //var siteNome = SiteData.getSiteNome()
-    var newId = $scope.siteNome+"-"+Date.now().toString();
+    var newId = $scope.siteData.info.name+"-"+Date.now().toString();
     itemNew = {
       "id"     : newId,
       "titulo" : "",
@@ -1926,11 +1927,12 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     $scope.UpMsg = true;
     $scope.searchButtonText = 'Enviando'
     //Pegando a extenção do arquivo
+    fileExt = file.name.split('.').pop();
     //var dotIndex = file.name.lastIndexOf('.');
     //var ext = file.name.substring(dotIndex);
     //var new_name = Date.now().toString()+ext;
     //var new_name = $scope.item.id+ext;
-    var new_name = $scope.item.id;
+    var new_name = $scope.item.id+"."+fileExt;
     console.log("file:", file)
 
     if (file) {
@@ -1946,12 +1948,13 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
               file.result = response.data;
               console.log("siteNome:", siteNome)
               //$rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
-              //src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
-              src = "http://res.cloudinary.com/radiando/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name;
+              src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
+              //src = "http://res.cloudinary.com/radiando/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name;
               //src = siteNome+"/"+new_name+"?"+parseInt(Math.random()*1000000)
               //$scope.item.img = $sce.trustAsResourceUrl(src)
-              console.log("$scope.item.img:", $scope.item.img);
+
               $scope.item.img = src
+              console.log("$scope.item.img:", $scope.item.img);
               //$rootScope.$emit("ImgChange", $scope.item.id, src);
               $scope.item.mediaType = "image"
               $scope.imgJaSubiu = true;
@@ -1985,6 +1988,7 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
     //var new_name = $scope.item.id+ext;
     var new_name = $scope.item.id;
     console.log("file:", file)
+    console.log("new_name:", new_name)
     if (file) {
       file.upload = Upload.upload({
         url: upDestino2,
@@ -1999,8 +2003,9 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
               file.result = response.data;
               console.log("siteNome:", siteNome)
               //$rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
-              //src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
-              src = "http://res.cloudinary.com/radiando/video/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name;
+              src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
+              console.log("src:", src)
+              //src = "http://res.cloudinary.com/radiando/video/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name;
               //src = siteNome+"/"+new_name
               // $scope.item.img = $sce.trustAsResourceUrl(src.toString())
               // $scope.item.img_ = $sce.trustAsResourceUrl(src.toString())

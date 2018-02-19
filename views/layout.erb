@@ -182,8 +182,10 @@
   <!-- ng-sortable.js -->
   <script src="http://rubaxa.github.io/Sortable/ng-sortable.js"></script>
   <!-- Upload -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <script src="/js/classie.js"></script>
+
   <script src="/js/cbpAnimatedHeader.js"></script>
 
   <!-- Plugin JavaScript -->
@@ -391,7 +393,7 @@
         }
 
         var erro = getParameterByName('erro');
-        if (erro.length>0) {
+        if (erro && erro.length>0) {
           erro_msg = []
           erro_msg[0] = "<p>Aconteceu algum erro em nossos servidores!<p><p>Favor tentar a operação novamente, se o erro persistir favor entrar em contato com nossa equipe pelo e-mail: contato@radiando.net</p>"
           erro_msg[1] = "A senha não confere"
@@ -540,11 +542,14 @@
     <script src="/realSite/js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="/realSite/js/freelancer.min.js"></script>
+    <script src="/realSite/js/freelancer.js"></script>
     <!-- template for the modal component -->
 
 
     <script>
+    Array.prototype.getUnique = function() {
+        return [...new Set( [this] )];
+    };
 
     // function trimObj(badJson) {
     //   return JSON.parse(JSON.stringify(badJson).replace(/(\\)?"\s*|\s+"/g, ($0, $1) => $1 ? $0 : '"'))
@@ -583,9 +588,26 @@
         this.loadFont(this.siteData.head.fontFamily)
       },
       methods: {
+        getItemsTags: function(event) {
+          //Pega a lista de todas as tags utilizadas
+          let itemsTags = []
+          this.siteData.portfolio.items.forEach( function(s) {
+             (s.tags || []).forEach( function(tag) {
+                itemsTags.push(tag);
+             })
+          } );
+          //Retira os valores duplicados e faz uma ordenação alfabética
+          itemsTags = itemsTags.filter((x, i, a) => a.indexOf(x) == i).sort()
+          console.log("itemsTags:",itemsTags)
+          this.siteData.portfolio.itemsTags = itemsTags
+        },
+
         select: function(event) {
           this.tagSelector = event
           console.log(event); // returns 'foo'
+        },
+        tt: function(x) {
+          console.log(x); // returns 'foo'
         },
         fetchData: function () {
           var self = this;
@@ -602,13 +624,20 @@
       },
         computed: {
           filteredList() {
-            return this.siteData.portfolio.items.filter( item => {
-              if (this.tagSelector == "all"){
-                return item.tags
-              }else{
-                return item.tags.includes(this.tagSelector)
-              }
-            })
+            this.getItemsTags()
+            if (!this.siteData.portfolio.itemsTags) {
+              return this.siteData.portfolio.items
+            } else {
+              return this.siteData.portfolio.items.filter( item => {
+                if (this.tagSelector == "all" ){
+                  return item.tags || this.siteData.portfolio.items
+                }else{
+                  if (item.tags){
+                    return item.tags.includes(this.tagSelector)
+                  }
+                }
+              })
+            }
           }
       }
     });
