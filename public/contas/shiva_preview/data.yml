@@ -2,17 +2,17 @@
 info:
   name: shiva
   email: contato@magaweb.com.br
-  senha: fa90
+  senha: '4620'
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-02-19 18:05:49 utc
-  modified: 2018-02-20 04:21:10.260694848 Z
+  created: 2018-02-20 17:18:36 utc
+  modified: 2018-02-20 21:19:07.098995479 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: shiva
+    label: shiva22
     img: 
   menu:
   - label: Portfólio
@@ -26,9 +26,9 @@ head:
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
   fontFamily: Architects Daughter
   fontColor: hsl(212, 100%, 1%)
-  avatar: avatar.png?1519101314
-  txt1: O destruidor
-  txt2: __||__
+  avatar: avatar.png
+  txt1: 
+  txt2: 
   show:
     avatar: true
     txt1: true
@@ -49,47 +49,7 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: []
-  - id: '1519064684038'
-    titulo: ''
-    mediaType: image
-    img: 1519064684038.jpg
-    txt: ''
-    cliente: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags: []
-  - id: '1519064905658'
-    titulo: ''
-    mediaType: image
-    img: 1519064905658.jpg
-    txt: ''
-    cliente: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags: []
-  - id: '1519065031576'
-    titulo: ''
-    mediaType: image
-    img: 1519065031576.png
-    txt: ''
-    cliente: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags: []
-  - id: '1519065746333'
-    titulo: ''
-    mediaType: image
-    img: 1519065746333.jpg
-    txt: ''
-    cliente: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags: []
+    tags: 
   hide: false
   showGridTitles: false
 about:
@@ -111,4 +71,3 @@ footer:
     linkedin: 
   about_resumo: 
   hide: false
-itemsTags: 

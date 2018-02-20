@@ -7,12 +7,12 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-02-20 17:18:36 utc
-  modified: 2018-02-20 21:19:07.098995479 Z
+  modified: 2018-02-19 17:35:47.959885563 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: shiva22
+    label: shiva
     img: 
   menu:
   - label: Portfólio

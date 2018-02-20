@@ -112,6 +112,7 @@ helpers do
   end
 end
 before do
+  puts "** before - begin **"
   headers 'Content-Type' => 'text/html; charset=utf-8'
   # Encoding.default_internal = Encoding::UTF_8
 
@@ -128,8 +129,8 @@ before do
   puts "session[:logado]: #{session[:logado]}"
 
   #Verifica se está sendo chamado o site principal
-  if @url_full == "localhost/" or @url_full == "radiando.net/" then
-    redirect "http://#{@url_full}site/index.html"
+  if @url == "localhost:3000" or @url_full == "radiando.net/" then
+    redirect "http://#{@url}/site/index.html"
   end
 
   #Pega o nome do site
@@ -141,15 +142,17 @@ before do
   #Testa se existe o site
   if @site_nome then
     @data_path = Dataload.dataPath
-    puts "@data_path:#{@data_path}"
     @data_path.gsub! "{site_nome}", @site_nome
+    puts "@data_path:#{@data_path}"
   end
 
   #Confere se é o mesmo nome de site do que foi logado
+  puts "@logado: #{@logado}"
   if @logado and @site_nome != session[:site_nome] then
     session.clear
-    redirect "http://#{request.host_with_port}/"
+    redirect "http://#{@url}/"
   end
+  puts "** before - end **"
 end
 #
 #  /adm
@@ -174,6 +177,11 @@ get '/testeEnvio' do
   puts response.headers
 end
 get '/adm' do
+  if !@site_nome.include? "_preview"
+    @site_nome << "_preview"
+    @url.gsub!(".localhost","_preview.localhost")
+    @url.gsub!(".radiando","_preview.radiando")
+  end
   redirect "http://#{@url}/site/index.html?cmd=login&site=#{@site_nome}"
 end
 
@@ -409,11 +417,46 @@ get '/logout' do
   redirect "http://#{@url}"
 end
 #
+# Cancela edição recuperando o último backup
+#
+get "/editCancel" do
+  #Cria a cópia de segura antes da edição
+  origem = "public/contas/#{@site_nome}_BKP"
+  destino = "public/contas/#{@site_nome}"
+  FileUtils.copy_entry(origem, destino)
+  redirect "http://#{@url}"
+end
+#
+# Cancela edição recuperando o último backup
+#
+get "/editPublish" do
+  #Cria a cópia de segura antes da edição
+  origem = "public/contas/#{@site_nome}"
+  destino = "public/contas/#{@site_nome}".chomp("_preview")
+  FileUtils.copy_entry(origem, destino)
+  redirect "http://#{@url}"
+end
+#
 # Verificação de login
 #
 post '/login_do' do
   # Pega os parâmetros
+  puts "** login_do - begin **"
+
   site_nome = params[:site]
+  puts "*> /login_do > #{site_nome}"
+
+  # Verifica se o nome do site já possui a extenção
+  # _preview, senão acrescenta
+  if !site_nome.include? "_preview"
+    redirect "http://#{@url}/site/index.html?msg=Só é possível editar site no modo preview"
+    #redirect "http://localhost:3000/site/index.html?cmd=loginErr&site=#{site_nome}_preview"
+    # site_nome << "_preview"
+    # @site_nome << "_preview"
+    # @url.gsub!(".localhost","_preview.localhost")
+    # @url.gsub!(".radiando","_preview.radiando")
+    # puts "*****[#{@url}]"
+  end
   @form_senha = params[:senha]
 
   puts ">>#{site_nome}"
@@ -422,9 +465,9 @@ post '/login_do' do
     redirect "http://#{@url}/site/index.html?msg=Site não encontrado"
   end
   @data_path = Dataload.dataPath
-  puts "@data_path:#{@data_path}"
-
+  puts "1> @data_path:#{@data_path}"
   @data_path.gsub! "{site_nome}", site_nome
+  puts "2> @data_path:#{@data_path}"
   @data = YAML.load_file @data_path
   @data_senha = @data["info"]["senha"]
 
@@ -433,11 +476,19 @@ post '/login_do' do
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
+    puts "----*#{site_nome} -- #{session[:logado]}*----"
 
     #Verifica se nome do site já está no endereço
     @url_ = @url
     @url_split_array = @url.split(".")
     if @url_split_array.length == 1 then @url_ = "#{site_nome}.#{@url}" end
+
+    #Cria a cópia de segura antes da edição
+    origem = "public/contas/#{site_nome}"
+    destino = "public/contas/#{site_nome}_BKP"
+    FileUtils.copy_entry(origem, destino)
+
+    puts "@url_: #{@url_}:"
     redirect "http://#{@url_}"
   else
     session[:logado] = false
@@ -445,6 +496,7 @@ post '/login_do' do
     @edit_flag = "false"
     redirect "http://#{@url}/site/index.html?cmd=loginErr&site=#{site_nome}"
   end
+  puts "** login_do - end **"
 end
 #
 # Lê os dados do arquivo fonte
