@@ -14,7 +14,7 @@
             <div class="col-lg-8 mx-auto">
               <h2 :show="item.titulo" class="text-secondary text-uppercase mb-0">{{item.titulo}}</h2>
               <hr v-if="((item.titulo)&&(item.titulo.trim()!=''))" class="star-dark mb-5">
-              <img class="img-fluid mb-5" :src="'contas/'+siteData.info.name+'/img/portfolio/'+item.img" alt="">
+              <img class="img-fluid mb-5" :src="'contas/'+siteData.site_nome+'/img/portfolio/'+item.img" alt="">
               <p v-if="item.txt" class="mb-5">{{item.txt}}</p>
               <br v-else>
               <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#" data-dismiss="modal">

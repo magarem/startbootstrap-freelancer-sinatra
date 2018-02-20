@@ -6,7 +6,7 @@
   <div class="container">
     <img :show=siteData.head.show.avatar
          class="img-fluid mb-5 d-block mx-auto avatar_circle avatarImg"
-         :src="siteData.head.avatar"
+         :src="'contas/'+siteData.site_nome+'/img/'+siteData.head.avatar"
          alt="">
     <h1 :show="siteData.head.show.txt1"
         class="text-uppercase mb-0"

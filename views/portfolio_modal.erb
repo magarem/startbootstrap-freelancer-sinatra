@@ -103,7 +103,7 @@
                 <img ng-class="{imgEdit: isLogged}"
                   class="img-responsive img-centered topImg"
                   style="max-width:100%; margin-bottom: 13px;"
-                  ng-src="{{item.img}}"
+                  ng-src="contas/{{siteData.site_nome}}/img/portfolio/{{item.img}}"
                   ng-show="item.img && item.mediaType == 'image'"
                   <% if @isLogged then%>
                     onclick="$('#imgSelect').trigger('click');"

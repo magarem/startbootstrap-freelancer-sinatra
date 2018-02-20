@@ -1,32 +1,32 @@
 ---
 info:
-  name: portfólio
-  email: contato@radiando.net
-  senha: 2222
+  name: skeleton
+  email: contato@magaweb.com.br
+  senha: 8e05
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-02-16 18:21:38 utc
-  modified: 2018-02-16 18:33:23.923239862 Z
+  created: 2018-02-19 17:22:11 utc
+  modified: 2018-02-19 17:35:47.959885563 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: Radiando
+    label: skeleton
     img:
   menu:
-    - label: Galeria
-      link: galeria
-    - label: Sobre
-      link: sobre
-    - label: Contato
-      link: contato
+  - label: Portfólio
+    link: portfolio
+  - label: Sobre
+    link: sobre
+  - label: Contato
+    link: contato
 head:
   backgroundColor: hsl(168, 19%, 19%)
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
   fontFamily: Architects Daughter
   fontColor: hsl(212, 100%, 1%)
-  avatar: contas/shiva_preview/img/profile.png
+  avatar: avatar.png
   txt1:
   txt2:
   show:
@@ -36,20 +36,20 @@ head:
     txtShadow: true
     ruler: true
 portfolio:
-  label: Galeria
+  label: Portfólio
   itemsTags:
   items:
-    - id: undefined-1509983691495
-      titulo: 'Imagem 1'
-      mediaType: image
-      img: http://res.cloudinary.com/radiando/image/upload/v1518806439/img_genereic.jpg
-      img_: ''
-      txt: ''
-      nome: ''
-      site: ''
-      data: ''
-      servico: ''
-      tags:
+  - id: 01
+    titulo: Imagem 1
+    mediaType: image
+    img: img_teste.jpg
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
   hide: false
   showGridTitles: false
 about:
@@ -59,7 +59,7 @@ about:
   hide: false
 contact:
   show: true
-  label: contato
+  label: Contato
   hide: false
 footer:
   show: true

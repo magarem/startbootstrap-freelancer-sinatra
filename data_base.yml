@@ -1,0 +1,73 @@
+---
+info:
+  name: portfólio
+  email: contato@radiando.net
+  senha: 2222
+  title: Portfólio geral
+  description: Site portfólio
+  author: Radiando
+  created: 2018-02-16 18:21:38 utc
+  modified: 2018-02-16 18:33:23.923239862 Z
+navbar:
+  backgroundColor: hsl(198, 75%, 14%)
+  logo:
+    fontFamily: Cherry Cream Soda
+    label: Radiando
+    img:
+  menu:
+    - label: Galeria
+      link: galeria
+    - label: Sobre
+      link: sobre
+    - label: Contato
+      link: contato
+head:
+  backgroundColor: hsl(168, 19%, 19%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
+  fontFamily: Architects Daughter
+  fontColor: hsl(212, 100%, 1%)
+  avatar: contas/shiva_preview/img/profile.png
+  txt1:
+  txt2:
+  show:
+    avatar: true
+    txt1: true
+    txt2: true
+    txtShadow: true
+    ruler: true
+portfolio:
+  label: Galeria
+  itemsTags:
+  items:
+    - id: 01
+      titulo: 'Imagem 1'
+      mediaType: image
+      img: img_teste.jpg
+      img_: ''
+      txt: ''
+      nome: ''
+      site: ''
+      data: ''
+      servico: ''
+      tags:
+  hide: false
+  showGridTitles: false
+about:
+  label: Sobre
+  body1: texto 1
+  body2: texto 2
+  hide: false
+contact:
+  show: true
+  label: contato
+  hide: false
+footer:
+  show: true
+  endereco:
+  social:
+    facebook:
+    googleplus:
+    twitter:
+    linkedin:
+  about_resumo:
+  hide: false

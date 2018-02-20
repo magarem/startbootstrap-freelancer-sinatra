@@ -84,7 +84,7 @@
            </div>
            <div class="thumbnail">
                <a href=javascript:void(0); class="portfolio-link" style="text-align: center;" ng-click="preOpen(item);">
-                 <div class="imgBox" ng-if="item.mediaType != 'video'" back-img="{{item.img}}"></div>
+                 <div class="imgBox" ng-if="item.mediaType != 'video'" back-img="contas/{{siteData.site_nome}}/img/portfolio/{{item.img}}"></div>
                  <div class="imgBox" ng-if="item.mediaType == 'video'" back-img="{{item.img | safeUrlVideo}}"></div>
                  <div ng-if="siteData.portfolio.showGridTitles">
                    <p ng-if="item.titulo.length == 0">&nbsp;</p>

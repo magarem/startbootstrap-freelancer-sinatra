@@ -1344,7 +1344,8 @@ mod.controller('headerCtrl',['$scope', '$rootScope', 'Upload', '$timeout', '$htt
 
    SiteData.loadSiteData().then(function(response) {
      $scope.siteData = response.data;
-     $scope.picFile = $scope.siteData.head.avatar;
+     $scope.siteData.head.avatar = "/contas/"+$scope.siteData.site_nome+"/img/"+$scope.siteData.head.avatar;
+     $scope.picFile = $scope.siteData.head.avatar
      $scope.isLogged = response.data["logged"] == true
    })
 
@@ -1398,7 +1399,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   SiteData.loadSiteData().then(function(response) {
     $scope.siteData = response.data;
     $scope.isLogged = response.data["logged"] == true
-    var siteNome    = response.data.info.name
+    var siteNome    = $scope.siteData.site_nome
     $scope.picFile = null;
     $scope.croppedDataUrl = null;
   })
@@ -1681,7 +1682,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
 
   $scope.portfolio_add = function () {
     //var siteNome = SiteData.getSiteNome()
-    var newId = $scope.siteData.info.name+"-"+Date.now().toString();
+    var newId = Date.now().toString();
     itemNew = {
       "id"     : newId,
       "titulo" : "",
@@ -1948,7 +1949,8 @@ mod.controller('MyFormCtrl', ['$scope',  '$rootScope', 'Upload', '$timeout', '$h
               file.result = response.data;
               console.log("siteNome:", siteNome)
               //$rootScope.$emit("ImgChange", new_name, $scope.item.id, siteNome);
-              src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
+              //src = "contas/"+siteNome+"/img/portfolio/"+new_name+"?decache=" + Math.random();
+              src = new_name+"?decache=" + Math.random();
               //src = "http://res.cloudinary.com/radiando/image/upload/v"+parseInt(Math.random()*1000000)+"/"+siteNome+"/"+new_name;
               //src = siteNome+"/"+new_name+"?"+parseInt(Math.random()*1000000)
               //$scope.item.img = $sce.trustAsResourceUrl(src)

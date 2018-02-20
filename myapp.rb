@@ -33,7 +33,7 @@ module IndiceArray
 end
 module Dataload
   def Dataload.dataPath
-    return "public/contas/{site_nome}/{site_nome}.yml"
+    return "public/contas/{site_nome}/data.yml"
   end
   def Dataload.testa (url)
     if url.include? "." then
@@ -42,7 +42,7 @@ module Dataload
     #Testa se existe o site
     if @site_nome and File.exist? File.expand_path "./public/contas/#{@site_nome}" then
       #Carrega os dados do site
-      @data_path = "public/contas/{site_nome}/{site_nome}.yml"
+      @data_path = "public/contas/{site_nome}/data.yml"
       @data_path_preview = "public/contas/{site_nome}_preview/{site_nome}_preview.yml"
       @data_path.gsub! "{site_nome}", @site_nome
       return YAML.load_file @data_path
@@ -332,22 +332,17 @@ get "/siteNewDo" do
   flgNomeJaExiste = File.directory?("public/contas/#{email_site_nome}_preview")
 
   if !flgNomeJaExiste and verifica == "radiando" and email.include? "@"
-    @data_path = "public/contas/#{email_site_nome}_preview/#{email_site_nome}_preview.yml"
+    @data_path = "public/contas/#{email_site_nome}_preview/data.yml"
     #Cria diretório principal
     install_dir = "public/contas/#{email_site_nome}_preview"
     FileUtils::mkdir_p install_dir
 
     puts "@data_path: #{@data_path}"
-    #Clona o arquivo base
-    FileUtils.cp("site.yml", @data_path)
 
-    #Cria diretorio de imagens
-    install_dir = "public/contas/#{email_site_nome}_preview/img/portfolio"
-    FileUtils::mkdir_p install_dir
-
-    #Cria diretorio de backGrounds
-    install_dir = "public/contas/#{email_site_nome}_preview/img/backGround"
-    FileUtils::mkdir_p install_dir
+    #Clona o diretório skeleton
+    origem = "public/contas/skeleton"
+    destino = "public/contas/#{email_site_nome}_preview"
+    FileUtils.copy_entry(origem, destino)
 
     #Define o nome/email no arquivo fonte
     data = YAML.load_file @data_path
@@ -357,11 +352,18 @@ get "/siteNewDo" do
     data["info"]["created"] = email_time
     data["navbar"]["logo"]["label"] = email_site_nome.chomp("_preview")
 
-    #Copia imagem da capa
-    FileUtils.cp("public/img/profile.png","public/contas/#{email_site_nome}_preview/img/profile.png")
+    # #Copia imagem da capa
+    # FileUtils.cp("public/img/avatar_base.png","public/contas/#{email_site_nome}_preview/img/avatar.png")
+    #
+    # #Define a capa do site
+    # data["head"]["avatar"] = "contas/#{email_site_nome}_preview/img/avatar.png"
+    #
+    # #Copia imagem de teste do portfolio
+    # FileUtils.cp("public/img/img_teste.jpg","public/contas/#{email_site_nome}_preview/img/portfolio/img_teste.jpg")
 
-    #Define a capa do site
-    data["head"]["avatar"] = "contas/#{email_site_nome}_preview/img/profile.png"
+    #Define a imagem de teste do primeiro item do portfolio
+    #data["portfolio"]["items"]["items"][0]["img"] = "img_teste.jpg"
+
 
     id = SecureRandom.hex[0, 10].downcase
 
@@ -389,7 +391,7 @@ get "/postSiteDo" do
   # Depois de o site editado ele será publicado com o nome real sem
   # o sufixo preview
   @site_dir_preview = "public/contas/#{@site_nome}"
-  @site_ymlfile_preview = "public/contas/#{@site_nome}/#{@site_nome}.yml"
+  @site_ymlfile_preview = "public/contas/#{@site_nome}/data.yml"
   puts "@data_path: #{@data_path}"
   puts "@site_ymlfile_preview.gsub:"+@site_ymlfile_preview.gsub('_preview','')
 
@@ -398,7 +400,7 @@ get "/postSiteDo" do
   puts "@site_dir_preview_sub:"+@site_dir_preview.gsub('_preview','')
   FileUtils.copy_entry(@site_dir_preview, @site_dir_preview.gsub('_preview',''))
   # Altera o nome do site original retirando o sufixo _preview
-  FileUtils.mv("public/contas/#{@site_nome}".gsub('_preview','')+"/#{@site_nome}.yml", @site_ymlfile_preview.gsub('_preview',''))
+  FileUtils.mv("public/contas/#{@site_nome}".gsub('_preview','')+"/data.yml", @site_ymlfile_preview.gsub('_preview',''))
   # Abre o site publicado
   redirect "http://#{email_site_nome}.#{request.host_with_port}"
 end
@@ -465,10 +467,11 @@ get '/dataLoad' do
   # Pega os dados do arquivo fonte
   if File.exist? File.expand_path "./public/contas/"+@site_nome then
     #Carrega os dados do site
-    @data_path = "public/contas/{site_nome}/{site_nome}.yml"
+    @data_path = "public/contas/{site_nome}/data.yml"
     @data_path.gsub! "{site_nome}", @site_nome
     @data = YAML.load_file @data_path
     @data["logged"] = session[:logado]
+    @data["site_nome"] = @site_nome
   end
   @data.to_json
 end
@@ -674,11 +677,15 @@ post "/avatarUpload" do
 
     # Reduz o tamanho da imagem
     image = MiniMagick::Image.open("./public/contas/#{@site_nome}/img/#{@filename}")
+    # Exclui imagem enviada
+    FileUtils.rm "./public/contas/#{@site_nome}/img/#{@filename}"
     image.resize "256x256"
-    image.write "./public/contas/#{@site_nome}/img/#{@filename}"
+    image.format "png"
+    image.write "./public/contas/#{@site_nome}/img/avatar.png"
 
     # Salva o nome da imagem o arquivo fonte
-    @data["head"]["avatar"] = "contas/#{@site_nome}/img/#{@filename}?#{Time.now.to_i}"
+    # @data["head"]["avatar"] = "contas/#{@site_nome}/img/#{@filename}?#{Time.now.to_i}"
+    @data["head"]["avatar"] = "avatar.png?#{Time.now.to_i}"
 
     f = File.open @data_path, 'w'
     YAML.dump @data, f
@@ -793,7 +800,8 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
       image = MiniMagick::Image.open(img_path)
       image.resize "800x800" if image.width >= 800
       image.write img_path
-      port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
+      # port_img = "contas/#{@site_nome}/img/portfolio/#{@new_name}"
+      port_img = @new_name
       # port_img = "http://res.cloudinary.com/radiando/image/upload/v#{cl['version']}/#{@site_nome}/#{@new_name}"
       #port_img = "#{@site_nome}/#{@new_name}?#{cl['version']}"
       # puts "resource_type: #{cl['resource_type']}"

@@ -7,7 +7,7 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-02-16 20:07:19 utc
-  modified: 2018-02-19 03:57:15.751018092 Z
+  modified: 2018-02-19 16:52:03.582929373 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
@@ -44,7 +44,7 @@ portfolio:
   - id: shiva3-1518873762758
     titulo: Açaí
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1518873762758.jpg
+    img: shiva3-1518873762758.jpg
     img_: ''
     txt: ''
     nome: ''
@@ -56,7 +56,7 @@ portfolio:
   - id: shiva3-1519007311179
     titulo: ''
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1519007311179.png?decache=0.8861093944415062
+    img: shiva3-1519007311179.png?decache=0.8861093944415062
     img_: ''
     txt: ''
     nome: ''
@@ -68,7 +68,7 @@ portfolio:
   - id: undefined-1509983691493
     titulo: Imagem 1
     mediaType: image
-    img: http://res.cloudinary.com/radiando/image/upload/v1518806439/img_genereic.jpg
+    img: contas/shiva3_preview/img/portfolio/undefined-1509983691493.jpg
     img_: ''
     txt: ''
     nome: ''
@@ -95,7 +95,7 @@ portfolio:
   - id: shiva3-1518987274091
     titulo: zoiudo
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1518987274091.jpg
+    img: shiva3-1518987274091.jpg
     txt: ''
     cliente: ''
     site: ''
@@ -105,7 +105,7 @@ portfolio:
   - id: shiva3-1518987632745
     titulo: ''
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1518987632745.jpg
+    img: shiva3-1518987632745.jpg
     txt: ''
     cliente: ''
     site: ''
@@ -115,7 +115,7 @@ portfolio:
   - id: shiva3-1518988005743
     titulo: ''
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1518988005743.jpg
+    img: shiva3-1518988005743.jpg
     txt: ''
     cliente: ''
     site: ''
@@ -125,7 +125,7 @@ portfolio:
   - id: shiva3-1519006440568
     titulo: ''
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1519006440568.jpg
+    img: shiva3-1519006440568.jpg
     txt: ''
     cliente: ''
     site: ''
@@ -135,7 +135,7 @@ portfolio:
   - id: shiva3-1519006477034
     titulo: ''
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1519006477034.jpg
+    img: shiva3-1519006477034.jpg
     txt: ''
     cliente: ''
     site: ''
@@ -145,7 +145,7 @@ portfolio:
   - id: shiva3-1519006577623
     titulo: ''
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1519006577623.jpg
+    img: shiva3-1519006577623.jpg
     txt: ''
     cliente: ''
     site: ''
@@ -155,7 +155,7 @@ portfolio:
   - id: shiva3-1519006667034
     titulo: ''
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1519006667034.jpeg
+    img: shiva3-1519006667034.jpeg
     txt: ''
     cliente: ''
     site: ''
@@ -165,7 +165,7 @@ portfolio:
   - id: shiva3-1519006712161
     titulo: ''
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1519006712161.jpg
+    img: shiva3-1519006712161.jpg
     txt: ''
     cliente: ''
     site: ''
@@ -175,13 +175,23 @@ portfolio:
   - id: shiva3-1519006821838
     titulo: ''
     mediaType: image
-    img: contas/shiva3_preview/img/portfolio/shiva3-1519006821838.jpg
+    img: shiva3-1519006821838.jpg
     txt: ''
     cliente: ''
     site: ''
     data: ''
     servico: ''
     tags: ''
+  - id: '1519059107041'
+    titulo: ''
+    mediaType: image
+    img: 1519059107041.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
   hide: false
   showGridTitles: true
 about:
