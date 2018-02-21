@@ -2,17 +2,17 @@
 info:
   name: shiva
   email: contato@magaweb.com.br
-  senha: '4620'
+  senha: '8656'
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-02-20 17:18:36 utc
-  modified: 2018-02-20 21:19:07.098995479 Z
+  created: 2018-02-21 01:22:11 utc
+  modified: 2018-02-21 01:32:00.170162274 Z
 navbar:
-  backgroundColor: hsl(198, 75%, 14%)
+  backgroundColor: hsl(198, 46%, 33%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: shiva22
+    label: shiva
     img: 
   menu:
   - label: Portfólio
@@ -23,39 +23,71 @@ navbar:
     link: contato
 head:
   backgroundColor: hsl(168, 19%, 19%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
-  fontFamily: Architects Daughter
-  fontColor: hsl(212, 100%, 1%)
-  avatar: avatar.png
-  txt1: 
-  txt2: 
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/abstract_sun_rays_2-wallpaper-1440x900.jpg
+  fontFamily: Arvo
+  fontColor: hsl(212, 100%, 97%)
+  avatar: avatar.png?1519176226
+  txt1: O destruidor
+  txt2: concentração
   show:
     avatar: true
     txt1: true
-    txt2: true
+    txt2: false
     txtShadow: true
-    ruler: true
+    ruler: false
 portfolio:
   label: Portfólio
   itemsTags: 
   items:
-  - id: 1
+  - id: '1'
     titulo: Imagem 1
     mediaType: image
-    img: img_teste.jpg
+    img: 1.jpg
     img_: ''
     txt: ''
     nome: ''
     site: ''
     data: ''
     servico: ''
-    tags: 
+    tags: []
+  - id: '1519176251118'
+    titulo: ''
+    mediaType: image
+    img: 1519176251118.jpeg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: '1519176266382'
+    titulo: ''
+    mediaType: image
+    img: 1519176266382.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
   hide: false
   showGridTitles: false
 about:
   label: Sobre
-  body1: texto 1
-  body2: texto 2
+  body1: WE HAVE KNOWN FOR YEARS THAT ACAI IS A HEALTHFUL SUPERFOOD CONTAINING OMEGA
+    FATTY ACIDS, DIETARY FIBER AND PHYTOSTEROLS, WHICH SUPPORT THE IMMUNE SYSTEM.
+    MORE RECENTLY IT HAS BEEN DISCOVERED THAT THE BRAZILIAN GROWN BERRY IS ALSO ABUNDANT
+    IN OXYGEN RADICAL ABSORBANCE CAPACITY (ORAC) UNITS, A MEASUREMENT FOR ANTIOXIDANTS
+    DEVELOPED BY THE NATIONAL INSTITUTE ON AGING IN THE NATIONAL INSTITUTES OF HEALTH
+    (NIH). A HIGHER ORAC VALUE PROVIDES GREATER ANTIOXIDANT POWER. OUR DAILY REQUIREMENT
+    IS ESTIMATED AT 3,000 TO 5,000 ORAC UNITS PER DAY.
+  body2: WE HAVE KNOWN FOR YEARS THAT ACAI IS A HEALTHFUL SUPERFOOD CONTAINING OMEGA
+    FATTY ACIDS, DIETARY FIBER AND PHYTOSTEROLS, WHICH SUPPORT THE IMMUNE SYSTEM.
+    MORE RECENTLY IT HAS BEEN DISCOVERED THAT THE BRAZILIAN GROWN BERRY IS ALSO ABUNDANT
+    IN OXYGEN RADICAL ABSORBANCE CAPACITY (ORAC) UNITS, A MEASUREMENT FOR ANTIOXIDANTS
+    DEVELOPED BY THE NATIONAL INSTITUTE ON AGING IN THE NATIONAL INSTITUTES OF HEALTH
+    (NIH). A HIGHER ORAC VALUE PROVIDES GREATER ANTIOXIDANT POWER. OUR DAILY REQUIREMENT
+    IS ESTIMATED AT 3,000 TO 5,000 ORAC UNITS PER DAY.
   hide: false
 contact:
   show: true
@@ -71,3 +103,4 @@ footer:
     linkedin: 
   about_resumo: 
   hide: false
+itemsTags: 

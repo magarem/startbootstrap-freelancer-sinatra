@@ -129,7 +129,7 @@ before do
   puts "session[:logado]: #{session[:logado]}"
 
   #Verifica se está sendo chamado o site principal
-  if @url == "localhost:3000" or @url_full == "radiando.net/" then
+  if  @url_full == "localhost/" || @url_full == "radiando.net/" then
     redirect "http://#{@url}/site/index.html"
   end
 
@@ -217,7 +217,7 @@ end
 #
 get "/" do
 
-  #Testa exiência do site
+  #Testa existência do site
   if !File.exist? File.expand_path "./public/contas/"+@site_nome then
     # Se não existir o site é carregada a mensagem de site não encontrado
     redirect "http://#{@url}/site/index.html?msg=Site não encontrado"
@@ -266,6 +266,9 @@ end
 #  Pedir novo site
 #
 post "/site_new" do
+
+  #Debug
+  puts "> /site_new"
 
   #Pega os parâmetros
   formSiteNome = params[:site_nome]
@@ -866,9 +869,11 @@ post "/portfolio/uploadPic/:postPortfolioItemId" do
 
   if (port_img == "" || port_img == "undefined" || port_img == nil) then port_img = @item["img"] end
 
+  puts "@postPortfolioItemId: #{@postPortfolioItemId}"
   #Seleciona o item do portfolio
   portfolioItems = @data["portfolio"]["items"]
   portfolioItem = portfolioItems.find {|x| x['id'] == @postPortfolioItemId }
+
   portfolioItem["img"] = port_img
   portfolioItem["mediaType"] = 'image'
 

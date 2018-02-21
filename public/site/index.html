@@ -93,13 +93,13 @@
             </div>
             <div class="modal-body">
               <p id=loginModalMsg class="text-left" style="margin-bottom: 2px; color: red;"></p>
-              <form name=formLogin onSubmit="alert()" action=/login_do method="POST">
+              <form name=formLogin onSubmit="return validarLogin(formLogin)" action=/login_do method="POST">
                 <div class="form-group">
                     <input type="text" id="site" name="site" placeholder="Nome do portfólio"  class="form-control" required>
                     <input type="password" id="password" name="senha" value="" class="form-control"  placeholder="Entre com a senha" style="margin-top:10px;" required>
                 </div>
                 <p class="text-center">
-                  <button class="btn btn-primary" type="submit" ><i class="pe-7s-magic-wand"></i> Login</button>
+                  <button class="btn btn-primary" type="submit" onclick="actionChange()"><i class="pe-7s-magic-wand"></i> Login</button>
                 </p>
               </form>
               <p class="text-center text-muted">

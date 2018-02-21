@@ -39,7 +39,7 @@ portfolio:
   label: Portfólio
   itemsTags:
   items:
-  - id: 01
+  - id: '1'
     titulo: Imagem 1
     mediaType: image
     img: img_teste.jpg
