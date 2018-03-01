@@ -1,18 +1,18 @@
 ---
 info:
-  name: shiva
+  name: shiva2
   email: contato@magaweb.com.br
-  senha: eb1c
+  senha: 5efa
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-02-22 00:15:14 utc
+  created: 2018-02-22 01:15:09 utc
   modified: 2018-02-19 17:35:47.959885563 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: shiva
+    label: shiva2
     img: 
   menu:
   - label: Portfólio

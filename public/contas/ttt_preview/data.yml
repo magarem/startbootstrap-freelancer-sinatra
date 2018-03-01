@@ -1,18 +1,18 @@
 ---
 info:
-  name: shiva
+  name: ttt
   email: contato@magaweb.com.br
-  senha: eb1c
+  senha: 1b60
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-02-22 00:15:14 utc
-  modified: 2018-02-19 17:35:47.959885563 Z
+  created: 2018-02-27 23:15:54 utc
+  modified: 2018-03-01 01:52:46.430559158 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: shiva
+    label: ttt
     img: 
   menu:
   - label: Portfólio
@@ -49,7 +49,7 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags: 
+    tags: []
   hide: false
   showGridTitles: false
 about:
@@ -71,3 +71,4 @@ footer:
     linkedin: 
   about_resumo: 
   hide: false
+itemsTags: 

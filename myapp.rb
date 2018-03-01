@@ -177,12 +177,13 @@ get '/testeEnvio' do
   puts response.headers
 end
 get '/adm' do
-  if !@site_nome.include? "_preview"
-    @site_nome << "_preview"
-    @url.gsub!(".localhost","_preview.localhost")
-    @url.gsub!(".radiando","_preview.radiando")
-  end
-  redirect "http://#{@url}/site/index.html?cmd=login&site=#{@site_nome}"
+  # if !@site_nome.include? "_preview"
+  #   @site_nome << "_preview"
+  #   @url.gsub!(".localhost","_preview.localhost")
+  #   @url.gsub!(".radiando","_preview.radiando")
+  # end
+  #redirect "http://#{@url}/site/index.html?cmd=login&site=#{@site_nome}"
+  redirect "http://#{@url}?login=0&site=#{@site_nome}"
 end
 
 get "/cardPanel" do
@@ -255,7 +256,7 @@ get "/lembrarSenha" do
   from = Email.new(email: 'contato@radiando.net')
   to = Email.new(email: email)
   subject = 'Lembrete de senha'
-  content = Content.new(type: 'text/plain', value: mailMessage)
+  content = Content.new(type: 'text/html', value: mailMessage)
   mail = SendGrid::Mail.new(from, subject, to, content)
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._('send').post(request_body: mail.to_json)
@@ -266,9 +267,6 @@ end
 #  Pedir novo site
 #
 post "/site_new" do
-
-  #Debug
-  puts "> /site_new"
 
   #Pega os parâmetros
   formSiteNome = params[:site_nome]
@@ -281,6 +279,7 @@ post "/site_new" do
   #Pega o timestamp
   time = Time.now.getutc
 
+  #Cria a chave de confirmação de conta
   chave = "radiando/#{formUserEmail}/#{formSiteNome}/#{randomSenha}/#{time}".downcase
   puts "chave: #{chave}"
 
@@ -297,20 +296,16 @@ post "/site_new" do
 
   # Verifica se o nome pretendido já existe
   flgNomeJaExiste = File.directory?("public/contas/#{formSiteNome}")
-
   if !flgNomeJaExiste then
-
     mailMessage = ERB.new(File.read('views/email_new_account.txt')).result(binding)
     puts mailMessage
-
     from = Email.new(email: 'contato@radiando.net')
     to = Email.new(email: formUserEmail)
     subject = 'Bem vindo!'
-    content = Content.new(type: 'text/plain', value: mailMessage)
+    content = Content.new(type: 'text/html', value: mailMessage)
     mail = SendGrid::Mail.new(from, subject, to, content)
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
     response = sg.client.mail._('send').post(request_body: mail.to_json)
-
     # exibe a confirmação da operção
     redirect "site/index.html?msg=Foi enviado um email de confirmação para #{formUserEmail}"
   else
@@ -324,10 +319,6 @@ get "/siteNewDo" do
   encode = params[:k]
   puts "encode: #{encode}"
   # encrypt and encode with 256-bit AES
-  # one-time setup, set this to a securely random key with at least 256 bits, see below
-  #URLcrypt.key = password
-  #decrypted = URLcrypt.decrypt(chave)
-  #decrypted = chave.decrypt(password)
   decrypted = decrypt(encode)
   decrypted
   emailParams = decrypted.split("/")
@@ -388,12 +379,19 @@ get "/siteNewDo" do
     #Carrega as variáveis de seção
     session[:site_nome] = email_site_nome.chomp("_preview")
     session[:login] = true
-
-    # Abre o site recem criado no modo de edição
-    redirect "http://#{email_site_nome}_preview.#{request.host_with_port}"
+    #erb :contaConfirmada_msg
+    #Abre o site recem criado no login form
+    #redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1"
+    redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1&site=#{email_site_nome}_preview"
+  else
+    #Não achou o token
+    #@layoutType = "clean"
+    #erb :contaConfirmada_msg
+    #redirect "site/index.html?msg=Erro de token ou o site já foi criado"
+    #redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1&site=#{email_site_nome}_preview"
+    #redirect "site/index.html"
+    redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1&site=#{email_site_nome}_preview"
   end
-  #Não achou o token
-  redirect "site/index.html?msg=Erro de token ou o site já foi criado"
 end
 #
 # Encerra a seção de edição
@@ -446,21 +444,22 @@ post '/login_do' do
   # Pega os parâmetros
   puts "** login_do - begin **"
 
-  site_nome = params[:site]
+  site_nome = params[:site_nome]
   puts "*> /login_do > #{site_nome}"
 
   # Verifica se o nome do site já possui a extenção
   # _preview, senão acrescenta
   if !site_nome.include? "_preview"
-    redirect "http://#{@url}/site/index.html?msg=Só é possível editar site no modo preview"
+    #redirect "http://#{@url}/site/index.html?msg=Só é possível editar site no modo preview"
     #redirect "http://localhost:3000/site/index.html?cmd=loginErr&site=#{site_nome}_preview"
     # site_nome << "_preview"
     # @site_nome << "_preview"
     # @url.gsub!(".localhost","_preview.localhost")
     # @url.gsub!(".radiando","_preview.radiando")
     # puts "*****[#{@url}]"
+    site_nome += "_preview"
   end
-  @form_senha = params[:senha]
+  @form_senha = params[:site_senha]
 
   puts ">>#{site_nome}"
   #Testa se existe o site
@@ -497,7 +496,8 @@ post '/login_do' do
     session[:logado] = false
     session[:site_nome] = ""
     @edit_flag = "false"
-    redirect "http://#{@url}/site/index.html?cmd=loginErr&site=#{site_nome}"
+    # redirect "http://#{@url}/site/index.html?cmd=loginErr&site=#{site_nome}"
+    redirect "http://#{@url}?login=1&site=#{site_nome}&erro=1"
   end
   puts "** login_do - end **"
 end
@@ -519,6 +519,10 @@ end
 # Lê os dados do arquivo fonte
 #
 get '/dataLoad' do
+  #Verifica se o site_nome está nulo e então carrega da variável de sessão
+  #Para caso de site recém criado
+  if !@site_nome then @site_nome = session[:site_nome] << "_preview" end
+
   # Pega os dados do arquivo fonte
   if File.exist? File.expand_path "./public/contas/"+@site_nome then
     #Carrega os dados do site

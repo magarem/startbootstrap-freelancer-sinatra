@@ -1,648 +1,690 @@
-<%if @isLogged%>
-  <!DOCTYPE html>
-  <html lang="en" ng-app="myapp">
-  <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> -->
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-  <title>radiando.net</title>
-  <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-
-  <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/angularjs-color-picker.min.css" />
-  <!-- only include if you use bootstrap -->
-  <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family={{siteData.navbar.logo.fontFamily}}|{{siteData.head.fontFamily}}" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/freelancer.css" rel="stylesheet">
-  <!-- Custom Fonts -->
-  <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <link href="/css/bootstrap-switch.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/ng-tags-input.css">
-  <link rel="stylesheet" href="/css/jsTag.css">
-  <link href="/bower_components/ng-cropper/dist/ngCropper.all.css" rel="stylesheet">
-  <link href="/bower_components/ngModal/dist/ng-modal.css" rel="stylesheet">
-  <style>
-   [contenteditable=true]:empty:before{
-     content: attr(placeholder);
-     display: block; /* For Firefox */
-   }
-
-   .field {
-       margin-bottom: 1em;
-   }
-   .click-to-edit {
-       display: inline-block;
-   }
-   /*input {
-       display: initial !important;
-       width: auto !important;
-       margin: 0 5px 0 0 !important;
-   }*/
-   .glyphicon.spinning {
-       animation: spin 1s infinite linear;
-       -webkit-animation: spin2 1s infinite linear;
-   }
-   @keyframes spin {
-       from {
-           transform: scale(1) rotate(0deg);
-       }
-       to {
-           transform: scale(1) rotate(360deg);
-       }
-   }
-   @-webkit-keyframes spin2 {
-       from {
-           -webkit-transform: rotate(0deg);
-       }
-       to {
-           -webkit-transform: rotate(360deg);
-       }
-   }
-
-   .bootstrap .tags {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    }
-
-  .bootstrap .tags.focused {
-    border-color: #66afe9;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102,175,233,0.6);
-  }
-
-  .bootstrap .tags .tag-item {
-    background: #428bca;
-    border: 1px solid #357ebd;
-    border-radius: 4px;
-    color: #fff;
-  }
-
-  .bootstrap .tags .tag-item.selected {
-    background: #d9534f;
-    border: 1px solid #d43f3a;
-    border-radius: 4px;
-    color: #fff;
-  }
-
-  .bootstrap .tags .tag-item button {
-    background: transparent;
-    color: #000;
-    opacity: .4;
-  }
-
-  .bootstrap .autocomplete {
-    border-radius: 4px;
-  }
-
-  .bootstrap .autocomplete .suggestion-item.selected {
-    color: #262626;
-    background-color: #e9e9e9;
-  }
-
-  .bootstrap .autocomplete .suggestion-item em {
-    font-weight: normal;
-    background-color: #ffff00;
-  }
-
-  .bootstrap .autocomplete .suggestion-item.selected em {
-    color: #262626;
-    background-color: #ffff00;
-  }
-  </style>
-  <style>
-  .materialpicker-colors {
-    -webkit-user-select: none;
-    user-select: none;
-    position: relative;
-    border: 1px solid #FFF;
-    border-radius: 2px;
-    display: inline-block;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
-    cursor: default;
-  }
-  .materialpicker-colors div.selected {
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 0 4px #000;
-    border: 2px solid #FFF;
-  }
-  div.materialpicker-white.selected {
-    border-color: #78909C;
-  }
-  .materialpicker.ng-invalid .materialpicker-colors {
-    border-color: #a94442;
-    box-shadow: 0 1px 5px #a94442;
-  }
-
-  [ng-cloak] {
-      display: none;
-    }
-
-
-  </style>
-  <link rel="stylesheet" id="switcher-css" type="text/css" href="/dmss/switcher/css/switcher.css" media="all">
-
-  <link rel="stylesheet" type="text/css" href="/bower_components/angular-fontselect/dist/angular-fontselect.css">
-
-  <link rel="stylesheet" type="text/css" href="/css/fontselect-alternate.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  </head>
-
-  <body id="page-top" class="index" ng-controller="topCtrl" ng-cloak>
-  <%= erb :modals %>
-  <%= yield %>
-  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-  <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-    <a class="btn btn-primary" href="#page-top">
-        <i class="fa fa-chevron-up"></i>
-    </a>
-  </div>
-
-  <!-- AngularJs -->
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
-
-  <!-- Sortable.js -->
-
-  <script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
-  <!-- ng-sortable.js -->
-  <script src="http://rubaxa.github.io/Sortable/ng-sortable.js"></script>
-  <!-- Upload -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <script src="/js/classie.js"></script>
-
-  <script src="/js/cbpAnimatedHeader.js"></script>
-
-  <!-- Plugin JavaScript -->
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-  <!-- Contact Form JavaScript -->
-  <script src="/js/jqBootstrapValidation.js"></script>
-  <script src="/js/contact_me.js"></script>
-
-  <!-- Custom Theme JavaScript -->
-  <script src="/js/freelancer.js"></script>
-  <!-- Trigger the modal with a button -->
-  <script src="/js/ui-bootstrap-0.14.3.min.js"></script>
-  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
-  <script>
-    angular.module('frapontillo.bootstrap-switch', []);
-  </script>
-  <script src="/js/bsSwitch.js"></script>
-
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-sanitize.js"></script>
-  <script src="/bower_components/ng-file-upload/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
-  <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
-
-  <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
-  <script src="/js/bootstrap-switch.min.js"></script>
-  <script type="text/javascript" src="/js/ng-device-detector.js"></script>
-  <script type="text/javascript" src="/js/re-tree.js"></script>
-  <script type="text/javascript" src="/bower_components/ng-img-crop/compile/unminified/ng-img-crop.js"></script>
-  <script type="text/javascript" src="/js/jsTag.debug.js"></script>
-  <script type="text/javascript" src="/js/jsTag.min.js"></script>
-  <script type="text/javascript" src="/js/angular-typeahead.min.js"></script>
-  <script type="text/javascript" src="/js/typeahead.bundle.js"></script>
-  <script src="/js/angular_script.js"></script>
-  <script type="text/javascript" src="/node_modules/ngjs-color-picker/dist/ngjs-color-picker.js"></script>
-  <script>
-      //
-      // Hack para limpar o código html quando
-      // se cola algum texto vindo de algum site
-      //
-      $(document).on('paste','[contenteditable]',function(e) {
-        e.preventDefault();
-        var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
-        window.document.execCommand('insertText', false, text);
-      });
-
-      $('div[contenteditable]').keydown(function(e) {
-        //trap the return key being pressed
-        if (e.keyCode === 13  && !e.shiftKey) {
-          // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-          //document.execCommand('insertHTML', false, '<br><br>');
-          // prevent the default behaviour of return key pressed
-          $("div[contentEditable]").blur()
-          return false;
-        }
-      })
-      $('p[contenteditable]').keydown(function(e) {
-        //trap the return key being pressed
-        if (e.keyCode === 13  && !e.shiftKey) {
-          // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-          //document.execCommand('insertHTML', false, '<br><br>');
-          // prevent the default behaviour of return key pressed
-          $("div[contentEditable]").blur()
-          return false;
-        }
-      })
-
-      //hack para navbar na frente da caixa de texto quando se está editando um texto em mobile device
-      if ('ontouchstart' in window) {
-          $(document).on('focus', 'textarea,input,select,[contenteditable]', function() {
-              $('.navbar.navbar-fixed-top').css('position', 'absolute');
-          }).on('blur', 'textarea,input,select,[contenteditable]', function() {
-              $('.navbar.navbar-fixed-top').css('position', '');
-          });
-      }
-    </script>
-
-    <!-- UI jQuery (For Module #5 and #6) -->
-
-      <script src="/node_modules/cloudinary-angular/dist/cloudinary-angular.min.js"></script>
-      <script src="/node_modules/@fengyuanchen/loader/dist/loader.js"></script>
-      <script src="/bower_components/ng-cropper/dist/ngCropper.all.js"></script>
-      <script>
-        /* @ngInject */
-        function configure(CloudinaryProvider) {
-            CloudinaryProvider.configure({
-                cloud_name: 'magaweb',
-                api_key: '767586258454699'
-            });
-        }
-        angular
-            .module('myapp')
-            .config(configure);
-
-      </script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js" type="text/javascript"></script>
-      <!-- Bootstrap jQuery -->
-      <script src="/dmss/js/bootstrap.js"></script>
-      <!-- Bootstrap Select Tool (For Module #4) -->
-      <script src="/dmss/switcher/js/bootstrap-select.js"></script>
-      <!-- Evol Color Picker jQuery (For Module #5 and #6) -->
-      <script src="/dmss/switcher/js/evol.colorpicker.min.js" type="text/javascript"></script>
-      <!-- All Scripts & Plugins -->
-      <script src="/dmss/switcher/js/dmss.js"></script>
-
-      <!--script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script-->
-      <script src="/bower_components/tinycolor/dist/tinycolor-min.js"></script>
-      <script src="/bower_components/angular-color-picker/dist/angularjs-color-picker.min.js"></script>
-      <script src="/bower_components/ng-youtube-embed/src/ng-youtube-embed.js"></script>
-
-      <script src="/bower_components/ng-videosharing-embed/build/ng-videosharing-embed.min.js"></script>
-      <script src="/bower_components/fluidvids/src/fluidvids.js"></script>
-      <script src="/bower_components/angular-image-compress/angular-image-compress.js"></script>
-      <script src="/js/BootSideMenu.js"></script>
-      <script src="/js/fontSelector/fontSelector.js"></script>
-      <script src="/bower_components/angular-fontselect/dist/angular-fontselect.js"></script>
-
-      <% if @logado %>
-        <script>
-          $( document ).ready(function() {
-            $(document).mousemove(function(event){
-                if (event.pageX<20 && event.pageY<700){
-                  console.log("abrir sidebar");
-                  $(".menu").css("left", "0px");
-                  $(".line").css("background", "#FFF");
-                  menuOpen = true;
-                }
-              });
-              console.log( "ready!" );
-          });
-        </script>
-      <% end %>
-
-      <script src="/js/jquery.fontselect.js"></script>
-      <script>
-        $(function(){
-          $('#logoFontSelector').fontselect().change(function(){
-
-            // replace + signs with spaces for css
-            var font = $(this).val().replace(/\+/g, ' ');
-
-            // split font into family and weight
-            font = font.split(':');
-            console.log(font[0])
-            // set family on paragraphs
-            $('#logoFont').css('font-family', font[0]);
-
-            //Salva no script
-            $.ajax({
-              type: "post",
-              url: "/objSave",
-              data: JSON.stringify({"obj":"siteData.navbar.logo.fontFamily", "val":font[0]}),
-              contentType: "application/json; charset=utf-8",
-              success: function (result) {
-                   //do somthing here
-              }
-            });
-
-          });
-          $('#headerFontSelector').fontselect().change(function(){
-
-            // replace + signs with spaces for css
-            var font = $(this).val().replace(/\+/g, ' ');
-
-            // split font into family and weight
-            font = font.split(':');
-
-            console.log(font[0])
-
-            // set family on paragraphs
-            $('#headerFont1').css('font-family', font[0]);
-            $('#headerFont2').css('font-family', font[0]);
-
-            $.ajax({
-              type: "post",
-              url: "/objSave",
-              data: JSON.stringify({"obj":"siteData.head.fontFamily", "val":font[0]}),
-              contentType: "application/json; charset=utf-8",
-              success: function (result) {
-                   //do somthing here
-              }
-            });
-          });
-        });
-
-
-      </script>
-
-
-      <script>
-        $(document).ready(function(){
-            $("#myBtn").click(function(){
-                $("#modal_login").modal();
-            });
-        });
-
-        //Script para pegar a query string
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
-
-        var erro = getParameterByName('erro');
-        if (erro && erro.length>0) {
-          erro_msg = []
-          erro_msg[0] = "<p>Aconteceu algum erro em nossos servidores!<p><p>Favor tentar a operação novamente, se o erro persistir favor entrar em contato com nossa equipe pelo e-mail: contato@radiando.net</p>"
-          erro_msg[1] = "A senha não confere"
-          $("#modal_erro_msgs").html(erro_msg[erro]);
-          $('#modal_erro').modal('show');
-        }
-      </script>
-  </body>
-  </html>
-<%else%>
- <!DOCTYPE html>
- <html lang="en">
-   <head>
+<%if @layoutType == "clean" then %>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+   <%= yield %>
+<%else %>
+  <%if @isLogged%>
+    <!DOCTYPE html>
+    <html lang="en" ng-app="myapp">
+    <head>
     <meta charset="utf-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> -->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>radiando.net</title>
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
 
-    <title>Radiando.net2</title>
-
+    <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/angularjs-color-picker.min.css" />
+    <!-- only include if you use bootstrap -->
+    <link rel="stylesheet" href="/bower_components/angular-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family={{siteData.navbar.logo.fontFamily}}|{{siteData.head.fontFamily}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-    <!-- Bootstrap core CSS -->
-    <link href="/realSite/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="/realSite/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/freelancer.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- Plugin CSS -->
-    <!-- <link href="/realSite/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css"> -->
-
-    <!-- Custom styles for this template -->
-    <link href="/realSite/css/freelancer.min.css" rel="stylesheet">
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="/css/bootstrap-switch.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/ng-tags-input.css">
+    <link rel="stylesheet" href="/css/jsTag.css">
+    <link href="/bower_components/ng-cropper/dist/ngCropper.all.css" rel="stylesheet">
+    <link href="/bower_components/ngModal/dist/ng-modal.css" rel="stylesheet">
     <style>
-       /*Header*/
-       header {
-         background-size: cover;
-         background-attachment: fixed;
-         background-position: center center;
-         background-attachment: scroll;
-       }
-       header {
-         position: relative;
-         height: 100%;
-         z-index: 0;
-       }
-       .txtShadow {
-         text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.6);
-       }
-       .txtShadow2 {
-         text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.5);
-       }
-       hr#head_star.star-light:after, hr#head_star.star-primary:after {
-         color:{{siteData.head.fontColor}};
-       }
-       hr.star-light:after {
-            background-color: transparent;
-       }
-       hr {
-           box-sizing: content-box;
-           height: 0;
-           overflow: visible;
-       }
-       .avatarImg {
-         height: auto;
-         width: auto;
-         max-width: 250px;
-         max-height: 250px;
-       }
-       .avatar_circle{
-          border-radius: 100%;
-          box-shadow: 0 0 8px rgba(0, 0, 0, .8) ;
-          -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-          -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-          padding: 2px;
-        }
-        .txtShadow {
-          text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.6);
-        }
-        .txtShadow2 {
-          text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.5);
-        }
+     [contenteditable=true]:empty:before{
+       content: attr(placeholder);
+       display: block; /* For Firefox */
+     }
 
-      /*Porfólio*/
-      .imgBox {
-        width: 360px;
-        height: 260px;
-        max-width: 100%;
-        background-size: cover;
-        background-position: center  center;
-        background-repeat: no-repeat;
-        margin-bottom: 10px;
-      }
-      div .imgBox:hover {
-        opacity: 0.9;
-        filter: alpha(opacity=90); /* For IE8 and earlier */
+     .field {
+         margin-bottom: 1em;
+     }
+     .click-to-edit {
+         display: inline-block;
+     }
+     /*input {
+         display: initial !important;
+         width: auto !important;
+         margin: 0 5px 0 0 !important;
+     }*/
+     .glyphicon.spinning {
+         animation: spin 1s infinite linear;
+         -webkit-animation: spin2 1s infinite linear;
+     }
+     @keyframes spin {
+         from {
+             transform: scale(1) rotate(0deg);
+         }
+         to {
+             transform: scale(1) rotate(360deg);
+         }
+     }
+     @-webkit-keyframes spin2 {
+         from {
+             -webkit-transform: rotate(0deg);
+         }
+         to {
+             -webkit-transform: rotate(360deg);
+         }
+     }
+
+     .bootstrap .tags {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
       }
 
-      .modal-lg {
-          max-width: 95%;
-      }
-      .modal-header {
-        border-bottom: 0px
-      }
-      .modal-footer {
-        border-top: 0px
-      }
-      .modal-body {
-        padding: 0rem;
-      }
-      .fa-3x {
-          font-size: 2em;
-      }
+    .bootstrap .tags.focused {
+      border-color: #66afe9;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102,175,233,0.6);
+    }
+
+    .bootstrap .tags .tag-item {
+      background: #428bca;
+      border: 1px solid #357ebd;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .bootstrap .tags .tag-item.selected {
+      background: #d9534f;
+      border: 1px solid #d43f3a;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .bootstrap .tags .tag-item button {
+      background: transparent;
+      color: #000;
+      opacity: .4;
+    }
+
+    .bootstrap .autocomplete {
+      border-radius: 4px;
+    }
+
+    .bootstrap .autocomplete .suggestion-item.selected {
+      color: #262626;
+      background-color: #e9e9e9;
+    }
+
+    .bootstrap .autocomplete .suggestion-item em {
+      font-weight: normal;
+      background-color: #ffff00;
+    }
+
+    .bootstrap .autocomplete .suggestion-item.selected em {
+      color: #262626;
+      background-color: #ffff00;
+    }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-    <script>
-    // Load a Google font by name.
-    var loadFont = function(font) {
-      WebFont.load({
-        google: {
-          families: [font]
-        }
-      });
-    };
+    <style>
+    .materialpicker-colors {
+      -webkit-user-select: none;
+      user-select: none;
+      position: relative;
+      border: 1px solid #FFF;
+      border-radius: 2px;
+      display: inline-block;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+      cursor: default;
+    }
+    .materialpicker-colors div.selected {
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 4px #000;
+      border: 2px solid #FFF;
+    }
+    div.materialpicker-white.selected {
+      border-color: #78909C;
+    }
+    .materialpicker.ng-invalid .materialpicker-colors {
+      border-color: #a94442;
+      box-shadow: 0 1px 5px #a94442;
+    }
 
-    </script>
-  </head>
-  <body id="page-top" >
-    <div id="app" v-if="dataIsLoaded">
-      <%= yield %>
+    [ng-cloak] {
+        display: none;
+      }
+
+
+    </style>
+    <link rel="stylesheet" id="switcher-css" type="text/css" href="/dmss/switcher/css/switcher.css" media="all">
+
+    <link rel="stylesheet" type="text/css" href="/bower_components/angular-fontselect/dist/angular-fontselect.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/fontselect-alternate.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    </head>
+
+    <body id="page-top" class="index" ng-controller="topCtrl" ng-cloak>
+    <%= erb :modals %>
+    <%= yield %>
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+      <a class="btn btn-primary" href="#page-top">
+          <i class="fa fa-chevron-up"></i>
+      </a>
     </div>
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://unpkg.com/vue"></script>
-    <script src="/realSite/vendor/jquery/jquery.min.js"></script>
-    <script src="/realSite/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AngularJs -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+
+    <!-- Sortable.js -->
+
+    <script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
+    <!-- ng-sortable.js -->
+    <script src="http://rubaxa.github.io/Sortable/ng-sortable.js"></script>
+    <!-- Upload -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="/js/classie.js"></script>
+
+    <script src="/js/cbpAnimatedHeader.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="/realSite/vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
     <!-- Contact Form JavaScript -->
-    <script src="/realSite/js/jqBootstrapValidation.js"></script>
-    <script src="/realSite/js/contact_me.js"></script>
+    <script src="/js/jqBootstrapValidation.js"></script>
+    <script src="/js/contact_me.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="/realSite/js/freelancer.js"></script>
-    <!-- template for the modal component -->
+    <!-- Custom Theme JavaScript -->
+    <script src="/js/freelancer.js"></script>
+    <!-- Trigger the modal with a button -->
+    <script src="/js/ui-bootstrap-0.14.3.min.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script>
+      angular.module('frapontillo.bootstrap-switch', []);
+    </script>
+    <script src="/js/bsSwitch.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-sanitize.js"></script>
+    <script src="/bower_components/ng-file-upload/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
+    <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
+
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
+    <script src="/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="/js/ng-device-detector.js"></script>
+    <script type="text/javascript" src="/js/re-tree.js"></script>
+    <script type="text/javascript" src="/bower_components/ng-img-crop/compile/unminified/ng-img-crop.js"></script>
+    <script type="text/javascript" src="/js/jsTag.debug.js"></script>
+    <script type="text/javascript" src="/js/jsTag.min.js"></script>
+    <script type="text/javascript" src="/js/angular-typeahead.min.js"></script>
+    <script type="text/javascript" src="/js/typeahead.bundle.js"></script>
+    <script src="/js/angular_script.js"></script>
+    <script type="text/javascript" src="/node_modules/ngjs-color-picker/dist/ngjs-color-picker.js"></script>
 
 
     <script>
-    Array.prototype.getUnique = function() {
-        return [...new Set( [this] )];
-    };
+        //
+        // Hack para limpar o código html quando
+        // se cola algum texto vindo de algum site
+        //
+        $(document).on('paste','[contenteditable]',function(e) {
+          e.preventDefault();
+          var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Paste something..');
+          window.document.execCommand('insertText', false, text);
+        });
 
-    // function trimObj(badJson) {
-    //   return JSON.parse(JSON.stringify(badJson).replace(/(\\)?"\s*|\s+"/g, ($0, $1) => $1 ? $0 : '"'))
-    // }
+        $('div[contenteditable]').keydown(function(e) {
+          //trap the return key being pressed
+          if (e.keyCode === 13  && !e.shiftKey) {
+            // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+            //document.execCommand('insertHTML', false, '<br><br>');
+            // prevent the default behaviour of return key pressed
+            $("div[contentEditable]").blur()
+            return false;
+          }
+        })
+        $('p[contenteditable]').keydown(function(e) {
+          //trap the return key being pressed
+          if (e.keyCode === 13  && !e.shiftKey) {
+            // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+            //document.execCommand('insertHTML', false, '<br><br>');
+            // prevent the default behaviour of return key pressed
+            $("div[contentEditable]").blur()
+            return false;
+          }
+        })
 
-    // register modal component
-    // register modal component
-  Vue.component('modal', {
-    template: '#modal-template',
-    props: {
-      show: {
-        type: Boolean,
-        required: true,
-        twoWay: true
-      }
-    }
-  })
+        //hack para navbar na frente da caixa de texto quando se está editando um texto em mobile device
+        if ('ontouchstart' in window) {
+            $(document).on('focus', 'textarea,input,select,[contenteditable]', function() {
+                $('.navbar.navbar-fixed-top').css('position', 'absolute');
+            }).on('blur', 'textarea,input,select,[contenteditable]', function() {
+                $('.navbar.navbar-fixed-top').css('position', '');
+            });
+        }
+      </script>
 
+      <!-- UI jQuery (For Module #5 and #6) -->
 
-    var dataURL = '/dataLoad';
-    new Vue({
-      el: '#app',
-      data: {
-        siteData: {},
-        dataIsLoaded:false,
-        showModal: false,
-        tagSelector: 'all'
-      },
-      created: function () {
-        this.fetchData();
-        // this.loadFont(this.siteData.navbar.logo.fontFamily)
-      },
-      updated: function (){
-        //Carregas as fontes do Google
-        this.loadFont(this.siteData.navbar.logo.fontFamily)
-        this.loadFont(this.siteData.head.fontFamily)
-      },
-      methods: {
-        getItemsTags: function(event) {
-          //Pega a lista de todas as tags utilizadas
-          let itemsTags = []
-          this.siteData.portfolio.items.forEach( function(s) {
-             (s.tags || []).forEach( function(tag) {
-                itemsTags.push(tag);
-             })
-          } );
-          //Retira os valores duplicados e faz uma ordenação alfabética
-          itemsTags = itemsTags.filter((x, i, a) => a.indexOf(x) == i).sort()
-          console.log("itemsTags:",itemsTags)
-          this.siteData.portfolio.itemsTags = itemsTags
-        },
+        <script src="/node_modules/cloudinary-angular/dist/cloudinary-angular.min.js"></script>
+        <script src="/node_modules/@fengyuanchen/loader/dist/loader.js"></script>
+        <script src="/bower_components/ng-cropper/dist/ngCropper.all.js"></script>
+        <script>
+          /* @ngInject */
+          function configure(CloudinaryProvider) {
+              CloudinaryProvider.configure({
+                  cloud_name: 'magaweb',
+                  api_key: '767586258454699'
+              });
+          }
+          angular
+              .module('myapp')
+              .config(configure);
 
-        select: function(event) {
-          this.tagSelector = event
-          console.log(event); // returns 'foo'
-        },
-        tt: function(x) {
-          console.log(x); // returns 'foo'
-        },
-        fetchData: function () {
-          var self = this;
-          $.getJSON( dataURL, function( data ) {
-              self.siteData = data;
-              console.log(self.siteData)
-              self.dataIsLoaded = true;
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js" type="text/javascript"></script>
+        <!-- Bootstrap jQuery -->
+        <script src="/dmss/js/bootstrap.js"></script>
+        <!-- Bootstrap Select Tool (For Module #4) -->
+        <script src="/dmss/switcher/js/bootstrap-select.js"></script>
+        <!-- Evol Color Picker jQuery (For Module #5 and #6) -->
+        <script src="/dmss/switcher/js/evol.colorpicker.min.js" type="text/javascript"></script>
+        <!-- All Scripts & Plugins -->
+        <script src="/dmss/switcher/js/dmss.js"></script>
+
+        <!--script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script-->
+        <script src="/bower_components/tinycolor/dist/tinycolor-min.js"></script>
+        <script src="/bower_components/angular-color-picker/dist/angularjs-color-picker.min.js"></script>
+        <script src="/bower_components/ng-youtube-embed/src/ng-youtube-embed.js"></script>
+
+        <script src="/bower_components/ng-videosharing-embed/build/ng-videosharing-embed.min.js"></script>
+        <script src="/bower_components/fluidvids/src/fluidvids.js"></script>
+        <script src="/bower_components/angular-image-compress/angular-image-compress.js"></script>
+        <script src="/js/BootSideMenu.js"></script>
+        <script src="/js/fontSelector/fontSelector.js"></script>
+        <script src="/bower_components/angular-fontselect/dist/angular-fontselect.js"></script>
+
+        <% if @logado %>
+          <script>
+            $( document ).ready(function() {
+              $(document).mousemove(function(event){
+                  if (event.pageX<20 && event.pageY<700){
+                    console.log("abrir sidebar");
+                    $(".menu").css("left", "0px");
+                    $(".line").css("background", "#FFF");
+                    menuOpen = true;
+                  }
+                });
+                console.log( "ready!" );
+            });
+          </script>
+        <% end %>
+
+        <script src="/js/jquery.fontselect.js"></script>
+        <script>
+          $(function(){
+            $('#logoFontSelector').fontselect().change(function(){
+
+              // replace + signs with spaces for css
+              var font = $(this).val().replace(/\+/g, ' ');
+
+              // split font into family and weight
+              font = font.split(':');
+              console.log(font[0])
+              // set family on paragraphs
+              $('#logoFont').css('font-family', font[0]);
+
+              //Salva no script
+              $.ajax({
+                type: "post",
+                url: "/objSave",
+                data: JSON.stringify({"obj":"siteData.navbar.logo.fontFamily", "val":font[0]}),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                     //do somthing here
+                }
+              });
+
+            });
+            $('#headerFontSelector').fontselect().change(function(){
+
+              // replace + signs with spaces for css
+              var font = $(this).val().replace(/\+/g, ' ');
+
+              // split font into family and weight
+              font = font.split(':');
+
+              console.log(font[0])
+
+              // set family on paragraphs
+              $('#headerFont1').css('font-family', font[0]);
+              $('#headerFont2').css('font-family', font[0]);
+
+              $.ajax({
+                type: "post",
+                url: "/objSave",
+                data: JSON.stringify({"obj":"siteData.head.fontFamily", "val":font[0]}),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                     //do somthing here
+                }
+              });
+            });
           });
 
-        },
-        loadFont: function (font){
-          loadFont(font);
-        }
-      },
-        computed: {
-          filteredList() {
-            this.getItemsTags()
-            if (!this.siteData.portfolio.itemsTags) {
-              return this.siteData.portfolio.items
-            } else {
-              return this.siteData.portfolio.items.filter( item => {
-                if (this.tagSelector == "all" ){
-                  return item.tags || this.siteData.portfolio.items
-                }else{
-                  if (item.tags){
-                    return item.tags.includes(this.tagSelector)
-                  }
-                }
-              })
-            }
-          }
-      }
-    });
 
-    </script>
-  </body>
- </html>
+        </script>
+
+
+        <script>
+          $(document).ready(function(){
+              $("#myBtn").click(function(){
+                  $("#modal_login").modal();
+              });
+          });
+
+          //Script para pegar a query string
+          function getParameterByName(name, url) {
+              if (!url) url = window.location.href;
+              name = name.replace(/[\[\]]/g, "\\$&");
+              var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                  results = regex.exec(url);
+              if (!results) return null;
+              if (!results[2]) return '';
+              return decodeURIComponent(results[2].replace(/\+/g, " "));
+          }
+
+          var erro = getParameterByName('erro');
+          if (erro && erro.length>0) {
+            erro_msg = []
+            erro_msg[0] = "<p>Aconteceu algum erro em nossos servidores!<p><p>Favor tentar a operação novamente, se o erro persistir favor entrar em contato com nossa equipe pelo e-mail: contato@radiando.net</p>"
+            erro_msg[1] = "A senha não confere"
+            $("#modal_erro_msgs").html(erro_msg[erro]);
+            $('#modal_erro').modal('show');
+          }
+        </script>
+    </body>
+    </html>
+  <%else%>
+   <!DOCTYPE html>
+   <html lang="en">
+     <head>
+      <meta charset="utf-8">
+      <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+      <meta name="description" content="">
+      <meta name="author" content="">
+
+      <title>Radiando.net2</title>
+
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+      <!-- Bootstrap core CSS -->
+      <link href="/realSite/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Custom fonts for this template -->
+      <link href="/realSite/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+      <!-- Plugin CSS -->
+      <!-- <link href="/realSite/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css"> -->
+
+      <!-- Custom styles for this template -->
+      <link href="/realSite/css/freelancer.min.css" rel="stylesheet">
+      <style>
+         /*Header*/
+         header {
+           background-size: cover;
+           background-attachment: fixed;
+           background-position: center center;
+           background-attachment: scroll;
+         }
+         header {
+           position: relative;
+           height: 100%;
+           z-index: 0;
+         }
+         .txtShadow {
+           text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.6);
+         }
+         .txtShadow2 {
+           text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.5);
+         }
+         hr#head_star.star-light:after, hr#head_star.star-primary:after {
+           color:{{siteData.head.fontColor}};
+         }
+         hr.star-light:after {
+              background-color: transparent;
+         }
+         hr {
+             box-sizing: content-box;
+             height: 0;
+             overflow: visible;
+         }
+         .avatarImg {
+           height: auto;
+           width: auto;
+           max-width: 250px;
+           max-height: 250px;
+         }
+         .avatar_circle{
+            border-radius: 100%;
+            box-shadow: 0 0 8px rgba(0, 0, 0, .8) ;
+            -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+            -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+            padding: 2px;
+          }
+          .txtShadow {
+            text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.6);
+          }
+          .txtShadow2 {
+            text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.5);
+          }
+
+        /*Porfólio*/
+        .imgBox {
+          width: 360px;
+          height: 260px;
+          max-width: 100%;
+          background-size: cover;
+          background-position: center  center;
+          background-repeat: no-repeat;
+          margin-bottom: 10px;
+        }
+        div .imgBox:hover {
+          opacity: 0.9;
+          filter: alpha(opacity=90); /* For IE8 and earlier */
+        }
+
+        .modal-lg {
+            max-width: 95%;
+        }
+        .modal-header {
+          border-bottom: 0px
+        }
+        .modal-footer {
+          border-top: 0px
+        }
+        .modal-body {
+          padding: 0rem;
+        }
+        .fa-3x {
+            font-size: 2em;
+        }
+      </style>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+      <script>
+      // Load a Google font by name.
+      var loadFont = function(font) {
+        WebFont.load({
+          google: {
+            families: [font]
+          }
+        });
+      };
+
+      </script>
+    </head>
+    <body id="page-top" >
+      <%= erb :modals %>
+      <div id="app" v-if="dataIsLoaded">
+        <%= yield %>
+      </div>
+      <!-- Bootstrap core JavaScript -->
+      <script src="https://unpkg.com/vue"></script>
+      <script src="/realSite/vendor/jquery/jquery.min.js"></script>
+      <script src="/realSite/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+      <!-- Plugin JavaScript -->
+      <script src="/realSite/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+      <!-- Contact Form JavaScript -->
+      <script src="/realSite/js/jqBootstrapValidation.js"></script>
+      <script src="/realSite/js/contact_me.js"></script>
+
+
+      <!-- Custom scripts for this template -->
+      <script src="/realSite/js/freelancer.js"></script>
+      <!-- template for the modal component -->
+
+
+      <script>
+      Array.prototype.getUnique = function() {
+          return [...new Set( [this] )];
+      };
+
+      // function trimObj(badJson) {
+      //   return JSON.parse(JSON.stringify(badJson).replace(/(\\)?"\s*|\s+"/g, ($0, $1) => $1 ? $0 : '"'))
+      // }
+
+      // register modal component
+      // register modal component
+    Vue.component('modal', {
+      template: '#modal-template',
+      props: {
+        show: {
+          type: Boolean,
+          required: true,
+          twoWay: true
+        }
+      }
+    })
+
+
+      var dataURL = '/dataLoad';
+      new Vue({
+        el: '#app',
+        data: {
+          siteData: {},
+          dataIsLoaded:false,
+          showModal: false,
+          tagSelector: 'all'
+        },
+        created: function () {
+          this.fetchData();
+          // this.loadFont(this.siteData.navbar.logo.fontFamily)
+        },
+        updated: function (){
+          //Carregas as fontes do Google
+          this.loadFont(this.siteData.navbar.logo.fontFamily)
+          this.loadFont(this.siteData.head.fontFamily)
+        },
+        methods: {
+          getItemsTags: function(event) {
+            //Pega a lista de todas as tags utilizadas
+            let itemsTags = []
+            this.siteData.portfolio.items.forEach( function(s) {
+               (s.tags || []).forEach( function(tag) {
+                  itemsTags.push(tag);
+               })
+            } );
+            //Retira os valores duplicados e faz uma ordenação alfabética
+            itemsTags = itemsTags.filter((x, i, a) => a.indexOf(x) == i).sort()
+            console.log("itemsTags:",itemsTags)
+            this.siteData.portfolio.itemsTags = itemsTags
+          },
+
+          select: function(event) {
+            this.tagSelector = event
+            console.log(event); // returns 'foo'
+          },
+          tt: function(x) {
+            console.log(x); // returns 'foo'
+          },
+          fetchData: function () {
+            var self = this;
+            $.getJSON( dataURL, function( data ) {
+                self.siteData = data;
+                console.log(self.siteData)
+                self.dataIsLoaded = true;
+            });
+
+          },
+          loadFont: function (font){
+            loadFont(font);
+          }
+        },
+          computed: {
+            filteredList() {
+              this.getItemsTags()
+              if (!this.siteData.portfolio.itemsTags) {
+                return this.siteData.portfolio.items
+              } else {
+                return this.siteData.portfolio.items.filter( item => {
+                  if (this.tagSelector == "all" ){
+                    return item.tags || this.siteData.portfolio.items
+                  }else{
+                    if (item.tags){
+                      return item.tags.includes(this.tagSelector)
+                    }
+                  }
+                })
+              }
+            }
+        }
+      });
+
+      //Script para pegar a query string
+      function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+
+      var login = getParameterByName('login');
+      var site = getParameterByName('site');
+      var erro = getParameterByName('erro');
+
+      if (login) {
+        $('#login-modal').modal('show');
+        if (site){
+          document.getElementById("site_nome").value = site;
+          var msg = ""
+          if (login == 1){
+            var msg = "<h4>Bem vindo!</h4><h5>Seu site foi criado com sucesso</h5>"
+          }
+          if (erro){
+            var msg = "<h5>Nome do site ou senha não conferem</h5>"
+          }
+          document.getElementById("login_msg").innerHTML = msg
+        }
+      }
+      </script>
+    </body>
+   </html>
+  <%end%>
 <%end%>

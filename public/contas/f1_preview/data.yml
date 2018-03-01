@@ -1,18 +1,18 @@
 ---
 info:
-  name: shiva
+  name: f1
   email: contato@magaweb.com.br
-  senha: eb1c
+  senha: 43b4
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-02-22 00:15:14 utc
-  modified: 2018-02-19 17:35:47.959885563 Z
+  created: 2018-03-01 02:01:08 utc
+  modified: 2018-03-01 02:04:12.819803921 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: shiva
+    label: Fidelítico
     img: 
   menu:
   - label: Portfólio
@@ -26,7 +26,7 @@ head:
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
   fontFamily: Architects Daughter
   fontColor: hsl(212, 100%, 1%)
-  avatar: avatar.png
+  avatar: avatar.png?1519869817
   txt1: 
   txt2: 
   show:
@@ -42,14 +42,14 @@ portfolio:
   - id: '1'
     titulo: Imagem 1
     mediaType: image
-    img: img_teste.jpg
+    img: 1.jpeg
     img_: ''
     txt: ''
     nome: ''
     site: ''
     data: ''
     servico: ''
-    tags: 
+    tags: []
   hide: false
   showGridTitles: false
 about:
@@ -71,3 +71,4 @@ footer:
     linkedin: 
   about_resumo: 
   hide: false
+itemsTags: 
