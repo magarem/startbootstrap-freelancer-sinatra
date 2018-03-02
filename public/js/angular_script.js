@@ -1247,6 +1247,15 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
       }
   };
   // api event handlers
+  $scope.eventApi_navbar_backgroundColor = {
+      onChange: function(api, color, $event) {
+        $scope.saveDiv('siteData.navbar.backgroundColor')
+      },
+      onBlur: function(api, color, $event) {
+        $scope.saveDiv('siteData.navbar.backgroundColor')
+      }
+  };
+  // api event handlers
   $scope.eventApi2 = {
       onChange: function(api, color, $event) {
         $scope.saveDiv('siteData.head.fontColor')
@@ -1564,6 +1573,7 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
     $scope.siteData = response.data;
     $scope.isLogged = response.data["logged"] == true
     $scope.isSelected = false;
+    portfolioItemsTags_update()
   })
 
   $scope.saveDiv = function(obj){

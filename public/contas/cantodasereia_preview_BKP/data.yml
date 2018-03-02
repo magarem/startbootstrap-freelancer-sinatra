@@ -1,18 +1,18 @@
 ---
 info:
-  name: f1
+  name: cantodasereia
   email: contato@magaweb.com.br
-  senha: 43b4
+  senha: f576
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-03-01 02:01:08 utc
+  created: 2018-03-02 13:35:43 utc
   modified: 2018-02-19 17:35:47.959885563 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: f1
+    label: cantodasereia
     img: 
   menu:
   - label: Portfólio

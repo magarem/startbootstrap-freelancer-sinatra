@@ -4,11 +4,11 @@
     <hr class="star-dark mb-5">
     <div class="row justify-content-center" style="margin-bottom: 20px;">
       <div v-if="siteData.portfolio.itemsTags" class="col-xs-12">
-    		<button class="btn btn-small btn-danger" v-on:click="select('all')">
+    		<button v-if="siteData.portfolio.itemsTags.length > 0" class="btn btn-small" v-on:click="select('all')">
 					Todos
 			  </button>
 				<button
-          class="btn btn-small btn-danger"
+          class="btn btn-small"
           style="margin: 5px;"
           data-toggle="portfilter"
           v-on:click="select(item)"

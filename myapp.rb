@@ -585,11 +585,20 @@ post '/objSave' do
   #Confere se é algum item do menu
   case s
     when "['portfolio']['label']"
-      @data['navbar']['menu'][0]['label'] = @val.slice(0, 20)
+      @data['navbar']['menu'][0]['label'] = @val.to_s.slice(0, 20)
     when "['about']['label']"
-      @data['navbar']['menu'][1]['label'] = @val.slice(0, 20)
+      @data['navbar']['menu'][1]['label'] = @val.to_s.slice(0, 20)
     when "['contact']['label']"
-      @data['navbar']['menu'][2]['label'] = @val.slice(0, 20)
+      @data['navbar']['menu'][2]['label'] = @val.to_s.slice(0, 20)
+  end
+
+  #Confere se é do About
+  puts "s> #{s}"
+  case s
+    when "['about']['body1']"
+      @data['about']['body1'] = @val.to_s.slice(0, 1500)
+    when "['about']['body2']"
+      @data['about']['body2'] = @val.to_s.slice(0, 1500)
   end
 
   # Define a data de modificação

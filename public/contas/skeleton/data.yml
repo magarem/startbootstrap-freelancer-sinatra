@@ -18,9 +18,9 @@ navbar:
     - label: Portfólio
       link: portfolio
     - label: Sobre
-      link: sobre
+      link: about
     - label: Contato
-      link: contato
+      link: contact
 head:
   backgroundColor: hsl(168, 19%, 19%)
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg

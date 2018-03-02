@@ -50,8 +50,9 @@
                 <li><a href="#integrations" class="scroll-to">Integrations</a></li>
                 <li><a href="#testimonials" class="scroll-to">Testimonials</a></li>
                 <li><a href="#contact" class="scroll-to">Contact</a></li> -->
-              </ul><a href="#" data-toggle="modal" data-target="#get-started" class="btn navbar-btn btn-ghost">Comece agora</a>
-              <a id=loginButton href="#" data-toggle="modal" data-target="#login" class="btn navbar-btn btn-ghost">Log in</a>
+              </ul>
+              <!-- <a href="#" data-toggle="modal" data-target="#get-started" class="btn navbar-btn btn-ghost">Comece agora</a>
+              <a id=loginButton href="#" data-toggle="modal" data-target="#login" class="btn navbar-btn btn-ghost">Log in</a> -->
             </div>
           </div>
         </div>
@@ -72,7 +73,13 @@
                     <input id="site_nome_modal" type="text" name=site_nome placeholder="Nome do portfólio" style="margin-top:10px;" class="form-control" onblur="this.value=makeslug(this.value, '')" required>
                 </div>
                 <p class="text-center">
-                  <button class="btn btn-primary" type="submit" ><i class="pe-7s-magic-wand"></i> Criar</button>
+                  <!-- <button class="btn btn-primary" type="submit" ><i class="pe-7s-magic-wand"></i> Criar</button> -->
+                  <button
+                    class="g-recaptcha btn btn-primary"
+                    data-sitekey="6LfiIkoUAAAAAGLV4lrdIzwNXq0jcLlnKgwZZuyo"
+                    data-callback="YourOnSubmitFn">
+                    Enviar
+                    </button>
                 </p>
 </form>
               <p class="text-center text-muted">Receba por e-mail todas as instruções de como ativar sua nova conta</p>
@@ -141,13 +148,20 @@
           <div class="row">
             <div class="col-md-12">
               <!-- <p>Editor 100% integrado</p> -->
-              <form name=form2 method=post onsubmit="return validar(form2);" action="/site_new" class="form-inline margin-top sign-up-form">
+              <form id=mainForm name=form2 method=post onsubmit="return validar(form2);" action="/site_new" class="form-inline margin-top sign-up-form">
                 <input id="email_intro" style=""
                        type="email" placeholder="E-mail"
                        class="form-control input-lg" name=email required>
 
                 <input  type="text" style="" onblur="this.value=makeslug(this.value, '')" placeholder="Nome do portfólio" class="form-control input-lg" name=site_nome required>
                 <input id="register" type="submit" value="Criar portfólio" class="btn btn-primary" >
+
+                <div
+                  class="g-recaptcha"
+                  data-sitekey="6LfiIkoUAAAAAGLV4lrdIzwNXq0jcLlnKgwZZuyo"
+                  data-callback="YourOnSubmitFn"
+                  data-size="invisible">
+                </div>
               </form>
             </div>
             <div class="col-md-12 col-lg-8 col-lg-offset-2">
@@ -205,7 +219,11 @@
           <div class="container">
             <div class="row">
               <div class="col-md-6">
-                <p>&copy;2017 Radiando</p>
+                <p>&copy;
+                  <script type="text/javascript">
+                    document.write(new Date().getFullYear());
+                  </script>
+                   Radiando</p>
               </div>
               <div class="col-md-6">
                 <p class="credit pull-right">Design by <a href="http://bootstrapious.com/landing-pages" class="external">Bootstrapious</a></p>
@@ -219,7 +237,7 @@
     <!-- Javascript files-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"> </script>
-    <script src="js/bootbox.min.js"> </script>msg=Erro%20de%20autenticação
+    <script src="js/bootbox.min.js"> </script>
 
     <script src="js/jquery.cookie.js"> </script>
     <script src="js/ekko-lightbox.js"></script>
@@ -247,12 +265,12 @@
       if (msg) bootbox.alert(msg)
 
       //Form validation
-      function validar(formName){
-        ok = true;
-        if (formName.email.value.length < 1) ok = false;
-        if (formName.site_nome.value.length < 1) ok  = false;
-        if (!ok) alert("Erro no preenchimento do formulário, favor revisar");
-        return ok
+      function validar(form){
+        if (grecaptcha.execute()) {
+          return true
+        }else{
+          return false
+        }
       }
 
       function validarLogin(formName){
@@ -285,6 +303,12 @@
            $('.navbar.navbar-fixed-top').css('position', '');
        });
    }
+   </script>
+   <script src='https://www.google.com/recaptcha/api.js'></script>
+   <script>
+      function YourOnSubmitFn(token) {
+        	document.getElementById("mainForm").submit();
+      }
    </script>
   </body>
 </html>

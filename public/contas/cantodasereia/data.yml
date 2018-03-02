@@ -1,0 +1,150 @@
+---
+info:
+  name: cantodasereia
+  email: contato@magaweb.com.br
+  senha: f576
+  title: Portfólio geral
+  description: Site portfólio
+  author: Radiando
+  created: 2018-03-02 13:35:43 utc
+  modified: 2018-03-02 20:17:19.055151583 Z
+navbar:
+  backgroundColor: hsl(335, 60%, 41%)
+  logo:
+    fontFamily: Artifika
+    label: canto da sereia
+    img: 
+  menu:
+  - label: Galeria
+    link: portfolio
+  - label: Sobre
+    link: about
+  - label: Contato
+    link: contact
+head:
+  backgroundColor: hsl(168, 19%, 19%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/abstract_particles-wallpaper-1440x900.jpg
+  fontFamily: Architects Daughter
+  fontColor: hsl(212, 35%, 95%)
+  avatar: avatar.png?1520014440
+  txt1: Se renda a esse encanto
+  txt2: 
+  show:
+    avatar: true
+    txt1: true
+    txt2: false
+    txtShadow: true
+    ruler: false
+portfolio:
+  label: Galeria
+  itemsTags: 
+  items:
+  - id: '1519998030039'
+    titulo: ''
+    mediaType: image
+    img: 1519998030039.jpg?decache=0.5269747551037116
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - gata
+  - id: '1'
+    titulo: Imagem 1
+    mediaType: image
+    img: 1.jpg?decache=0.07474836048436662
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - gata
+  - id: '1519998049134'
+    titulo: ''
+    mediaType: image
+    img: 1519998049134.jpg?decache=0.20754054466168448
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: '1519998202162'
+    titulo: ''
+    mediaType: image
+    img: 1519998202162.jpg?decache=0.7415154074270409
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - '555'
+  - id: '1519998216526'
+    titulo: ''
+    mediaType: image
+    img: 1519998216526.jpg?decache=0.8172905797818593
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: '1519998245959'
+    titulo: ''
+    mediaType: image
+    img: 1519998245959.jpg?decache=0.5745171918066527
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  hide: false
+  showGridTitles: false
+about:
+  label: Sobre
+  body1: Ao longo do tempo, transfiguram-se na Idade Média em mulheres metade peixe.[3][4]
+    É provável que o mito tenha tido origem em relatos da existência de animais com
+    características próximas daqueles que,Ao longo do tempo, transfiguram-se na Idade
+    Média em mulheres metade peixe.[3][4] É provável que o mito tenha tido origem
+    em relatos da existência de animais com características próximas daqueles que,Ao
+    longo do tempo, transfiguram-se na Idade Média em mulheres metade peixe.[3][4]
+    É provável que o mito tenha tido origem em relatos da existência de animais com
+    características próximas daqueles que,Ao longo do tempo, transfiguram-se na Idade
+    Média em mulheres metade peixe.[3][4] É provável que o mito tenha tido origem
+    em relatos da existência de animais com características próximas daqueles qu80
+  body2: Ao longo do tempo, transfiguram-se na Idade Média em mulheres metade peixe.[3][4]
+    É provável que o mito tenha tido origem em relatos da existência de animais com
+    características próximas daqueles que,Ao longo do tempo, transfiguram-se na Idade
+    Média em mulheres metade peixe.[3][4] É provável que o mito tenha tido origem
+    em relatos da existência de animais com características próximas daqueles que,Ao
+    longo do tempo, transfiguram-se na Idade Média em mulheres metade peixe.[3][4]
+    É provável que o mito tenha tido origem em relatos da existência de animais com
+    características próximas daqueles que,Ao longo do tempo, transfiguram-se na Idade
+    Média em mulheres metade peixe.[3][4] É provável que o mito tenha tido origem
+    em relatos da existência de animais com características próximas daqueles que,
+  hide: false
+contact:
+  show: true
+  label: Contato
+  hide: false
+footer:
+  show: true
+  endereco: 
+  social:
+    facebook: 
+    googleplus: 
+    twitter: 
+    linkedin: 
+  about_resumo: 
+  hide: false
+itemsTags: 
