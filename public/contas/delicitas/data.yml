@@ -1,18 +1,18 @@
 ---
 info:
-  name: shiva
+  name: delicitas
   email: contato@magaweb.com.br
-  senha: e6c5
+  senha: e8a3
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-03-01 21:41:58 utc
-  modified: 2018-02-19 17:35:47.959885563 Z
+  created: 2018-03-02 00:18:21 utc
+  modified: 2018-03-02 00:39:41.855388927 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: shiva
+    label: delicitas
     img: 
   menu:
   - label: Portfólio
@@ -23,12 +23,12 @@ navbar:
     link: contato
 head:
   backgroundColor: hsl(168, 19%, 19%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/blue_bubbles_2-wallpaper-1680x1050.jpg
   fontFamily: Architects Daughter
   fontColor: hsl(212, 100%, 1%)
-  avatar: avatar.png
-  txt1: 
-  txt2: 
+  avatar: avatar.png?1519950932
+  txt1: "\\O/ biquininhos \\o/"
+  txt2: lindinhas
   show:
     avatar: true
     txt1: true
@@ -42,14 +42,34 @@ portfolio:
   - id: '1'
     titulo: Imagem 1
     mediaType: image
-    img: img_teste.jpg
+    img: 1.jpg
     img_: ''
     txt: ''
     nome: ''
     site: ''
     data: ''
     servico: ''
-    tags: 
+    tags: []
+  - id: '1519951015163'
+    titulo: ''
+    mediaType: image
+    img: 1519951015163.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: '1519951023331'
+    titulo: ''
+    mediaType: image
+    img: 1519951023331.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
   hide: false
   showGridTitles: false
 about:
@@ -71,3 +91,4 @@ footer:
     linkedin: 
   about_resumo: 
   hide: false
+itemsTags: 

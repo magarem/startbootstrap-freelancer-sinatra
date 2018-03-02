@@ -51,11 +51,11 @@
             <a href="#page-top"></a>
         </li>
         <li ng-if="(!siteData.portfolio.hide && siteData.portfolio.items.length > 0)" class="page-scroll"><a
-            href="#portfolio" style="color:{{siteData.navbar.menuColor}}">{{siteData.portfolio.label}}</a></li>
+            href="#portfolio" style="color:{{siteData.navbar.menuColor}}">{{siteData.portfolio.label | limitTo: 20 }}</a></li>
         <li ng-if="(!siteData.about.hide && (!siteData.about.txt1.length > 0 || !siteData.about.txt2.length > 0))" class="page-scroll"><a
-            href="#about" style="color:{{siteData.navbar.menuColor}}">{{siteData.about.label}}</a></li>
+            href="#about" style="color:{{siteData.navbar.menuColor}}">{{siteData.about.label | limitTo: 20 }}</a></li>
         <li ng-if="!siteData.contact.hide" class="page-scroll"><a
-            href="#contact" style="color:{{siteData.navbar.menuColor}}">{{siteData.contact.label}}</a></li>
+            href="#contact" style="color:{{siteData.navbar.menuColor}}">{{siteData.contact.label | limitTo: 20 }}</a></li>
       </ul>
     </div>
       <!-- /.navbar-collapse -->

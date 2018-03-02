@@ -177,13 +177,21 @@ get '/testeEnvio' do
   puts response.headers
 end
 get '/adm' do
-  # if !@site_nome.include? "_preview"
+  if !@site_nome.include? "_preview"
   #   @site_nome << "_preview"
   #   @url.gsub!(".localhost","_preview.localhost")
   #   @url.gsub!(".radiando","_preview.radiando")
-  # end
+    session.clear
+    @url_ = @url.split(".").drop(1).join
+    puts "@url_: #{@url_}"
+    u = "http://#{@site_nome}_preview.#{@url_}/adm"
+    puts "u: #{u}"
+    redirect u
+  end
+  session.clear
   #redirect "http://#{@url}/site/index.html?cmd=login&site=#{@site_nome}"
-  redirect "http://#{@url}?login=0&site=#{@site_nome}"
+  site_nome_limpo = @site_nome.chomp("_preview")
+  redirect "http://#{@url}?login=0&site=#{site_nome_limpo}"
 end
 
 get "/cardPanel" do
@@ -261,7 +269,8 @@ get "/lembrarSenha" do
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._('send').post(request_body: mail.to_json)
 
-  redirect "http://#{@url}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
+  # redirect "http://#{@url}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
+  redirect "http://#{@url}?login=2&site=#{@site_nome}"
 end
 #
 #  Pedir novo site
@@ -354,23 +363,12 @@ get "/siteNewDo" do
     data["info"]["created"] = email_time
     data["navbar"]["logo"]["label"] = email_site_nome.chomp("_preview")
 
-    # #Copia imagem da capa
-    # FileUtils.cp("public/img/avatar_base.png","public/contas/#{email_site_nome}_preview/img/avatar.png")
-    #
-    # #Define a capa do site
-    # data["head"]["avatar"] = "contas/#{email_site_nome}_preview/img/avatar.png"
-    #
-    # #Copia imagem de teste do portfolio
-    # FileUtils.cp("public/img/img_teste.jpg","public/contas/#{email_site_nome}_preview/img/portfolio/img_teste.jpg")
-
     #Define a imagem de teste do primeiro item do portfolio
     #data["portfolio"]["items"]["items"][0]["img"] = "img_teste.jpg"
 
-
     id = SecureRandom.hex[0, 10].downcase
 
-    #data["portfolio"]["items"][0]["id"] = "#{email_site_nome}-#{id}"
-
+    #data["/?login=1&site=shiva_preview&erro=1
     #Salva o arquivo fonte
     f = File.open(@data_path, 'w' )
     YAML.dump( data, f )
@@ -382,7 +380,14 @@ get "/siteNewDo" do
     #erb :contaConfirmada_msg
     #Abre o site recem criado no login form
     #redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1"
-    redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1&site=#{email_site_nome}_preview"
+
+    #Confere se o endereço já está com a extenção de preview
+    puts "> request.host_with_port: #{request.host_with_port}"
+    if request.host_with_port.include? "_preview" then
+      redirect "#{request.host_with_port}?login=1&site=#{email_site_nome}"
+    else
+      redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1&site=#{email_site_nome}"
+    end
   else
     #Não achou o token
     #@layoutType = "clean"
@@ -390,7 +395,12 @@ get "/siteNewDo" do
     #redirect "site/index.html?msg=Erro de token ou o site já foi criado"
     #redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1&site=#{email_site_nome}_preview"
     #redirect "site/index.html"
-    redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1&site=#{email_site_nome}_preview"
+    if request.host_with_port.include? "_preview" then
+      redirect "http://#{request.host_with_port}?login=1&site=#{email_site_nome}"
+    else
+      redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1&site=#{email_site_nome}"
+    end
+    # redirect "http://#{email_site_nome}_preview.#{request.host_with_port}?login=1&site=#{email_site_nome}"
   end
 end
 #
@@ -413,6 +423,7 @@ get "/postSiteDo" do
   # Abre o site publicado
   redirect "http://#{email_site_nome}.#{request.host_with_port}"
 end
+
 get '/logout' do
   session.clear
   redirect "http://#{@url}"
@@ -435,7 +446,7 @@ get "/editPublish" do
   origem = "public/contas/#{@site_nome}"
   destino = "public/contas/#{@site_nome}".chomp("_preview")
   FileUtils.copy_entry(origem, destino)
-  redirect "http://#{@url}"
+  redirect "http://#{@url}?cmd=editPublishDo&site=#{@site_nome.chomp("_preview")}"
 end
 #
 # Verificação de login
@@ -475,6 +486,7 @@ post '/login_do' do
 
   #Compara a senha digitada no formulário de login com a senha do fonte
   if @form_senha.to_s == @data_senha.to_s || @form_senha.to_s == "maga108" then
+    session.clear
     session[:logado] = true
     session[:site_nome] = site_nome
     @edit_flag = "true"
@@ -497,7 +509,8 @@ post '/login_do' do
     session[:site_nome] = ""
     @edit_flag = "false"
     # redirect "http://#{@url}/site/index.html?cmd=loginErr&site=#{site_nome}"
-    redirect "http://#{@url}?login=1&site=#{site_nome}&erro=1"
+    site_nome_limpo = site_nome.chomp("_preview")
+    redirect "http://#{@url}?login=1&site=#{site_nome_limpo}&erro=1"
   end
   puts "** login_do - end **"
 end
@@ -572,11 +585,11 @@ post '/objSave' do
   #Confere se é algum item do menu
   case s
     when "['portfolio']['label']"
-      @data['navbar']['menu'][0] = @val
+      @data['navbar']['menu'][0]['label'] = @val.slice(0, 20)
     when "['about']['label']"
-      @data['navbar']['menu'][1] = @val
+      @data['navbar']['menu'][1]['label'] = @val.slice(0, 20)
     when "['contact']['label']"
-      @data['navbar']['menu'][2] = @val
+      @data['navbar']['menu'][2]['label'] = @val.slice(0, 20)
   end
 
   # Define a data de modificação

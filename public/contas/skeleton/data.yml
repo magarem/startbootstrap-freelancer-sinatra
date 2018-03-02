@@ -15,12 +15,12 @@ navbar:
     label: skeleton
     img:
   menu:
-  - label: Portfólio
-    link: portfolio
-  - label: Sobre
-    link: sobre
-  - label: Contato
-    link: contato
+    - label: Portfólio
+      link: portfolio
+    - label: Sobre
+      link: sobre
+    - label: Contato
+      link: contato
 head:
   backgroundColor: hsl(168, 19%, 19%)
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg

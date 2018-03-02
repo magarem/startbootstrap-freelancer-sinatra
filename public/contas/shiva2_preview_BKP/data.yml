@@ -2,17 +2,17 @@
 info:
   name: shiva2
   email: contato@magaweb.com.br
-  senha: 5efa
+  senha: '8012'
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-02-22 01:15:09 utc
-  modified: 2018-02-19 17:35:47.959885563 Z
+  created: 2018-03-01 21:43:33 utc
+  modified: 2018-03-01 23:26:55.270698775 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Cherry Cream Soda
-    label: shiva2
+    label: shiva
     img: 
   menu:
   - label: Portfólio
@@ -26,9 +26,9 @@ head:
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
   fontFamily: Architects Daughter
   fontColor: hsl(212, 100%, 1%)
-  avatar: avatar.png
-  txt1: 
-  txt2: 
+  avatar: avatar.png?1519940684
+  txt1: O destruidor
+  txt2: concentração
   show:
     avatar: true
     txt1: true
@@ -39,23 +39,53 @@ portfolio:
   label: Portfólio
   itemsTags: 
   items:
-  - id: '1'
-    titulo: Imagem 1
+  - id: '1519940712698'
+    titulo: ''
     mediaType: image
-    img: img_teste.jpg
+    img: 1519940712698.jpeg?decache=0.19274542271055095
     img_: ''
     txt: ''
     nome: ''
     site: ''
     data: ''
     servico: ''
-    tags: 
+    tags: []
+  - id: '1'
+    titulo: Imagem 1
+    mediaType: image
+    img: 1.jpg?decache=0.9108407246568084
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: '1519940728194'
+    titulo: ''
+    mediaType: image
+    img: 1519940728194.png?decache=0.847373789711021
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
   hide: false
   showGridTitles: false
 about:
   label: Sobre
-  body1: texto 1
-  body2: texto 2
+  body1: Na tradição hindu, Xiva é o destruidor, que destrói para construir algo novo,
+    motivo pelo qual muitos o chamam de "renovador" ou "transformador". As primeiras
+    representações surgiram no período Neolítico (em torno de 4 000 a.C.) na forma
+    de Pashupati, o "Senhor dos Animais". A criação do ioga, prática que produz transformação
+    física, mental e emocional, portanto intimamente ligada à transformação, é atribuída
+    a ele.
+  body2: 'O tridente que aparece nas ilustrações de Xiva é o trishula. É com essa
+    arma que ele destrói a ignorância nos seres humanos. Suas três pontas representam
+    as três qualidades dos fenômenos: tamas (a inércia), rajas (o movimento) e sattva
+    (o equilíbrio).'
   hide: false
 contact:
   show: true
@@ -63,11 +93,12 @@ contact:
   hide: false
 footer:
   show: true
-  endereco: 
+  endereco: rua universal, sn
   social:
-    facebook: 
+    facebook: groups/802367906497926/
     googleplus: 
     twitter: 
     linkedin: 
   about_resumo: 
   hide: false
+itemsTags: 

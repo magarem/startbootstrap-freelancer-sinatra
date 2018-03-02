@@ -2169,7 +2169,7 @@ mod.controller('ContactCtrl', function ($scope, $rootScope, $timeout, $http, Sit
   //Get site data
   SiteData.loadSiteData().then(function(response) {
     $scope.siteData = response.data;
-    $scope.isLogged = response.data["logged"] == false
+    $scope.isLogged = response.data["logged"] == true
     $scope.siteNome  = $rootScope.siteData.info.name
   })
 
