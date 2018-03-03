@@ -11,7 +11,7 @@
     <h1 :show="siteData.head.show.txt1"
         class="text-uppercase mb-0"
         :class="{txtShadow: siteData.head.show.txtShadow}"
-        :style="{'font-family': siteData.head.fontFamily}">{{siteData.head.txt1}}</h1>
+        :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}">{{siteData.head.txt1}}</h1>
     <hr id=head_star
         :show="siteData.head.show.ruler"
         style=" content:'\f006'"
@@ -21,6 +21,6 @@
     <h2 :show="siteData.head.show.txt2"
         class="font-weight-light mb-0"
         :class="{txtShadow: siteData.head.show.txtShadow}"
-        :style="{'font-family': siteData.head.fontFamily}">{{siteData.head.txt2}}</h2>
+        :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}">{{siteData.head.txt2}}</h2>
   </div>
 </header>

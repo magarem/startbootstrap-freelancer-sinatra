@@ -20,7 +20,8 @@
   if (cmd){
     if (cmd=="editPublishDo"){
       //Exibe mensagem de site publicado com sucesso
-      site = "<a target=_blank href='http://"+site+".localhost:3000'>http://"+site+".localhost:3000</a>"
+      url_publicada = window.location.href.replace('_preview','').split("?")[0]
+      site = "<a target=_blank href='"+url_publicada+"'>"+url_publicada+"</a>"
       document.getElementById("modal_editPublishDo_siteName").innerHTML = site;
       $('#modal_editPublishDo').modal('show');
     }

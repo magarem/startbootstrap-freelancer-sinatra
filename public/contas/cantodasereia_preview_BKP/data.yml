@@ -7,55 +7,131 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 13:35:43 utc
-  modified: 2018-02-19 17:35:47.959885563 Z
+  modified: 2018-03-03 21:35:01.720406117 Z
 navbar:
-  backgroundColor: hsl(198, 75%, 14%)
+  backgroundColor: hsl(335, 60%, 41%)
   logo:
-    fontFamily: Cherry Cream Soda
-    label: cantodasereia
+    fontFamily: Artifika
+    label: canto da sereia
     img: 
   menu:
-  - label: Portfólio
+  - label: Galeria
     link: portfolio
   - label: Sobre
-    link: sobre
+    link: about
   - label: Contato
-    link: contato
+    link: contact
 head:
   backgroundColor: hsl(168, 19%, 19%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/16k_glass-wallpaper-1440x900.jpg
   fontFamily: Architects Daughter
-  fontColor: hsl(212, 100%, 1%)
-  avatar: avatar.png
-  txt1: 
+  fontColor: hsl(212, 67%, 9%)
+  avatar: avatar.png?1520014440
+  txt1: Se renda a esse encanto
   txt2: 
   show:
     avatar: true
     txt1: true
-    txt2: true
+    txt2: false
     txtShadow: true
-    ruler: true
+    ruler: false
 portfolio:
-  label: Portfólio
+  label: Galeria
   itemsTags: 
   items:
-  - id: '1'
-    titulo: Imagem 1
+  - id: '1519998030039'
+    titulo: ''
     mediaType: image
-    img: img_teste.jpg
+    img: 1519998030039.jpg?decache=0.5269747551037116
     img_: ''
     txt: ''
     nome: ''
     site: ''
     data: ''
     servico: ''
-    tags: 
+    tags:
+    - gata
+  - id: '1'
+    titulo: Imagem 1
+    mediaType: image
+    img: 1.jpg?decache=0.07474836048436662
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - gata
+  - id: '1519998049134'
+    titulo: ''
+    mediaType: image
+    img: 1519998049134.jpg?decache=0.20754054466168448
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: '1519998202162'
+    titulo: ''
+    mediaType: image
+    img: 1519998202162.jpg?decache=0.7415154074270409
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags:
+    - '555'
+  - id: '1519998216526'
+    titulo: ''
+    mediaType: image
+    img: 1519998216526.jpg?decache=0.8172905797818593
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: '1519998245959'
+    titulo: ''
+    mediaType: image
+    img: 1519998245959.jpg?decache=0.5745171918066527
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
   hide: false
   showGridTitles: false
 about:
   label: Sobre
-  body1: texto 1
-  body2: texto 2
+  body1: Ao longo do tempo, transfiguram-se na Idade Média em mulheres metade peixe.[3][4]
+    É provável que o mito tenha tido origem em relatos da existência de animais com
+    características próximas daqueles que,Ao longo do tempo, transfiguram-se na Idade
+    Média em mulheres metade peixe.[3][4] É provável que o mito tenha tido origem
+    em relatos da existência de animais com características próximas daqueles que,Ao
+    longo do tempo, transfiguram-se na Idade Média em mulheres metade peixe.[3][4]
+    É provável que o mito tenha tido origem em relatos da existência de animais com
+    características próximas daqueles que,Ao longo do tempo, transfiguram-se na Idade
+    Média em mulheres metade peixe.[3][4] É provável que o mito tenha tido origem
+    em relatos da existência de animais com características próximas daqueles qu80
+  body2: Ao longo do tempo, transfiguram-se na Idade Média em mulheres metade peixe.[3][4]
+    É provável que o mito tenha tido origem em relatos da existência de animais com
+    características próximas daqueles que,Ao longo do tempo, transfiguram-se na Idade
+    Média em mulheres metade peixe.[3][4] É provável que o mito tenha tido origem
+    em relatos da existência de animais com características próximas daqueles que,Ao
+    longo do tempo, transfiguram-se na Idade Média em mulheres metade peixe.[3][4]
+    É provável que o mito tenha tido origem em relatos da existência de animais com
+    características próximas daqueles que,Ao longo do tempo, transfiguram-se na Idade
+    Média em mulheres metade peixe.[3][4] É provável que o mito tenha tido origem
+    em relatos da existência de animais com características próximas daqueles que,
   hide: false
 contact:
   show: true
@@ -71,3 +147,4 @@ footer:
     linkedin: 
   about_resumo: 
   hide: false
+itemsTags: 

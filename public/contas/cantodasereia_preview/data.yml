@@ -7,7 +7,7 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 13:35:43 utc
-  modified: 2018-03-02 20:17:31.428699310 Z
+  modified: 2018-03-03 23:04:33.422693187 Z
 navbar:
   backgroundColor: hsl(335, 60%, 41%)
   logo:
@@ -23,9 +23,9 @@ navbar:
     link: contact
 head:
   backgroundColor: hsl(168, 19%, 19%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/abstract_particles-wallpaper-1440x900.jpg
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/16k_glass-wallpaper-1440x900.jpg
   fontFamily: Architects Daughter
-  fontColor: hsl(212, 35%, 95%)
+  fontColor: hsl(212, 67%, 9%)
   avatar: avatar.png?1520014440
   txt1: Se renda a esse encanto
   txt2: 

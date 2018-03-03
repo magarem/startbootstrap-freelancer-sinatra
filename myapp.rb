@@ -182,7 +182,7 @@ get '/adm' do
   #   @url.gsub!(".localhost","_preview.localhost")
   #   @url.gsub!(".radiando","_preview.radiando")
     session.clear
-    @url_ = @url.split(".").drop(1).join
+    @url_ = @url.split(".").drop(1).join(".")
     puts "@url_: #{@url_}"
     u = "http://#{@site_nome}_preview.#{@url_}/adm"
     puts "u: #{u}"
