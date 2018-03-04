@@ -128,6 +128,10 @@ before do
   puts "request.query_string: #{@url_qs}"
   puts "session[:logado]: #{session[:logado]}"
 
+  @enf_var = YAML.load_file "public/sendgrid.yml"
+  @SENDGRID_API_KEY = @enf_var["SENDGRID_API_KEY"]
+  puts "@SENDGRID_API_KEY: #{@SENDGRID_API_KEY}"
+
   #Verifica se está sendo chamado o site principal
   if  @url_full == "localhost/" || @url_full == "radiando.net/" then
     redirect "http://#{@url}/site/index.html"
@@ -170,7 +174,7 @@ get '/testeEnvio' do
   subject = 'Sending with SendGrid is Fun'
   content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
   mail = SendGrid::Mail.new(from, subject, to, content)
-  sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+  sg = SendGrid::API.new(api_key: @SENDGRID_API_KEY)
   response = sg.client.mail._('send').post(request_body: mail.to_json)
   puts response.status_code
   puts response.body
@@ -266,7 +270,7 @@ get "/lembrarSenha" do
   subject = 'Lembrete de senha'
   content = Content.new(type: 'text/html', value: mailMessage)
   mail = SendGrid::Mail.new(from, subject, to, content)
-  sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+  sg = SendGrid::API.new(api_key: @SENDGRID_API_KEY)
   response = sg.client.mail._('send').post(request_body: mail.to_json)
 
   # redirect "http://#{@url}/site/index.html?msg=Foi enviado o lembrete de sua senha para o email #{email}"
@@ -313,7 +317,7 @@ post "/site_new" do
     subject = 'Bem vindo!'
     content = Content.new(type: 'text/html', value: mailMessage)
     mail = SendGrid::Mail.new(from, subject, to, content)
-    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    sg = SendGrid::API.new(api_key: @SENDGRID_API_KEY)
     response = sg.client.mail._('send').post(request_body: mail.to_json)
     # exibe a confirmação da operção
     redirect "site/index.html?msg=Foi enviado um email de confirmação para #{formUserEmail}"
@@ -1041,7 +1045,7 @@ post '/contact/emailSend' do
   subject = 'Formulário de contato'
   content = Content.new(type: 'text/plain', value: mailMessage)
   mail = SendGrid::Mail.new(from, subject, to, content)
-  sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+  sg = SendGrid::API.new(api_key: @SENDGRID_API_KEY)
   response = sg.client.mail._('send').post(request_body: mail.to_json)
 
 end
