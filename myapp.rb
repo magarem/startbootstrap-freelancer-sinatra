@@ -168,6 +168,13 @@ get '/decrypt/:str' do
   decrypt params[:str]
 end
 
+get '/cifra' do
+  # To decrypt the password from the YAML file
+  # account_config = YAML.load_file(name_of_file.yml)
+  account_password = Base64.encode64(Encryptor.encrypt(passwd,:key => secret_key, :algorithm => 'aes-256-ecb')).force_encoding('UTF-8')
+  puts "account_password> #{account_password}"
+end
+
 get '/testeEnvio' do
   from = Email.new(email: 'contato@radiando.net')
   to = Email.new(email: 'contato@magaweb.com.br')

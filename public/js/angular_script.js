@@ -8,7 +8,7 @@ var mod = angular.module("myapp", ['cloudinary',
                                    'ng.deviceDetector',
                                    'ngSanitize',
                                    'ngFileUpload',
-                                   'ngCropper',
+                                   'uiCropper',
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap',
@@ -1392,7 +1392,25 @@ mod.controller('headerCtrl',['$scope', '$rootScope', 'Upload', '$timeout', '$htt
 
 
 }])
-mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', 'Cropper', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData, Cropper) {
+mod.directive('upload', function($rootScope) {
+return {
+    restrict: 'EA',
+    link: function(scope, elem, attrs) {
+        elem.on("change" ,function(evt) {
+            var file = evt.currentTarget.files[0];
+            var reader = new FileReader();
+            reader.onload = function(evt) {
+                scope.$apply(function($scope) {
+                    $rootScope.myImage = evt.target.result;
+                    console.log($rootScope.myImage);
+                });
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+  };
+});
+mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
 
   var file, data;
 
@@ -1428,7 +1446,8 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
   }
 
   // Image upload
-  $scope.upload = function (dataUrl, name) {
+  $scope.upload = function (dataUrl) {
+    name = "avatar"
     console.log("Upload.dataUrltoBlob: ", Upload.dataUrltoBlob(dataUrl, name))
     console.log("name:", name)
     var uploadURL = '/avatarUpload'
@@ -1475,85 +1494,91 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.siteData.head.avatar = $scope.res
     $scope.crop_box = false
   }
-   /**
-    * Method is called every time file input's value changes.
-    * Because of Angular has not ng-change for file inputs a hack is needed -
-    * call `angular.element(this).scope().onFile(this.files[0])`
-    * when input's event is fired.
-    */
-   $scope.onFile = function(blob) {
-     Cropper.encode((file = blob)).then(function(dataUrl) {
-       $scope.dataUrl = dataUrl;
-       $timeout(showCropper);  // wait for $digest to set image's src
-     });
-   };
 
-   /**
-    * Croppers container object should be created in controller's scope
-    * for updates by directive via prototypal inheritance.
-    * Pass a full proxy name to the `ng-cropper-proxy` directive attribute to
-    * enable proxing.
-    */
-   $scope.cropper = {};
-   $scope.cropperProxy = 'cropper.first';
+    //
+    //
+    //
+    console.log("!!!!!!!!!!")
 
-   /**
-    * When there is a cropped image to show encode it to base64 string and
-    * use as a source for an image element.
-    */
-   $scope.preview = function(xx) {
-     if (!file || !data) return;
-     console.log(file,data);
-     Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
-       ($scope.preview || ($scope.preview = {})).dataUrl = dataUrl;
-       $scope.upload(dataUrl, file.name)
-     });
-   };
+    $scope.blockingObject = {block: true};
+    $scope.callTestFuntion = function () {
+        $scope.blockingObject.render(function (dataURL) {
+            console.log('via render');
+            console.log(dataURL.length);
+            //Faz o upload
+            $scope.upload(dataURL,"avatar.png")
+        });
+    };
+    $scope.blockingObject.callback = function (dataURL) {
+        console.log('via function');
+        console.log(dataURL.length);
+    };
+    $scope.size = 'small';
+    $scope.type = 'circle';
+    $scope.imageDataURI = '';
+    $scope.resImageDataURI = '';
+    $scope.resBlob = {};
+    $scope.urlBlob = {};
+    $scope.resImgFormat = 'image/png';
+    $scope.resImgQuality = 100;
+    $scope.selMinSize = 20;
+    $scope.selInitSize = [{w: 256, h: 256}];
+    $scope.resImgSize = [{w: 256, h: 256}, {w: 256, h: 256}];
+    //$scope.aspectRatio=1.2;
+    $scope.onChange = function ($dataURI) {
+        console.log('onChange fired');
+    };
+    $scope.onLoadBegin = function () {
+        console.log('onLoadBegin fired');
+    };
+    $scope.onLoadDone = function () {
+        console.log('onLoadDone fired');
+    };
+    $scope.onLoadError = function () {
+        console.log('onLoadError fired');
+    };
+    $scope.getBlob = function () {
+        console.log($scope.resBlob);
+    };
+    $scope.handleFileSelect = function (evt) {
+        console.log("!!22!!22")
+        var file = evt,
+            reader = new FileReader();
+        if (navigator.userAgent.match(/iP(hone|od|ad)/i)) {
+            var canvas = document.createElement('canvas'),
+                mpImg = new MegaPixImage(file);
 
-   /**
-    * Use cropper function proxy to call methods of the plugin.
-    * See https://github.com/fengyuanchen/cropper#methods
-    */
-   $scope.clear = function(degrees) {
-     if (!$scope.cropper.first) return;
-     $scope.cropper.first('clear');
-   };
+            canvas.width = mpImg.srcImage.width;
+            canvas.height = mpImg.srcImage.height;
 
-   $scope.scale = function(width) {
-     Cropper.crop(file, data)
-       .then(function(blob) {
-         return Cropper.scale(blob, {width: width});
-       })
-       .then(Cropper.encode).then(function(dataUrl) {
-         ($scope.preview || ($scope.preview = {})).dataUrl = dataUrl;
-       });
-   }
+            EXIF.getData(file, function () {
+                var orientation = EXIF.getTag(this, 'Orientation');
 
-   /**
-    * Object is used to pass options to initalize a cropper.
-    * More on options - https://github.com/fengyuanchen/cropper#options
-    */
-   $scope.options = {
-     maximize: true,
-     aspectRatio: 1 / 1,
-     crop: function(dataNew) {
-       data = dataNew;
-     }
-   };
-
-   /**
-    * Showing (initializing) and hiding (destroying) of a cropper are started by
-    * events. The scope of the `ng-cropper` directive is derived from the scope of
-    * the controller. When initializing the `ng-cropper` directive adds two handlers
-    * listening to events passed by `ng-cropper-show` & `ng-cropper-hide` attributes.
-    * To show or hide a cropper `$broadcast` a proper event.
-    */
-   $scope.showEvent = 'show';
-   $scope.hideEvent = 'hide';
-
-   function showCropper() { $scope.$broadcast($scope.showEvent); }
-   function hideCropper() { $scope.$broadcast($scope.hideEvent); }
-
+                mpImg.render(canvas, {
+                    maxHeight: $scope.resImgSize,
+                    orientation: orientation
+                });
+                setTimeout(function () {
+                    var tt = canvas.toDataURL("image/jpeg", 1);
+                    $scope.$apply(function ($scope) {
+                        $scope.imageDataURI = tt;
+                    });
+                }, 100);
+            });
+        } else {
+            reader.onload = function (evt) {
+                $scope.$apply(function ($scope) {
+                    console.log(evt.target.result);
+                    $scope.imageDataURI = evt.target.result;
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    // angular.element(document.querySelector('#fileInput')).on('change', handleFileSelect);
+      $scope.$watch('resImageDataURI', function () {
+          //console.log('Res image', $scope.resImageDataURI);
+      });
 }]);
 mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibModal', '$log', '$location', 'SiteData', 'deviceDetector', function ($scope, $http, $timeout, $rootScope, $uibModal, $log, $location, SiteData, deviceDetector) {
 
