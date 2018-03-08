@@ -30,7 +30,7 @@ $(document).ready(function(){
   //   }
   // });
 
-  $(".toggle_button").click(function(e) {
+  $(".toggle_button").on('click touchstart', function(e) {
      toggleMenu()
   });
 
