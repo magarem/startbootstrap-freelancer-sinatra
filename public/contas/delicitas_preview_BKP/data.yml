@@ -7,7 +7,7 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-02 00:38:26.855726477 Z
+  modified: 2018-03-02 00:39:41.855388927 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
@@ -23,7 +23,7 @@ navbar:
     link: contato
 head:
   backgroundColor: hsl(168, 19%, 19%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/brush_art-wallpaper-1600x900.jpg
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/blue_bubbles_2-wallpaper-1680x1050.jpg
   fontFamily: Architects Daughter
   fontColor: hsl(212, 100%, 1%)
   avatar: avatar.png?1519950932

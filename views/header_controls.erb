@@ -110,7 +110,43 @@
   .panel-title {
       font-size: 15px;}
 </style>
+<style>
+    .menu, .toggle_button {
+        /*transition:all .5s ease-in-out;
+        -webkit-transition:all .5s ease-in-out;*/
+    }
+
+    .menu {
+        background:lightgrey;
+        width:200px;
+        height:100vh;
+        position:absolute;
+        top:0;
+        left:0;
+    }
+
+    .toggle_button {
+        position:absolute;
+        right:-150px;
+        top:250px;
+        width:30px;
+        height:30px;
+        background:black;
+    }
+
+    .sidebar-collapsed {
+         transform:translateX(-100%);
+        -webkit-transform:translateX(-100%);
+    }
+
+    .sidebar-collapsed .toggle {
+        right:500px;
+         transform:translateX(100%);
+        -webkit-transform:translateX(100%);
+    }
+</style>
 <div class="menu">
+<div class="toggle_button"></div>
   <h2 class=text-center style="font-size: 17px">Configurações</h2>
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div id="accordion" role="tablist" aria-multiselectable="true">
@@ -267,3 +303,12 @@
     </div>
   </div>
 </div>
+<script>
+  //  $(".toggle").click(function(e) {
+  //      e.preventDefault();
+  //     //  $("#menu").toggleClass("toggled");
+  //     toggleMenu()
+  //     //  $(".menu").css("left", "0px");
+  //     //  $(".toggle").css("right", "-30px");
+  //  });
+   </script>

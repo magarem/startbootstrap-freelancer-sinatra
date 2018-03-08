@@ -1,19 +1,18 @@
 $(document).ready(function(){
 
   var menu = $(".menu");
-  var hamburger = $(".hamburger");
-  var line = $(".line");
+  var toggle_button = $(".toggle_button");
   var menuOpen;
 
   function openMenu(){
     menu.css("left", "0px");
-    line.css("background", "#FFF");
+    $(".toggle_button").css("right", "-30px");
     menuOpen = true;
   }
 
   function closeMenu(){
     menu.css("left", "-320px");
-    line.css("background", "#BCAD90");
+    $(".toggle_button").css("right", "-150px");
     menuOpen = false;
   }
 
@@ -25,24 +24,28 @@ $(document).ready(function(){
     }
   }
 
-  hamburger.on({
-    mouseenter: function(){
-      openMenu();
-    }
+  // toggle.on({
+  //   mouseenter: function(){
+  //     openMenu();
+  //   }
+  // });
+
+  $(".toggle_button").click(function(e) {
+     toggleMenu()
   });
 
-  menu.on({
-    mouseleave: function(){
-      closeMenu();
-    }
+  // menu.on({
+  //   mouseleave: function(){
+  //     closeMenu();
+  //   }
+  //
+  // });
 
-  });
-
-  hamburger.on({
-    click: function(){
-      toggleMenu();
-    }
-  })
+  // hamburger.on({
+  //   click: function(){
+  //     toggleMenu();
+  //   }
+  // })
 
 
 
