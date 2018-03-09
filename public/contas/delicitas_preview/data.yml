@@ -7,11 +7,11 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-08 20:10:43.266473594 Z
+  modified: 2018-03-09 19:36:49.099065662 Z
 navbar:
-  backgroundColor: hsl(198, 75%, 14%)
+  backgroundColor: hsl(198, 76%, 42%)
   logo:
-    fontFamily: Cherry Cream Soda
+    fontFamily: Aclonica
     label: delicitas
     img: 
   menu:
@@ -23,9 +23,9 @@ navbar:
     link: contato
 head:
   backgroundColor: hsl(168, 19%, 19%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/blue_bubbles_2-wallpaper-1680x1050.jpg
-  fontFamily: Architects Daughter
-  fontColor: hsl(212, 100%, 1%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/abstract_2_00-wallpaper-1440x900.jpg
+  fontFamily: Allerta Stencil
+  fontColor: hsl(212, 89%, 36%)
   avatar: avatar.png?1519950932
   txt1: "\\O/ biquininhos \\o/"
   txt2: lindinhas

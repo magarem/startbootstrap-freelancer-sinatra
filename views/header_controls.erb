@@ -116,6 +116,61 @@
         -webkit-transition:all .5s ease-in-out;*/
     }
 
+    .menu_logo {
+        background:lightgrey;
+        position:absolute;
+        left:0;
+        width:200px;
+        height:200px;
+        margin-top: 100px;
+        margin-left: 100px;
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+    .menu_header_txt {
+        background:lightgrey;
+        position:absolute;
+        left:0;
+        width:200px;
+        height:230px;
+        margin-top: 100px;
+        margin-left: 50px;
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+    .modal_config_header_background {
+        background:lightgrey;
+        position:absolute;
+        left:0;
+        width:200px;
+        height:330px;
+        margin-top: 100px;
+        margin-left: 20px;
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+    .menu_nav_fundo {
+        background:lightgrey;
+        position:absolute;
+        left:0;
+        width:200px;
+        height:130px;
+        margin-top: 50px;
+        margin-left: 300px;
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+    .menu_header_fundo {
+        background:lightgrey;
+        position:absolute;
+        left:200;
+        width:200px;
+        height:130px;
+        margin-top: 450px;
+        margin-left: 300px;
+        padding-top: 20px;
+        padding-left: 200px;
+    }
     .menu {
         background:lightgrey;
         width:200px;
@@ -132,6 +187,7 @@
         width:30px;
         height:30px;
         background:black;
+
     }
 
     .sidebar-collapsed {
@@ -145,8 +201,103 @@
         -webkit-transform:translateX(100%);
     }
 </style>
+
+<div class="menu_logo" onclick="event.stopPropagation();" >
+  <label for="fundo">Cor</label>
+  <color-picker ng-model="siteData.navbar.logoColor" event-api="eventApi" options="options"></color-picker>
+  <label for="fonte">Letra</label><br>
+  <input id="logoFontSelector" type="text" />
+  <button onclick='hide(".menu_logo")'>Cancelar</button>
+</div>
+
+
+<div class="menu_nav_fundo" onclick="event.stopPropagation();">
+  <label for="fundo">Cor</label>
+  <color-picker ng-model="siteData.navbar.backgroundColor" event-api="eventApi" options="options"></color-picker>
+  <button onclick='hide(".menu_nav_fundo")'>Cancelar</button>
+</div>
+
+
+<div class="modal_config_header_background" onclick="event.stopPropagation();">
+  <div class="center">
+    <label for="fundo">Cor</label>
+    <color-picker ng-model="siteData.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
+    <br>
+    <label for="fundo">Imagem</label>
+    <div id=fundos style="overflow-y: auto; width: 120px; height: 100px;  background-color: #d9d9d9; outline: 1px solid #9a9292;"  >
+      <div class="backImg" style="outline: 1px solid #b3b3b3; margin-left: 1px;" ng-repeat="item in backGroundItems" back-img="http://res.cloudinary.com/radiando/image/upload/headerBackground/thumbs/{{item}}" ng-click="backgroundUrl_set(item)"></div>
+    </div>
+    <br>
+    <form name="myForm">
+      <fieldset>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button  type="button" class="btn btn-default btn-sm" style="font-size: 12px;" ng-click="backgroundUrl_clear();">Limpar</button>
+          <label class="btn btn-default btn-file btn-sm"  style="font-size: 12px;">
+            <input id=file-input ng-show=isLogged type="file" ngf-select= "uploadPic(picFile2)" ng-model="picFile2" name="file"
+              accept="image/*" ngf-max-size="5MB" required
+              ngf-model-invalid="errorFile" ngf-fix-orientation="true" hidden
+              ngf-resize-if="$width > 1500 || $height > 800"
+              ngf-resize="{width: 1500, height: 800}">
+            <span  ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+             {{ searchButtonText }}
+          </label>
+        </div>
+        <span class="progress" ng-show="picFile2.progress >= 0">
+         <div style="width:{{picFile2.progress}}%" ng-bind="picFile2.progress + '%'"></div>
+        </span>
+        <span ng-show="picFile2.result">Imagem enviada!</span>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+        <i ng-show="myForm.file.$error.maxSize">Imagem muito pesada
+         {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+       </fieldset>
+     </form>
+   </div><br>
+   <button onclick='hide(".modal_config_header_background")'>Cancelar</button>
+</div>
+
+
+<div class="menu_header_txt" onclick="event.stopPropagation();" >
+  <div class="center">
+    <label for="fonte">Texto letra</label>
+    <input id="headerFontSelector" type="text" /><br>
+    <label for="fonte">Cor da fonte</label>
+    <color-picker ng-model="siteData.head.fontColor"  event-api="eventApi2" options="options"></color-picker>
+    <div class="checkbox">
+      <label><input type="checkbox" ng-model="siteData.head.show.txtShadow" ng-click="saveDiv('siteData.head.show.txtShadow')" >Sombra</label>
+    </div>
+  <button onclick='hide(".menu_header_txt")'>Cancelar</button>
+  </div>
+</div>
+
+
+<script>
+ $(".menu_logo").hide();
+ $(".menu_nav_fundo").hide();
+ $(".modal_config_header_background").hide();
+ $(".menu_header_txt").hide();
+
+ var show = function(divClass){
+    $(divClass).show();
+    event.stopPropagation();
+ }
+
+ var hide = function(divClass){
+    $(divClass).hide();
+    event.stopPropagation();
+ }
+
+
+ function myClickHandler(e)
+{
+    // Here you'll do whatever you want to happen when they click
+    // now this part stops the click from propagating
+    alert("fidelis")
+    if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
+}
+</script>
 <div class="menu">
-<div class="toggle_button"></div>
   <h2 class=text-center style="font-size: 17px">Configurações</h2>
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div id="accordion" role="tablist" aria-multiselectable="true">

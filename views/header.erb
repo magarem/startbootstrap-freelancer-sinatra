@@ -228,7 +228,7 @@
         ng-style="{'background-color': siteData.head.backgroundColor,
                    'color': siteData.head.fontColor,
                    'background-image': siteData.head.backgroundUrl ? 'url(' + siteData.head.backgroundUrl + ')':''}">
-  <div class="container">
+  <div class="container" onclick='show(".modal_config_header_background")'>
     <div class="row">
       <div class="col-lg-12" >
         <!-- <div ng-show="isLogged" class=hamburger>
@@ -239,6 +239,7 @@
         <img ng-show=siteData.head.show.avatar
              class="c isLogged avatarImg"
              ng-src="{{ siteData.head.avatar }}"
+             onclick="event.stopPropagation();"
              ng-click="!isLogged || openHeaderModal()"/>
         <div id=div1></div>
         <div class="intro-text">
@@ -252,6 +253,7 @@
                 placeholder="texto 1"
                 ng-class="{txtShadow: siteData.head.show.txtShadow}"
                 style="font-family: {{siteData.head.fontFamily}};"
+                onclick='show(".menu_header_txt")'
                 id=headerFont1
                 >
             </div>
