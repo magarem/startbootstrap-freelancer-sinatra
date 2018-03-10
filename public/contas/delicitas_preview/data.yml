@@ -7,12 +7,13 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-09 19:53:45.790660039 Z
+  modified: 2018-03-10 00:50:32.564720223 Z
 navbar:
-  backgroundColor: hsl(198, 76%, 42%)
+  backgroundColor: hsl(198, 62%, 17%)
   logo:
-    fontFamily: Aclonica
-    label: delicitas
+    color: hsl(0, 0%, 91%)
+    fontFamily: Annie Use Your Telescope
+    label: Fidelitos
     img: 
   menu:
   - label: Portfólio
@@ -23,17 +24,17 @@ navbar:
     link: contato
 head:
   backgroundColor: hsl(168, 19%, 19%)
-  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/abstract_2_00-wallpaper-1440x900.jpg
-  fontFamily: Allerta Stencil
-  fontColor: hsl(212, 89%, 36%)
+  backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/16k_glass-wallpaper-1440x900.jpg
+  fontFamily: Aclonica
+  fontColor: hsl(0, 53%, 24%)
   avatar: avatar.png?1519950932
-  txt1: "\\O/ biquininhos \\o/"
-  txt2: lindinhas
+  txt1: "\\O/ dfsd fdf sdsdfdsf&nbsp; \\o/"
+  txt2: dfsdf
   show:
     avatar: true
     txt1: true
     txt2: true
-    txtShadow: true
+    txtShadow: false
     ruler: true
 portfolio:
   label: Portfólio

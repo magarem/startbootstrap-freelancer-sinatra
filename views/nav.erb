@@ -3,6 +3,9 @@
   .navbar-default {
     background-color:{{siteData.navbar.backgroundColor}}
   }
+  .navbar {
+    text-transform: unset;
+  }
  </style>
 <nav ng-controller="navCtrl"  class="navbar navbar-default navbar-fixed-top" id="mainNav">
   <div class="container" onclick='show(".menu_nav_fundo")'>
@@ -38,10 +41,9 @@
           select-non-editable="true"
           ng-blur="saveDiv('siteData.navbar.logo.label')"
           placeholder="&nbsp;"
-          style="min-width: 50px; color:{{siteData.navbar.logoColor}}; font-family: {{siteData.navbar.logo.fontFamily}};"
+          style="min-width: 50px; color:{{siteData.navbar.logo.color}}; font-family: {{siteData.navbar.logo.fontFamily}};"
           ng-style="{{'siteData.atual'}}"
-          onclick='show(".menu_logo")'
-
+          onclick='menu_logo()'
           >
           {{siteData.atual}}
         </div>

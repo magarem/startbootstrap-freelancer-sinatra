@@ -120,7 +120,7 @@
         background:lightgrey;
         position:absolute;
         left:0;
-        width:200px;
+        width:180px;
         height:200px;
         margin-top: 100px;
         margin-left: 20px;
@@ -203,32 +203,30 @@
 </style>
 
 <div class="menu_logo" onclick="event.stopPropagation();" >
-  <label for="fundo">Cor</label>
-  <color-picker ng-model="siteData.navbar.logoColor" event-api="eventApi" options="options"></color-picker>
-  <label for="fonte">Letra</label><br>
-  <input id="logoFontSelector" type="text" />
-  <button onclick='hide(".menu_logo")'>Cancelar</button>
-</div>
 
+  <label for="fundo">Cor</label>
+  <color-picker ng-model="siteData.navbar.logo.color" event-api="eventApi_navbar_logo_color" options="options"></color-picker>
+  <label style="margin-top: 5px;" for="fonte">Letra</label><br>
+  <input id="logoFontSelector" type="text" />
+  <button style="margin-top: 5px;" onclick='hide(".menu_logo")'>Cancelar</button>
+</div>
 
 <div class="menu_nav_fundo" onclick="event.stopPropagation();">
   <label for="fundo">Cor</label>
-  <color-picker ng-model="siteData.navbar.backgroundColor" event-api="eventApi" options="options"></color-picker>
-  <button onclick='hide(".menu_nav_fundo")'>Cancelar</button>
+  <color-picker ng-model="siteData.navbar.backgroundColor" event-api="eventApi_navbar_backgroundColor" options="options"></color-picker>
+  <button style="margin-top: 5px;" onclick='hide(".menu_nav_fundo")'>Cancelar</button>
 </div>
-
 
 <div class="modal_config_header_background" onclick="event.stopPropagation();">
   <div class="center">
     <label for="fundo">Cor</label>
     <color-picker ng-model="siteData.head.backgroundColor" event-api="eventApi" options="options"></color-picker>
-    <br>
-    <label for="fundo">Imagem</label>
+    <label for="fundo"  style="margin-top: 5px;">Imagem</label>
     <div id=fundos style="overflow-y: auto; width: 120px; height: 100px;  background-color: #d9d9d9; outline: 1px solid #9a9292;"  >
       <div class="backImg" style="outline: 1px solid #b3b3b3; margin-left: 1px;" ng-repeat="item in backGroundItems" back-img="http://res.cloudinary.com/radiando/image/upload/headerBackground/thumbs/{{item}}" ng-click="backgroundUrl_set(item)"></div>
     </div>
-    <br>
-    <form name="myForm">
+    <label for="fundo"  style="margin-top: 5px;">Enviar</label>
+    <form name="myForm"  >
       <fieldset>
         <div class="btn-group" role="group" aria-label="Basic example">
           <button  type="button" class="btn btn-default btn-sm" style="font-size: 12px;" ng-click="backgroundUrl_clear();">Limpar</button>
@@ -238,7 +236,7 @@
               ngf-model-invalid="errorFile" ngf-fix-orientation="true" hidden
               ngf-resize-if="$width > 1500 || $height > 800"
               ngf-resize="{width: 1500, height: 800}">
-            <span  ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+            <span  style="margin-top: 5px;" ng-show="searchButtonText == 'Enviando'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
              {{ searchButtonText }}
           </label>
         </div>
@@ -251,8 +249,8 @@
          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
        </fieldset>
      </form>
-   </div><br>
-   <button onclick='hide(".modal_config_header_background")'>Cancelar</button>
+   </div>
+   <button style="margin-top: 15px;" onclick='hide(".modal_config_header_background")'>Cancelar</button>
 </div>
 
 
@@ -265,36 +263,37 @@
     <div class="checkbox">
       <label><input type="checkbox" ng-model="siteData.head.show.txtShadow" ng-click="saveDiv('siteData.head.show.txtShadow')" >Sombra</label>
     </div>
-  <button onclick='hide(".menu_header_txt")'>Cancelar</button>
+  <button style="margin-top: 5px;" onclick='hide(".menu_header_txt")'>Cancelar</button>
   </div>
 </div>
 
 
 <script>
- $(".menu_logo").hide();
- $(".menu_nav_fundo").hide();
- $(".modal_config_header_background").hide();
- $(".menu_header_txt").hide();
 
- var show = function(divClass){
-    $(divClass).show();
-    event.stopPropagation();
- }
+var closeAll = function (){
+  $(".menu_logo").hide();
+  $(".menu_nav_fundo").hide();
+  $(".modal_config_header_background").hide();
+  $(".menu_header_txt").hide();
+}
 
- var hide = function(divClass){
-    $(divClass).hide();
-    event.stopPropagation();
- }
-
-
- function myClickHandler(e)
-{
-    // Here you'll do whatever you want to happen when they click
-    // now this part stops the click from propagating
-    alert("fidelis")
-    if (!e) var e = window.event;
-    e.cancelBubble = true;
-    if (e.stopPropagation) e.stopPropagation();
+closeAll()
+var show = function(divClass){
+  closeAll()
+  $(divClass).show();
+  event.stopPropagation();
+}
+var menu_logo = function(){
+  closeAll()
+  $(".menu_logo").show();
+  event.stopPropagation();
+  setTimeout(function() {
+    $("#logoFont").focus();
+  }, 0);
+}
+var hide = function(divClass){
+  $(divClass).hide();
+  event.stopPropagation();
 }
 </script>
 <div class="menu">

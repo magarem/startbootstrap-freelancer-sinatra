@@ -13,12 +13,13 @@
         :class="{txtShadow: siteData.head.show.txtShadow}"
         :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}">{{siteData.head.txt1}}</h1>
     <hr id=head_star
-        :show="siteData.head.show.ruler"
-        style=" content:'\f006'"
+        v-if="siteData.head.txt2"
+        style=" content:''"
+        style="color: rgb(227, 207, 122);"
         :style="{'border-color': siteData.head.fontColor, 'color': siteData.head.fontColor}"
         class="star-light"
         :class="{txtShadow2: siteData.head.show.txtShadow}">
-    <h2 :show="siteData.head.show.txt2"
+    <h2 :show="siteData.head.txt2"
         class="font-weight-light mb-0"
         :class="{txtShadow: siteData.head.show.txtShadow}"
         :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}">{{siteData.head.txt2}}</h2>

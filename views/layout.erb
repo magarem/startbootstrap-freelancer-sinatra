@@ -473,7 +473,7 @@
            text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.5);
          }
          hr#head_star.star-light:after, hr#head_star.star-primary:after {
-           color:{{siteData.head.fontColor}};
+           color:;
          }
          hr.star-light:after {
               background-color: transparent;
@@ -537,6 +537,9 @@
         .navbar-default {
           background-color:red !important;
         }
+        [v-cloak] {
+          display: none;
+        }
       </style>
 
       <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
@@ -554,7 +557,7 @@
     </head>
     <body id="page-top" >
       <%= erb :modals %>
-      <div id="app" v-if="dataIsLoaded">
+      <div id="app" v-if="dataIsLoaded" v-cloak>
         <%= yield %>
       </div>
       <!-- Bootstrap core JavaScript -->

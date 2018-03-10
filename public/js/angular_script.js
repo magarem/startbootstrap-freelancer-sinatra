@@ -1230,12 +1230,23 @@ mod.controller('navCtrl',['$scope', 'Upload', '$timeout', '$http', '$rootScope',
 
   $scope.options = {
     id: 'fundo',
+    swatchOnly: true
   };
 
   $scope.options2 = {
     id: 'fonte',
+    swatchOnly: true
   };
 
+  // api event handlers
+  $scope.eventApi_navbar_logo_color = {
+      onChange: function(api, color, $event) {
+        $scope.saveDiv('siteData.navbar.logo.color')
+      },
+      onBlur: function(api, color, $event) {
+        $scope.saveDiv('siteData.navbar.logo.color')
+      }
+  };
   // api event handlers
   $scope.eventApi = {
       onChange: function(api, color, $event) {
