@@ -1,23 +1,21 @@
-<pre>
-Bem-vindo ao Radiando.net!
+<style>
+  p {
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    font-size: 16px;
 
-Clique no link abaixo para confirmar seu endereço de email e ativar sua conta (ou cole o endereço no seu navegador):
+  }
+</style>
 
-http://radiando.net/siteNewDo?k=<%=encrypted_data%>
+<p>Bem-vindo ao Radiando.net! Sua ferramente de criação de portfólio na web.
 
-Depois de confirmado seu email você já estará pronto para editar o conteúdo do seu site no endereço:
-http://<%=formSiteNome%>_preview.radiando.net/adm, digitando a senha: <%=randomSenha%>
+<p>Clique no link abaixo para confirmar seu endereço de e-mail e ativar sua conta (ou cole o endereço no seu navegador):
 
-No modo de edição todas as caixas pontilhadas são editáveis e seu conteúdo é automaticamente salvo.
+<p>http://radiando.net/siteNewDo?k=<%=encrypted_data%>
 
-Depois de finalizar a edição basta clicar no botão "Publicar" que aparece na parte de baixo de seu site.
-Desta forma, seu site será publicado e estará disponível no endereço:
-http://<%=formSiteNome%>.radiando.net/adm
+<p>Qualquer dúvida entre em contato conosco.
 
-Qualquer dúvida entre em contato conosco.
-
-Um abraço,
-Marcelo A. Magalhães
-Diretor
+<p>Um abraço,<br>
+Marcelo A. Magalhães<br>
+Diretor<br>
 radiando.net
-</pre>
+ </span>

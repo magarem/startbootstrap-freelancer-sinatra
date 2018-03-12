@@ -14,9 +14,7 @@
         :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}">{{siteData.head.txt1}}</h1>
     <hr id=head_star
         v-if="siteData.head.txt2"
-        style=" content:''"
-        style="color: rgb(227, 207, 122);"
-        :style="{'border-color': siteData.head.fontColor, 'color': siteData.head.fontColor}"
+        :style="{'border-color:': siteData.head.fontColor}"
         class="star-light"
         :class="{txtShadow2: siteData.head.show.txtShadow}">
     <h2 :show="siteData.head.txt2"

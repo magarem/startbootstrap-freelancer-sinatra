@@ -1163,6 +1163,11 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
 
     var _saveDiv = function(obj, val){
       // if (val != undefined) {val = val.trim();}
+      if (val){
+        // val = val.replace(/<(?:.|\n)*?>/gm, '')
+        val = val.replace(/&lt;(?:.|\n)*?&gt;/gim, '')
+        val = val.replace(/&nbsp;/gim, '')        
+      }
       return $http.post("/objSave", {obj: obj, val: val});
     }
 
@@ -1404,23 +1409,23 @@ mod.controller('headerCtrl',['$scope', '$rootScope', 'Upload', '$timeout', '$htt
 
 }])
 mod.directive('upload', function($rootScope) {
-return {
-    restrict: 'EA',
-    link: function(scope, elem, attrs) {
-        elem.on("change" ,function(evt) {
-            var file = evt.currentTarget.files[0];
-            var reader = new FileReader();
-            reader.onload = function(evt) {
-                scope.$apply(function($scope) {
-                    $rootScope.myImage = evt.target.result;
-                    console.log($rootScope.myImage);
-                });
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-  };
-});
+  return {
+      restrict: 'EA',
+      link: function(scope, elem, attrs) {
+          elem.on("change" ,function(evt) {
+              var file = evt.currentTarget.files[0];
+              var reader = new FileReader();
+              reader.onload = function(evt) {
+                  scope.$apply(function($scope) {
+                      $rootScope.myImage = evt.target.result;
+                      console.log($rootScope.myImage);
+                  });
+              };
+              reader.readAsDataURL(file);
+          });
+      }
+    };
+  });
 mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalInstance', 'Upload', '$timeout', '$http', 'SiteData', function ($scope,  $rootScope, $uibModalInstance, Upload, $timeout, $http, SiteData) {
 
   var file, data;
@@ -1607,6 +1612,12 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
   SiteData.loadSiteData().then(function(response) {
     var siteNome = response.data.info.name
     $scope.siteData = response.data;
+
+    //Force images reload cache
+    for (index = 0; index < $scope.siteData.portfolio.items.length; index++) {
+      $scope.siteData.portfolio.items[index].img +='?decache=' + (Math.random()*1000);
+    }
+
     $scope.isLogged = response.data["logged"] == true
     $scope.isSelected = false;
     portfolioItemsTags_update()
@@ -1692,7 +1703,6 @@ mod.controller('imgGridCtrl',['$scope', '$http','$timeout', '$rootScope', '$uibM
  */
 
   var ImgChange = function (id, src){
-
     console.log("id:", id)
     $scope.siteData.portfolio.items.filter(function(el) {
       console.log("el:>", el)
@@ -2205,6 +2215,7 @@ mod.controller('aboutCtrl', function ($scope, $rootScope, $timeout, $http, SiteD
   })
 
   $scope.saveDiv = function(obj){
+    console.log("obj:>", obj);
     console.log($scope.$eval(obj));
     SiteData.saveDiv(obj, $scope.$eval(obj)).then(function(response) {
     })

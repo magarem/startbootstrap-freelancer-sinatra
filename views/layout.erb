@@ -494,8 +494,8 @@
             box-shadow: 0 0 8px rgba(0, 0, 0, .8) ;
             -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
             -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-            padding: 2px;
-          }
+            /*padding: 2px;*/
+          }7
           .txtShadow {
             text-shadow: 5px 5px 5px rgba(50, 33, 55, 0.6);
           }
@@ -605,6 +605,7 @@
       var dataURL = '/dataLoad';
       new Vue({
         el: '#app',
+
         data: {
           siteData: {},
           dataIsLoaded:false,
@@ -619,6 +620,7 @@
           //Carregas as fontes do Google
           this.loadFont(this.siteData.navbar.logo.fontFamily)
           this.loadFont(this.siteData.head.fontFamily)
+
         },
         methods: {
           getItemsTags: function(event) {
@@ -646,6 +648,12 @@
             var self = this;
             $.getJSON( dataURL, function( data ) {
                 self.siteData = data;
+
+                //Force images reload cache
+                for (index = 0; index < self.siteData.portfolio.items.length; index++) {
+                  self.siteData.portfolio.items[index].img +='?decache=' + (Math.random()*1000);
+                }
+
                 console.log(self.siteData)
                 self.dataIsLoaded = true;
             });

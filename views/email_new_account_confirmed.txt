@@ -1,0 +1,29 @@
+<style>
+  p {
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    font-size: 16px;
+
+  }
+</style>
+
+<p>Parabéns! Seu site foi criado com sucesso :)
+
+<p>Para editar o conteúdo do seu Site entre com a senha abaixo quando for pedida
+
+<p>Senha: <%=email_senha%>
+
+<p>Para entrar no painel de controle do seu site entre no endereço abaixo.
+
+<p>http://<%=email_site_nome%>.radiando.net/adm
+
+<p>Para editar o conteúdo do seu site clique nas caixas pontilhadas que aparecem ao longo na página.
+
+<p>Depois de finalizar a edição clique no botão "Publicar" que aparece na parte inferior de seu site.
+Desta forma, seu site será publicado na web e estará disponível no endereço:
+<p>http://<%=email_site_nome%>.radiando.net
+<p>Qualquer dúvida entre em contato conosco.
+<p>Um abraço,<br>
+Marcelo A. Magalhães<br>
+Diretor<br>
+radiando.net
+ </span>

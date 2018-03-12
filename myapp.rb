@@ -16,6 +16,7 @@ require 'openssl'
 require 'base64'
 require 'hex_string'
 require 'sendgrid-ruby'
+require 'sanitize'
 include SendGrid
 
 set :public_folder, 'public'
@@ -189,9 +190,6 @@ get '/testeEnvio' do
 end
 get '/adm' do
   if !@site_nome.include? "_preview"
-  #   @site_nome << "_preview"
-  #   @url.gsub!(".localhost","_preview.localhost")
-  #   @url.gsub!(".radiando","_preview.radiando")
     session.clear
     @url_ = @url.split(".").drop(1).join(".")
     puts "@url_: #{@url_}"
@@ -354,6 +352,17 @@ get "/siteNewDo" do
   flgNomeJaExiste = File.directory?("public/contas/#{email_site_nome}_preview")
 
   if !flgNomeJaExiste and verifica == "radiando" and email.include? "@"
+
+    #Envia e-mail de site criado com sucesso
+    mailMessage = ERB.new(File.read('views/email_new_account_confirmed.txt')).result(binding)
+    from = Email.new(email: 'contato@radiando.net')
+    to = Email.new(email: email)
+    subject = 'Conta confirmada com sucesso!'
+    content = Content.new(type: 'text/html', value: mailMessage)
+    mail = SendGrid::Mail.new(from, subject, to, content)
+    sg = SendGrid::API.new(api_key: @SENDGRID_API_KEY)
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
+
     @data_path = "public/contas/#{email_site_nome}_preview/data.yml"
     #Cria diretório principal
     install_dir = "public/contas/#{email_site_nome}_preview"
@@ -455,6 +464,11 @@ end
 get "/editPublish" do
   #Cria a cópia de segura antes da edição
   origem = "public/contas/#{@site_nome}"
+  destino = "public/contas/#{@site_nome}_BKP"
+  FileUtils.copy_entry(origem, destino)
+
+  #Copia o site preview para o nome original
+  origem = "public/contas/#{@site_nome}"
   destino = "public/contas/#{@site_nome}".chomp("_preview")
   FileUtils.copy_entry(origem, destino)
   redirect "http://#{@url}?cmd=editPublishDo&site=#{@site_nome.chomp("_preview")}"
@@ -524,20 +538,6 @@ post '/login_do' do
     redirect "http://#{@url}?login=1&site=#{site_nome_limpo}&erro=1"
   end
   puts "** login_do - end **"
-end
-#
-# Lê os dados do arquivo fonte
-#
-get '/dataLoad2' do
-  # Pega os dados do arquivo fonte
-  if File.exist? File.expand_path "./public/contas/"+@site_nome then
-    #Carrega os dados do site
-    @data_path = "public/contas/{site_nome}/{site_nome}.json"
-    @data_path.gsub! "{site_nome}", @site_nome
-    @data = YAML.load_file @data_path
-    @data["logged"] = session[:logado]
-  end
-  @data
 end
 #
 # Lê os dados do arquivo fonte

@@ -1,29 +1,29 @@
 ---
 info:
-  name: skeleton
+  name: dfsdfsdfds
   email: contato@magaweb.com.br
-  senha: 8e05
+  senha: bc48
   title: Portfólio geral
   description: Site portfólio
   author: Radiando
-  created: 2018-02-19 17:22:11 utc
+  created: 2018-03-11 18:51:29 utc
   modified: 2018-02-19 17:35:47.959885563 Z
 navbar:
   backgroundColor: hsl(198, 75%, 14%)
   logo:
     fontFamily: Montserrat
-    label: SKELETON
-    img:
+    label: dfsdfsdfds
+    img: 
   menu:
-    - label: PORTFÓLIO
-      link: portfolio
-    - label: SOBRE
-      link: about
-    - label: CONTATO
-      link: contact
+  - label: Portfólio
+    link: portfolio
+  - label: Sobre
+    link: about
+  - label: Contato
+    link: contact
 head:
-  backgroundColor: '#18bc9c'
-  backgroundUrl:
+  backgroundColor: hsl(168, 19%, 19%)
+  backgroundUrl: 
   fontFamily: Montserrat
   fontColor: white
   avatar: avatar.png
@@ -33,11 +33,11 @@ head:
     avatar: true
     txt1: true
     txt2: true
-    txtShadow:
+    txtShadow: 
     ruler: true
 portfolio:
   label: Portfólio
-  itemsTags:
+  itemsTags: 
   items:
   - id: '1'
     titulo: Imagem 1
@@ -49,7 +49,7 @@ portfolio:
     site: ''
     data: ''
     servico: ''
-    tags:
+    tags: 
   hide: false
   showGridTitles: false
 about:
@@ -63,11 +63,11 @@ contact:
   hide: false
 footer:
   show: true
-  endereco:
+  endereco: 
   social:
-    facebook:
-    googleplus:
-    twitter:
-    linkedin:
-  about_resumo:
+    facebook: 
+    googleplus: 
+    twitter: 
+    linkedin: 
+  about_resumo: 
   hide: false

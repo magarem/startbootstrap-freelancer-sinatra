@@ -7,12 +7,12 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-09 23:42:47.103456361 Z
+  modified: 2018-03-12 20:09:55.449960385 Z
 navbar:
   backgroundColor: hsl(198, 62%, 17%)
   logo:
     color: hsl(0, 0%, 91%)
-    fontFamily: Annie Use Your Telescope
+    fontFamily: Cherry Cream Soda
     label: Fidelitos
     img: 
   menu:
@@ -25,11 +25,11 @@ navbar:
 head:
   backgroundColor: hsl(168, 19%, 19%)
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/16k_glass-wallpaper-1440x900.jpg
-  fontFamily: Aclonica
+  fontFamily: Architects Daughter
   fontColor: hsl(0, 53%, 24%)
   avatar: avatar.png?1519950932
-  txt1: "\\O/ dfsd fdf sdsdfdsf&nbsp; \\o/"
-  txt2: 
+  txt1: teste
+  txt2: dfsdf
   show:
     avatar: true
     txt1: true
@@ -40,10 +40,31 @@ portfolio:
   label: Portfólio
   itemsTags: 
   items:
+  - id: '1520884757058'
+    titulo: ''
+    mediaType: image
+    img: 1520884757058.jpg?decache=0.46555674479823317
+    img_: ''
+    txt: ''
+    nome: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: '1519951023331'
+    titulo: ''
+    mediaType: image
+    img: 1519951023331.jpg?decache=855.9054282465297
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
   - id: '1'
     titulo: Imagem 1
     mediaType: image
-    img: 1.jpg
+    img: 1.jpg?decache=549.4935630358784
     img_: ''
     txt: ''
     nome: ''
@@ -54,17 +75,7 @@ portfolio:
   - id: '1519951015163'
     titulo: ''
     mediaType: image
-    img: 1519951015163.jpg
-    txt: ''
-    cliente: ''
-    site: ''
-    data: ''
-    servico: ''
-    tags: []
-  - id: '1519951023331'
-    titulo: ''
-    mediaType: image
-    img: 1519951023331.jpg
+    img: 1519951015163.jpg?decache=521.6850229919974
     txt: ''
     cliente: ''
     site: ''
@@ -75,8 +86,8 @@ portfolio:
   showGridTitles: false
 about:
   label: Sobre
-  body1: texto 1
-  body2: texto 2
+  body1: sdfsdfdsf<br>sdfsdfsdfsdfsdf<br>sdfsdf<br>sdfsdfsdfsdfssdfsdf<br>SDS<br>DF<br>
+  body2: "&gt;texto 2"
   hide: false
 contact:
   show: true

@@ -76,6 +76,8 @@ GEM
     netrc (0.11.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    nokogumbo (1.5.0)
+      nokogiri
     pony (1.11)
       mail (>= 2.0)
     pry (0.10.4)
@@ -119,6 +121,10 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     ruby_http_client (3.3.0)
+    sanitize (4.6.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.4.4)
+      nokogumbo (~> 1.4)
     sendgrid-ruby (5.2.0)
       ruby_http_client (~> 3.2)
       sinatra (>= 1.4.7, < 3)
@@ -162,6 +168,7 @@ DEPENDENCIES
   mini_magick
   pony
   pry
+  sanitize
   sendgrid-ruby
   sinatra
   thin
