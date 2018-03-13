@@ -7,7 +7,7 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-13 21:04:05.221075142 Z
+  modified: 2018-03-13 21:30:49.348368385 Z
 navbar:
   backgroundColor: hsl(198, 62%, 17%)
   logo:
@@ -27,7 +27,7 @@ head:
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/16k_glass-wallpaper-1440x900.jpg
   fontFamily: Architects Daughter
   fontColor: hsl(0, 53%, 24%)
-  avatar: avatar.png?1520974672
+  avatar: avatar.png?1520976668
   txt1: teste
   txt2: dfsdf
   show:

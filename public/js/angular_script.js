@@ -1533,7 +1533,35 @@ $scope.cropped = {
    var file = evt.currentTarget.files[0];
    var input = this;
 
+
+
+
    if (file) {
+
+     if (navigator.userAgent.match(/iP(hone|od|ad)/i)) {
+         var canvas = document.createElement('canvas'),
+             mpImg = new MegaPixImage(file);
+
+         canvas.width = mpImg.srcImage.width;
+         canvas.height = mpImg.srcImage.height;
+
+         EXIF.getData(file, function () {
+             var orientation = EXIF.getTag(this, 'Orientation');
+
+             mpImg.render(canvas, {
+                 maxHeight: 256,
+                 orientation: orientation
+             });
+             setTimeout(function () {
+                 var tt = canvas.toDataURL("image/jpeg", 1);
+                 $scope.$apply(function ($scope) {
+                     $scope.cropped.image = tt;
+                 });
+             }, 100);
+         });
+     } else {
+
+
      var reader = new FileReader();
 
      reader.onload = function (e) {
@@ -1545,6 +1573,10 @@ $scope.cropped = {
 
      reader.readAsDataURL(file);
    }
+
+ }
+
+
  };
 
 //
