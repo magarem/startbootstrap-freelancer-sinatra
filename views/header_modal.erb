@@ -82,9 +82,11 @@
           <ng-croppie   src="inputImage"
                         ng-model='outputImage'
                         update='onUpdate'
-                        boundry="{w: 400, h: 400}"
-                        viewport="{w: 300, h:300}"
+                        boundry="{w: 300, h: 400}"
+                        viewport="{w: 260, h:260}"
                         orientation="true"
+                        exif="true"
+                        rotation="90"
                         mousezoom="true"
                         zoom="true"
                         type="circle">
