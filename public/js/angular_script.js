@@ -8,7 +8,7 @@ var mod = angular.module("myapp", ['cloudinary',
                                    'ng.deviceDetector',
                                    'ngSanitize',
                                    'ngFileUpload',
-                                   'angularCroppie',
+                                   'ngCroppie',
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap',
@@ -1524,6 +1524,13 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
 //
 //
 // Assign blob to component when selecting a image
+
+$scope.inputImage = 'https://raw.githubusercontent.com/Foliotek/Croppie/master/demo/demo-1.jpg';
+$scope.outputImage = null;
+$scope.onUpdate = function(data){
+    //console.log(data)
+}
+
 $scope.cropped = {
     source: 'https://raw.githubusercontent.com/Foliotek/Croppie/master/demo/demo-1.jpg'
   };
@@ -1532,49 +1539,19 @@ $scope.cropped = {
 
    var file = evt.currentTarget.files[0];
    var input = this;
-
-
-
-
    if (file) {
-
-     if (navigator.userAgent.match(/iP(hone|od|ad)/i)) {
-         var canvas = document.createElement('canvas'),
-             mpImg = new MegaPixImage(file);
-
-         canvas.width = mpImg.srcImage.width;
-         canvas.height = mpImg.srcImage.height;
-
-         EXIF.getData(file, function () {
-             var orientation = EXIF.getTag(this, 'Orientation');
-
-             mpImg.render(canvas, {
-                 maxHeight: 256,
-                 orientation: orientation
-             });
-             setTimeout(function () {
-                 var tt = canvas.toDataURL("image/jpeg", 1);
-                 $scope.$apply(function ($scope) {
-                     $scope.cropped.source = tt;
-                 });
-             }, 100);
-         });
-     } else {
-
-
      var reader = new FileReader();
-
      reader.onload = function (e) {
        // bind new Image to Component
        $scope.$apply(function () {
-         $scope.cropped.source = e.target.result;
+         $scope.inputImage = e.target.result;
        });
      }
 
      reader.readAsDataURL(file);
    }
 
- }
+
 
 
  };

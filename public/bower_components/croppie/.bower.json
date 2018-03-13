@@ -32,14 +32,14 @@
     "jquery": "~2.1.4",
     "exif-js": "~2.1.1"
   },
-  "version": "2.6.1",
-  "_release": "2.6.1",
+  "version": "2.5.1",
+  "_release": "2.5.1",
   "_resolution": {
     "type": "version",
-    "tag": "v2.6.1",
-    "commit": "7c1f481196ed7d89d2225f11bd61de6f6764194d"
+    "tag": "v2.5.1",
+    "commit": "6c6caa30a3ff70323a626401162836755c493a80"
   },
   "_source": "https://github.com/Foliotek/Croppie.git",
-  "_target": "^2.4.0",
+  "_target": "2.5.1",
   "_originalSource": "croppie"
 }

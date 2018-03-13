@@ -77,8 +77,19 @@
         <div>
           <!-- <input type="file" id="upload" accept="image/*" custom-on-change="handleFileSelect"/> -->
           <!-- Croppie needs a container -> using 'boundary' option -->
-          <croppie ng-if="cropped.source" src="cropped.source" ng-model="cropped.image" options="{boundary:{width:500,height:550}, enableExif:true, enableOrientation:true, viewport:{ width: 260, height: 260, type: 'circle' } }"></croppie>
-          Cropped Image: <br>
+          <!-- <croppie ng-if="cropped.source" src="cropped.source" ng-model="cropped.image" options="{boundary:{width:500,height:550}, enableExif: true, enableOrientation: true, showZoomer:false,viewport:{ width: 260, height: 260, type: 'circle' } }"></croppie> -->
+
+          <ng-croppie   src="inputImage"
+                        ng-model='outputImage'
+                        update='onUpdate'
+                        boundry="{w: 400, h: 400}"
+                        viewport="{w: 300, h:300}"
+                        orientation="true"
+                        mousezoom="true"
+                        zoom="true"
+                        type="circle">
+          </ng-croppie>
+
           <!-- <img ng-src="{{cropped.image}}" /> -->
         </div>
           <form ><br>
@@ -88,7 +99,7 @@
                   <input id="fileInput" type="file"
                          accept="image/*" custom-on-change="handleFileSelect"/>
               </label>
-              <a ng-if="cropped.image" data-ng-click="upload(cropped.image,'avatar.png')" class="btn btn-primary">Enviar</a>
+              <a ng-if="inputImage" data-ng-click="upload(outputImage,'avatar.png')" class="btn btn-primary">Enviar</a>
               <button class="btn btn-primary"  ng-click="cancel()" >Cancelar</button>
             </div>
           </form>
