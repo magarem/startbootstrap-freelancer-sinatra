@@ -74,42 +74,21 @@
   <div class="modal-body">
     <div class="container">
       <div class="row">
-          <div data-ng-if="true"
-            class="cropArea"
-            data-ng-class="{'medium':true}">
-            <ui-cropper
-              image="imageDataURI"
-              result-image="$parent.resImageDataURI"
-              result-blob="$parent.resBlob"
-              url-blob="$parent.urlBlob"
-              change-on-fly="changeOnFly"
-              area-type="{{type}}"
-              area-min-size="selMinSize"
-              area-init-size="selInitSize"
-              result-image-format="resImgFormat"
-              result-image-quality="resImgQuality"
-              result-image-size="resImgSize"
-              aspect-ratio="aspectRatio"
-              allow-crop-resize-on-corners="false"
-              disable-keyboard-access="false"
-              init-max-area="true"
-              chargement="'Testing Message'"
-              on-change="onChange($dataURI)"
-              on-load-begin="onLoadBegin()"
-              on-load-done="onLoadDone()"
-              on-load-error="onLoadError()"
-              live-view="blockingObject"
-              area-coords="myAreaCoords"
-              canvas-scalemode="true">
-            </ui-cropper>
-          </div>
+        <div>
+          <!-- <input type="file" id="upload" accept="image/*" custom-on-change="handleFileSelect"/> -->
+          <!-- Croppie needs a container -> using 'boundary' option -->
+          <croppie ng-if="cropped.source" src="cropped.source" ng-model="cropped.image" options="{boundary:{width:500,height:550}, enableExif:true, enableOrientation:true, viewport:{ width: 260, height: 260, type: 'circle' } }"></croppie>
+          Cropped Image: <br>
+          <!-- <img ng-src="{{cropped.image}}" /> -->
+        </div>
           <form ><br>
             <div class="btn-group" role="group" aria-label="Basic example">
               <label class="btn btn-primary btn-file">
-                  Selecionar... <input type="file" id="fileInput" accept="image/*"
-                  onchange="angular.element(this).scope().handleFileSelect(this.files[0])" />
+                  Selecionar...
+                  <input id="fileInput" type="file"
+                         accept="image/*" custom-on-change="handleFileSelect"/>
               </label>
-              <a ng-if="imageDataURI" data-ng-click="callTestFuntion()" class="btn btn-primary">Enviar</a>
+              <a ng-if="cropped.image" data-ng-click="upload(cropped.image,'avatar.png')" class="btn btn-primary">Enviar</a>
               <button class="btn btn-primary"  ng-click="cancel()" >Cancelar</button>
             </div>
           </form>

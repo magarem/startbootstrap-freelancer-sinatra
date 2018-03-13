@@ -28,7 +28,7 @@
     }
     [contenteditable="true"], .imgEdit  {
       padding: 1px;
-      outline: 2px dashed #CCC;
+      outline: 1px dotted #e0e0e0;
     }
     .center {
       display:table;
@@ -88,9 +88,9 @@
           <div class="col-lg-12  col-xs-12 padding0">
             <div class="modal-body">
               <div class="panel-heading">
-                <a href ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove-sign pull-right" style="font-size:30px;"></i></a>
+                <!-- <a href ng-click="cancel(picFile);"><i class="glyphicon glyphicon-remove-sign pull-right" style="font-size:30px;"></i></a> -->
                 <h2 style="font-size: 25px;">
-                  <div style="text-align:left;" contenteditable="{{isLogged}}" ng-model="item.titulo"
+                  <div style = "font-size: 20px; text-align:center; width: 40%; margin: auto;"contenteditable="{{isLogged}}" ng-model="item.titulo"
                     strip-br="true" select-non-editable="true"
                     ng-blur="saveDiv('item.titulo')" placeholder="Titulo">
                   </div>
@@ -132,7 +132,7 @@
                 <div ng-show="isLogged" style="margin-bottom:10px;">
                   <!-- <input type="radio" ng-model="item.mediaType" value="video"   ng-change="saveDiv('item.mediaType')">Video -->
 
-                  <button  class="btn btn-warning btn-sm" ng-show="isLogged" ng-click="item.img = ' ';saveDiv('item.img')">Excluir imagem</button>
+                  <!-- <button  class="btn btn-warning btn-sm" ng-show="isLogged" ng-click="item.img = ' ';saveDiv('item.img')">Excluir imagem</button> -->
                   <label class="btn btn-default btn-file btn-sm">
 
                   <input id="imgSelect" type="file"
@@ -191,7 +191,7 @@
               }
               .element{
                  width: 80%;
-                 max-width: 500px;
+                 /*max-width: 500px;*/
                  height: auto;
                  margin-left: 10%;
               }
@@ -213,7 +213,7 @@
                   <!-- <hr class="star-primary"> -->
                     <p style="margin: 10px 0px 0px 0px">
                       <div contenteditable="{{isLogged}}"
-                        style = "font-size: 20px; text-align:left;"
+                        style = "font-size: 20px; text-align:left; width: 70%; margin: auto;"
                         ng-model="item.txt"
                         strip-br="true"
                         select-non-editable="true"
@@ -223,16 +223,19 @@
                       </div>
                     </p>
                     <ul class="list-inline item-details">
-                      <!-- <li ng-show="item.cliente || isLogged">cliente
+                      <li ng-show="item.cliente || isLogged">Cliente
                         <strong>
                           <div contenteditable="{{isLogged}}"
                             ng-model="item.cliente"
                             strip-br="true"
                             select-non-editable="true"
                             ng-blur="saveDiv('item.cliente')"
-                            placeholder="_"></div>
+                            placeholder="Cliente"
+                            style="width:100px; height:30px;"
+                            ></div>
                         </strong>
                       </li>
+                      <!--
                       <li ng-show="item.data || isLogged">data
                         <strong>
                           <div contenteditable="{{isLogged}}"
@@ -266,17 +269,17 @@
                          </div>
                        </strong>
                      </li> -->
-                     <li ng-show="isLogged" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+                     <li ng-show="isLogged" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;Etiquetas
                        <js-tag js-tag-mode="typeahead" js-tag-options="jsTagOptions" ></js-tag>
                      </li>
-                     <li ng-show="item.tags.length && !isLogged" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><br>
+                     <li ng-show="item.tags.length && !isLogged" >Etiquetas</span><br>
                         <b>{{tagsJoin}}</b>
                      </li>
                   </ul>
               </div>
-              <button type="button" ng-show="isLogged" class="btn btn-danger" ng-click="excluir();"><i class="glyphicon glyphicon-trash"></i> Excluir</button>&nbsp;
+              <button type="button" ng-show="isLogged" class="btn btn-danger" ng-click="excluir();"><i class="glyphicon glyphicon-trash"></i> Excluir</button>
               <!-- <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="saveTags(tags)"><i class="glyphicon glyphicon-save"></i> Salvar</button> -->
-              <button type="button" ng-show="isLogged" class="btn btn-secondary" ng-click="saveTags(tags); cancel(picFile);"><i class="glyphicon glyphicon-close"></i> Fechar</button>
+              <button type="button" ng-show="isLogged" class="btn btn-primary" ng-click="saveTags(tags); cancel(picFile);"><i class="glyphicon glyphicon-ok"></i> Fechar</button>
               <a href ng-if="item.txt.length > 100 && !isLogged" ng-click="cancel(picFile);" style="margin-top: 10px;"><i class="glyphicon glyphicon-remove-sign" style="font-size:30px;"></i></a>
               <br>
               <br>

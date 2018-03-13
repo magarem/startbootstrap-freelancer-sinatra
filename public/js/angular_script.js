@@ -8,7 +8,7 @@ var mod = angular.module("myapp", ['cloudinary',
                                    'ng.deviceDetector',
                                    'ngSanitize',
                                    'ngFileUpload',
-                                   'uiCropper',
+                                   'angularCroppie',
                                    'ng-sortable',
                                    'ngAnimate',
                                    'ui.bootstrap',
@@ -32,6 +32,15 @@ mod.constant('jdFontselectConfig', {
 mod.config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist(['**']);
 });
+mod.directive('customOnChange', function () {
+return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+        var onChangeHandler = scope.$eval(attrs.customOnChange);
+        element.bind('change', onChangeHandler);
+    }
+  };
+})
 mod.filter( 'safeUrl', [   '$sce',
   function( $sce ){
     return function(url){
@@ -1166,7 +1175,8 @@ mod.factory('SiteData', ['$http', '$location', function($http, $location){
       if (val){
         // val = val.replace(/<(?:.|\n)*?>/gm, '')
         val = val.replace(/&lt;(?:.|\n)*?&gt;/gim, '')
-        val = val.replace(/&nbsp;/gim, '')        
+        val = val.replace(/&nbsp;/gim, '')
+
       }
       return $http.post("/objSave", {obj: obj, val: val});
     }
@@ -1510,6 +1520,36 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.siteData.head.avatar = $scope.res
     $scope.crop_box = false
   }
+//
+//
+//
+// Assign blob to component when selecting a image
+$scope.cropped = {
+    source: ''
+  };
+ $scope.handleFileSelect = function (evt) {
+   console.log("---j---")
+
+   var file = evt.currentTarget.files[0];
+   var input = this;
+
+   if (file) {
+     var reader = new FileReader();
+
+     reader.onload = function (e) {
+       // bind new Image to Component
+       $scope.$apply(function () {
+         $scope.cropped.source = e.target.result;
+       });
+     }
+
+     reader.readAsDataURL(file);
+   }
+ };
+
+//
+//
+//
 
     //
     //
@@ -1556,10 +1596,10 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
     $scope.getBlob = function () {
         console.log($scope.resBlob);
     };
-    $scope.handleFileSelect = function (evt) {
+    $scope.handleFileSelect_ = function (evt) {
         console.log("!!22!!22")
-        var file = evt,
-            reader = new FileReader();
+        var file = evt.currentTarget.files[0];
+        reader = new FileReader();
         if (navigator.userAgent.match(/iP(hone|od|ad)/i)) {
             var canvas = document.createElement('canvas'),
                 mpImg = new MegaPixImage(file);
@@ -1582,9 +1622,10 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
                 }, 100);
             });
         } else {
+            console.log("else");
             reader.onload = function (evt) {
                 $scope.$apply(function ($scope) {
-                    console.log(evt.target.result);
+                    //console.log(evt.target.result);
                     $scope.imageDataURI = evt.target.result;
                 });
             };
