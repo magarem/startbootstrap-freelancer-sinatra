@@ -1525,7 +1525,7 @@ mod.controller('headerModalInstanceCtrl', ['$scope',  '$rootScope', '$uibModalIn
 //
 // Assign blob to component when selecting a image
 $scope.cropped = {
-    source: ''
+    source: 'https://raw.githubusercontent.com/Foliotek/Croppie/master/demo/demo-1.jpg'
   };
  $scope.handleFileSelect = function (evt) {
    console.log("---j---")
