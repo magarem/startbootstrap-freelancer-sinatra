@@ -1555,7 +1555,7 @@ $scope.cropped = {
              setTimeout(function () {
                  var tt = canvas.toDataURL("image/jpeg", 1);
                  $scope.$apply(function ($scope) {
-                     $scope.cropped.image = tt;
+                     $scope.cropped.source = tt;
                  });
              }, 100);
          });
