@@ -1536,9 +1536,9 @@
         enableZoom: true,
         enableResize: false,
         mouseWheelZoom: true,
-        enableExif: false,
+        enableExif: true,
         enforceBoundary: true,
-        enableOrientation: false,
+        enableOrientation: true,
         enableKeyMovement: true,
         update: function () { }
     };
