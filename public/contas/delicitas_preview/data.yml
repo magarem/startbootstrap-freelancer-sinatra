@@ -7,7 +7,7 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-14 00:58:14.951742982 Z
+  modified: 2018-03-15 01:37:58.104011628 Z
 navbar:
   backgroundColor: hsl(198, 62%, 17%)
   logo:
@@ -28,7 +28,7 @@ head:
   fontFamily: Architects Daughter
   fontColor: hsl(0, 53%, 24%)
   avatar: avatar.png?1520989114
-  txt1: teste
+  txt1: 
   txt2: dfsdf
   show:
     avatar: true

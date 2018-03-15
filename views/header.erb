@@ -236,11 +236,33 @@
             <div class=line></div>
             <div class=line></div>
         </div> -->
-        <img ng-show=siteData.head.show.avatar
+        <!-- <img ng-show=siteData.head.show.avatar
              class="c isLogged avatarImg"
              ng-src="{{ siteData.head.avatar }}"
              onclick="event.stopPropagation();"
-             ng-click="!isLogged || openHeaderModal()"/>      
+             ng-click="!isLogged || openHeaderModal()"/>    -->
+             <img class="my-image" src="/img/Radha.jpg" />
+     <script>
+     $( document ).ready(function() {
+       // $(document).mousemove(function(event){
+       //     if (event.pageX<20 && event.pageY<700){
+       //       console.log("abrir sidebar");
+       //       $(".menu").css("left", "0px");
+       //       $(".line").css("background", "#FFF");
+       //       menuOpen = true;
+       //     }
+       //   });
+
+     $('.my-image').croppie({
+          viewport: { width: 100, height: 100 },
+          boundary: { width: 300, height: 300 },
+          showZoomer: false,
+          enableExif: true,
+          enableOrientation: true
+      });
+      console.log( "ready!" );
+  });
+     </script>
         <div class="intro-text">
           <span class="name">
             <div contenteditable="{{isLogged}}"
