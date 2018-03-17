@@ -7,13 +7,13 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-15 01:37:58.104011628 Z
+  modified: 2018-03-17 17:04:30.970747179 Z
 navbar:
   backgroundColor: hsl(198, 62%, 17%)
   logo:
     color: hsl(0, 0%, 91%)
     fontFamily: Cherry Cream Soda
-    label: Fidelitos
+    label: MAGA SUPER \O/
     img: 
   menu:
   - label: Portfólio

@@ -1,14 +1,4 @@
-<%if @isLogged%>
-  <%= erb :nav %>
-  <%= erb :header %>
-  <%= erb :header_modal %>
-  <%= erb :portfolio %>
-  <%= erb :portfolio_modal %>
-  <%= erb :about %>
-  <%= erb :contact %>
-  <%= erb :footer %>
-  <%= erb :adm_modals %>
-<%else%>
+
   <%= erb :"realSite/navBar" %>
   <%= erb :"realSite/header" %>
   <%= erb :"realSite/portfolio" %>
@@ -16,4 +6,3 @@
   <%= erb :"realSite/contact" %>
   <%= erb :"realSite/footer" %>
   <%= erb :"realSite/portfolio_modals" %>
-<%end%>

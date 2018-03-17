@@ -8,13 +8,18 @@
        :style="{'min-width': '50px', 'color':siteData.navbar.logoColor, 'font-family': siteData.navbar.logo.fontFamily}">
        {{siteData.navbar.logo.label}}
     </a> -->
-    <editable
+    <edit
+      class="navbar-brand js-scroll-trigger"
+      style="border: 1px dashed #ccc; padding: 5px;"
+      :style="{'min-width': '50px', 'color':siteData.navbar.logoColor, 'font-family': siteData.navbar.logo.fontFamily}"
+      :content="'siteData.navbar.logo.label'">
+    </edit>
+    <!-- <editable
       class="navbar-brand js-scroll-trigger"
       :style="{'min-width': '50px', 'color':siteData.navbar.logoColor, 'font-family': siteData.navbar.logo.fontFamily}"
-      :content="siteData.navbar.logo.label"
-      @blur.native="saveDiv(siteData.navbar.logo.label)"
+      :campo="'siteData.navbar.logo.label'"
       @update="siteData.navbar.logo.label = $event">
-    </editable>
+    </editable> -->
     <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fa fa-bars"></i>

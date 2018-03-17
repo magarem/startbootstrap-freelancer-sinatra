@@ -17,6 +17,7 @@ require 'base64'
 require 'hex_string'
 require 'sendgrid-ruby'
 require 'sanitize'
+
 include SendGrid
 
 set :public_folder, 'public'

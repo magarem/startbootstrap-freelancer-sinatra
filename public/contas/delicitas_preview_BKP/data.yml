@@ -7,13 +7,13 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-13 00:38:03.685247735 Z
+  modified: 2018-03-17 04:25:22.973838849 Z
 navbar:
   backgroundColor: hsl(198, 62%, 17%)
   logo:
     color: hsl(0, 0%, 91%)
     fontFamily: Cherry Cream Soda
-    label: Fidelitos
+    label: MAGUETE
     img: 
   menu:
   - label: Portfólio
@@ -27,8 +27,8 @@ head:
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/16k_glass-wallpaper-1440x900.jpg
   fontFamily: Architects Daughter
   fontColor: hsl(0, 53%, 24%)
-  avatar: avatar.png?1519950932
-  txt1: teste
+  avatar: avatar.png?1520989114
+  txt1: 
   txt2: dfsdf
   show:
     avatar: true
