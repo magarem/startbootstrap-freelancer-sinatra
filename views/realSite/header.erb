@@ -8,18 +8,36 @@
          class="img-fluid mb-5 d-block mx-auto avatar_circle avatarImg"
          :src="'contas/'+siteData.site_nome+'/img/'+siteData.head.avatar"
          alt="">
-    <h1 :show="siteData.head.show.txt1"
+    <!-- <h1 :show="siteData.head.show.txt1"
         class="text-uppercase mb-0"
         :class="{txtShadow: siteData.head.show.txtShadow}"
-        :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}">{{siteData.head.txt1}}</h1>
+        :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}">{{siteData.head.txt1}}</h1> -->
+        <edit
+          :id="'header-txt-1'"
+          :tag="'h1'"
+          :show="siteData.head.show.txt1"
+          class="text-uppercase mb-0"
+          :class="{txtShadow: siteData.head.show.txtShadow}"
+          :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}"
+          :content="'siteData.head.txt1'">
+        </edit>
     <hr id=head_star
         v-if="siteData.head.txt2"
         :style="{'border-color:': siteData.head.fontColor}"
         class="star-light"
         :class="{txtShadow2: siteData.head.show.txtShadow}">
-    <h2 :show="siteData.head.txt2"
+    <edit
+      :id="'header-txt-2'"
+      :tag="'h2'"
+      :show="siteData.head.show.txt2"
+      class="text-uppercase mb-0"
+      :class="{txtShadow: siteData.head.show.txtShadow}"
+      :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}"
+      :content="'siteData.head.txt2'">
+    </edit>
+    <!-- <h2 :show="siteData.head.txt2"
         class="font-weight-light mb-0"
         :class="{txtShadow: siteData.head.show.txtShadow}"
-        :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}">{{siteData.head.txt2}}</h2>
+        :style="{'font-family': siteData.head.fontFamily, 'color': siteData.head.fontColor}">{{siteData.head.txt2}}</h2> -->
   </div>
 </header>

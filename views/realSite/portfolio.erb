@@ -2,6 +2,7 @@
   <div class="container">
     <h2 class="text-center text-uppercase text-secondary mb-0">{{siteData.portfolio.label}}</h2>
     <hr class="star-dark mb-5">
+    <button class="btn btn-warning btn-sm" :show="siteData.logged" type="button"  @click="portfolio_add()"><i class="glyphicon glyphicon-plus"></i> Novo</button>
     <div class="row justify-content-center" style="margin-bottom: 20px;">
       <div v-if="siteData.portfolio.itemsTags" class="col-xs-12">
     		<button v-if="siteData.portfolio.itemsTags.length > 0" class="btn btn-small" v-on:click="select('all')">
@@ -17,10 +18,13 @@
 				</button>
 			</div>
     </div>
-    <div class="row">
+
+  </ul>
+    <div class="row" v-sortable="{ onUpdate: onUpdate }">
       <!-- Button trigger modal -->
+
       <div class="col-md-6 col-lg-4"
-           v-for="(item, index) in filteredList">
+           v-for="(item, index) in this.siteData.portfolio.items" >
        <div class="thumbnail" >
         <a class="portfolio-item d-block mx-auto"  data-toggle="modal" :data-target="'#exampleModalLong'+item.id">
            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">

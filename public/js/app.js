@@ -1,13 +1,35 @@
-
+Array.prototype.move = function(from, to) {
+    this.splice(to, 0, this.splice(from, 1)[0]);
+};
+Vue.directive('sortable', {
+  inserted: function (el, binding) {
+    new Sortable(el, binding.value || {})
+  }
+})
 Vue.component('edit', {
-    template: `<div contenteditable="true" @blur="onBlur" @input="$emit('update:content', $event.target.innerText)"></div>`,
-    props: ['content'],
+    template: `<component :is="tag" contenteditable="true" @blur="onBlur" @input="$emit('update:content', $event.target.innerText)"></component>`,
+    props: ['tipo', 'content','content2', 'tag'],
     mounted: function () {
+      if (this.tipo=='2'){
+        console.log("this.content2:[",this.content2,"]")
+        this.$el.innerText = this.content2;
+      }else{
         this.$el.innerText = eval("this.$root."+this.content);
+      }
+        $('[contenteditable]').attr('contenteditable', this.$root.siteData.logged);
+        if (this.$root.siteData.logged){
+          $('[contenteditable]').addClass("editArea");
+        }else{
+          $('[contenteditable]').removeClass("editArea");
+        }
     },
     watch: {
         content: function () {
+          if (this.content2){
+            this.$el.innerText = this.content2;
+          }else{
             this.$el.innerText = eval("this.$root."+this.content);
+          }
         }
     },
     methods:{
@@ -38,44 +60,9 @@ Vue.component('edit', {
               console.log("Error")
              }
            );
-      },
-    }
-})
-
-Vue.component('editable',{
-  template:'<div contenteditable="true" @input="update" @blur="onBlur"></div>',
-  props:['content','campo'],
-  mounted:function(){
-    this.$el.innerText = eval("this.$root."+this.campo);
-  },
-  methods:{
-    update:function(event){
-      this.$emit('update',event.target.innerText);
-    },
-    onBlur:function(){
-      // console.log(siteData)
-      this.saveDiv (this.campo, eval("this.$root."+this.campo))
-      console.log(this.$root.siteData)
-    },
-    saveDiv: function(obj, val){
-      // if (val != undefined) {val = val.trim();}
-      //val = eval(obj)
-      console.log("obj:", obj)
-      console.log("val:", val)
-      if (val){
-        // val = val.replace(/<(?:.|\n)*?>/gm, '')
-        val = val.replace(/&lt;(?:.|\n)*?&gt;/gim, '')
-        val = val.replace(/&nbsp;/gim, '')
       }
-      this.$http.post("/objSave", {obj: obj, val: val}).then(function (response) {
-              // Success
-              console.log("success")
-          },function (response) {
-              // Error
-              console.log("Error")
-          });;
-    },
-  }
+
+    }
 })
 
 Vue.component('modal', {
@@ -112,7 +99,6 @@ new Vue({
 
   },
   methods: {
-
     getItemsTags: function(event) {
       //Pega a lista de todas as tags utilizadas
       let itemsTags = []
@@ -169,6 +155,36 @@ new Vue({
     },
     loadFont: function (font){
       loadFont(font);
+    },
+    portfolio_add: function () {
+      //var siteNome = SiteData.getSiteNome()
+      var newId = Date.now().toString();
+      itemNew = {
+        "id"     : newId,
+        "titulo" : "",
+        "mediaType" : "image",
+        "img"    : "img_teste.jpg",
+        "img_"   : "",
+        "txt"    : "",
+        "nome"   : "",
+        "site"   : "",
+        "data"   : "",
+        "servico": "",
+        "tags"    : ""
+      }
+      //Salva no disco o novo registro
+      this.$http.post("/portfolio/add/"+newId).then(function(response) {})
+      // SiteData.portAdd(newId).then(function(response) {})
+      this.siteData.portfolio.items = this.siteData.portfolio.items || []
+      this.siteData.portfolio.items.push(itemNew)
+      // $scope.preOpen(itemNew, $scope.siteData.portfolio.items.length-1)
+    },
+    onUpdate: function (event) {
+      let data = this.siteData.portfolio.items
+      //data.splice(event.newIndex, 0, data.splice(event.oldIndex, 1)[0])
+      //data.move(event.oldIndex, event.newIndex)
+      this.$http.post('/portfolioSort/'+event.oldIndex+"/"+event.newIndex);
+      console.log(this.siteData.portfolio.items)
     }
   },
     computed: {

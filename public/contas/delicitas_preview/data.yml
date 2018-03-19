@@ -7,13 +7,13 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-17 17:04:30.970747179 Z
+  modified: 2018-03-19 04:28:24.513704407 Z
 navbar:
   backgroundColor: hsl(198, 62%, 17%)
   logo:
     color: hsl(0, 0%, 91%)
     fontFamily: Cherry Cream Soda
-    label: MAGA SUPER \O/
+    label: "!MAGA!"
     img: 
   menu:
   - label: Portfólio
@@ -28,8 +28,8 @@ head:
   fontFamily: Architects Daughter
   fontColor: hsl(0, 53%, 24%)
   avatar: avatar.png?1520989114
-  txt1: 
-  txt2: dfsdf
+  txt1: LLLL
+  txt2: OO
   show:
     avatar: true
     txt1: true
@@ -40,49 +40,69 @@ portfolio:
   label: Portfólio
   itemsTags: 
   items:
-  - id: '1520884757058'
-    titulo: ''
+  - id: '1519951023331'
+    titulo: DOIDINHA2
     mediaType: image
-    img: 1520884757058.jpg?decache=0.46555674479823317
+    img: 1519951023331.jpeg?decache=908.9836584994433?decache=571.4716763843833?decache=987.5407136246439?decache=963.8882856168912?decache=998.4373531203239?decache=574.8286648320833?decache=272.1254126576813?decache=776.9480048941056?decache=227.7896034512541?decache=965.1320703068402?decache=60.703168955610565?decache=420.85989228533197
+    txt: conheci no Templo
+    cliente: 
+    site: ''
+    data: ''
+    servico: ''
+    tags: []
+  - id: '1521422563310'
+    titulo: SENÁRIO
+    mediaType: image
+    img: img_teste.jpg?decache=854.0124132904208?decache=542.8690839358994?decache=731.2418360292274?decache=976.6582492875419?decache=119.4555717508612?decache=510.8039930398538?decache=600.7567396963092?decache=480.2866376790926?decache=194.29451282079913?decache=756.192707404502?decache=852.1795730775457?decache=659.5743102687093
+    txt: sdfsdfsdf
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
+  - id: '1520884757058'
+    titulo: FOTO 1
+    mediaType: image
+    img: 1520884757058.jpg?decache=0.46555674479823317?decache=285.18813946387536?decache=42.09718634940063?decache=175.1852410745234?decache=899.1455646729463?decache=687.1592674473626?decache=693.833888665692?decache=58.38846161593092?decache=74.11209396664043?decache=207.9657581108556?decache=370.9178778914264?decache=42.546035926598336?decache=368.7239073447961
     img_: ''
-    txt: ''
+    txt: dsf d fsd fs df sdf sd fsd fsdf s
     nome: ''
     site: ''
     data: ''
     servico: ''
     tags: []
     cliente: dfdf
-  - id: '1519951023331'
-    titulo: teste22
-    mediaType: image
-    img: 1519951023331.jpeg
-    txt: dfds
-    cliente: 
-    site: ''
-    data: ''
-    servico: ''
-    tags: []
   - id: '1'
-    titulo: Imagem 1
+    titulo: LINDA
     mediaType: image
-    img: 1.jpg?decache=549.4935630358784
+    img: 1.jpg?decache=549.4935630358784?decache=675.3042861672089?decache=877.1556751152017?decache=338.73730496003753?decache=204.82986130559632?decache=417.85399847846327?decache=379.8738104927122?decache=124.87327471224319?decache=381.22975545848493?decache=220.21315803356333?decache=1.5452713838055576?decache=890.9010046713588?decache=790.2126613603422
     img_: ''
-    txt: ''
+    txt: tá aqui né ;)
     nome: ''
     site: ''
     data: ''
     servico: ''
     tags: []
   - id: '1519951015163'
-    titulo: ''
+    titulo: BIQUINI
     mediaType: image
-    img: 1519951015163.jpg?decache=521.6850229919974
+    img: 1519951015163.jpg?decache=521.6850229919974?decache=172.67708179886077?decache=522.9262040153355?decache=780.1105893365103?decache=925.0551778356657?decache=229.58612538685875?decache=722.927306606359?decache=510.6141888559219?decache=121.08648138550238?decache=913.8573913423988?decache=937.592563745876?decache=249.80054366562055?decache=664.7377390814604
     txt: ''
     cliente: sasdas
     site: ''
     data: ''
     servico: ''
     tags: []
+  - id: '1521433524467'
+    titulo: FFFF
+    mediaType: image
+    img: img_teste.jpg
+    txt: ''
+    cliente: ''
+    site: ''
+    data: ''
+    servico: ''
+    tags: ''
   hide: false
   showGridTitles: false
 about:
@@ -105,3 +125,4 @@ footer:
   about_resumo: 
   hide: false
 itemsTags: 
+titulo: TESTE223

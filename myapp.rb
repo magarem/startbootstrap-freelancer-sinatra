@@ -61,6 +61,13 @@ configure do
 end
 helpers do
 
+  class String
+    def numeric?
+      return true if self =~ /\A\d+\Z/
+      true if Float(self) rescue false
+    end
+  end
+
   def encrypt(data)
 
     cipher = OpenSSL::Cipher.new 'aes-256-cbc'
@@ -585,7 +592,11 @@ post '/objSave' do
   # Confere qual foi a ordem passada
   s = ""
   @obj.split(".").drop(1).each_with_index do |item, index|
-    s = s + "['#{item}']"
+    if item.numeric? then
+      s = s + "[#{item}]"
+    else
+      s = s + "['#{item}']"
+    end
   end
   #if @val != nil then
     comando = "@data#{s} = @val"
@@ -815,6 +826,27 @@ end
 #
 #  Portfolio: Mudança na ordenação
 #
+post "/portfolioSort/:oldPosition/:newPosition" do
+  oldPosition =  params[:oldPosition].to_i
+  newPosition =  params[:newPosition].to_i
+
+  puts "oldPosition: #{oldPosition}"
+  puts "newPosition: #{newPosition}"
+
+  # Autenticação
+  if !@logado then redirect "/" end
+
+  #Carrega os dados do site
+  @data = Dataload.testa (@url)
+
+  #troca a posição
+  @data["portfolio"]["items"] = @data["portfolio"]["items"].insert(newPosition, @data["portfolio"]["items"].delete_at(oldPosition))
+  f = File.open @data_path, 'w'
+  YAML.dump @data, f
+  f.close
+
+end
+
 post "/portfolio/ordena" do
 
   @post_data = JSON.parse(request.body.read)
@@ -1012,7 +1044,7 @@ post "/portfolio/add/:postPortfolioItemId" do
     "id"        => postPortfolioItemId,
     "titulo"    => "",
     "mediaType" => "image",
-    "img"       => "http://placehold.it/360x260/e67e22/fff",
+    "img"       => "img_teste.jpg",
     "txt"       => "",
     "cliente"   => "",
     "site"      => "",

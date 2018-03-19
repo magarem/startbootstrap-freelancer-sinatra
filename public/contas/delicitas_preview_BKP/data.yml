@@ -7,13 +7,13 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-17 04:25:22.973838849 Z
+  modified: 2018-03-18 17:13:59.105548196 Z
 navbar:
   backgroundColor: hsl(198, 62%, 17%)
   logo:
     color: hsl(0, 0%, 91%)
     fontFamily: Cherry Cream Soda
-    label: MAGUETE
+    label: MAGA SUP
     img: 
   menu:
   - label: Portfólio
@@ -28,7 +28,7 @@ head:
   fontFamily: Architects Daughter
   fontColor: hsl(0, 53%, 24%)
   avatar: avatar.png?1520989114
-  txt1: 
+  txt1: DFSDSF DSF SDF S
   txt2: dfsdf
   show:
     avatar: true
