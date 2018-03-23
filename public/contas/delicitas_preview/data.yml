@@ -7,13 +7,13 @@ info:
   description: Site portfólio
   author: Radiando
   created: 2018-03-02 00:18:21 utc
-  modified: 2018-03-19 04:28:24.513704407 Z
+  modified: 2018-03-23 16:26:15.703341974 Z
 navbar:
   backgroundColor: hsl(198, 62%, 17%)
   logo:
     color: hsl(0, 0%, 91%)
     fontFamily: Cherry Cream Soda
-    label: "!MAGA!"
+    label: SHIVA
     img: 
   menu:
   - label: Portfólio
@@ -27,8 +27,8 @@ head:
   backgroundUrl: http://res.cloudinary.com/radiando/image/upload/headerBackground/16k_glass-wallpaper-1440x900.jpg
   fontFamily: Architects Daughter
   fontColor: hsl(0, 53%, 24%)
-  avatar: avatar.png?1520989114
-  txt1: LLLL
+  avatar: avatar.png?55
+  txt1: DSFSDF
   txt2: OO
   show:
     avatar: true
@@ -41,7 +41,7 @@ portfolio:
   itemsTags: 
   items:
   - id: '1519951023331'
-    titulo: DOIDINHA2
+    titulo: DOIDINHA22
     mediaType: image
     img: 1519951023331.jpeg?decache=908.9836584994433?decache=571.4716763843833?decache=987.5407136246439?decache=963.8882856168912?decache=998.4373531203239?decache=574.8286648320833?decache=272.1254126576813?decache=776.9480048941056?decache=227.7896034512541?decache=965.1320703068402?decache=60.703168955610565?decache=420.85989228533197
     txt: conheci no Templo
@@ -73,7 +73,7 @@ portfolio:
     tags: []
     cliente: dfdf
   - id: '1'
-    titulo: LINDA
+    titulo: LINDA2
     mediaType: image
     img: 1.jpg?decache=549.4935630358784?decache=675.3042861672089?decache=877.1556751152017?decache=338.73730496003753?decache=204.82986130559632?decache=417.85399847846327?decache=379.8738104927122?decache=124.87327471224319?decache=381.22975545848493?decache=220.21315803356333?decache=1.5452713838055576?decache=890.9010046713588?decache=790.2126613603422
     img_: ''

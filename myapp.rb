@@ -741,7 +741,51 @@ end
 #
 # upload da imagem de capa (circulo)
 #
-post "/avatarUpload" do
+post '/upload' do
+  # @filename = params[:file][:filename]
+  @filename = "avatar.png"
+  request.body.rewind
+  request_payload = JSON.parse request.body.read
+
+  file = request_payload['file']
+  puts "file:> #{file}"
+
+  file = file.gsub('data:image/png;base64,', '');
+  file = file.gsub(' ', '+');
+  data = Base64.decode64(file);
+
+  # File.open("./public/#{@filename}", 'wb') do |f|
+  File.open("./public/contas/#{@site_nome}/img/#{@filename}", 'wb') do |f|
+    f.write(data)
+  end
+  "ok"
+end
+post '/avatarUpload' do
+
+  # Autenticação
+ # if !@logado then redirect "/" end
+
+  # @filename = params[:file][:filename]
+  @filename = "avatar.png"
+  request.body.rewind
+  request_payload = JSON.parse request.body.read
+
+  file = request_payload['file']
+  puts "file:> #{file}"
+
+  file = file.gsub('data:image/png;base64,', '');
+  file = file.gsub(' ', '+');
+  data = Base64.decode64(file);
+
+  #Carrega os dados do site
+  # @data = Dataload.testa (@url)
+  puts ">>>./public/contas/#{@site_nome}/img/#{@filename}"
+  File.open("./public/contas/#{@site_nome}/img/#{@filename}", 'wb') do |f|
+    f.write(data)
+  end
+  "ok"
+end
+post "/avatarUpload_" do
 
   # Pega os parametros
   @filename = params[:file][:filename]

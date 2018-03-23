@@ -13,7 +13,7 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <!-- Bootstrap core CSS -->
     <link href="/realSite/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="/bower_components/croppie/croppie.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
     <link href="/realSite/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -115,6 +115,85 @@
         border: 1px dashed #ccc;
         padding: 5px;
       }
+
+      //
+      // modal
+      //
+            .modal-mask {
+          position: fixed;
+          z-index: 9998;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, .5);
+          transition: opacity .3s ease;
+      }
+
+      .modal-container {
+          width: 300px;
+          margin: 40px auto 0;
+          padding: 20px 30px;
+          background-color: #fff;
+          border-radius: 2px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+          transition: all .3s ease;
+          font-family: Helvetica, Arial, sans-serif;
+      }
+
+      .modal-header h3 {
+          margin-top: 0;
+          color: #42b983;
+      }
+
+      .modal-body {
+          margin: 20px 0;
+      }
+
+      .text-right {
+          text-align: right;
+      }
+
+      .form-label {
+          display: block;
+          margin-bottom: 1em;
+      }
+
+      .form-label > .form-control {
+          margin-top: 0.5em;
+      }
+
+      .form-control {
+          display: block;
+          width: 100%;
+          padding: 0.5em 1em;
+          line-height: 1.5;
+          border: 1px solid #ddd;
+      }
+
+      /*
+       * The following styles are auto-applied to elements with
+       * transition="modal" when their visibility is toggled
+       * by Vue.js.
+       *
+       * You can easily play with the modal transition by editing
+       * these styles.
+       */
+
+      .modal-enter {
+        opacity: 0;
+      }
+
+      .modal-leave-active {
+        opacity: 0;
+      }
+
+      .modal-enter .modal-container,
+      .modal-leave-active .modal-container {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
@@ -135,12 +214,18 @@
     <div id="app" v-if="dataIsLoaded" v-cloak>
       <%= yield %>
     </div>
-
+</body>
     <!-- Bootstrap core JavaScript -->
+
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vuex"></script>    
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.0"></script>
+    <script src="/bower_components/exif-js/exif.js"></script>
     <script src="/realSite/vendor/jquery/jquery.min.js"></script>
     <script src="/realSite/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/bower_components/croppie/croppie.js"></script>
+    <script src="http://gregpike.net/demos/bootstrap-file-input/bootstrap.file-input.js"></script>
+
 
     <!-- Plugin JavaScript -->
     <script src="/realSite/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -159,6 +244,7 @@
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
+
 
 
     Array.prototype.getUnique = function() {
@@ -180,7 +266,7 @@
      <!-- VueSortable -->
      <script src="https://unpkg.com/vue-sortable@0.1.3"></script>
       <script src="/js/js.js"></script>
-      <script src="/js/app.js"></script>
 
-  </body>
+<script src="/js/app.js"></script>
+
  </html>
