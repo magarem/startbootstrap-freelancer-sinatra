@@ -1,17 +1,20 @@
 Array.prototype.move = function(from, to) {
     this.splice(to, 0, this.splice(from, 1)[0]);
 };
-
 Vue.use(Vuex)
-
 const store = new Vuex.Store({
   state: {
     count: 0,
-    siteData: ""
+    siteData: "",
+    avatar_crop_img: false
   },
   mutations: {
   	increment: state => state.count++,
     decrement: state => state.count--,
+    set_avatar_crop_img: function(state, val){
+       console.log ("call set_avatar_crop_img:", val)
+       this.state.avatar_crop_img = val
+    },
     set_siteData: function(state, data){
        this.state.siteData = data
     },
@@ -21,7 +24,6 @@ const store = new Vuex.Store({
     }
   }
 })
-
 Vue.directive('sortable', {
   inserted: function (el, binding) {
     new Sortable(el, binding.value || {})
@@ -85,7 +87,6 @@ Vue.component('edit', {
 
     }
 })
-
 Vue.component('modal', {
   template: '#modal-template',
   props: {
@@ -96,33 +97,25 @@ Vue.component('modal', {
     }
   }
 })
-
 Vue.component('avatar', {
-    template: `<div style="height: 380px;  margin:auto;"><div :id=id></div><input type="file" id="btn-upload" name=file value="Selecionar imagem" accept="image/*" @change="processFile($event)"/><button id="btn-usar" @click="onSave()">Usar</button></div>`,
+    template: `<div style="margin:auto;">
+                 <div :id=id></div>
+                 <label for='btn-upload'>Selecionar</label>
+                 <input type="file" id="btn-upload" name=file value="Selecionar imagem" accept="image/*" @change="processFile($event)" hidden/>
+                 <label v-if="imgLoad" for='btn-usar'>Usar</label>
+                 <input type=button  id="btn-usar" @click="onSave()" hidden>
+                 <label  for='btn-close'>Cancelar</label>
+                 <button type=button  id="btn-close" onclick="$('#headerModal').modal('hide');" hidden></button>
+               </div>`,
     props: ['id'],
     data: function () {
       return {
-        basic: ""
+        basic: "",
+        imgLoad: false
       }
     },
     mounted: function () {
       console.log(this.basic)
-      // this.basic = $('#'+this.id).croppie({
-      //   enableExif: true,
-      //   viewport: {
-      //     width: 260,
-      //     height: 260,
-      //     type: 'circle'
-      //   },
-      //   boundary: {
-      // 		width: 300,
-      // 		height: 300
-      // 	}
-      // });
-      // this.basic.croppie('bind', {
-      //   url: '',
-      //   points: [0,0,150,150]
-      // });
     },
     methods:{
       processFile:function(event) {
@@ -131,6 +124,8 @@ Vue.component('avatar', {
       readFile:function(input) {
         var self = this
       	if (input) {
+          self.imgLoad = true
+          store.commit('set_avatar_crop_img', true)
           if (this.basic) $('#t1').croppie('destroy');
           this.basic = $('#'+this.id).croppie({
             enableExif: true,
@@ -148,7 +143,6 @@ Vue.component('avatar', {
             url: '',
             points: [0,0,150,150]
           });
-
               var reader = new FileReader();
               reader.onload = function (e) {
                 console.log(self.basic)
@@ -206,7 +200,9 @@ Vue.component('avatar', {
                 // tratar a response
                 self.basic = {}
                 // $('#t1').cropper("destroy");
+                self.imgLoad = false
                 $('#t1').croppie('destroy');
+                store.commit('set_avatar_crop_img', false)
                 $('#headerModal').modal('hide')
               });
 
@@ -216,7 +212,6 @@ Vue.component('avatar', {
        }
     }
 })
-
 var dataURL = '/dataLoad';
 new Vue({
   el: '#app',
@@ -249,6 +244,9 @@ new Vue({
     },
     set_siteData (){
       store.commit('set_siteData', this.siteData)
+    },
+    set_avatar_crop_img (val){
+      store.commit('set_avatar_crop_img', val)
     },
     getItemsTags: function(event) {
       //Pega a lista de todas as tags utilizadas
@@ -359,6 +357,9 @@ new Vue({
     },
     siteData () {
    	  return store.state.siteData
+    },
+    avatar_crop_img (){
+   	  return store.state.avatar_crop_img
     }
   }
 });

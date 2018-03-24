@@ -6,6 +6,7 @@
   <div class="container">
     <!-- <a class="portfolio-item d-block mx-auto"  data-toggle="modal" data-target="#headerModal"> -->
       <img :show=siteData.head.show.avatar
+         id=avatar_img
          class="img-fluid mb-5 d-block mx-auto avatar_circle avatarImg"
          :src="siteData.head.avatar"
          onclick="$('#headerModal').modal('show');"
